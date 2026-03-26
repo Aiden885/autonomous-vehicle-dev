@@ -1,0 +1,75 @@
+\hypertarget{classrapidxml_1_1xml__document}{}\doxysection{rapidxml\+::xml\+\_\+document$<$ Ch $>$ 模板类 参考}
+\label{classrapidxml_1_1xml__document}\index{rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}}
+
+
+{\ttfamily \#include $<$rapidxml.\+hpp$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1xml__document_aae8841b15085ba8f32ff46587ace28f5}\label{classrapidxml_1_1xml__document_aae8841b15085ba8f32ff46587ace28f5}} 
+\mbox{\hyperlink{classrapidxml_1_1xml__document_aae8841b15085ba8f32ff46587ace28f5}{xml\+\_\+document}} ()
+\begin{DoxyCompactList}\small\item\em Constructs empty X\+ML document. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Flags$>$ }\\Ch $\ast$ \mbox{\hyperlink{classrapidxml_1_1xml__document_a1d8bad4968e6d4731980bb83aa720321}{parse}} (Ch $\ast$text, \mbox{\hyperlink{classrapidxml_1_1xml__document}{xml\+\_\+document}}$<$ Ch $>$ $\ast$parent=0)
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1xml__document_a5e7f0b775647cce52bebf48a6f27f553}\label{classrapidxml_1_1xml__document_a5e7f0b775647cce52bebf48a6f27f553}} 
+{\footnotesize template$<$int Flags$>$ }\\Ch $\ast$ {\bfseries parse} (Ch $\ast$text, \mbox{\hyperlink{classrapidxml_1_1xml__document}{xml\+\_\+document}}$<$ Ch $>$ \&parent)
+\item 
+void \mbox{\hyperlink{classrapidxml_1_1xml__document_a826929ff54242532198701f19ff5f83f}{clear}} ()
+\item 
+{\footnotesize template$<$int Flags$>$ }\\void \mbox{\hyperlink{classrapidxml_1_1xml__document_af16a466078c79ab924763fd4bb678a6b}{fixup}} (\mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}}$<$ Ch $>$ $\ast$element, bool recurse)
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1xml__document_a07949c4e0db16a6b5becd45c9663c48c}\label{classrapidxml_1_1xml__document_a07949c4e0db16a6b5becd45c9663c48c}} 
+void {\bfseries validate} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\subsubsection*{template$<$class Ch = char$>$\newline
+class rapidxml\+::xml\+\_\+document$<$ Ch $>$}
+
+This class represents root of the D\+OM hierarchy. It is also an \mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}} and a \mbox{\hyperlink{classrapidxml_1_1memory__pool}{memory\+\_\+pool}} through public inheritance. Use \mbox{\hyperlink{classrapidxml_1_1xml__document_a1d8bad4968e6d4731980bb83aa720321}{parse()}} function to build a D\+OM tree from a zero-\/terminated X\+ML text string. \mbox{\hyperlink{classrapidxml_1_1xml__document_a1d8bad4968e6d4731980bb83aa720321}{parse()}} function allocates memory for nodes and attributes by using functions of \mbox{\hyperlink{classrapidxml_1_1xml__document}{xml\+\_\+document}}, which are inherited from \mbox{\hyperlink{classrapidxml_1_1memory__pool}{memory\+\_\+pool}}. To access root node of the document, use the document itself, as if it was an \mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}}. 
+\begin{DoxyParams}{参数}
+{\em Ch} & Character type to use. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classrapidxml_1_1xml__document_a826929ff54242532198701f19ff5f83f}\label{classrapidxml_1_1xml__document_a826929ff54242532198701f19ff5f83f}} 
+\index{rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}!clear@{clear}}
+\index{clear@{clear}!rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class Ch  = char$>$ \\
+void \mbox{\hyperlink{classrapidxml_1_1xml__document}{rapidxml\+::xml\+\_\+document}}$<$ Ch $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clears the document by deleting all nodes and clearing the memory pool. All nodes owned by document pool are destroyed. \mbox{\Hypertarget{classrapidxml_1_1xml__document_af16a466078c79ab924763fd4bb678a6b}\label{classrapidxml_1_1xml__document_af16a466078c79ab924763fd4bb678a6b}} 
+\index{rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}!fixup@{fixup}}
+\index{fixup@{fixup}!rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}}
+\doxysubsubsection{\texorpdfstring{fixup()}{fixup()}}
+{\footnotesize\ttfamily template$<$class Ch  = char$>$ \\
+template$<$int Flags$>$ \\
+void \mbox{\hyperlink{classrapidxml_1_1xml__document}{rapidxml\+::xml\+\_\+document}}$<$ Ch $>$\+::fixup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}}$<$ Ch $>$ $\ast$}]{element,  }\item[{bool}]{recurse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Terminates and/or decodes existing parsed tree, optionally recursively. \mbox{\Hypertarget{classrapidxml_1_1xml__document_a1d8bad4968e6d4731980bb83aa720321}\label{classrapidxml_1_1xml__document_a1d8bad4968e6d4731980bb83aa720321}} 
+\index{rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}!parse@{parse}}
+\index{parse@{parse}!rapidxml::xml\_document$<$ Ch $>$@{rapidxml::xml\_document$<$ Ch $>$}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily template$<$class Ch  = char$>$ \\
+template$<$int Flags$>$ \\
+Ch$\ast$ \mbox{\hyperlink{classrapidxml_1_1xml__document}{rapidxml\+::xml\+\_\+document}}$<$ Ch $>$\+::parse (\begin{DoxyParamCaption}\item[{Ch $\ast$}]{text,  }\item[{\mbox{\hyperlink{classrapidxml_1_1xml__document}{xml\+\_\+document}}$<$ Ch $>$ $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Parses zero-\/terminated X\+ML string according to given flags. Passed string will be modified by the parser, unless rapidxml\+::parse\+\_\+non\+\_\+destructive flag is used. The string must persist for the lifetime of the document. In case of error, \mbox{\hyperlink{classrapidxml_1_1parse__error}{rapidxml\+::parse\+\_\+error}} exception will be thrown. ~\newline
+~\newline
+ If you want to parse contents of a file, you must first load the file into the memory, and pass pointer to its beginning. Make sure that data is zero-\/terminated. ~\newline
+~\newline
+ Document can be parsed into multiple times. Each new call to parse removes previous nodes and attributes (if any), but does not clear memory pool. 
+\begin{DoxyParams}{参数}
+{\em text} & X\+ML data to parse; pointer is non-\/const to denote fact that this data may be modified by the parser. \\
+\hline
+\end{DoxyParams}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/\mbox{\hyperlink{rapidxml_8hpp}{rapidxml.\+hpp}}\end{DoxyCompactItemize}

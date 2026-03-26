@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Logic::DecisionTree类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceLogic.html">Logic</a></li><li class="navelem"><a class="el" href="classLogic_1_1DecisionTree.html">DecisionTree</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classLogic_1_1DecisionTree-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Logic::DecisionTree类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Logic::DecisionTree 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogic_1_1DecisionTree__coll__graph.png" border="0" usemap="#Logic_1_1DecisionTree_coll__map" alt="Collaboration graph"/></div>
+<map name="Logic_1_1DecisionTree_coll__map" id="Logic_1_1DecisionTree_coll__map">
+<area shape="rect" title=" " alt="" coords="5,97,152,124"/>
+<area shape="rect" href="structLogic_1_1TreeNode.html" title=" " alt="" coords="16,7,141,33"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:adfae5d5aaf1f0a45f34808b102073122"><td class="memItemLeft" align="right" valign="top"><a id="adfae5d5aaf1f0a45f34808b102073122"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DecisionTree</b> (const char *filename, int depth, int line)</td></tr>
+<tr class="separator:adfae5d5aaf1f0a45f34808b102073122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82bfbb5ddaa05b705e13fb5c83aa2ea"><td class="memItemLeft" align="right" valign="top"><a id="ad82bfbb5ddaa05b705e13fb5c83aa2ea"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DecisionTree</b> (const vector&lt; vector&lt; double &gt;&gt; &amp;trainData, const vector&lt; int &gt; &amp;trainLabel)</td></tr>
+<tr class="separator:ad82bfbb5ddaa05b705e13fb5c83aa2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf398de096f4f09391c797f8598d58aa"><td class="memItemLeft" align="right" valign="top"><a id="adf398de096f4f09391c797f8598d58aa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadData</b> (const vector&lt; vector&lt; double &gt;&gt; &amp;trainData, const vector&lt; int &gt; &amp;trainLabel)</td></tr>
+<tr class="separator:adf398de096f4f09391c797f8598d58aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ad62c079f18092891ffec12aa001f2e"><td class="memItemLeft" align="right" valign="top"><a id="a2ad62c079f18092891ffec12aa001f2e"></a>
+map&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>labelCount</b> (vector&lt; int &gt; &amp;dataset)</td></tr>
+<tr class="separator:a2ad62c079f18092891ffec12aa001f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc35a7ce698c4a0922267c79c3e4c4d9"><td class="memItemLeft" align="right" valign="top"><a id="afc35a7ce698c4a0922267c79c3e4c4d9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateGiniValue</b> (vector&lt; int &gt; &amp;dataset)</td></tr>
+<tr class="separator:afc35a7ce698c4a0922267c79c3e4c4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb87ec2dcac14861843c715366dbd347"><td class="memItemLeft" align="right" valign="top"><a id="afb87ec2dcac14861843c715366dbd347"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitDataset</b> (vector&lt; int &gt; &amp;dataset, int &amp;feature, double &amp;threshold, bool bigger)</td></tr>
+<tr class="separator:afb87ec2dcac14861843c715366dbd347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b4f5c613d4811afbdd877c19478bba1"><td class="memItemLeft" align="right" valign="top"><a id="a9b4f5c613d4811afbdd877c19478bba1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateGiniIndex</b> (vector&lt; int &gt; &amp;dataset, int &amp;feature, double &amp;threshold)</td></tr>
+<tr class="separator:a9b4f5c613d4811afbdd877c19478bba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ed3ee31cf58ceddb4999783d3fc267"><td class="memItemLeft" align="right" valign="top"><a id="a37ed3ee31cf58ceddb4999783d3fc267"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxTimesLabel</b> (map&lt; int, int &gt; &amp;labelCount)</td></tr>
+<tr class="separator:a37ed3ee31cf58ceddb4999783d3fc267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e557a90de51417a2ad8240fbf7e381d"><td class="memItemLeft" align="right" valign="top"><a id="a3e557a90de51417a2ad8240fbf7e381d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>findSplit</b> (vector&lt; int &gt; &amp;dataset, vector&lt; int &gt; &amp;features, vector&lt; int &gt; &amp;leftDataset, vector&lt; int &gt; &amp;rightDataset, int &amp;featureId, double &amp;threshold)</td></tr>
+<tr class="separator:a3e557a90de51417a2ad8240fbf7e381d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6b9e163087168c881fbcdce0e5ca4f"><td class="memItemLeft" align="right" valign="top"><a id="a6f6b9e163087168c881fbcdce0e5ca4f"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createTree</b> (vector&lt; int &gt; &amp;dataset, vector&lt; int &gt; &amp;features)</td></tr>
+<tr class="separator:a6f6b9e163087168c881fbcdce0e5ca4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560d09222d9f095f3164116a0ea2d4a6"><td class="memItemLeft" align="right" valign="top"><a id="a560d09222d9f095f3164116a0ea2d4a6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>classifyData</b> (const vector&lt; double &gt; &amp;testData, <a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *root) const</td></tr>
+<tr class="separator:a560d09222d9f095f3164116a0ea2d4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bebf1a384ddea8bbae1f855eb5250f"><td class="memItemLeft" align="right" valign="top"><a id="a01bebf1a384ddea8bbae1f855eb5250f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printTree</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node, int depth)</td></tr>
+<tr class="separator:a01bebf1a384ddea8bbae1f855eb5250f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3729f6ad46f4b3f253314ca193c6f62"><td class="memItemLeft" align="right" valign="top"><a id="ae3729f6ad46f4b3f253314ca193c6f62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveTree</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node, const char *filename, int depth)</td></tr>
+<tr class="separator:ae3729f6ad46f4b3f253314ca193c6f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f8e369f7f93f5c0d582a45c0872e62a"><td class="memItemLeft" align="right" valign="top"><a id="a2f8e369f7f93f5c0d582a45c0872e62a"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>loadTree</b> (const char *filename, int depth, int *line)</td></tr>
+<tr class="separator:a2f8e369f7f93f5c0d582a45c0872e62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad398d8d25c0d0740dac2f5b551a3fe"><td class="memItemLeft" align="right" valign="top"><a id="afad398d8d25c0d0740dac2f5b551a3fe"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>testTree</b> (<a class="el" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;dt, const vector&lt; vector&lt; double &gt;&gt; &amp;testData, const vector&lt; int &gt; &amp;testLabel)</td></tr>
+<tr class="separator:afad398d8d25c0d0740dac2f5b551a3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d8740839d7fc8c23588b940f8a537a"><td class="memItemLeft" align="right" valign="top"><a id="a65d8740839d7fc8c23588b940f8a537a"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findPruningNode</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node)</td></tr>
+<tr class="separator:a65d8740839d7fc8c23588b940f8a537a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eec4dc088a1c06e1ac7dc7aa79390f5"><td class="memItemLeft" align="right" valign="top"><a id="a7eec4dc088a1c06e1ac7dc7aa79390f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>treePruning</b> (<a class="el" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;dt, const vector&lt; vector&lt; double &gt;&gt; &amp;verifyData, const vector&lt; int &gt; &amp;verifyLabel)</td></tr>
+<tr class="separator:a7eec4dc088a1c06e1ac7dc7aa79390f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfae5d5aaf1f0a45f34808b102073122"><td class="memItemLeft" align="right" valign="top"><a id="adfae5d5aaf1f0a45f34808b102073122"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DecisionTree</b> (const char *filename, int depth, int line)</td></tr>
+<tr class="separator:adfae5d5aaf1f0a45f34808b102073122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4291d6220310a8c7183305ce49df91dc"><td class="memItemLeft" align="right" valign="top"><a id="a4291d6220310a8c7183305ce49df91dc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DecisionTree</b> (const vector&lt; vector&lt; int &gt;&gt; &amp;trainData, const vector&lt; int &gt; &amp;trainLabel, const bool rateFlag)</td></tr>
+<tr class="separator:a4291d6220310a8c7183305ce49df91dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb707e10f64fde18c84f79f69006a39"><td class="memItemLeft" align="right" valign="top"><a id="abfb707e10f64fde18c84f79f69006a39"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadData</b> (const vector&lt; vector&lt; int &gt;&gt; &amp;trainData, const vector&lt; int &gt; &amp;trainLabel)</td></tr>
+<tr class="separator:abfb707e10f64fde18c84f79f69006a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d85c7bae534bf9f388e9ef29e76e33"><td class="memItemLeft" align="right" valign="top"><a id="a22d85c7bae534bf9f388e9ef29e76e33"></a>
+map&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>labelCount</b> (vector&lt; int &gt; &amp;dataset)</td></tr>
+<tr class="separator:a22d85c7bae534bf9f388e9ef29e76e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e74b0830b0ed30a2c5da57dfce4e3e"><td class="memItemLeft" align="right" valign="top"><a id="aa7e74b0830b0ed30a2c5da57dfce4e3e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateEntropy</b> (vector&lt; int &gt; &amp;dataset)</td></tr>
+<tr class="separator:aa7e74b0830b0ed30a2c5da57dfce4e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc051b2c80784ae3e16618cb3425fa10"><td class="memItemLeft" align="right" valign="top"><a id="abc051b2c80784ae3e16618cb3425fa10"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitDataset</b> (vector&lt; int &gt; &amp;dataset, int &amp;feature, int &amp;value)</td></tr>
+<tr class="separator:abc051b2c80784ae3e16618cb3425fa10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa77bd96e108ed9ee8781970067cb038d"><td class="memItemLeft" align="right" valign="top"><a id="aa77bd96e108ed9ee8781970067cb038d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateGainOrRate</b> (vector&lt; int &gt; &amp;dataset, int &amp;feature, bool rateFlag)</td></tr>
+<tr class="separator:aa77bd96e108ed9ee8781970067cb038d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ed3ee31cf58ceddb4999783d3fc267"><td class="memItemLeft" align="right" valign="top"><a id="a37ed3ee31cf58ceddb4999783d3fc267"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxTimesLabel</b> (map&lt; int, int &gt; &amp;labelCount)</td></tr>
+<tr class="separator:a37ed3ee31cf58ceddb4999783d3fc267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e321c86b8421fbfd80ee96201b6acd4"><td class="memItemLeft" align="right" valign="top"><a id="a0e321c86b8421fbfd80ee96201b6acd4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxResultFeature</b> (map&lt; int, double &gt; &amp;gains)</td></tr>
+<tr class="separator:a0e321c86b8421fbfd80ee96201b6acd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a043c4725cda00b35e391679cbf46d4fd"><td class="memItemLeft" align="right" valign="top"><a id="a043c4725cda00b35e391679cbf46d4fd"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createTree</b> (vector&lt; int &gt; &amp;dataset, vector&lt; int &gt; &amp;features, bool rateFlag)</td></tr>
+<tr class="separator:a043c4725cda00b35e391679cbf46d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed1ba749f0b352f8db777bf08239abfe"><td class="memItemLeft" align="right" valign="top"><a id="aed1ba749f0b352f8db777bf08239abfe"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>classifyData</b> (const vector&lt; int &gt; &amp;testData, <a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *root) const</td></tr>
+<tr class="separator:aed1ba749f0b352f8db777bf08239abfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bebf1a384ddea8bbae1f855eb5250f"><td class="memItemLeft" align="right" valign="top"><a id="a01bebf1a384ddea8bbae1f855eb5250f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printTree</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node, int depth)</td></tr>
+<tr class="separator:a01bebf1a384ddea8bbae1f855eb5250f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3729f6ad46f4b3f253314ca193c6f62"><td class="memItemLeft" align="right" valign="top"><a id="ae3729f6ad46f4b3f253314ca193c6f62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveTree</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node, const char *filename, int depth)</td></tr>
+<tr class="separator:ae3729f6ad46f4b3f253314ca193c6f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e8fdaf6a39e1883e352a37a24f0dca"><td class="memItemLeft" align="right" valign="top"><a id="af9e8fdaf6a39e1883e352a37a24f0dca"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>loadTree</b> (const char *filename, int depth, int *line)</td></tr>
+<tr class="separator:af9e8fdaf6a39e1883e352a37a24f0dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a69196f29b88d89aa35c86553b83bee"><td class="memItemLeft" align="right" valign="top"><a id="a2a69196f29b88d89aa35c86553b83bee"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>testTree</b> (<a class="el" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;dt, const vector&lt; vector&lt; int &gt;&gt; &amp;testData, const vector&lt; int &gt; &amp;testLabel)</td></tr>
+<tr class="separator:a2a69196f29b88d89aa35c86553b83bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf26871e2d0958abe62574fe2c7791c7"><td class="memItemLeft" align="right" valign="top"><a id="adf26871e2d0958abe62574fe2c7791c7"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findPruningNode</b> (<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *Node)</td></tr>
+<tr class="separator:adf26871e2d0958abe62574fe2c7791c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09b7758d7bf77f5a85c92c17d5545a3"><td class="memItemLeft" align="right" valign="top"><a id="af09b7758d7bf77f5a85c92c17d5545a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>treePruning</b> (<a class="el" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;dt, const vector&lt; vector&lt; int &gt;&gt; &amp;verifyData, const vector&lt; int &gt; &amp;verifyLabel)</td></tr>
+<tr class="separator:af09b7758d7bf77f5a85c92c17d5545a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a74706613138749971388647440f13904"><td class="memItemLeft" align="right" valign="top"><a id="a74706613138749971388647440f13904"></a>
+vector&lt; vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>trainData</b></td></tr>
+<tr class="separator:a74706613138749971388647440f13904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdfa5f1ac7875238df32bb87201513d1"><td class="memItemLeft" align="right" valign="top"><a id="abdfa5f1ac7875238df32bb87201513d1"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>trainLabel</b></td></tr>
+<tr class="separator:abdfa5f1ac7875238df32bb87201513d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a060b0f360f2c04b859eafbb36347f00e"><td class="memItemLeft" align="right" valign="top"><a id="a060b0f360f2c04b859eafbb36347f00e"></a>
+map&lt; int, set&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>featureValues</b></td></tr>
+<tr class="separator:a060b0f360f2c04b859eafbb36347f00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a060e13c3a903795aa6dcc5d20c2c9a44"><td class="memItemLeft" align="right" valign="top"><a id="a060e13c3a903795aa6dcc5d20c2c9a44"></a>
+<a class="el" href="structLogic_1_1TreeNode.html">TreeNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>decisionTreeRoot</b></td></tr>
+<tr class="separator:a060e13c3a903795aa6dcc5d20c2c9a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba90d51995c6bcac7b85406d4eb441a6"><td class="memItemLeft" align="right" valign="top"><a id="aba90d51995c6bcac7b85406d4eb441a6"></a>
+vector&lt; vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>trainData</b></td></tr>
+<tr class="separator:aba90d51995c6bcac7b85406d4eb441a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86161ed1981b5f4f3c32f0db7b70bd2f"><td class="memItemLeft" align="right" valign="top"><a id="a86161ed1981b5f4f3c32f0db7b70bd2f"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dataset</b></td></tr>
+<tr class="separator:a86161ed1981b5f4f3c32f0db7b70bd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/CART/dependence/<a class="el" href="LogicDecisionTreeCARTHead_8hpp_source.html">LogicDecisionTreeCARTHead.hpp</a></li>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/ID3C4.5/dependence/<a class="el" href="LogicDecisionTreeHead_8hpp_source.html">LogicDecisionTreeHead.hpp</a></li>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/CART/dependence/LogicDecisionTreeCARTFunction.cpp</li>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/ID3C4.5/dependence/LogicDecisionTreeFunction.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

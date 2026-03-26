@@ -1,0 +1,60 @@
+\hypertarget{classControl_1_1LatControllerBase}{}\doxysection{Control\+::Lat\+Controller\+Base类 参考}
+\label{classControl_1_1LatControllerBase}\index{Control::LatControllerBase@{Control::LatControllerBase}}
+
+
+横向控制器基类。  
+
+
+
+
+{\ttfamily \#include $<$control\+Controller.\+hpp$>$}
+
+
+
+类 Control\+::Lat\+Controller\+Base 继承关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classControl_1_1LatControllerBase__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a1515a9555c63598d11e316e1e64c5c7b}\label{classControl_1_1LatControllerBase_a1515a9555c63598d11e316e1e64c5c7b}} 
+{\bfseries Lat\+Controller\+Base} (double max\+Steer, double ratio\+Wheel\+To\+Steer=20, double dt=0.\+1)
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a4d827129de478a54ee3cff71d6d924c6}\label{classControl_1_1LatControllerBase_a4d827129de478a54ee3cff71d6d924c6}} 
+virtual double {\bfseries calc\+Steer} (\mbox{\hyperlink{structControl_1_1State}{State}} s, const Traj \&traj, size\+\_\+t nearest\+ID)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a76850a0c57bcdb3b72c671fd48fcb9c3}\label{classControl_1_1LatControllerBase_a76850a0c57bcdb3b72c671fd48fcb9c3}} 
+double {\bfseries regulate\+Output} (double steer)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a09b393c5c4bc66299207e86fa55b8fbb}\label{classControl_1_1LatControllerBase_a09b393c5c4bc66299207e86fa55b8fbb}} 
+double {\bfseries dt}
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a0b7c6c6d0b3f6a05ff60bc61c11d5bad}\label{classControl_1_1LatControllerBase_a0b7c6c6d0b3f6a05ff60bc61c11d5bad}} 
+double {\bfseries max\+Steer}
+\item 
+\mbox{\Hypertarget{classControl_1_1LatControllerBase_a5228252ede177a3459701f1405567234}\label{classControl_1_1LatControllerBase_a5228252ede177a3459701f1405567234}} 
+double {\bfseries ratio\+Wheel\+To\+Steer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+横向控制器基类。 
+
+\begin{DoxyNote}{注解}
+抽象类，子类控制器必须实现 {\ttfamily calc\+Steer}计算前轮转角方法 
+\end{DoxyNote}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlController_8hpp}{control\+Controller.\+hpp}}\end{DoxyCompactItemize}

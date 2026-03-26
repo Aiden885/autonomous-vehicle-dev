@@ -1,0 +1,60 @@
+\hypertarget{globalPlanning__m_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/planning\+Figure/src/global\+Planning\+\_\+m.cpp 文件参考}
+\label{globalPlanning__m_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/planningFigure/src/globalPlanning\_m.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/planningFigure/src/globalPlanning\_m.cpp}}
+
+
+global\+Planning  
+
+
+{\ttfamily \#include \char`\"{}global\+Planning\+\_\+m.\+h\char`\"{}}\newline
+global\+Planning\+\_\+m.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{globalPlanning__m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceGolbalPlanning}{Golbal\+Planning}}
+\begin{DoxyCompactList}\small\item\em 这是一个名为\+Golbal\+Planning的namespace。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a3a695a056381ece1c2e91429b937c63e}{Golbal\+Planning\+::\+Astar\+Map\+To\+Astar}} (const Astar\+Map\+To\+Astar\+Param \&param, const Astar\+Map\+To\+Astar\+Input \&input, Astar\+Map\+To\+Astar\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 使用\+Map类构建\+Astar类 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a17c4dd32077eb001388c34473fa7fba1}{Golbal\+Planning\+::\+Astar\+Get\+Path}} (const Astar\+Get\+Path\+Param \&param, const Astar\+Get\+Path\+Input \&input, Astar\+Get\+Path\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 使用\+Astar算法获取路径，包括预处理、后处理等部分 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a6ea321ad36a015f8060c74a572b15ce5}{Golbal\+Planning\+::\+Astar\+Init\+Road}} (const Astar\+Init\+Road\+Param \&param, const Astar\+Init\+Road\+Input \&input, Astar\+Init\+Road\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Astar道路初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_aa452cd687cdfc000bea6a643ea110097}{Golbal\+Planning\+::\+Astar\+Init\+Link}} (const Astar\+Init\+Link\+Param \&param, const Astar\+Init\+Link\+Input \&input, Astar\+Init\+Link\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Astar道路连接关系初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a98d081470f5cdd59ded7da52f8f5bd3a}{Golbal\+Planning\+::\+Astar\+Reset}} (const Astar\+Reset\+Param \&param, const Astar\+Reset\+Input \&input, Astar\+Reset\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 在保留地图的情况下，初始化\+Astar参数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a6020da93a8513aae025b06dc7f972ab9}{Golbal\+Planning\+::\+Astar\+Module\+Self\+Check}} (const Astar\+Module\+Self\+Check\+Param \&param, const Astar\+Module\+Self\+Check\+Input \&input, Astar\+Module\+Self\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 检查\+Astar道路\+Id \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a06ef698202242f5bb4d670f1dba45873}{Golbal\+Planning\+::\+Astar\+Module\+Self\+Check\+Print}} (const Astar\+Module\+Self\+Check\+Print\+Param \&param, const Astar\+Module\+Self\+Check\+Print\+Input \&input, Astar\+Module\+Self\+Check\+Print\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 检查\+Astar道路\+Id打印 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a26e7aba5ca5a8bbd985b6491710ed92e}{Golbal\+Planning\+::\+Astar\+Find\+Lane}} (const Astar\+Find\+Lane\+Param \&param, const Astar\+Find\+Lane\+Input \&input, Astar\+Find\+Lane\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据\+Astar道路级全局规划结果，获得车道级全局规划结果 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_aba004e266486393460d0ac7d16094d8f}{Golbal\+Planning\+::\+Astar\+Find\+LaneR}} (const Astar\+Find\+Lane\+R\+Param \&param, const Astar\+Find\+Lane\+R\+Input \&input, Astar\+Find\+Lane\+R\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据\+Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceGolbalPlanning_a85880008bfeda27d20e2a6a793ec16dd}{Golbal\+Planning\+::\+Astar\+Recursive\+Find\+Lane}} (const Astar\+Recursive\+Find\+Lane\+Param \&param, const Astar\+Recursive\+Find\+Lane\+Input \&input, Astar\+Recursive\+Find\+Lane\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Astar递归获得车道级全局规划结果主体函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+global\+Planning 
+
+\begin{DoxyAuthor}{作者}
+
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2024-\/12-\/04
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

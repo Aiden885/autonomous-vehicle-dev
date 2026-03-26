@@ -1,0 +1,1218 @@
+\hypertarget{namespacelidarTools}{}\doxysection{lidar\+Tools 命名空间参考}
+\label{namespacelidarTools}\index{lidarTools@{lidarTools}}
+
+
+\mbox{\hyperlink{namespacelidarTools}{lidar\+Tools}} namespace。  
+
+
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlidarTools_1_1ClusterDistance}{Cluster\+Distance}}
+\item 
+struct \mbox{\hyperlink{structlidarTools_1_1ClusterResult}{Cluster\+Result}}
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacelidarTools_a311a287c07f281425fdb8d16cea9c83f}{load\+P\+CD}} (std\+::string filename, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output)
+\begin{DoxyCompactList}\small\item\em Load point cloud from P\+CD file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ad71d85b883a06f2d934ace4955312ec4}{pcd\+Intensity\+Threshold\+Lower\+Filter}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, int intensity\+\_\+thres)
+\begin{DoxyCompactList}\small\item\em Filter points based on intensity threshold. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a11d522ec00a7324d4550b2704b63264e}{pcd\+Voxel\+Filter}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, const double size\+\_\+x, const double size\+\_\+y, const double size\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Apply voxel grid filter to downsample point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_af3ae904d4cb5b094aa9b9583c640a20b}{pcd\+Radius\+Filter}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, const double radius, const int min\+\_\+neighbors)
+\begin{DoxyCompactList}\small\item\em Apply radius outlier removal filter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a9ba6f814e886996ce7d9cb0d38ffee46}{pcd\+Statistic\+Filter}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, const double mean\+\_\+K, const double std)
+\begin{DoxyCompactList}\small\item\em Apply statistical outlier removal filter. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacelidarTools_ac7a7e934ef7cbf42573276185b087358}{gaussian}} (float x, float sigma)
+\begin{DoxyCompactList}\small\item\em Calculate Gaussian weight based on distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a2195914c203891c2c45eed009ba52a7e}{pcd\+Gaussian\+Filter}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, const double sigma, const double search\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Apply Gaussian filter to smooth point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aea9675bd2751957956ea641a7ecacdb8}{update\+Distances}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, int point\+\_\+idx, std\+::vector$<$ float $>$ \&min\+\_\+distances, pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ Point\+X\+Y\+ZI $>$\+::Ptr kdtree)
+\begin{DoxyCompactList}\small\item\em Update minimum distances between points and clusters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacelidarTools_abdcd04994a58d68912be3281f44dce8f}{find\+Farthest\+Point}} (std\+::vector$<$ float $>$ \&distances)
+\begin{DoxyCompactList}\small\item\em Find point with maximum distance in distance vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a3506e1ed49bf38c229586ae945f61ba3}{pcd\+Farthest\+Point\+Sample}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, int num\+\_\+samples, bool random\+\_\+seed)
+\begin{DoxyCompactList}\small\item\em Perform farthest point sampling on point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ab2b07f4af4d97064a56095dccc1f09c6}{pcd\+Random\+Sample}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, const int num\+\_\+samples)
+\begin{DoxyCompactList}\small\item\em Perform random sampling on point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a65706a3cebac584f3924175942d9183b}{initialize\+Centroids}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr centroids)
+\begin{DoxyCompactList}\small\item\em Initialize centroids for k-\/means clustering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ad932bb061ef87e64adf36ea3019e66f7}{assign\+Points\+To\+Clusters}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr centroids, std\+::vector$<$ int $>$ \&labels)
+\begin{DoxyCompactList}\small\item\em Assign points to nearest cluster centers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aa02d4a509a03cb4c15d301f23960f76d}{update\+Centroids}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr centroids, std\+::vector$<$ int $>$ \&labels, int k)
+\begin{DoxyCompactList}\small\item\em Update cluster centroids based on point assignments. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacelidarTools_a6d0fdbecd81806c764f3b955b6a43175}{calculate\+Distance}} (pcl\+::\+Point\+X\+Y\+ZI \&p1, pcl\+::\+Point\+X\+Y\+ZI \&p2)
+\begin{DoxyCompactList}\small\item\em Calculate Euclidean distance between two points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacelidarTools_aa103d66e439031e6c82a788c8f728306}{calculate\+Total\+Error}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr centroids, std\+::vector$<$ int $>$ \&labels)
+\begin{DoxyCompactList}\small\item\em Calculate total clustering error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aa470f6503776914f4f7d956342b4c67a}{pcd\+Kmeans\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, \mbox{\hyperlink{structlidarTools_1_1ClusterResult}{Cluster\+Result}} \&result, int k, const int max\+\_\+iterations\+\_\+, const double convergence\+\_\+threshold)
+\begin{DoxyCompactList}\small\item\em Perform k-\/means clustering on point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ae77ec03357c2070a4587e88c4048a885}{pcd\+D\+B\+Scan\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, double epsilon, int min\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Perform D\+B\+S\+C\+AN clustering on point cloud. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacelidarTools_a9802327ef2968b0181947db5b5eaac9d}{compute\+Cloud\+Resolution}} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr \&cloud)
+\begin{DoxyCompactList}\small\item\em Compute resolution of point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aa59997596cbd9d4a0bf0f11631f89dbd}{I\+S\+S\+Key\+Point\+Extract}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr keypoints, double salient\+\_\+radius, double non\+\_\+max\+\_\+radius, double normal\+\_\+radius, double threshold21, double threshold32, double min\+\_\+neighbors, int threads)
+\begin{DoxyCompactList}\small\item\em Extract I\+SS keypoints from point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a659248d45e49c2af096c16f95aa861be}{S\+I\+F\+T\+Key\+Point\+Extract}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+With\+Scale $>$\+::Ptr keypoints, float min\+\_\+scale\+\_\+, int nr\+\_\+octaves, int nr\+\_\+scales\+\_\+per\+\_\+octave, float min\+\_\+contrast)
+\begin{DoxyCompactList}\small\item\em Extract S\+I\+FT keypoints from point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a50740501a031e327823af213f58d46a8}{harris\+Key\+Point\+Key\+Point\+Extract}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr keypoints, float threshold, float radius, bool non\+\_\+maxima, int method)
+\begin{DoxyCompactList}\small\item\em Extract Harris keypoints from point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a0288c8e288dbe0e3fe2c91b442592316}{P\+F\+H\+Extract\+Feature}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, double radius)
+\begin{DoxyCompactList}\small\item\em Extracts Point Feature Histogram (P\+FH) features from a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a4bedaca61f2e335bf1db26cc503ce883}{I\+C\+P\+Pc\+Match}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr target\+\_\+cloud, Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&transformation\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Performs Iterative Closest Point (I\+CP) matching between two point clouds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_adc3dfb2a5fb06734c1b7766741aea83b}{G\+I\+C\+P\+Pc\+Match}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr target\+\_\+cloud, Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&transformation\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Performs Generalized Iterative Closest Point (G\+I\+CP) matching between two point clouds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a759f8d8e37ccae4d9ce6c3eaaa7309f5}{N\+T\+D\+Pc\+Match}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr target\+\_\+cloud, Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&transformation\+\_\+matrix, double thre, double step, double res)
+\begin{DoxyCompactList}\small\item\em Performs Normal Distributions Transform (N\+DT) matching between two point clouds. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacelidarTools_a45b5cf76922ff170c43d488149f0be06}{get\+\_\+filelist\+\_\+from\+\_\+dir}} (std\+::string \+\_\+path, std\+::vector$<$ std\+::string $>$ \&\+\_\+files)
+\begin{DoxyCompactList}\small\item\em Gets list of files from a directory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a6858fa2a70df7d9c968212f30d851743}{convert\+P\+C\+Dto\+Bin}} (std\+::string \&in\+\_\+file, std\+::string \&out\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Converts a P\+CD file to binary format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a57943eec35eca3abdee2ffe597bd30ef}{save\+To\+Bin}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, std\+::string \&out\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Saves point cloud to binary format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_af74d38eb24330b22afa6138f7c0a5268}{pcd2\+Bin}} (string \&pcd\+\_\+dir, string \&bin\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Converts all P\+CD files in a directory to binary format. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacelidarTools_aad732aafd53e8d8e7d8af21eb0eec2be}{convert\+Bin2\+P\+CD}} (const std\+::string \&input\+\_\+path, const std\+::string \&output\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Converts a binary point cloud file to P\+CD format. \end{DoxyCompactList}\item 
+std\+::vector$<$ pcl\+::\+Point\+X\+Y\+ZI $>$ \mbox{\hyperlink{namespacelidarTools_a0b54f8514c6ee5edbff77155707c8efe}{read\+Binary\+File}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Reads points from a binary file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aafd92cec65b0dbf7ec79ab7e7e7c727d}{bin2\+Pcd}} (string \&bin\+\_\+dir, string \&pcd\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Converts all binary files in a directory to P\+CD format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ab9c66269756298fdd605d23c7896765b}{pcd\+Clip}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, double min\+\_\+x, double max\+\_\+x, double min\+\_\+y, double max\+\_\+y, double min\+\_\+z, double max\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Clips a point cloud to specified boundaries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a1eb081f5e40d846794e0132726eaca55}{pcd\+Rotate\+With\+Mat}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, Eigen\+::\+Matrix3f rotation\+Matrix)
+\begin{DoxyCompactList}\small\item\em Rotates a point cloud using a rotation matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ad800adda60166cc751b4220a33829c0c}{pcd\+Rotate\+With\+Euler}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, double roll, double pitch, double yaw)
+\begin{DoxyCompactList}\small\item\em Rotates a point cloud using Euler angles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a34e2bfd5b8e0b82f41acf1dee885dec4}{pcd\+Rotate\+With\+Quaternions}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, Eigen\+::\+Quaterniond q)
+\begin{DoxyCompactList}\small\item\em Rotates a point cloud using quaternions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a4aba689002bd5f348351fafda3c71c7d}{pcd\+Trans}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr output, double trans\+\_\+x, double trans\+\_\+y, double trans\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Translates a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a551d4c15ec87765f1e8be18c204557f1}{pcd\+Compute\+Centroid}} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, Eigen\+::\+Vector3f \&centroid\+\_\+)
+\begin{DoxyCompactList}\small\item\em Computes the centroid of a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a91437f905a4e1c35f7a5b06e095cf523}{pcd\+Compute\+Covariance\+Matrix}} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, Eigen\+::\+Vector3f \&centroid\+\_\+, Eigen\+::\+Matrix3f \&covariance\+\_\+matrix\+\_\+)
+\begin{DoxyCompactList}\small\item\em Computes the covariance matrix of a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a4d0e4fa22d0c2c02ed86071052ed2992}{pcd\+Compute\+Eigen\+Vectors}} (Eigen\+::\+Matrix3f \&covariance\+\_\+matrix\+\_\+, Eigen\+::\+Matrix3f \&eigenvectors\+\_\+, Eigen\+::\+Vector3f \&eigenvalues\+\_\+)
+\begin{DoxyCompactList}\small\item\em Computes eigenvectors and eigenvalues from a covariance matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a2840d00fb80bae3ae317537befe408a4}{pcd\+Compute\+P\+CA}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, Eigen\+::\+Matrix3f \&eigenvectors\+\_\+, Eigen\+::\+Vector3f \&eigenvalues\+\_\+)
+\begin{DoxyCompactList}\small\item\em Performs Principal Component Analysis (P\+CA) on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aba56d8419d11544402f3873f693c696c}{pcd\+To\+K\+D\+Tree}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr kdtree)
+\begin{DoxyCompactList}\small\item\em Creates a K\+D-\/tree structure from a point cloud for efficient nearest neighbor searches. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_ad365d6eee4e70aef2a18e0dd5bdc48ac}{pcd\+Get\+Nearest\+Neighbor}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr kdtree, pcl\+::\+Point\+X\+Y\+ZI \&result, pcl\+::\+Point\+X\+Y\+ZI \&point, double radius)
+\begin{DoxyCompactList}\small\item\em Finds the nearest neighbor point to a query point within a given radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a4c1793cdafb1c9b25b1265883dce1163}{pcd\+Euclidean\+Clustering}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, double radius, int min\+\_\+cluster\+\_\+size, int max\+\_\+cluster\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Performs Euclidean clustering on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a0ee367d2d382efc835cc99b151ec2f7f}{pcd\+Spectral\+Clustering}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, int n\+\_\+clusters, double sigma, int k\+\_\+neighbors)
+\begin{DoxyCompactList}\small\item\em Performs spectral clustering on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a8973f3941ff77e4238305292d5aff0de}{pcd\+Affinity\+Propagation\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, double damping, int max\+\_\+iter)
+\begin{DoxyCompactList}\small\item\em Performs Affinity Propagation clustering on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a62e7d9bbe525845b85ab738999fb0ead}{pcd\+Mean\+Shift\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, float bandwidth, int max\+\_\+iter)
+\begin{DoxyCompactList}\small\item\em Performs mean-\/shift clustering on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_aae900d4936694636b09a58ec27c49c8b}{pcd\+Ward\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, float distance\+\_\+threshold, int min\+\_\+cluster\+\_\+size, int max\+\_\+cluster\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Performs Ward hierarchical clustering on a point cloud. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_a52b54fd4f9f822bb3bfc734358645641}{pcd\+O\+P\+T\+I\+C\+S\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, double eps, int min\+\_\+pts, double xi)
+\begin{DoxyCompactList}\small\item\em O\+P\+T\+I\+CS (Ordering Points To Identify the Clustering Structure) clustering algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacelidarTools_afb3f4e1340f0dce813cf4f944e3639e4}{pcd\+B\+I\+R\+C\+H\+Cluster}} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input, std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&cluster\+\_\+indices, int branching\+\_\+factor, double threshold, int max\+\_\+leaf\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Performs B\+I\+R\+CH (Balanced Iterative Reducing and Clustering using Hierarchies) clustering on point cloud data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacelidarTools_a2d4e3ecbc916ccc63f6547429e40db4d}\label{namespacelidarTools_a2d4e3ecbc916ccc63f6547429e40db4d}} 
+void {\bfseries harris\+Key\+Point\+Key\+Point\+Extract} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr in\+\_\+cloud, pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+With\+Scale $>$\+::Ptr keypoints, float threshold=1e-\/6, float radius=0.\+01, bool non\+\_\+maxima=true, int method=1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\mbox{\hyperlink{namespacelidarTools}{lidar\+Tools}} namespace。 
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{namespacelidarTools_ad932bb061ef87e64adf36ea3019e66f7}\label{namespacelidarTools_ad932bb061ef87e64adf36ea3019e66f7}} 
+\index{lidarTools@{lidarTools}!assignPointsToClusters@{assignPointsToClusters}}
+\index{assignPointsToClusters@{assignPointsToClusters}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{assignPointsToClusters()}{assignPointsToClusters()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::assign\+Points\+To\+Clusters (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{centroids,  }\item[{std\+::vector$<$ int $>$ \&}]{labels }\end{DoxyParamCaption})}
+
+
+
+Assign points to nearest cluster centers. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em centroids} & Cluster centroid points \\
+\hline
+\mbox{\texttt{ out}}  & {\em labels} & Point cluster assignments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aafd92cec65b0dbf7ec79ab7e7e7c727d}\label{namespacelidarTools_aafd92cec65b0dbf7ec79ab7e7e7c727d}} 
+\index{lidarTools@{lidarTools}!bin2Pcd@{bin2Pcd}}
+\index{bin2Pcd@{bin2Pcd}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{bin2Pcd()}{bin2Pcd()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::bin2\+Pcd (\begin{DoxyParamCaption}\item[{string \&}]{bin\+\_\+dir,  }\item[{string \&}]{pcd\+\_\+dir }\end{DoxyParamCaption})}
+
+
+
+Converts all binary files in a directory to P\+CD format. 
+
+
+\begin{DoxyParams}{参数}
+{\em bin\+\_\+dir} & Input binary directory path \\
+\hline
+{\em pcd\+\_\+dir} & Output P\+CD directory path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a6d0fdbecd81806c764f3b955b6a43175}\label{namespacelidarTools_a6d0fdbecd81806c764f3b955b6a43175}} 
+\index{lidarTools@{lidarTools}!calculateDistance@{calculateDistance}}
+\index{calculateDistance@{calculateDistance}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{calculateDistance()}{calculateDistance()}}
+{\footnotesize\ttfamily float lidar\+Tools\+::calculate\+Distance (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+X\+Y\+ZI \&}]{p1,  }\item[{pcl\+::\+Point\+X\+Y\+ZI \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+Calculate Euclidean distance between two points. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em p1} & First point \\
+\hline
+\mbox{\texttt{ in}}  & {\em p2} & Second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Squared Euclidean distance between points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_aa103d66e439031e6c82a788c8f728306}\label{namespacelidarTools_aa103d66e439031e6c82a788c8f728306}} 
+\index{lidarTools@{lidarTools}!calculateTotalError@{calculateTotalError}}
+\index{calculateTotalError@{calculateTotalError}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{calculateTotalError()}{calculateTotalError()}}
+{\footnotesize\ttfamily float lidar\+Tools\+::calculate\+Total\+Error (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{centroids,  }\item[{std\+::vector$<$ int $>$ \&}]{labels }\end{DoxyParamCaption})}
+
+
+
+Calculate total clustering error. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em centroids} & Cluster centroid points \\
+\hline
+\mbox{\texttt{ in}}  & {\em labels} & Point cluster assignments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Total sum of squared distances to cluster centers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_a9802327ef2968b0181947db5b5eaac9d}\label{namespacelidarTools_a9802327ef2968b0181947db5b5eaac9d}} 
+\index{lidarTools@{lidarTools}!computeCloudResolution@{computeCloudResolution}}
+\index{computeCloudResolution@{computeCloudResolution}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{computeCloudResolution()}{computeCloudResolution()}}
+{\footnotesize\ttfamily double lidar\+Tools\+::compute\+Cloud\+Resolution (\begin{DoxyParamCaption}\item[{const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr \&}]{cloud }\end{DoxyParamCaption})}
+
+
+
+Compute resolution of point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Average distance between points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_aad732aafd53e8d8e7d8af21eb0eec2be}\label{namespacelidarTools_aad732aafd53e8d8e7d8af21eb0eec2be}} 
+\index{lidarTools@{lidarTools}!convertBin2PCD@{convertBin2PCD}}
+\index{convertBin2PCD@{convertBin2PCD}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{convertBin2PCD()}{convertBin2PCD()}}
+{\footnotesize\ttfamily bool lidar\+Tools\+::convert\+Bin2\+P\+CD (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Converts a binary point cloud file to P\+CD format. 
+
+
+\begin{DoxyParams}{参数}
+{\em input\+\_\+path} & Input binary file path \\
+\hline
+{\em output\+\_\+path} & Output P\+CD file path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if conversion successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_a6858fa2a70df7d9c968212f30d851743}\label{namespacelidarTools_a6858fa2a70df7d9c968212f30d851743}} 
+\index{lidarTools@{lidarTools}!convertPCDtoBin@{convertPCDtoBin}}
+\index{convertPCDtoBin@{convertPCDtoBin}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{convertPCDtoBin()}{convertPCDtoBin()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::convert\+P\+C\+Dto\+Bin (\begin{DoxyParamCaption}\item[{std\+::string \&}]{in\+\_\+file,  }\item[{std\+::string \&}]{out\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Converts a P\+CD file to binary format. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+\_\+file} & Input P\+CD file path \\
+\hline
+{\em out\+\_\+file} & Output binary file path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_abdcd04994a58d68912be3281f44dce8f}\label{namespacelidarTools_abdcd04994a58d68912be3281f44dce8f}} 
+\index{lidarTools@{lidarTools}!findFarthestPoint@{findFarthestPoint}}
+\index{findFarthestPoint@{findFarthestPoint}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{findFarthestPoint()}{findFarthestPoint()}}
+{\footnotesize\ttfamily int lidar\+Tools\+::find\+Farthest\+Point (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{distances }\end{DoxyParamCaption})}
+
+
+
+Find point with maximum distance in distance vector. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em distances} & Vector of distances \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Index of point with maximum distance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_ac7a7e934ef7cbf42573276185b087358}\label{namespacelidarTools_ac7a7e934ef7cbf42573276185b087358}} 
+\index{lidarTools@{lidarTools}!gaussian@{gaussian}}
+\index{gaussian@{gaussian}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{gaussian()}{gaussian()}}
+{\footnotesize\ttfamily float lidar\+Tools\+::gaussian (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{sigma }\end{DoxyParamCaption})}
+
+
+
+Calculate Gaussian weight based on distance. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em x} & Distance value \\
+\hline
+\mbox{\texttt{ in}}  & {\em sigma} & Standard deviation parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Gaussian weight value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_a45b5cf76922ff170c43d488149f0be06}\label{namespacelidarTools_a45b5cf76922ff170c43d488149f0be06}} 
+\index{lidarTools@{lidarTools}!get\_filelist\_from\_dir@{get\_filelist\_from\_dir}}
+\index{get\_filelist\_from\_dir@{get\_filelist\_from\_dir}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{get\_filelist\_from\_dir()}{get\_filelist\_from\_dir()}}
+{\footnotesize\ttfamily bool lidar\+Tools\+::get\+\_\+filelist\+\_\+from\+\_\+dir (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+path,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{\+\_\+files }\end{DoxyParamCaption})}
+
+
+
+Gets list of files from a directory. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em \+\_\+path} & Directory path \\
+\hline
+\mbox{\texttt{ out}}  & {\em \+\_\+files} & Vector to store filenames \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_adc3dfb2a5fb06734c1b7766741aea83b}\label{namespacelidarTools_adc3dfb2a5fb06734c1b7766741aea83b}} 
+\index{lidarTools@{lidarTools}!GICPPcMatch@{GICPPcMatch}}
+\index{GICPPcMatch@{GICPPcMatch}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{GICPPcMatch()}{GICPPcMatch()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+G\+I\+C\+P\+Pc\+Match (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{target\+\_\+cloud,  }\item[{Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&}]{transformation\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+Performs Generalized Iterative Closest Point (G\+I\+CP) matching between two point clouds. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em in\+\_\+cloud} & Source point cloud \\
+\hline
+ & {\em target\+\_\+cloud} & Target point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em transformation\+\_\+matrix} & The resulting transformation matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a50740501a031e327823af213f58d46a8}\label{namespacelidarTools_a50740501a031e327823af213f58d46a8}} 
+\index{lidarTools@{lidarTools}!harrisKeyPointKeyPointExtract@{harrisKeyPointKeyPointExtract}}
+\index{harrisKeyPointKeyPointExtract@{harrisKeyPointKeyPointExtract}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{harrisKeyPointKeyPointExtract()}{harrisKeyPointKeyPointExtract()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::harris\+Key\+Point\+Key\+Point\+Extract (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{keypoints,  }\item[{float}]{threshold,  }\item[{float}]{radius,  }\item[{bool}]{non\+\_\+maxima,  }\item[{int}]{method }\end{DoxyParamCaption})}
+
+
+
+Extract Harris keypoints from point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em keypoints} & Output keypoint cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em threshold} & Response threshold \\
+\hline
+\mbox{\texttt{ in}}  & {\em radius} & Neighborhood size \\
+\hline
+\mbox{\texttt{ in}}  & {\em non\+\_\+maxima} & Enable/disable non-\/maxima suppression \\
+\hline
+\mbox{\texttt{ in}}  & {\em method} & Response calculation method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a4bedaca61f2e335bf1db26cc503ce883}\label{namespacelidarTools_a4bedaca61f2e335bf1db26cc503ce883}} 
+\index{lidarTools@{lidarTools}!ICPPcMatch@{ICPPcMatch}}
+\index{ICPPcMatch@{ICPPcMatch}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{ICPPcMatch()}{ICPPcMatch()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+I\+C\+P\+Pc\+Match (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{target\+\_\+cloud,  }\item[{Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&}]{transformation\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+Performs Iterative Closest Point (I\+CP) matching between two point clouds. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em in\+\_\+cloud} & Source point cloud \\
+\hline
+ & {\em target\+\_\+cloud} & Target point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em transformation\+\_\+matrix} & The resulting transformation matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a65706a3cebac584f3924175942d9183b}\label{namespacelidarTools_a65706a3cebac584f3924175942d9183b}} 
+\index{lidarTools@{lidarTools}!initializeCentroids@{initializeCentroids}}
+\index{initializeCentroids@{initializeCentroids}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{initializeCentroids()}{initializeCentroids()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::initialize\+Centroids (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{centroids }\end{DoxyParamCaption})}
+
+
+
+Initialize centroids for k-\/means clustering. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em centroids} & Output centroid points \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aa59997596cbd9d4a0bf0f11631f89dbd}\label{namespacelidarTools_aa59997596cbd9d4a0bf0f11631f89dbd}} 
+\index{lidarTools@{lidarTools}!ISSKeyPointExtract@{ISSKeyPointExtract}}
+\index{ISSKeyPointExtract@{ISSKeyPointExtract}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{ISSKeyPointExtract()}{ISSKeyPointExtract()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+I\+S\+S\+Key\+Point\+Extract (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{keypoints,  }\item[{double}]{salient\+\_\+radius,  }\item[{double}]{non\+\_\+max\+\_\+radius,  }\item[{double}]{normal\+\_\+radius,  }\item[{double}]{threshold21,  }\item[{double}]{threshold32,  }\item[{double}]{min\+\_\+neighbors,  }\item[{int}]{threads }\end{DoxyParamCaption})}
+
+
+
+Extract I\+SS keypoints from point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em keypoints} & Output keypoint cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em salient\+\_\+radius} & Radius for computing covariance matrix \\
+\hline
+\mbox{\texttt{ in}}  & {\em non\+\_\+max\+\_\+radius} & Radius for non-\/maximum suppression \\
+\hline
+\mbox{\texttt{ in}}  & {\em normal\+\_\+radius} & Radius for normal estimation \\
+\hline
+\mbox{\texttt{ in}}  & {\em threshold21} & First eigenvalue threshold \\
+\hline
+\mbox{\texttt{ in}}  & {\em threshold32} & Second eigenvalue threshold \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+neighbors} & Minimum number of neighbors \\
+\hline
+\mbox{\texttt{ in}}  & {\em threads} & Number of threads to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a311a287c07f281425fdb8d16cea9c83f}\label{namespacelidarTools_a311a287c07f281425fdb8d16cea9c83f}} 
+\index{lidarTools@{lidarTools}!loadPCD@{loadPCD}}
+\index{loadPCD@{loadPCD}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{loadPCD()}{loadPCD()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::load\+P\+CD (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output }\end{DoxyParamCaption})}
+
+
+
+Load point cloud from P\+CD file. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em filename} & Path to P\+CD file to load \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output point cloud containing loaded points \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a759f8d8e37ccae4d9ce6c3eaaa7309f5}\label{namespacelidarTools_a759f8d8e37ccae4d9ce6c3eaaa7309f5}} 
+\index{lidarTools@{lidarTools}!NTDPcMatch@{NTDPcMatch}}
+\index{NTDPcMatch@{NTDPcMatch}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{NTDPcMatch()}{NTDPcMatch()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+N\+T\+D\+Pc\+Match (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{target\+\_\+cloud,  }\item[{Eigen\+::\+Matrix$<$ float, 4, 4 $>$ \&}]{transformation\+\_\+matrix,  }\item[{double}]{thre,  }\item[{double}]{step,  }\item[{double}]{res }\end{DoxyParamCaption})}
+
+
+
+Performs Normal Distributions Transform (N\+DT) matching between two point clouds. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em in\+\_\+cloud} & Source point cloud \\
+\hline
+ & {\em target\+\_\+cloud} & Target point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em transformation\+\_\+matrix} & The resulting transformation matrix \\
+\hline
+ & {\em thre} & Transformation epsilon threshold \\
+\hline
+ & {\em step} & Step size for optimization \\
+\hline
+ & {\em res} & Resolution of the voxel grid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_af74d38eb24330b22afa6138f7c0a5268}\label{namespacelidarTools_af74d38eb24330b22afa6138f7c0a5268}} 
+\index{lidarTools@{lidarTools}!pcd2Bin@{pcd2Bin}}
+\index{pcd2Bin@{pcd2Bin}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcd2Bin()}{pcd2Bin()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd2\+Bin (\begin{DoxyParamCaption}\item[{string \&}]{pcd\+\_\+dir,  }\item[{string \&}]{bin\+\_\+dir }\end{DoxyParamCaption})}
+
+
+
+Converts all P\+CD files in a directory to binary format. 
+
+
+\begin{DoxyParams}{参数}
+{\em pcd\+\_\+dir} & Input P\+CD directory path \\
+\hline
+{\em bin\+\_\+dir} & Output binary directory path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a8973f3941ff77e4238305292d5aff0de}\label{namespacelidarTools_a8973f3941ff77e4238305292d5aff0de}} 
+\index{lidarTools@{lidarTools}!pcdAffinityPropagationCluster@{pcdAffinityPropagationCluster}}
+\index{pcdAffinityPropagationCluster@{pcdAffinityPropagationCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdAffinityPropagationCluster()}{pcdAffinityPropagationCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Affinity\+Propagation\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{double}]{damping,  }\item[{int}]{max\+\_\+iter }\end{DoxyParamCaption})}
+
+
+
+Performs Affinity Propagation clustering on a point cloud. 
+
+Implements the Affinity Propagation algorithm which\+:
+\begin{DoxyEnumerate}
+\item Computes pairwise similarities between points
+\item Iteratively updates responsibility and availability matrices
+\item Identifies exemplars (cluster centers) through message passing
+\item Assigns points to their nearest exemplar to form clusters
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em input} & Input point cloud to be clustered \\
+\hline
+\mbox{\texttt{ out}}  & {\em cluster\+\_\+indices} & Vector containing point indices for each cluster \\
+\hline
+\mbox{\texttt{ in}}  & {\em damping} & Damping factor (0-\/1) to avoid numerical oscillations \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+iter} & Maximum number of iterations for convergence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+The algorithm works by\+:
+\begin{DoxyEnumerate}
+\item Building similarity matrix based on negative squared distances
+\item Iteratively updating responsibility and availability matrices
+\item Applying damping to avoid oscillations
+\item Identifying exemplars where responsibility + availability $>$ 0
+\item Assigning points to nearest exemplar to form final clusters 
+\end{DoxyEnumerate}
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacelidarTools_afb3f4e1340f0dce813cf4f944e3639e4}\label{namespacelidarTools_afb3f4e1340f0dce813cf4f944e3639e4}} 
+\index{lidarTools@{lidarTools}!pcdBIRCHCluster@{pcdBIRCHCluster}}
+\index{pcdBIRCHCluster@{pcdBIRCHCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdBIRCHCluster()}{pcdBIRCHCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+B\+I\+R\+C\+H\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{int}]{branching\+\_\+factor,  }\item[{double}]{threshold,  }\item[{int}]{max\+\_\+leaf\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Performs B\+I\+R\+CH (Balanced Iterative Reducing and Clustering using Hierarchies) clustering on point cloud data. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud to be clustered \\
+\hline
+{\em cluster\+\_\+indices} & Output vector containing the indices of points for each cluster \\
+\hline
+{\em branching\+\_\+factor} & Maximum number of child nodes for each non-\/leaf node (default\+: 50) \\
+\hline
+{\em threshold} & Maximum radius of a sub-\/cluster (default\+: 0.\+5) \\
+\hline
+{\em max\+\_\+leaf\+\_\+size} & Maximum number of points in a leaf node (default\+: 100) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ab9c66269756298fdd605d23c7896765b}\label{namespacelidarTools_ab9c66269756298fdd605d23c7896765b}} 
+\index{lidarTools@{lidarTools}!pcdClip@{pcdClip}}
+\index{pcdClip@{pcdClip}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdClip()}{pcdClip()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Clip (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{double}]{min\+\_\+x,  }\item[{double}]{max\+\_\+x,  }\item[{double}]{min\+\_\+y,  }\item[{double}]{max\+\_\+y,  }\item[{double}]{min\+\_\+z,  }\item[{double}]{max\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Clips a point cloud to specified boundaries. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud \\
+\hline
+{\em output} & Output point cloud after clipping \\
+\hline
+{\em min\+\_\+x} & Minimum X boundary \\
+\hline
+{\em max\+\_\+x} & Maximum X boundary \\
+\hline
+{\em min\+\_\+y} & Minimum Y boundary \\
+\hline
+{\em max\+\_\+y} & Maximum Y boundary \\
+\hline
+{\em min\+\_\+z} & Minimum Z boundary \\
+\hline
+{\em max\+\_\+z} & Maximum Z boundary \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a551d4c15ec87765f1e8be18c204557f1}\label{namespacelidarTools_a551d4c15ec87765f1e8be18c204557f1}} 
+\index{lidarTools@{lidarTools}!pcdComputeCentroid@{pcdComputeCentroid}}
+\index{pcdComputeCentroid@{pcdComputeCentroid}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdComputeCentroid()}{pcdComputeCentroid()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Compute\+Centroid (\begin{DoxyParamCaption}\item[{const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{Eigen\+::\+Vector3f \&}]{centroid\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Computes the centroid of a point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em input} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em centroid\+\_\+} & Computed centroid vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a91437f905a4e1c35f7a5b06e095cf523}\label{namespacelidarTools_a91437f905a4e1c35f7a5b06e095cf523}} 
+\index{lidarTools@{lidarTools}!pcdComputeCovarianceMatrix@{pcdComputeCovarianceMatrix}}
+\index{pcdComputeCovarianceMatrix@{pcdComputeCovarianceMatrix}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdComputeCovarianceMatrix()}{pcdComputeCovarianceMatrix()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Compute\+Covariance\+Matrix (\begin{DoxyParamCaption}\item[{const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{Eigen\+::\+Vector3f \&}]{centroid\+\_\+,  }\item[{Eigen\+::\+Matrix3f \&}]{covariance\+\_\+matrix\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Computes the covariance matrix of a point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em input} & Input point cloud \\
+\hline
+ & {\em centroid\+\_\+} & Centroid of the point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em covariance\+\_\+matrix\+\_\+} & Computed covariance matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a4d0e4fa22d0c2c02ed86071052ed2992}\label{namespacelidarTools_a4d0e4fa22d0c2c02ed86071052ed2992}} 
+\index{lidarTools@{lidarTools}!pcdComputeEigenVectors@{pcdComputeEigenVectors}}
+\index{pcdComputeEigenVectors@{pcdComputeEigenVectors}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdComputeEigenVectors()}{pcdComputeEigenVectors()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Compute\+Eigen\+Vectors (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix3f \&}]{covariance\+\_\+matrix\+\_\+,  }\item[{Eigen\+::\+Matrix3f \&}]{eigenvectors\+\_\+,  }\item[{Eigen\+::\+Vector3f \&}]{eigenvalues\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Computes eigenvectors and eigenvalues from a covariance matrix. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em covariance\+\_\+matrix\+\_\+} & Input covariance matrix \\
+\hline
+\mbox{\texttt{ out}}  & {\em eigenvectors\+\_\+} & Computed eigenvectors \\
+\hline
+\mbox{\texttt{ out}}  & {\em eigenvalues\+\_\+} & Computed eigenvalues \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a2840d00fb80bae3ae317537befe408a4}\label{namespacelidarTools_a2840d00fb80bae3ae317537befe408a4}} 
+\index{lidarTools@{lidarTools}!pcdComputePCA@{pcdComputePCA}}
+\index{pcdComputePCA@{pcdComputePCA}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdComputePCA()}{pcdComputePCA()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Compute\+P\+CA (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{Eigen\+::\+Matrix3f \&}]{eigenvectors\+\_\+,  }\item[{Eigen\+::\+Vector3f \&}]{eigenvalues\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Performs Principal Component Analysis (P\+CA) on a point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em input} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em eigenvectors\+\_\+} & Computed eigenvectors \\
+\hline
+\mbox{\texttt{ out}}  & {\em eigenvalues\+\_\+} & Computed eigenvalues \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ae77ec03357c2070a4587e88c4048a885}\label{namespacelidarTools_ae77ec03357c2070a4587e88c4048a885}} 
+\index{lidarTools@{lidarTools}!pcdDBScanCluster@{pcdDBScanCluster}}
+\index{pcdDBScanCluster@{pcdDBScanCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdDBScanCluster()}{pcdDBScanCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+D\+B\+Scan\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{double}]{epsilon,  }\item[{int}]{min\+\_\+points }\end{DoxyParamCaption})}
+
+
+
+Perform D\+B\+S\+C\+AN clustering on point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em input} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em cluster\+\_\+indices} & Vector of point indices for each cluster \\
+\hline
+\mbox{\texttt{ in}}  & {\em epsilon} & Search radius for finding neighbors \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+points} & Minimum number of points to form a cluster \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a4c1793cdafb1c9b25b1265883dce1163}\label{namespacelidarTools_a4c1793cdafb1c9b25b1265883dce1163}} 
+\index{lidarTools@{lidarTools}!pcdEuclideanClustering@{pcdEuclideanClustering}}
+\index{pcdEuclideanClustering@{pcdEuclideanClustering}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdEuclideanClustering()}{pcdEuclideanClustering()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Euclidean\+Clustering (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{double}]{radius,  }\item[{int}]{min\+\_\+cluster\+\_\+size,  }\item[{int}]{max\+\_\+cluster\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Performs Euclidean clustering on a point cloud. 
+
+Groups points into clusters based on Euclidean distance between points
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em input} & Input point cloud to be clustered \\
+\hline
+\mbox{\texttt{ out}}  & {\em cluster\+\_\+indices} & Vector of point indices for each cluster found \\
+\hline
+\mbox{\texttt{ in}}  & {\em radius} & Maximum distance between points in a cluster \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+cluster\+\_\+size} & Minimum number of points required to form a cluster \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+cluster\+\_\+size} & Maximum number of points allowed in a cluster \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a3506e1ed49bf38c229586ae945f61ba3}\label{namespacelidarTools_a3506e1ed49bf38c229586ae945f61ba3}} 
+\index{lidarTools@{lidarTools}!pcdFarthestPointSample@{pcdFarthestPointSample}}
+\index{pcdFarthestPointSample@{pcdFarthestPointSample}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdFarthestPointSample()}{pcdFarthestPointSample()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Farthest\+Point\+Sample (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{int}]{num\+\_\+samples,  }\item[{bool}]{random\+\_\+seed }\end{DoxyParamCaption})}
+
+
+
+Perform farthest point sampling on point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output sampled point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+samples} & Number of points to sample \\
+\hline
+\mbox{\texttt{ in}}  & {\em random\+\_\+seed} & Whether to use random initial point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a2195914c203891c2c45eed009ba52a7e}\label{namespacelidarTools_a2195914c203891c2c45eed009ba52a7e}} 
+\index{lidarTools@{lidarTools}!pcdGaussianFilter@{pcdGaussianFilter}}
+\index{pcdGaussianFilter@{pcdGaussianFilter}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdGaussianFilter()}{pcdGaussianFilter()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Gaussian\+Filter (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{const double}]{sigma,  }\item[{const double}]{search\+\_\+radius }\end{DoxyParamCaption})}
+
+
+
+Apply Gaussian filter to smooth point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output smoothed point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em sigma} & Controls smoothing strength \\
+\hline
+\mbox{\texttt{ in}}  & {\em search\+\_\+radius} & Controls neighborhood size for smoothing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ad365d6eee4e70aef2a18e0dd5bdc48ac}\label{namespacelidarTools_ad365d6eee4e70aef2a18e0dd5bdc48ac}} 
+\index{lidarTools@{lidarTools}!pcdGetNearestNeighbor@{pcdGetNearestNeighbor}}
+\index{pcdGetNearestNeighbor@{pcdGetNearestNeighbor}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdGetNearestNeighbor()}{pcdGetNearestNeighbor()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Get\+Nearest\+Neighbor (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{kdtree,  }\item[{pcl\+::\+Point\+X\+Y\+ZI \&}]{result,  }\item[{pcl\+::\+Point\+X\+Y\+ZI \&}]{point,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Finds the nearest neighbor point to a query point within a given radius. 
+
+Uses K\+D-\/tree to efficiently search for the closest point to the query point
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em input} & Input point cloud containing all points \\
+\hline
+\mbox{\texttt{ in}}  & {\em kdtree} & K\+D-\/tree structure built from the input cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em result} & The nearest neighbor point found \\
+\hline
+\mbox{\texttt{ in}}  & {\em point} & Query point to find neighbors for \\
+\hline
+\mbox{\texttt{ in}}  & {\em radius} & Search radius limit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ad71d85b883a06f2d934ace4955312ec4}\label{namespacelidarTools_ad71d85b883a06f2d934ace4955312ec4}} 
+\index{lidarTools@{lidarTools}!pcdIntensityThresholdLowerFilter@{pcdIntensityThresholdLowerFilter}}
+\index{pcdIntensityThresholdLowerFilter@{pcdIntensityThresholdLowerFilter}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdIntensityThresholdLowerFilter()}{pcdIntensityThresholdLowerFilter()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Intensity\+Threshold\+Lower\+Filter (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{int}]{intensity\+\_\+thres }\end{DoxyParamCaption})}
+
+
+
+Filter points based on intensity threshold. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output point cloud containing filtered points \\
+\hline
+\mbox{\texttt{ in}}  & {\em intensity\+\_\+thres} & Intensity threshold value -\/ points with intensity above this are kept \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aa470f6503776914f4f7d956342b4c67a}\label{namespacelidarTools_aa470f6503776914f4f7d956342b4c67a}} 
+\index{lidarTools@{lidarTools}!pcdKmeansCluster@{pcdKmeansCluster}}
+\index{pcdKmeansCluster@{pcdKmeansCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdKmeansCluster()}{pcdKmeansCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Kmeans\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{\mbox{\hyperlink{structlidarTools_1_1ClusterResult}{Cluster\+Result}} \&}]{result,  }\item[{int}]{k,  }\item[{const int}]{max\+\_\+iterations\+\_\+,  }\item[{const double}]{convergence\+\_\+threshold }\end{DoxyParamCaption})}
+
+
+
+Perform k-\/means clustering on point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em result} & Clustering result containing labels and centroids \\
+\hline
+\mbox{\texttt{ in}}  & {\em k} & Number of clusters \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+iterations\+\_\+} & Maximum number of iterations \\
+\hline
+\mbox{\texttt{ in}}  & {\em convergence\+\_\+threshold} & Error threshold for convergence \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a62e7d9bbe525845b85ab738999fb0ead}\label{namespacelidarTools_a62e7d9bbe525845b85ab738999fb0ead}} 
+\index{lidarTools@{lidarTools}!pcdMeanShiftCluster@{pcdMeanShiftCluster}}
+\index{pcdMeanShiftCluster@{pcdMeanShiftCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdMeanShiftCluster()}{pcdMeanShiftCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Mean\+Shift\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{float}]{bandwidth,  }\item[{int}]{max\+\_\+iter }\end{DoxyParamCaption})}
+
+
+
+Performs mean-\/shift clustering on a point cloud. 
+
+Uses mean-\/shift algorithm to cluster points by iteratively shifting points towards local density maxima
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud to be clustered \\
+\hline
+{\em cluster\+\_\+indices} & Output vector containing indices for each cluster \\
+\hline
+{\em bandwidth} & Kernel bandwidth parameter that determines the size of the window used to compute mean shift \\
+\hline
+{\em max\+\_\+iter} & Maximum number of iterations for mean shift convergence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+The algorithm works by\+:
+\begin{DoxyEnumerate}
+\item For each point, calculating weighted mean of nearby points within bandwidth
+\item Shifting the point towards the weighted mean
+\item Repeating until convergence or max iterations reached
+\item Points that converge to the same mode are grouped into clusters 
+\end{DoxyEnumerate}
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacelidarTools_a52b54fd4f9f822bb3bfc734358645641}\label{namespacelidarTools_a52b54fd4f9f822bb3bfc734358645641}} 
+\index{lidarTools@{lidarTools}!pcdOPTICSCluster@{pcdOPTICSCluster}}
+\index{pcdOPTICSCluster@{pcdOPTICSCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdOPTICSCluster()}{pcdOPTICSCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+O\+P\+T\+I\+C\+S\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{double}]{eps,  }\item[{int}]{min\+\_\+pts,  }\item[{double}]{xi }\end{DoxyParamCaption})}
+
+
+
+O\+P\+T\+I\+CS (Ordering Points To Identify the Clustering Structure) clustering algorithm. 
+
+Performs density-\/based clustering using the O\+P\+T\+I\+CS algorithm, which creates an augmented ordering of the data points that represents the density-\/based clustering structure of the data
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em input} & Input point cloud to be clustered \\
+\hline
+\mbox{\texttt{ out}}  & {\em cluster\+\_\+indices} & Vector of point indices for each cluster found \\
+\hline
+\mbox{\texttt{ in}}  & {\em eps} & Maximum distance between two points for them to be considered neighbors (default\+: 1.\+0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+pts} & Minimum number of points required to form a dense region (default\+: 5) \\
+\hline
+\mbox{\texttt{ in}}  & {\em xi} & Steepness threshold for detecting cluster boundaries (default\+: 0.\+05) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_af3ae904d4cb5b094aa9b9583c640a20b}\label{namespacelidarTools_af3ae904d4cb5b094aa9b9583c640a20b}} 
+\index{lidarTools@{lidarTools}!pcdRadiusFilter@{pcdRadiusFilter}}
+\index{pcdRadiusFilter@{pcdRadiusFilter}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdRadiusFilter()}{pcdRadiusFilter()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Radius\+Filter (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{const double}]{radius,  }\item[{const int}]{min\+\_\+neighbors }\end{DoxyParamCaption})}
+
+
+
+Apply radius outlier removal filter. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output filtered point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em radius} & Search radius for finding neighbors \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+neighbors} & Minimum number of neighbors required to keep point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ab2b07f4af4d97064a56095dccc1f09c6}\label{namespacelidarTools_ab2b07f4af4d97064a56095dccc1f09c6}} 
+\index{lidarTools@{lidarTools}!pcdRandomSample@{pcdRandomSample}}
+\index{pcdRandomSample@{pcdRandomSample}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdRandomSample()}{pcdRandomSample()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Random\+Sample (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{const int}]{num\+\_\+samples }\end{DoxyParamCaption})}
+
+
+
+Perform random sampling on point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output sampled point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+samples} & Number of points to sample \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_ad800adda60166cc751b4220a33829c0c}\label{namespacelidarTools_ad800adda60166cc751b4220a33829c0c}} 
+\index{lidarTools@{lidarTools}!pcdRotateWithEuler@{pcdRotateWithEuler}}
+\index{pcdRotateWithEuler@{pcdRotateWithEuler}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdRotateWithEuler()}{pcdRotateWithEuler()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Rotate\+With\+Euler (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{double}]{roll,  }\item[{double}]{pitch,  }\item[{double}]{yaw }\end{DoxyParamCaption})}
+
+
+
+Rotates a point cloud using Euler angles. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud \\
+\hline
+{\em output} & Output rotated point cloud \\
+\hline
+{\em roll} & Roll angle in radians \\
+\hline
+{\em pitch} & Pitch angle in radians \\
+\hline
+{\em yaw} & Yaw angle in radians \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a1eb081f5e40d846794e0132726eaca55}\label{namespacelidarTools_a1eb081f5e40d846794e0132726eaca55}} 
+\index{lidarTools@{lidarTools}!pcdRotateWithMat@{pcdRotateWithMat}}
+\index{pcdRotateWithMat@{pcdRotateWithMat}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdRotateWithMat()}{pcdRotateWithMat()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Rotate\+With\+Mat (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{Eigen\+::\+Matrix3f}]{rotation\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Rotates a point cloud using a rotation matrix. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud \\
+\hline
+{\em output} & Output rotated point cloud \\
+\hline
+{\em rotation\+Matrix} & 3x3 rotation matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a34e2bfd5b8e0b82f41acf1dee885dec4}\label{namespacelidarTools_a34e2bfd5b8e0b82f41acf1dee885dec4}} 
+\index{lidarTools@{lidarTools}!pcdRotateWithQuaternions@{pcdRotateWithQuaternions}}
+\index{pcdRotateWithQuaternions@{pcdRotateWithQuaternions}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdRotateWithQuaternions()}{pcdRotateWithQuaternions()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Rotate\+With\+Quaternions (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{Eigen\+::\+Quaterniond}]{q }\end{DoxyParamCaption})}
+
+
+
+Rotates a point cloud using quaternions. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud \\
+\hline
+{\em output} & Output rotated point cloud \\
+\hline
+{\em q} & Quaternion for rotation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a0ee367d2d382efc835cc99b151ec2f7f}\label{namespacelidarTools_a0ee367d2d382efc835cc99b151ec2f7f}} 
+\index{lidarTools@{lidarTools}!pcdSpectralClustering@{pcdSpectralClustering}}
+\index{pcdSpectralClustering@{pcdSpectralClustering}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdSpectralClustering()}{pcdSpectralClustering()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Spectral\+Clustering (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{int}]{n\+\_\+clusters,  }\item[{double}]{sigma,  }\item[{int}]{k\+\_\+neighbors }\end{DoxyParamCaption})}
+
+
+
+Performs spectral clustering on a point cloud. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud to be clustered \\
+\hline
+{\em cluster\+\_\+indices} & Output vector containing the indices of points in each cluster \\
+\hline
+{\em n\+\_\+clusters} & Number of clusters to generate \\
+\hline
+{\em sigma} & Gaussian kernel bandwidth parameter \\
+\hline
+{\em k\+\_\+neighbors} & Number of nearest neighbors for similarity graph construction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a9ba6f814e886996ce7d9cb0d38ffee46}\label{namespacelidarTools_a9ba6f814e886996ce7d9cb0d38ffee46}} 
+\index{lidarTools@{lidarTools}!pcdStatisticFilter@{pcdStatisticFilter}}
+\index{pcdStatisticFilter@{pcdStatisticFilter}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdStatisticFilter()}{pcdStatisticFilter()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Statistic\+Filter (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{const double}]{mean\+\_\+K,  }\item[{const double}]{std }\end{DoxyParamCaption})}
+
+
+
+Apply statistical outlier removal filter. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output filtered point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em mean\+\_\+K} & Number of nearest neighbors to use for mean distance estimation \\
+\hline
+\mbox{\texttt{ in}}  & {\em std} & Standard deviation multiplier threshold \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aba56d8419d11544402f3873f693c696c}\label{namespacelidarTools_aba56d8419d11544402f3873f693c696c}} 
+\index{lidarTools@{lidarTools}!pcdToKDTree@{pcdToKDTree}}
+\index{pcdToKDTree@{pcdToKDTree}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdToKDTree()}{pcdToKDTree()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+To\+K\+D\+Tree (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{kdtree }\end{DoxyParamCaption})}
+
+
+
+Creates a K\+D-\/tree structure from a point cloud for efficient nearest neighbor searches. 
+
+Builds a K\+D-\/tree data structure from the input point cloud to enable fast spatial queries
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud to build the K\+D-\/tree from \\
+\hline
+\mbox{\texttt{ out}}  & {\em kdtree} & Output K\+D-\/tree structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a4aba689002bd5f348351fafda3c71c7d}\label{namespacelidarTools_a4aba689002bd5f348351fafda3c71c7d}} 
+\index{lidarTools@{lidarTools}!pcdTrans@{pcdTrans}}
+\index{pcdTrans@{pcdTrans}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdTrans()}{pcdTrans()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Trans (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{double}]{trans\+\_\+x,  }\item[{double}]{trans\+\_\+y,  }\item[{double}]{trans\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Translates a point cloud. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud \\
+\hline
+{\em output} & Output translated point cloud \\
+\hline
+{\em trans\+\_\+x} & Translation in X direction \\
+\hline
+{\em trans\+\_\+y} & Translation in Y direction \\
+\hline
+{\em trans\+\_\+z} & Translation in Z direction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a11d522ec00a7324d4550b2704b63264e}\label{namespacelidarTools_a11d522ec00a7324d4550b2704b63264e}} 
+\index{lidarTools@{lidarTools}!pcdVoxelFilter@{pcdVoxelFilter}}
+\index{pcdVoxelFilter@{pcdVoxelFilter}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdVoxelFilter()}{pcdVoxelFilter()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Voxel\+Filter (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{output,  }\item[{const double}]{size\+\_\+x,  }\item[{const double}]{size\+\_\+y,  }\item[{const double}]{size\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Apply voxel grid filter to downsample point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em output} & Output downsampled point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+x} & Voxel size in x dimension \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+y} & Voxel size in y dimension \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+z} & Voxel size in z dimension \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aae900d4936694636b09a58ec27c49c8b}\label{namespacelidarTools_aae900d4936694636b09a58ec27c49c8b}} 
+\index{lidarTools@{lidarTools}!pcdWardCluster@{pcdWardCluster}}
+\index{pcdWardCluster@{pcdWardCluster}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{pcdWardCluster()}{pcdWardCluster()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::pcd\+Ward\+Cluster (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{input,  }\item[{std\+::vector$<$ pcl\+::\+Point\+Indices $>$ \&}]{cluster\+\_\+indices,  }\item[{float}]{distance\+\_\+threshold,  }\item[{int}]{min\+\_\+cluster\+\_\+size,  }\item[{int}]{max\+\_\+cluster\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Performs Ward hierarchical clustering on a point cloud. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input point cloud to be clustered \\
+\hline
+{\em cluster\+\_\+indices} & Output vector containing the indices of points in each cluster \\
+\hline
+{\em distance\+\_\+threshold} & Maximum distance between clusters to be merged \\
+\hline
+{\em min\+\_\+cluster\+\_\+size} & Minimum number of points a cluster must contain \\
+\hline
+{\em max\+\_\+cluster\+\_\+size} & Maximum number of points a cluster can contain \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a0288c8e288dbe0e3fe2c91b442592316}\label{namespacelidarTools_a0288c8e288dbe0e3fe2c91b442592316}} 
+\index{lidarTools@{lidarTools}!PFHExtractFeature@{PFHExtractFeature}}
+\index{PFHExtractFeature@{PFHExtractFeature}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{PFHExtractFeature()}{PFHExtractFeature()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+P\+F\+H\+Extract\+Feature (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Extracts Point Feature Histogram (P\+FH) features from a point cloud. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+\_\+cloud} & Input point cloud \\
+\hline
+{\em radius} & Search radius for feature computation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a0b54f8514c6ee5edbff77155707c8efe}\label{namespacelidarTools_a0b54f8514c6ee5edbff77155707c8efe}} 
+\index{lidarTools@{lidarTools}!readBinaryFile@{readBinaryFile}}
+\index{readBinaryFile@{readBinaryFile}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{readBinaryFile()}{readBinaryFile()}}
+{\footnotesize\ttfamily std\+::vector$<$ pcl\+::\+Point\+X\+Y\+ZI $>$ lidar\+Tools\+::read\+Binary\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Reads points from a binary file. 
+
+
+\begin{DoxyParams}{参数}
+{\em filename} & Input binary file path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Vector of points read from file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelidarTools_a57943eec35eca3abdee2ffe597bd30ef}\label{namespacelidarTools_a57943eec35eca3abdee2ffe597bd30ef}} 
+\index{lidarTools@{lidarTools}!saveToBin@{saveToBin}}
+\index{saveToBin@{saveToBin}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{saveToBin()}{saveToBin()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::save\+To\+Bin (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{std\+::string \&}]{out\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Saves point cloud to binary format. 
+
+
+\begin{DoxyParams}{参数}
+{\em cloud} & Input point cloud \\
+\hline
+{\em out\+\_\+file} & Output binary file path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_a659248d45e49c2af096c16f95aa861be}\label{namespacelidarTools_a659248d45e49c2af096c16f95aa861be}} 
+\index{lidarTools@{lidarTools}!SIFTKeyPointExtract@{SIFTKeyPointExtract}}
+\index{SIFTKeyPointExtract@{SIFTKeyPointExtract}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{SIFTKeyPointExtract()}{SIFTKeyPointExtract()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::\+S\+I\+F\+T\+Key\+Point\+Extract (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{in\+\_\+cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+With\+Scale $>$\+::Ptr}]{keypoints,  }\item[{float}]{min\+\_\+scale\+\_\+,  }\item[{int}]{nr\+\_\+octaves,  }\item[{int}]{nr\+\_\+scales\+\_\+per\+\_\+octave,  }\item[{float}]{min\+\_\+contrast }\end{DoxyParamCaption})}
+
+
+
+Extract S\+I\+FT keypoints from point cloud. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ out}}  & {\em keypoints} & Output keypoint cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+scale\+\_\+} & Minimum scale for keypoint detection \\
+\hline
+\mbox{\texttt{ in}}  & {\em nr\+\_\+octaves} & Number of octaves \\
+\hline
+\mbox{\texttt{ in}}  & {\em nr\+\_\+scales\+\_\+per\+\_\+octave} & Number of scales per octave \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+\_\+contrast} & Minimum contrast threshold \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aa02d4a509a03cb4c15d301f23960f76d}\label{namespacelidarTools_aa02d4a509a03cb4c15d301f23960f76d}} 
+\index{lidarTools@{lidarTools}!updateCentroids@{updateCentroids}}
+\index{updateCentroids@{updateCentroids}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{updateCentroids()}{updateCentroids()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::update\+Centroids (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{centroids,  }\item[{std\+::vector$<$ int $>$ \&}]{labels,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Update cluster centroids based on point assignments. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em centroids} & Cluster centroid points to update \\
+\hline
+\mbox{\texttt{ in}}  & {\em labels} & Point cluster assignments \\
+\hline
+\mbox{\texttt{ in}}  & {\em k} & Number of clusters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacelidarTools_aea9675bd2751957956ea641a7ecacdb8}\label{namespacelidarTools_aea9675bd2751957956ea641a7ecacdb8}} 
+\index{lidarTools@{lidarTools}!updateDistances@{updateDistances}}
+\index{updateDistances@{updateDistances}!lidarTools@{lidarTools}}
+\doxysubsubsection{\texorpdfstring{updateDistances()}{updateDistances()}}
+{\footnotesize\ttfamily void lidar\+Tools\+::update\+Distances (\begin{DoxyParamCaption}\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr}]{cloud,  }\item[{int}]{point\+\_\+idx,  }\item[{std\+::vector$<$ float $>$ \&}]{min\+\_\+distances,  }\item[{pcl\+::\+Kd\+Tree\+F\+L\+A\+NN$<$ Point\+X\+Y\+ZI $>$\+::Ptr}]{kdtree }\end{DoxyParamCaption})}
+
+
+
+Update minimum distances between points and clusters. 
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\texttt{ in}}  & {\em cloud} & Input point cloud \\
+\hline
+\mbox{\texttt{ in}}  & {\em point\+\_\+idx} & Index of current point \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em min\+\_\+distances} & Vector of minimum distances to update \\
+\hline
+\mbox{\texttt{ in}}  & {\em kdtree} & K\+D-\/tree for neighbor search \\
+\hline
+\end{DoxyParams}

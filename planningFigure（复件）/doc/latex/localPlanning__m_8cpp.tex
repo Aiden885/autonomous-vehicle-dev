@@ -1,0 +1,1317 @@
+\hypertarget{localPlanning__m_8cpp}{}\doxysection{/media/xy/新加卷1/thicvpilot\+\_\+planning\+\_\+modul/planning\+Figure/src/local\+Planning\+\_\+m.cpp 文件参考}
+\label{localPlanning__m_8cpp}\index{/media/xy/新加卷1/thicvpilot\_planning\_modul/planningFigure/src/localPlanning\_m.cpp@{/media/xy/新加卷1/thicvpilot\_planning\_modul/planningFigure/src/localPlanning\_m.cpp}}
+
+
+local planning  
+
+
+{\ttfamily \#include \char`\"{}local\+Planning\+\_\+m.\+hpp\char`\"{}}\newline
+local\+Planning\+\_\+m.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{localPlanning__m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4037c81e3bbbd26d0b723be46fe6c9f0}\label{localPlanning__m_8cpp_a4037c81e3bbbd26d0b723be46fe6c9f0}} 
+\#define {\bfseries P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}~2.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aad81f4379de6d04933e626e97a741107}\label{localPlanning__m_8cpp_aad81f4379de6d04933e626e97a741107}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a600bfe54622e3784956cd9955c87818b}\label{localPlanning__m_8cpp_a600bfe54622e3784956cd9955c87818b}} 
+\#define {\bfseries M\+A\+X\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4361b5036aa60ee02a43af5499a3460a}\label{localPlanning__m_8cpp_a4361b5036aa60ee02a43af5499a3460a}} 
+\#define {\bfseries M\+I\+N\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_abd8e457080f30fe8d945e69fe7ef1f7c}\label{localPlanning__m_8cpp_abd8e457080f30fe8d945e69fe7ef1f7c}} 
+\#define {\bfseries D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+R\+A\+N\+GE}~3
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_afe3b2b4048dd724031b6a9b05083a5ad}\label{localPlanning__m_8cpp_afe3b2b4048dd724031b6a9b05083a5ad}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+L\+O\+N\+G\+ER}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a0306f06511d028578cccad089906e8f8}\label{localPlanning__m_8cpp_a0306f06511d028578cccad089906e8f8}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+D\+I\+S\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+O\+N\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+A\+NE}~3
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a159747386342b706578feb9d4b480e95}\label{localPlanning__m_8cpp_a159747386342b706578feb9d4b480e95}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+D\+I\+S\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+O\+N\+\_\+\+O\+T\+H\+E\+R\+\_\+\+L\+A\+NE}~2
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4b48d48fce85a9566080e1594744c7a1}\label{localPlanning__m_8cpp_a4b48d48fce85a9566080e1594744c7a1}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+A\+N\+G\+L\+E\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~120
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aeafd216dd0438d66b23be5be7fbe415e}\label{localPlanning__m_8cpp_aeafd216dd0438d66b23be5be7fbe415e}} 
+\#define {\bfseries E\+N\+D\+\_\+\+S\+P\+E\+E\+D\+\_\+\+N\+UM}~1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a13a54d2b7fc10c047cb8392ccd91d4bf}\label{localPlanning__m_8cpp_a13a54d2b7fc10c047cb8392ccd91d4bf}} 
+\#define {\bfseries D\+E\+S\+I\+R\+E\+D\+\_\+\+S\+P\+E\+ED}~12 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_af9feff0565831f1df947a935850835ca}\label{localPlanning__m_8cpp_af9feff0565831f1df947a935850835ca}} 
+\#define {\bfseries S\+P\+E\+E\+D\+\_\+\+R\+A\+N\+GE}~3 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_afcae6e95ecea695707e48b31d638a27a}\label{localPlanning__m_8cpp_afcae6e95ecea695707e48b31d638a27a}} 
+\#define {\bfseries C\+U\+R\+V\+A\+T\+U\+R\+E\+\_\+\+S\+P\+E\+ED}~10 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ad5a5a1dcd2cd423bdd90c1c9287ee5b8}\label{localPlanning__m_8cpp_ad5a5a1dcd2cd423bdd90c1c9287ee5b8}} 
+\#define {\bfseries C\+U\+R\+V\+A\+T\+U\+R\+E\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LS}~0.\+1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a62cc9d25d2b2113efbcc07dbea668937}\label{localPlanning__m_8cpp_a62cc9d25d2b2113efbcc07dbea668937}} 
+\#define {\bfseries V\+E\+H\+I\+C\+L\+E\+\_\+\+D\+I\+A\+G\+O\+N\+AL}~2.\+7951
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a5da34d7bdbc24eeda7b2cb3475408a69}\label{localPlanning__m_8cpp_a5da34d7bdbc24eeda7b2cb3475408a69}} 
+\#define {\bfseries V\+E\+H\+I\+C\+L\+E\+\_\+\+D\+I\+A\+G\+O\+N\+A\+L\+\_\+\+D\+E\+G\+R\+EE}~26.\+5651
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ab5309dc30dcdfe8148f822524232781c}\label{localPlanning__m_8cpp_ab5309dc30dcdfe8148f822524232781c}} 
+\#define {\bfseries P\+R\+E\+D\+I\+C\+T\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}~0.\+1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a3214b5175e1b289b1acc33e75afdafdb}\label{localPlanning__m_8cpp_a3214b5175e1b289b1acc33e75afdafdb}} 
+\#define {\bfseries S\+T\+O\+P\+\_\+\+J\+U\+D\+G\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ab23eb23fe4aef6b90c20b38b9d7b9f5e}\label{localPlanning__m_8cpp_ab23eb23fe4aef6b90c20b38b9d7b9f5e}} 
+\#define {\bfseries M\+A\+X\+\_\+\+F\+R\+E\+N\+E\+T\+\_\+S}~8
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a7200ae8c091444648e7ff9ade5efbb1e}\label{localPlanning__m_8cpp_a7200ae8c091444648e7ff9ade5efbb1e}} 
+\#define {\bfseries A\+C\+C\+\_\+\+R\+E\+L\+A\+\_\+\+D\+I\+ST}~15.\+0
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a5ca9c47c311f4f7e544bf34e39365dc6}\label{localPlanning__m_8cpp_a5ca9c47c311f4f7e544bf34e39365dc6}} 
+\#define {\bfseries A\+C\+C\+\_\+\+B\+E\+G\+I\+N\+\_\+\+D\+I\+ST}~(A\+C\+C\+\_\+\+R\+E\+L\+A\+\_\+\+D\+I\+ST + 30)
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a97019380d9fcd54c3c3313b5b5de679e}\label{localPlanning__m_8cpp_a97019380d9fcd54c3c3313b5b5de679e}} 
+\#define {\bfseries A\+C\+C\+\_\+\+F\+O\+L\+L\+O\+W\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+ID}~2
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_adf617da9cd2dc357543f4593793ebe3c}\label{localPlanning__m_8cpp_adf617da9cd2dc357543f4593793ebe3c}} 
+\#define {\bfseries do\+Nothing}()
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aabc11e39e577da8617ac3640b01eaa21}\label{localPlanning__m_8cpp_aabc11e39e577da8617ac3640b01eaa21}} 
+\#define {\bfseries S\+A\+F\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~1.\+0
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26}{gauss\+Convert}} (const \mbox{\hyperlink{structgaussConvertParam}{gauss\+Convert\+Param}} \&param, const \mbox{\hyperlink{structgaussConvertInput}{gauss\+Convert\+Input}} \&input, \mbox{\hyperlink{structgaussConvertOutput}{gauss\+Convert\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 经纬度转全局坐标 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3}{coord\+Tran2D}} (const \mbox{\hyperlink{structcoordTran2DParam}{coord\+Tran2\+D\+Param}} \&param, const \mbox{\hyperlink{structcoordTran2DInput}{coord\+Tran2\+D\+Input}} \&input, \mbox{\hyperlink{structcoordTran2DOutput}{coord\+Tran2\+D\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 全局坐标转局部坐标 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b}{in\+Area}} (const \mbox{\hyperlink{structinAreaParam}{in\+Area\+Param}} \&param, const \mbox{\hyperlink{structinAreaInput}{in\+Area\+Input}} \&input, \mbox{\hyperlink{structinAreaOutput}{in\+Area\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 判断点是否在区域内 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a603957659141af389fe56e5659de66ee}{point\+Distance}} (const \mbox{\hyperlink{structpointDistanceParam}{point\+Distance\+Param}} \&param, const \mbox{\hyperlink{structpointDistanceInput}{point\+Distance\+Input}} \&input, \mbox{\hyperlink{structpointDistanceOutput}{point\+Distance\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算两点之间的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ab0c33f1bde12ba69245517cb468cd8f1}{course\+Angle\+Revise}} (const \mbox{\hyperlink{structcourseAngleReviseParam}{course\+Angle\+Revise\+Param}} \&param, const \mbox{\hyperlink{structcourseAngleReviseInput}{course\+Angle\+Revise\+Input}} \&input, \mbox{\hyperlink{structcourseAngleReviseOutput}{course\+Angle\+Revise\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 逆时针旋转坐标系90度，向东0度变成向北0度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a572cfaa68a6eafec25c9fbce22be58f1}{load\+Stop\+Points}} (const \mbox{\hyperlink{structloadStopPointsParam}{load\+Stop\+Points\+Param}} \&param, const \mbox{\hyperlink{structloadStopPointsInput}{load\+Stop\+Points\+Input}} \&input, \mbox{\hyperlink{structloadStopPointsOutput}{load\+Stop\+Points\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 从文件中加载停止点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_aa28e587fc6e0650ee9e96b05e2597245}{load\+Stop\+Points\+From\+Yaml}} (const \mbox{\hyperlink{structloadStopPointsFromYamlParam}{load\+Stop\+Points\+From\+Yaml\+Param}} \&param, const \mbox{\hyperlink{structloadStopPointsFromYamlInput}{load\+Stop\+Points\+From\+Yaml\+Input}} \&input, \mbox{\hyperlink{structloadStopPointsFromYamlOutput}{load\+Stop\+Points\+From\+Yaml\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 从文件中加载停止点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_abf7a5a33c481b3077c1a365feb6e7b2b}{get\+Next\+Road\+Lane\+Id}} (const \mbox{\hyperlink{structgetNextRoadLaneIdParam}{get\+Next\+Road\+Lane\+Id\+Param}} \&param, const \mbox{\hyperlink{structgetNextRoadLaneIdInput}{get\+Next\+Road\+Lane\+Id\+Input}} \&input, \mbox{\hyperlink{structgetNextRoadLaneIdOutput}{get\+Next\+Road\+Lane\+Id\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 从全局规划中，获取后续车道和道路\+Id \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ae9d5ad9600741ad7b9bcce3455f55c44}{get\+Planning\+Distance}} (const \mbox{\hyperlink{structgetPlanningDistanceParam}{get\+Planning\+Distance\+Param}} \&param, const \mbox{\hyperlink{structgetPlanningDistanceInput}{get\+Planning\+Distance\+Input}} \&input, \mbox{\hyperlink{structgetPlanningDistanceOutput}{get\+Planning\+Distance\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据速度、曲率获取规划距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a54e322e9dd48a95af52ac68c43fbc213}{get\+Planning\+Point}} (const \mbox{\hyperlink{structgetPlanningPointParam}{get\+Planning\+Point\+Param}} \&param, const \mbox{\hyperlink{structgetPlanningPointInput}{get\+Planning\+Point\+Input}} \&input, \mbox{\hyperlink{structgetPlanningPointOutput}{get\+Planning\+Point\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据车辆信息获取规划预瞄点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_aceb934788ac59a4dd5a890b8bd5988f5}{limit\+Planning\+Distance}} (const \mbox{\hyperlink{structlimitPlanningDistanceParam}{limit\+Planning\+Distance\+Param}} \&param, const \mbox{\hyperlink{structlimitPlanningDistanceInput}{limit\+Planning\+Distance\+Input}} \&input, \mbox{\hyperlink{structlimitPlanningDistanceOutput}{limit\+Planning\+Distance\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 限制规划距离，防止突变 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a1f2ab502562c0b5cdaa920864965d04d}{get\+Angle}} (const \mbox{\hyperlink{structgetAngleParam}{get\+Angle\+Param}} \&param, const \mbox{\hyperlink{structgetAngleInput}{get\+Angle\+Input}} \&input, \mbox{\hyperlink{structgetAngleOutput}{get\+Angle\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算坐标系中两点角度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ad174ae3dfe5302cb5a2fffaa15cefcef}{get\+Angle\+Diff}} (const \mbox{\hyperlink{structgetAngleDiffParam}{get\+Angle\+Diff\+Param}} \&param, const \mbox{\hyperlink{structgetAngleDiffInput}{get\+Angle\+Diff\+Input}} \&input, \mbox{\hyperlink{structgetAngleDiffOutput}{get\+Angle\+Diff\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算两角度之差，并正则化 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aaa82b0ccf172f3ff2c6be80318128a83}\label{localPlanning__m_8cpp_aaa82b0ccf172f3ff2c6be80318128a83}} 
+void {\bfseries local\+Planning} (const pc\+::\+Imu \&imu, double velocity, const Road\+Map \&map, \mbox{\hyperlink{structDecisionData}{Decision\+Data}} \&decision\+Data, const prediction\+::\+Object\+List \&prediction\+Msg, const std\+::vector$<$ std\+::tuple$<$ int32\+\_\+t, int32\+\_\+t $>$$>$ \&routing\+List, const std\+::vector$<$ Gauss\+Road\+Point $>$ stop\+Points, const infopack\+::\+Traffic\+Light \&traffic\+Light, std\+::vector$<$ infopack\+::\+Objects\+Proto $>$ objects\+Cmd)
+\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ae46745cb3754d10c22ed26abd5542a11}{restart}} (const \mbox{\hyperlink{structrestartParam}{restart\+Param}} \&param, const \mbox{\hyperlink{structrestartInput}{restart\+Input}} \&input, \mbox{\hyperlink{structrestartOutput}{restart\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 车辆停车后，判断能否重新启动 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e}{stop}} (const \mbox{\hyperlink{structstopParam}{stop\+Param}} \&param, const \mbox{\hyperlink{structstopInput}{stop\+Input}} \&input, \mbox{\hyperlink{structstopOutput}{stop\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 停车时修改速度曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b}{stop\+Point\+Judge}} (const \mbox{\hyperlink{structstopPointJudgeParam}{stop\+Point\+Judge\+Param}} \&param, const \mbox{\hyperlink{structstopPointJudgeInput}{stop\+Point\+Judge\+Input}} \&input, \mbox{\hyperlink{structstopPointJudgeOutput}{stop\+Point\+Judge\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 判断车辆是否在停车区域 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724}{point\+On\+Cubic\+Bezier}} (const \mbox{\hyperlink{structpointOnCubicBezierParam}{point\+On\+Cubic\+Bezier\+Param}} \&param, const \mbox{\hyperlink{structpointOnCubicBezierInput}{point\+On\+Cubic\+Bezier\+Input}} \&input, \mbox{\hyperlink{structpointOnCubicBezierOutput}{point\+On\+Cubic\+Bezier\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算贝塞尔曲线上的点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965}{generate\+Bezier\+Path\+In\+Frenet}} (const \mbox{\hyperlink{structgenerateBezierPathInFrenetParam}{generate\+Bezier\+Path\+In\+Frenet\+Param}} \&param, const \mbox{\hyperlink{structgenerateBezierPathInFrenetInput}{generate\+Bezier\+Path\+In\+Frenet\+Input}} \&input, \mbox{\hyperlink{structgenerateBezierPathInFrenetOutput}{generate\+Bezier\+Path\+In\+Frenet\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 在frenet中生成贝塞尔曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a007880750244bfeeff6f9532de7a6ec9}{clear\+Path\+List}} (const \mbox{\hyperlink{structclearPathListParam}{clear\+Path\+List\+Param}} \&param, const \mbox{\hyperlink{structclearPathListInput}{clear\+Path\+List\+Input}} \&input, \mbox{\hyperlink{structclearPathListOutput}{clear\+Path\+List\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 清除上次生成的轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b}{get\+Trajectory\+Planning\+Result}} (const \mbox{\hyperlink{structgetTrajectoryPlanningResultParam}{get\+Trajectory\+Planning\+Result\+Param}} \&param, const \mbox{\hyperlink{structgetTrajectoryPlanningResultInput}{get\+Trajectory\+Planning\+Result\+Input}} \&input, \mbox{\hyperlink{structgetTrajectoryPlanningResultOutput}{get\+Trajectory\+Planning\+Result\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b}{get\+Distance}} (const \mbox{\hyperlink{structgetDistanceParam}{get\+Distance\+Param}} \&param, const \mbox{\hyperlink{structgetDistanceInput}{get\+Distance\+Input}} \&input, \mbox{\hyperlink{structgetDistanceOutput}{get\+Distance\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算两点之间的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d}{point\+To\+Line\+Distance}} (const \mbox{\hyperlink{structpointToLineDistanceParam}{point\+To\+Line\+Distance\+Param}} \&param, const \mbox{\hyperlink{structpointToLineDistanceInput}{point\+To\+Line\+Distance\+Input}} \&input, \mbox{\hyperlink{structpointToLineDistanceOutput}{point\+To\+Line\+Distance\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 计算点到线段的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f}{angle\+Regulate}} (const \mbox{\hyperlink{structangleRegulateParam}{angle\+Regulate\+Param}} \&param, const \mbox{\hyperlink{structangleRegulateInput}{angle\+Regulate\+Input}} \&input, \mbox{\hyperlink{structangleRegulateOutput}{angle\+Regulate\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 转化角度到0-\/180中，便于比较 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6}{get\+Current\+Position}} (const \mbox{\hyperlink{structgetCurrentPositionParam}{get\+Current\+Position\+Param}} \&param, const \mbox{\hyperlink{structgetCurrentPositionInput}{get\+Current\+Position\+Input}} \&input, \mbox{\hyperlink{structgetCurrentPositionOutput}{get\+Current\+Position\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 寻找距离车辆位置最近的路点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374}{generate\+Speed\+List}} (const \mbox{\hyperlink{structgenerateSpeedListParam}{generate\+Speed\+List\+Param}} \&param, const \mbox{\hyperlink{structgenerateSpeedListInput}{generate\+Speed\+List\+Input}} \&input, \mbox{\hyperlink{structgenerateSpeedListOutput}{generate\+Speed\+List\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据道路信息等，采样生成速度曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901}{generate\+Trajectory\+List}} (const \mbox{\hyperlink{structgenerateTrajectoryListParam}{generate\+Trajectory\+List\+Param}} \&param, const \mbox{\hyperlink{structgenerateTrajectoryListInput}{generate\+Trajectory\+List\+Input}} \&input, \mbox{\hyperlink{structgenerateTrajectoryListOutput}{generate\+Trajectory\+List\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 生成采样轨迹，供后续选择 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1}{process\+Traffic\+Light}} (const \mbox{\hyperlink{structprocessTrafficLightParam}{process\+Traffic\+Light\+Param}} \&param, const \mbox{\hyperlink{structprocessTrafficLightInput}{process\+Traffic\+Light\+Input}} \&input, \mbox{\hyperlink{structprocessTrafficLightOutput}{process\+Traffic\+Light\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据红绿灯信息更新决策数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea}{get\+Optimal\+Trajectory\+Index}} (const \mbox{\hyperlink{structgetOptimalTrajectoryIndexParam}{get\+Optimal\+Trajectory\+Index\+Param}} \&param, const \mbox{\hyperlink{structgetOptimalTrajectoryIndexInput}{get\+Optimal\+Trajectory\+Index\+Input}} \&input, \mbox{\hyperlink{structgetOptimalTrajectoryIndexOutput}{get\+Optimal\+Trajectory\+Index\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 评估轨迹，并获取最优轨迹索引 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_acd812f13e27ab10c67c7e752b7dc012d}{trajectory\+Collision\+Check}} (const \mbox{\hyperlink{structtrajectoryCollisionCheckParam}{trajectory\+Collision\+Check\+Param}} \&param, const \mbox{\hyperlink{structtrajectoryCollisionCheckInput}{trajectory\+Collision\+Check\+Input}} \&input, \mbox{\hyperlink{structtrajectoryCollisionCheckOutput}{trajectory\+Collision\+Check\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 轨迹碰撞检测，true表示可行，false表示碰撞 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861}{able\+To\+Pass\+Yellow\+Light}} (const \mbox{\hyperlink{structableToPassYellowLightParam}{able\+To\+Pass\+Yellow\+Light\+Param}} \&param, const \mbox{\hyperlink{structableToPassYellowLightInput}{able\+To\+Pass\+Yellow\+Light\+Input}} \&input, \mbox{\hyperlink{structableToPassYellowLightOutput}{able\+To\+Pass\+Yellow\+Light\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 判断是否能通过黄灯 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a9673ed746e166b4e273051bbf8c18a04}{point\+Collision\+Check}} (const \mbox{\hyperlink{structpointCollisionCheckParam}{point\+Collision\+Check\+Param}} \&param, const \mbox{\hyperlink{structpointCollisionCheckInput}{point\+Collision\+Check\+Input}} \&input, \mbox{\hyperlink{structpointCollisionCheckOutput}{point\+Collision\+Check\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 轨迹点碰撞检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a07abb29775692cf43b900f9c8bfc0b74}{boundary\+Collision\+Check}} (const \mbox{\hyperlink{structboundaryCollisionCheckParam}{boundary\+Collision\+Check\+Param}} \&param, const \mbox{\hyperlink{structboundaryCollisionCheckInput}{boundary\+Collision\+Check\+Input}} \&input, \mbox{\hyperlink{structboundaryCollisionCheckOutput}{boundary\+Collision\+Check\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 边碰撞检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a7cd5e98d51d7ec0a9a239194a218e89d}{inner\+Collision\+Check}} (const \mbox{\hyperlink{structinnerCollisionCheckParam}{inner\+Collision\+Check\+Param}} \&param, const \mbox{\hyperlink{structinnerCollisionCheckInput}{inner\+Collision\+Check\+Input}} \&input, \mbox{\hyperlink{structinnerCollisionCheckOutput}{inner\+Collision\+Check\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 内部包含检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a4b96b7cfb737fbe9dbfbdd2c164f5a21}{change\+Current\+Point}} (const \mbox{\hyperlink{structchangeCurrentPointParam}{change\+Current\+Point\+Param}} \&param, const \mbox{\hyperlink{structchangeCurrentPointInput}{change\+Current\+Point\+Input}} \&input, \mbox{\hyperlink{structchangeCurrentPointOutput}{change\+Current\+Point\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 判断是否可以换道 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa}{change\+Local\+To\+Global}} (const \mbox{\hyperlink{structchangeLocalToGlobalParam}{change\+Local\+To\+Global\+Param}} \&param, const \mbox{\hyperlink{structchangeLocalToGlobalInput}{change\+Local\+To\+Global\+Input}} \&input, \mbox{\hyperlink{structchangeLocalToGlobalOutput}{change\+Local\+To\+Global\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 局部坐标轨迹转为全局轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a601d6ae079dd9cea28845f83d7eca073}{init\+Local\+Planning}} (const \mbox{\hyperlink{structinitLocalPlanningParam}{init\+Local\+Planning\+Param}} \&param, const \mbox{\hyperlink{structinitLocalPlanningInput}{init\+Local\+Planning\+Input}} \&input, \mbox{\hyperlink{structinitLocalPlanningOutput}{init\+Local\+Planning\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 局部规划决策数据初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f}{fix\+Road\+Lane\+Index}} (const \mbox{\hyperlink{structfixRoadLaneIndexParam}{fix\+Road\+Lane\+Index\+Param}} \&param, const \mbox{\hyperlink{structfixRoadLaneIndexInput}{fix\+Road\+Lane\+Index\+Input}} \&input, \mbox{\hyperlink{structfixRoadLaneIndexOutput}{fix\+Road\+Lane\+Index\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 返回decision\+Date中road\+ID 和lane\+I\+D的索引 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050}{calculate\+Curvature}} (const \mbox{\hyperlink{structcalculateCurvatureParam}{calculate\+Curvature\+Param}} \&param, const \mbox{\hyperlink{structcalculateCurvatureInput}{calculate\+Curvature\+Input}} \&input, \mbox{\hyperlink{structcalculateCurvatureOutput}{calculate\+Curvature\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 由相邻三点近似计算曲率 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573}{assess\+Trajectory}} (const \mbox{\hyperlink{structassessTrajectoryParam}{assess\+Trajectory\+Param}} \&param, const \mbox{\hyperlink{structassessTrajectoryInput}{assess\+Trajectory\+Input}} \&input, \mbox{\hyperlink{structassessTrajectoryOutput}{assess\+Trajectory\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 返回距离障碍物最近距离，进行轨迹评估 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163}{get\+Min\+Distance\+Of\+Point}} (const \mbox{\hyperlink{structgetMinDistanceOfPointParam}{get\+Min\+Distance\+Of\+Point\+Param}} \&param, const \mbox{\hyperlink{structgetMinDistanceOfPointInput}{get\+Min\+Distance\+Of\+Point\+Input}} \&input, \mbox{\hyperlink{structgetMinDistanceOfPointOutput}{get\+Min\+Distance\+Of\+Point\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 返回点距离障碍物最近距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100}{find\+Min}} (const \mbox{\hyperlink{structfindMinParam}{find\+Min\+Param}} \&param, const \mbox{\hyperlink{structfindMinInput}{find\+Min\+Input}} \&input, \mbox{\hyperlink{structfindMinOutput}{find\+Min\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 返回double数组最小值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a1036b5ec9683b7c47764e32c533bda9e}{find\+Max}} (const \mbox{\hyperlink{structfindMaxParam}{find\+Max\+Param}} \&param, const \mbox{\hyperlink{structfindMaxInput}{find\+Max\+Input}} \&input, \mbox{\hyperlink{structfindMaxOutput}{find\+Max\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 返回double数组最大值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc}{get\+Reference\+Line}} (const \mbox{\hyperlink{structgetReferenceLineParam}{get\+Reference\+Line\+Param}} \&param, const \mbox{\hyperlink{structgetReferenceLineInput}{get\+Reference\+Line\+Input}} \&input, \mbox{\hyperlink{structgetReferenceLineOutput}{get\+Reference\+Line\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 获取局部规划参考轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_abede3722a48c7be83fe3244e490ccdf0}{get\+Frenet\+Location\+Point}} (const \mbox{\hyperlink{structgetFrenetLocationPointParam}{get\+Frenet\+Location\+Point\+Param}} \&param, const \mbox{\hyperlink{structgetFrenetLocationPointInput}{get\+Frenet\+Location\+Point\+Input}} \&input, \mbox{\hyperlink{structgetFrenetLocationPointOutput}{get\+Frenet\+Location\+Point\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 获取车辆当前位置在frenet坐标系中坐标值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e}{frenet2\+Cartesian}} (const \mbox{\hyperlink{structfrenet2CartesianParam}{frenet2\+Cartesian\+Param}} \&param, const \mbox{\hyperlink{structfrenet2CartesianInput}{frenet2\+Cartesian\+Input}} \&input, \mbox{\hyperlink{structfrenet2CartesianOutput}{frenet2\+Cartesian\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 将frenet坐标系坐标转为自车坐标系坐标，xy为右前 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e}{generate\+Bezier\+Path\+List\+In\+Frenet}} (const \mbox{\hyperlink{structgenerateBezierPathListInFrenetParam}{generate\+Bezier\+Path\+List\+In\+Frenet\+Param}} \&param, const \mbox{\hyperlink{structgenerateBezierPathListInFrenetInput}{generate\+Bezier\+Path\+List\+In\+Frenet\+Input}} \&input, \mbox{\hyperlink{structgenerateBezierPathListInFrenetOutput}{generate\+Bezier\+Path\+List\+In\+Frenet\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 在frenet坐标系中生成多条贝塞尔曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_ac903f5f04b7e6b9055bfb92a4c8a60a7}{has\+Preceding\+Vehicle}} (const \mbox{\hyperlink{structhasPrecedingVehicleParam}{has\+Preceding\+Vehicle\+Param}} \&param, const \mbox{\hyperlink{structhasPrecedingVehicleInput}{has\+Preceding\+Vehicle\+Input}} \&input, \mbox{\hyperlink{structhasPrecedingVehicleOutput}{has\+Preceding\+Vehicle\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 判断车辆前方是否有需要跟随的车辆 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{localPlanning__m_8cpp_a0589033b65b384ad8b64c6455725515a}{cruise\+Controller}} (const \mbox{\hyperlink{structcruiseControllerParam}{cruise\+Controller\+Param}} \&param, const \mbox{\hyperlink{structcruiseControllerInput}{cruise\+Controller\+Input}} \&input, \mbox{\hyperlink{structcruiseControllerOutput}{cruise\+Controller\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em acc场景下，车辆目标速度计算 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+local planning 
+
+\begin{DoxyAuthor}{作者}
+
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2024-\/12-\/04
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861}\label{localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!ableToPassYellowLight@{ableToPassYellowLight}}
+\index{ableToPassYellowLight@{ableToPassYellowLight}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{ableToPassYellowLight()}{ableToPassYellowLight()}}
+{\footnotesize\ttfamily void able\+To\+Pass\+Yellow\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structableToPassYellowLightParam}{able\+To\+Pass\+Yellow\+Light\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structableToPassYellowLightInput}{able\+To\+Pass\+Yellow\+Light\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structableToPassYellowLightOutput}{able\+To\+Pass\+Yellow\+Light\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+判断是否能通过黄灯 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 轨迹，剩余时间，到停止线前的距离 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 是否通过\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断黄灯能否通过
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f}\label{localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!angleRegulate@{angleRegulate}}
+\index{angleRegulate@{angleRegulate}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{angleRegulate()}{angleRegulate()}}
+{\footnotesize\ttfamily void angle\+Regulate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structangleRegulateParam}{angle\+Regulate\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structangleRegulateInput}{angle\+Regulate\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structangleRegulateOutput}{angle\+Regulate\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+转化角度到0-\/180中，便于比较 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 原角度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 转化后的角度\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 正则化角度
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573}\label{localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!assessTrajectory@{assessTrajectory}}
+\index{assessTrajectory@{assessTrajectory}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{assessTrajectory()}{assessTrajectory()}}
+{\footnotesize\ttfamily void assess\+Trajectory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structassessTrajectoryParam}{assess\+Trajectory\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structassessTrajectoryInput}{assess\+Trajectory\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structassessTrajectoryOutput}{assess\+Trajectory\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+返回距离障碍物最近距离，进行轨迹评估 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 栅格障碍物，imu，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 轨迹 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 距离障碍物最近距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 轨迹评估
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a07abb29775692cf43b900f9c8bfc0b74}\label{localPlanning__m_8cpp_a07abb29775692cf43b900f9c8bfc0b74}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!boundaryCollisionCheck@{boundaryCollisionCheck}}
+\index{boundaryCollisionCheck@{boundaryCollisionCheck}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{boundaryCollisionCheck()}{boundaryCollisionCheck()}}
+{\footnotesize\ttfamily void boundary\+Collision\+Check (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structboundaryCollisionCheckParam}{boundary\+Collision\+Check\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structboundaryCollisionCheckInput}{boundary\+Collision\+Check\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structboundaryCollisionCheckOutput}{boundary\+Collision\+Check\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+边碰撞检测 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 俩线段顶点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 是否碰撞\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 检测边碰撞
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050}\label{localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!calculateCurvature@{calculateCurvature}}
+\index{calculateCurvature@{calculateCurvature}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{calculateCurvature()}{calculateCurvature()}}
+{\footnotesize\ttfamily void calculate\+Curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcalculateCurvatureParam}{calculate\+Curvature\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structcalculateCurvatureInput}{calculate\+Curvature\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structcalculateCurvatureOutput}{calculate\+Curvature\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+由相邻三点近似计算曲率 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 点，前一点，后一点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 曲率\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算曲率
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a4b96b7cfb737fbe9dbfbdd2c164f5a21}\label{localPlanning__m_8cpp_a4b96b7cfb737fbe9dbfbdd2c164f5a21}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!changeCurrentPoint@{changeCurrentPoint}}
+\index{changeCurrentPoint@{changeCurrentPoint}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{changeCurrentPoint()}{changeCurrentPoint()}}
+{\footnotesize\ttfamily void change\+Current\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structchangeCurrentPointParam}{change\+Current\+Point\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structchangeCurrentPointInput}{change\+Current\+Point\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structchangeCurrentPointOutput}{change\+Current\+Point\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+判断是否可以换道 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 当前道路，当前车道 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 原规划预瞄点车道\+Id，原规划预瞄点路点\+Id，原规划预瞄点，向左还是向右变道 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 新预瞄点车道\+Id，新规划预瞄点路点\+Id，新规划预瞄点，是否变道\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断是否可以换道
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa}\label{localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!changeLocalToGlobal@{changeLocalToGlobal}}
+\index{changeLocalToGlobal@{changeLocalToGlobal}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{changeLocalToGlobal()}{changeLocalToGlobal()}}
+{\footnotesize\ttfamily void change\+Local\+To\+Global (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structchangeLocalToGlobalParam}{change\+Local\+To\+Global\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structchangeLocalToGlobalInput}{change\+Local\+To\+Global\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structchangeLocalToGlobalOutput}{change\+Local\+To\+Global\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+局部坐标轨迹转为全局轨迹 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 局部坐标轨迹，局部坐标轨迹原地对应的全局点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 全局轨迹\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 局部坐标轨迹转为全局坐标轨迹
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a007880750244bfeeff6f9532de7a6ec9}\label{localPlanning__m_8cpp_a007880750244bfeeff6f9532de7a6ec9}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!clearPathList@{clearPathList}}
+\index{clearPathList@{clearPathList}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{clearPathList()}{clearPathList()}}
+{\footnotesize\ttfamily void clear\+Path\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structclearPathListParam}{clear\+Path\+List\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structclearPathListInput}{clear\+Path\+List\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structclearPathListOutput}{clear\+Path\+List\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+清除上次生成的轨迹 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 储存轨迹的向量 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 清除轨迹
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3}\label{localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!coordTran2D@{coordTran2D}}
+\index{coordTran2D@{coordTran2D}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{coordTran2D()}{coordTran2D()}}
+{\footnotesize\ttfamily void coord\+Tran2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcoordTran2DParam}{coord\+Tran2\+D\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structcoordTran2DInput}{coord\+Tran2\+D\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structcoordTran2DOutput}{coord\+Tran2\+D\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+全局坐标转局部坐标 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 全局坐标经纬度、角度，初始化局部坐标xy值、角度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 局部坐标值、角度\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 全局坐标转自局部坐标
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ab0c33f1bde12ba69245517cb468cd8f1}\label{localPlanning__m_8cpp_ab0c33f1bde12ba69245517cb468cd8f1}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!courseAngleRevise@{courseAngleRevise}}
+\index{courseAngleRevise@{courseAngleRevise}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{courseAngleRevise()}{courseAngleRevise()}}
+{\footnotesize\ttfamily void course\+Angle\+Revise (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcourseAngleReviseParam}{course\+Angle\+Revise\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structcourseAngleReviseInput}{course\+Angle\+Revise\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structcourseAngleReviseOutput}{course\+Angle\+Revise\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+逆时针旋转坐标系90度，向东0度变成向北0度 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 原始角度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 转化角度\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 坐标系逆时针旋转90度
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a0589033b65b384ad8b64c6455725515a}\label{localPlanning__m_8cpp_a0589033b65b384ad8b64c6455725515a}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!cruiseController@{cruiseController}}
+\index{cruiseController@{cruiseController}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{cruiseController()}{cruiseController()}}
+{\footnotesize\ttfamily void cruise\+Controller (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcruiseControllerParam}{cruise\+Controller\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structcruiseControllerInput}{cruise\+Controller\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structcruiseControllerOutput}{cruise\+Controller\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+acc场景下，车辆目标速度计算 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param imu，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 前车索引，距前车距离 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 预期速度\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算车辆acc目标速度
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a1036b5ec9683b7c47764e32c533bda9e}\label{localPlanning__m_8cpp_a1036b5ec9683b7c47764e32c533bda9e}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!findMax@{findMax}}
+\index{findMax@{findMax}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{findMax()}{findMax()}}
+{\footnotesize\ttfamily void find\+Max (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfindMaxParam}{find\+Max\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structfindMaxInput}{find\+Max\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structfindMaxOutput}{find\+Max\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+返回double数组最大值 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input double数组 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output double数组最大值\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 返回double数组最大值
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100}\label{localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!findMin@{findMin}}
+\index{findMin@{findMin}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{findMin()}{findMin()}}
+{\footnotesize\ttfamily void find\+Min (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfindMinParam}{find\+Min\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structfindMinInput}{find\+Min\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structfindMinOutput}{find\+Min\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+返回double数组最小值 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input double数组 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output double数组最小值\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 返回double数组最小值
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f}\label{localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!fixRoadLaneIndex@{fixRoadLaneIndex}}
+\index{fixRoadLaneIndex@{fixRoadLaneIndex}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{fixRoadLaneIndex()}{fixRoadLaneIndex()}}
+{\footnotesize\ttfamily void fix\+Road\+Lane\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfixRoadLaneIndexParam}{fix\+Road\+Lane\+Index\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structfixRoadLaneIndexInput}{fix\+Road\+Lane\+Index\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structfixRoadLaneIndexOutput}{fix\+Road\+Lane\+Index\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+返回decision\+Date中road\+ID 和lane\+I\+D的索引 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 地图 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output road\+ID 和lane\+I\+D的索引\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获得道路和车道的索引
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e}\label{localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!frenet2Cartesian@{frenet2Cartesian}}
+\index{frenet2Cartesian@{frenet2Cartesian}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{frenet2Cartesian()}{frenet2Cartesian()}}
+{\footnotesize\ttfamily void frenet2\+Cartesian (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfrenet2CartesianParam}{frenet2\+Cartesian\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structfrenet2CartesianInput}{frenet2\+Cartesian\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structfrenet2CartesianOutput}{frenet2\+Cartesian\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+将frenet坐标系坐标转为自车坐标系坐标，xy为右前 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 坐标点sl值，初始化xy值，参考轨迹，上次搜索的索引值，本次需返回的坐标点对应的索引值 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 坐标点xy值，坐标点对应的索引值\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: frenet坐标系转局部坐标系
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26}\label{localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!gaussConvert@{gaussConvert}}
+\index{gaussConvert@{gaussConvert}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{gaussConvert()}{gaussConvert()}}
+{\footnotesize\ttfamily void gauss\+Convert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgaussConvertParam}{gauss\+Convert\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgaussConvertInput}{gauss\+Convert\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgaussConvertOutput}{gauss\+Convert\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+经纬度转全局坐标 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \+:无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input \+:坐标经纬度，初始化全局坐标xy值 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output \+:全局坐标值\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 经纬度转全局坐标
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965}\label{localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!generateBezierPathInFrenet@{generateBezierPathInFrenet}}
+\index{generateBezierPathInFrenet@{generateBezierPathInFrenet}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{generateBezierPathInFrenet()}{generateBezierPathInFrenet()}}
+{\footnotesize\ttfamily void generate\+Bezier\+Path\+In\+Frenet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgenerateBezierPathInFrenetParam}{generate\+Bezier\+Path\+In\+Frenet\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgenerateBezierPathInFrenetInput}{generate\+Bezier\+Path\+In\+Frenet\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgenerateBezierPathInFrenetOutput}{generate\+Bezier\+Path\+In\+Frenet\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+在frenet中生成贝塞尔曲线 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 起点、终点、初始化轨迹 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 生成轨迹\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 生成贝塞尔曲线
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e}\label{localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!generateBezierPathListInFrenet@{generateBezierPathListInFrenet}}
+\index{generateBezierPathListInFrenet@{generateBezierPathListInFrenet}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{generateBezierPathListInFrenet()}{generateBezierPathListInFrenet()}}
+{\footnotesize\ttfamily void generate\+Bezier\+Path\+List\+In\+Frenet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgenerateBezierPathListInFrenetParam}{generate\+Bezier\+Path\+List\+In\+Frenet\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgenerateBezierPathListInFrenetInput}{generate\+Bezier\+Path\+List\+In\+Frenet\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgenerateBezierPathListInFrenetOutput}{generate\+Bezier\+Path\+List\+In\+Frenet\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+在frenet坐标系中生成多条贝塞尔曲线 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 参考轨迹，车辆在frenet坐标系下坐标，初始化的轨迹向量数组 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 轨迹向量数组\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 在frenet坐标系中生成多条贝塞尔曲线
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: plannings \mbox{\Hypertarget{localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374}\label{localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!generateSpeedList@{generateSpeedList}}
+\index{generateSpeedList@{generateSpeedList}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{generateSpeedList()}{generateSpeedList()}}
+{\footnotesize\ttfamily void generate\+Speed\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgenerateSpeedListParam}{generate\+Speed\+List\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgenerateSpeedListInput}{generate\+Speed\+List\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgenerateSpeedListOutput}{generate\+Speed\+List\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据道路信息等，采样生成速度曲线 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 路测障碍物，imu，停止点 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 车速，决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 生成速度曲线
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901}\label{localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!generateTrajectoryList@{generateTrajectoryList}}
+\index{generateTrajectoryList@{generateTrajectoryList}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{generateTrajectoryList()}{generateTrajectoryList()}}
+{\footnotesize\ttfamily void generate\+Trajectory\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgenerateTrajectoryListParam}{generate\+Trajectory\+List\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgenerateTrajectoryListInput}{generate\+Trajectory\+List\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgenerateTrajectoryListOutput}{generate\+Trajectory\+List\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+生成采样轨迹，供后续选择 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 生成采样曲线
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a1f2ab502562c0b5cdaa920864965d04d}\label{localPlanning__m_8cpp_a1f2ab502562c0b5cdaa920864965d04d}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getAngle@{getAngle}}
+\index{getAngle@{getAngle}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getAngle()}{getAngle()}}
+{\footnotesize\ttfamily void get\+Angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetAngleParam}{get\+Angle\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetAngleInput}{get\+Angle\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetAngleOutput}{get\+Angle\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算坐标系中两点角度 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 两点\+X\+Y坐标 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 两点角度\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算两点角度
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ad174ae3dfe5302cb5a2fffaa15cefcef}\label{localPlanning__m_8cpp_ad174ae3dfe5302cb5a2fffaa15cefcef}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getAngleDiff@{getAngleDiff}}
+\index{getAngleDiff@{getAngleDiff}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getAngleDiff()}{getAngleDiff()}}
+{\footnotesize\ttfamily void get\+Angle\+Diff (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetAngleDiffParam}{get\+Angle\+Diff\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetAngleDiffInput}{get\+Angle\+Diff\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetAngleDiffOutput}{get\+Angle\+Diff\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算两角度之差，并正则化 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 两角度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 两角度之差\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算两角度之差
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6}\label{localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getCurrentPosition@{getCurrentPosition}}
+\index{getCurrentPosition@{getCurrentPosition}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getCurrentPosition()}{getCurrentPosition()}}
+{\footnotesize\ttfamily void get\+Current\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetCurrentPositionParam}{get\+Current\+Position\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetCurrentPositionInput}{get\+Current\+Position\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetCurrentPositionOutput}{get\+Current\+Position\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+寻找距离车辆位置最近的路点 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param imu，地图 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的决策树护具\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 寻找距离车辆位置最近的路点
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b}\label{localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily void get\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetDistanceParam}{get\+Distance\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetDistanceInput}{get\+Distance\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetDistanceOutput}{get\+Distance\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算两点之间的距离 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 两点\+X\+Y坐标 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 两点之间的距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算两点之间的距离
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_abede3722a48c7be83fe3244e490ccdf0}\label{localPlanning__m_8cpp_abede3722a48c7be83fe3244e490ccdf0}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getFrenetLocationPoint@{getFrenetLocationPoint}}
+\index{getFrenetLocationPoint@{getFrenetLocationPoint}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getFrenetLocationPoint()}{getFrenetLocationPoint()}}
+{\footnotesize\ttfamily void get\+Frenet\+Location\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetFrenetLocationPointParam}{get\+Frenet\+Location\+Point\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetFrenetLocationPointInput}{get\+Frenet\+Location\+Point\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetFrenetLocationPointOutput}{get\+Frenet\+Location\+Point\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+获取车辆当前位置在frenet坐标系中坐标值 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据，参考轨迹，当前位置 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获取车辆在frenet坐标系中坐标值
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163}\label{localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getMinDistanceOfPoint@{getMinDistanceOfPoint}}
+\index{getMinDistanceOfPoint@{getMinDistanceOfPoint}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getMinDistanceOfPoint()}{getMinDistanceOfPoint()}}
+{\footnotesize\ttfamily void get\+Min\+Distance\+Of\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetMinDistanceOfPointParam}{get\+Min\+Distance\+Of\+Point\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetMinDistanceOfPointInput}{get\+Min\+Distance\+Of\+Point\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetMinDistanceOfPointOutput}{get\+Min\+Distance\+Of\+Point\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+返回点距离障碍物最近距离 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 栅格障碍物，imu，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 检测点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 距离障碍物最近距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算点距离障碍物最近距离（一般场景）
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_abf7a5a33c481b3077c1a365feb6e7b2b}\label{localPlanning__m_8cpp_abf7a5a33c481b3077c1a365feb6e7b2b}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getNextRoadLaneId@{getNextRoadLaneId}}
+\index{getNextRoadLaneId@{getNextRoadLaneId}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getNextRoadLaneId()}{getNextRoadLaneId()}}
+{\footnotesize\ttfamily void get\+Next\+Road\+Lane\+Id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetNextRoadLaneIdParam}{get\+Next\+Road\+Lane\+Id\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetNextRoadLaneIdInput}{get\+Next\+Road\+Lane\+Id\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetNextRoadLaneIdOutput}{get\+Next\+Road\+Lane\+Id\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+从全局规划中，获取后续车道和道路\+Id 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 储存全局规划车道和道路的向量 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 自车当前车道和道路\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 后续车道和道路\+Id\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获取后续车道和道路\+Id
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea}\label{localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getOptimalTrajectoryIndex@{getOptimalTrajectoryIndex}}
+\index{getOptimalTrajectoryIndex@{getOptimalTrajectoryIndex}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getOptimalTrajectoryIndex()}{getOptimalTrajectoryIndex()}}
+{\footnotesize\ttfamily void get\+Optimal\+Trajectory\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetOptimalTrajectoryIndexParam}{get\+Optimal\+Trajectory\+Index\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetOptimalTrajectoryIndexInput}{get\+Optimal\+Trajectory\+Index\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetOptimalTrajectoryIndexOutput}{get\+Optimal\+Trajectory\+Index\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+评估轨迹，并获取最优轨迹索引 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 栅格障碍物，交通灯，imu，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据，最优轨迹索引\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获取最优轨迹索引
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ae9d5ad9600741ad7b9bcce3455f55c44}\label{localPlanning__m_8cpp_ae9d5ad9600741ad7b9bcce3455f55c44}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getPlanningDistance@{getPlanningDistance}}
+\index{getPlanningDistance@{getPlanningDistance}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getPlanningDistance()}{getPlanningDistance()}}
+{\footnotesize\ttfamily void get\+Planning\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetPlanningDistanceParam}{get\+Planning\+Distance\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetPlanningDistanceInput}{get\+Planning\+Distance\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetPlanningDistanceOutput}{get\+Planning\+Distance\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据速度、曲率获取规划距离 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 速度、曲率 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 规划距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算规划距离
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a54e322e9dd48a95af52ac68c43fbc213}\label{localPlanning__m_8cpp_a54e322e9dd48a95af52ac68c43fbc213}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getPlanningPoint@{getPlanningPoint}}
+\index{getPlanningPoint@{getPlanningPoint}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getPlanningPoint()}{getPlanningPoint()}}
+{\footnotesize\ttfamily void get\+Planning\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetPlanningPointParam}{get\+Planning\+Point\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetPlanningPointInput}{get\+Planning\+Point\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetPlanningPointOutput}{get\+Planning\+Point\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据车辆信息获取规划预瞄点 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 当前位置，决策数据，地图 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 规划距离，车辆朝向角，后续车道\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 规划预瞄点\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算规划预瞄点
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc}\label{localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getReferenceLine@{getReferenceLine}}
+\index{getReferenceLine@{getReferenceLine}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getReferenceLine()}{getReferenceLine()}}
+{\footnotesize\ttfamily void get\+Reference\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetReferenceLineParam}{get\+Reference\+Line\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetReferenceLineInput}{get\+Reference\+Line\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetReferenceLineOutput}{get\+Reference\+Line\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+获取局部规划参考轨迹 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 地图 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据，当前位置 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 参考轨迹\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获取参考轨迹
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b}\label{localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!getTrajectoryPlanningResult@{getTrajectoryPlanningResult}}
+\index{getTrajectoryPlanningResult@{getTrajectoryPlanningResult}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{getTrajectoryPlanningResult()}{getTrajectoryPlanningResult()}}
+{\footnotesize\ttfamily void get\+Trajectory\+Planning\+Result (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgetTrajectoryPlanningResultParam}{get\+Trajectory\+Planning\+Result\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structgetTrajectoryPlanningResultInput}{get\+Trajectory\+Planning\+Result\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structgetTrajectoryPlanningResultOutput}{get\+Trajectory\+Planning\+Result\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param imu，栅格障碍物，地图，交通灯，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据，是否成功生成轨迹\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 获取轨迹规划结果
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ac903f5f04b7e6b9055bfb92a4c8a60a7}\label{localPlanning__m_8cpp_ac903f5f04b7e6b9055bfb92a4c8a60a7}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!hasPrecedingVehicle@{hasPrecedingVehicle}}
+\index{hasPrecedingVehicle@{hasPrecedingVehicle}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{hasPrecedingVehicle()}{hasPrecedingVehicle()}}
+{\footnotesize\ttfamily void has\+Preceding\+Vehicle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhasPrecedingVehicleParam}{has\+Preceding\+Vehicle\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structhasPrecedingVehicleInput}{has\+Preceding\+Vehicle\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structhasPrecedingVehicleOutput}{has\+Preceding\+Vehicle\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+判断车辆前方是否有需要跟随的车辆 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param imu，路测障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断是否有需要跟随的车辆
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b}\label{localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!inArea@{inArea}}
+\index{inArea@{inArea}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{inArea()}{inArea()}}
+{\footnotesize\ttfamily void in\+Area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structinAreaParam}{in\+Area\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structinAreaInput}{in\+Area\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structinAreaOutput}{in\+Area\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+判断点是否在区域内 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 目标区域中心\+X\+Y坐标，判断点\+X\+Y坐标 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断点是否在区域内
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a601d6ae079dd9cea28845f83d7eca073}\label{localPlanning__m_8cpp_a601d6ae079dd9cea28845f83d7eca073}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!initLocalPlanning@{initLocalPlanning}}
+\index{initLocalPlanning@{initLocalPlanning}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{initLocalPlanning()}{initLocalPlanning()}}
+{\footnotesize\ttfamily void init\+Local\+Planning (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structinitLocalPlanningParam}{init\+Local\+Planning\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structinitLocalPlanningInput}{init\+Local\+Planning\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structinitLocalPlanningOutput}{init\+Local\+Planning\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+局部规划决策数据初始化 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 初始化后的决策数据\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 初始化局部规划
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a7cd5e98d51d7ec0a9a239194a218e89d}\label{localPlanning__m_8cpp_a7cd5e98d51d7ec0a9a239194a218e89d}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!innerCollisionCheck@{innerCollisionCheck}}
+\index{innerCollisionCheck@{innerCollisionCheck}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{innerCollisionCheck()}{innerCollisionCheck()}}
+{\footnotesize\ttfamily void inner\+Collision\+Check (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structinnerCollisionCheckParam}{inner\+Collision\+Check\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structinnerCollisionCheckInput}{inner\+Collision\+Check\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structinnerCollisionCheckOutput}{inner\+Collision\+Check\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+内部包含检测 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 检测点和障碍物顶点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 是否包含\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 检测内部包含
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_aceb934788ac59a4dd5a890b8bd5988f5}\label{localPlanning__m_8cpp_aceb934788ac59a4dd5a890b8bd5988f5}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!limitPlanningDistance@{limitPlanningDistance}}
+\index{limitPlanningDistance@{limitPlanningDistance}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{limitPlanningDistance()}{limitPlanningDistance()}}
+{\footnotesize\ttfamily void limit\+Planning\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structlimitPlanningDistanceParam}{limit\+Planning\+Distance\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structlimitPlanningDistanceInput}{limit\+Planning\+Distance\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structlimitPlanningDistanceOutput}{limit\+Planning\+Distance\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+限制规划距离，防止突变 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 计划规划距离，上次规划距离 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的规划距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 限制规划距离
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a572cfaa68a6eafec25c9fbce22be58f1}\label{localPlanning__m_8cpp_a572cfaa68a6eafec25c9fbce22be58f1}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!loadStopPoints@{loadStopPoints}}
+\index{loadStopPoints@{loadStopPoints}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{loadStopPoints()}{loadStopPoints()}}
+{\footnotesize\ttfamily void load\+Stop\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structloadStopPointsParam}{load\+Stop\+Points\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structloadStopPointsInput}{load\+Stop\+Points\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structloadStopPointsOutput}{load\+Stop\+Points\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+从文件中加载停止点 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 文件地址 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 停止点、停止点对应路点、\+X偏移、\+Y偏移 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的停止点、更新后的停止点对应路点\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 加载停止点
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_aa28e587fc6e0650ee9e96b05e2597245}\label{localPlanning__m_8cpp_aa28e587fc6e0650ee9e96b05e2597245}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!loadStopPointsFromYaml@{loadStopPointsFromYaml}}
+\index{loadStopPointsFromYaml@{loadStopPointsFromYaml}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{loadStopPointsFromYaml()}{loadStopPointsFromYaml()}}
+{\footnotesize\ttfamily void load\+Stop\+Points\+From\+Yaml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structloadStopPointsFromYamlParam}{load\+Stop\+Points\+From\+Yaml\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structloadStopPointsFromYamlInput}{load\+Stop\+Points\+From\+Yaml\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structloadStopPointsFromYamlOutput}{load\+Stop\+Points\+From\+Yaml\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+从文件中加载停止点 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 地图、文件地址 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 停止点、停止点对应路点、\+X偏移、\+Y偏移 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的停止点、更新的停止点对应路点\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 从\+Yaml文件中加载停止点
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a9673ed746e166b4e273051bbf8c18a04}\label{localPlanning__m_8cpp_a9673ed746e166b4e273051bbf8c18a04}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!pointCollisionCheck@{pointCollisionCheck}}
+\index{pointCollisionCheck@{pointCollisionCheck}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{pointCollisionCheck()}{pointCollisionCheck()}}
+{\footnotesize\ttfamily void point\+Collision\+Check (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpointCollisionCheckParam}{point\+Collision\+Check\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structpointCollisionCheckInput}{point\+Collision\+Check\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structpointCollisionCheckOutput}{point\+Collision\+Check\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+轨迹点碰撞检测 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 点，障碍物中心点，障碍物长宽 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 是否碰撞\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 检测轨迹点碰撞
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a603957659141af389fe56e5659de66ee}\label{localPlanning__m_8cpp_a603957659141af389fe56e5659de66ee}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!pointDistance@{pointDistance}}
+\index{pointDistance@{pointDistance}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{pointDistance()}{pointDistance()}}
+{\footnotesize\ttfamily void point\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpointDistanceParam}{point\+Distance\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structpointDistanceInput}{point\+Distance\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structpointDistanceOutput}{point\+Distance\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算两点之间的距离 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 两点的\+X\+Y坐标值 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算两点之间的距离
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724}\label{localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!pointOnCubicBezier@{pointOnCubicBezier}}
+\index{pointOnCubicBezier@{pointOnCubicBezier}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{pointOnCubicBezier()}{pointOnCubicBezier()}}
+{\footnotesize\ttfamily void point\+On\+Cubic\+Bezier (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpointOnCubicBezierParam}{point\+On\+Cubic\+Bezier\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structpointOnCubicBezierInput}{point\+On\+Cubic\+Bezier\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structpointOnCubicBezierOutput}{point\+On\+Cubic\+Bezier\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算贝塞尔曲线上的点 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 贝塞尔曲线控制点，参数 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算贝塞尔曲线上的点
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d}\label{localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!pointToLineDistance@{pointToLineDistance}}
+\index{pointToLineDistance@{pointToLineDistance}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{pointToLineDistance()}{pointToLineDistance()}}
+{\footnotesize\ttfamily void point\+To\+Line\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpointToLineDistanceParam}{point\+To\+Line\+Distance\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structpointToLineDistanceInput}{point\+To\+Line\+Distance\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structpointToLineDistanceOutput}{point\+To\+Line\+Distance\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+计算点到线段的距离 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 线段起点，线段终点，检查点 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 点到线段的距离\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 计算点到线段的距离
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1}\label{localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!processTrafficLight@{processTrafficLight}}
+\index{processTrafficLight@{processTrafficLight}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{processTrafficLight()}{processTrafficLight()}}
+{\footnotesize\ttfamily void process\+Traffic\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structprocessTrafficLightParam}{process\+Traffic\+Light\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structprocessTrafficLightInput}{process\+Traffic\+Light\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structprocessTrafficLightOutput}{process\+Traffic\+Light\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据红绿灯信息更新决策数据 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 栅格障碍物，交通灯 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新后的决策数据，红绿灯信息\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 处理交通信号灯
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_ae46745cb3754d10c22ed26abd5542a11}\label{localPlanning__m_8cpp_ae46745cb3754d10c22ed26abd5542a11}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!restart@{restart}}
+\index{restart@{restart}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void restart (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structrestartParam}{restart\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structrestartInput}{restart\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structrestartOutput}{restart\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+车辆停车后，判断能否重新启动 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 栅格障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 车速 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断车辆能否重新启动
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e}\label{localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!stop@{stop}}
+\index{stop@{stop}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void stop (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structstopParam}{stop\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structstopInput}{stop\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structstopOutput}{stop\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+停车时修改速度曲线 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 决策数据，当前车速 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的决策数据\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 处理停车速度
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b}\label{localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!stopPointJudge@{stopPointJudge}}
+\index{stopPointJudge@{stopPointJudge}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{stopPointJudge()}{stopPointJudge()}}
+{\footnotesize\ttfamily void stop\+Point\+Judge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structstopPointJudgeParam}{stop\+Point\+Judge\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structstopPointJudgeInput}{stop\+Point\+Judge\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structstopPointJudgeOutput}{stop\+Point\+Judge\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+判断车辆是否在停车区域 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param imu，停止点 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 判断结果\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 判断停车
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{localPlanning__m_8cpp_acd812f13e27ab10c67c7e752b7dc012d}\label{localPlanning__m_8cpp_acd812f13e27ab10c67c7e752b7dc012d}} 
+\index{localPlanning\_m.cpp@{localPlanning\_m.cpp}!trajectoryCollisionCheck@{trajectoryCollisionCheck}}
+\index{trajectoryCollisionCheck@{trajectoryCollisionCheck}!localPlanning\_m.cpp@{localPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{trajectoryCollisionCheck()}{trajectoryCollisionCheck()}}
+{\footnotesize\ttfamily void trajectory\+Collision\+Check (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtrajectoryCollisionCheckParam}{trajectory\+Collision\+Check\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structtrajectoryCollisionCheckInput}{trajectory\+Collision\+Check\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structtrajectoryCollisionCheckOutput}{trajectory\+Collision\+Check\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+轨迹碰撞检测，true表示可行，false表示碰撞 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 障碍物 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 轨迹 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 是否碰撞\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 检测轨迹碰撞
+
+@granularity\+: composite //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning 

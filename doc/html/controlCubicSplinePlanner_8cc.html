@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/src/controlCubicSplinePlanner.cc 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_d8d482cb00053ea8bb5083cec8c5e54f.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">controlCubicSplinePlanner.cc 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>处理决策输入的原始轨迹(Traj: x y yaw)，输出插值并具有详细信息的轨迹(Traj: xy yaw v k s).  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="controlCubicSpline_8h_source.html">controlCubicSpline.h</a>&quot;</code><br />
+<code>#include &lt;Eigen/Eigen&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;exception&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+controlCubicSplinePlanner.cc 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="controlCubicSplinePlanner_8cc__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2controlCubicSplinePlanner_8cc" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2controlCubicSplinePlanner_8cc" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2controlCubicSplinePlanner_8cc">
+<area shape="rect" title="处理决策输入的原始轨迹(Traj: x y yaw)，输出插值并具有详细信息的轨迹(Traj: xy yaw v k s)." alt="" coords="311,5,609,91"/>
+<area shape="rect" href="controlCubicSpline_8h.html" title="ref. &quot;Cpp Robotics. Python Robotics.&quot;" alt="" coords="241,139,396,165"/>
+<area shape="rect" title=" " alt="" coords="76,288,156,315"/>
+<area shape="rect" title=" " alt="" coords="287,288,350,315"/>
+<area shape="rect" title=" " alt="" coords="23,213,79,240"/>
+<area shape="rect" title=" " alt="" coords="356,213,415,240"/>
+<area shape="rect" title=" " alt="" coords="439,213,537,240"/>
+<area shape="rect" title=" " alt="" coords="562,213,649,240"/>
+<area shape="rect" title=" " alt="" coords="725,139,811,165"/>
+<area shape="rect" href="controlData_8hpp.html" title="模块使用数据类型" alt="" coords="154,213,281,240"/>
+<area shape="rect" title=" " alt="" coords="186,288,249,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceControl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html">Control</a></td></tr>
+<tr class="memdesc:namespaceControl"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceControl.html" title="Control namespace">Control</a> namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a2ffe8c40bd05c4df65b1d68662cec756"><td class="memItemLeft" align="right" valign="top"><a id="a2ffe8c40bd05c4df65b1d68662cec756"></a>
+Vec_d&#160;</td><td class="memItemRight" valign="bottom"><b>Control::vecDiff</b> (Vec_d input)</td></tr>
+<tr class="separator:a2ffe8c40bd05c4df65b1d68662cec756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12a03b1dbc9a0e58e00d514bbfe9d8c0"><td class="memItemLeft" align="right" valign="top"><a id="a12a03b1dbc9a0e58e00d514bbfe9d8c0"></a>
+Vec_d&#160;</td><td class="memItemRight" valign="bottom"><b>Control::cumSum</b> (Vec_d input)</td></tr>
+<tr class="separator:a12a03b1dbc9a0e58e00d514bbfe9d8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1244b3f46db63f8586b0c7793e211c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#aa1244b3f46db63f8586b0c7793e211c1">Control::calcSplineCourse</a> (Vec_d x, Vec_d y, Vec_d &amp;rX, Vec_d &amp;rY, Vec_d &amp;rYaw, Vec_d &amp;rCurvature, Vec_d &amp;rS, double ds)</td></tr>
+<tr class="memdesc:aa1244b3f46db63f8586b0c7793e211c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">样条曲线插值轨迹，并计算相应的切向角度和曲率  <a href="namespaceControl.html#aa1244b3f46db63f8586b0c7793e211c1">更多...</a><br /></td></tr>
+<tr class="separator:aa1244b3f46db63f8586b0c7793e211c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac011e8469f7338516024cbd0a0dfb8d"><td class="memItemLeft" align="right" valign="top"><a id="aac011e8469f7338516024cbd0a0dfb8d"></a>
+Traj&#160;</td><td class="memItemRight" valign="bottom"><b>Control::removeDuplicate</b> (const Traj &amp;trajRaw)</td></tr>
+<tr class="separator:aac011e8469f7338516024cbd0a0dfb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5cdb4de3df18a8e3ee5d93644b71da7"><td class="memItemLeft" align="right" valign="top">Traj&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#ac5cdb4de3df18a8e3ee5d93644b71da7">Control::calcSplineWithVCourse</a> (const Traj &amp;trajRaw, double ds)</td></tr>
+<tr class="memdesc:ac5cdb4de3df18a8e3ee5d93644b71da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理决策输入的原始轨迹(Traj: x y yaw)，输出插值并具有详细信息的轨迹(Traj: xy yaw v k s).  <a href="namespaceControl.html#ac5cdb4de3df18a8e3ee5d93644b71da7">更多...</a><br /></td></tr>
+<tr class="separator:ac5cdb4de3df18a8e3ee5d93644b71da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>处理决策输入的原始轨迹(Traj: x y yaw)，输出插值并具有详细信息的轨迹(Traj: xy yaw v k s). </p>
+<dl class="section author"><dt>作者</dt><dd>yibin, yining (<a href="#" onclick="location.href='mai'+'lto:'+'852'+'48'+'806'+'2@'+'qq.'+'co'+'m'; return false;">85248<span style="display: none;">.nosp@m.</span>8062<span style="display: none;">.nosp@m.</span>@qq.c<span style="display: none;">.nosp@m.</span>om</a>) Cpp Robotics </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-08-16</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

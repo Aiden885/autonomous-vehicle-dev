@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_cv/include/InversePerspectiveMapping.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bb103d8aa73b98aee3d71b11e70e0a99.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">InversePerspectiveMapping.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/***</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file InversePerspectiveMapping.hh</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author Mohamed Aly &lt;malaa@caltech.edu&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \date 11/29/2006</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef INVERSEPERSPECTIVEMAPPING_HH_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define INVERSEPERSPECTIVEMAPPING_HH_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//conf file for cameraInfo</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;CameraInfoOpt.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>cv;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>LaneDetector</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#ac0f87d405f3100d3db29f60abc85320f">   26</a></span>&#160;  <span class="keywordtype">float</span> xLimits[2];</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a8a871bea3295a1bfac8c92691244c046">   28</a></span>&#160;  <span class="keywordtype">float</span> yLimits[2];</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#af98e8f1fb314ef6e5164fc7c6fa2db39">   31</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#af98e8f1fb314ef6e5164fc7c6fa2db39">xScale</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a66f2c4e8580940730746df1a6bbec4d9">   34</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#a66f2c4e8580940730746df1a6bbec4d9">yScale</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a779edf313f3bb8e122affcac915a6bbc">   36</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#a779edf313f3bb8e122affcac915a6bbc">width</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#ac0dcd051b0af4deeb430009772dabcd8">   38</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#ac0dcd051b0af4deeb430009772dabcd8">height</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a340b563254a6c1ea3d4497c7a852b170">   41</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#a340b563254a6c1ea3d4497c7a852b170">vpPortion</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a3518b0f74efbba02edaa0239013e4518">   43</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#a3518b0f74efbba02edaa0239013e4518">ipmLeft</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#adce7974d2db2d78c1ce9340b0ce2cbad">   45</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#adce7974d2db2d78c1ce9340b0ce2cbad">ipmRight</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#ab0ebe7320bc3a4b6f028d7e1f932e6ed">   47</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#ab0ebe7320bc3a4b6f028d7e1f932e6ed">ipmTop</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#a02734bd3e13928827f8f4610e468bf5f">   49</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#a02734bd3e13928827f8f4610e468bf5f">ipmBottom</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1IPMInfo.html#ae2b7d1cf5d946b55a6f65d8c7f281cb5">   51</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html#ae2b7d1cf5d946b55a6f65d8c7f281cb5">ipmInterpolation</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}<a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html">   55</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#a4070a1fb7c8abec8683121e48d769aad">   58</a></span>&#160;  cv::Point2f <a class="code" href="structLaneDetector_1_1CameraInfo.html#a4070a1fb7c8abec8683121e48d769aad">focalLength</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#a16f7a482b55dc01f8ed2fe9b3c724da8">   60</a></span>&#160;  cv::Point2f <a class="code" href="structLaneDetector_1_1CameraInfo.html#a16f7a482b55dc01f8ed2fe9b3c724da8">opticalCenter</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#a0e6729414d38747daa8d80b82e338fb3">   62</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html#a0e6729414d38747daa8d80b82e338fb3">cameraHeight</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#aa199dd176b0e35da0ab570b46a2fbda3">   64</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html#aa199dd176b0e35da0ab570b46a2fbda3">pitch</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#a3865b20af62b1d9e95094bac90003180">   66</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html#a3865b20af62b1d9e95094bac90003180">yaw</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#aec0377fc72bca3ebc67549c96351a608">   68</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html#aec0377fc72bca3ebc67549c96351a608">imageWidth</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structLaneDetector_1_1CameraInfo.html#ae0de637fb8fb3da8fbf6907fd3046828">   70</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html#ae0de637fb8fb3da8fbf6907fd3046828">imageHeight</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}<a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//functions definitions</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#ad46af22f9c8a075fdff816a74bdcbb9a">imGetIPM</a>(<span class="keyword">const</span> cv::Mat&amp; inImage, cv::Mat&amp; outImage,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;               <a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *ipmInfo, <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;               list&lt;cv::Point&gt;* outPoints=NULL);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#a35ac6161fef931d352a12ad3949fd8ed">imTransformImage2Ground</a>(<span class="keyword">const</span> cv::Mat&amp; inPoints, cv::Mat&amp; outPoints,  <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a>* cameraInfo);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#a31ce2f2a5e3f6380a7e16765e0401695">imTransformGround2Image</a>(<span class="keyword">const</span> cv::Mat&amp; inPoints,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                              cv::Mat&amp; outPoints, <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;cv::Point2f <a class="code" href="InversePerspectiveMapping_8cpp.html#a77be6fa5f108a68f8e086a064ac08dd2">imGetVanishingPoint</a>(<span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#a6ab51ac04f0ee19bf1d0a71c5775c507">imPointImIPM2World</a>(cv::Point2f&amp; point, <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *ipmInfo);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#ade2a81318f3c1f34836b2d88a9d0c44d">imInitCameraInfo</a> (<span class="keywordtype">char</span> * <span class="keyword">const</span> fileName, <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; <span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#a4cd9b9ac8dc2aaa8302098c01677c3de">imScaleCameraInfo</a> (<a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo, cv::Size size);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#a8567591791d3d00792fac764a96f842d">imGetIPMExtent</a>(<span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *cameraInfo, <a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *ipmInfo );</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#ac8729381b595be35212fde276aa17209">imTransformImIPM2Ground</a>(<span class="keyword">const</span> cv::Mat&amp; inMat, cv::Mat&amp; outMat,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                              <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a>* ipmInfo);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> <a class="code" href="InversePerspectiveMapping_8cpp.html#afa8fe8963d420afb2a96f1266e70046c">imTransformImIPM2Im</a>(<span class="keyword">const</span> cv::Mat&amp; inMat, cv::Mat&amp; outMat, </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                         <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a>* ipmInfo, <span class="keyword">const</span> <a class="code" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a>* cameraInfo);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;} <span class="comment">// namespace LaneDetector</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*INVERSEPERSPECTIVEMAPPING_HH_*/</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html">LaneDetector::CameraInfo</a></div><div class="ttdoc">Camera Calibration info.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:55</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_ae0de637fb8fb3da8fbf6907fd3046828"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#ae0de637fb8fb3da8fbf6907fd3046828">LaneDetector::CameraInfo::imageHeight</a></div><div class="ttdeci">float imageHeight</div><div class="ttdoc">height of images</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:70</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_a66f2c4e8580940730746df1a6bbec4d9"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#a66f2c4e8580940730746df1a6bbec4d9">LaneDetector::IPMInfo::yScale</a></div><div class="ttdeci">float yScale</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:34</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_aa199dd176b0e35da0ab570b46a2fbda3"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#aa199dd176b0e35da0ab570b46a2fbda3">LaneDetector::CameraInfo::pitch</a></div><div class="ttdeci">float pitch</div><div class="ttdoc">pitch angle in radians (+ve downwards)</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:64</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_ab0ebe7320bc3a4b6f028d7e1f932e6ed"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#ab0ebe7320bc3a4b6f028d7e1f932e6ed">LaneDetector::IPMInfo::ipmTop</a></div><div class="ttdeci">float ipmTop</div><div class="ttdoc">Top point in original image of region to make IPM for.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:47</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_af98e8f1fb314ef6e5164fc7c6fa2db39"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#af98e8f1fb314ef6e5164fc7c6fa2db39">LaneDetector::IPMInfo::xScale</a></div><div class="ttdeci">float xScale</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:31</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_ade2a81318f3c1f34836b2d88a9d0c44d"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#ade2a81318f3c1f34836b2d88a9d0c44d">LaneDetector::imInitCameraInfo</a></div><div class="ttdeci">void imInitCameraInfo(char *const fileName, CameraInfo *cameraInfo)</div><div class="ttdoc">Initializes camera info structure from config file.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:353</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_ac0dcd051b0af4deeb430009772dabcd8"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#ac0dcd051b0af4deeb430009772dabcd8">LaneDetector::IPMInfo::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">height</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:38</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_a340b563254a6c1ea3d4497c7a852b170"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#a340b563254a6c1ea3d4497c7a852b170">LaneDetector::IPMInfo::vpPortion</a></div><div class="ttdeci">float vpPortion</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:41</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_ae2b7d1cf5d946b55a6f65d8c7f281cb5"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#ae2b7d1cf5d946b55a6f65d8c7f281cb5">LaneDetector::IPMInfo::ipmInterpolation</a></div><div class="ttdeci">int ipmInterpolation</div><div class="ttdoc">interpolation to use for IPM (0: bilinear, 1:nearest neighbor)</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:51</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_a0e6729414d38747daa8d80b82e338fb3"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#a0e6729414d38747daa8d80b82e338fb3">LaneDetector::CameraInfo::cameraHeight</a></div><div class="ttdeci">float cameraHeight</div><div class="ttdoc">height of camera above ground</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:62</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_afa8fe8963d420afb2a96f1266e70046c"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#afa8fe8963d420afb2a96f1266e70046c">LaneDetector::imTransformImIPM2Im</a></div><div class="ttdeci">void imTransformImIPM2Im(const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo, const CameraInfo *cameraInfo)</div><div class="ttdoc">Converts points from IPM pixel coordinates to image coordinates.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:342</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a31ce2f2a5e3f6380a7e16765e0401695"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a31ce2f2a5e3f6380a7e16765e0401695">LaneDetector::imTransformGround2Image</a></div><div class="ttdeci">void imTransformGround2Image(const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</div><div class="ttdoc">Transforms points from ground plane to image frame.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:220</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html">LaneDetector::IPMInfo</a></div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:23</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_a16f7a482b55dc01f8ed2fe9b3c724da8"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#a16f7a482b55dc01f8ed2fe9b3c724da8">LaneDetector::CameraInfo::opticalCenter</a></div><div class="ttdeci">cv::Point2f opticalCenter</div><div class="ttdoc">optical center coordinates in image frame (origin is (0,0) at top left)</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:60</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_a02734bd3e13928827f8f4610e468bf5f"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#a02734bd3e13928827f8f4610e468bf5f">LaneDetector::IPMInfo::ipmBottom</a></div><div class="ttdeci">float ipmBottom</div><div class="ttdoc">Bottom point in original image of region to make IPM for.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:49</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_a4070a1fb7c8abec8683121e48d769aad"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#a4070a1fb7c8abec8683121e48d769aad">LaneDetector::CameraInfo::focalLength</a></div><div class="ttdeci">cv::Point2f focalLength</div><div class="ttdoc">focal length in x and y</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:58</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a4cd9b9ac8dc2aaa8302098c01677c3de"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a4cd9b9ac8dc2aaa8302098c01677c3de">LaneDetector::imScaleCameraInfo</a></div><div class="ttdeci">void imScaleCameraInfo(CameraInfo *cameraInfo, cv::Size size)</div><div class="ttdoc">Scales camera parameters according to input image size.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:376</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a35ac6161fef931d352a12ad3949fd8ed"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a35ac6161fef931d352a12ad3949fd8ed">LaneDetector::imTransformImage2Ground</a></div><div class="ttdeci">void imTransformImage2Ground(const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</div><div class="ttdoc">Transforms points from image frame to ground plane.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:162</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a6ab51ac04f0ee19bf1d0a71c5775c507"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a6ab51ac04f0ee19bf1d0a71c5775c507">LaneDetector::imPointImIPM2World</a></div><div class="ttdeci">void imPointImIPM2World(cv::Point2f &amp;point, const IPMInfo *ipmInfo)</div><div class="ttdoc">Converts point from IPM pixel coordinates to world coordinates.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:310</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_ac8729381b595be35212fde276aa17209"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#ac8729381b595be35212fde276aa17209">LaneDetector::imTransformImIPM2Ground</a></div><div class="ttdeci">void imTransformImIPM2Ground(const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo)</div><div class="ttdoc">Converts points from IPM pixel coordinates to world coordinates.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:323</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_a779edf313f3bb8e122affcac915a6bbc"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#a779edf313f3bb8e122affcac915a6bbc">LaneDetector::IPMInfo::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">width</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:36</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_ad46af22f9c8a075fdff816a74bdcbb9a"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#ad46af22f9c8a075fdff816a74bdcbb9a">LaneDetector::imGetIPM</a></div><div class="ttdeci">void imGetIPM(const cv::Mat &amp;inImage, cv::Mat &amp;outImage, IPMInfo *ipmInfo, const CameraInfo *cameraInfo, std::list&lt; cv::Point &gt; *outPoints)</div><div class="ttdoc">Coordinate system description.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:51</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_a3518b0f74efbba02edaa0239013e4518"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#a3518b0f74efbba02edaa0239013e4518">LaneDetector::IPMInfo::ipmLeft</a></div><div class="ttdeci">float ipmLeft</div><div class="ttdoc">Left point in original image of region to make IPM for.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:43</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a8567591791d3d00792fac764a96f842d"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a8567591791d3d00792fac764a96f842d">LaneDetector::imGetIPMExtent</a></div><div class="ttdeci">void imGetIPMExtent(const CameraInfo *cameraInfo, IPMInfo *ipmInfo)</div><div class="ttdoc">Calculates extent of image on ground plane.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:396</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_a3865b20af62b1d9e95094bac90003180"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#a3865b20af62b1d9e95094bac90003180">LaneDetector::CameraInfo::yaw</a></div><div class="ttdeci">float yaw</div><div class="ttdoc">yaw angle in radians (+ve clockwise)</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:66</div></div>
+<div class="ttc" id="astructLaneDetector_1_1CameraInfo_html_aec0377fc72bca3ebc67549c96351a608"><div class="ttname"><a href="structLaneDetector_1_1CameraInfo.html#aec0377fc72bca3ebc67549c96351a608">LaneDetector::CameraInfo::imageWidth</a></div><div class="ttdeci">float imageWidth</div><div class="ttdoc">width of images</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:68</div></div>
+<div class="ttc" id="aInversePerspectiveMapping_8cpp_html_a77be6fa5f108a68f8e086a064ac08dd2"><div class="ttname"><a href="InversePerspectiveMapping_8cpp.html#a77be6fa5f108a68f8e086a064ac08dd2">LaneDetector::imGetVanishingPoint</a></div><div class="ttdeci">cv::Point2f imGetVanishingPoint(const CameraInfo *cameraInfo)</div><div class="ttdoc">Computes vanishing point in image plane.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.cpp:266</div></div>
+<div class="ttc" id="astructLaneDetector_1_1IPMInfo_html_adce7974d2db2d78c1ce9340b0ce2cbad"><div class="ttname"><a href="structLaneDetector_1_1IPMInfo.html#adce7974d2db2d78c1ce9340b0ce2cbad">LaneDetector::IPMInfo::ipmRight</a></div><div class="ttdeci">float ipmRight</div><div class="ttdoc">Right point in original image of region to make IPM for.</div><div class="ttdef"><b>Definition:</b> InversePerspectiveMapping.hpp:45</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

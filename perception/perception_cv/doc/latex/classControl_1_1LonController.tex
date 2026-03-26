@@ -1,0 +1,67 @@
+\hypertarget{classControl_1_1LonController}{}\doxysection{Control\+::Lon\+Controller类 参考}
+\label{classControl_1_1LonController}\index{Control::LonController@{Control::LonController}}
+
+
+longitude 纵向控制器  
+
+
+
+
+{\ttfamily \#include $<$control\+Controller.\+hpp$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LonController_a736bd9c89ac095cefc37f5e2f1b1d8d1}\label{classControl_1_1LonController_a736bd9c89ac095cefc37f5e2f1b1d8d1}} 
+{\bfseries Lon\+Controller} (double max\+Speed)
+\item 
+double \mbox{\hyperlink{classControl_1_1LonController_a2c9900e82b26713d0ff0f81e4d4c0e95}{calc\+Speed}} (\mbox{\hyperlink{structControl_1_1State}{State}} s, const Traj \&traj, size\+\_\+t nearest\+ID)
+\begin{DoxyCompactList}\small\item\em 纵向控制器 根据轨迹最近点分配速度 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LonController_a40f59712f0590d38e41fb0935ab049a2}\label{classControl_1_1LonController_a40f59712f0590d38e41fb0935ab049a2}} 
+double {\bfseries regulate\+Output} (double speed)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LonController_a3c18d798420521fabd411f8a6fccc974}\label{classControl_1_1LonController_a3c18d798420521fabd411f8a6fccc974}} 
+double {\bfseries max\+Speed}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+longitude 纵向控制器 
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classControl_1_1LonController_a2c9900e82b26713d0ff0f81e4d4c0e95}\label{classControl_1_1LonController_a2c9900e82b26713d0ff0f81e4d4c0e95}} 
+\index{Control::LonController@{Control::LonController}!calcSpeed@{calcSpeed}}
+\index{calcSpeed@{calcSpeed}!Control::LonController@{Control::LonController}}
+\doxysubsubsection{\texorpdfstring{calcSpeed()}{calcSpeed()}}
+{\footnotesize\ttfamily double Control\+::\+Lon\+Controller\+::calc\+Speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structControl_1_1State}{State}}}]{s,  }\item[{const Traj \&}]{traj,  }\item[{size\+\_\+t}]{nearest\+ID }\end{DoxyParamCaption})}
+
+
+
+纵向控制器 根据轨迹最近点分配速度 
+
+
+\begin{DoxyParams}{参数}
+{\em s} & 车辆当前状态 \\
+\hline
+{\em traj} & 待跟踪轨迹 \\
+\hline
+{\em nearest\+ID} & traj中最近点\+ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+double 期望速度 
+\end{DoxyReturn}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlController_8hpp}{control\+Controller.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/\mbox{\hyperlink{controlController_8cc}{control\+Controller.\+cc}}\end{DoxyCompactItemize}

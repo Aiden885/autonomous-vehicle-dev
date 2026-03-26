@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package infopack;
+
+//这个信号灯信息是之前定义的，一致没使用过，先保留在这里
+message TrafficLight
+{
+    enum State
+    {   
+        // Verbose "_LIGHT" suffixes are used to avoid name collisions with defineColor.h
+        RED_LIGHT = 0;
+        YELLOW_LIGHT = 1;
+        GREEN_LIGHT = 2;
+    }
+    
+    bool active = 1;
+    State state = 2;
+    double remaining_time = 3;
+    double lane_length_before_intersection = 4;
+}
+
+
+//常熟和高铁新城的路侧红绿灯信息，都是遵照spat信息格式
+//本接口基于spat信息进行简化
+message Phase
+{
+    int64 phaseID=1; //相位ID
+    //SAPT结构里面这里是一个相位状态的列表，表征所有颜色灯的时间
+    //这里简化只是当前红绿灯状态
+
+    enum LightState { //红绿灯的状态
+	LightState_unavailable	= 0; // 相位状态未知或者异常
+	LightState_dark	= 1; //相位对应的控制灯为熄灭状态
+	LightState_flashing_red	= 2; //对应相位为红闪，通常作为警示灯作用
+	LightState_red	= 3; //红灯
+	LightState_flashing_green	= 4; //绿闪
+	LightState_permissive_green	= 5; //对应相位为绿灯，且该相位是非专用相位，直行和左转车流存在冲突，相位冲突情况未知或无法确定情况下，绿灯默认状态是permissive-green
+	LightState_protected_green	= 6; //对应相位为绿灯，且该相位是专用相位，车流受信号控制系统保护
+	LightState_yellow	= 7; //对应相位为黄灯
+	LightState_flashing_yellow	= 8; //对应相位为黄闪，通常作为警示灯作用
+    } 
+
+    LightState lightState =2;
+    int64	 startTime = 3;
+	int64 	 likelyEndTime = 4 ;
+}
+
+message  IntersectionState//路口信息
+{
+    string	 intersectionId =1;//路口ID ，有些是long 
+	//IntersectionStatusObject_t	 status;
+	//MinuteOfTheYear_t	*moy	
+	//DSecond_t	*timeStamp	
+	//TimeConfidence_t	*timeConfidence 
+	repeated Phase	 phases = 2; //红绿灯相位信息list
+}
+
+message  SPAT
+{
+    int64	 msgCnt =1; //一个计数，暂时用不上
+	int64  moy          =2; //本年的分钟 ，可选用
+	int64 	timeStamp =3; //分内秒 ，可选用
+	string  name    =4;//名称，可选
+	repeated  IntersectionState intersections = 5;//路口信息list
+}
+

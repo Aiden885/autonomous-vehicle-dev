@@ -1,0 +1,2960 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project planning: src/localPlanning_m.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project planning
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">localPlanning_m.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>local planning  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;localPlanning_m.hpp&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+localPlanning_m.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp__incl.png" border="0" usemap="#src_2localPlanning__m_8cpp" alt=""/></div>
+<map name="src_2localPlanning__m_8cpp" id="src_2localPlanning__m_8cpp">
+<area shape="rect" title="local planning" alt="" coords="2987,5,3165,32"/>
+<area shape="rect" href="localPlanning__m_8hpp_source.html" title=" " alt="" coords="2997,80,3155,107"/>
+<area shape="rect" title=" " alt="" coords="114,237,177,263"/>
+<area shape="rect" title=" " alt="" coords="3873,408,3946,435"/>
+<area shape="rect" title=" " alt="" coords="3039,237,3113,263"/>
+<area shape="rect" title=" " alt="" coords="3971,408,4051,435"/>
+<area shape="rect" title=" " alt="" coords="3138,237,3201,263"/>
+<area shape="rect" title=" " alt="" coords="3225,237,3300,263"/>
+<area shape="rect" title=" " alt="" coords="3324,237,3391,263"/>
+<area shape="rect" title=" " alt="" coords="209,408,271,435"/>
+<area shape="rect" title=" " alt="" coords="4124,155,4199,181"/>
+<area shape="rect" title=" " alt="" coords="4223,155,4289,181"/>
+<area shape="rect" href="interpolate__m_8h_source.html" title=" " alt="" coords="5,155,131,181"/>
+<area shape="rect" title=" " alt="" coords="4313,155,4399,181"/>
+<area shape="rect" href="control_8pb_8h_source.html" title=" " alt="" coords="1917,237,2091,263"/>
+<area shape="rect" href="defineColor_8h_source.html" title=" " alt="" coords="3415,237,3524,263"/>
+<area shape="rect" href="imu_8pb_8h_source.html" title=" " alt="" coords="2115,237,2250,263"/>
+<area shape="rect" href="localization__MapAnalysis_8h_source.html" title=" " alt="" coords="623,229,780,271"/>
+<area shape="rect" href="prediction_8pb_8h_source.html" title=" " alt="" coords="2274,237,2489,263"/>
+<area shape="rect" href="objects_8pb_8h_source.html" title=" " alt="" coords="2513,237,2687,263"/>
+<area shape="rect" href="traffic__light_8pb_8h_source.html" title=" " alt="" coords="2711,237,2913,263"/>
+<area shape="rect" title=" " alt="" coords="3549,237,3681,263"/>
+<area shape="rect" href="localPlanning_8hpp_source.html" title=" " alt="" coords="2882,155,3019,181"/>
+<area shape="rect" title=" " alt="" coords="933,408,992,435"/>
+<area shape="rect" title=" " alt="" coords="3362,319,3526,360"/>
+<area shape="rect" title=" " alt="" coords="1025,319,1167,360"/>
+<area shape="rect" title=" " alt="" coords="1191,326,1369,353"/>
+<area shape="rect" title=" " alt="" coords="1394,326,1609,353"/>
+<area shape="rect" title=" " alt="" coords="1633,319,1828,360"/>
+<area shape="rect" title=" " alt="" coords="1852,319,2047,360"/>
+<area shape="rect" title=" " alt="" coords="2071,319,2244,360"/>
+<area shape="rect" title=" " alt="" coords="2269,326,2473,353"/>
+<area shape="rect" title=" " alt="" coords="2497,326,2697,353"/>
+<area shape="rect" title=" " alt="" coords="2721,319,2908,360"/>
+<area shape="rect" title=" " alt="" coords="2933,319,3126,360"/>
+<area shape="rect" title=" " alt="" coords="3150,319,3338,360"/>
+<area shape="rect" href="rapidxml_8hpp.html" title=" " alt="" coords="490,408,598,435"/>
+<area shape="rect" href="rapidxml__utils_8hpp.html" title=" " alt="" coords="575,326,718,353"/>
+<area shape="rect" href="rapidxml__print_8hpp.html" title=" " alt="" coords="354,326,499,353"/>
+<area shape="rect" href="TrafficLight_8h_source.html" title=" " alt="" coords="793,326,900,353"/>
+<area shape="rect" title=" " alt="" coords="514,483,579,509"/>
+<area shape="rect" title=" " alt="" coords="347,483,416,509"/>
+<area shape="rect" title=" " alt="" coords="441,483,490,509"/>
+<area shape="rect" title=" " alt="" coords="603,483,690,509"/>
+<area shape="rect" title=" " alt="" coords="295,408,371,435"/>
+<area shape="rect" title=" " alt="" coords="395,408,466,435"/>
+<area shape="rect" title=" " alt="" coords="821,408,872,435"/>
+<area shape="rect" title=" " alt="" coords="3652,319,3847,360"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a4037c81e3bbbd26d0b723be46fe6c9f0"><td class="memItemLeft" align="right" valign="top"><a id="a4037c81e3bbbd26d0b723be46fe6c9f0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PLANNING_VELOCITY_MULTIPLIER</b>&#160;&#160;&#160;2.6</td></tr>
+<tr class="separator:a4037c81e3bbbd26d0b723be46fe6c9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad81f4379de6d04933e626e97a741107"><td class="memItemLeft" align="right" valign="top"><a id="aad81f4379de6d04933e626e97a741107"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_PLANNING_DISTANCE</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:aad81f4379de6d04933e626e97a741107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a600bfe54622e3784956cd9955c87818b"><td class="memItemLeft" align="right" valign="top"><a id="a600bfe54622e3784956cd9955c87818b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_PLANNING_DISTANCE</b>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a600bfe54622e3784956cd9955c87818b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4361b5036aa60ee02a43af5499a3460a"><td class="memItemLeft" align="right" valign="top"><a id="a4361b5036aa60ee02a43af5499a3460a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_PLANNING_DISTANCE</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a4361b5036aa60ee02a43af5499a3460a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8e457080f30fe8d945e69fe7ef1f7c"><td class="memItemLeft" align="right" valign="top"><a id="abd8e457080f30fe8d945e69fe7ef1f7c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DISTANCE_RANGE</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:abd8e457080f30fe8d945e69fe7ef1f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3b2b4048dd724031b6a9b05083a5ad"><td class="memItemLeft" align="right" valign="top"><a id="afe3b2b4048dd724031b6a9b05083a5ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_SECOND_PLANNING_DISTANCE_LONGER</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:afe3b2b4048dd724031b6a9b05083a5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0306f06511d028578cccad089906e8f8"><td class="memItemLeft" align="right" valign="top"><a id="a0306f06511d028578cccad089906e8f8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POINT_DIS_THRESHOLD_ON_CURRENT_LANE</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a0306f06511d028578cccad089906e8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159747386342b706578feb9d4b480e95"><td class="memItemLeft" align="right" valign="top"><a id="a159747386342b706578feb9d4b480e95"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POINT_DIS_THRESHOLD_ON_OTHER_LANE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a159747386342b706578feb9d4b480e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b48d48fce85a9566080e1594744c7a1"><td class="memItemLeft" align="right" valign="top"><a id="a4b48d48fce85a9566080e1594744c7a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POINT_ANGLE_THRESHOLD</b>&#160;&#160;&#160;120</td></tr>
+<tr class="separator:a4b48d48fce85a9566080e1594744c7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeafd216dd0438d66b23be5be7fbe415e"><td class="memItemLeft" align="right" valign="top"><a id="aeafd216dd0438d66b23be5be7fbe415e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>END_SPEED_NUM</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aeafd216dd0438d66b23be5be7fbe415e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a54d2b7fc10c047cb8392ccd91d4bf"><td class="memItemLeft" align="right" valign="top"><a id="a13a54d2b7fc10c047cb8392ccd91d4bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DESIRED_SPEED</b>&#160;&#160;&#160;12 / 3.6</td></tr>
+<tr class="separator:a13a54d2b7fc10c047cb8392ccd91d4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9feff0565831f1df947a935850835ca"><td class="memItemLeft" align="right" valign="top"><a id="af9feff0565831f1df947a935850835ca"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SPEED_RANGE</b>&#160;&#160;&#160;3 / 3.6</td></tr>
+<tr class="separator:af9feff0565831f1df947a935850835ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcae6e95ecea695707e48b31d638a27a"><td class="memItemLeft" align="right" valign="top"><a id="afcae6e95ecea695707e48b31d638a27a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CURVATURE_SPEED</b>&#160;&#160;&#160;10 / 3.6</td></tr>
+<tr class="separator:afcae6e95ecea695707e48b31d638a27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a5a1dcd2cd423bdd90c1c9287ee5b8"><td class="memItemLeft" align="right" valign="top"><a id="ad5a5a1dcd2cd423bdd90c1c9287ee5b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CURVATURE_THRESHOLS</b>&#160;&#160;&#160;0.1</td></tr>
+<tr class="separator:ad5a5a1dcd2cd423bdd90c1c9287ee5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62cc9d25d2b2113efbcc07dbea668937"><td class="memItemLeft" align="right" valign="top"><a id="a62cc9d25d2b2113efbcc07dbea668937"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VEHICLE_DIAGONAL</b>&#160;&#160;&#160;2.7951</td></tr>
+<tr class="separator:a62cc9d25d2b2113efbcc07dbea668937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da34d7bdbc24eeda7b2cb3475408a69"><td class="memItemLeft" align="right" valign="top"><a id="a5da34d7bdbc24eeda7b2cb3475408a69"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VEHICLE_DIAGONAL_DEGREE</b>&#160;&#160;&#160;26.5651</td></tr>
+<tr class="separator:a5da34d7bdbc24eeda7b2cb3475408a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5309dc30dcdfe8148f822524232781c"><td class="memItemLeft" align="right" valign="top"><a id="ab5309dc30dcdfe8148f822524232781c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PREDICT_FREQUENCY</b>&#160;&#160;&#160;0.1</td></tr>
+<tr class="separator:ab5309dc30dcdfe8148f822524232781c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3214b5175e1b289b1acc33e75afdafdb"><td class="memItemLeft" align="right" valign="top"><a id="a3214b5175e1b289b1acc33e75afdafdb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP_JUDGE_DISTANCE</b>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a3214b5175e1b289b1acc33e75afdafdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab23eb23fe4aef6b90c20b38b9d7b9f5e"><td class="memItemLeft" align="right" valign="top"><a id="ab23eb23fe4aef6b90c20b38b9d7b9f5e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_FRENET_S</b>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ab23eb23fe4aef6b90c20b38b9d7b9f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7200ae8c091444648e7ff9ade5efbb1e"><td class="memItemLeft" align="right" valign="top"><a id="a7200ae8c091444648e7ff9ade5efbb1e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_RELA_DIST</b>&#160;&#160;&#160;15.0</td></tr>
+<tr class="separator:a7200ae8c091444648e7ff9ade5efbb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca9c47c311f4f7e544bf34e39365dc6"><td class="memItemLeft" align="right" valign="top"><a id="a5ca9c47c311f4f7e544bf34e39365dc6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_BEGIN_DIST</b>&#160;&#160;&#160;(ACC_RELA_DIST + 30)</td></tr>
+<tr class="separator:a5ca9c47c311f4f7e544bf34e39365dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97019380d9fcd54c3c3313b5b5de679e"><td class="memItemLeft" align="right" valign="top"><a id="a97019380d9fcd54c3c3313b5b5de679e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ACC_FOLLOW_OBJECT_ID</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a97019380d9fcd54c3c3313b5b5de679e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf617da9cd2dc357543f4593793ebe3c"><td class="memItemLeft" align="right" valign="top"><a id="adf617da9cd2dc357543f4593793ebe3c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>doNothing</b>()</td></tr>
+<tr class="separator:adf617da9cd2dc357543f4593793ebe3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc11e39e577da8617ac3640b01eaa21"><td class="memItemLeft" align="right" valign="top"><a id="aabc11e39e577da8617ac3640b01eaa21"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SAFE_DISTANCE</b>&#160;&#160;&#160;1.0</td></tr>
+<tr class="separator:aabc11e39e577da8617ac3640b01eaa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:add815e7406aeaa10d0a316e09d33da26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26">gaussConvert</a> (const <a class="el" href="structgaussConvertParam.html">gaussConvertParam</a> &amp;param, const <a class="el" href="structgaussConvertInput.html">gaussConvertInput</a> &amp;input, <a class="el" href="structgaussConvertOutput.html">gaussConvertOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:add815e7406aeaa10d0a316e09d33da26"><td class="mdescLeft">&#160;</td><td class="mdescRight">经纬度转全局坐标  <a href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26">更多...</a><br /></td></tr>
+<tr class="separator:add815e7406aeaa10d0a316e09d33da26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb711aa6b585479da7bb5a48855de1e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3">coordTran2D</a> (const <a class="el" href="structcoordTran2DParam.html">coordTran2DParam</a> &amp;param, const <a class="el" href="structcoordTran2DInput.html">coordTran2DInput</a> &amp;input, <a class="el" href="structcoordTran2DOutput.html">coordTran2DOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:acb711aa6b585479da7bb5a48855de1e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局坐标转局部坐标  <a href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3">更多...</a><br /></td></tr>
+<tr class="separator:acb711aa6b585479da7bb5a48855de1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1465540ad2745e2531c5c980c3c710b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ae1465540ad2745e2531c5c980c3c710b">inArea</a> (const <a class="el" href="structinAreaParam.html">inAreaParam</a> &amp;param, const <a class="el" href="structinAreaInput.html">inAreaInput</a> &amp;input, <a class="el" href="structinAreaOutput.html">inAreaOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ae1465540ad2745e2531c5c980c3c710b"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断点是否在区域内  <a href="localPlanning__m_8cpp.html#ae1465540ad2745e2531c5c980c3c710b">更多...</a><br /></td></tr>
+<tr class="separator:ae1465540ad2745e2531c5c980c3c710b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a603957659141af389fe56e5659de66ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a603957659141af389fe56e5659de66ee">pointDistance</a> (const <a class="el" href="structpointDistanceParam.html">pointDistanceParam</a> &amp;param, const <a class="el" href="structpointDistanceInput.html">pointDistanceInput</a> &amp;input, <a class="el" href="structpointDistanceOutput.html">pointDistanceOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a603957659141af389fe56e5659de66ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算两点之间的距离  <a href="localPlanning__m_8cpp.html#a603957659141af389fe56e5659de66ee">更多...</a><br /></td></tr>
+<tr class="separator:a603957659141af389fe56e5659de66ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c33f1bde12ba69245517cb468cd8f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ab0c33f1bde12ba69245517cb468cd8f1">courseAngleRevise</a> (const <a class="el" href="structcourseAngleReviseParam.html">courseAngleReviseParam</a> &amp;param, const <a class="el" href="structcourseAngleReviseInput.html">courseAngleReviseInput</a> &amp;input, <a class="el" href="structcourseAngleReviseOutput.html">courseAngleReviseOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ab0c33f1bde12ba69245517cb468cd8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆时针旋转坐标系90度，向东0度变成向北0度  <a href="localPlanning__m_8cpp.html#ab0c33f1bde12ba69245517cb468cd8f1">更多...</a><br /></td></tr>
+<tr class="separator:ab0c33f1bde12ba69245517cb468cd8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572cfaa68a6eafec25c9fbce22be58f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a572cfaa68a6eafec25c9fbce22be58f1">loadStopPoints</a> (const <a class="el" href="structloadStopPointsParam.html">loadStopPointsParam</a> &amp;param, const <a class="el" href="structloadStopPointsInput.html">loadStopPointsInput</a> &amp;input, <a class="el" href="structloadStopPointsOutput.html">loadStopPointsOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a572cfaa68a6eafec25c9fbce22be58f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件中加载停止点  <a href="localPlanning__m_8cpp.html#a572cfaa68a6eafec25c9fbce22be58f1">更多...</a><br /></td></tr>
+<tr class="separator:a572cfaa68a6eafec25c9fbce22be58f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28e587fc6e0650ee9e96b05e2597245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#aa28e587fc6e0650ee9e96b05e2597245">loadStopPointsFromYaml</a> (const <a class="el" href="structloadStopPointsFromYamlParam.html">loadStopPointsFromYamlParam</a> &amp;param, const <a class="el" href="structloadStopPointsFromYamlInput.html">loadStopPointsFromYamlInput</a> &amp;input, <a class="el" href="structloadStopPointsFromYamlOutput.html">loadStopPointsFromYamlOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:aa28e587fc6e0650ee9e96b05e2597245"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件中加载停止点  <a href="localPlanning__m_8cpp.html#aa28e587fc6e0650ee9e96b05e2597245">更多...</a><br /></td></tr>
+<tr class="separator:aa28e587fc6e0650ee9e96b05e2597245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf7a5a33c481b3077c1a365feb6e7b2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#abf7a5a33c481b3077c1a365feb6e7b2b">getNextRoadLaneId</a> (const <a class="el" href="structgetNextRoadLaneIdParam.html">getNextRoadLaneIdParam</a> &amp;param, const <a class="el" href="structgetNextRoadLaneIdInput.html">getNextRoadLaneIdInput</a> &amp;input, <a class="el" href="structgetNextRoadLaneIdOutput.html">getNextRoadLaneIdOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:abf7a5a33c481b3077c1a365feb6e7b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">从全局规划中，获取后续车道和道路Id  <a href="localPlanning__m_8cpp.html#abf7a5a33c481b3077c1a365feb6e7b2b">更多...</a><br /></td></tr>
+<tr class="separator:abf7a5a33c481b3077c1a365feb6e7b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9d5ad9600741ad7b9bcce3455f55c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ae9d5ad9600741ad7b9bcce3455f55c44">getPlanningDistance</a> (const <a class="el" href="structgetPlanningDistanceParam.html">getPlanningDistanceParam</a> &amp;param, const <a class="el" href="structgetPlanningDistanceInput.html">getPlanningDistanceInput</a> &amp;input, <a class="el" href="structgetPlanningDistanceOutput.html">getPlanningDistanceOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ae9d5ad9600741ad7b9bcce3455f55c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据速度、曲率获取规划距离  <a href="localPlanning__m_8cpp.html#ae9d5ad9600741ad7b9bcce3455f55c44">更多...</a><br /></td></tr>
+<tr class="separator:ae9d5ad9600741ad7b9bcce3455f55c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e322e9dd48a95af52ac68c43fbc213"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a54e322e9dd48a95af52ac68c43fbc213">getPlanningPoint</a> (const <a class="el" href="structgetPlanningPointParam.html">getPlanningPointParam</a> &amp;param, const <a class="el" href="structgetPlanningPointInput.html">getPlanningPointInput</a> &amp;input, <a class="el" href="structgetPlanningPointOutput.html">getPlanningPointOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a54e322e9dd48a95af52ac68c43fbc213"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据车辆信息获取规划预瞄点  <a href="localPlanning__m_8cpp.html#a54e322e9dd48a95af52ac68c43fbc213">更多...</a><br /></td></tr>
+<tr class="separator:a54e322e9dd48a95af52ac68c43fbc213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb934788ac59a4dd5a890b8bd5988f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#aceb934788ac59a4dd5a890b8bd5988f5">limitPlanningDistance</a> (const <a class="el" href="structlimitPlanningDistanceParam.html">limitPlanningDistanceParam</a> &amp;param, const <a class="el" href="structlimitPlanningDistanceInput.html">limitPlanningDistanceInput</a> &amp;input, <a class="el" href="structlimitPlanningDistanceOutput.html">limitPlanningDistanceOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:aceb934788ac59a4dd5a890b8bd5988f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">限制规划距离，防止突变  <a href="localPlanning__m_8cpp.html#aceb934788ac59a4dd5a890b8bd5988f5">更多...</a><br /></td></tr>
+<tr class="separator:aceb934788ac59a4dd5a890b8bd5988f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f2ab502562c0b5cdaa920864965d04d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a1f2ab502562c0b5cdaa920864965d04d">getAngle</a> (const <a class="el" href="structgetAngleParam.html">getAngleParam</a> &amp;param, const <a class="el" href="structgetAngleInput.html">getAngleInput</a> &amp;input, <a class="el" href="structgetAngleOutput.html">getAngleOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a1f2ab502562c0b5cdaa920864965d04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算坐标系中两点角度  <a href="localPlanning__m_8cpp.html#a1f2ab502562c0b5cdaa920864965d04d">更多...</a><br /></td></tr>
+<tr class="separator:a1f2ab502562c0b5cdaa920864965d04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad174ae3dfe5302cb5a2fffaa15cefcef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ad174ae3dfe5302cb5a2fffaa15cefcef">getAngleDiff</a> (const <a class="el" href="structgetAngleDiffParam.html">getAngleDiffParam</a> &amp;param, const <a class="el" href="structgetAngleDiffInput.html">getAngleDiffInput</a> &amp;input, <a class="el" href="structgetAngleDiffOutput.html">getAngleDiffOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ad174ae3dfe5302cb5a2fffaa15cefcef"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算两角度之差，并正则化  <a href="localPlanning__m_8cpp.html#ad174ae3dfe5302cb5a2fffaa15cefcef">更多...</a><br /></td></tr>
+<tr class="separator:ad174ae3dfe5302cb5a2fffaa15cefcef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa82b0ccf172f3ff2c6be80318128a83"><td class="memItemLeft" align="right" valign="top"><a id="aaa82b0ccf172f3ff2c6be80318128a83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>localPlanning</b> (const <a class="el" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, double velocity, const <a class="el" href="classRoadMap.html">RoadMap</a> &amp;map, <a class="el" href="structDecisionData.html">DecisionData</a> &amp;decisionData, const <a class="el" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;predictionMsg, const std::vector&lt; std::tuple&lt; int32_t, int32_t &gt;&gt; &amp;routingList, const std::vector&lt; <a class="el" href="structGaussRoadPoint.html">GaussRoadPoint</a> &gt; stopPoints, const <a class="el" href="classinfopack_1_1TrafficLight.html">infopack::TrafficLight</a> &amp;trafficLight, std::vector&lt; <a class="el" href="classinfopack_1_1ObjectsProto.html">infopack::ObjectsProto</a> &gt; objectsCmd)</td></tr>
+<tr class="separator:aaa82b0ccf172f3ff2c6be80318128a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46745cb3754d10c22ed26abd5542a11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ae46745cb3754d10c22ed26abd5542a11">restart</a> (const <a class="el" href="structrestartParam.html">restartParam</a> &amp;param, const <a class="el" href="structrestartInput.html">restartInput</a> &amp;input, <a class="el" href="structrestartOutput.html">restartOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ae46745cb3754d10c22ed26abd5542a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">车辆停车后，判断能否重新启动  <a href="localPlanning__m_8cpp.html#ae46745cb3754d10c22ed26abd5542a11">更多...</a><br /></td></tr>
+<tr class="separator:ae46745cb3754d10c22ed26abd5542a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03c9a4b8fb5f1711a92e7f061449bd0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a03c9a4b8fb5f1711a92e7f061449bd0e">stop</a> (const <a class="el" href="structstopParam.html">stopParam</a> &amp;param, const <a class="el" href="structstopInput.html">stopInput</a> &amp;input, <a class="el" href="structstopOutput.html">stopOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a03c9a4b8fb5f1711a92e7f061449bd0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">停车时修改速度曲线  <a href="localPlanning__m_8cpp.html#a03c9a4b8fb5f1711a92e7f061449bd0e">更多...</a><br /></td></tr>
+<tr class="separator:a03c9a4b8fb5f1711a92e7f061449bd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53e528451b5ff3e429347df1cc4c00b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#af53e528451b5ff3e429347df1cc4c00b">stopPointJudge</a> (const <a class="el" href="structstopPointJudgeParam.html">stopPointJudgeParam</a> &amp;param, const <a class="el" href="structstopPointJudgeInput.html">stopPointJudgeInput</a> &amp;input, <a class="el" href="structstopPointJudgeOutput.html">stopPointJudgeOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:af53e528451b5ff3e429347df1cc4c00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断车辆是否在停车区域  <a href="localPlanning__m_8cpp.html#af53e528451b5ff3e429347df1cc4c00b">更多...</a><br /></td></tr>
+<tr class="separator:af53e528451b5ff3e429347df1cc4c00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7e309acd6a1ac4589609a3e7fd28724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724">pointOnCubicBezier</a> (const <a class="el" href="structpointOnCubicBezierParam.html">pointOnCubicBezierParam</a> &amp;param, const <a class="el" href="structpointOnCubicBezierInput.html">pointOnCubicBezierInput</a> &amp;input, <a class="el" href="structpointOnCubicBezierOutput.html">pointOnCubicBezierOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ae7e309acd6a1ac4589609a3e7fd28724"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算贝塞尔曲线上的点  <a href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724">更多...</a><br /></td></tr>
+<tr class="separator:ae7e309acd6a1ac4589609a3e7fd28724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dfff6655bc05b018db306bfbc09b965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965">generateBezierPathInFrenet</a> (const <a class="el" href="structgenerateBezierPathInFrenetParam.html">generateBezierPathInFrenetParam</a> &amp;param, const <a class="el" href="structgenerateBezierPathInFrenetInput.html">generateBezierPathInFrenetInput</a> &amp;input, <a class="el" href="structgenerateBezierPathInFrenetOutput.html">generateBezierPathInFrenetOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a7dfff6655bc05b018db306bfbc09b965"><td class="mdescLeft">&#160;</td><td class="mdescRight">在frenet中生成贝塞尔曲线  <a href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965">更多...</a><br /></td></tr>
+<tr class="separator:a7dfff6655bc05b018db306bfbc09b965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007880750244bfeeff6f9532de7a6ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a007880750244bfeeff6f9532de7a6ec9">clearPathList</a> (const <a class="el" href="structclearPathListParam.html">clearPathListParam</a> &amp;param, const <a class="el" href="structclearPathListInput.html">clearPathListInput</a> &amp;input, <a class="el" href="structclearPathListOutput.html">clearPathListOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a007880750244bfeeff6f9532de7a6ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">清除上次生成的轨迹  <a href="localPlanning__m_8cpp.html#a007880750244bfeeff6f9532de7a6ec9">更多...</a><br /></td></tr>
+<tr class="separator:a007880750244bfeeff6f9532de7a6ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d5ea05e8363d959d053f33d5e04a9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b">getTrajectoryPlanningResult</a> (const <a class="el" href="structgetTrajectoryPlanningResultParam.html">getTrajectoryPlanningResultParam</a> &amp;param, const <a class="el" href="structgetTrajectoryPlanningResultInput.html">getTrajectoryPlanningResultInput</a> &amp;input, <a class="el" href="structgetTrajectoryPlanningResultOutput.html">getTrajectoryPlanningResultOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ac9d5ea05e8363d959d053f33d5e04a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择  <a href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b">更多...</a><br /></td></tr>
+<tr class="separator:ac9d5ea05e8363d959d053f33d5e04a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1b4ed46cd8feea3d9246d37dd82979b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b">getDistance</a> (const <a class="el" href="structgetDistanceParam.html">getDistanceParam</a> &amp;param, const <a class="el" href="structgetDistanceInput.html">getDistanceInput</a> &amp;input, <a class="el" href="structgetDistanceOutput.html">getDistanceOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:af1b4ed46cd8feea3d9246d37dd82979b"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算两点之间的距离  <a href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b">更多...</a><br /></td></tr>
+<tr class="separator:af1b4ed46cd8feea3d9246d37dd82979b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e673d9855400ef1c5c04fb98bd1122d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a7e673d9855400ef1c5c04fb98bd1122d">pointToLineDistance</a> (const <a class="el" href="structpointToLineDistanceParam.html">pointToLineDistanceParam</a> &amp;param, const <a class="el" href="structpointToLineDistanceInput.html">pointToLineDistanceInput</a> &amp;input, <a class="el" href="structpointToLineDistanceOutput.html">pointToLineDistanceOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a7e673d9855400ef1c5c04fb98bd1122d"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算点到线段的距离  <a href="localPlanning__m_8cpp.html#a7e673d9855400ef1c5c04fb98bd1122d">更多...</a><br /></td></tr>
+<tr class="separator:a7e673d9855400ef1c5c04fb98bd1122d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77afe0badde48651b0fcb99a2717811f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a77afe0badde48651b0fcb99a2717811f">angleRegulate</a> (const <a class="el" href="structangleRegulateParam.html">angleRegulateParam</a> &amp;param, const <a class="el" href="structangleRegulateInput.html">angleRegulateInput</a> &amp;input, <a class="el" href="structangleRegulateOutput.html">angleRegulateOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a77afe0badde48651b0fcb99a2717811f"><td class="mdescLeft">&#160;</td><td class="mdescRight">转化角度到0-180中，便于比较  <a href="localPlanning__m_8cpp.html#a77afe0badde48651b0fcb99a2717811f">更多...</a><br /></td></tr>
+<tr class="separator:a77afe0badde48651b0fcb99a2717811f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90cc5e19c44b65d660afb028ff83cfb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a90cc5e19c44b65d660afb028ff83cfb6">getCurrentPosition</a> (const <a class="el" href="structgetCurrentPositionParam.html">getCurrentPositionParam</a> &amp;param, const <a class="el" href="structgetCurrentPositionInput.html">getCurrentPositionInput</a> &amp;input, <a class="el" href="structgetCurrentPositionOutput.html">getCurrentPositionOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a90cc5e19c44b65d660afb028ff83cfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">寻找距离车辆位置最近的路点  <a href="localPlanning__m_8cpp.html#a90cc5e19c44b65d660afb028ff83cfb6">更多...</a><br /></td></tr>
+<tr class="separator:a90cc5e19c44b65d660afb028ff83cfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a090a56998296fc27987a8ec717e4f374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a090a56998296fc27987a8ec717e4f374">generateSpeedList</a> (const <a class="el" href="structgenerateSpeedListParam.html">generateSpeedListParam</a> &amp;param, const <a class="el" href="structgenerateSpeedListInput.html">generateSpeedListInput</a> &amp;input, <a class="el" href="structgenerateSpeedListOutput.html">generateSpeedListOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a090a56998296fc27987a8ec717e4f374"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据道路信息等，采样生成速度曲线  <a href="localPlanning__m_8cpp.html#a090a56998296fc27987a8ec717e4f374">更多...</a><br /></td></tr>
+<tr class="separator:a090a56998296fc27987a8ec717e4f374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49560bf7195a2f9e3c4a13670f4f6901"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a49560bf7195a2f9e3c4a13670f4f6901">generateTrajectoryList</a> (const <a class="el" href="structgenerateTrajectoryListParam.html">generateTrajectoryListParam</a> &amp;param, const <a class="el" href="structgenerateTrajectoryListInput.html">generateTrajectoryListInput</a> &amp;input, <a class="el" href="structgenerateTrajectoryListOutput.html">generateTrajectoryListOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a49560bf7195a2f9e3c4a13670f4f6901"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成采样轨迹，供后续选择  <a href="localPlanning__m_8cpp.html#a49560bf7195a2f9e3c4a13670f4f6901">更多...</a><br /></td></tr>
+<tr class="separator:a49560bf7195a2f9e3c4a13670f4f6901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d03c18175d3c83123c5451bd0a301c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a6d03c18175d3c83123c5451bd0a301c1">processTrafficLight</a> (const <a class="el" href="structprocessTrafficLightParam.html">processTrafficLightParam</a> &amp;param, const <a class="el" href="structprocessTrafficLightInput.html">processTrafficLightInput</a> &amp;input, <a class="el" href="structprocessTrafficLightOutput.html">processTrafficLightOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a6d03c18175d3c83123c5451bd0a301c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据红绿灯信息更新决策数据  <a href="localPlanning__m_8cpp.html#a6d03c18175d3c83123c5451bd0a301c1">更多...</a><br /></td></tr>
+<tr class="separator:a6d03c18175d3c83123c5451bd0a301c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ba9cbfa417d5e8ceaac09d8662ceea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea">getOptimalTrajectoryIndex</a> (const <a class="el" href="structgetOptimalTrajectoryIndexParam.html">getOptimalTrajectoryIndexParam</a> &amp;param, const <a class="el" href="structgetOptimalTrajectoryIndexInput.html">getOptimalTrajectoryIndexInput</a> &amp;input, <a class="el" href="structgetOptimalTrajectoryIndexOutput.html">getOptimalTrajectoryIndexOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a25ba9cbfa417d5e8ceaac09d8662ceea"><td class="mdescLeft">&#160;</td><td class="mdescRight">评估轨迹，并获取最优轨迹索引  <a href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea">更多...</a><br /></td></tr>
+<tr class="separator:a25ba9cbfa417d5e8ceaac09d8662ceea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd812f13e27ab10c67c7e752b7dc012d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#acd812f13e27ab10c67c7e752b7dc012d">trajectoryCollisionCheck</a> (const <a class="el" href="structtrajectoryCollisionCheckParam.html">trajectoryCollisionCheckParam</a> &amp;param, const <a class="el" href="structtrajectoryCollisionCheckInput.html">trajectoryCollisionCheckInput</a> &amp;input, <a class="el" href="structtrajectoryCollisionCheckOutput.html">trajectoryCollisionCheckOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:acd812f13e27ab10c67c7e752b7dc012d"><td class="mdescLeft">&#160;</td><td class="mdescRight">轨迹碰撞检测，true表示可行，false表示碰撞  <a href="localPlanning__m_8cpp.html#acd812f13e27ab10c67c7e752b7dc012d">更多...</a><br /></td></tr>
+<tr class="separator:acd812f13e27ab10c67c7e752b7dc012d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1839601772fcb43e22b06453b7c11861"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a1839601772fcb43e22b06453b7c11861">ableToPassYellowLight</a> (const <a class="el" href="structableToPassYellowLightParam.html">ableToPassYellowLightParam</a> &amp;param, const <a class="el" href="structableToPassYellowLightInput.html">ableToPassYellowLightInput</a> &amp;input, <a class="el" href="structableToPassYellowLightOutput.html">ableToPassYellowLightOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a1839601772fcb43e22b06453b7c11861"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断是否能通过黄灯  <a href="localPlanning__m_8cpp.html#a1839601772fcb43e22b06453b7c11861">更多...</a><br /></td></tr>
+<tr class="separator:a1839601772fcb43e22b06453b7c11861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9673ed746e166b4e273051bbf8c18a04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a9673ed746e166b4e273051bbf8c18a04">pointCollisionCheck</a> (const <a class="el" href="structpointCollisionCheckParam.html">pointCollisionCheckParam</a> &amp;param, const <a class="el" href="structpointCollisionCheckInput.html">pointCollisionCheckInput</a> &amp;input, <a class="el" href="structpointCollisionCheckOutput.html">pointCollisionCheckOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a9673ed746e166b4e273051bbf8c18a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">轨迹点碰撞检测  <a href="localPlanning__m_8cpp.html#a9673ed746e166b4e273051bbf8c18a04">更多...</a><br /></td></tr>
+<tr class="separator:a9673ed746e166b4e273051bbf8c18a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07abb29775692cf43b900f9c8bfc0b74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a07abb29775692cf43b900f9c8bfc0b74">boundaryCollisionCheck</a> (const <a class="el" href="structboundaryCollisionCheckParam.html">boundaryCollisionCheckParam</a> &amp;param, const <a class="el" href="structboundaryCollisionCheckInput.html">boundaryCollisionCheckInput</a> &amp;input, <a class="el" href="structboundaryCollisionCheckOutput.html">boundaryCollisionCheckOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a07abb29775692cf43b900f9c8bfc0b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">边碰撞检测  <a href="localPlanning__m_8cpp.html#a07abb29775692cf43b900f9c8bfc0b74">更多...</a><br /></td></tr>
+<tr class="separator:a07abb29775692cf43b900f9c8bfc0b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd5e98d51d7ec0a9a239194a218e89d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a7cd5e98d51d7ec0a9a239194a218e89d">innerCollisionCheck</a> (const <a class="el" href="structinnerCollisionCheckParam.html">innerCollisionCheckParam</a> &amp;param, const <a class="el" href="structinnerCollisionCheckInput.html">innerCollisionCheckInput</a> &amp;input, <a class="el" href="structinnerCollisionCheckOutput.html">innerCollisionCheckOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a7cd5e98d51d7ec0a9a239194a218e89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">内部包含检测  <a href="localPlanning__m_8cpp.html#a7cd5e98d51d7ec0a9a239194a218e89d">更多...</a><br /></td></tr>
+<tr class="separator:a7cd5e98d51d7ec0a9a239194a218e89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b96b7cfb737fbe9dbfbdd2c164f5a21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a4b96b7cfb737fbe9dbfbdd2c164f5a21">changeCurrentPoint</a> (const <a class="el" href="structchangeCurrentPointParam.html">changeCurrentPointParam</a> &amp;param, const <a class="el" href="structchangeCurrentPointInput.html">changeCurrentPointInput</a> &amp;input, <a class="el" href="structchangeCurrentPointOutput.html">changeCurrentPointOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a4b96b7cfb737fbe9dbfbdd2c164f5a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断是否可以换道  <a href="localPlanning__m_8cpp.html#a4b96b7cfb737fbe9dbfbdd2c164f5a21">更多...</a><br /></td></tr>
+<tr class="separator:a4b96b7cfb737fbe9dbfbdd2c164f5a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8adfb6f5dac3c879f559584066cfafaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa">changeLocalToGlobal</a> (const <a class="el" href="structchangeLocalToGlobalParam.html">changeLocalToGlobalParam</a> &amp;param, const <a class="el" href="structchangeLocalToGlobalInput.html">changeLocalToGlobalInput</a> &amp;input, <a class="el" href="structchangeLocalToGlobalOutput.html">changeLocalToGlobalOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a8adfb6f5dac3c879f559584066cfafaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">局部坐标轨迹转为全局轨迹  <a href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa">更多...</a><br /></td></tr>
+<tr class="separator:a8adfb6f5dac3c879f559584066cfafaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a601d6ae079dd9cea28845f83d7eca073"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a601d6ae079dd9cea28845f83d7eca073">initLocalPlanning</a> (const <a class="el" href="structinitLocalPlanningParam.html">initLocalPlanningParam</a> &amp;param, const <a class="el" href="structinitLocalPlanningInput.html">initLocalPlanningInput</a> &amp;input, <a class="el" href="structinitLocalPlanningOutput.html">initLocalPlanningOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a601d6ae079dd9cea28845f83d7eca073"><td class="mdescLeft">&#160;</td><td class="mdescRight">局部规划决策数据初始化  <a href="localPlanning__m_8cpp.html#a601d6ae079dd9cea28845f83d7eca073">更多...</a><br /></td></tr>
+<tr class="separator:a601d6ae079dd9cea28845f83d7eca073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af379577e4ea200d4e7eb20278662c88f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#af379577e4ea200d4e7eb20278662c88f">fixRoadLaneIndex</a> (const <a class="el" href="structfixRoadLaneIndexParam.html">fixRoadLaneIndexParam</a> &amp;param, const <a class="el" href="structfixRoadLaneIndexInput.html">fixRoadLaneIndexInput</a> &amp;input, <a class="el" href="structfixRoadLaneIndexOutput.html">fixRoadLaneIndexOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:af379577e4ea200d4e7eb20278662c88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回decisionDate中roadID 和laneID的索引  <a href="localPlanning__m_8cpp.html#af379577e4ea200d4e7eb20278662c88f">更多...</a><br /></td></tr>
+<tr class="separator:af379577e4ea200d4e7eb20278662c88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91dd96dd46612b623947be4ae32cc050"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a91dd96dd46612b623947be4ae32cc050">calculateCurvature</a> (const <a class="el" href="structcalculateCurvatureParam.html">calculateCurvatureParam</a> &amp;param, const <a class="el" href="structcalculateCurvatureInput.html">calculateCurvatureInput</a> &amp;input, <a class="el" href="structcalculateCurvatureOutput.html">calculateCurvatureOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a91dd96dd46612b623947be4ae32cc050"><td class="mdescLeft">&#160;</td><td class="mdescRight">由相邻三点近似计算曲率  <a href="localPlanning__m_8cpp.html#a91dd96dd46612b623947be4ae32cc050">更多...</a><br /></td></tr>
+<tr class="separator:a91dd96dd46612b623947be4ae32cc050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d3bb8831030a8e1b7b1df4f6a7b573"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573">assessTrajectory</a> (const <a class="el" href="structassessTrajectoryParam.html">assessTrajectoryParam</a> &amp;param, const <a class="el" href="structassessTrajectoryInput.html">assessTrajectoryInput</a> &amp;input, <a class="el" href="structassessTrajectoryOutput.html">assessTrajectoryOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a06d3bb8831030a8e1b7b1df4f6a7b573"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回距离障碍物最近距离，进行轨迹评估  <a href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573">更多...</a><br /></td></tr>
+<tr class="separator:a06d3bb8831030a8e1b7b1df4f6a7b573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6d78efa9226164b520b887319fe163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163">getMinDistanceOfPoint</a> (const <a class="el" href="structgetMinDistanceOfPointParam.html">getMinDistanceOfPointParam</a> &amp;param, const <a class="el" href="structgetMinDistanceOfPointInput.html">getMinDistanceOfPointInput</a> &amp;input, <a class="el" href="structgetMinDistanceOfPointOutput.html">getMinDistanceOfPointOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a0e6d78efa9226164b520b887319fe163"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回点距离障碍物最近距离  <a href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163">更多...</a><br /></td></tr>
+<tr class="separator:a0e6d78efa9226164b520b887319fe163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4df2e0314b2bef4571ca3350cff100"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100">findMin</a> (const <a class="el" href="structfindMinParam.html">findMinParam</a> &amp;param, const <a class="el" href="structfindMinInput.html">findMinInput</a> &amp;input, <a class="el" href="structfindMinOutput.html">findMinOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a4a4df2e0314b2bef4571ca3350cff100"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回double数组最小值  <a href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100">更多...</a><br /></td></tr>
+<tr class="separator:a4a4df2e0314b2bef4571ca3350cff100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1036b5ec9683b7c47764e32c533bda9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a1036b5ec9683b7c47764e32c533bda9e">findMax</a> (const <a class="el" href="structfindMaxParam.html">findMaxParam</a> &amp;param, const <a class="el" href="structfindMaxInput.html">findMaxInput</a> &amp;input, <a class="el" href="structfindMaxOutput.html">findMaxOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a1036b5ec9683b7c47764e32c533bda9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回double数组最大值  <a href="localPlanning__m_8cpp.html#a1036b5ec9683b7c47764e32c533bda9e">更多...</a><br /></td></tr>
+<tr class="separator:a1036b5ec9683b7c47764e32c533bda9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0648cb2d2633f4c9ed449ff4187308bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a0648cb2d2633f4c9ed449ff4187308bc">getReferenceLine</a> (const <a class="el" href="structgetReferenceLineParam.html">getReferenceLineParam</a> &amp;param, const <a class="el" href="structgetReferenceLineInput.html">getReferenceLineInput</a> &amp;input, <a class="el" href="structgetReferenceLineOutput.html">getReferenceLineOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a0648cb2d2633f4c9ed449ff4187308bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取局部规划参考轨迹  <a href="localPlanning__m_8cpp.html#a0648cb2d2633f4c9ed449ff4187308bc">更多...</a><br /></td></tr>
+<tr class="separator:a0648cb2d2633f4c9ed449ff4187308bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abede3722a48c7be83fe3244e490ccdf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#abede3722a48c7be83fe3244e490ccdf0">getFrenetLocationPoint</a> (const <a class="el" href="structgetFrenetLocationPointParam.html">getFrenetLocationPointParam</a> &amp;param, const <a class="el" href="structgetFrenetLocationPointInput.html">getFrenetLocationPointInput</a> &amp;input, <a class="el" href="structgetFrenetLocationPointOutput.html">getFrenetLocationPointOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:abede3722a48c7be83fe3244e490ccdf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取车辆当前位置在frenet坐标系中坐标值  <a href="localPlanning__m_8cpp.html#abede3722a48c7be83fe3244e490ccdf0">更多...</a><br /></td></tr>
+<tr class="separator:abede3722a48c7be83fe3244e490ccdf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c6d016fa752d47a9d68bef89f32d3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ad4c6d016fa752d47a9d68bef89f32d3e">frenet2Cartesian</a> (const <a class="el" href="structfrenet2CartesianParam.html">frenet2CartesianParam</a> &amp;param, const <a class="el" href="structfrenet2CartesianInput.html">frenet2CartesianInput</a> &amp;input, <a class="el" href="structfrenet2CartesianOutput.html">frenet2CartesianOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ad4c6d016fa752d47a9d68bef89f32d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">将frenet坐标系坐标转为自车坐标系坐标，xy为右前  <a href="localPlanning__m_8cpp.html#ad4c6d016fa752d47a9d68bef89f32d3e">更多...</a><br /></td></tr>
+<tr class="separator:ad4c6d016fa752d47a9d68bef89f32d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c0436817095ed34b2e7a21291c567e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e">generateBezierPathListInFrenet</a> (const <a class="el" href="structgenerateBezierPathListInFrenetParam.html">generateBezierPathListInFrenetParam</a> &amp;param, const <a class="el" href="structgenerateBezierPathListInFrenetInput.html">generateBezierPathListInFrenetInput</a> &amp;input, <a class="el" href="structgenerateBezierPathListInFrenetOutput.html">generateBezierPathListInFrenetOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a77c0436817095ed34b2e7a21291c567e"><td class="mdescLeft">&#160;</td><td class="mdescRight">在frenet坐标系中生成多条贝塞尔曲线  <a href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e">更多...</a><br /></td></tr>
+<tr class="separator:a77c0436817095ed34b2e7a21291c567e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac903f5f04b7e6b9055bfb92a4c8a60a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#ac903f5f04b7e6b9055bfb92a4c8a60a7">hasPrecedingVehicle</a> (const <a class="el" href="structhasPrecedingVehicleParam.html">hasPrecedingVehicleParam</a> &amp;param, const <a class="el" href="structhasPrecedingVehicleInput.html">hasPrecedingVehicleInput</a> &amp;input, <a class="el" href="structhasPrecedingVehicleOutput.html">hasPrecedingVehicleOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ac903f5f04b7e6b9055bfb92a4c8a60a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断车辆前方是否有需要跟随的车辆  <a href="localPlanning__m_8cpp.html#ac903f5f04b7e6b9055bfb92a4c8a60a7">更多...</a><br /></td></tr>
+<tr class="separator:ac903f5f04b7e6b9055bfb92a4c8a60a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0589033b65b384ad8b64c6455725515a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="localPlanning__m_8cpp.html#a0589033b65b384ad8b64c6455725515a">cruiseController</a> (const <a class="el" href="structcruiseControllerParam.html">cruiseControllerParam</a> &amp;param, const <a class="el" href="structcruiseControllerInput.html">cruiseControllerInput</a> &amp;input, <a class="el" href="structcruiseControllerOutput.html">cruiseControllerOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a0589033b65b384ad8b64c6455725515a"><td class="mdescLeft">&#160;</td><td class="mdescRight">acc场景下，车辆目标速度计算  <a href="localPlanning__m_8cpp.html#a0589033b65b384ad8b64c6455725515a">更多...</a><br /></td></tr>
+<tr class="separator:a0589033b65b384ad8b64c6455725515a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>local planning </p>
+<dl class="section author"><dt>作者</dt><dd></dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-12-04</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a1839601772fcb43e22b06453b7c11861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1839601772fcb43e22b06453b7c11861">&#9670;&nbsp;</a></span>ableToPassYellowLight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ableToPassYellowLight </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structableToPassYellowLightParam.html">ableToPassYellowLightParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structableToPassYellowLightInput.html">ableToPassYellowLightInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structableToPassYellowLightOutput.html">ableToPassYellowLightOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断是否能通过黄灯 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 轨迹，剩余时间，到停止线前的距离 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 是否通过</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断黄灯能否通过</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861_cgraph" id="localPlanning__m_8cpp_a1839601772fcb43e22b06453b7c11861_cgraph">
+<area shape="rect" title="判断是否能通过黄灯" alt="" coords="5,5,172,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="220,5,320,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a77afe0badde48651b0fcb99a2717811f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77afe0badde48651b0fcb99a2717811f">&#9670;&nbsp;</a></span>angleRegulate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void angleRegulate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structangleRegulateParam.html">angleRegulateParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structangleRegulateInput.html">angleRegulateInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structangleRegulateOutput.html">angleRegulateOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>转化角度到0-180中，便于比较 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 原角度 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 转化后的角度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 正则化角度</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f_icgraph" id="localPlanning__m_8cpp_a77afe0badde48651b0fcb99a2717811f_icgraph">
+<area shape="rect" title="转化角度到0&#45;180中，便于比较" alt="" coords="196,5,312,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a90cc5e19c44b65d660afb028ff83cfb6" title="寻找距离车辆位置最近的路点" alt="" coords="5,5,148,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a06d3bb8831030a8e1b7b1df4f6a7b573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d3bb8831030a8e1b7b1df4f6a7b573">&#9670;&nbsp;</a></span>assessTrajectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void assessTrajectory </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structassessTrajectoryParam.html">assessTrajectoryParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structassessTrajectoryInput.html">assessTrajectoryInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structassessTrajectoryOutput.html">assessTrajectoryOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回距离障碍物最近距离，进行轨迹评估 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 栅格障碍物，imu，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 轨迹 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 距离障碍物最近距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 轨迹评估</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_cgraph" id="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_cgraph">
+<area shape="rect" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="5,31,136,57"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100" title="返回double数组最小值" alt="" coords="424,5,495,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="184,56,356,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3" title="全局坐标转局部坐标" alt="" coords="407,56,511,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26" title="经纬度转全局坐标" alt="" coords="404,107,515,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="409,157,509,184"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_icgraph" id="localPlanning__m_8cpp_a06d3bb8831030a8e1b7b1df4f6a7b573_icgraph">
+<area shape="rect" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,5,633,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a07abb29775692cf43b900f9c8bfc0b74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07abb29775692cf43b900f9c8bfc0b74">&#9670;&nbsp;</a></span>boundaryCollisionCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void boundaryCollisionCheck </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structboundaryCollisionCheckParam.html">boundaryCollisionCheckParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structboundaryCollisionCheckInput.html">boundaryCollisionCheckInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboundaryCollisionCheckOutput.html">boundaryCollisionCheckOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>边碰撞检测 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 俩线段顶点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 是否碰撞</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 检测边碰撞</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a91dd96dd46612b623947be4ae32cc050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91dd96dd46612b623947be4ae32cc050">&#9670;&nbsp;</a></span>calculateCurvature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void calculateCurvature </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcalculateCurvatureParam.html">calculateCurvatureParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structcalculateCurvatureInput.html">calculateCurvatureInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalculateCurvatureOutput.html">calculateCurvatureOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>由相邻三点近似计算曲率 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 点，前一点，后一点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 曲率</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算曲率</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050_icgraph" id="localPlanning__m_8cpp_a91dd96dd46612b623947be4ae32cc050_icgraph">
+<area shape="rect" title="由相邻三点近似计算曲率" alt="" coords="212,5,357,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa" title="局部坐标轨迹转为全局轨迹" alt="" coords="5,5,164,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4b96b7cfb737fbe9dbfbdd2c164f5a21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b96b7cfb737fbe9dbfbdd2c164f5a21">&#9670;&nbsp;</a></span>changeCurrentPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeCurrentPoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structchangeCurrentPointParam.html">changeCurrentPointParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structchangeCurrentPointInput.html">changeCurrentPointInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchangeCurrentPointOutput.html">changeCurrentPointOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断是否可以换道 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 当前道路，当前车道 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 原规划预瞄点车道Id，原规划预瞄点路点Id，原规划预瞄点，向左还是向右变道 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 新预瞄点车道Id，新规划预瞄点路点Id，新规划预瞄点，是否变道</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断是否可以换道</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a8adfb6f5dac3c879f559584066cfafaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8adfb6f5dac3c879f559584066cfafaa">&#9670;&nbsp;</a></span>changeLocalToGlobal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeLocalToGlobal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structchangeLocalToGlobalParam.html">changeLocalToGlobalParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structchangeLocalToGlobalInput.html">changeLocalToGlobalInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchangeLocalToGlobalOutput.html">changeLocalToGlobalOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>局部坐标轨迹转为全局轨迹 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 局部坐标轨迹，局部坐标轨迹原地对应的全局点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 全局轨迹</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 局部坐标轨迹转为全局坐标轨迹</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa_cgraph" id="localPlanning__m_8cpp_a8adfb6f5dac3c879f559584066cfafaa_cgraph">
+<area shape="rect" title="局部坐标轨迹转为全局轨迹" alt="" coords="5,31,164,57"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a91dd96dd46612b623947be4ae32cc050" title="由相邻三点近似计算曲率" alt="" coords="212,5,357,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="235,56,335,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a007880750244bfeeff6f9532de7a6ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007880750244bfeeff6f9532de7a6ec9">&#9670;&nbsp;</a></span>clearPathList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clearPathList </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structclearPathListParam.html">clearPathListParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclearPathListInput.html">clearPathListInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structclearPathListOutput.html">clearPathListOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清除上次生成的轨迹 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 储存轨迹的向量 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 清除轨迹</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="acb711aa6b585479da7bb5a48855de1e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb711aa6b585479da7bb5a48855de1e3">&#9670;&nbsp;</a></span>coordTran2D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void coordTran2D </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcoordTran2DParam.html">coordTran2DParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structcoordTran2DInput.html">coordTran2DInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcoordTran2DOutput.html">coordTran2DOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局坐标转局部坐标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 全局坐标经纬度、角度，初始化局部坐标xy值、角度 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 局部坐标值、角度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 全局坐标转自局部坐标</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3_icgraph" id="localPlanning__m_8cpp_acb711aa6b585479da7bb5a48855de1e3_icgraph">
+<area shape="rect" title="全局坐标转局部坐标" alt="" coords="901,5,1005,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="681,5,853,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,5,633,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab0c33f1bde12ba69245517cb468cd8f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0c33f1bde12ba69245517cb468cd8f1">&#9670;&nbsp;</a></span>courseAngleRevise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void courseAngleRevise </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcourseAngleReviseParam.html">courseAngleReviseParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structcourseAngleReviseInput.html">courseAngleReviseInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcourseAngleReviseOutput.html">courseAngleReviseOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>逆时针旋转坐标系90度，向东0度变成向北0度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 原始角度 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 转化角度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 坐标系逆时针旋转90度</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a0589033b65b384ad8b64c6455725515a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0589033b65b384ad8b64c6455725515a">&#9670;&nbsp;</a></span>cruiseController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cruiseController </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcruiseControllerParam.html">cruiseControllerParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structcruiseControllerInput.html">cruiseControllerInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcruiseControllerOutput.html">cruiseControllerOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>acc场景下，车辆目标速度计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param imu，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 前车索引，距前车距离 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 预期速度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算车辆acc目标速度</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a1036b5ec9683b7c47764e32c533bda9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1036b5ec9683b7c47764e32c533bda9e">&#9670;&nbsp;</a></span>findMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void findMax </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfindMaxParam.html">findMaxParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structfindMaxInput.html">findMaxInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfindMaxOutput.html">findMaxOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回double数组最大值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input double数组 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output double数组最大值</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 返回double数组最大值</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a4a4df2e0314b2bef4571ca3350cff100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4df2e0314b2bef4571ca3350cff100">&#9670;&nbsp;</a></span>findMin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void findMin </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfindMinParam.html">findMinParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structfindMinInput.html">findMinInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfindMinOutput.html">findMinOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回double数组最小值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input double数组 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output double数组最小值</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 返回double数组最小值</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100_icgraph" id="localPlanning__m_8cpp_a4a4df2e0314b2bef4571ca3350cff100_icgraph">
+<area shape="rect" title="返回double数组最小值" alt="" coords="901,5,972,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,5,633,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="681,31,853,57"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af379577e4ea200d4e7eb20278662c88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af379577e4ea200d4e7eb20278662c88f">&#9670;&nbsp;</a></span>fixRoadLaneIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fixRoadLaneIndex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfixRoadLaneIndexParam.html">fixRoadLaneIndexParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structfixRoadLaneIndexInput.html">fixRoadLaneIndexInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfixRoadLaneIndexOutput.html">fixRoadLaneIndexOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回decisionDate中roadID 和laneID的索引 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 地图 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output roadID 和laneID的索引</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获得道路和车道的索引</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f_icgraph" id="localPlanning__m_8cpp_af379577e4ea200d4e7eb20278662c88f_icgraph">
+<area shape="rect" title="返回decisionDate中roadID 和laneID的索引" alt="" coords="189,5,328,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0648cb2d2633f4c9ed449ff4187308bc" title="获取局部规划参考轨迹" alt="" coords="5,5,141,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad4c6d016fa752d47a9d68bef89f32d3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c6d016fa752d47a9d68bef89f32d3e">&#9670;&nbsp;</a></span>frenet2Cartesian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void frenet2Cartesian </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfrenet2CartesianParam.html">frenet2CartesianParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structfrenet2CartesianInput.html">frenet2CartesianInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfrenet2CartesianOutput.html">frenet2CartesianOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将frenet坐标系坐标转为自车坐标系坐标，xy为右前 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 坐标点sl值，初始化xy值，参考轨迹，上次搜索的索引值，本次需返回的坐标点对应的索引值 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 坐标点xy值，坐标点对应的索引值</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: frenet坐标系转局部坐标系</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e_icgraph" id="localPlanning__m_8cpp_ad4c6d016fa752d47a9d68bef89f32d3e_icgraph">
+<area shape="rect" title="将frenet坐标系坐标转为自车坐标系坐标，xy为右前" alt="" coords="259,5,389,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="add815e7406aeaa10d0a316e09d33da26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add815e7406aeaa10d0a316e09d33da26">&#9670;&nbsp;</a></span>gaussConvert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gaussConvert </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgaussConvertParam.html">gaussConvertParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgaussConvertInput.html">gaussConvertInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgaussConvertOutput.html">gaussConvertOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>经纬度转全局坐标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param :无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input :坐标经纬度，初始化全局坐标xy值 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output :全局坐标值</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 经纬度转全局坐标</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26_icgraph" id="localPlanning__m_8cpp_add815e7406aeaa10d0a316e09d33da26_icgraph">
+<area shape="rect" title="经纬度转全局坐标" alt="" coords="901,5,1012,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="681,5,853,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,5,633,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7dfff6655bc05b018db306bfbc09b965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfff6655bc05b018db306bfbc09b965">&#9670;&nbsp;</a></span>generateBezierPathInFrenet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generateBezierPathInFrenet </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgenerateBezierPathInFrenetParam.html">generateBezierPathInFrenetParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgenerateBezierPathInFrenetInput.html">generateBezierPathInFrenetInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgenerateBezierPathInFrenetOutput.html">generateBezierPathInFrenetOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在frenet中生成贝塞尔曲线 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 起点、终点、初始化轨迹 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 生成轨迹</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 生成贝塞尔曲线</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_cgraph" id="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_cgraph">
+<area shape="rect" title="在frenet中生成贝塞尔曲线" alt="" coords="5,5,208,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724" title="计算贝塞尔曲线上的点" alt="" coords="256,5,407,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_icgraph" id="localPlanning__m_8cpp_a7dfff6655bc05b018db306bfbc09b965_icgraph">
+<area shape="rect" title="在frenet中生成贝塞尔曲线" alt="" coords="492,13,695,39"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e" title="在frenet坐标系中生成多条贝塞尔曲线" alt="" coords="259,5,444,47"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,13,211,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a77c0436817095ed34b2e7a21291c567e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c0436817095ed34b2e7a21291c567e">&#9670;&nbsp;</a></span>generateBezierPathListInFrenet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generateBezierPathListInFrenet </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgenerateBezierPathListInFrenetParam.html">generateBezierPathListInFrenetParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgenerateBezierPathListInFrenetInput.html">generateBezierPathListInFrenetInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgenerateBezierPathListInFrenetOutput.html">generateBezierPathListInFrenetOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在frenet坐标系中生成多条贝塞尔曲线 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 参考轨迹，车辆在frenet坐标系下坐标，初始化的轨迹向量数组 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 轨迹向量数组</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 在frenet坐标系中生成多条贝塞尔曲线</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: plannings </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_cgraph" id="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_cgraph">
+<area shape="rect" title="在frenet坐标系中生成多条贝塞尔曲线" alt="" coords="5,5,191,47"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965" title="在frenet中生成贝塞尔曲线" alt="" coords="239,13,441,39"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724" title="计算贝塞尔曲线上的点" alt="" coords="489,13,640,39"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_icgraph" id="localPlanning__m_8cpp_a77c0436817095ed34b2e7a21291c567e_icgraph">
+<area shape="rect" title="在frenet坐标系中生成多条贝塞尔曲线" alt="" coords="259,5,444,47"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,13,211,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a090a56998296fc27987a8ec717e4f374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a090a56998296fc27987a8ec717e4f374">&#9670;&nbsp;</a></span>generateSpeedList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generateSpeedList </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgenerateSpeedListParam.html">generateSpeedListParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgenerateSpeedListInput.html">generateSpeedListInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgenerateSpeedListOutput.html">generateSpeedListOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据道路信息等，采样生成速度曲线 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 路测障碍物，imu，停止点 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 车速，决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 生成速度曲线</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374_icgraph" id="localPlanning__m_8cpp_a090a56998296fc27987a8ec717e4f374_icgraph">
+<area shape="rect" title="根据道路信息等，采样生成速度曲线" alt="" coords="259,5,401,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a49560bf7195a2f9e3c4a13670f4f6901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49560bf7195a2f9e3c4a13670f4f6901">&#9670;&nbsp;</a></span>generateTrajectoryList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generateTrajectoryList </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgenerateTrajectoryListParam.html">generateTrajectoryListParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgenerateTrajectoryListInput.html">generateTrajectoryListInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgenerateTrajectoryListOutput.html">generateTrajectoryListOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>生成采样轨迹，供后续选择 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 生成采样曲线</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901_icgraph" id="localPlanning__m_8cpp_a49560bf7195a2f9e3c4a13670f4f6901_icgraph">
+<area shape="rect" title="生成采样轨迹，供后续选择" alt="" coords="259,5,427,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1f2ab502562c0b5cdaa920864965d04d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f2ab502562c0b5cdaa920864965d04d">&#9670;&nbsp;</a></span>getAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAngle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetAngleParam.html">getAngleParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetAngleInput.html">getAngleInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetAngleOutput.html">getAngleOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算坐标系中两点角度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 两点XY坐标 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 两点角度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算两点角度</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="ad174ae3dfe5302cb5a2fffaa15cefcef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad174ae3dfe5302cb5a2fffaa15cefcef">&#9670;&nbsp;</a></span>getAngleDiff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAngleDiff </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetAngleDiffParam.html">getAngleDiffParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetAngleDiffInput.html">getAngleDiffInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetAngleDiffOutput.html">getAngleDiffOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算两角度之差，并正则化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 两角度 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 两角度之差</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算两角度之差</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a90cc5e19c44b65d660afb028ff83cfb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90cc5e19c44b65d660afb028ff83cfb6">&#9670;&nbsp;</a></span>getCurrentPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getCurrentPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetCurrentPositionParam.html">getCurrentPositionParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetCurrentPositionInput.html">getCurrentPositionInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetCurrentPositionOutput.html">getCurrentPositionOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>寻找距离车辆位置最近的路点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param imu，地图 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的决策树护具</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 寻找距离车辆位置最近的路点</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6_cgraph" id="localPlanning__m_8cpp_a90cc5e19c44b65d660afb028ff83cfb6_cgraph">
+<area shape="rect" title="寻找距离车辆位置最近的路点" alt="" coords="5,5,148,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a77afe0badde48651b0fcb99a2717811f" title="转化角度到0&#45;180中，便于比较" alt="" coords="196,5,312,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1b4ed46cd8feea3d9246d37dd82979b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1b4ed46cd8feea3d9246d37dd82979b">&#9670;&nbsp;</a></span>getDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getDistance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetDistanceParam.html">getDistanceParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetDistanceInput.html">getDistanceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetDistanceOutput.html">getDistanceOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算两点之间的距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 两点XY坐标 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 两点之间的距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算两点之间的距离</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b_icgraph" id="localPlanning__m_8cpp_af1b4ed46cd8feea3d9246d37dd82979b_icgraph">
+<area shape="rect" title="计算两点之间的距离" alt="" coords="901,81,1001,108"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a1839601772fcb43e22b06453b7c11861" title="判断是否能通过黄灯" alt="" coords="684,5,851,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa" title="局部坐标轨迹转为全局轨迹" alt="" coords="688,56,847,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="681,107,853,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a7e673d9855400ef1c5c04fb98bd1122d" title="计算点到线段的距离" alt="" coords="691,157,844,184"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,107,633,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,107,455,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,107,211,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abede3722a48c7be83fe3244e490ccdf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abede3722a48c7be83fe3244e490ccdf0">&#9670;&nbsp;</a></span>getFrenetLocationPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getFrenetLocationPoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetFrenetLocationPointParam.html">getFrenetLocationPointParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetFrenetLocationPointInput.html">getFrenetLocationPointInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetFrenetLocationPointOutput.html">getFrenetLocationPointOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取车辆当前位置在frenet坐标系中坐标值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据，参考轨迹，当前位置 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获取车辆在frenet坐标系中坐标值</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a0e6d78efa9226164b520b887319fe163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6d78efa9226164b520b887319fe163">&#9670;&nbsp;</a></span>getMinDistanceOfPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getMinDistanceOfPoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetMinDistanceOfPointParam.html">getMinDistanceOfPointParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetMinDistanceOfPointInput.html">getMinDistanceOfPointInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetMinDistanceOfPointOutput.html">getMinDistanceOfPointOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回点距离障碍物最近距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 栅格障碍物，imu，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 检测点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 距离障碍物最近距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算点距离障碍物最近距离（一般场景）</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_cgraph" id="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_cgraph">
+<area shape="rect" title="返回点距离障碍物最近距离" alt="" coords="5,81,177,108"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3" title="全局坐标转局部坐标" alt="" coords="229,5,333,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100" title="返回double数组最小值" alt="" coords="245,56,316,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26" title="经纬度转全局坐标" alt="" coords="225,107,336,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="231,157,331,184"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_icgraph" id="localPlanning__m_8cpp_a0e6d78efa9226164b520b887319fe163_icgraph">
+<area shape="rect" title="返回点距离障碍物最近距离" alt="" coords="681,5,853,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="503,5,633,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abf7a5a33c481b3077c1a365feb6e7b2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf7a5a33c481b3077c1a365feb6e7b2b">&#9670;&nbsp;</a></span>getNextRoadLaneId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getNextRoadLaneId </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetNextRoadLaneIdParam.html">getNextRoadLaneIdParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetNextRoadLaneIdInput.html">getNextRoadLaneIdInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetNextRoadLaneIdOutput.html">getNextRoadLaneIdOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从全局规划中，获取后续车道和道路Id </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 储存全局规划车道和道路的向量 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 自车当前车道和道路Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 后续车道和道路Id</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获取后续车道和道路Id</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a25ba9cbfa417d5e8ceaac09d8662ceea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ba9cbfa417d5e8ceaac09d8662ceea">&#9670;&nbsp;</a></span>getOptimalTrajectoryIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getOptimalTrajectoryIndex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetOptimalTrajectoryIndexParam.html">getOptimalTrajectoryIndexParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetOptimalTrajectoryIndexInput.html">getOptimalTrajectoryIndexInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetOptimalTrajectoryIndexOutput.html">getOptimalTrajectoryIndexOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>评估轨迹，并获取最优轨迹索引 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 栅格障碍物，交通灯，imu，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据，最优轨迹索引</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获取最优轨迹索引</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_cgraph" id="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_cgraph">
+<area shape="rect" title="评估轨迹，并获取最优轨迹索引" alt="" coords="5,56,201,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="257,31,387,57"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a6d03c18175d3c83123c5451bd0a301c1" title="根据红绿灯信息更新决策数据" alt="" coords="249,81,395,108"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100" title="返回double数组最小值" alt="" coords="683,5,753,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="443,56,615,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3" title="全局坐标转局部坐标" alt="" coords="666,56,770,83"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26" title="经纬度转全局坐标" alt="" coords="663,107,773,133"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="668,157,768,184"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_icgraph" id="localPlanning__m_8cpp_a25ba9cbfa417d5e8ceaac09d8662ceea_icgraph">
+<area shape="rect" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae9d5ad9600741ad7b9bcce3455f55c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9d5ad9600741ad7b9bcce3455f55c44">&#9670;&nbsp;</a></span>getPlanningDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getPlanningDistance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetPlanningDistanceParam.html">getPlanningDistanceParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetPlanningDistanceInput.html">getPlanningDistanceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetPlanningDistanceOutput.html">getPlanningDistanceOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据速度、曲率获取规划距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 速度、曲率 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 规划距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算规划距离</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a54e322e9dd48a95af52ac68c43fbc213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e322e9dd48a95af52ac68c43fbc213">&#9670;&nbsp;</a></span>getPlanningPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getPlanningPoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetPlanningPointParam.html">getPlanningPointParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetPlanningPointInput.html">getPlanningPointInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetPlanningPointOutput.html">getPlanningPointOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据车辆信息获取规划预瞄点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 当前位置，决策数据，地图 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 规划距离，车辆朝向角，后续车道Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 规划预瞄点</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算规划预瞄点</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a0648cb2d2633f4c9ed449ff4187308bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0648cb2d2633f4c9ed449ff4187308bc">&#9670;&nbsp;</a></span>getReferenceLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getReferenceLine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetReferenceLineParam.html">getReferenceLineParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetReferenceLineInput.html">getReferenceLineInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetReferenceLineOutput.html">getReferenceLineOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取局部规划参考轨迹 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 地图 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据，当前位置 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 参考轨迹</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获取参考轨迹</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc_cgraph" id="localPlanning__m_8cpp_a0648cb2d2633f4c9ed449ff4187308bc_cgraph">
+<area shape="rect" title="获取局部规划参考轨迹" alt="" coords="5,5,141,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af379577e4ea200d4e7eb20278662c88f" title="返回decisionDate中roadID 和laneID的索引" alt="" coords="189,5,328,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac9d5ea05e8363d959d053f33d5e04a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9d5ea05e8363d959d053f33d5e04a9b">&#9670;&nbsp;</a></span>getTrajectoryPlanningResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getTrajectoryPlanningResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgetTrajectoryPlanningResultParam.html">getTrajectoryPlanningResultParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgetTrajectoryPlanningResultInput.html">getTrajectoryPlanningResultInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgetTrajectoryPlanningResultOutput.html">getTrajectoryPlanningResultOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param imu，栅格障碍物，地图，交通灯，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据，是否成功生成轨迹</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 获取轨迹规划结果</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b_cgraph" id="localPlanning__m_8cpp_ac9d5ea05e8363d959d053f33d5e04a9b_cgraph">
+<area shape="rect" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,123,211,149"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ad4c6d016fa752d47a9d68bef89f32d3e" title="将frenet坐标系坐标转为自车坐标系坐标，xy为右前" alt="" coords="291,5,422,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e" title="在frenet坐标系中生成多条贝塞尔曲线" alt="" coords="264,57,449,98"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a090a56998296fc27987a8ec717e4f374" title="根据道路信息等，采样生成速度曲线" alt="" coords="285,123,428,149"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a49560bf7195a2f9e3c4a13670f4f6901" title="生成采样轨迹，供后续选择" alt="" coords="273,173,441,200"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,224,455,251"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965" title="在frenet中生成贝塞尔曲线" alt="" coords="503,64,705,91"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724" title="计算贝塞尔曲线上的点" alt="" coords="764,64,915,91"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573" title="返回距离障碍物最近距离，进行轨迹评估" alt="" coords="539,199,669,225"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a6d03c18175d3c83123c5451bd0a301c1" title="根据红绿灯信息更新决策数据" alt="" coords="531,249,677,276"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100" title="返回double数组最小值" alt="" coords="993,173,1064,200"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163" title="返回点距离障碍物最近距离" alt="" coords="753,224,925,251"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#acb711aa6b585479da7bb5a48855de1e3" title="全局坐标转局部坐标" alt="" coords="977,224,1081,251"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26" title="经纬度转全局坐标" alt="" coords="973,275,1084,301"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="979,325,1079,352"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac903f5f04b7e6b9055bfb92a4c8a60a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac903f5f04b7e6b9055bfb92a4c8a60a7">&#9670;&nbsp;</a></span>hasPrecedingVehicle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hasPrecedingVehicle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structhasPrecedingVehicleParam.html">hasPrecedingVehicleParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structhasPrecedingVehicleInput.html">hasPrecedingVehicleInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhasPrecedingVehicleOutput.html">hasPrecedingVehicleOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断车辆前方是否有需要跟随的车辆 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param imu，路测障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断是否有需要跟随的车辆</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="ae1465540ad2745e2531c5c980c3c710b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1465540ad2745e2531c5c980c3c710b">&#9670;&nbsp;</a></span>inArea()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void inArea </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structinAreaParam.html">inAreaParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structinAreaInput.html">inAreaInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structinAreaOutput.html">inAreaOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断点是否在区域内 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 目标区域中心XY坐标，判断点XY坐标 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断点是否在区域内</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b_icgraph" id="localPlanning__m_8cpp_ae1465540ad2745e2531c5c980c3c710b_icgraph">
+<area shape="rect" title="判断点是否在区域内" alt="" coords="172,5,236,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af53e528451b5ff3e429347df1cc4c00b" title="判断车辆是否在停车区域" alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a601d6ae079dd9cea28845f83d7eca073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a601d6ae079dd9cea28845f83d7eca073">&#9670;&nbsp;</a></span>initLocalPlanning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initLocalPlanning </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structinitLocalPlanningParam.html">initLocalPlanningParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structinitLocalPlanningInput.html">initLocalPlanningInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structinitLocalPlanningOutput.html">initLocalPlanningOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>局部规划决策数据初始化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 初始化后的决策数据</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 初始化局部规划</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a7cd5e98d51d7ec0a9a239194a218e89d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cd5e98d51d7ec0a9a239194a218e89d">&#9670;&nbsp;</a></span>innerCollisionCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void innerCollisionCheck </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structinnerCollisionCheckParam.html">innerCollisionCheckParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structinnerCollisionCheckInput.html">innerCollisionCheckInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structinnerCollisionCheckOutput.html">innerCollisionCheckOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>内部包含检测 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 检测点和障碍物顶点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 是否包含</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 检测内部包含</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="aceb934788ac59a4dd5a890b8bd5988f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb934788ac59a4dd5a890b8bd5988f5">&#9670;&nbsp;</a></span>limitPlanningDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void limitPlanningDistance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structlimitPlanningDistanceParam.html">limitPlanningDistanceParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structlimitPlanningDistanceInput.html">limitPlanningDistanceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlimitPlanningDistanceOutput.html">limitPlanningDistanceOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>限制规划距离，防止突变 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 计划规划距离，上次规划距离 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的规划距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 限制规划距离</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a572cfaa68a6eafec25c9fbce22be58f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572cfaa68a6eafec25c9fbce22be58f1">&#9670;&nbsp;</a></span>loadStopPoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadStopPoints </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structloadStopPointsParam.html">loadStopPointsParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structloadStopPointsInput.html">loadStopPointsInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structloadStopPointsOutput.html">loadStopPointsOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从文件中加载停止点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 文件地址 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 停止点、停止点对应路点、X偏移、Y偏移 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的停止点、更新后的停止点对应路点</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 加载停止点</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="aa28e587fc6e0650ee9e96b05e2597245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28e587fc6e0650ee9e96b05e2597245">&#9670;&nbsp;</a></span>loadStopPointsFromYaml()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadStopPointsFromYaml </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structloadStopPointsFromYamlParam.html">loadStopPointsFromYamlParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structloadStopPointsFromYamlInput.html">loadStopPointsFromYamlInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structloadStopPointsFromYamlOutput.html">loadStopPointsFromYamlOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从文件中加载停止点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 地图、文件地址 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 停止点、停止点对应路点、X偏移、Y偏移 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的停止点、更新的停止点对应路点</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 从Yaml文件中加载停止点</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a9673ed746e166b4e273051bbf8c18a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9673ed746e166b4e273051bbf8c18a04">&#9670;&nbsp;</a></span>pointCollisionCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pointCollisionCheck </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpointCollisionCheckParam.html">pointCollisionCheckParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpointCollisionCheckInput.html">pointCollisionCheckInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpointCollisionCheckOutput.html">pointCollisionCheckOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>轨迹点碰撞检测 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 点，障碍物中心点，障碍物长宽 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 是否碰撞</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 检测轨迹点碰撞</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a603957659141af389fe56e5659de66ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a603957659141af389fe56e5659de66ee">&#9670;&nbsp;</a></span>pointDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pointDistance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpointDistanceParam.html">pointDistanceParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpointDistanceInput.html">pointDistanceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpointDistanceOutput.html">pointDistanceOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算两点之间的距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 两点的XY坐标值 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算两点之间的距离</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="ae7e309acd6a1ac4589609a3e7fd28724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7e309acd6a1ac4589609a3e7fd28724">&#9670;&nbsp;</a></span>pointOnCubicBezier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pointOnCubicBezier </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpointOnCubicBezierParam.html">pointOnCubicBezierParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpointOnCubicBezierInput.html">pointOnCubicBezierInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpointOnCubicBezierOutput.html">pointOnCubicBezierOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算贝塞尔曲线上的点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 贝塞尔曲线控制点，参数 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算贝塞尔曲线上的点</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724_icgraph" id="localPlanning__m_8cpp_ae7e309acd6a1ac4589609a3e7fd28724_icgraph">
+<area shape="rect" title="计算贝塞尔曲线上的点" alt="" coords="743,13,893,39"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965" title="在frenet中生成贝塞尔曲线" alt="" coords="492,13,695,39"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e" title="在frenet坐标系中生成多条贝塞尔曲线" alt="" coords="259,5,444,47"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,13,211,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e673d9855400ef1c5c04fb98bd1122d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e673d9855400ef1c5c04fb98bd1122d">&#9670;&nbsp;</a></span>pointToLineDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pointToLineDistance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpointToLineDistanceParam.html">pointToLineDistanceParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpointToLineDistanceInput.html">pointToLineDistanceInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpointToLineDistanceOutput.html">pointToLineDistanceOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算点到线段的距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 线段起点，线段终点，检查点 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 点到线段的距离</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 计算点到线段的距离</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d_cgraph" id="localPlanning__m_8cpp_a7e673d9855400ef1c5c04fb98bd1122d_cgraph">
+<area shape="rect" title="计算点到线段的距离" alt="" coords="5,5,159,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b" title="计算两点之间的距离" alt="" coords="207,5,307,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6d03c18175d3c83123c5451bd0a301c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d03c18175d3c83123c5451bd0a301c1">&#9670;&nbsp;</a></span>processTrafficLight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void processTrafficLight </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structprocessTrafficLightParam.html">processTrafficLightParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structprocessTrafficLightInput.html">processTrafficLightInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structprocessTrafficLightOutput.html">processTrafficLightOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据红绿灯信息更新决策数据 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 栅格障碍物，交通灯 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新后的决策数据，红绿灯信息</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 处理交通信号灯</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1_icgraph.png" border="0" usemap="#localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1_icgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1_icgraph" id="localPlanning__m_8cpp_a6d03c18175d3c83123c5451bd0a301c1_icgraph">
+<area shape="rect" title="根据红绿灯信息更新决策数据" alt="" coords="503,5,648,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea" title="评估轨迹，并获取最优轨迹索引" alt="" coords="259,5,455,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b" title="完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择" alt="" coords="5,5,211,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae46745cb3754d10c22ed26abd5542a11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46745cb3754d10c22ed26abd5542a11">&#9670;&nbsp;</a></span>restart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void restart </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structrestartParam.html">restartParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structrestartInput.html">restartInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrestartOutput.html">restartOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>车辆停车后，判断能否重新启动 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 栅格障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 车速 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断车辆能否重新启动</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a03c9a4b8fb5f1711a92e7f061449bd0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03c9a4b8fb5f1711a92e7f061449bd0e">&#9670;&nbsp;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structstopParam.html">stopParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structstopInput.html">stopInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstopOutput.html">stopOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停车时修改速度曲线 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 无 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 决策数据，当前车速 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的决策数据</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 处理停车速度</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e_cgraph" id="localPlanning__m_8cpp_a03c9a4b8fb5f1711a92e7f061449bd0e_cgraph">
+<area shape="rect" title="停车时修改速度曲线" alt="" coords="5,5,56,32"/>
+<area shape="rect" href="interpolate__m_8cpp.html#afd54e9c0f9e405e54a4583c8d407399f" title="根据初值、终值和项数，进行线性插值" alt="" coords="104,5,163,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af53e528451b5ff3e429347df1cc4c00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af53e528451b5ff3e429347df1cc4c00b">&#9670;&nbsp;</a></span>stopPointJudge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stopPointJudge </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structstopPointJudgeParam.html">stopPointJudgeParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structstopPointJudgeInput.html">stopPointJudgeInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstopPointJudgeOutput.html">stopPointJudgeOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>判断车辆是否在停车区域 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param imu，停止点 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 判断结果</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 判断停车</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b_cgraph.png" border="0" usemap="#localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b_cgraph" alt=""/></div>
+<map name="localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b_cgraph" id="localPlanning__m_8cpp_af53e528451b5ff3e429347df1cc4c00b_cgraph">
+<area shape="rect" title="判断车辆是否在停车区域" alt="" coords="5,5,124,32"/>
+<area shape="rect" href="localPlanning__m_8cpp.html#ae1465540ad2745e2531c5c980c3c710b" title="判断点是否在区域内" alt="" coords="172,5,236,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acd812f13e27ab10c67c7e752b7dc012d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd812f13e27ab10c67c7e752b7dc012d">&#9670;&nbsp;</a></span>trajectoryCollisionCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void trajectoryCollisionCheck </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtrajectoryCollisionCheckParam.html">trajectoryCollisionCheckParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structtrajectoryCollisionCheckInput.html">trajectoryCollisionCheckInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtrajectoryCollisionCheckOutput.html">trajectoryCollisionCheckOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>轨迹碰撞检测，true表示可行，false表示碰撞 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 障碍物 </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 轨迹 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 是否碰撞</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 检测轨迹碰撞</p>
+<p>@granularity: composite //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

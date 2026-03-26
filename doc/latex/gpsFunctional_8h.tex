@@ -1,0 +1,102 @@
+\hypertarget{gpsFunctional_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+G\+P\+S/src/gps\+Functional.h 文件参考}
+\label{gpsFunctional_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/GPS/src/gpsFunctional.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/GPS/src/gpsFunctional.h}}
+
+
+G\+P\+S头文件  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$Q\+Application$>$}\newline
+{\ttfamily \#include \char`\"{}configure.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mainwindow.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}G\+G\+A.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpfpd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}G\+P\+Y\+B\+M.\+h\char`\"{}}\newline
+gps\+Functional.\+h 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpsFunctional_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{gpsFunctional_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1paraAPP}{Localization\+::para\+A\+PP}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1inputAPP}{Localization\+::input\+A\+PP}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1outputAPP}{Localization\+::output\+A\+PP}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1paraGGA}{Localization\+::para\+G\+GA}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1inputGGA}{Localization\+::input\+G\+GA}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1outputGGA}{Localization\+::output\+G\+GA}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1paraGPYBM}{Localization\+::para\+G\+P\+Y\+BM}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1inputGPYBM}{Localization\+::input\+G\+P\+Y\+BM}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1outputGPYBM}{Localization\+::output\+G\+P\+Y\+BM}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1paraGPFPD}{Localization\+::para\+G\+P\+F\+PD}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1inputGPFPD}{Localization\+::input\+G\+P\+F\+PD}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1outputGPFPD}{Localization\+::output\+G\+P\+F\+PD}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1calcCheckPara}{Localization\+::calc\+Check\+Para}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1calcCheckInput}{Localization\+::calc\+Check\+Input}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1calcCheckOutput}{Localization\+::calc\+Check\+Output}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1dmm2degPara}{Localization\+::dmm2deg\+Para}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1dmm2degInput}{Localization\+::dmm2deg\+Input}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1dmm2degOutput}{Localization\+::dmm2deg\+Output}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceLocalization}{Localization}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceLocalization}{Localization}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceLocalization_a2b679ac15f4412e0171ba5b1fa65635e}\label{namespaceLocalization_a2b679ac15f4412e0171ba5b1fa65635e}} 
+int {\bfseries Localization\+::open\+Q\+T\+Window} (int argc, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{namespaceLocalization_af94c1d8a1a783737d559f4ea41694d64}{Localization\+::get\+G\+GA}} (const para\+G\+GA \&para, const input\+G\+GA \&input, output\+G\+GA \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+G\+A数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aef707e2ebf6fa05c13f1e5ff2a160614}{Localization\+::get\+G\+P\+F\+PD}} (const para\+G\+P\+F\+PD \&para, const input\+G\+P\+F\+PD \&input, output\+G\+P\+F\+PD \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+P\+F\+P\+D数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a05a362bf9b3a244e81ac049c6c57c1e0}{Localization\+::get\+G\+P\+Y\+BM}} (const para\+G\+P\+Y\+BM \&para, const input\+G\+P\+Y\+BM \&input, output\+G\+P\+Y\+BM \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+P\+Y\+B\+M数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a49110d5e3fd6bcd186bb8fd1db425d64}{Localization\+::calc\+Check\+Sum}} (calc\+Check\+Para \&para, calc\+Check\+Input \&input, calc\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算\+N\+E\+M\+A数据校验位 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_acafd275a0ffee71a4de02de254e29b62}{Localization\+::dmm2deg}} (dmm2deg\+Para \&para, dmm2deg\+Input \&input, dmm2deg\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 将\+N\+M\+E\+A中 ddmm.\+mm 格式转换为小数度 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+G\+P\+S头文件 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zihan Xie (\href{mailto:770178863@qq.com}{\texttt{ 770178863@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/27 
+\end{DoxyDate}

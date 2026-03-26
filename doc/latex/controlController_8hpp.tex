@@ -1,0 +1,65 @@
+\hypertarget{controlController_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/control\+Controller.hpp 文件参考}
+\label{controlController_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlController.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlController.hpp}}
+
+
+总控制器模块，横向控制基类，纵向控制类定义  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}control\+Data.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+control\+Controller.\+hpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlController_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlController_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classControl_1_1LatControllerBase}{Control\+::\+Lat\+Controller\+Base}}
+\begin{DoxyCompactList}\small\item\em 横向控制器基类。 \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classControl_1_1LonController}{Control\+::\+Lon\+Controller}}
+\begin{DoxyCompactList}\small\item\em longitude 纵向控制器 \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classControl_1_1Controller}{Control\+::\+Controller}}
+\begin{DoxyCompactList}\small\item\em 横纵向控制器基类 控制模块为该主要模块。内部分为横向控制和纵向控制 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceControl_a04ce1cbfb7837337fa86ac7d86a4c88f}\label{namespaceControl_a04ce1cbfb7837337fa86ac7d86a4c88f}} 
+Traj {\bfseries Control\+::transfer\+Gauss2\+Right\+Hand} (const State \&s, const Traj \&traj\+Raw, State \&s\+\_\+)
+\item 
+int \mbox{\hyperlink{namespaceControl_ac2141282fe1391c71c81c990e90beb8c}{Control\+::get\+Nearest\+Index}} (State state, const Traj \&traj)
+\begin{DoxyCompactList}\small\item\em 查找最近点\+ID. 比较曲线中每个点和当前点的距离 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+总控制器模块，横向控制基类，纵向控制类定义 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

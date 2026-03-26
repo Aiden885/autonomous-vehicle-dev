@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "objects.proto";
+
+package infopack;
+
+
+message ObjectsVec
+{
+    repeated infopack.ObjectsProto objMsg =1;
+    int32 sensorid=2;
+}
+

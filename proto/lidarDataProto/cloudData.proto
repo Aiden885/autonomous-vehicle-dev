@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package CloudProto;
+
+message CloudData
+{
+    int32 height=1;
+    int32 width=2;
+    int32 isDense=3;
+    
+    bytes pointsData=4;
+}
+
+
+

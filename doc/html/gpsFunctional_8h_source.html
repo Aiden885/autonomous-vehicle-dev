@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/GPS/src/gpsFunctional.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_b28c0c2c23114389da097ff5bd1375b9.html">GPS</a></li><li class="navelem"><a class="el" href="dir_7c130d3923afa0087d9555ead6a6292b.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">gpsFunctional.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gpsFunctional_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include&lt;iostream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include&lt;QApplication&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;configure.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;mainwindow.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;GGA.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;gpfpd.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;GPYBM.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceLocalization.html">Localization</a>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structLocalization_1_1paraAPP.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1paraAPP.html">paraAPP</a>{};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structLocalization_1_1inputAPP.html">   26</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1inputAPP.html">inputAPP</a>{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> argc;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">char</span> **argv;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structLocalization_1_1outputAPP.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1outputAPP.html">outputAPP</a>{};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structLocalization_1_1paraGGA.html">   34</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1paraGGA.html">paraGGA</a>{};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structLocalization_1_1inputGGA.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1inputGGA.html">inputGGA</a>{<span class="keywordtype">string</span> data;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structLocalization_1_1outputGGA.html">   38</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1outputGGA.html">outputGGA</a>{<a class="code" href="classNMEAGGA.html">NMEAGGA</a> data;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structLocalization_1_1paraGPYBM.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1paraGPYBM.html">paraGPYBM</a>{};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structLocalization_1_1inputGPYBM.html">   42</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1inputGPYBM.html">inputGPYBM</a>{<span class="keywordtype">string</span> data;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structLocalization_1_1outputGPYBM.html">   44</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1outputGPYBM.html">outputGPYBM</a>{<a class="code" href="classNMEAGPYBM.html">NMEAGPYBM</a> data;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structLocalization_1_1paraGPFPD.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1paraGPFPD.html">paraGPFPD</a>{};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structLocalization_1_1inputGPFPD.html">   48</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1inputGPFPD.html">inputGPFPD</a>{<span class="keywordtype">string</span> data;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structLocalization_1_1outputGPFPD.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1outputGPFPD.html">outputGPFPD</a>{<a class="code" href="classGPFPD.html">GPFPD</a> data;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structLocalization_1_1calcCheckPara.html">   52</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1calcCheckPara.html">calcCheckPara</a>{};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structLocalization_1_1calcCheckInput.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1calcCheckInput.html">calcCheckInput</a>{<span class="keywordtype">string</span> data;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structLocalization_1_1calcCheckOutput.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1calcCheckOutput.html">calcCheckOutput</a>{<span class="keywordtype">long</span> check;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structLocalization_1_1dmm2degPara.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1dmm2degPara.html">dmm2degPara</a>{};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structLocalization_1_1dmm2degInput.html">   60</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1dmm2degInput.html">dmm2degInput</a>{<span class="keywordtype">double</span> dmm;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structLocalization_1_1dmm2degOutput.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1dmm2degOutput.html">dmm2degOutput</a>{<span class="keywordtype">double</span> data;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">int</span> openQTWindow(<span class="keywordtype">int</span> argc,<span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#af94c1d8a1a783737d559f4ea41694d64">getGGA</a>(<span class="keyword">const</span> <a class="code" href="structLocalization_1_1paraGGA.html">paraGGA</a> &amp;para,<span class="keyword">const</span> <a class="code" href="structLocalization_1_1inputGGA.html">inputGGA</a> &amp;input,<a class="code" href="structLocalization_1_1outputGGA.html">outputGGA</a> &amp;output);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#aef707e2ebf6fa05c13f1e5ff2a160614">getGPFPD</a>(<span class="keyword">const</span> <a class="code" href="structLocalization_1_1paraGPFPD.html">paraGPFPD</a> &amp;para,<span class="keyword">const</span> <a class="code" href="structLocalization_1_1inputGPFPD.html">inputGPFPD</a> &amp;input,<a class="code" href="structLocalization_1_1outputGPFPD.html">outputGPFPD</a> &amp;output);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a05a362bf9b3a244e81ac049c6c57c1e0">getGPYBM</a>(<span class="keyword">const</span> <a class="code" href="structLocalization_1_1paraGPYBM.html">paraGPYBM</a> &amp;para,<span class="keyword">const</span> <a class="code" href="structLocalization_1_1inputGPYBM.html">inputGPYBM</a> &amp;input,<a class="code" href="structLocalization_1_1outputGPYBM.html">outputGPYBM</a> &amp;output);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a49110d5e3fd6bcd186bb8fd1db425d64">calcCheckSum</a>(<a class="code" href="structLocalization_1_1calcCheckPara.html">calcCheckPara</a> &amp;para,<a class="code" href="structLocalization_1_1calcCheckInput.html">calcCheckInput</a> &amp;input,<a class="code" href="structLocalization_1_1calcCheckOutput.html">calcCheckOutput</a> &amp;output);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#acafd275a0ffee71a4de02de254e29b62">dmm2deg</a>(<a class="code" href="structLocalization_1_1dmm2degPara.html">dmm2degPara</a> &amp;para,<a class="code" href="structLocalization_1_1dmm2degInput.html">dmm2degInput</a> &amp;input,<a class="code" href="structLocalization_1_1dmm2degOutput.html">dmm2degOutput</a> &amp;output);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceLocalization_html"><div class="ttname"><a href="namespaceLocalization.html">Localization</a></div><div class="ttdoc">Localization namespace</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:12</div></div>
+<div class="ttc" id="astructLocalization_1_1outputAPP_html"><div class="ttname"><a href="structLocalization_1_1outputAPP.html">Localization::outputAPP</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:32</div></div>
+<div class="ttc" id="anamespaceLocalization_html_aef707e2ebf6fa05c13f1e5ff2a160614"><div class="ttname"><a href="namespaceLocalization.html#aef707e2ebf6fa05c13f1e5ff2a160614">Localization::getGPFPD</a></div><div class="ttdeci">void getGPFPD(const paraGPFPD &amp;para, const inputGPFPD &amp;input, outputGPFPD &amp;output)</div><div class="ttdoc">解析GPFPD数据</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:73</div></div>
+<div class="ttc" id="astructLocalization_1_1outputGPYBM_html"><div class="ttname"><a href="structLocalization_1_1outputGPYBM.html">Localization::outputGPYBM</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:44</div></div>
+<div class="ttc" id="astructLocalization_1_1outputGPFPD_html"><div class="ttname"><a href="structLocalization_1_1outputGPFPD.html">Localization::outputGPFPD</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:50</div></div>
+<div class="ttc" id="astructLocalization_1_1inputGPFPD_html"><div class="ttname"><a href="structLocalization_1_1inputGPFPD.html">Localization::inputGPFPD</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:48</div></div>
+<div class="ttc" id="aclassNMEAGGA_html"><div class="ttname"><a href="classNMEAGGA.html">NMEAGGA</a></div><div class="ttdef"><b>Definition:</b> GGA.h:6</div></div>
+<div class="ttc" id="astructLocalization_1_1paraAPP_html"><div class="ttname"><a href="structLocalization_1_1paraAPP.html">Localization::paraAPP</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:24</div></div>
+<div class="ttc" id="astructLocalization_1_1calcCheckOutput_html"><div class="ttname"><a href="structLocalization_1_1calcCheckOutput.html">Localization::calcCheckOutput</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:56</div></div>
+<div class="ttc" id="astructLocalization_1_1inputGGA_html"><div class="ttname"><a href="structLocalization_1_1inputGGA.html">Localization::inputGGA</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:36</div></div>
+<div class="ttc" id="astructLocalization_1_1dmm2degInput_html"><div class="ttname"><a href="structLocalization_1_1dmm2degInput.html">Localization::dmm2degInput</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:60</div></div>
+<div class="ttc" id="astructLocalization_1_1calcCheckInput_html"><div class="ttname"><a href="structLocalization_1_1calcCheckInput.html">Localization::calcCheckInput</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:54</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a49110d5e3fd6bcd186bb8fd1db425d64"><div class="ttname"><a href="namespaceLocalization.html#a49110d5e3fd6bcd186bb8fd1db425d64">Localization::calcCheckSum</a></div><div class="ttdeci">void calcCheckSum(calcCheckPara &amp;para, calcCheckInput &amp;input, calcCheckOutput &amp;output)</div><div class="ttdoc">计算NEMA数据校验位</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:107</div></div>
+<div class="ttc" id="astructLocalization_1_1inputAPP_html"><div class="ttname"><a href="structLocalization_1_1inputAPP.html">Localization::inputAPP</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:26</div></div>
+<div class="ttc" id="astructLocalization_1_1inputGPYBM_html"><div class="ttname"><a href="structLocalization_1_1inputGPYBM.html">Localization::inputGPYBM</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:42</div></div>
+<div class="ttc" id="astructLocalization_1_1paraGPFPD_html"><div class="ttname"><a href="structLocalization_1_1paraGPFPD.html">Localization::paraGPFPD</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:46</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a05a362bf9b3a244e81ac049c6c57c1e0"><div class="ttname"><a href="namespaceLocalization.html#a05a362bf9b3a244e81ac049c6c57c1e0">Localization::getGPYBM</a></div><div class="ttdeci">void getGPYBM(const paraGPYBM &amp;para, const inputGPYBM &amp;input, outputGPYBM &amp;output)</div><div class="ttdoc">解析GPYBM数据</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:90</div></div>
+<div class="ttc" id="astructLocalization_1_1outputGGA_html"><div class="ttname"><a href="structLocalization_1_1outputGGA.html">Localization::outputGGA</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:38</div></div>
+<div class="ttc" id="anamespaceLocalization_html_af94c1d8a1a783737d559f4ea41694d64"><div class="ttname"><a href="namespaceLocalization.html#af94c1d8a1a783737d559f4ea41694d64">Localization::getGGA</a></div><div class="ttdeci">void getGGA(const paraGGA &amp;para, const inputGGA &amp;input, outputGGA &amp;output)</div><div class="ttdoc">解析GGA数据</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:56</div></div>
+<div class="ttc" id="aclassGPFPD_html"><div class="ttname"><a href="classGPFPD.html">GPFPD</a></div><div class="ttdef"><b>Definition:</b> gpfpd.h:8</div></div>
+<div class="ttc" id="anamespaceLocalization_html_acafd275a0ffee71a4de02de254e29b62"><div class="ttname"><a href="namespaceLocalization.html#acafd275a0ffee71a4de02de254e29b62">Localization::dmm2deg</a></div><div class="ttdeci">void dmm2deg(dmm2degPara &amp;para, dmm2degInput &amp;input, dmm2degOutput &amp;output)</div><div class="ttdoc">将NMEA中 ddmm.mm 格式转换为小数度</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:125</div></div>
+<div class="ttc" id="astructLocalization_1_1dmm2degPara_html"><div class="ttname"><a href="structLocalization_1_1dmm2degPara.html">Localization::dmm2degPara</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:58</div></div>
+<div class="ttc" id="astructLocalization_1_1calcCheckPara_html"><div class="ttname"><a href="structLocalization_1_1calcCheckPara.html">Localization::calcCheckPara</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:52</div></div>
+<div class="ttc" id="astructLocalization_1_1dmm2degOutput_html"><div class="ttname"><a href="structLocalization_1_1dmm2degOutput.html">Localization::dmm2degOutput</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:62</div></div>
+<div class="ttc" id="astructLocalization_1_1paraGPYBM_html"><div class="ttname"><a href="structLocalization_1_1paraGPYBM.html">Localization::paraGPYBM</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:40</div></div>
+<div class="ttc" id="astructLocalization_1_1paraGGA_html"><div class="ttname"><a href="structLocalization_1_1paraGGA.html">Localization::paraGGA</a></div><div class="ttdef"><b>Definition:</b> gpsFunctional.h:34</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html"><div class="ttname"><a href="classNMEAGPYBM.html">NMEAGPYBM</a></div><div class="ttdef"><b>Definition:</b> GPYBM.h:6</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

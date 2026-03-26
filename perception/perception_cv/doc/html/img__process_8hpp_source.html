@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_cv/include/img_process.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bb103d8aa73b98aee3d71b11e70e0a99.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">img_process.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef IMG_PROCESS_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define IMG_PROCESS_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceimageProcess.html">imageProcess</a>{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a223eeec6a37d66d3a258960a3b340d22">loadImage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, cv::Mat &amp;clr_image);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a2cd31f3360912749f6caa032b1cc8930">saveImage</a>(cv::Mat input, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a7a950f48671a436dcee98ed88fb4bc6e">imShow</a>(cv::Mat input, <span class="keyword">const</span> <span class="keywordtype">char</span> *window_name = <span class="stringliteral">&quot;img&quot;</span>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#aadd969cb7768cbd3b65483207a1c6a8e">imGray</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a28290945e4dfaa945f81e0ba35831bea">imLaplaceTrans</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">bool</span> is_norm=<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a7dbfdab06fdfd399ed465911659de135">imEqualizeHistogram</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a33feb845f961a52c445722025b8f72fa">imGammaCorrection</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> gamma);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a61b91273a6da8254b893ddc96f01c6c6">imInvertTransform</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a720ff03758dcc47178c4967aac5b4102">imLogTransform</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> c);  <span class="comment">// to be tested</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#a56b5a2a506246c468ecc9ff3b570f27d">imMeanFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size_x = 3, <span class="keywordtype">int</span> kernel_size_y = 3);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#aff19a7a67203c40976b22b8d9ffbdb17">imMedianFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#adef5b92f252596a94be64ab06df228a5">imGaussianFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3, <span class="keywordtype">double</span> sigma = 1.0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a505d1dfb37ae0b5f2512d4fd64046866">imSharpeningFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> sigma = 1.0, <span class="keywordtype">double</span> amount = 1.5, <span class="keywordtype">int</span> threshold = 0);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceimageProcess.html#ac83491542db495d5676416b0876b48cb">imBilateralFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> diameter = 5, <span class="keywordtype">double</span> sigma_color = 75.0, <span class="keywordtype">double</span> sigma_space = 75.0);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a8f10a858b7e8b6775a3d2b3c1bc4d409">imDrawRectangle</a> (cv::Mat input, cv::Rect rect, cv::Scalar color=CV_RGB(255,0,0), <span class="keywordtype">int</span> width=1);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a14517f41c8ce2a8109621e81241b3405">imDrawText</a>(cv::Mat input, <span class="keywordtype">char</span>* str, cv::Point point, <span class="keywordtype">int</span> fontFace = cv::FONT_HERSHEY_SIMPLEX, </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                 <span class="keywordtype">float</span> size=.25f, cv::Scalar color=CV_RGB(1,1,1));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a04093189389cdc23106f842f81a440fe">imDrawCircle</a>(cv::Mat input, cv::Point center, <span class="keywordtype">int</span> radius, </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                  cv::Scalar color=CV_RGB(255,0,0), <span class="keywordtype">int</span> thickness=1,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                  <span class="keywordtype">int</span> lineType=cv::LINE_8, <span class="keywordtype">int</span> shift=0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a6af63e6c5bc4c54dbf4920c18e53d639">imLaplacian</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3,<span class="keywordtype">double</span> scale = 1, <span class="keywordtype">double</span> delta = 0);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a5c572efb9897eaf654a85ff20414b629">imRoberts</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a314256bb27fb917820977185b1c6d84c">imPrewitt</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#ab4699c07245a82212f25b8369ad92b5f">imMorphologyDilation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a8efb129fbfc61e6847db2c8a0bbe8050">imMorphologyErosion</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#ac17bb1d74dadf744d164fc9348066046">imMorphologyOpen</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a4ff868bc96d06036f99d432f330529d4">imMorphologyClose</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//insert</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#aea39c26feed04d337f7b6ef48dcc0841">imNearestInterpolation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> sx, <span class="keywordtype">double</span> sy);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a325a0d26b834663b52b85d490ca93733">imBiLineInterpolate</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> scale_x,<span class="keywordtype">double</span> scale_y);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#a2cefcf6c7d11a6d8120085738e67bf54">imCubicInterpolation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> scale_x,<span class="keywordtype">double</span> scale_y);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#aa7433ac66ac3aaffe1940fcdd3ef84e6">imGetNearestNeighbor</a>(cv::Mat input, uchar&amp; result, <span class="keywordtype">double</span> pos_x,<span class="keywordtype">double</span> pos_y);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceimageProcess.html#abcd39b6ea1b635bf50eca279723d589a">imGetBilinearInterpolation</a>(cv::Mat input, uchar&amp; result, <span class="keywordtype">double</span> pos_x,<span class="keywordtype">double</span> pos_y);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// write a function whoes name is pcdBIRCHCluster to perform   algorithm with opencv, and it&#39;s input is cv::Mat input, output is cv::Mat &amp;output, and you can add other input you need, and return void. And add note with doxygen format</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceimageProcess_html_a04093189389cdc23106f842f81a440fe"><div class="ttname"><a href="namespaceimageProcess.html#a04093189389cdc23106f842f81a440fe">imageProcess::imDrawCircle</a></div><div class="ttdeci">void imDrawCircle(cv::Mat input, cv::Point center, int radius, cv::Scalar color, int thickness, int lineType, int shift)</div><div class="ttdoc">Draws a circle on an image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:381</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a2cd31f3360912749f6caa032b1cc8930"><div class="ttname"><a href="namespaceimageProcess.html#a2cd31f3360912749f6caa032b1cc8930">imageProcess::saveImage</a></div><div class="ttdeci">bool saveImage(cv::Mat input, const char *filename)</div><div class="ttdoc">Saves an image to file.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:27</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a8f10a858b7e8b6775a3d2b3c1bc4d409"><div class="ttname"><a href="namespaceimageProcess.html#a8f10a858b7e8b6775a3d2b3c1bc4d409">imageProcess::imDrawRectangle</a></div><div class="ttdeci">void imDrawRectangle(cv::Mat input, cv::Rect rect, cv::Scalar color, int width)</div><div class="ttdoc">Draws a rectangle on an image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:346</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_aa7433ac66ac3aaffe1940fcdd3ef84e6"><div class="ttname"><a href="namespaceimageProcess.html#aa7433ac66ac3aaffe1940fcdd3ef84e6">imageProcess::imGetNearestNeighbor</a></div><div class="ttdeci">void imGetNearestNeighbor(cv::Mat input, uchar &amp;result, double pos_x, double pos_y)</div><div class="ttdoc">Gets nearest neighbor pixel value.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:726</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_adef5b92f252596a94be64ab06df228a5"><div class="ttname"><a href="namespaceimageProcess.html#adef5b92f252596a94be64ab06df228a5">imageProcess::imGaussianFilter</a></div><div class="ttdeci">void imGaussianFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size, double sigma)</div><div class="ttdoc">Applies Gaussian filtering to an image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:252</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_abcd39b6ea1b635bf50eca279723d589a"><div class="ttname"><a href="namespaceimageProcess.html#abcd39b6ea1b635bf50eca279723d589a">imageProcess::imGetBilinearInterpolation</a></div><div class="ttdeci">void imGetBilinearInterpolation(cv::Mat input, uchar &amp;result, double pos_x, double pos_y)</div><div class="ttdoc">Gets bilinearly interpolated pixel value.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:744</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a28290945e4dfaa945f81e0ba35831bea"><div class="ttname"><a href="namespaceimageProcess.html#a28290945e4dfaa945f81e0ba35831bea">imageProcess::imLaplaceTrans</a></div><div class="ttdeci">bool imLaplaceTrans(cv::Mat input, cv::Mat &amp;output, bool is_norm)</div><div class="ttdoc">Applies Laplacian edge detection.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:75</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a2cefcf6c7d11a6d8120085738e67bf54"><div class="ttname"><a href="namespaceimageProcess.html#a2cefcf6c7d11a6d8120085738e67bf54">imageProcess::imCubicInterpolation</a></div><div class="ttdeci">void imCubicInterpolation(cv::Mat input, cv::Mat &amp;output, double scale_x, double scale_y)</div><div class="ttdoc">Performs bicubic interpolation.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:656</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a6af63e6c5bc4c54dbf4920c18e53d639"><div class="ttname"><a href="namespaceimageProcess.html#a6af63e6c5bc4c54dbf4920c18e53d639">imageProcess::imLaplacian</a></div><div class="ttdeci">void imLaplacian(cv::Mat input, cv::Mat &amp;output, int kernel_size, double scale, double delta)</div><div class="ttdoc">Applies Laplacian operator to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:396</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a8efb129fbfc61e6847db2c8a0bbe8050"><div class="ttname"><a href="namespaceimageProcess.html#a8efb129fbfc61e6847db2c8a0bbe8050">imageProcess::imMorphologyErosion</a></div><div class="ttdeci">void imMorphologyErosion(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological erosion.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:473</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a7dbfdab06fdfd399ed465911659de135"><div class="ttname"><a href="namespaceimageProcess.html#a7dbfdab06fdfd399ed465911659de135">imageProcess::imEqualizeHistogram</a></div><div class="ttdeci">bool imEqualizeHistogram(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Performs histogram equalization on grayscale image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:98</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_aadd969cb7768cbd3b65483207a1c6a8e"><div class="ttname"><a href="namespaceimageProcess.html#aadd969cb7768cbd3b65483207a1c6a8e">imageProcess::imGray</a></div><div class="ttdeci">bool imGray(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Converts a color image to grayscale.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:54</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a56b5a2a506246c468ecc9ff3b570f27d"><div class="ttname"><a href="namespaceimageProcess.html#a56b5a2a506246c468ecc9ff3b570f27d">imageProcess::imMeanFilter</a></div><div class="ttdeci">bool imMeanFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size_x, int kernel_size_y)</div><div class="ttdoc">Applies mean filter to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:209</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_ac83491542db495d5676416b0876b48cb"><div class="ttname"><a href="namespaceimageProcess.html#ac83491542db495d5676416b0876b48cb">imageProcess::imBilateralFilter</a></div><div class="ttdeci">bool imBilateralFilter(cv::Mat input, cv::Mat &amp;output, int diameter, double sigma_color, double sigma_space)</div><div class="ttdoc">Applies bilateral filter to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:322</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a325a0d26b834663b52b85d490ca93733"><div class="ttname"><a href="namespaceimageProcess.html#a325a0d26b834663b52b85d490ca93733">imageProcess::imBiLineInterpolate</a></div><div class="ttdeci">void imBiLineInterpolate(cv::Mat input, cv::Mat &amp;output, double scale_x, double scale_y)</div><div class="ttdoc">Performs bilinear interpolation.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:586</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a61b91273a6da8254b893ddc96f01c6c6"><div class="ttname"><a href="namespaceimageProcess.html#a61b91273a6da8254b893ddc96f01c6c6">imageProcess::imInvertTransform</a></div><div class="ttdeci">bool imInvertTransform(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Inverts image colors.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:153</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a5c572efb9897eaf654a85ff20414b629"><div class="ttname"><a href="namespaceimageProcess.html#a5c572efb9897eaf654a85ff20414b629">imageProcess::imRoberts</a></div><div class="ttdeci">void imRoberts(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Applies Roberts edge detection.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:407</div></div>
+<div class="ttc" id="anamespaceimageProcess_html"><div class="ttname"><a href="namespaceimageProcess.html">imageProcess</a></div><div class="ttdoc">imageProcess namespace。</div><div class="ttdef"><b>Definition:</b> img_process.cpp:3</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_ac17bb1d74dadf744d164fc9348066046"><div class="ttname"><a href="namespaceimageProcess.html#ac17bb1d74dadf744d164fc9348066046">imageProcess::imMorphologyOpen</a></div><div class="ttdeci">void imMorphologyOpen(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological opening.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:487</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_ab4699c07245a82212f25b8369ad92b5f"><div class="ttname"><a href="namespaceimageProcess.html#ab4699c07245a82212f25b8369ad92b5f">imageProcess::imMorphologyDilation</a></div><div class="ttdeci">void imMorphologyDilation(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological dilation.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:458</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a14517f41c8ce2a8109621e81241b3405"><div class="ttname"><a href="namespaceimageProcess.html#a14517f41c8ce2a8109621e81241b3405">imageProcess::imDrawText</a></div><div class="ttdeci">void imDrawText(cv::Mat input, char *str, cv::Point point, int fontFace, float size, cv::Scalar color)</div><div class="ttdoc">Draws text on an image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:364</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_aff19a7a67203c40976b22b8d9ffbdb17"><div class="ttname"><a href="namespaceimageProcess.html#aff19a7a67203c40976b22b8d9ffbdb17">imageProcess::imMedianFilter</a></div><div class="ttdeci">bool imMedianFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies median filter to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:230</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a505d1dfb37ae0b5f2512d4fd64046866"><div class="ttname"><a href="namespaceimageProcess.html#a505d1dfb37ae0b5f2512d4fd64046866">imageProcess::imSharpeningFilter</a></div><div class="ttdeci">void imSharpeningFilter(cv::Mat input, cv::Mat &amp;output, double sigma, double amount, int threshold)</div><div class="ttdoc">Applies sharpening filter to image using unsharp masking.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:281</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a7a950f48671a436dcee98ed88fb4bc6e"><div class="ttname"><a href="namespaceimageProcess.html#a7a950f48671a436dcee98ed88fb4bc6e">imageProcess::imShow</a></div><div class="ttdeci">void imShow(cv::Mat input, const char *window_name)</div><div class="ttdoc">Displays an image in a window.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:42</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a33feb845f961a52c445722025b8f72fa"><div class="ttname"><a href="namespaceimageProcess.html#a33feb845f961a52c445722025b8f72fa">imageProcess::imGammaCorrection</a></div><div class="ttdeci">bool imGammaCorrection(cv::Mat input, cv::Mat &amp;output, double gamma)</div><div class="ttdoc">Applies gamma correction to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:125</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a4ff868bc96d06036f99d432f330529d4"><div class="ttname"><a href="namespaceimageProcess.html#a4ff868bc96d06036f99d432f330529d4">imageProcess::imMorphologyClose</a></div><div class="ttdeci">void imMorphologyClose(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological closing.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:503</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a223eeec6a37d66d3a258960a3b340d22"><div class="ttname"><a href="namespaceimageProcess.html#a223eeec6a37d66d3a258960a3b340d22">imageProcess::loadImage</a></div><div class="ttdeci">bool loadImage(const char *filename, cv::Mat &amp;clr_image)</div><div class="ttdoc">Loads an image from file into a cv::Mat.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:10</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a720ff03758dcc47178c4967aac5b4102"><div class="ttname"><a href="namespaceimageProcess.html#a720ff03758dcc47178c4967aac5b4102">imageProcess::imLogTransform</a></div><div class="ttdeci">bool imLogTransform(cv::Mat input, cv::Mat &amp;output, double c)</div><div class="ttdoc">Applies logarithmic transform to image.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:172</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_aea39c26feed04d337f7b6ef48dcc0841"><div class="ttname"><a href="namespaceimageProcess.html#aea39c26feed04d337f7b6ef48dcc0841">imageProcess::imNearestInterpolation</a></div><div class="ttdeci">void imNearestInterpolation(cv::Mat input, cv::Mat &amp;output, double sx, double sy)</div><div class="ttdoc">Performs nearest neighbor interpolation.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:520</div></div>
+<div class="ttc" id="anamespaceimageProcess_html_a314256bb27fb917820977185b1c6d84c"><div class="ttname"><a href="namespaceimageProcess.html#a314256bb27fb917820977185b1c6d84c">imageProcess::imPrewitt</a></div><div class="ttdeci">void imPrewitt(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Applies Prewitt edge detection.</div><div class="ttdef"><b>Definition:</b> img_process.cpp:431</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

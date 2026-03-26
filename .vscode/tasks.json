@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker: 编译 huanyuan1",
+            "type": "shell",
+            "command": "sudo docker run --rm -v '/data/aiden/文档/Modularization':/workspace modularization-dev:latest bash -c 'cd /workspace/huanyuan1/thicv-pilot/planningFigure && mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug 2>&1 && make -j$(nproc) 2>&1'",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "Docker: 编译 Controller",
+            "type": "shell",
+            "command": "sudo docker run --rm -v '/data/aiden/文档/Modularization':/workspace modularization-dev:latest bash -c 'cd /workspace/Controller && mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug 2>&1 && make -j$(nproc) 2>&1'",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Docker: 清理重新编译 huanyuan1",
+            "type": "shell",
+            "command": "sudo docker run --rm -v '/data/aiden/文档/Modularization':/workspace modularization-dev:latest bash -c 'rm -rf /workspace/huanyuan1/thicv-pilot/planningFigure/build && mkdir -p /workspace/huanyuan1/thicv-pilot/planningFigure/build && cd /workspace/huanyuan1/thicv-pilot/planningFigure/build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make -j$(nproc) 2>&1'",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Docker: 进入交互容器",
+            "type": "shell",
+            "command": "cd '/data/aiden/文档/Modularization' && ./dev.sh start",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}

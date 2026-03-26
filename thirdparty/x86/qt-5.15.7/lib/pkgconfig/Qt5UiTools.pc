@@ -1,0 +1,14 @@
+prefix=/home/yukang/workspace/third_party_libs/qt-5.15.7
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 UiTools
+Description: Qt UiTools module
+Version: 5.15.7
+Libs: -L${libdir} -lQt5UiTools 
+Libs.private: /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Widgets.so /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Gui.so /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Core.so -lpthread /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Widgets.so /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Gui.so /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Core.so -lGL   
+Cflags: -DQT_UITOOLS_LIB -I${includedir}/QtUiTools -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets
+

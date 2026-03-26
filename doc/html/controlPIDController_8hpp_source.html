@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/include/controlPIDController.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_f8d9a1cccf2878e05ce0a8a09b388292.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">controlPIDController.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="controlPIDController_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _CONTROL_PID_CONTROLLER_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _CONTROL_PID_CONTROLLER_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"># include &quot;<a class="code" href="controlController_8hpp.html">controlController.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include&lt;vector&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;yaml-cpp/yaml.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceControl.html">Control</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classControl_1_1PID.html">   34</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classControl_1_1PID.html">PID</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">double</span> e;   <span class="comment">//期望值与实际值之间的差距</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">double</span> ei;  <span class="comment">//error integral. 误差积分，误差随时间的累积量</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">double</span> ed;  <span class="comment">// delta error. 误差求导，误差在时间上的变化率</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">double</span> kp;          <span class="comment">// 比例增益，放大误差</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">double</span> ki;             <span class="comment">//积分增益，消除静态误差</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">double</span> kd;          <span class="comment">//微分增益， 预测误差变化趋势</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">double</span> w;           <span class="comment">//权重。加权PID计算</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">double</span> dt;  <span class="comment">//控制器频率，对误差微分进行离散化</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> isStarted; <span class="comment">//标识控制器是否已启动</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">double</span> dThresh; <span class="comment">//微分上限</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">bool</span> isdThreshOn;   <span class="comment">//是否启用微分上限</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// 积分饱和处理</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">bool</span> isThreshOn;    <span class="comment">//是否启用积分饱和处理</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">double</span>  eiThresh, eiDecayRatio; <span class="comment">//eiThresh积分饱和阈值，用于限制积分项的最大值；eiDecayRatio积分项衰减系数，用于限制积分项的累积</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classControl_1_1PID.html">PID</a>(<span class="keywordtype">double</span> kp, <span class="keywordtype">double</span> ki, <span class="keywordtype">double</span> kd, <span class="keywordtype">double</span> dt, <span class="keywordtype">bool</span> isThreshOn, <span class="keywordtype">double</span> errorThresh, <span class="keywordtype">double</span> dThresh, <span class="keywordtype">bool</span> isdThreshOn, <span class="keywordtype">double</span> w);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classControl_1_1PID.html">PID</a>():<a class="code" href="classControl_1_1PID.html">PID</a>(0,0,0,0,0,0,0 ,0,0){};        <span class="comment">// 不能删，否则没有复制构造函数？</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        ~<a class="code" href="classControl_1_1PID.html">PID</a>(){};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//更新控制器状态，并返回输出控制量</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">double</span> update(<span class="keywordtype">double</span> error);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">//返回 PID 计算的输出控制量</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">double</span> output(){<span class="keywordflow">return</span> w*(kp*e+kd*ed+ki*ei);}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">//用于修改 PID 控制器的比例、积分、微分增益</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> modifyGains(<span class="keywordtype">double</span> kp, <span class="keywordtype">double</span> ki, <span class="keywordtype">double</span> kd);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">//用于重置积分项的值</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">void</span> resetI();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">using</span> PIDLibs = std::map&lt;std::string, PID&gt;;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classControl_1_1PID.html">PID</a> <a class="code" href="namespaceControl.html#aa9d0aaddc032bf7e678f34a8e4665c1f">loadPIDYamlConfig</a>(YAML::Node config, std::string name, <span class="keywordtype">double</span> dt);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classControl_1_1PIDController.html">   83</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classControl_1_1PIDController.html">PIDController</a>: <span class="keyword">public</span> <a class="code" href="classControl_1_1LatControllerBase.html">LatControllerBase</a></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">//传入一个配置文件的路径、最大转向角度、轮胎转向比例、以及控制器频率</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classControl_1_1PIDController.html#ad9589dae4ee46cebfa0fcb0ffe08e121">PIDController</a>(std::string configFile, <span class="keywordtype">double</span> maxSteer, </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordtype">double</span> ratioWheelToSteer=20, <span class="keywordtype">double</span> dt=0.1);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        ~<a class="code" href="classControl_1_1PIDController.html">PIDController</a>() {};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classControl_1_1PIDController.html#a1fd5e1f993ec2bacc635f849b6611efa">calcSteer</a>(<a class="code" href="structControl_1_1State.html">State</a> s, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">size_t</span> nearestID);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">//计算前馈角度，需要传入当前状态、轨迹信息、当前轨迹点ID和下一个轨迹点ID</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">double</span> calcFeedForwardAngle(<a class="code" href="structControl_1_1State.html">State</a> state, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">int</span> nID, <span class="keywordtype">int</span> rID);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        PIDLibs calcErrors(<a class="code" href="structControl_1_1State.html">State</a> state, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">size_t</span> nID, <span class="keywordtype">size_t</span> pID);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">double</span> calcPreviewDis(<a class="code" href="structControl_1_1State.html">State</a> state, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">size_t</span> nID) ;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">int</span> getPreviewID(<span class="keywordtype">double</span> previewDistance, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">size_t</span> nID);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">double</span> calcFeedback();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">//初始预瞄点，设置为0，后用轨迹最近点替换</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">size_t</span> lastpreviewID=0;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">double</span> wheelbase; <span class="comment">//轴距</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        PIDLibs pidLibs;    <span class="comment">//PID误差实例集合</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">double</span> feedforwardWeight; <span class="comment">//前馈权重</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">double</span> lastPreviewDistance;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">double</span> maxPreviewDistancePlusDelta;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">double</span> maxPreviewDistanceMinusDelta;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">double</span> minPreviewDistance;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">double</span> maxPreviewDistance;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">double</span> previewKV;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordtype">double</span> previewExpKC;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">double</span> previewExpThre;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">bool</span> plusPreviewPoint;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">double</span> plusPreviewPointweight;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">double</span> steerGain;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">double</span> YawError = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="comment">//TODO 可视化方便debug.赋值</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="structControl_1_1TrajPoint.html">TrajPoint</a> previewPoint; <span class="comment">//预瞄点</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="structControl_1_1TrajPoint.html">TrajPoint</a> currentPoint; <span class="comment">//当前点</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    };</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructControl_1_1TrajPoint_html"><div class="ttname"><a href="structControl_1_1TrajPoint.html">Control::TrajPoint</a></div><div class="ttdef"><b>Definition:</b> controlData.hpp:39</div></div>
+<div class="ttc" id="anamespaceControl_html_aa9d0aaddc032bf7e678f34a8e4665c1f"><div class="ttname"><a href="namespaceControl.html#aa9d0aaddc032bf7e678f34a8e4665c1f">Control::loadPIDYamlConfig</a></div><div class="ttdeci">PID loadPIDYamlConfig(YAML::Node config, std::string name, double dt)</div><div class="ttdoc">读取 yaml 文件中pid_conf相关字段内容，并返回控制器</div><div class="ttdef"><b>Definition:</b> controlPIDController.cc:106</div></div>
+<div class="ttc" id="anamespaceControl_html"><div class="ttname"><a href="namespaceControl.html">Control</a></div><div class="ttdoc">Control namespace</div><div class="ttdef"><b>Definition:</b> controlController.cc:26</div></div>
+<div class="ttc" id="aclassControl_1_1PIDController_html"><div class="ttname"><a href="classControl_1_1PIDController.html">Control::PIDController</a></div><div class="ttdoc">PID横向运动控制器</div><div class="ttdef"><b>Definition:</b> controlPIDController.hpp:83</div></div>
+<div class="ttc" id="astructControl_1_1State_html"><div class="ttname"><a href="structControl_1_1State.html">Control::State</a></div><div class="ttdoc">输入车辆位置信息</div><div class="ttdef"><b>Definition:</b> controlData.hpp:29</div></div>
+<div class="ttc" id="aclassControl_1_1PID_html"><div class="ttname"><a href="classControl_1_1PID.html">Control::PID</a></div><div class="ttdoc">PID 控制器类</div><div class="ttdef"><b>Definition:</b> controlPIDController.hpp:34</div></div>
+<div class="ttc" id="aclassControl_1_1PIDController_html_a1fd5e1f993ec2bacc635f849b6611efa"><div class="ttname"><a href="classControl_1_1PIDController.html#a1fd5e1f993ec2bacc635f849b6611efa">Control::PIDController::calcSteer</a></div><div class="ttdeci">double calcSteer(State s, const Traj &amp;traj, size_t nearestID)</div><div class="ttdoc">计算前轮转角</div><div class="ttdef"><b>Definition:</b> controlPIDController.cc:433</div></div>
+<div class="ttc" id="aclassControl_1_1PIDController_html_ad9589dae4ee46cebfa0fcb0ffe08e121"><div class="ttname"><a href="classControl_1_1PIDController.html#ad9589dae4ee46cebfa0fcb0ffe08e121">Control::PIDController::PIDController</a></div><div class="ttdeci">PIDController(std::string configFile, double maxSteer, double ratioWheelToSteer=20, double dt=0.1)</div><div class="ttdoc">Construct a new PIDController::PIDController object</div><div class="ttdef"><b>Definition:</b> controlPIDController.cc:130</div></div>
+<div class="ttc" id="acontrolController_8hpp_html"><div class="ttname"><a href="controlController_8hpp.html">controlController.hpp</a></div><div class="ttdoc">总控制器模块，横向控制基类，纵向控制类定义</div></div>
+<div class="ttc" id="aclassControl_1_1LatControllerBase_html"><div class="ttname"><a href="classControl_1_1LatControllerBase.html">Control::LatControllerBase</a></div><div class="ttdoc">横向控制器基类。</div><div class="ttdef"><b>Definition:</b> controlController.hpp:39</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

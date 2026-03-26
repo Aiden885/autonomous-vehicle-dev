@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: modularization-dev:latest
+    container_name: modularization-dev
+    # 将整个项目目录挂载进容器，宿主机改代码，容器里立即生效
+    volumes:
+      - .:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY}
+    # 保持容器运行
+    stdin_open: true
+    tty: true
+    # 允许使用 gdb 调试
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    # 共享宿主机网络（方便 ZMQ 通信调试）
+    network_mode: host

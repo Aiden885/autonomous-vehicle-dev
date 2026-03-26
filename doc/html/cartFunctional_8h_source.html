@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/CART/src/cartFunctional.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_431317b2a5ab8e1409cdf5bbbce19c0e.html">Logic</a></li><li class="navelem"><a class="el" href="dir_e878be0495e87879accd46242023d689.html">DecisionTree</a></li><li class="navelem"><a class="el" href="dir_05acf2af51345418aff423badf107876.html">CART</a></li><li class="navelem"><a class="el" href="dir_e3455f12aa7f58a09374f57e523a4790.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">cartFunctional.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cartFunctional_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include&quot;LogicDecisionTreeCARTHead.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceLogic.html">Logic</a>{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structLogic_1_1treeParam.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1treeParam.html">treeParam</a>{};</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structLogic_1_1trainInput.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1trainInput.html">trainInput</a>{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    vector&lt;vector&lt;double&gt;&gt; trainData;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    vector&lt;int&gt; trainLabel;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structLogic_1_1verifyInput.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1verifyInput.html">verifyInput</a>{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    vector&lt;vector&lt;double&gt;&gt; verifyData;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    vector&lt;int&gt; verifyLabel;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structLogic_1_1predictInput.html">   30</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1predictInput.html">predictInput</a>{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    vector&lt;double&gt; sample;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structLogic_1_1predictOutput.html">   34</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1predictOutput.html">predictOutput</a>{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> type;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//决策树节点结构</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structLogic_1_1cartTree.html">   41</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1cartTree.html">cartTree</a>{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> Tree;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structLogic_1_1loadDataPara.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadDataPara.html">loadDataPara</a>{};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structLogic_1_1loadDataInput.html">   48</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadDataInput.html">loadDataInput</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    vector&lt;vector&lt;double&gt;&gt; trainData;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    vector&lt;int&gt; trainLabel;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structLogic_1_1labelCountPara.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1labelCountPara.html">labelCountPara</a>{};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structLogic_1_1labelCountInput.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1labelCountInput.html">labelCountInput</a>{vector&lt;int&gt; dataset;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structLogic_1_1labelCountOutput.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1labelCountOutput.html">labelCountOutput</a>{map&lt;int,int&gt; labelCounts;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structLogic_1_1calcGiniValueInput.html">   60</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calcGiniValueInput.html">calcGiniValueInput</a>{vector&lt;int&gt; dataset;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structLogic_1_1calcGiniValueOutput.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calcGiniValueOutput.html">calcGiniValueOutput</a>{<span class="keywordtype">double</span> giniValue;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structLogic_1_1splitDataInput.html">   65</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1splitDataInput.html">splitDataInput</a></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    vector&lt;int&gt; dataset;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> feature;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">double</span> threshold;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> bigger;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structLogic_1_1calcGiniIndexInput.html">   73</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calcGiniIndexInput.html">calcGiniIndexInput</a></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    vector&lt;int&gt; dataset;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> feature;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> threshold;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structLogic_1_1calcGiniIndexOutput.html">   80</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calcGiniIndexOutput.html">calcGiniIndexOutput</a>{<span class="keywordtype">double</span> giniIndex;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structLogic_1_1splitDataOutput.html">   82</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1splitDataOutput.html">splitDataOutput</a>{vector&lt;int&gt; outputDataset;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structLogic_1_1createPara.html">   84</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1createPara.html">createPara</a>{};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structLogic_1_1createInput.html">   86</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1createInput.html">createInput</a>{};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structLogic_1_1classInput.html">   88</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1classInput.html">classInput</a></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    vector&lt;double&gt; testData;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structLogic_1_1classOutput.html">   93</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1classOutput.html">classOutput</a></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">int</span> type;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="structLogic_1_1printPara.html">   99</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1printPara.html">printPara</a>{};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structLogic_1_1printOutput.html">  101</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1printOutput.html">printOutput</a>{};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structLogic_1_1savePara.html">  103</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1savePara.html">savePara</a>{};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="structLogic_1_1saveInput.html">  105</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1saveInput.html">saveInput</a></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> Tree;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">char</span> *filename;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="structLogic_1_1saveOutput.html">  111</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1saveOutput.html">saveOutput</a>{};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structLogic_1_1loadTreePara.html">  113</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadTreePara.html">loadTreePara</a>{};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structLogic_1_1loadTreeInput.html">  115</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadTreeInput.html">loadTreeInput</a></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *filename;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="structLogic_1_1testTreeInput.html">  122</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1testTreeInput.html">testTreeInput</a></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    vector&lt;vector&lt;double&gt;&gt; testData;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    vector&lt;int&gt; testLabel;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;};</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structLogic_1_1testTreeOutput.html">  128</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1testTreeOutput.html">testTreeOutput</a>{<span class="keywordtype">double</span> correctRate;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxInput.html">  130</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxInput.html">getMaxInput</a>{map&lt;int,int&gt; &amp;labelCount;};</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxOutput.html">  132</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxOutput.html">getMaxOutput</a>{<span class="keywordtype">int</span> type;};</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a763f43c561bf1ea32540e618819d9c1b">loadCARTData</a>(<span class="keyword">const</span> <a class="code" href="structLogic_1_1loadDataPara.html">loadDataPara</a> &amp;para,<span class="keyword">const</span> <a class="code" href="structLogic_1_1loadDataInput.html">loadDataInput</a> &amp;input,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;output);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a017e79f91d42dd7a04a93580041ed49b">getcartLabelCount</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1labelCountInput.html">labelCountInput</a> &amp;input,<a class="code" href="structLogic_1_1labelCountOutput.html">labelCountOutput</a> &amp;output);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a73724e030029452d61c7b586e51208da">calcCARTGiniValue</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1calcGiniValueInput.html">calcGiniValueInput</a> &amp;input,<a class="code" href="structLogic_1_1calcGiniValueOutput.html">calcGiniValueOutput</a> &amp;output);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a406f0260550ab9010777bad14cf0b9de">trainCART</a>(<span class="keyword">const</span> <a class="code" href="structLogic_1_1treeParam.html">treeParam</a> &amp;param,<span class="keyword">const</span> <a class="code" href="structLogic_1_1trainInput.html">trainInput</a> &amp;input,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;output);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a57e04797dbd4b8c6b42711dd1499635a">predictCART</a>(<span class="keyword">const</span> <a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;param,<span class="keyword">const</span> <a class="code" href="structLogic_1_1predictInput.html">predictInput</a> &amp;input,<a class="code" href="structLogic_1_1predictOutput.html">predictOutput</a> &amp;output);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a8afa0a600edfc2e10c94fd0839fd43bc">pruningCART</a>(<span class="keyword">const</span> <a class="code" href="structLogic_1_1treeParam.html">treeParam</a> &amp;param,<span class="keyword">const</span> <a class="code" href="structLogic_1_1verifyInput.html">verifyInput</a> &amp;input,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;output);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a81c8d5e5fa71b901869623ae65d71737">splitCARTDataset</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1splitDataInput.html">splitDataInput</a> &amp;input,<a class="code" href="structLogic_1_1splitDataOutput.html">splitDataOutput</a> &amp;output);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a60290212fd536a2caad99abf43c5a3b1">calcCARTGiniIndex</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1calcGiniIndexInput.html">calcGiniIndexInput</a> &amp;input,<a class="code" href="structLogic_1_1calcGiniIndexOutput.html">calcGiniIndexOutput</a> &amp;output);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#ae6522d46ef2dd9d3311e3ffb95f58724">createCARTTree</a>(<a class="code" href="structLogic_1_1createPara.html">createPara</a> &amp;para,<a class="code" href="structLogic_1_1createInput.html">createInput</a> &amp;input,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;output);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a9f40ad1bcf442173f288bb1dcb4b18f0">classifyCARTData</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1classInput.html">classInput</a> &amp;input,<a class="code" href="structLogic_1_1classOutput.html">classOutput</a> &amp;output);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#ab6a76d0bb9f3d096f02d49d2fe963271">printCARTTree</a>(<a class="code" href="structLogic_1_1printPara.html">printPara</a> &amp;para,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;input,<a class="code" href="structLogic_1_1printOutput.html">printOutput</a> &amp;output);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#af0b686d189fa5590b897eadb88899972">saveCARTTree</a>(<a class="code" href="structLogic_1_1savePara.html">savePara</a> &amp;para,<a class="code" href="structLogic_1_1saveInput.html">saveInput</a> &amp;input,<a class="code" href="structLogic_1_1saveOutput.html">saveOutput</a> &amp;output);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a721f8f4668c3779e63cd6cac7fc9789f">loadCARTTree</a>(<a class="code" href="structLogic_1_1loadTreePara.html">loadTreePara</a> &amp;para,<a class="code" href="structLogic_1_1loadTreeInput.html">loadTreeInput</a> &amp;input,<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;output);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a8ada6543ccb633dd828d43419d3756e0">testCARTTree</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1testTreeInput.html">testTreeInput</a> &amp;input,<a class="code" href="structLogic_1_1testTreeOutput.html">testTreeOutput</a> &amp;output);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a5ce825c6e945c7008e3caa12a01088d0">getCARTMaxTimesLabel</a>(<a class="code" href="structLogic_1_1cartTree.html">cartTree</a> &amp;para,<a class="code" href="structLogic_1_1getMaxInput.html">getMaxInput</a> &amp;input,<a class="code" href="structLogic_1_1getMaxOutput.html">getMaxOutput</a> &amp;output);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructLogic_1_1calcGiniValueInput_html"><div class="ttname"><a href="structLogic_1_1calcGiniValueInput.html">Logic::calcGiniValueInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:60</div></div>
+<div class="ttc" id="astructLogic_1_1saveOutput_html"><div class="ttname"><a href="structLogic_1_1saveOutput.html">Logic::saveOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:111</div></div>
+<div class="ttc" id="anamespaceLogic_html_af0b686d189fa5590b897eadb88899972"><div class="ttname"><a href="namespaceLogic.html#af0b686d189fa5590b897eadb88899972">Logic::saveCARTTree</a></div><div class="ttdeci">void saveCARTTree(savePara &amp;para, saveInput &amp;input, saveOutput &amp;output)</div><div class="ttdoc">保存CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:232</div></div>
+<div class="ttc" id="astructLogic_1_1predictOutput_html"><div class="ttname"><a href="structLogic_1_1predictOutput.html">Logic::predictOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:34</div></div>
+<div class="ttc" id="anamespaceLogic_html_a8ada6543ccb633dd828d43419d3756e0"><div class="ttname"><a href="namespaceLogic.html#a8ada6543ccb633dd828d43419d3756e0">Logic::testCARTTree</a></div><div class="ttdeci">void testCARTTree(cartTree &amp;para, testTreeInput &amp;input, testTreeOutput &amp;output)</div><div class="ttdoc">测试CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:268</div></div>
+<div class="ttc" id="anamespaceLogic_html_a57e04797dbd4b8c6b42711dd1499635a"><div class="ttname"><a href="namespaceLogic.html#a57e04797dbd4b8c6b42711dd1499635a">Logic::predictCART</a></div><div class="ttdeci">void predictCART(const cartTree &amp;param, const predictInput &amp;input, predictOutput &amp;output)</div><div class="ttdoc">预测CART样本</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:60</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxInput_html"><div class="ttname"><a href="structLogic_1_1getMaxInput.html">Logic::getMaxInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:130</div></div>
+<div class="ttc" id="anamespaceLogic_html_ae6522d46ef2dd9d3311e3ffb95f58724"><div class="ttname"><a href="namespaceLogic.html#ae6522d46ef2dd9d3311e3ffb95f58724">Logic::createCARTTree</a></div><div class="ttdeci">void createCARTTree(createPara &amp;para, createInput &amp;input, cartTree &amp;output)</div><div class="ttdoc">建立CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:174</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountInput_html"><div class="ttname"><a href="structLogic_1_1labelCountInput.html">Logic::labelCountInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:56</div></div>
+<div class="ttc" id="anamespaceLogic_html_a017e79f91d42dd7a04a93580041ed49b"><div class="ttname"><a href="namespaceLogic.html#a017e79f91d42dd7a04a93580041ed49b">Logic::getcartLabelCount</a></div><div class="ttdeci">void getcartLabelCount(cartTree &amp;para, labelCountInput &amp;input, labelCountOutput &amp;output)</div><div class="ttdoc">获取CART计算类别数量</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:110</div></div>
+<div class="ttc" id="anamespaceLogic_html"><div class="ttname"><a href="namespaceLogic.html">Logic</a></div><div class="ttdoc">Logic namespace</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:12</div></div>
+<div class="ttc" id="anamespaceLogic_html_a81c8d5e5fa71b901869623ae65d71737"><div class="ttname"><a href="namespaceLogic.html#a81c8d5e5fa71b901869623ae65d71737">Logic::splitCARTDataset</a></div><div class="ttdeci">void splitCARTDataset(cartTree &amp;para, splitDataInput &amp;input, splitDataOutput &amp;output)</div><div class="ttdoc">分离CART数据集</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:142</div></div>
+<div class="ttc" id="anamespaceLogic_html_a60290212fd536a2caad99abf43c5a3b1"><div class="ttname"><a href="namespaceLogic.html#a60290212fd536a2caad99abf43c5a3b1">Logic::calcCARTGiniIndex</a></div><div class="ttdeci">void calcCARTGiniIndex(cartTree &amp;para, calcGiniIndexInput &amp;input, calcGiniIndexOutput &amp;output)</div><div class="ttdoc">计算CART基尼系数</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:158</div></div>
+<div class="ttc" id="anamespaceLogic_html_a721f8f4668c3779e63cd6cac7fc9789f"><div class="ttname"><a href="namespaceLogic.html#a721f8f4668c3779e63cd6cac7fc9789f">Logic::loadCARTTree</a></div><div class="ttdeci">void loadCARTTree(loadTreePara &amp;para, loadTreeInput &amp;input, cartTree &amp;output)</div><div class="ttdoc">加载CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:248</div></div>
+<div class="ttc" id="astructLogic_1_1loadTreePara_html"><div class="ttname"><a href="structLogic_1_1loadTreePara.html">Logic::loadTreePara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:113</div></div>
+<div class="ttc" id="anamespaceLogic_html_a406f0260550ab9010777bad14cf0b9de"><div class="ttname"><a href="namespaceLogic.html#a406f0260550ab9010777bad14cf0b9de">Logic::trainCART</a></div><div class="ttdeci">void trainCART(const treeParam &amp;param, const trainInput &amp;input, cartTree &amp;output)</div><div class="ttdoc">训练CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:27</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountPara_html"><div class="ttname"><a href="structLogic_1_1labelCountPara.html">Logic::labelCountPara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:54</div></div>
+<div class="ttc" id="astructLogic_1_1loadTreeInput_html"><div class="ttname"><a href="structLogic_1_1loadTreeInput.html">Logic::loadTreeInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:115</div></div>
+<div class="ttc" id="astructLogic_1_1saveInput_html"><div class="ttname"><a href="structLogic_1_1saveInput.html">Logic::saveInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:105</div></div>
+<div class="ttc" id="astructLogic_1_1savePara_html"><div class="ttname"><a href="structLogic_1_1savePara.html">Logic::savePara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:103</div></div>
+<div class="ttc" id="astructLogic_1_1calcGiniIndexInput_html"><div class="ttname"><a href="structLogic_1_1calcGiniIndexInput.html">Logic::calcGiniIndexInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:73</div></div>
+<div class="ttc" id="astructLogic_1_1createInput_html"><div class="ttname"><a href="structLogic_1_1createInput.html">Logic::createInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:86</div></div>
+<div class="ttc" id="astructLogic_1_1testTreeOutput_html"><div class="ttname"><a href="structLogic_1_1testTreeOutput.html">Logic::testTreeOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:128</div></div>
+<div class="ttc" id="astructLogic_1_1splitDataOutput_html"><div class="ttname"><a href="structLogic_1_1splitDataOutput.html">Logic::splitDataOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:82</div></div>
+<div class="ttc" id="anamespaceLogic_html_a5ce825c6e945c7008e3caa12a01088d0"><div class="ttname"><a href="namespaceLogic.html#a5ce825c6e945c7008e3caa12a01088d0">Logic::getCARTMaxTimesLabel</a></div><div class="ttdeci">void getCARTMaxTimesLabel(cartTree &amp;para, getMaxInput &amp;input, getMaxOutput &amp;output)</div><div class="ttdoc">获取CART最多的类别</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:284</div></div>
+<div class="ttc" id="astructLogic_1_1splitDataInput_html"><div class="ttname"><a href="structLogic_1_1splitDataInput.html">Logic::splitDataInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:65</div></div>
+<div class="ttc" id="astructLogic_1_1printPara_html"><div class="ttname"><a href="structLogic_1_1printPara.html">Logic::printPara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:99</div></div>
+<div class="ttc" id="astructLogic_1_1classOutput_html"><div class="ttname"><a href="structLogic_1_1classOutput.html">Logic::classOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:93</div></div>
+<div class="ttc" id="anamespaceLogic_html_a73724e030029452d61c7b586e51208da"><div class="ttname"><a href="namespaceLogic.html#a73724e030029452d61c7b586e51208da">Logic::calcCARTGiniValue</a></div><div class="ttdeci">void calcCARTGiniValue(cartTree &amp;para, calcGiniValueInput &amp;input, calcGiniValueOutput &amp;output)</div><div class="ttdoc">计算CART基尼值</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:126</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountOutput_html"><div class="ttname"><a href="structLogic_1_1labelCountOutput.html">Logic::labelCountOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:58</div></div>
+<div class="ttc" id="astructLogic_1_1calcGiniIndexOutput_html"><div class="ttname"><a href="structLogic_1_1calcGiniIndexOutput.html">Logic::calcGiniIndexOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:80</div></div>
+<div class="ttc" id="astructLogic_1_1predictInput_html"><div class="ttname"><a href="structLogic_1_1predictInput.html">Logic::predictInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:30</div></div>
+<div class="ttc" id="anamespaceLogic_html_a763f43c561bf1ea32540e618819d9c1b"><div class="ttname"><a href="namespaceLogic.html#a763f43c561bf1ea32540e618819d9c1b">Logic::loadCARTData</a></div><div class="ttdeci">void loadCARTData(const loadDataPara &amp;para, const loadDataInput &amp;input, cartTree &amp;output)</div><div class="ttdoc">加载CART数据</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:94</div></div>
+<div class="ttc" id="anamespaceLogic_html_ab6a76d0bb9f3d096f02d49d2fe963271"><div class="ttname"><a href="namespaceLogic.html#ab6a76d0bb9f3d096f02d49d2fe963271">Logic::printCARTTree</a></div><div class="ttdeci">void printCARTTree(printPara &amp;para, cartTree &amp;input, printOutput &amp;output)</div><div class="ttdoc">打印CART决策树</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:200</div></div>
+<div class="ttc" id="astructLogic_1_1treeParam_html"><div class="ttname"><a href="structLogic_1_1treeParam.html">Logic::treeParam</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:18</div></div>
+<div class="ttc" id="astructLogic_1_1classInput_html"><div class="ttname"><a href="structLogic_1_1classInput.html">Logic::classInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:88</div></div>
+<div class="ttc" id="anamespaceLogic_html_a9f40ad1bcf442173f288bb1dcb4b18f0"><div class="ttname"><a href="namespaceLogic.html#a9f40ad1bcf442173f288bb1dcb4b18f0">Logic::classifyCARTData</a></div><div class="ttdeci">void classifyCARTData(cartTree &amp;para, classInput &amp;input, classOutput &amp;output)</div><div class="ttdoc">CART分类</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:216</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxOutput_html"><div class="ttname"><a href="structLogic_1_1getMaxOutput.html">Logic::getMaxOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:132</div></div>
+<div class="ttc" id="astructLogic_1_1printOutput_html"><div class="ttname"><a href="structLogic_1_1printOutput.html">Logic::printOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:101</div></div>
+<div class="ttc" id="astructLogic_1_1cartTree_html"><div class="ttname"><a href="structLogic_1_1cartTree.html">Logic::cartTree</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:41</div></div>
+<div class="ttc" id="anamespaceLogic_html_a8afa0a600edfc2e10c94fd0839fd43bc"><div class="ttname"><a href="namespaceLogic.html#a8afa0a600edfc2e10c94fd0839fd43bc">Logic::pruningCART</a></div><div class="ttdeci">void pruningCART(const treeParam &amp;param, const verifyInput &amp;input, cartTree &amp;output)</div><div class="ttdoc">剪枝CART</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:78</div></div>
+<div class="ttc" id="astructLogic_1_1loadDataPara_html"><div class="ttname"><a href="structLogic_1_1loadDataPara.html">Logic::loadDataPara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:45</div></div>
+<div class="ttc" id="astructLogic_1_1createPara_html"><div class="ttname"><a href="structLogic_1_1createPara.html">Logic::createPara</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:84</div></div>
+<div class="ttc" id="astructLogic_1_1trainInput_html"><div class="ttname"><a href="structLogic_1_1trainInput.html">Logic::trainInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:19</div></div>
+<div class="ttc" id="astructLogic_1_1testTreeInput_html"><div class="ttname"><a href="structLogic_1_1testTreeInput.html">Logic::testTreeInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:122</div></div>
+<div class="ttc" id="astructLogic_1_1calcGiniValueOutput_html"><div class="ttname"><a href="structLogic_1_1calcGiniValueOutput.html">Logic::calcGiniValueOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:62</div></div>
+<div class="ttc" id="astructLogic_1_1loadDataInput_html"><div class="ttname"><a href="structLogic_1_1loadDataInput.html">Logic::loadDataInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:48</div></div>
+<div class="ttc" id="astructLogic_1_1verifyInput_html"><div class="ttname"><a href="structLogic_1_1verifyInput.html">Logic::verifyInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:25</div></div>
+<div class="ttc" id="aclassLogic_1_1DecisionTree_html"><div class="ttname"><a href="classLogic_1_1DecisionTree.html">Logic::DecisionTree</a></div><div class="ttdef"><b>Definition:</b> LogicDecisionTreeCARTHead.hpp:28</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

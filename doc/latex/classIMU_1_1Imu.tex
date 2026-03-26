@@ -1,0 +1,234 @@
+\hypertarget{classIMU_1_1Imu}{}\doxysection{I\+MU\+::Imu类 参考}
+\label{classIMU_1_1Imu}\index{IMU::Imu@{IMU::Imu}}
+
+
+类 I\+MU\+::Imu 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=141pt]{classIMU_1_1Imu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+I\+MU\+::Imu 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classIMU_1_1Imu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a6b09d316527663267ac1e2738b6a8f0e}\label{classIMU_1_1Imu_a6b09d316527663267ac1e2738b6a8f0e}} 
+enum \+: int \{ \newline
+{\bfseries k\+Longitude\+Field\+Number} = 1, 
+{\bfseries k\+Latitude\+Field\+Number} = 2, 
+{\bfseries k\+Gauss\+X\+Field\+Number} = 3, 
+{\bfseries k\+Gauss\+Y\+Field\+Number} = 4, 
+\newline
+{\bfseries k\+Time\+Field\+Number} = 6, 
+{\bfseries k\+Velocity\+Field\+Number} = 7, 
+{\bfseries k\+Yaw\+Field\+Number} = 8, 
+{\bfseries k\+Gps\+Valid\+Field\+Number} = 5
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a4b3e6f68e9f3f164f90848c771f75b47}\label{classIMU_1_1Imu_a4b3e6f68e9f3f164f90848c771f75b47}} 
+P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+C\+O\+N\+S\+T\+E\+X\+PR {\bfseries Imu} (\+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::internal\+::\+Constant\+Initialized)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_aeef76fb30140827ba9f547a72eed97f2}\label{classIMU_1_1Imu_aeef76fb30140827ba9f547a72eed97f2}} 
+{\bfseries Imu} (const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&from)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a80b5df43eaaa808a7f2945b08adba7e3}\label{classIMU_1_1Imu_a80b5df43eaaa808a7f2945b08adba7e3}} 
+{\bfseries Imu} (\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&\&from) noexcept
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a51336c03d0a9b78bdc290e2757e1029e}\label{classIMU_1_1Imu_a51336c03d0a9b78bdc290e2757e1029e}} 
+\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \& {\bfseries operator=} (const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&from)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a908ea0e8c391f0307f14aa4f5d647326}\label{classIMU_1_1Imu_a908ea0e8c391f0307f14aa4f5d647326}} 
+\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \& {\bfseries operator=} (\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&\&from) noexcept
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a8eaf147a1523630c736bffb4c12b32eb}\label{classIMU_1_1Imu_a8eaf147a1523630c736bffb4c12b32eb}} 
+void {\bfseries Swap} (\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} $\ast$other)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ab9580e5269e2d7ab339be48d0e077d90}\label{classIMU_1_1Imu_ab9580e5269e2d7ab339be48d0e077d90}} 
+void {\bfseries Unsafe\+Arena\+Swap} (\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} $\ast$other)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a5a9359b823e57b29dcf562dafd227467}\label{classIMU_1_1Imu_a5a9359b823e57b29dcf562dafd227467}} 
+\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} $\ast$ {\bfseries New} (\+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Arena $\ast$arena=nullptr) const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a9d61838fa598c8cb957aeffd42d46294}\label{classIMU_1_1Imu_a9d61838fa598c8cb957aeffd42d46294}} 
+void {\bfseries Copy\+From} (const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&from)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a6c1959848067ac88373a09d495d8faa5}\label{classIMU_1_1Imu_a6c1959848067ac88373a09d495d8faa5}} 
+void {\bfseries Merge\+From} (const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&from)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a91f413e38bf5ec8d5c4aad4fec3c2172}\label{classIMU_1_1Imu_a91f413e38bf5ec8d5c4aad4fec3c2172}} 
+P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+R\+E\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ES void {\bfseries Clear} () final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a9c589895365aaa5bc36e45f8fd04c729}\label{classIMU_1_1Imu_a9c589895365aaa5bc36e45f8fd04c729}} 
+bool {\bfseries Is\+Initialized} () const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_aed216b323a7317d9a71ef40237af2271}\label{classIMU_1_1Imu_aed216b323a7317d9a71ef40237af2271}} 
+size\+\_\+t {\bfseries Byte\+Size\+Long} () const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a46f8edfa513178cb313c674c0510dadf}\label{classIMU_1_1Imu_a46f8edfa513178cb313c674c0510dadf}} 
+const char $\ast$ {\bfseries \+\_\+\+Internal\+Parse} (const char $\ast$ptr, \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::internal\+::\+Parse\+Context $\ast$ctx) final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ae573c08c49b2e4d584eca5009d86cbf5}\label{classIMU_1_1Imu_ae573c08c49b2e4d584eca5009d86cbf5}} 
+uint8\+\_\+t $\ast$ {\bfseries \+\_\+\+Internal\+Serialize} (uint8\+\_\+t $\ast$target, \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::io\+::\+Eps\+Copy\+Output\+Stream $\ast$stream) const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_aa7f9c05c5f2f5257095512ae7bd60983}\label{classIMU_1_1Imu_aa7f9c05c5f2f5257095512ae7bd60983}} 
+int {\bfseries Get\+Cached\+Size} () const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a7ae0cb053007922e35f6996953c368b9}\label{classIMU_1_1Imu_a7ae0cb053007922e35f6996953c368b9}} 
+const \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Message\+::\+Class\+Data $\ast$ {\bfseries Get\+Class\+Data} () const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ada860d11f3dc8e3b50320b88bf89502b}\label{classIMU_1_1Imu_ada860d11f3dc8e3b50320b88bf89502b}} 
+\+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Metadata {\bfseries Get\+Metadata} () const final
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a79cce50e11082ead954418294e64b826}\label{classIMU_1_1Imu_a79cce50e11082ead954418294e64b826}} 
+void {\bfseries clear\+\_\+longitude} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ab1235a733f31221c5634f14e46db1b4b}\label{classIMU_1_1Imu_ab1235a733f31221c5634f14e46db1b4b}} 
+double {\bfseries longitude} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a634aefa7db2594bd00fc0e59f60a07f0}\label{classIMU_1_1Imu_a634aefa7db2594bd00fc0e59f60a07f0}} 
+void {\bfseries set\+\_\+longitude} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ac00c20d62efa57e7d45acba28594d18c}\label{classIMU_1_1Imu_ac00c20d62efa57e7d45acba28594d18c}} 
+void {\bfseries clear\+\_\+latitude} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a06731619e160c5f0186f1ff7029f2a3a}\label{classIMU_1_1Imu_a06731619e160c5f0186f1ff7029f2a3a}} 
+double {\bfseries latitude} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a97d5532a175c2553c980d0164bd862a2}\label{classIMU_1_1Imu_a97d5532a175c2553c980d0164bd862a2}} 
+void {\bfseries set\+\_\+latitude} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ac57f5707c567930a12052b276bae4edd}\label{classIMU_1_1Imu_ac57f5707c567930a12052b276bae4edd}} 
+void {\bfseries clear\+\_\+gaussx} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a01fe2aa48cad4cd6aa40f0cdc1fd5e10}\label{classIMU_1_1Imu_a01fe2aa48cad4cd6aa40f0cdc1fd5e10}} 
+double {\bfseries gaussx} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a668f2e300c69242dbce4db0bc2b22282}\label{classIMU_1_1Imu_a668f2e300c69242dbce4db0bc2b22282}} 
+void {\bfseries set\+\_\+gaussx} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ad262c5381c4db4cbc06b5fa086d30c1a}\label{classIMU_1_1Imu_ad262c5381c4db4cbc06b5fa086d30c1a}} 
+void {\bfseries clear\+\_\+gaussy} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a395aabee16a0720b51420f862fd8aa7a}\label{classIMU_1_1Imu_a395aabee16a0720b51420f862fd8aa7a}} 
+double {\bfseries gaussy} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a8c257fe8f523b45ad4fa25356b710524}\label{classIMU_1_1Imu_a8c257fe8f523b45ad4fa25356b710524}} 
+void {\bfseries set\+\_\+gaussy} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_aee7b8a67326d336de5c344c9d5b4d81b}\label{classIMU_1_1Imu_aee7b8a67326d336de5c344c9d5b4d81b}} 
+void {\bfseries clear\+\_\+time} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_af55740c988e4b381c3772eedb4287142}\label{classIMU_1_1Imu_af55740c988e4b381c3772eedb4287142}} 
+double {\bfseries time} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a386f11cd6d276cf19358a9d8b3534420}\label{classIMU_1_1Imu_a386f11cd6d276cf19358a9d8b3534420}} 
+void {\bfseries set\+\_\+time} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a16065faaeb83c27a243a510e4fa25948}\label{classIMU_1_1Imu_a16065faaeb83c27a243a510e4fa25948}} 
+void {\bfseries clear\+\_\+velocity} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a717f7bfcc1837d083c0d2c0d25f9533d}\label{classIMU_1_1Imu_a717f7bfcc1837d083c0d2c0d25f9533d}} 
+double {\bfseries velocity} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ae158fe86b5376b3e6fe816b14a3faabe}\label{classIMU_1_1Imu_ae158fe86b5376b3e6fe816b14a3faabe}} 
+void {\bfseries set\+\_\+velocity} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ac08f52b9f2fb24803d0f2b2f90d890fc}\label{classIMU_1_1Imu_ac08f52b9f2fb24803d0f2b2f90d890fc}} 
+void {\bfseries clear\+\_\+yaw} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a57cbaa33a5be678464975aa30b26ca32}\label{classIMU_1_1Imu_a57cbaa33a5be678464975aa30b26ca32}} 
+double {\bfseries yaw} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a0b08f743c111c180e96722deeb0846c5}\label{classIMU_1_1Imu_a0b08f743c111c180e96722deeb0846c5}} 
+void {\bfseries set\+\_\+yaw} (double value)
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a4b71f4580e2dfd5183cca6f928c65196}\label{classIMU_1_1Imu_a4b71f4580e2dfd5183cca6f928c65196}} 
+void {\bfseries clear\+\_\+gpsvalid} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a00d05c0f20b49416bebdc5c41e6eff26}\label{classIMU_1_1Imu_a00d05c0f20b49416bebdc5c41e6eff26}} 
+int32\+\_\+t {\bfseries gpsvalid} () const
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a2dbcdce992eb1792afb8a2b202af6afa}\label{classIMU_1_1Imu_a2dbcdce992eb1792afb8a2b202af6afa}} 
+void {\bfseries set\+\_\+gpsvalid} (int32\+\_\+t value)
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ac7d4972e83e15f0d23a675afc40f3ad0}\label{classIMU_1_1Imu_ac7d4972e83e15f0d23a675afc40f3ad0}} 
+static const \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Descriptor $\ast$ {\bfseries descriptor} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a17b20a0483dd1a5f10816549d0a5e59c}\label{classIMU_1_1Imu_a17b20a0483dd1a5f10816549d0a5e59c}} 
+static const \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Descriptor $\ast$ {\bfseries Get\+Descriptor} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_adbca4a0518d2b27175d31cdccf529aac}\label{classIMU_1_1Imu_adbca4a0518d2b27175d31cdccf529aac}} 
+static const \+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Reflection $\ast$ {\bfseries Get\+Reflection} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a35ae5d8b16f9d7f9825586ac7b9af5ea}\label{classIMU_1_1Imu_a35ae5d8b16f9d7f9825586ac7b9af5ea}} 
+static const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \& {\bfseries default\+\_\+instance} ()
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_add08959fe615a5daeb57b2b13afc283b}\label{classIMU_1_1Imu_add08959fe615a5daeb57b2b13afc283b}} 
+static const \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} $\ast$ {\bfseries internal\+\_\+default\+\_\+instance} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int {\bfseries k\+Index\+In\+File\+Messages}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a15a13ef9c1f319eb0841ff3e93e3e8b1}\label{classIMU_1_1Imu_a15a13ef9c1f319eb0841ff3e93e3e8b1}} 
+static const Class\+Data {\bfseries \+\_\+class\+\_\+data\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a95caec566f3e3c64faae828b24895ace}\label{classIMU_1_1Imu_a95caec566f3e3c64faae828b24895ace}} 
+{\bfseries Imu} (\+::P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Arena $\ast$arena, bool is\+\_\+message\+\_\+owned=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{友元}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a9b35d94da3444084fc3673b7717b6cfe}\label{classIMU_1_1Imu_a9b35d94da3444084fc3673b7717b6cfe}} 
+class {\bfseries \+::\+P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::internal\+::\+Any\+Metadata}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_ab618dbbac4a8d749da0d85c32932df36}\label{classIMU_1_1Imu_ab618dbbac4a8d749da0d85c32932df36}} 
+{\footnotesize template$<$typename T $>$ }\\class {\bfseries \+::\+P\+R\+O\+T\+O\+B\+U\+F\+\_\+\+N\+A\+M\+E\+S\+P\+A\+C\+E\+\_\+\+I\+D\+::\+Arena\+::\+Internal\+Helper}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_a94d5e5acc5a5974d5fffed89e7cdd42b}\label{classIMU_1_1Imu_a94d5e5acc5a5974d5fffed89e7cdd42b}} 
+struct {\bfseries \+::\+Table\+Struct\+\_\+imu\+\_\+2eproto}
+\item 
+\mbox{\Hypertarget{classIMU_1_1Imu_abb65be1792e1bdf448fafbe60dbd8a9a}\label{classIMU_1_1Imu_abb65be1792e1bdf448fafbe60dbd8a9a}} 
+void {\bfseries swap} (\mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&a, \mbox{\hyperlink{classIMU_1_1Imu}{Imu}} \&b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{classIMU_1_1Imu_a2be192f82bfcd762587a1a5a5295bf71}\label{classIMU_1_1Imu_a2be192f82bfcd762587a1a5a5295bf71}} 
+\index{IMU::Imu@{IMU::Imu}!kIndexInFileMessages@{kIndexInFileMessages}}
+\index{kIndexInFileMessages@{kIndexInFileMessages}!IMU::Imu@{IMU::Imu}}
+\doxysubsubsection{\texorpdfstring{kIndexInFileMessages}{kIndexInFileMessages}}
+{\footnotesize\ttfamily constexpr int I\+M\+U\+::\+Imu\+::k\+Index\+In\+File\+Messages\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+{\bfseries 初始值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{    0}
+
+\end{DoxyCode}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+lidar\+\_\+coms\+\_\+livox/include/imu.\+pb.\+h\end{DoxyCompactItemize}

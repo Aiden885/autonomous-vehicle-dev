@@ -1,0 +1,97 @@
+\hypertarget{controlPIDController_8cc}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/control\+P\+I\+D\+Controller.cc 文件参考}
+\label{controlPIDController_8cc}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller/trajectory\_tracking/src/controlPIDController.cc@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller/trajectory\_tracking/src/controlPIDController.cc}}
+
+
+P\+I\+D控制器，\+P\+I\+D横向运动控制器  
+
+
+{\ttfamily \#include \char`\"{}control\+P\+I\+D\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}control\+Cubic\+Spline.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}qing\+Color.\+h\char`\"{}}\newline
+control\+P\+I\+D\+Controller.\+cc 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlPIDController_8cc__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+P\+ID \mbox{\hyperlink{controlPIDController_8cc_aa9d0aaddc032bf7e678f34a8e4665c1f}{Control\+::load\+P\+I\+D\+Yaml\+Config}} (Y\+A\+M\+L\+::\+Node config, std\+::string name, double dt)
+\begin{DoxyCompactList}\small\item\em 读取 yaml 文件中pid\+\_\+conf相关字段内容，并返回控制器 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{controlPIDController_8cc_a52f08942d789ea776cb4ae809152d04f}{Control\+::compare\+Traj\+Distance}} (const \mbox{\hyperlink{structTrajPoint}{Traj\+Point}} \&p1, const \mbox{\hyperlink{structTrajPoint}{Traj\+Point}} \&p2)
+\begin{DoxyCompactList}\small\item\em 寻找预瞄点，根据路程大小，比较两个路点的先后。用于后面的get\+Preview\+I\+D中 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{controlPIDController_8cc_af349cd039efdc5e900e79b8f9a809d24}\label{controlPIDController_8cc_af349cd039efdc5e900e79b8f9a809d24}} 
+double {\bfseries Control\+::angle\+Error\+WJ} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+P\+I\+D控制器，\+P\+I\+D横向运动控制器 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/16
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{controlPIDController_8cc_a52f08942d789ea776cb4ae809152d04f}\label{controlPIDController_8cc_a52f08942d789ea776cb4ae809152d04f}} 
+\index{controlPIDController.cc@{controlPIDController.cc}!compareTrajDistance@{compareTrajDistance}}
+\index{compareTrajDistance@{compareTrajDistance}!controlPIDController.cc@{controlPIDController.cc}}
+\doxysubsubsection{\texorpdfstring{compareTrajDistance()}{compareTrajDistance()}}
+{\footnotesize\ttfamily bool Control\+::compare\+Traj\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structControl_1_1TrajPoint}{Traj\+Point}} \&}]{p1,  }\item[{const \mbox{\hyperlink{structControl_1_1TrajPoint}{Traj\+Point}} \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+寻找预瞄点，根据路程大小，比较两个路点的先后。用于后面的get\+Preview\+I\+D中 
+
+
+\begin{DoxyParams}{参数}
+{\em p1} & 路点1 \\
+\hline
+{\em p2} & 路点2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true 路点1在前 
+
+false 路点2在前 
+\end{DoxyReturn}
+\mbox{\Hypertarget{controlPIDController_8cc_aa9d0aaddc032bf7e678f34a8e4665c1f}\label{controlPIDController_8cc_aa9d0aaddc032bf7e678f34a8e4665c1f}} 
+\index{controlPIDController.cc@{controlPIDController.cc}!loadPIDYamlConfig@{loadPIDYamlConfig}}
+\index{loadPIDYamlConfig@{loadPIDYamlConfig}!controlPIDController.cc@{controlPIDController.cc}}
+\doxysubsubsection{\texorpdfstring{loadPIDYamlConfig()}{loadPIDYamlConfig()}}
+{\footnotesize\ttfamily P\+ID Control\+::load\+P\+I\+D\+Yaml\+Config (\begin{DoxyParamCaption}\item[{Y\+A\+M\+L\+::\+Node}]{config,  }\item[{std\+::string}]{name,  }\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+读取 yaml 文件中pid\+\_\+conf相关字段内容，并返回控制器 
+
+
+\begin{DoxyParams}{参数}
+{\em config} & yaml node配置文件信息 \\
+\hline
+{\em name} & 控制误差名称 \\
+\hline
+{\em dt} & 控制器频率 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+P\+ID 
+\end{DoxyReturn}

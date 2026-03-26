@@ -1,0 +1,83 @@
+\hypertarget{classperception_1_1Track}{}\doxysection{perception\+::Track类 参考}
+\label{classperception_1_1Track}\index{perception::Track@{perception::Track}}
+\doxysubsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a831a06261296c006f6c891f14d942efc}\label{classperception_1_1Track_a831a06261296c006f6c891f14d942efc}} 
+enum {\bfseries Track\+State} \{ {\bfseries Tentative} = 1, 
+{\bfseries Confirmed}, 
+{\bfseries Deleted}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a1e3a3e13d8d2c70ab30eac35ee9b0d8b}\label{classperception_1_1Track_a1e3a3e13d8d2c70ab30eac35ee9b0d8b}} 
+{\bfseries Track} (K\+A\+L\+\_\+\+M\+E\+AN \&mean, K\+A\+L\+\_\+\+C\+O\+VA \&covariance, int track\+\_\+id, int n\+\_\+init, int max\+\_\+age, const std\+::string \&det\+\_\+class=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_abc779384eadafe0aea5317ead7b06cd7}\label{classperception_1_1Track_abc779384eadafe0aea5317ead7b06cd7}} 
+void {\bfseries predit} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classperception_1_1KalmanFilter}{Kalman\+Filter}} $>$ \&kf)
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a889808ee11a4559834d6ce0beb3b1b4d}\label{classperception_1_1Track_a889808ee11a4559834d6ce0beb3b1b4d}} 
+void {\bfseries update} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classperception_1_1KalmanFilter}{Kalman\+Filter}} $>$ \&kf, const \mbox{\hyperlink{classDETECTION__ROW}{D\+E\+T\+E\+C\+T\+I\+O\+N\+\_\+\+R\+OW}} \&detection)
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a7abbfd96e2b18b5b3cd8c94befd5961d}\label{classperception_1_1Track_a7abbfd96e2b18b5b3cd8c94befd5961d}} 
+void {\bfseries set\+\_\+dt} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classperception_1_1KalmanFilter}{Kalman\+Filter}} $>$ \&kf, const float \&dt)
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a4f4e7e125aa430002921edf64194d8d4}\label{classperception_1_1Track_a4f4e7e125aa430002921edf64194d8d4}} 
+void {\bfseries mark\+\_\+missed} ()
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a7ab8688011d56b739195b1acfbde2906}\label{classperception_1_1Track_a7ab8688011d56b739195b1acfbde2906}} 
+bool {\bfseries is\+\_\+confirmed} ()
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a58c855dfb3b927e71db1fc296e4463ba}\label{classperception_1_1Track_a58c855dfb3b927e71db1fc296e4463ba}} 
+bool {\bfseries is\+\_\+deleted} ()
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a1ff70856d1a58f5981cff3a5b5e5fb2f}\label{classperception_1_1Track_a1ff70856d1a58f5981cff3a5b5e5fb2f}} 
+bool {\bfseries is\+\_\+tentative} ()
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_add742fdd322e41652e699a1e47edc85b}\label{classperception_1_1Track_add742fdd322e41652e699a1e47edc85b}} 
+D\+E\+T\+E\+C\+T\+B\+OX {\bfseries to\+\_\+tlwh} ()
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_ab78cdc64c5fb8813926feb7b71fa078c}\label{classperception_1_1Track_ab78cdc64c5fb8813926feb7b71fa078c}} 
+D\+E\+T\+E\+C\+T\+B\+OX {\bfseries to\+\_\+xyah} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a97ffa38381bac89c6d0279a6a01913f7}\label{classperception_1_1Track_a97ffa38381bac89c6d0279a6a01913f7}} 
+int {\bfseries time\+\_\+since\+\_\+update}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_af7f2d4ed1e4999b566edc67175411c09}\label{classperception_1_1Track_af7f2d4ed1e4999b566edc67175411c09}} 
+int {\bfseries track\+\_\+id}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a390b334e4438abf987ce7b088dc92f65}\label{classperception_1_1Track_a390b334e4438abf987ce7b088dc92f65}} 
+std\+::string {\bfseries detection\+\_\+class}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a66919bc1bd72eb675a1f4ea12a6145aa}\label{classperception_1_1Track_a66919bc1bd72eb675a1f4ea12a6145aa}} 
+K\+A\+L\+\_\+\+M\+E\+AN {\bfseries mean}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a606d765ba126c0367d1a2feaa2599cd6}\label{classperception_1_1Track_a606d765ba126c0367d1a2feaa2599cd6}} 
+K\+A\+L\+\_\+\+C\+O\+VA {\bfseries covariance}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a9f7c75f50b1295c64ac7906495fa3595}\label{classperception_1_1Track_a9f7c75f50b1295c64ac7906495fa3595}} 
+int {\bfseries hits}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a02532c96961c5d19ebde596c52cfc5a9}\label{classperception_1_1Track_a02532c96961c5d19ebde596c52cfc5a9}} 
+int {\bfseries age}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a00a30f3a7e9f143af02fd9c00c9d7c45}\label{classperception_1_1Track_a00a30f3a7e9f143af02fd9c00c9d7c45}} 
+int {\bfseries \+\_\+n\+\_\+init}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_a14df871c1d9c12a1dc1e87d7ec1a9bfb}\label{classperception_1_1Track_a14df871c1d9c12a1dc1e87d7ec1a9bfb}} 
+int {\bfseries \+\_\+max\+\_\+age}
+\item 
+\mbox{\Hypertarget{classperception_1_1Track_ad24261f9934acf344a164ef53dfbefeb}\label{classperception_1_1Track_ad24261f9934acf344a164ef53dfbefeb}} 
+Track\+State {\bfseries state}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Kalman\+Tracking/dependence/track.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Kalman\+Tracking/dependence/track.\+cpp\end{DoxyCompactItemize}

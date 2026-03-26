@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/GPS/dependence/ztgeographycoordinatetransform.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_b28c0c2c23114389da097ff5bd1375b9.html">GPS</a></li><li class="navelem"><a class="el" href="dir_b4966b2f9dc95d9c7f8129bd982a3286.html">dependence</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ztgeographycoordinatetransform.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef ZTGEOGRAPHYCOORDINATETRANSFORM_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define ZTGEOGRAPHYCOORDINATETRANSFORM_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structEllipsoidParameter.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEllipsoidParameter.html">EllipsoidParameter</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">double</span> a, b, f;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">double</span> e2, ep2;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="comment">// 高斯投影参数</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">double</span> c;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">double</span> a0, a2, a4, a6;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structEllipsoidParameter.html">EllipsoidParameter</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">// Default: wgs84</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        a = 6378137.0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        e2 = 0.00669437999013;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        b = sqrt(a * a * (1 - e2));</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ep2 = (a * a - b * b) / (b * b);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        f = (a - b) / a;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">//double f0 = 1 / 298.257223563;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">//double f1 = 1 / f;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        c = a / (1 - f);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">double</span> m0, m2, m4, m6, m8;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        m0 = a * (1 - e2);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        m2 = 1.5 * e2 * m0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        m4 = 1.25 * e2 * m2;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        m6 = 7 * e2 * m4 / 6;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        m8 = 9 * e2 * m6 / 8;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        a0 = m0 + m2 / 2 + 3 * m4 / 8 + 5 * m6 / 16 + 35 * m8 / 128;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        a2 = m2 / 2 + m4 / 2 + 15 * m6 / 32 + 7 * m8 / 16;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        a4 = m4 / 8 + 3 * m6 / 16 + 7 * m8 / 32;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        a6 = m6 / 32 + m8 / 16;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="structEllipsoidParameter.html">EllipsoidParameter</a>(<span class="keywordtype">double</span> ia, <span class="keywordtype">double</span> ib)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (ib &gt; 1000000) <span class="comment">// ib 是短半轴</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            a = ia;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            b = ib;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            f = (a - b) / a;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            e2 = (a * a - b * b) / (a * a);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            ep2 = (a * a - b * b) / (b * b);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ib &lt; 1) <span class="comment">// ib 是椭球第一偏心率的平方</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            a = ia;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            e2 = ib;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            b = sqrt(a * a * (1 - e2));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ep2 = (a * a - b * b) / (b * b);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            f = (a - b) / a;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        c = a / (1 - f);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">double</span> m0, m2, m4, m6, m8;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        m0 = a * (1 - e2);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        m2 = 1.5 * e2 * m0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        m4 = 1.25 * e2 * m2;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        m6 = 7 * e2 * m4 / 6;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        m8 = 9 * e2 * m6 / 8;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        a0 = m0 + m2 / 2 + 3 * m4 / 8 + 5 * m6 / 16 + 35 * m8 / 128;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        a2 = m2 / 2 + m4 / 2 + 15 * m6 / 32 + 7 * m8 / 16;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        a4 = m4 / 8 + 3 * m6 / 16 + 7 * m8 / 32;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        a6 = m6 / 32 + m8 / 16;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classZtGeographyCoordinateTransform.html">   77</a></span>&#160;<span class="keyword">class </span><a class="code" href="classZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ~<a class="code" href="classZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="structEllipsoidParameter.html">EllipsoidParameter</a> ellipPmt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">double</span> meridianLine;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">char</span> projType; <span class="comment">// &#39;u&#39;: utm, &#39;g&#39;: gauss-kruger</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     *    In projection coordinate system: x: east  y: north  z: height</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">bool</span> XY2BL(<span class="keywordtype">double</span> x_east, <span class="keywordtype">double</span> y_north, <span class="keywordtype">double</span> &amp;lat, <span class="keywordtype">double</span> &amp;lon);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">bool</span> BL2XY(<span class="keywordtype">double</span> lat, <span class="keywordtype">double</span> lon, <span class="keywordtype">double</span> &amp;x_east, <span class="keywordtype">double</span> &amp;y_north);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> XYZ2BLH(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z, <span class="keywordtype">double</span> &amp;lat, <span class="keywordtype">double</span> &amp;lon, <span class="keywordtype">double</span> &amp;ht);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span> BLH2XYZ(<span class="keywordtype">double</span> lat, <span class="keywordtype">double</span> lon, <span class="keywordtype">double</span> ht, <span class="keywordtype">double</span> &amp;x, <span class="keywordtype">double</span> &amp;y, <span class="keywordtype">double</span> &amp;z);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> V2BLH(<span class="keywordtype">double</span> x0, <span class="keywordtype">double</span> y0, <span class="keywordtype">double</span> z0, <span class="keywordtype">double</span> x_v, <span class="keywordtype">double</span> y_v, <span class="keywordtype">double</span> z_v, <span class="keywordtype">double</span> theta, <span class="keywordtype">double</span> &amp;x_w, <span class="keywordtype">double</span> &amp;y_w, <span class="keywordtype">double</span> &amp;z_w);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> BLH2V(<span class="keywordtype">double</span> x0, <span class="keywordtype">double</span> y0, <span class="keywordtype">double</span> z0, <span class="keywordtype">double</span> x_w, <span class="keywordtype">double</span> y_w, <span class="keywordtype">double</span> z_w, <span class="keywordtype">double</span> theta, <span class="keywordtype">double</span> &amp;x_v, <span class="keywordtype">double</span> &amp;y_v, <span class="keywordtype">double</span> &amp;z_v);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassZtGeographyCoordinateTransform_html"><div class="ttname"><a href="classZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a></div><div class="ttdef"><b>Definition:</b> ztgeographycoordinatetransform.h:77</div></div>
+<div class="ttc" id="astructEllipsoidParameter_html"><div class="ttname"><a href="structEllipsoidParameter.html">EllipsoidParameter</a></div><div class="ttdef"><b>Definition:</b> ztgeographycoordinatetransform.h:7</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

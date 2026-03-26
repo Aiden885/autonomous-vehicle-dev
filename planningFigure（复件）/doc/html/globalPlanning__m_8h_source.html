@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Planning: /media/xy/新加卷1/thicvpilot_planning_modul/planningFigure/include/globalPlanning_m.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Planning
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">globalPlanning_m.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef GLOBALPLANNING_M_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define GLOBALPLANNING_M_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;localization_MapAnalysis.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;globalPlanning.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// namespace GolbalPlanning{</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// typedef struct</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//     int number;            // 编号</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//     double xBegin, yBegin; // 起点和终点坐标</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//     double xEnd, yEnd;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//     double length;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//     // std::vector&lt;int&gt; from;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//     std::vector&lt;int&gt; to;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//     int father;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//     int isInList = -2; // 代表边在以下的四个状态之一：</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//     // 未初始化（-2），不在list中（0），在openList中（1），在closeList中（-1）</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//     double F, G, H;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//     int numLanes; // 车道数量</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// } road;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// class node</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// public:</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//     int number;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//     double F;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//     int father;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">//     node(int _number, double _F, int _father) : number(_number), F(_F), father(_father) {}</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// class cmp</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// public:</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//     bool operator()(node a, node b) const</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">//     {</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//         return a.F &gt; b.F;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">//     }</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// class Astar</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">// public:</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">//  Astar();</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//     ~Astar();</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//  road *roadList;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">//  list&lt;int&gt; path;                   // 中间成果，road的id序列</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//     vector&lt;pair&lt;int, int&gt;&gt; pathLanes; // 最后要输出的结果，road的id和lane的id</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">//  int size = 10000;                                           // 边的编号上限，可以修改</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">//     std::priority_queue&lt;node, std::vector&lt;node&gt;, cmp&gt; openList; // priority_queue形式的openList可以提高效率</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">//     // 因为有isInList，不专门设置closeList了</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//modular function</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structAstarMapToAstarParam.html">   70</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarMapToAstarParam.html">AstarMapToAstarParam</a></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    RoadMap m;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structAstarMapToAstarInput.html">   76</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarMapToAstarInput.html">AstarMapToAstarInput</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structAstarMapToAstarOutput.html">   80</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarMapToAstarOutput.html">AstarMapToAstarOutput</a></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// AstarMapToAstarParam param_map2astar{m, as};</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">// AstarMapToAstarInput input_map2astar{};</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">// AstarMapToAstarOutput output_map2astar{as};</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a60b1c11b08416260098737e9dbda5e3b">AstarMapToAstar</a>(<span class="keyword">const</span> <a class="code" href="structAstarMapToAstarParam.html">AstarMapToAstarParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarMapToAstarInput.html">AstarMapToAstarInput</a> &amp;input, <a class="code" href="structAstarMapToAstarOutput.html">AstarMapToAstarOutput</a> &amp;output);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structAstarGetPathParam.html">   89</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetPathParam.html">AstarGetPathParam</a></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structAstarGetPathInput.html">   94</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetPathInput.html">AstarGetPathInput</a></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span> origin;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> destination;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> originPointId;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> destinationPointId;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structAstarGetPathOutput.html">  102</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetPathOutput.html">AstarGetPathOutput</a></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::list&lt;int&gt; &amp;path;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classAstar.html">Astar</a> &amp;as;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">// AstarGetPathParam param_get_path{as};</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">// AstarGetPathInput input_get_path{origin, destination, originPointId, destinationPointId};</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">// AstarGetPathOutput output_get_path{path, as};</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#acb78c9c00f7b885f7ce78185c6248405">AstarGetPath</a>(<span class="keyword">const</span> <a class="code" href="structAstarGetPathParam.html">AstarGetPathParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarGetPathInput.html">AstarGetPathInput</a> &amp;input, <a class="code" href="structAstarGetPathOutput.html">AstarGetPathOutput</a> &amp;output);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structAstarInitRoadParam.html">  112</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitRoadParam.html">AstarInitRoadParam</a>{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structAstarInitRoadInput.html">  116</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitRoadInput.html">AstarInitRoadInput</a>{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">int</span> number;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">double</span> xStart;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">double</span> yStart;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">double</span> xEnd;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">double</span> yEnd;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">double</span> length;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="structAstarInitRoadOutput.html">  125</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitRoadOutput.html">AstarInitRoadOutput</a>{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;};</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">// AstarInitRoadParam param_init_road{as};</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">// AstarInitRoadInput input_init_road{number, xStart, yStart, xEnd, yEnd, length};</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">// AstarInitRoadOutput output_init_road{as};</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#afc2b9495bdd993756e58fa54a85e1324">AstarInitRoad</a>(<span class="keyword">const</span> <a class="code" href="structAstarInitRoadParam.html">AstarInitRoadParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarInitRoadInput.html">AstarInitRoadInput</a> &amp;input, <a class="code" href="structAstarInitRoadOutput.html">AstarInitRoadOutput</a> &amp;output);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="structAstarInitLinkParam.html">  133</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitLinkParam.html">AstarInitLinkParam</a>{</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;};</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="structAstarInitLinkInput.html">  137</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitLinkInput.html">AstarInitLinkInput</a>{</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">int</span> from;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">int</span> to;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;};</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structAstarInitLinkOutput.html">  142</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarInitLinkOutput.html">AstarInitLinkOutput</a>{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;};</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">// AstarInitLinkParam param_init_link{as};</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">// AstarInitLinkInput input_init_link{from, to};</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">// AstarInitLinkOutput output_init_link{as};</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a2ca94d03caff87080649792b8c56e82c">AstarInitLink</a>(<span class="keyword">const</span> <a class="code" href="structAstarInitLinkParam.html">AstarInitLinkParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarInitLinkInput.html">AstarInitLinkInput</a> &amp;input, <a class="code" href="structAstarInitLinkOutput.html">AstarInitLinkOutput</a> &amp;output);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="structAstarResetParam.html">  150</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarResetParam.html">AstarResetParam</a>{</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;};</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="structAstarResetInput.html">  154</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarResetInput.html">AstarResetInput</a>{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;};</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="structAstarResetOutput.html">  157</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarResetOutput.html">AstarResetOutput</a>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;};</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">// AstarResetParam param_reset{as};</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// AstarResetInput input_reset{};</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">// AstarResetOutput output_reset{as};</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a557278b4ff6a42cc7b3cfa723f1fee61">AstarReset</a>(<span class="keyword">const</span> <a class="code" href="structAstarResetParam.html">AstarResetParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarResetInput.html">AstarResetInput</a> &amp;input, <a class="code" href="structAstarResetOutput.html">AstarResetOutput</a> &amp;output);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckParam.html">  165</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckParam.html">AstarModuleSelfCheckParam</a>{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;};</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckInput.html">  169</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckInput.html">AstarModuleSelfCheckInput</a>{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    std::list&lt;int&gt; path;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;};</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckOutput.html">  173</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckOutput.html">AstarModuleSelfCheckOutput</a>{</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;};</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">// AstarModuleSelfCheckParam param_module_selfcheck{as};</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">// AstarModuleSelfCheckInput input_module_selfcheck{path};</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">// AstarModuleSelfCheckOutput output_module_selfcheck{};</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#ad2714f2455da7a56c96562cc510fb769">AstarModuleSelfCheck</a>(<span class="keyword">const</span> <a class="code" href="structAstarModuleSelfCheckParam.html">AstarModuleSelfCheckParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarModuleSelfCheckInput.html">AstarModuleSelfCheckInput</a> &amp;input, <a class="code" href="structAstarModuleSelfCheckOutput.html">AstarModuleSelfCheckOutput</a> &amp;output);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckPrintParam.html">  180</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckPrintParam.html">AstarModuleSelfCheckPrintParam</a>{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="classAstar.html">Astar</a> &amp;as;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckPrintInput.html">  184</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckPrintInput.html">AstarModuleSelfCheckPrintInput</a>{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    vector&lt;pair&lt;int, int&gt;&gt; &amp;pathLanes;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;};</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="structAstarModuleSelfCheckPrintOutput.html">  188</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarModuleSelfCheckPrintOutput.html">AstarModuleSelfCheckPrintOutput</a>{</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">// AstarModuleSelfCheckPrintParam param_module_selfcheck_print{as};</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">// AstarModuleSelfCheckPrintInput input_module_selfcheck_print{pathLanes};</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">// AstarModuleSelfCheckPrintOutput output_module_selfcheck_print{};</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#aa6f5dfdc142a81158c5b91ec738c7c89">AstarModuleSelfCheckPrint</a>(<span class="keyword">const</span> <a class="code" href="structAstarModuleSelfCheckPrintParam.html">AstarModuleSelfCheckPrintParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarModuleSelfCheckPrintInput.html">AstarModuleSelfCheckPrintInput</a> &amp;input, <a class="code" href="structAstarModuleSelfCheckPrintOutput.html">AstarModuleSelfCheckPrintOutput</a> &amp;output);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="structAstarFindLaneParam.html">  195</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneParam.html">AstarFindLaneParam</a>{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;};</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="structAstarFindLaneInput.html">  199</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneInput.html">AstarFindLaneInput</a>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    RoadMap m;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    list&lt;int&gt; path;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="structAstarFindLaneOutput.html">  204</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneOutput.html">AstarFindLaneOutput</a>{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;};</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">// AstarFindLaneParam param_find_lane{as};</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">// AstarFindLaneInput input_find_lane{m, path};</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">// AstarFindLaneOutput output_find_lane{as};</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a7a24e2757989b0db7794e1bb02792811">AstarFindLane</a>(<span class="keyword">const</span> <a class="code" href="structAstarFindLaneParam.html">AstarFindLaneParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarFindLaneInput.html">AstarFindLaneInput</a> &amp;input, <a class="code" href="structAstarFindLaneOutput.html">AstarFindLaneOutput</a> &amp;output);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="structAstarFindLaneRParam.html">  212</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneRParam.html">AstarFindLaneRParam</a>{</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="classAstar.html">Astar</a> &amp;as;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;};</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="structAstarFindLaneRInput.html">  216</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneRInput.html">AstarFindLaneRInput</a>{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    vector&lt;Road&gt; &amp;roads_;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    list&lt;int&gt; &amp;path_;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    vector&lt;std::pair&lt;int, int&gt;&gt; &amp;pathLanes_;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordtype">int</span> &amp;lane_id_;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;};</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="structAstarFindLaneROutput.html">  223</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindLaneROutput.html">AstarFindLaneROutput</a>{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="classAstar.html">Astar</a> &amp;as;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;};</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// AstarFindLaneRParam param_find_lane_r{as};</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">// AstarFindLaneRInput input_find_lane_r{roads, path, pathLanes, lane_id};</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">// AstarFindLaneROutput output_find_lane_r{as};</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a94f27a161a7717092a428eb8a9c23f4e">AstarFindLaneR</a>(<span class="keyword">const</span> <a class="code" href="structAstarFindLaneRParam.html">AstarFindLaneRParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarFindLaneRInput.html">AstarFindLaneRInput</a> &amp;input, <a class="code" href="structAstarFindLaneROutput.html">AstarFindLaneROutput</a> &amp;output);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="structAstarRecursiveFindLaneParam.html">  231</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarRecursiveFindLaneParam.html">AstarRecursiveFindLaneParam</a>{</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;};</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="structAstarRecursiveFindLaneInput.html">  235</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarRecursiveFindLaneInput.html">AstarRecursiveFindLaneInput</a>{</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    std::vector&lt;Road&gt; roads_;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    std::list&lt;int&gt; path_;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    std::vector&lt;std::tuple&lt;int, int, int&gt;&gt; optional_lanes_;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">int</span> road_id_;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordtype">int</span> lane_id_;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;};</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="structAstarRecursiveFindLaneOutput.html">  243</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarRecursiveFindLaneOutput.html">AstarRecursiveFindLaneOutput</a>{</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;};</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">// AstarRecursiveFindLaneParam param_recursive_find_lane{as};</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">// AstarRecursiveFindLaneInput input_recursive_find_lane{roads, path, optional_lanes, road_id, lane_id};</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">// AstarRecursiveFindLaneOutput output_recursive_find_lane{as};</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keywordtype">void</span> <a class="code" href="globalPlanning__m_8cpp.html#a1ac90c60b6462d599b5c7268b4985800">AstarRecursiveFindLane</a>(<span class="keyword">const</span> <a class="code" href="structAstarRecursiveFindLaneParam.html">AstarRecursiveFindLaneParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarRecursiveFindLaneInput.html">AstarRecursiveFindLaneInput</a> &amp;input, <a class="code" href="structAstarRecursiveFindLaneOutput.html">AstarRecursiveFindLaneOutput</a> &amp;output);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="structAstarFindPathParam.html">  253</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindPathParam.html">AstarFindPathParam</a>{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;};</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="structAstarFindPathInput.html">  257</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindPathInput.html">AstarFindPathInput</a>{</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordtype">int</span> origin;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordtype">int</span> destination;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;};</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="structAstarFindPathOutput.html">  262</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarFindPathOutput.html">AstarFindPathOutput</a>{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="structroad.html">road</a> *result;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;};</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">// AstarFindPathParam param_recursive_find_lane{as};</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">// AstarFindPathInput input_recursive_find_lane{origin, destination};</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">// AstarFindPathOutput output_recursive_find_lane{result};</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keywordtype">void</span> AstarFindPath(<span class="keyword">const</span> <a class="code" href="structAstarFindPathParam.html">AstarFindPathParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarFindPathInput.html">AstarFindPathInput</a> &amp;input, <a class="code" href="structAstarFindPathOutput.html">AstarFindPathOutput</a> &amp;output);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="structAstarCalcGParam.html">  270</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcGParam.html">AstarCalcGParam</a>{</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;};</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="structAstarCalcGInput.html">  274</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcGInput.html">AstarCalcGInput</a>{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordtype">int</span> tmp;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">int</span> from;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;};</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="structAstarCalcGOutput.html">  279</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcGOutput.html">AstarCalcGOutput</a>{</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">double</span> result;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;};</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="keywordtype">void</span> AstarCalcG(<span class="keyword">const</span> <a class="code" href="structAstarCalcGParam.html">AstarCalcGParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarCalcGInput.html">AstarCalcGInput</a> &amp;input, <a class="code" href="structAstarCalcGOutput.html">AstarCalcGOutput</a> &amp;output);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="structAstarCalcHParam.html">  285</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcHParam.html">AstarCalcHParam</a>{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;};</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="structAstarCalcHInput.html">  289</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcHInput.html">AstarCalcHInput</a>{</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">int</span> tmp;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">int</span> destination;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;};</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="structAstarCalcHOutput.html">  294</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcHOutput.html">AstarCalcHOutput</a>{</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordtype">double</span> result;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;};</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keywordtype">void</span> AstarCalcH(<span class="keyword">const</span> <a class="code" href="structAstarCalcHParam.html">AstarCalcHParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarCalcHInput.html">AstarCalcHInput</a> &amp;input, <a class="code" href="structAstarCalcHOutput.html">AstarCalcHOutput</a> &amp;output);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="structAstarCalcFParam.html">  299</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcFParam.html">AstarCalcFParam</a>{</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;};</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="structAstarCalcFInput.html">  303</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcFInput.html">AstarCalcFInput</a>{</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">int</span> tmp;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;};</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="structAstarCalcFOutput.html">  307</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarCalcFOutput.html">AstarCalcFOutput</a>{</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordtype">double</span> result;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;};</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keywordtype">void</span> AstarCalcF(<span class="keyword">const</span> <a class="code" href="structAstarCalcFParam.html">AstarCalcFParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarCalcFInput.html">AstarCalcFInput</a> &amp;input, <a class="code" href="structAstarCalcFOutput.html">AstarCalcFOutput</a> &amp;output);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="structAstarGetLeastFParam.html">  312</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetLeastFParam.html">AstarGetLeastFParam</a>{</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;};</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="structAstarGetLeastFInput.html">  316</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetLeastFInput.html">AstarGetLeastFInput</a>{</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;};</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="structAstarGetLeastFOutput.html">  319</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetLeastFOutput.html">AstarGetLeastFOutput</a>{</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordtype">int</span> result;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;};</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keywordtype">void</span> AstarGetLeastF(<span class="keyword">const</span> <a class="code" href="structAstarGetLeastFParam.html">AstarGetLeastFParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarGetLeastFInput.html">AstarGetLeastFInput</a> &amp;input, <a class="code" href="structAstarGetLeastFOutput.html">AstarGetLeastFOutput</a> &amp;output);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="structAstarGetNextRoadParam.html">  325</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetNextRoadParam.html">AstarGetNextRoadParam</a>{</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="classAstar.html">Astar</a> as;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;};</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="structAstarGetNextRoadInput.html">  329</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetNextRoadInput.html">AstarGetNextRoadInput</a>{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordtype">int</span> temp;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;};</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="structAstarGetNextRoadOutput.html">  333</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structAstarGetNextRoadOutput.html">AstarGetNextRoadOutput</a>{</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    std::vector&lt;int&gt;  result;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;};</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="keywordtype">void</span> AstarGetNextRoad(<span class="keyword">const</span> <a class="code" href="structAstarGetNextRoadParam.html">AstarGetNextRoadParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structAstarGetNextRoadInput.html">AstarGetNextRoadInput</a> &amp;input, <a class="code" href="structAstarGetNextRoadOutput.html">AstarGetNextRoadOutput</a> &amp;output); <span class="comment">// 返回F值最小的边的编号</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">// } // namespace GolbalPlanning</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a7a24e2757989b0db7794e1bb02792811"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a7a24e2757989b0db7794e1bb02792811">AstarFindLane</a></div><div class="ttdeci">void AstarFindLane(const AstarFindLaneParam &amp;param, const AstarFindLaneInput &amp;input, AstarFindLaneOutput &amp;output)</div><div class="ttdoc">根据Astar道路级全局规划结果，获得车道级全局规划结果</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:180</div></div>
+<div class="ttc" id="astructAstarCalcHOutput_html"><div class="ttname"><a href="structAstarCalcHOutput.html">AstarCalcHOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:294</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_acb78c9c00f7b885f7ce78185c6248405"><div class="ttname"><a href="globalPlanning__m_8cpp.html#acb78c9c00f7b885f7ce78185c6248405">AstarGetPath</a></div><div class="ttdeci">void AstarGetPath(const AstarGetPathParam &amp;param, const AstarGetPathInput &amp;input, AstarGetPathOutput &amp;output)</div><div class="ttdoc">使用Astar算法获取路径，包括预处理、后处理等部分</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:52</div></div>
+<div class="ttc" id="astructAstarGetNextRoadParam_html"><div class="ttname"><a href="structAstarGetNextRoadParam.html">AstarGetNextRoadParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:325</div></div>
+<div class="ttc" id="astructroad_html"><div class="ttname"><a href="structroad.html">road</a></div><div class="ttdef"><b>Definition:</b> globalPlanning.h:10</div></div>
+<div class="ttc" id="astructAstarInitLinkInput_html"><div class="ttname"><a href="structAstarInitLinkInput.html">AstarInitLinkInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:137</div></div>
+<div class="ttc" id="astructAstarMapToAstarInput_html"><div class="ttname"><a href="structAstarMapToAstarInput.html">AstarMapToAstarInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:76</div></div>
+<div class="ttc" id="astructAstarInitRoadOutput_html"><div class="ttname"><a href="structAstarInitRoadOutput.html">AstarInitRoadOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:125</div></div>
+<div class="ttc" id="astructAstarCalcGInput_html"><div class="ttname"><a href="structAstarCalcGInput.html">AstarCalcGInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:274</div></div>
+<div class="ttc" id="astructAstarFindPathOutput_html"><div class="ttname"><a href="structAstarFindPathOutput.html">AstarFindPathOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:262</div></div>
+<div class="ttc" id="astructAstarRecursiveFindLaneOutput_html"><div class="ttname"><a href="structAstarRecursiveFindLaneOutput.html">AstarRecursiveFindLaneOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:243</div></div>
+<div class="ttc" id="astructAstarGetLeastFParam_html"><div class="ttname"><a href="structAstarGetLeastFParam.html">AstarGetLeastFParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:312</div></div>
+<div class="ttc" id="astructAstarFindLaneOutput_html"><div class="ttname"><a href="structAstarFindLaneOutput.html">AstarFindLaneOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:204</div></div>
+<div class="ttc" id="astructAstarGetLeastFOutput_html"><div class="ttname"><a href="structAstarGetLeastFOutput.html">AstarGetLeastFOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:319</div></div>
+<div class="ttc" id="astructAstarCalcGParam_html"><div class="ttname"><a href="structAstarCalcGParam.html">AstarCalcGParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:270</div></div>
+<div class="ttc" id="astructAstarMapToAstarParam_html"><div class="ttname"><a href="structAstarMapToAstarParam.html">AstarMapToAstarParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:70</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a60b1c11b08416260098737e9dbda5e3b"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a60b1c11b08416260098737e9dbda5e3b">AstarMapToAstar</a></div><div class="ttdeci">void AstarMapToAstar(const AstarMapToAstarParam &amp;param, const AstarMapToAstarInput &amp;input, AstarMapToAstarOutput &amp;output)</div><div class="ttdoc">使用Map类构建Astar类</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:28</div></div>
+<div class="ttc" id="astructAstarResetParam_html"><div class="ttname"><a href="structAstarResetParam.html">AstarResetParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:150</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckPrintInput_html"><div class="ttname"><a href="structAstarModuleSelfCheckPrintInput.html">AstarModuleSelfCheckPrintInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:184</div></div>
+<div class="ttc" id="astructAstarFindLaneRInput_html"><div class="ttname"><a href="structAstarFindLaneRInput.html">AstarFindLaneRInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:216</div></div>
+<div class="ttc" id="astructAstarGetPathParam_html"><div class="ttname"><a href="structAstarGetPathParam.html">AstarGetPathParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:89</div></div>
+<div class="ttc" id="astructAstarGetPathInput_html"><div class="ttname"><a href="structAstarGetPathInput.html">AstarGetPathInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:94</div></div>
+<div class="ttc" id="astructAstarCalcGOutput_html"><div class="ttname"><a href="structAstarCalcGOutput.html">AstarCalcGOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:279</div></div>
+<div class="ttc" id="astructAstarInitLinkOutput_html"><div class="ttname"><a href="structAstarInitLinkOutput.html">AstarInitLinkOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:142</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a94f27a161a7717092a428eb8a9c23f4e"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a94f27a161a7717092a428eb8a9c23f4e">AstarFindLaneR</a></div><div class="ttdeci">void AstarFindLaneR(const AstarFindLaneRParam &amp;param, const AstarFindLaneRInput &amp;input, AstarFindLaneROutput &amp;output)</div><div class="ttdoc">根据Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:200</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckPrintOutput_html"><div class="ttname"><a href="structAstarModuleSelfCheckPrintOutput.html">AstarModuleSelfCheckPrintOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:188</div></div>
+<div class="ttc" id="aclassAstar_html"><div class="ttname"><a href="classAstar.html">Astar</a></div><div class="ttdef"><b>Definition:</b> globalPlanning.h:43</div></div>
+<div class="ttc" id="astructAstarFindLaneRParam_html"><div class="ttname"><a href="structAstarFindLaneRParam.html">AstarFindLaneRParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:212</div></div>
+<div class="ttc" id="astructAstarGetNextRoadOutput_html"><div class="ttname"><a href="structAstarGetNextRoadOutput.html">AstarGetNextRoadOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:333</div></div>
+<div class="ttc" id="astructAstarFindLaneInput_html"><div class="ttname"><a href="structAstarFindLaneInput.html">AstarFindLaneInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:199</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a2ca94d03caff87080649792b8c56e82c"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a2ca94d03caff87080649792b8c56e82c">AstarInitLink</a></div><div class="ttdeci">void AstarInitLink(const AstarInitLinkParam &amp;param, const AstarInitLinkInput &amp;input, AstarInitLinkOutput &amp;output)</div><div class="ttdoc">Astar道路连接关系初始化</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:106</div></div>
+<div class="ttc" id="astructAstarInitRoadInput_html"><div class="ttname"><a href="structAstarInitRoadInput.html">AstarInitRoadInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:116</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a557278b4ff6a42cc7b3cfa723f1fee61"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a557278b4ff6a42cc7b3cfa723f1fee61">AstarReset</a></div><div class="ttdeci">void AstarReset(const AstarResetParam &amp;param, const AstarResetInput &amp;input, AstarResetOutput &amp;output)</div><div class="ttdoc">在保留地图的情况下，初始化Astar参数</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:126</div></div>
+<div class="ttc" id="astructAstarGetNextRoadInput_html"><div class="ttname"><a href="structAstarGetNextRoadInput.html">AstarGetNextRoadInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:329</div></div>
+<div class="ttc" id="astructAstarGetLeastFInput_html"><div class="ttname"><a href="structAstarGetLeastFInput.html">AstarGetLeastFInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:316</div></div>
+<div class="ttc" id="astructAstarCalcHInput_html"><div class="ttname"><a href="structAstarCalcHInput.html">AstarCalcHInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:289</div></div>
+<div class="ttc" id="astructAstarRecursiveFindLaneInput_html"><div class="ttname"><a href="structAstarRecursiveFindLaneInput.html">AstarRecursiveFindLaneInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:235</div></div>
+<div class="ttc" id="astructAstarRecursiveFindLaneParam_html"><div class="ttname"><a href="structAstarRecursiveFindLaneParam.html">AstarRecursiveFindLaneParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:231</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckInput_html"><div class="ttname"><a href="structAstarModuleSelfCheckInput.html">AstarModuleSelfCheckInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:169</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_a1ac90c60b6462d599b5c7268b4985800"><div class="ttname"><a href="globalPlanning__m_8cpp.html#a1ac90c60b6462d599b5c7268b4985800">AstarRecursiveFindLane</a></div><div class="ttdeci">void AstarRecursiveFindLane(const AstarRecursiveFindLaneParam &amp;param, const AstarRecursiveFindLaneInput &amp;input, AstarRecursiveFindLaneOutput &amp;output)</div><div class="ttdoc">Astar递归获得车道级全局规划结果主体函数</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:237</div></div>
+<div class="ttc" id="astructAstarCalcFInput_html"><div class="ttname"><a href="structAstarCalcFInput.html">AstarCalcFInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:303</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_ad2714f2455da7a56c96562cc510fb769"><div class="ttname"><a href="globalPlanning__m_8cpp.html#ad2714f2455da7a56c96562cc510fb769">AstarModuleSelfCheck</a></div><div class="ttdeci">void AstarModuleSelfCheck(const AstarModuleSelfCheckParam &amp;param, const AstarModuleSelfCheckInput &amp;input, AstarModuleSelfCheckOutput &amp;output)</div><div class="ttdoc">检查Astar道路Id</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:144</div></div>
+<div class="ttc" id="astructAstarFindPathParam_html"><div class="ttname"><a href="structAstarFindPathParam.html">AstarFindPathParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:253</div></div>
+<div class="ttc" id="astructAstarResetOutput_html"><div class="ttname"><a href="structAstarResetOutput.html">AstarResetOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:157</div></div>
+<div class="ttc" id="astructAstarResetInput_html"><div class="ttname"><a href="structAstarResetInput.html">AstarResetInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:154</div></div>
+<div class="ttc" id="astructAstarInitLinkParam_html"><div class="ttname"><a href="structAstarInitLinkParam.html">AstarInitLinkParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:133</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_aa6f5dfdc142a81158c5b91ec738c7c89"><div class="ttname"><a href="globalPlanning__m_8cpp.html#aa6f5dfdc142a81158c5b91ec738c7c89">AstarModuleSelfCheckPrint</a></div><div class="ttdeci">void AstarModuleSelfCheckPrint(const AstarModuleSelfCheckPrintParam &amp;param, const AstarModuleSelfCheckPrintInput &amp;input, AstarModuleSelfCheckPrintOutput &amp;output)</div><div class="ttdoc">检查Astar道路Id打印</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:162</div></div>
+<div class="ttc" id="astructAstarInitRoadParam_html"><div class="ttname"><a href="structAstarInitRoadParam.html">AstarInitRoadParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:112</div></div>
+<div class="ttc" id="aglobalPlanning__m_8cpp_html_afc2b9495bdd993756e58fa54a85e1324"><div class="ttname"><a href="globalPlanning__m_8cpp.html#afc2b9495bdd993756e58fa54a85e1324">AstarInitRoad</a></div><div class="ttdeci">void AstarInitRoad(const AstarInitRoadParam &amp;param, const AstarInitRoadInput &amp;input, AstarInitRoadOutput &amp;output)</div><div class="ttdoc">Astar道路初始化</div><div class="ttdef"><b>Definition:</b> globalPlanning_m.cpp:82</div></div>
+<div class="ttc" id="astructAstarCalcFOutput_html"><div class="ttname"><a href="structAstarCalcFOutput.html">AstarCalcFOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:307</div></div>
+<div class="ttc" id="astructAstarGetPathOutput_html"><div class="ttname"><a href="structAstarGetPathOutput.html">AstarGetPathOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:102</div></div>
+<div class="ttc" id="astructAstarMapToAstarOutput_html"><div class="ttname"><a href="structAstarMapToAstarOutput.html">AstarMapToAstarOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:80</div></div>
+<div class="ttc" id="astructAstarCalcHParam_html"><div class="ttname"><a href="structAstarCalcHParam.html">AstarCalcHParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:285</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckOutput_html"><div class="ttname"><a href="structAstarModuleSelfCheckOutput.html">AstarModuleSelfCheckOutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:173</div></div>
+<div class="ttc" id="astructAstarFindLaneROutput_html"><div class="ttname"><a href="structAstarFindLaneROutput.html">AstarFindLaneROutput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:223</div></div>
+<div class="ttc" id="astructAstarFindPathInput_html"><div class="ttname"><a href="structAstarFindPathInput.html">AstarFindPathInput</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:257</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckParam_html"><div class="ttname"><a href="structAstarModuleSelfCheckParam.html">AstarModuleSelfCheckParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:165</div></div>
+<div class="ttc" id="astructAstarCalcFParam_html"><div class="ttname"><a href="structAstarCalcFParam.html">AstarCalcFParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:299</div></div>
+<div class="ttc" id="astructAstarModuleSelfCheckPrintParam_html"><div class="ttname"><a href="structAstarModuleSelfCheckPrintParam.html">AstarModuleSelfCheckPrintParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:180</div></div>
+<div class="ttc" id="astructAstarFindLaneParam_html"><div class="ttname"><a href="structAstarFindLaneParam.html">AstarFindLaneParam</a></div><div class="ttdef"><b>Definition:</b> globalPlanning_m.h:195</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

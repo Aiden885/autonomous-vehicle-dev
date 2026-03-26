@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package infopack;
+
+
+message TrafficLight
+{
+    enum State
+    {   
+        // Verbose "_LIGHT" suffixes are used to avoid name collisions with defineColor.h
+        RED_LIGHT = 0;
+        YELLOW_LIGHT = 1;
+        GREEN_LIGHT = 2;
+    }
+    
+    bool active = 1;
+    State state = 2;
+    double remaining_time = 3;
+    double lane_length_before_intersection = 4;
+}

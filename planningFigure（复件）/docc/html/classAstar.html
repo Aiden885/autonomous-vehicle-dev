@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project planning: Astar类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project planning
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classAstar-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Astar类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Astar 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAstar__coll__graph.png" border="0" usemap="#Astar_coll__map" alt="Collaboration graph"/></div>
+<map name="Astar_coll__map" id="Astar_coll__map">
+<area shape="rect" title=" " alt="" coords="5,95,61,121"/>
+<area shape="rect" href="structroad.html" title=" " alt="" coords="8,5,59,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:acae0ffce9fe4dbced7572cedba5a26a4"><td class="memItemLeft" align="right" valign="top"><a id="acae0ffce9fe4dbced7572cedba5a26a4"></a>
+std::list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPath</b> (int origin, int destination, int originPointId, int destinationPointId)</td></tr>
+<tr class="separator:acae0ffce9fe4dbced7572cedba5a26a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c5fd6f0e7cdb4ef48a57b8f115c393"><td class="memItemLeft" align="right" valign="top"><a id="a86c5fd6f0e7cdb4ef48a57b8f115c393"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Astar</b> (const <a class="el" href="classAstar.html">Astar</a> &amp;other)</td></tr>
+<tr class="separator:a86c5fd6f0e7cdb4ef48a57b8f115c393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44144616f8ce63aa781b83cb549b46a"><td class="memItemLeft" align="right" valign="top"><a id="ab44144616f8ce63aa781b83cb549b46a"></a>
+<a class="el" href="classAstar.html">Astar</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classAstar.html">Astar</a> &amp;other)</td></tr>
+<tr class="separator:ab44144616f8ce63aa781b83cb549b46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6614b4d815f010475862c766691f8f25"><td class="memItemLeft" align="right" valign="top"><a id="a6614b4d815f010475862c766691f8f25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initRoad</b> (int number, double xStart, double yStart, double xEnd, double yEnd, double length)</td></tr>
+<tr class="separator:a6614b4d815f010475862c766691f8f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46bdb386ba3db31d08d1de4a7f1f9678"><td class="memItemLeft" align="right" valign="top"><a id="a46bdb386ba3db31d08d1de4a7f1f9678"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initLink</b> (int from, int to)</td></tr>
+<tr class="separator:a46bdb386ba3db31d08d1de4a7f1f9678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e8374fbdd2dbc8b5feb7fedb0b4ca1"><td class="memItemLeft" align="right" valign="top"><a id="ad9e8374fbdd2dbc8b5feb7fedb0b4ca1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="separator:ad9e8374fbdd2dbc8b5feb7fedb0b4ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9b41fd3ed9f81877572c4fea5591f9"><td class="memItemLeft" align="right" valign="top"><a id="abe9b41fd3ed9f81877572c4fea5591f9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moduleSelfCheck</b> (std::list&lt; int &gt; path)</td></tr>
+<tr class="separator:abe9b41fd3ed9f81877572c4fea5591f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7145c849d362b7fde9ea3e953e15dc54"><td class="memItemLeft" align="right" valign="top"><a id="a7145c849d362b7fde9ea3e953e15dc54"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moduleSelfCheckPrint</b> (vector&lt; pair&lt; int, int &gt;&gt; pathLanes)</td></tr>
+<tr class="separator:a7145c849d362b7fde9ea3e953e15dc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2240f756b81aba525d405b47fb675d74"><td class="memItemLeft" align="right" valign="top"><a id="a2240f756b81aba525d405b47fb675d74"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mapToAstar</b> (<a class="el" href="classRoadMap.html">RoadMap</a> m, <a class="el" href="classAstar.html">Astar</a> *as)</td></tr>
+<tr class="separator:a2240f756b81aba525d405b47fb675d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89d0066e9fd88c143deab09dc88278b1"><td class="memItemLeft" align="right" valign="top"><a id="a89d0066e9fd88c143deab09dc88278b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>findLane</b> (<a class="el" href="classRoadMap.html">RoadMap</a> m, list&lt; int &gt; path)</td></tr>
+<tr class="separator:a89d0066e9fd88c143deab09dc88278b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace0f0a0098235cf4bf3657d48f7da8c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstar.html#ace0f0a0098235cf4bf3657d48f7da8c2">findLane</a> (std::vector&lt; <a class="el" href="classRoad.html">Road</a> &gt; &amp;roads_, std::list&lt; int &gt; &amp;path_, std::vector&lt; std::pair&lt; int, int &gt;&gt; &amp;pathLanes_, int lane_id_)</td></tr>
+<tr class="memdesc:ace0f0a0098235cf4bf3657d48f7da8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">overload 'findLane', avoid to take an useless turn in the path.  <a href="classAstar.html#ace0f0a0098235cf4bf3657d48f7da8c2">更多...</a><br /></td></tr>
+<tr class="separator:ace0f0a0098235cf4bf3657d48f7da8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8affab08f22ac10c7f372650a5ba1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstar.html#a5f8affab08f22ac10c7f372650a5ba1e">recursiveFindLane</a> (std::vector&lt; <a class="el" href="classRoad.html">Road</a> &gt; &amp;roads_, const std::list&lt; int &gt; &amp;path_, std::vector&lt; std::tuple&lt; int, int, int &gt;&gt; &amp;optional_lanes_, int road_id_, int lane_id_)</td></tr>
+<tr class="memdesc:a5f8affab08f22ac10c7f372650a5ba1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">algorithm 1, this is globally excellent but not stable  <a href="classAstar.html#a5f8affab08f22ac10c7f372650a5ba1e">更多...</a><br /></td></tr>
+<tr class="separator:a5f8affab08f22ac10c7f372650a5ba1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a472fe97c01a24a4fb1250139f30d02bd"><td class="memItemLeft" align="right" valign="top"><a id="a472fe97c01a24a4fb1250139f30d02bd"></a>
+<a class="el" href="structroad.html">road</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>roadList</b></td></tr>
+<tr class="separator:a472fe97c01a24a4fb1250139f30d02bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a911cbbf0dab3be1769149635250b548e"><td class="memItemLeft" align="right" valign="top"><a id="a911cbbf0dab3be1769149635250b548e"></a>
+list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>path</b></td></tr>
+<tr class="separator:a911cbbf0dab3be1769149635250b548e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afda988d00ef7f5d87d95da133c5a4012"><td class="memItemLeft" align="right" valign="top"><a id="afda988d00ef7f5d87d95da133c5a4012"></a>
+vector&lt; pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pathLanes</b></td></tr>
+<tr class="separator:afda988d00ef7f5d87d95da133c5a4012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c9c9ddb042e0e8585d07a52aa9bf03"><td class="memItemLeft" align="right" valign="top"><a id="a16c9c9ddb042e0e8585d07a52aa9bf03"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = 10000</td></tr>
+<tr class="separator:a16c9c9ddb042e0e8585d07a52aa9bf03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c3baae93e303937da92008273b6627"><td class="memItemLeft" align="right" valign="top"><a id="aa6c3baae93e303937da92008273b6627"></a>
+std::priority_queue&lt; <a class="el" href="classnode.html">node</a>, std::vector&lt; <a class="el" href="classnode.html">node</a> &gt;, <a class="el" href="classcmp.html">cmp</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>openList</b></td></tr>
+<tr class="separator:aa6c3baae93e303937da92008273b6627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ace0f0a0098235cf4bf3657d48f7da8c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace0f0a0098235cf4bf3657d48f7da8c2">&#9670;&nbsp;</a></span>findLane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Astar::findLane </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classRoad.html">Road</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>roads_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::list&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>path_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; int, int &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>pathLanes_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lane_id_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>overload 'findLane', avoid to take an useless turn in the path. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roads</td><td>our road network </td></tr>
+    <tr><td class="paramname">path</td><td>our road path </td></tr>
+    <tr><td class="paramname">pathLanes</td><td>our lane path </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f8affab08f22ac10c7f372650a5ba1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f8affab08f22ac10c7f372650a5ba1e">&#9670;&nbsp;</a></span>recursiveFindLane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Astar::recursiveFindLane </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classRoad.html">Road</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>roads_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::list&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>path_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::tuple&lt; int, int, int &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>optional_lanes_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>road_id_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lane_id_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>algorithm 1, this is globally excellent but not stable </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roads_</td><td>road network </td></tr>
+    <tr><td class="paramname">path_</td><td>road path </td></tr>
+    <tr><td class="paramname">optional_lanes_</td><td>lane path for recursion </td></tr>
+    <tr><td class="paramname">road_id_</td><td>destination road id </td></tr>
+    <tr><td class="paramname">lane_id_</td><td>destination lane id </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAstar_a5f8affab08f22ac10c7f372650a5ba1e_icgraph.png" border="0" usemap="#classAstar_a5f8affab08f22ac10c7f372650a5ba1e_icgraph" alt=""/></div>
+<map name="classAstar_a5f8affab08f22ac10c7f372650a5ba1e_icgraph" id="classAstar_a5f8affab08f22ac10c7f372650a5ba1e_icgraph">
+<area shape="rect" title="algorithm 1, this is globally excellent but not stable" alt="" coords="231,5,412,32"/>
+<area shape="rect" href="globalPlanning__m_8cpp.html#a1ac90c60b6462d599b5c7268b4985800" title="Astar递归获得车道级全局规划结果主体函数" alt="" coords="5,5,183,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>include/<a class="el" href="globalPlanning_8h_source.html">globalPlanning.h</a></li>
+<li>src/globalPlanning.cpp</li>
+<li>src/globalPlanning_m _2.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

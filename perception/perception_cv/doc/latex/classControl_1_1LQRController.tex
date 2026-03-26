@@ -1,0 +1,80 @@
+\hypertarget{classControl_1_1LQRController}{}\doxysection{Control\+::L\+Q\+R\+Controller类 参考}
+\label{classControl_1_1LQRController}\index{Control::LQRController@{Control::LQRController}}
+
+
+L\+Q\+R横向控制类  
+
+
+
+
+{\ttfamily \#include $<$control\+L\+Q\+R\+Controller.\+hpp$>$}
+
+
+
+类 Control\+::L\+Q\+R\+Controller 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classControl_1_1LQRController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Control\+::L\+Q\+R\+Controller 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classControl_1_1LQRController__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1LQRController_a6cd8b1bf70a037f2ce6e6ac99b4db9e8}\label{classControl_1_1LQRController_a6cd8b1bf70a037f2ce6e6ac99b4db9e8}} 
+{\bfseries L\+Q\+R\+Controller} (double wheelbase, double max\+Steer, double ratio\+Wheel\+To\+Steer, double dt=0.\+1)
+\item 
+double \mbox{\hyperlink{classControl_1_1LQRController_a769963456653cc7a6ecacb44cf1db4ef}{calc\+Steer}} (\mbox{\hyperlink{structControl_1_1State}{State}} s, const Traj \&traj, size\+\_\+t nearest\+ID)
+\begin{DoxyCompactList}\small\item\em 求解横向控制量 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{额外继承的成员函数}
+
+
+\doxysubsection{详细描述}
+L\+Q\+R横向控制类 
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classControl_1_1LQRController_a769963456653cc7a6ecacb44cf1db4ef}\label{classControl_1_1LQRController_a769963456653cc7a6ecacb44cf1db4ef}} 
+\index{Control::LQRController@{Control::LQRController}!calcSteer@{calcSteer}}
+\index{calcSteer@{calcSteer}!Control::LQRController@{Control::LQRController}}
+\doxysubsubsection{\texorpdfstring{calcSteer()}{calcSteer()}}
+{\footnotesize\ttfamily double Control\+::\+L\+Q\+R\+Controller\+::calc\+Steer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structControl_1_1State}{State}}}]{s,  }\item[{const Traj \&}]{traj,  }\item[{size\+\_\+t}]{nearest\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+求解横向控制量 
+
+
+\begin{DoxyParams}{参数}
+{\em s} & \\
+\hline
+{\em traj} & \\
+\hline
+{\em nearest\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+double 
+\end{DoxyReturn}
+
+
+实现了 \mbox{\hyperlink{classControl_1_1LatControllerBase}{Control\+::\+Lat\+Controller\+Base}}.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlLQRController_8hpp}{control\+L\+Q\+R\+Controller.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/\mbox{\hyperlink{controlLQRController_8cc}{control\+L\+Q\+R\+Controller.\+cc}}\end{DoxyCompactItemize}

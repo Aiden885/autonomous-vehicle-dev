@@ -1,0 +1,684 @@
+\hypertarget{namespaceimageProcess}{}\doxysection{image\+Process 命名空间参考}
+\label{namespaceimageProcess}\index{imageProcess@{imageProcess}}
+
+
+\mbox{\hyperlink{namespaceimageProcess}{image\+Process}} namespace。  
+
+
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a223eeec6a37d66d3a258960a3b340d22}{load\+Image}} (const char $\ast$filename, cv\+::\+Mat \&clr\+\_\+image)
+\begin{DoxyCompactList}\small\item\em Loads an image from file into a cv\+::\+Mat. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a2cd31f3360912749f6caa032b1cc8930}{save\+Image}} (cv\+::\+Mat input, const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Saves an image to file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a7a950f48671a436dcee98ed88fb4bc6e}{im\+Show}} (cv\+::\+Mat input, const char $\ast$window\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Displays an image in a window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_aadd969cb7768cbd3b65483207a1c6a8e}{im\+Gray}} (cv\+::\+Mat input, cv\+::\+Mat \&output)
+\begin{DoxyCompactList}\small\item\em Converts a color image to grayscale. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a28290945e4dfaa945f81e0ba35831bea}{im\+Laplace\+Trans}} (cv\+::\+Mat input, cv\+::\+Mat \&output, bool is\+\_\+norm)
+\begin{DoxyCompactList}\small\item\em Applies Laplacian edge detection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a7dbfdab06fdfd399ed465911659de135}{im\+Equalize\+Histogram}} (cv\+::\+Mat input, cv\+::\+Mat \&output)
+\begin{DoxyCompactList}\small\item\em Performs histogram equalization on grayscale image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a33feb845f961a52c445722025b8f72fa}{im\+Gamma\+Correction}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double gamma)
+\begin{DoxyCompactList}\small\item\em Applies gamma correction to image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a61b91273a6da8254b893ddc96f01c6c6}{im\+Invert\+Transform}} (cv\+::\+Mat input, cv\+::\+Mat \&output)
+\begin{DoxyCompactList}\small\item\em Inverts image colors. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a720ff03758dcc47178c4967aac5b4102}{im\+Log\+Transform}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double c)
+\begin{DoxyCompactList}\small\item\em Applies logarithmic transform to image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_a56b5a2a506246c468ecc9ff3b570f27d}{im\+Mean\+Filter}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size\+\_\+x, int kernel\+\_\+size\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Applies mean filter to image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_aff19a7a67203c40976b22b8d9ffbdb17}{im\+Median\+Filter}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies median filter to image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_adef5b92f252596a94be64ab06df228a5}{im\+Gaussian\+Filter}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size, double sigma)
+\begin{DoxyCompactList}\small\item\em Applies Gaussian filtering to an image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a505d1dfb37ae0b5f2512d4fd64046866}{im\+Sharpening\+Filter}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double sigma, double amount, int threshold)
+\begin{DoxyCompactList}\small\item\em Applies sharpening filter to image using unsharp masking. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceimageProcess_ac83491542db495d5676416b0876b48cb}{im\+Bilateral\+Filter}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int diameter, double sigma\+\_\+color, double sigma\+\_\+space)
+\begin{DoxyCompactList}\small\item\em Applies bilateral filter to image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a8f10a858b7e8b6775a3d2b3c1bc4d409}{im\+Draw\+Rectangle}} (cv\+::\+Mat input, cv\+::\+Rect rect, cv\+::\+Scalar color, int width)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle on an image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a14517f41c8ce2a8109621e81241b3405}{im\+Draw\+Text}} (cv\+::\+Mat input, char $\ast$str, cv\+::\+Point point, int font\+Face, float size, cv\+::\+Scalar color)
+\begin{DoxyCompactList}\small\item\em Draws text on an image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a04093189389cdc23106f842f81a440fe}{im\+Draw\+Circle}} (cv\+::\+Mat input, cv\+::\+Point center, int radius, cv\+::\+Scalar color, int thickness, int line\+Type, int shift)
+\begin{DoxyCompactList}\small\item\em Draws a circle on an image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a6af63e6c5bc4c54dbf4920c18e53d639}{im\+Laplacian}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size, double scale, double delta)
+\begin{DoxyCompactList}\small\item\em Applies Laplacian operator to image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a5c572efb9897eaf654a85ff20414b629}{im\+Roberts}} (cv\+::\+Mat input, cv\+::\+Mat \&output)
+\begin{DoxyCompactList}\small\item\em Applies Roberts edge detection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a314256bb27fb917820977185b1c6d84c}{im\+Prewitt}} (cv\+::\+Mat input, cv\+::\+Mat \&output)
+\begin{DoxyCompactList}\small\item\em Applies Prewitt edge detection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_ab4699c07245a82212f25b8369ad92b5f}{im\+Morphology\+Dilation}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies morphological dilation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a8efb129fbfc61e6847db2c8a0bbe8050}{im\+Morphology\+Erosion}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies morphological erosion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_ac17bb1d74dadf744d164fc9348066046}{im\+Morphology\+Open}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies morphological opening. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a4ff868bc96d06036f99d432f330529d4}{im\+Morphology\+Close}} (cv\+::\+Mat input, cv\+::\+Mat \&output, int kernel\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies morphological closing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_aea39c26feed04d337f7b6ef48dcc0841}{im\+Nearest\+Interpolation}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double sx, double sy)
+\begin{DoxyCompactList}\small\item\em Performs nearest neighbor interpolation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a325a0d26b834663b52b85d490ca93733}{im\+Bi\+Line\+Interpolate}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double scale\+\_\+x, double scale\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Performs bilinear interpolation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_a2cefcf6c7d11a6d8120085738e67bf54}{im\+Cubic\+Interpolation}} (cv\+::\+Mat input, cv\+::\+Mat \&output, double scale\+\_\+x, double scale\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Performs bicubic interpolation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_aa7433ac66ac3aaffe1940fcdd3ef84e6}{im\+Get\+Nearest\+Neighbor}} (cv\+::\+Mat input, uchar \&result, double pos\+\_\+x, double pos\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Gets nearest neighbor pixel value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceimageProcess_abcd39b6ea1b635bf50eca279723d589a}{im\+Get\+Bilinear\+Interpolation}} (cv\+::\+Mat input, uchar \&result, double pos\+\_\+x, double pos\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Gets bilinearly interpolated pixel value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\mbox{\hyperlink{namespaceimageProcess}{image\+Process}} namespace。 
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{namespaceimageProcess_ac83491542db495d5676416b0876b48cb}\label{namespaceimageProcess_ac83491542db495d5676416b0876b48cb}} 
+\index{imageProcess@{imageProcess}!imBilateralFilter@{imBilateralFilter}}
+\index{imBilateralFilter@{imBilateralFilter}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imBilateralFilter()}{imBilateralFilter()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Bilateral\+Filter (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{diameter,  }\item[{double}]{sigma\+\_\+color,  }\item[{double}]{sigma\+\_\+space }\end{DoxyParamCaption})}
+
+
+
+Applies bilateral filter to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output filtered image \\
+\hline
+{\em diameter} & Diameter of pixel neighborhood \\
+\hline
+{\em sigma\+\_\+color} & Filter sigma in color space \\
+\hline
+{\em sigma\+\_\+space} & Filter sigma in coordinate space \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a325a0d26b834663b52b85d490ca93733}\label{namespaceimageProcess_a325a0d26b834663b52b85d490ca93733}} 
+\index{imageProcess@{imageProcess}!imBiLineInterpolate@{imBiLineInterpolate}}
+\index{imBiLineInterpolate@{imBiLineInterpolate}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imBiLineInterpolate()}{imBiLineInterpolate()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Bi\+Line\+Interpolate (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{scale\+\_\+x,  }\item[{double}]{scale\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Performs bilinear interpolation. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output interpolated image \\
+\hline
+{\em scale\+\_\+x} & Scale factor in x direction \\
+\hline
+{\em scale\+\_\+y} & Scale factor in y direction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a2cefcf6c7d11a6d8120085738e67bf54}\label{namespaceimageProcess_a2cefcf6c7d11a6d8120085738e67bf54}} 
+\index{imageProcess@{imageProcess}!imCubicInterpolation@{imCubicInterpolation}}
+\index{imCubicInterpolation@{imCubicInterpolation}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imCubicInterpolation()}{imCubicInterpolation()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Cubic\+Interpolation (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{scale\+\_\+x,  }\item[{double}]{scale\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Performs bicubic interpolation. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output interpolated image \\
+\hline
+{\em scale\+\_\+x} & Scale factor in x direction \\
+\hline
+{\em scale\+\_\+y} & Scale factor in y direction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a04093189389cdc23106f842f81a440fe}\label{namespaceimageProcess_a04093189389cdc23106f842f81a440fe}} 
+\index{imageProcess@{imageProcess}!imDrawCircle@{imDrawCircle}}
+\index{imDrawCircle@{imDrawCircle}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imDrawCircle()}{imDrawCircle()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Draw\+Circle (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Point}]{center,  }\item[{int}]{radius,  }\item[{cv\+::\+Scalar}]{color,  }\item[{int}]{thickness,  }\item[{int}]{line\+Type,  }\item[{int}]{shift }\end{DoxyParamCaption})}
+
+
+
+Draws a circle on an image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Image to draw on \\
+\hline
+{\em center} & Circle center point \\
+\hline
+{\em radius} & Circle radius \\
+\hline
+{\em color} & Circle color \\
+\hline
+{\em thickness} & Line thickness \\
+\hline
+{\em line\+Type} & Line type \\
+\hline
+{\em shift} & Number of fractional bits \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a8f10a858b7e8b6775a3d2b3c1bc4d409}\label{namespaceimageProcess_a8f10a858b7e8b6775a3d2b3c1bc4d409}} 
+\index{imageProcess@{imageProcess}!imDrawRectangle@{imDrawRectangle}}
+\index{imDrawRectangle@{imDrawRectangle}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imDrawRectangle()}{imDrawRectangle()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Draw\+Rectangle (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Rect}]{rect,  }\item[{cv\+::\+Scalar}]{color,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle on an image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Image to draw on \\
+\hline
+{\em rect} & Rectangle coordinates \\
+\hline
+{\em color} & Rectangle color \\
+\hline
+{\em width} & Rectangle line width \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a14517f41c8ce2a8109621e81241b3405}\label{namespaceimageProcess_a14517f41c8ce2a8109621e81241b3405}} 
+\index{imageProcess@{imageProcess}!imDrawText@{imDrawText}}
+\index{imDrawText@{imDrawText}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imDrawText()}{imDrawText()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Draw\+Text (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{char $\ast$}]{str,  }\item[{cv\+::\+Point}]{point,  }\item[{int}]{font\+Face,  }\item[{float}]{size,  }\item[{cv\+::\+Scalar}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws text on an image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Image to draw on \\
+\hline
+{\em str} & Text string to draw \\
+\hline
+{\em point} & Text position \\
+\hline
+{\em font\+Face} & Font type \\
+\hline
+{\em size} & Font size \\
+\hline
+{\em color} & Text color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a7dbfdab06fdfd399ed465911659de135}\label{namespaceimageProcess_a7dbfdab06fdfd399ed465911659de135}} 
+\index{imageProcess@{imageProcess}!imEqualizeHistogram@{imEqualizeHistogram}}
+\index{imEqualizeHistogram@{imEqualizeHistogram}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imEqualizeHistogram()}{imEqualizeHistogram()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Equalize\+Histogram (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Performs histogram equalization on grayscale image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output equalized image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a33feb845f961a52c445722025b8f72fa}\label{namespaceimageProcess_a33feb845f961a52c445722025b8f72fa}} 
+\index{imageProcess@{imageProcess}!imGammaCorrection@{imGammaCorrection}}
+\index{imGammaCorrection@{imGammaCorrection}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imGammaCorrection()}{imGammaCorrection()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Gamma\+Correction (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{gamma }\end{DoxyParamCaption})}
+
+
+
+Applies gamma correction to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output gamma corrected image \\
+\hline
+{\em gamma} & Gamma correction value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_adef5b92f252596a94be64ab06df228a5}\label{namespaceimageProcess_adef5b92f252596a94be64ab06df228a5}} 
+\index{imageProcess@{imageProcess}!imGaussianFilter@{imGaussianFilter}}
+\index{imGaussianFilter@{imGaussianFilter}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imGaussianFilter()}{imGaussianFilter()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Gaussian\+Filter (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size,  }\item[{double}]{sigma }\end{DoxyParamCaption})}
+
+
+
+Applies Gaussian filtering to an image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input source image \\
+\hline
+{\em output} & Output filtered image \\
+\hline
+{\em kernel\+\_\+size} & Size of Gaussian kernel (must be odd) \\
+\hline
+{\em sigma} & Standard deviation of Gaussian kernel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_abcd39b6ea1b635bf50eca279723d589a}\label{namespaceimageProcess_abcd39b6ea1b635bf50eca279723d589a}} 
+\index{imageProcess@{imageProcess}!imGetBilinearInterpolation@{imGetBilinearInterpolation}}
+\index{imGetBilinearInterpolation@{imGetBilinearInterpolation}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imGetBilinearInterpolation()}{imGetBilinearInterpolation()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Get\+Bilinear\+Interpolation (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{uchar \&}]{result,  }\item[{double}]{pos\+\_\+x,  }\item[{double}]{pos\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Gets bilinearly interpolated pixel value. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em result} & Output pixel value \\
+\hline
+{\em pos\+\_\+x} & X coordinate \\
+\hline
+{\em pos\+\_\+y} & Y coordinate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_aa7433ac66ac3aaffe1940fcdd3ef84e6}\label{namespaceimageProcess_aa7433ac66ac3aaffe1940fcdd3ef84e6}} 
+\index{imageProcess@{imageProcess}!imGetNearestNeighbor@{imGetNearestNeighbor}}
+\index{imGetNearestNeighbor@{imGetNearestNeighbor}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imGetNearestNeighbor()}{imGetNearestNeighbor()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Get\+Nearest\+Neighbor (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{uchar \&}]{result,  }\item[{double}]{pos\+\_\+x,  }\item[{double}]{pos\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Gets nearest neighbor pixel value. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em result} & Output pixel value \\
+\hline
+{\em pos\+\_\+x} & X coordinate \\
+\hline
+{\em pos\+\_\+y} & Y coordinate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_aadd969cb7768cbd3b65483207a1c6a8e}\label{namespaceimageProcess_aadd969cb7768cbd3b65483207a1c6a8e}} 
+\index{imageProcess@{imageProcess}!imGray@{imGray}}
+\index{imGray@{imGray}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imGray()}{imGray()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Gray (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Converts a color image to grayscale. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input color image \\
+\hline
+{\em output} & Output grayscale image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a61b91273a6da8254b893ddc96f01c6c6}\label{namespaceimageProcess_a61b91273a6da8254b893ddc96f01c6c6}} 
+\index{imageProcess@{imageProcess}!imInvertTransform@{imInvertTransform}}
+\index{imInvertTransform@{imInvertTransform}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imInvertTransform()}{imInvertTransform()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Invert\+Transform (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Inverts image colors. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output inverted image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a28290945e4dfaa945f81e0ba35831bea}\label{namespaceimageProcess_a28290945e4dfaa945f81e0ba35831bea}} 
+\index{imageProcess@{imageProcess}!imLaplaceTrans@{imLaplaceTrans}}
+\index{imLaplaceTrans@{imLaplaceTrans}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imLaplaceTrans()}{imLaplaceTrans()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Laplace\+Trans (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{bool}]{is\+\_\+norm }\end{DoxyParamCaption})}
+
+
+
+Applies Laplacian edge detection. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output edge detected image \\
+\hline
+{\em is\+\_\+norm} & Whether to normalize output to 0-\/255 range \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a6af63e6c5bc4c54dbf4920c18e53d639}\label{namespaceimageProcess_a6af63e6c5bc4c54dbf4920c18e53d639}} 
+\index{imageProcess@{imageProcess}!imLaplacian@{imLaplacian}}
+\index{imLaplacian@{imLaplacian}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imLaplacian()}{imLaplacian()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Laplacian (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size,  }\item[{double}]{scale,  }\item[{double}]{delta }\end{DoxyParamCaption})}
+
+
+
+Applies Laplacian operator to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output edge detected image \\
+\hline
+{\em kernel\+\_\+size} & Size of Laplacian kernel \\
+\hline
+{\em scale} & Optional scale factor \\
+\hline
+{\em delta} & Optional delta value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a720ff03758dcc47178c4967aac5b4102}\label{namespaceimageProcess_a720ff03758dcc47178c4967aac5b4102}} 
+\index{imageProcess@{imageProcess}!imLogTransform@{imLogTransform}}
+\index{imLogTransform@{imLogTransform}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imLogTransform()}{imLogTransform()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Log\+Transform (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{c }\end{DoxyParamCaption})}
+
+
+
+Applies logarithmic transform to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output transformed image \\
+\hline
+{\em c} & Scaling constant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a56b5a2a506246c468ecc9ff3b570f27d}\label{namespaceimageProcess_a56b5a2a506246c468ecc9ff3b570f27d}} 
+\index{imageProcess@{imageProcess}!imMeanFilter@{imMeanFilter}}
+\index{imMeanFilter@{imMeanFilter}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMeanFilter()}{imMeanFilter()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Mean\+Filter (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size\+\_\+x,  }\item[{int}]{kernel\+\_\+size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Applies mean filter to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output filtered image \\
+\hline
+{\em kernel\+\_\+size\+\_\+x} & Kernel width \\
+\hline
+{\em kernel\+\_\+size\+\_\+y} & Kernel height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_aff19a7a67203c40976b22b8d9ffbdb17}\label{namespaceimageProcess_aff19a7a67203c40976b22b8d9ffbdb17}} 
+\index{imageProcess@{imageProcess}!imMedianFilter@{imMedianFilter}}
+\index{imMedianFilter@{imMedianFilter}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMedianFilter()}{imMedianFilter()}}
+{\footnotesize\ttfamily bool image\+Process\+::im\+Median\+Filter (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Applies median filter to image. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output filtered image \\
+\hline
+{\em kernel\+\_\+size} & Size of median filter kernel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a4ff868bc96d06036f99d432f330529d4}\label{namespaceimageProcess_a4ff868bc96d06036f99d432f330529d4}} 
+\index{imageProcess@{imageProcess}!imMorphologyClose@{imMorphologyClose}}
+\index{imMorphologyClose@{imMorphologyClose}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMorphologyClose()}{imMorphologyClose()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Morphology\+Close (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Applies morphological closing. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output closed image \\
+\hline
+{\em kernel\+\_\+size} & Size of structuring element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_ab4699c07245a82212f25b8369ad92b5f}\label{namespaceimageProcess_ab4699c07245a82212f25b8369ad92b5f}} 
+\index{imageProcess@{imageProcess}!imMorphologyDilation@{imMorphologyDilation}}
+\index{imMorphologyDilation@{imMorphologyDilation}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMorphologyDilation()}{imMorphologyDilation()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Morphology\+Dilation (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Applies morphological dilation. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output dilated image \\
+\hline
+{\em kernel\+\_\+size} & Size of structuring element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a8efb129fbfc61e6847db2c8a0bbe8050}\label{namespaceimageProcess_a8efb129fbfc61e6847db2c8a0bbe8050}} 
+\index{imageProcess@{imageProcess}!imMorphologyErosion@{imMorphologyErosion}}
+\index{imMorphologyErosion@{imMorphologyErosion}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMorphologyErosion()}{imMorphologyErosion()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Morphology\+Erosion (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Applies morphological erosion. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output eroded image \\
+\hline
+{\em kernel\+\_\+size} & Size of structuring element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_ac17bb1d74dadf744d164fc9348066046}\label{namespaceimageProcess_ac17bb1d74dadf744d164fc9348066046}} 
+\index{imageProcess@{imageProcess}!imMorphologyOpen@{imMorphologyOpen}}
+\index{imMorphologyOpen@{imMorphologyOpen}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imMorphologyOpen()}{imMorphologyOpen()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Morphology\+Open (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{int}]{kernel\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Applies morphological opening. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output opened image \\
+\hline
+{\em kernel\+\_\+size} & Size of structuring element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_aea39c26feed04d337f7b6ef48dcc0841}\label{namespaceimageProcess_aea39c26feed04d337f7b6ef48dcc0841}} 
+\index{imageProcess@{imageProcess}!imNearestInterpolation@{imNearestInterpolation}}
+\index{imNearestInterpolation@{imNearestInterpolation}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imNearestInterpolation()}{imNearestInterpolation()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Nearest\+Interpolation (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{sx,  }\item[{double}]{sy }\end{DoxyParamCaption})}
+
+
+
+Performs nearest neighbor interpolation. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output interpolated image \\
+\hline
+{\em sx} & Scale factor in x direction \\
+\hline
+{\em sy} & Scale factor in y direction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a314256bb27fb917820977185b1c6d84c}\label{namespaceimageProcess_a314256bb27fb917820977185b1c6d84c}} 
+\index{imageProcess@{imageProcess}!imPrewitt@{imPrewitt}}
+\index{imPrewitt@{imPrewitt}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imPrewitt()}{imPrewitt()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Prewitt (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Applies Prewitt edge detection. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output edge detected image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a5c572efb9897eaf654a85ff20414b629}\label{namespaceimageProcess_a5c572efb9897eaf654a85ff20414b629}} 
+\index{imageProcess@{imageProcess}!imRoberts@{imRoberts}}
+\index{imRoberts@{imRoberts}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imRoberts()}{imRoberts()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Roberts (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Applies Roberts edge detection. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output edge detected image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a505d1dfb37ae0b5f2512d4fd64046866}\label{namespaceimageProcess_a505d1dfb37ae0b5f2512d4fd64046866}} 
+\index{imageProcess@{imageProcess}!imSharpeningFilter@{imSharpeningFilter}}
+\index{imSharpeningFilter@{imSharpeningFilter}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imSharpeningFilter()}{imSharpeningFilter()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Sharpening\+Filter (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{cv\+::\+Mat \&}]{output,  }\item[{double}]{sigma,  }\item[{double}]{amount,  }\item[{int}]{threshold }\end{DoxyParamCaption})}
+
+
+
+Applies sharpening filter to image using unsharp masking. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Input image \\
+\hline
+{\em output} & Output sharpened image \\
+\hline
+{\em sigma} & Gaussian blur sigma (default 1.\+0) \\
+\hline
+{\em amount} & Sharpening strength (default 1.\+5) \\
+\hline
+{\em threshold} & Minimum difference for sharpening (default 0) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a7a950f48671a436dcee98ed88fb4bc6e}\label{namespaceimageProcess_a7a950f48671a436dcee98ed88fb4bc6e}} 
+\index{imageProcess@{imageProcess}!imShow@{imShow}}
+\index{imShow@{imShow}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{imShow()}{imShow()}}
+{\footnotesize\ttfamily void image\+Process\+::im\+Show (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{const char $\ast$}]{window\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Displays an image in a window. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Image to display \\
+\hline
+{\em window\+\_\+name} & Name of the window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceimageProcess_a223eeec6a37d66d3a258960a3b340d22}\label{namespaceimageProcess_a223eeec6a37d66d3a258960a3b340d22}} 
+\index{imageProcess@{imageProcess}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily bool image\+Process\+::load\+Image (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{cv\+::\+Mat \&}]{clr\+\_\+image }\end{DoxyParamCaption})}
+
+
+
+Loads an image from file into a cv\+::\+Mat. 
+
+
+\begin{DoxyParams}{参数}
+{\em filename} & Path to the image file to load \\
+\hline
+{\em clr\+\_\+image} & Output color image matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed to load 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceimageProcess_a2cd31f3360912749f6caa032b1cc8930}\label{namespaceimageProcess_a2cd31f3360912749f6caa032b1cc8930}} 
+\index{imageProcess@{imageProcess}!saveImage@{saveImage}}
+\index{saveImage@{saveImage}!imageProcess@{imageProcess}}
+\doxysubsubsection{\texorpdfstring{saveImage()}{saveImage()}}
+{\footnotesize\ttfamily bool image\+Process\+::save\+Image (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{input,  }\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Saves an image to file. 
+
+
+\begin{DoxyParams}{参数}
+{\em input} & Image matrix to save \\
+\hline
+{\em filename} & Output filename to save to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if successful, false if failed 
+\end{DoxyReturn}

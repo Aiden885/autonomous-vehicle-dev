@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/include/funcPidController.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_f8d9a1cccf2878e05ce0a8a09b388292.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">funcPidController.hpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>PID控制函数  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="controlPIDController_8hpp_source.html">controlPIDController.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+funcPidController.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="funcPidController_8hpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hpp">
+<area shape="rect" title="PID控制函数" alt="" coords="286,5,563,91"/>
+<area shape="rect" title=" " alt="" coords="595,363,675,389"/>
+<area shape="rect" title=" " alt="" coords="976,363,1038,389"/>
+<area shape="rect" href="controlPIDController_8hpp.html" title="PID控制器 和 PID横向控制器" alt="" coords="334,139,515,165"/>
+<area shape="rect" href="controlController_8hpp.html" title="总控制器模块，横向控制基类，纵向控制类定义" alt="" coords="750,213,909,240"/>
+<area shape="rect" title=" " alt="" coords="832,363,894,389"/>
+<area shape="rect" title=" " alt="" coords="37,213,105,240"/>
+<area shape="rect" title=" " alt="" coords="130,213,204,240"/>
+<area shape="rect" title=" " alt="" coords="228,213,287,240"/>
+<area shape="rect" title=" " alt="" coords="311,213,375,240"/>
+<area shape="rect" title=" " alt="" coords="399,213,450,240"/>
+<area shape="rect" title=" " alt="" coords="474,213,606,240"/>
+<area shape="rect" href="controlData_8hpp.html" title="模块使用数据类型" alt="" coords="698,288,825,315"/>
+<area shape="rect" title=" " alt="" coords="900,288,970,315"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="funcPidController_8hpp__dep__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hppdep" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hppdep" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2funcPidController_8hppdep">
+<area shape="rect" title="PID控制函数" alt="" coords="5,5,283,91"/>
+<area shape="rect" href="controlPIDController_8cc.html" title="PID控制器，PID横向运动控制器" alt="" coords="15,139,273,224"/>
+</map>
+</div>
+</div>
+<p><a href="funcPidController_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1UpdateParamStruct.html">Control::UpdateParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1UpdateInputStruct.html">Control::UpdateInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1UpdateOutputStruct.html">Control::UpdateOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ModifyGainsParamStruct.html">Control::ModifyGainsParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ModifyGainsInputStruct.html">Control::ModifyGainsInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ModifyGainsOutputStruct.html">Control::ModifyGainsOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ResetIParamStruct.html">Control::ResetIParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ResetIInputStruct.html">Control::ResetIInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ResetIOutputStruct.html">Control::ResetIOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ConfigParamStruct.html">Control::ConfigParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ConfigInputStruct.html">Control::ConfigInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1ConfigOutputStruct.html">Control::ConfigOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1InitialParamStruct.html">Control::InitialParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1InitialInputStruct.html">Control::InitialInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1InitialOutputStruct.html">Control::InitialOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1CalcErrorsParamStruct.html">Control::CalcErrorsParamStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1CalcErrorsInputStruct.html">Control::CalcErrorsInputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structControl_1_1CalcErrorsOutputStruct.html">Control::CalcErrorsOutputStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceControl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html">Control</a></td></tr>
+<tr class="memdesc:namespaceControl"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceControl.html" title="Control namespace">Control</a> namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a07ae5716f5f8f486c2dcee57c9504940"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#a07ae5716f5f8f486c2dcee57c9504940">Control::pidControllerUpdate</a> (<a class="el" href="structControl_1_1UpdateParamStruct.html">UpdateParamStruct</a> &amp;param01, <a class="el" href="structControl_1_1UpdateInputStruct.html">UpdateInputStruct</a> &amp;input01, <a class="el" href="structControl_1_1UpdateOutputStruct.html">UpdateOutputStruct</a> &amp;output01)</td></tr>
+<tr class="memdesc:a07ae5716f5f8f486c2dcee57c9504940"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID输出  <a href="namespaceControl.html#a07ae5716f5f8f486c2dcee57c9504940">更多...</a><br /></td></tr>
+<tr class="separator:a07ae5716f5f8f486c2dcee57c9504940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb21e59bd0deb6b04ae063838923474a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#aeb21e59bd0deb6b04ae063838923474a">Control::pidControllerModifyGains</a> (<a class="el" href="structControl_1_1ModifyGainsParamStruct.html">ModifyGainsParamStruct</a> &amp;param02, <a class="el" href="structControl_1_1ModifyGainsInputStruct.html">ModifyGainsInputStruct</a> &amp;input02, <a class="el" href="structControl_1_1ModifyGainsOutputStruct.html">ModifyGainsOutputStruct</a> &amp;output02)</td></tr>
+<tr class="memdesc:aeb21e59bd0deb6b04ae063838923474a"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID增益修改  <a href="namespaceControl.html#aeb21e59bd0deb6b04ae063838923474a">更多...</a><br /></td></tr>
+<tr class="separator:aeb21e59bd0deb6b04ae063838923474a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c9a4efcc34d98f3bf221b3d84a717d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#a2c9a4efcc34d98f3bf221b3d84a717d3">Control::pidControllerResetI</a> (<a class="el" href="structControl_1_1ResetIParamStruct.html">ResetIParamStruct</a> &amp;param03, <a class="el" href="structControl_1_1ResetIInputStruct.html">ResetIInputStruct</a> &amp;input03, <a class="el" href="structControl_1_1ResetIOutputStruct.html">ResetIOutputStruct</a> &amp;output03)</td></tr>
+<tr class="memdesc:a2c9a4efcc34d98f3bf221b3d84a717d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID积分重置  <a href="namespaceControl.html#a2c9a4efcc34d98f3bf221b3d84a717d3">更多...</a><br /></td></tr>
+<tr class="separator:a2c9a4efcc34d98f3bf221b3d84a717d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b9d824fc8580077998ebf66d086c6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#a31b9d824fc8580077998ebf66d086c6f">Control::pidLoadPIDYamlConfig</a> (<a class="el" href="structControl_1_1ConfigParamStruct.html">ConfigParamStruct</a> &amp;param04, <a class="el" href="structControl_1_1ConfigInputStruct.html">ConfigInputStruct</a> &amp;input04, <a class="el" href="structControl_1_1ConfigOutputStruct.html">ConfigOutputStruct</a> &amp;output04)</td></tr>
+<tr class="memdesc:a31b9d824fc8580077998ebf66d086c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取 yaml 文件中pid_conf相关字段内容，并返回控制器  <a href="namespaceControl.html#a31b9d824fc8580077998ebf66d086c6f">更多...</a><br /></td></tr>
+<tr class="separator:a31b9d824fc8580077998ebf66d086c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6210e037ef0cf7323bd47e6559ca727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#aa6210e037ef0cf7323bd47e6559ca727">Control::initialPIDController</a> (<a class="el" href="structControl_1_1InitialParamStruct.html">InitialParamStruct</a> &amp;param05, <a class="el" href="structControl_1_1InitialInputStruct.html">InitialInputStruct</a> &amp;input05, <a class="el" href="structControl_1_1InitialOutputStruct.html">InitialOutputStruct</a> &amp;output05)</td></tr>
+<tr class="memdesc:aa6210e037ef0cf7323bd47e6559ca727"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID参数初始化  <a href="namespaceControl.html#aa6210e037ef0cf7323bd47e6559ca727">更多...</a><br /></td></tr>
+<tr class="separator:aa6210e037ef0cf7323bd47e6559ca727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598a0eb859cf2f49ea3cc80876be0d32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#a598a0eb859cf2f49ea3cc80876be0d32">Control::pidPIDControllerCalcErrors</a> (<a class="el" href="structControl_1_1CalcErrorsParamStruct.html">CalcErrorsParamStruct</a> &amp;param06, <a class="el" href="structControl_1_1CalcErrorsInputStruct.html">CalcErrorsInputStruct</a> &amp;input06, <a class="el" href="structControl_1_1CalcErrorsOutputStruct.html">CalcErrorsOutputStruct</a> &amp;output06)</td></tr>
+<tr class="memdesc:a598a0eb859cf2f49ea3cc80876be0d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID误差计算  <a href="namespaceControl.html#a598a0eb859cf2f49ea3cc80876be0d32">更多...</a><br /></td></tr>
+<tr class="separator:a598a0eb859cf2f49ea3cc80876be0d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>PID控制函数 </p>
+<dl class="section version"><dt>版本</dt><dd>0.0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>Chaoyi Chen (<a href="#" onclick="location.href='mai'+'lto:'+'che'+'nc'+'y20'+'23'+'@ts'+'in'+'ghu'+'a.'+'edu'+'.c'+'om'; return false;">chenc<span style="display: none;">.nosp@m.</span>y202<span style="display: none;">.nosp@m.</span>3@tsi<span style="display: none;">.nosp@m.</span>nghu<span style="display: none;">.nosp@m.</span>a.edu<span style="display: none;">.nosp@m.</span>.com</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-01-31 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

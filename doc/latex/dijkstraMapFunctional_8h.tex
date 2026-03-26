@@ -1,0 +1,160 @@
+\hypertarget{dijkstraMapFunctional_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+Routing\+Planning/\+Grid\+Method/\+Dijkstra/\+Dijkstra\+Map/src/dijkstra\+Map\+Functional.h 文件参考}
+\label{dijkstraMapFunctional_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/RoutingPlanning/GridMethod/Dijkstra/DijkstraMap/src/dijkstraMapFunctional.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/RoutingPlanning/GridMethod/Dijkstra/DijkstraMap/src/dijkstraMapFunctional.h}}
+
+
+Dijkstra\+Map功能头文件  
+
+
+{\ttfamily \#include \char`\"{}dijkstra\+\_\+topology\+Map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}localization\+\_\+\+Map\+Analysis.\+h\char`\"{}}\newline
+dijkstra\+Map\+Functional.\+h 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dijkstraMapFunctional_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{dijkstraMapFunctional_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1rmPara}{planning\+::rm\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1rmInput}{planning\+::rm\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1rmOutput}{planning\+::rm\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1dijPara}{planning\+::dij\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1dijInput}{planning\+::dij\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1dijOutput}{planning\+::dij\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapAnalysisPara}{planning\+::map\+Analysis\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapAnalysisInput}{planning\+::map\+Analysis\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapAnalysisOutput}{planning\+::map\+Analysis\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapPrintPara}{planning\+::map\+Print\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapPrintInput}{planning\+::map\+Print\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapPrintOutput}{planning\+::map\+Print\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1neighborLaneSortPara}{planning\+::neighbor\+Lane\+Sort\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1neighborLaneSortInput}{planning\+::neighbor\+Lane\+Sort\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1neighborLaneSortOutput}{planning\+::neighbor\+Lane\+Sort\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckParaMap}{planning\+::module\+Self\+Check\+Para\+Map}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckInputMap}{planning\+::module\+Self\+Check\+Input\+Map}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckOutputMap}{planning\+::module\+Self\+Check\+Output\+Map}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initRoadPara}{planning\+::init\+Road\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initRoadInput}{planning\+::init\+Road\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initRoadOutput}{planning\+::init\+Road\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initLinkPara}{planning\+::init\+Link\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initLinkInput}{planning\+::init\+Link\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1initLinkOutput}{planning\+::init\+Link\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1resetPara}{planning\+::reset\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1resetInput}{planning\+::reset\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1resetOutput}{planning\+::reset\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckPara}{planning\+::module\+Self\+Check\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckInput}{planning\+::module\+Self\+Check\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckOutput}{planning\+::module\+Self\+Check\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckPrintPara}{planning\+::module\+Self\+Check\+Print\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckPrintInput}{planning\+::module\+Self\+Check\+Print\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1moduleSelfCheckPrintOutput}{planning\+::module\+Self\+Check\+Print\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapToAstarPara}{planning\+::map\+To\+Astar\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapToAstarInput}{planning\+::map\+To\+Astar\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1mapToAstarOutput}{planning\+::map\+To\+Astar\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1findLanePara}{planning\+::find\+Lane\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1findLaneInput}{planning\+::find\+Lane\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1findLaneOutput}{planning\+::find\+Lane\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1getPathPara}{planning\+::get\+Path\+Para}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1getPathInput}{planning\+::get\+Path\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1getPathOutput}{planning\+::get\+Path\+Output}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceplanning}{planning}}
+\begin{DoxyCompactList}\small\item\em planning namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplanning_ac92c46a5fba713036385e34697fb4c60}{planning\+::\+Dijkstra\+Read\+Map}} (const rm\+Para \&para, const rm\+Input \&input, rm\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra读取地图图片 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ab6fd3fb182b53de9bd98aed8efda2709}{planning\+::\+Dijkstra\+Get\+Path\+Dij\+Map}} (const dij\+Para \&para, const dij\+Input \&input, dij\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra求最短路径 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a21860c3347b0ea7f0af306be2ac3d52b}{planning\+::\+Dijkstra\+Map\+Analysis}} (map\+Analysis\+Para \&para, map\+Analysis\+Input \&input, map\+Analysis\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra解析路网图获取数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad8fd67799d25e16a36f57364f1808017}{planning\+::\+Dijkstra\+Neighbor\+Lane\+Sort}} (neighbor\+Lane\+Sort\+Para \&para, neighbor\+Lane\+Sort\+Input \&input, neighbor\+Lane\+Sort\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra相邻车道按序号排序 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a1a14ad2175e302b55efba6116c5ca96a}{planning\+::\+Dijkstra\+Module\+Self\+Check\+Map}} (module\+Self\+Check\+Para\+Map \&para, module\+Self\+Check\+Input\+Map \&input, module\+Self\+Check\+Output\+Map \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra路网图格式检查 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a0c3521f94892a683cccbd683bf86f3be}{planning\+::\+Dijkstra\+Map\+Print}} (map\+Print\+Para \&para, map\+Print\+Input \&input, map\+Print\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra打印路网图信息 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a36a6ceade68dac3f049b49e6116288bb}{planning\+::\+Dijkstra\+Init\+Road}} (init\+Road\+Para \&para, init\+Road\+Input \&input, init\+Road\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra初始化道路 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a7be826611b58e248abe44820f11d741d}{planning\+::\+Dijkstra\+Init\+Link}} (init\+Link\+Para \&para, init\+Link\+Input \&input, init\+Link\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra初始化相连道路 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a7ded5ee5cfb24df9d2692cb5a7145404}{planning\+::\+Dijkstra\+Reset}} (reset\+Para \&para, reset\+Input \&input, reset\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 重置\+Dijkstra模型 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aa73837bc8f5fa31343aaff9786bc3c96}{planning\+::\+Dijkstra\+Module\+Self\+Check}} (module\+Self\+Check\+Para \&para, module\+Self\+Check\+Input \&input, module\+Self\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra模型自测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a54cc8e66213851abd5b56e24756c171f}{planning\+::\+Dijkstra\+Module\+Self\+Check\+Print}} (module\+Self\+Check\+Print\+Para \&para, module\+Self\+Check\+Print\+Input \&input, module\+Self\+Check\+Print\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra模型自测并打印 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a23edb4295de288b7efe2788b7519ae1c}{planning\+::\+Dijkstra\+Map\+To\+Astar}} (map\+To\+Astar\+Para \&para, map\+To\+Astar\+Input \&input, map\+To\+Astar\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 由路网图构建\+Dijstra模型 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aad2407dde38899a6fa816ed69d1d239e}{planning\+::\+Dijkstra\+Find\+Lane}} (find\+Lane\+Para \&para, find\+Lane\+Input \&input, find\+Lane\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra寻找车道路线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a54bd238e3ec9b496852ba5df37e2dee9}{planning\+::\+Dijkstra\+Get\+Path}} (get\+Path\+Para \&para, get\+Path\+Input \&input, get\+Path\+Output \&output)
+\begin{DoxyCompactList}\small\item\em Dijkstra寻找最短路径 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+Dijkstra\+Map功能头文件 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zihan\+Xie (\href{mailto:770178863@qq.com}{\texttt{ 770178863@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/12-\/19 
+\end{DoxyDate}

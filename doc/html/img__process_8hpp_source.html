@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_cv/include/img_process.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_85916f0b90164c3695644f7c783d5aff.html">perception</a></li><li class="navelem"><a class="el" href="dir_6aa6ce8a0d05f0b1ea93966c7b832c5e.html">perception_cv</a></li><li class="navelem"><a class="el" href="dir_bb103d8aa73b98aee3d71b11e70e0a99.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">img_process.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef IMG_PROCESS_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define IMG_PROCESS_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a>{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#aba284565f6d898a0dcd4c7ef3f59ea68">loadImage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, cv::Mat &amp;clr_image);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#a746bfc0c5a192e6f3c5be9a3876cf5b0">saveImage</a>(cv::Mat input, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#abe692afcfddbd8735db0766bde4943eb">imShow</a>(cv::Mat input, <span class="keyword">const</span> <span class="keywordtype">char</span> *window_name = <span class="stringliteral">&quot;img&quot;</span>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#ad3ae53b65493dc9c18e7ad8226a0651e">imGray</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a40610a5e1693b7e727b24123bfa6b7a7">imScharrTrans</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> scale = 1, <span class="keywordtype">double</span> delta = 0);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#a197d1fd92db09ff0a8d3d594e7e4ef13">imEqualizeHistogram</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#acc8c2ae9873786b165a77e3ecbffdf9e">imGammaCorrection</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> gamma);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#aff518739c87d5aeb5ff63fe149c2abc1">imInvertTransform</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#aeb4cc2664491ac5ddaf3029adee48db6">imLogTransform</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> c);  <span class="comment">// to be tested</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//Filtering</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#a82f35aad4d8c7209a7064ca9b09ac4c2">imMeanFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size_x = 3, <span class="keywordtype">int</span> kernel_size_y = 3);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#a4ed99564a58a3979efd95ca74760f32b">imMedianFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a7c8a0bbd535f404ebdff485fa294404e">imGaussianFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3, <span class="keywordtype">double</span> sigma = 1.0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#ab527f8b65d654bcc19d848f14b49d663">imSharpeningFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> sigma = 1.0, <span class="keywordtype">double</span> amount = 1.5, <span class="keywordtype">int</span> threshold = 0);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespaceperception.html#ac8fdefcfce1af3b2f127faf81473deca">imBilateralFilter</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> diameter = 5, <span class="keywordtype">double</span> sigma_color = 75.0, <span class="keywordtype">double</span> sigma_space = 75.0);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a0d0afbaead369de1ad157d4e60021428">imDrawRectangle</a> (cv::Mat input, cv::Rect rect, cv::Scalar color=CV_RGB(255,0,0), <span class="keywordtype">int</span> width=1);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a94f2c5569bd20e318b609778bdd06d7c">imDrawText</a>(cv::Mat input, <span class="keywordtype">char</span>* str, cv::Point point, <span class="keywordtype">int</span> fontFace = cv::FONT_HERSHEY_SIMPLEX, </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                 <span class="keywordtype">float</span> size=.25f, cv::Scalar color=CV_RGB(1,1,1));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a030a5be9382b59fdfdc24ff20a84bb65">imDrawCircle</a>(cv::Mat input, cv::Point center, <span class="keywordtype">int</span> radius, </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                  cv::Scalar color=CV_RGB(255,0,0), <span class="keywordtype">int</span> thickness=1,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                  <span class="keywordtype">int</span> lineType=cv::LINE_8, <span class="keywordtype">int</span> shift=0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> imLaplacian(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3,<span class="keywordtype">double</span> scale = 1, <span class="keywordtype">double</span> delta = 0);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#afe93213a45ea9a67a1ea2d5af9f9521d">imDoubleThresholding</a>(cv::Mat input, cv::Mat &amp;output, </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                         <span class="keywordtype">double</span> low_threshold = 20, <span class="keywordtype">double</span> high_threshold = 180,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                         uchar strong_pixel = 255, uchar weak_pixel = 128);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a0e393f7d08dc6c3e42986ff8ae48ae5f">imRoberts</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#aad7358141c437b27543241e6285c67ac">imPrewitt</a>(cv::Mat input, cv::Mat &amp;output);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//Morphology</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#aad81d530aaaba8bddec81deeaec16e53">imMorphologyDilation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a6b848800f038bca04aa435683388bde6">imMorphologyErosion</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a6f9e93d5f2f9de4222c02dbca8cd5789">imMorphologyOpen</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a72e203868d59d700c11d9151bfb1b95c">imMorphologyClose</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">int</span> kernel_size = 3);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//insert</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#ae83361185760c06cfc89ee3432dfcf29">imNearestInterpolation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> sx, <span class="keywordtype">double</span> sy);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#ae28f62b9be5aa0d6c65d7922518151cf">imBiLineInterpolate</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> scale_x,<span class="keywordtype">double</span> scale_y);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a685a953d12bfd2bd1e0bd50d4de6c95c">imCubicInterpolation</a>(cv::Mat input, cv::Mat &amp;output, <span class="keywordtype">double</span> scale_x,<span class="keywordtype">double</span> scale_y);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a4389f526ce1e3ac17d424e144dac318a">imGetNearestNeighbor</a>(cv::Mat input, uchar&amp; result, <span class="keywordtype">double</span> pos_x,<span class="keywordtype">double</span> pos_y);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a2d187933da4d03922dc68344a68e2f6e">imGetBilinearInterpolation</a>(cv::Mat input, uchar&amp; result, <span class="keywordtype">double</span> pos_x,<span class="keywordtype">double</span> pos_y);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//Contour Detection</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#abdae169ac42c1363afa6a9d35de731cd">imGetContours</a>(cv::Mat input, cv::Mat &amp;output, std::vector&lt;std::vector&lt;cv::Point&gt;&gt; &amp;contours,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                  <span class="keywordtype">int</span> mode = cv::RETR_EXTERNAL,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                  <span class="keywordtype">int</span> method = cv::CHAIN_APPROX_SIMPLE);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">// write a function whoes name is pcdBIRCHCluster to perform   algorithm with opencv, and it&#39;s input is cv::Mat input, output is cv::Mat &amp;output, and you can add other input you need, and return void. And add note with doxygen format</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceperception_html_aeb4cc2664491ac5ddaf3029adee48db6"><div class="ttname"><a href="namespaceperception.html#aeb4cc2664491ac5ddaf3029adee48db6">perception::imLogTransform</a></div><div class="ttdeci">bool imLogTransform(cv::Mat input, cv::Mat &amp;output, double c)</div><div class="ttdoc">Applies logarithmic transform to image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:209</div></div>
+<div class="ttc" id="anamespaceperception_html_a197d1fd92db09ff0a8d3d594e7e4ef13"><div class="ttname"><a href="namespaceperception.html#a197d1fd92db09ff0a8d3d594e7e4ef13">perception::imEqualizeHistogram</a></div><div class="ttdeci">bool imEqualizeHistogram(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Performs histogram equalization on grayscale image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:136</div></div>
+<div class="ttc" id="anamespaceperception_html_a685a953d12bfd2bd1e0bd50d4de6c95c"><div class="ttname"><a href="namespaceperception.html#a685a953d12bfd2bd1e0bd50d4de6c95c">perception::imCubicInterpolation</a></div><div class="ttdeci">void imCubicInterpolation(cv::Mat input, cv::Mat &amp;output, double scale_x, double scale_y)</div><div class="ttdoc">Performs bicubic interpolation</div><div class="ttdef"><b>Definition:</b> img_process.cpp:743</div></div>
+<div class="ttc" id="anamespaceperception_html_a6f9e93d5f2f9de4222c02dbca8cd5789"><div class="ttname"><a href="namespaceperception.html#a6f9e93d5f2f9de4222c02dbca8cd5789">perception::imMorphologyOpen</a></div><div class="ttdeci">void imMorphologyOpen(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological opening</div><div class="ttdef"><b>Definition:</b> img_process.cpp:574</div></div>
+<div class="ttc" id="anamespaceperception_html_abe692afcfddbd8735db0766bde4943eb"><div class="ttname"><a href="namespaceperception.html#abe692afcfddbd8735db0766bde4943eb">perception::imShow</a></div><div class="ttdeci">void imShow(cv::Mat input, const char *window_name)</div><div class="ttdoc">Displays an image in a window</div><div class="ttdef"><b>Definition:</b> img_process.cpp:44</div></div>
+<div class="ttc" id="anamespaceperception_html_ae28f62b9be5aa0d6c65d7922518151cf"><div class="ttname"><a href="namespaceperception.html#ae28f62b9be5aa0d6c65d7922518151cf">perception::imBiLineInterpolate</a></div><div class="ttdeci">void imBiLineInterpolate(cv::Mat input, cv::Mat &amp;output, double scale_x, double scale_y)</div><div class="ttdoc">Performs bilinear interpolation</div><div class="ttdef"><b>Definition:</b> img_process.cpp:673</div></div>
+<div class="ttc" id="anamespaceperception_html_ad3ae53b65493dc9c18e7ad8226a0651e"><div class="ttname"><a href="namespaceperception.html#ad3ae53b65493dc9c18e7ad8226a0651e">perception::imGray</a></div><div class="ttdeci">bool imGray(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Converts a color image to grayscale</div><div class="ttdef"><b>Definition:</b> img_process.cpp:56</div></div>
+<div class="ttc" id="anamespaceperception_html_a4ed99564a58a3979efd95ca74760f32b"><div class="ttname"><a href="namespaceperception.html#a4ed99564a58a3979efd95ca74760f32b">perception::imMedianFilter</a></div><div class="ttdeci">bool imMedianFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies median filter to image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:267</div></div>
+<div class="ttc" id="anamespaceperception_html_aba284565f6d898a0dcd4c7ef3f59ea68"><div class="ttname"><a href="namespaceperception.html#aba284565f6d898a0dcd4c7ef3f59ea68">perception::loadImage</a></div><div class="ttdeci">bool loadImage(const char *filename, cv::Mat &amp;clr_image)</div><div class="ttdoc">Loads an image from file into a cv::Mat</div><div class="ttdef"><b>Definition:</b> img_process.cpp:12</div></div>
+<div class="ttc" id="anamespaceperception_html_a94f2c5569bd20e318b609778bdd06d7c"><div class="ttname"><a href="namespaceperception.html#a94f2c5569bd20e318b609778bdd06d7c">perception::imDrawText</a></div><div class="ttdeci">void imDrawText(cv::Mat input, char *str, cv::Point point, int fontFace, float size, cv::Scalar color)</div><div class="ttdoc">Draws text on an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:401</div></div>
+<div class="ttc" id="anamespaceperception_html_a2d187933da4d03922dc68344a68e2f6e"><div class="ttname"><a href="namespaceperception.html#a2d187933da4d03922dc68344a68e2f6e">perception::imGetBilinearInterpolation</a></div><div class="ttdeci">void imGetBilinearInterpolation(cv::Mat input, uchar &amp;result, double pos_x, double pos_y)</div><div class="ttdoc">Gets bilinearly interpolated pixel value</div><div class="ttdef"><b>Definition:</b> img_process.cpp:831</div></div>
+<div class="ttc" id="anamespaceperception_html_a40610a5e1693b7e727b24123bfa6b7a7"><div class="ttname"><a href="namespaceperception.html#a40610a5e1693b7e727b24123bfa6b7a7">perception::imScharrTrans</a></div><div class="ttdeci">void imScharrTrans(cv::Mat input, cv::Mat &amp;output, double scale, double delta)</div><div class="ttdoc">Applies Scharr edge detection operator to an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:105</div></div>
+<div class="ttc" id="anamespaceperception_html_a0e393f7d08dc6c3e42986ff8ae48ae5f"><div class="ttname"><a href="namespaceperception.html#a0e393f7d08dc6c3e42986ff8ae48ae5f">perception::imRoberts</a></div><div class="ttdeci">void imRoberts(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Applies Roberts edge detection</div><div class="ttdef"><b>Definition:</b> img_process.cpp:494</div></div>
+<div class="ttc" id="anamespaceperception_html_ac8fdefcfce1af3b2f127faf81473deca"><div class="ttname"><a href="namespaceperception.html#ac8fdefcfce1af3b2f127faf81473deca">perception::imBilateralFilter</a></div><div class="ttdeci">bool imBilateralFilter(cv::Mat input, cv::Mat &amp;output, int diameter, double sigma_color, double sigma_space)</div><div class="ttdoc">Applies bilateral filter to image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:359</div></div>
+<div class="ttc" id="anamespaceperception_html_a6b848800f038bca04aa435683388bde6"><div class="ttname"><a href="namespaceperception.html#a6b848800f038bca04aa435683388bde6">perception::imMorphologyErosion</a></div><div class="ttdeci">void imMorphologyErosion(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological erosion</div><div class="ttdef"><b>Definition:</b> img_process.cpp:560</div></div>
+<div class="ttc" id="anamespaceperception_html_aad81d530aaaba8bddec81deeaec16e53"><div class="ttname"><a href="namespaceperception.html#aad81d530aaaba8bddec81deeaec16e53">perception::imMorphologyDilation</a></div><div class="ttdeci">void imMorphologyDilation(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological dilation</div><div class="ttdef"><b>Definition:</b> img_process.cpp:545</div></div>
+<div class="ttc" id="anamespaceperception_html_afe93213a45ea9a67a1ea2d5af9f9521d"><div class="ttname"><a href="namespaceperception.html#afe93213a45ea9a67a1ea2d5af9f9521d">perception::imDoubleThresholding</a></div><div class="ttdeci">void imDoubleThresholding(cv::Mat input, cv::Mat &amp;output, double low_threshold, double high_threshold, uchar strong_pixel, uchar weak_pixel)</div><div class="ttdoc">Performs double thresholding on an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:438</div></div>
+<div class="ttc" id="anamespaceperception_html_a0d0afbaead369de1ad157d4e60021428"><div class="ttname"><a href="namespaceperception.html#a0d0afbaead369de1ad157d4e60021428">perception::imDrawRectangle</a></div><div class="ttdeci">void imDrawRectangle(cv::Mat input, cv::Rect rect, cv::Scalar color, int width)</div><div class="ttdoc">Draws a rectangle on an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:383</div></div>
+<div class="ttc" id="anamespaceperception_html_acc8c2ae9873786b165a77e3ecbffdf9e"><div class="ttname"><a href="namespaceperception.html#acc8c2ae9873786b165a77e3ecbffdf9e">perception::imGammaCorrection</a></div><div class="ttdeci">bool imGammaCorrection(cv::Mat input, cv::Mat &amp;output, double gamma)</div><div class="ttdoc">Applies gamma correction to image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:163</div></div>
+<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdoc">perception namespace</div><div class="ttdef"><b>Definition:</b> funcMatching.cpp:12</div></div>
+<div class="ttc" id="anamespaceperception_html_a82f35aad4d8c7209a7064ca9b09ac4c2"><div class="ttname"><a href="namespaceperception.html#a82f35aad4d8c7209a7064ca9b09ac4c2">perception::imMeanFilter</a></div><div class="ttdeci">bool imMeanFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size_x, int kernel_size_y)</div><div class="ttdoc">Applies mean filter to image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:246</div></div>
+<div class="ttc" id="anamespaceperception_html_abdae169ac42c1363afa6a9d35de731cd"><div class="ttname"><a href="namespaceperception.html#abdae169ac42c1363afa6a9d35de731cd">perception::imGetContours</a></div><div class="ttdeci">void imGetContours(cv::Mat input, cv::Mat &amp;output, std::vector&lt; std::vector&lt; cv::Point &gt;&gt; &amp;contours, int mode, int method)</div><div class="ttdoc">Finds contours in a binary image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:852</div></div>
+<div class="ttc" id="anamespaceperception_html_aad7358141c437b27543241e6285c67ac"><div class="ttname"><a href="namespaceperception.html#aad7358141c437b27543241e6285c67ac">perception::imPrewitt</a></div><div class="ttdeci">void imPrewitt(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Applies Prewitt edge detection</div><div class="ttdef"><b>Definition:</b> img_process.cpp:518</div></div>
+<div class="ttc" id="anamespaceperception_html_ab527f8b65d654bcc19d848f14b49d663"><div class="ttname"><a href="namespaceperception.html#ab527f8b65d654bcc19d848f14b49d663">perception::imSharpeningFilter</a></div><div class="ttdeci">void imSharpeningFilter(cv::Mat input, cv::Mat &amp;output, double sigma, double amount, int threshold)</div><div class="ttdoc">Applies sharpening filter to image using unsharp masking</div><div class="ttdef"><b>Definition:</b> img_process.cpp:318</div></div>
+<div class="ttc" id="anamespaceperception_html_ae83361185760c06cfc89ee3432dfcf29"><div class="ttname"><a href="namespaceperception.html#ae83361185760c06cfc89ee3432dfcf29">perception::imNearestInterpolation</a></div><div class="ttdeci">void imNearestInterpolation(cv::Mat input, cv::Mat &amp;output, double sx, double sy)</div><div class="ttdoc">Performs nearest neighbor interpolation</div><div class="ttdef"><b>Definition:</b> img_process.cpp:607</div></div>
+<div class="ttc" id="anamespaceperception_html_a7c8a0bbd535f404ebdff485fa294404e"><div class="ttname"><a href="namespaceperception.html#a7c8a0bbd535f404ebdff485fa294404e">perception::imGaussianFilter</a></div><div class="ttdeci">void imGaussianFilter(cv::Mat input, cv::Mat &amp;output, int kernel_size, double sigma)</div><div class="ttdoc">Applies Gaussian filtering to an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:289</div></div>
+<div class="ttc" id="anamespaceperception_html_a746bfc0c5a192e6f3c5be9a3876cf5b0"><div class="ttname"><a href="namespaceperception.html#a746bfc0c5a192e6f3c5be9a3876cf5b0">perception::saveImage</a></div><div class="ttdeci">bool saveImage(cv::Mat input, const char *filename)</div><div class="ttdoc">Saves an image to file</div><div class="ttdef"><b>Definition:</b> img_process.cpp:29</div></div>
+<div class="ttc" id="anamespaceperception_html_aff518739c87d5aeb5ff63fe149c2abc1"><div class="ttname"><a href="namespaceperception.html#aff518739c87d5aeb5ff63fe149c2abc1">perception::imInvertTransform</a></div><div class="ttdeci">bool imInvertTransform(cv::Mat input, cv::Mat &amp;output)</div><div class="ttdoc">Inverts image colors</div><div class="ttdef"><b>Definition:</b> img_process.cpp:190</div></div>
+<div class="ttc" id="anamespaceperception_html_a72e203868d59d700c11d9151bfb1b95c"><div class="ttname"><a href="namespaceperception.html#a72e203868d59d700c11d9151bfb1b95c">perception::imMorphologyClose</a></div><div class="ttdeci">void imMorphologyClose(cv::Mat input, cv::Mat &amp;output, int kernel_size)</div><div class="ttdoc">Applies morphological closing</div><div class="ttdef"><b>Definition:</b> img_process.cpp:590</div></div>
+<div class="ttc" id="anamespaceperception_html_a4389f526ce1e3ac17d424e144dac318a"><div class="ttname"><a href="namespaceperception.html#a4389f526ce1e3ac17d424e144dac318a">perception::imGetNearestNeighbor</a></div><div class="ttdeci">void imGetNearestNeighbor(cv::Mat input, uchar &amp;result, double pos_x, double pos_y)</div><div class="ttdoc">Gets nearest neighbor pixel value</div><div class="ttdef"><b>Definition:</b> img_process.cpp:813</div></div>
+<div class="ttc" id="anamespaceperception_html_a030a5be9382b59fdfdc24ff20a84bb65"><div class="ttname"><a href="namespaceperception.html#a030a5be9382b59fdfdc24ff20a84bb65">perception::imDrawCircle</a></div><div class="ttdeci">void imDrawCircle(cv::Mat input, cv::Point center, int radius, cv::Scalar color, int thickness, int lineType, int shift)</div><div class="ttdoc">Draws a circle on an image</div><div class="ttdef"><b>Definition:</b> img_process.cpp:418</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

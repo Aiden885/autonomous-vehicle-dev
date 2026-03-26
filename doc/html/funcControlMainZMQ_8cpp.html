@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/src/funcControlMainZMQ.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_d8d482cb00053ea8bb5083cec8c5e54f.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">funcControlMainZMQ.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>控制主函数  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="funcControlMainZMQ_8hpp_source.html">funcControlMainZMQ.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+funcControlMainZMQ.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="funcControlMainZMQ_8cpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2funcControlMainZMQ_8cpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2funcControlMainZMQ_8cpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2src_2funcControlMainZMQ_8cpp">
+<area shape="rect" title="控制主函数" alt="" coords="1103,5,1377,91"/>
+<area shape="rect" href="funcControlMainZMQ_8hpp.html" title="控制主函数" alt="" coords="1146,139,1334,165"/>
+<area shape="rect" title=" " alt="" coords="5,213,72,240"/>
+<area shape="rect" title=" " alt="" coords="96,213,157,240"/>
+<area shape="rect" title=" " alt="" coords="205,377,285,404"/>
+<area shape="rect" title=" " alt="" coords="992,213,1043,240"/>
+<area shape="rect" title=" " alt="" coords="1067,213,1141,240"/>
+<area shape="rect" title=" " alt="" coords="1165,213,1240,240"/>
+<area shape="rect" title=" " alt="" coords="629,295,688,322"/>
+<area shape="rect" title=" " alt="" coords="1419,213,1483,240"/>
+<area shape="rect" title=" " alt="" coords="1507,213,1570,240"/>
+<area shape="rect" href="qingColor_8h_source.html" title=" " alt="" coords="1595,213,1691,240"/>
+<area shape="rect" title=" " alt="" coords="1715,213,1789,240"/>
+<area shape="rect" href="controlController_8hpp.html" title="总控制器模块，横向控制基类，纵向控制类定义" alt="" coords="402,213,561,240"/>
+<area shape="rect" href="controlData_8hpp.html" title="模块使用数据类型" alt="" coords="283,295,410,322"/>
+<area shape="rect" href="imu_8pb_8h_source.html" title=" " alt="" coords="1315,213,1394,240"/>
+<area shape="rect" title=" " alt="" coords="1813,213,1912,240"/>
+<area shape="rect" title=" " alt="" coords="1937,213,2074,240"/>
+<area shape="rect" title=" " alt="" coords="331,377,394,404"/>
+<area shape="rect" title=" " alt="" coords="450,377,513,404"/>
+<area shape="rect" title=" " alt="" coords="536,295,605,322"/>
+<area shape="rect" title=" " alt="" coords="1796,295,1855,322"/>
+<area shape="rect" title=" " alt="" coords="1879,288,2033,329"/>
+<area shape="rect" title=" " alt="" coords="2057,288,2212,329"/>
+<area shape="rect" title=" " alt="" coords="2236,288,2377,329"/>
+<area shape="rect" title=" " alt="" coords="2401,295,2580,322"/>
+<area shape="rect" title=" " alt="" coords="2605,295,2819,322"/>
+<area shape="rect" title=" " alt="" coords="2844,288,3039,329"/>
+<area shape="rect" title=" " alt="" coords="3063,288,3255,329"/>
+<area shape="rect" title=" " alt="" coords="712,288,907,329"/>
+<area shape="rect" title=" " alt="" coords="931,295,1131,322"/>
+<area shape="rect" title=" " alt="" coords="1155,288,1341,329"/>
+<area shape="rect" title=" " alt="" coords="1366,288,1559,329"/>
+<area shape="rect" title=" " alt="" coords="1583,288,1771,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceControl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html">Control</a></td></tr>
+<tr class="memdesc:namespaceControl"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceControl.html" title="Control namespace">Control</a> namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac51be1bb70dd8c6a08a617ea4ec08fa7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#ac51be1bb70dd8c6a08a617ea4ec08fa7">Control::parseStateData</a> (MainZMQParamStruct01 &amp;param01, MainZMQInputStruct01 &amp;input01, MainZMQOutputStruct01 &amp;output01)</td></tr>
+<tr class="memdesc:ac51be1bb70dd8c6a08a617ea4ec08fa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">反序列化字符串，提取【状态】信息  <a href="namespaceControl.html#ac51be1bb70dd8c6a08a617ea4ec08fa7">更多...</a><br /></td></tr>
+<tr class="separator:ac51be1bb70dd8c6a08a617ea4ec08fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a384e0257c3ea296ec6e4d39a9dee1bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#a384e0257c3ea296ec6e4d39a9dee1bed">Control::parseTrajData</a> (MainZMQParamStruct02 &amp;param02, MainZMQInputStruct02 &amp;input02, MainZMQOutputStruct02 &amp;output02)</td></tr>
+<tr class="memdesc:a384e0257c3ea296ec6e4d39a9dee1bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">反序列化字符串，提取【轨迹】信息  <a href="namespaceControl.html#a384e0257c3ea296ec6e4d39a9dee1bed">更多...</a><br /></td></tr>
+<tr class="separator:a384e0257c3ea296ec6e4d39a9dee1bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>控制主函数 </p>
+<dl class="section version"><dt>版本</dt><dd>0.0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>Chaoyi Chen (<a href="#" onclick="location.href='mai'+'lto:'+'che'+'nc'+'y20'+'23'+'@ts'+'in'+'ghu'+'a.'+'edu'+'.c'+'n'; return false;">chenc<span style="display: none;">.nosp@m.</span>y202<span style="display: none;">.nosp@m.</span>3@tsi<span style="display: none;">.nosp@m.</span>nghu<span style="display: none;">.nosp@m.</span>a.edu<span style="display: none;">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2023-12-26 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

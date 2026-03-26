@@ -1,0 +1,81 @@
+\hypertarget{classControl_1_1Controller}{}\doxysection{Control\+::Controller类 参考}
+\label{classControl_1_1Controller}\index{Control::Controller@{Control::Controller}}
+
+
+横纵向控制器基类 控制模块为该主要模块。内部分为横向控制和纵向控制  
+
+
+
+
+{\ttfamily \#include $<$control\+Controller.\+hpp$>$}
+
+
+
+Control\+::Controller 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classControl_1_1Controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1Controller_aa7895ab64a6ccd3180ca6a623746562d}\label{classControl_1_1Controller_aa7895ab64a6ccd3180ca6a623746562d}} 
+{\bfseries Controller} (std\+::string config\+File)
+\item 
+\mbox{\Hypertarget{classControl_1_1Controller_abb65f61df9e6d25b2a17fcc19868042a}\label{classControl_1_1Controller_abb65f61df9e6d25b2a17fcc19868042a}} 
+\mbox{\hyperlink{classControl_1_1Controller}{Controller}} \& {\bfseries operator=} (const \mbox{\hyperlink{classControl_1_1Controller}{Controller}} \&controller)
+\item 
+\mbox{\hyperlink{structControl_1_1ControlCMD}{Control\+C\+MD}} \mbox{\hyperlink{classControl_1_1Controller_a1d4271dd8b0b46ffeafa7fb3e4902f34}{calc\+Control\+C\+MD}} (\mbox{\hyperlink{structControl_1_1State}{State}} s, const Traj \&traj\+Raw)
+\begin{DoxyCompactList}\small\item\em 接口：生成控制指令 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_1_1Controller_a7bf406f80b10073209fbaeb94b056959}\label{classControl_1_1Controller_a7bf406f80b10073209fbaeb94b056959}} 
+bool {\bfseries module\+Self\+Check} (double steer, double speed)
+\item 
+\mbox{\Hypertarget{classControl_1_1Controller_a345636556de3941fb4519f037f4e1687}\label{classControl_1_1Controller_a345636556de3941fb4519f037f4e1687}} 
+void {\bfseries module\+Self\+Check\+Print} (double steer, double speed)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_1_1Controller_a587698a96bfec0eed43f671d38f431b5}\label{classControl_1_1Controller_a587698a96bfec0eed43f671d38f431b5}} 
+\mbox{\hyperlink{classControl_1_1LatControllerBase}{Lat\+Controller\+Base}} $\ast$ {\bfseries ptr\+Lat\+Controller}
+\item 
+\mbox{\Hypertarget{classControl_1_1Controller_ac17ca77eeec268eb94e4b0fb564bbf3f}\label{classControl_1_1Controller_ac17ca77eeec268eb94e4b0fb564bbf3f}} 
+\mbox{\hyperlink{classControl_1_1LonController}{Lon\+Controller}} {\bfseries lon\+Controller}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+横纵向控制器基类 控制模块为该主要模块。内部分为横向控制和纵向控制 
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classControl_1_1Controller_a1d4271dd8b0b46ffeafa7fb3e4902f34}\label{classControl_1_1Controller_a1d4271dd8b0b46ffeafa7fb3e4902f34}} 
+\index{Control::Controller@{Control::Controller}!calcControlCMD@{calcControlCMD}}
+\index{calcControlCMD@{calcControlCMD}!Control::Controller@{Control::Controller}}
+\doxysubsubsection{\texorpdfstring{calcControlCMD()}{calcControlCMD()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structControl_1_1ControlCMD}{Control\+C\+MD}} Control\+::\+Controller\+::calc\+Control\+C\+MD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structControl_1_1State}{State}}}]{s,  }\item[{const Traj \&}]{traj\+Raw }\end{DoxyParamCaption})}
+
+
+
+接口：生成控制指令 
+
+
+\begin{DoxyParams}{参数}
+{\em s} & 车辆当前状态 \\
+\hline
+{\em Traj} & 决策输出【详细】轨迹 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+\mbox{\hyperlink{structControl_1_1ControlCMD}{Control\+C\+MD}} 控制指令 
+\end{DoxyReturn}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlController_8hpp}{control\+Controller.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/\mbox{\hyperlink{controlController_8cc}{control\+Controller.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Planning/SpeedPlanning/SamplingMethod/SpeedGenerating/src/initTrajectorySpeed.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2265d85848d29287bb3825cf17fd0573.html">Planning</a></li><li class="navelem"><a class="el" href="dir_100f0b8fa8ea9fe9377660936b0e69c1.html">SpeedPlanning</a></li><li class="navelem"><a class="el" href="dir_7dc622f31e4af92fdb21850984ee9eb4.html">SamplingMethod</a></li><li class="navelem"><a class="el" href="dir_d63685d989707f59b7402af6e0377dd5.html">SpeedGenerating</a></li><li class="navelem"><a class="el" href="dir_b0b1aed928b0bdd57e63be54a7940695.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">initTrajectorySpeed.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="initTrajectorySpeed_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef initTrajectorySpeed_hpp</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define initTrajectorySpeed_hpp</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;prediction.pb.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceplanning.html">planning</a>{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">struct </span>PlanningPoint {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// local path</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">double</span> x;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">double</span> y;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">double</span> angle;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// global path</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">double</span> gaussX;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">double</span> gaussY;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">double</span> gaussAngle;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// frenet path</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">double</span> s;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">double</span> l;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">double</span> frenetAngle;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// speed</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">double</span> v;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// curvature</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">double</span> curvature;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">// accumS</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">double</span> accumS;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// 路点的roadID 和laneID</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  int32_t roadID;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  int32_t laneID;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  int32_t pointID;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// 为了便于应用，增加路点和lane的索引值</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  int32_t roadIDIndex;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  int32_t laneIDIndex;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">struct </span>PlanningTrajectory {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::vector&lt;PlanningPoint&gt; planningPoints;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structplanning_1_1TrajSpeedInitParam.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1TrajSpeedInitParam.html">TrajSpeedInitParam</a> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structplanning_1_1TrajSpeedInitInput.html">   61</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1TrajSpeedInitInput.html">TrajSpeedInitInput</a> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="structplanning_1_1PlanningTrajectory.html">PlanningTrajectory</a> trajectory;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> prediction;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structplanning_1_1TrajSpeedInitOutput.html">   66</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1TrajSpeedInitOutput.html">TrajSpeedInitOutput</a> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="structplanning_1_1PlanningTrajectory.html">PlanningTrajectory</a> globalTrajectory;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structplanning_1_1GetMinObjDisParam.html">   70</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetMinObjDisParam.html">GetMinObjDisParam</a> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">double</span> predictFrequency = 0.1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structplanning_1_1GetMinObjDisInput.html">   74</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetMinObjDisInput.html">GetMinObjDisInput</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="structplanning_1_1PlanningPoint.html">PlanningPoint</a> point;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> prediction;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="structt.html">t</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structplanning_1_1GetMinObjDisOutput.html">   80</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetMinObjDisOutput.html">GetMinObjDisOutput</a> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">double</span> distance;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structplanning_1_1GetDistanceParam.html">   84</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetDistanceParam.html">GetDistanceParam</a> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structplanning_1_1GetDistanceInput.html">   87</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetDistanceInput.html">GetDistanceInput</a> {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">double</span> x1;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">double</span> y1; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordtype">double</span> x2;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">double</span> y2;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structplanning_1_1GetDistanceOutput.html">   94</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1GetDistanceOutput.html">GetDistanceOutput</a> {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">double</span> distance;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="structplanning_1_1SpeedModelParam.html">   98</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1SpeedModelParam.html">SpeedModelParam</a> {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">double</span> maxspeed = 10;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">double</span> minspeed = 0;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">double</span> d1 = 4.5;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">double</span> d2 = 0.5;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="structplanning_1_1SpeedModelInput.html">  105</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1SpeedModelInput.html">SpeedModelInput</a> {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">double</span> distance;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structplanning_1_1SpeedModelOutput.html">  109</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1SpeedModelOutput.html">SpeedModelOutput</a> {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">double</span> speed;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structplanning_1_1FindMinParam.html">  113</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1FindMinParam.html">FindMinParam</a> {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structplanning_1_1FindMinInput.html">  116</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1FindMinInput.html">FindMinInput</a> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  std::vector&lt;double&gt; array;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="structplanning_1_1FindMinOutput.html">  120</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplanning_1_1FindMinOutput.html">FindMinOutput</a> {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">double</span> flag;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;};</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceplanning.html#accc3cf99ecaf13f22022e56f18556877">initSpeedForTrajectory</a>(<span class="keyword">const</span> <a class="code" href="structplanning_1_1TrajSpeedInitParam.html">TrajSpeedInitParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structplanning_1_1TrajSpeedInitInput.html">TrajSpeedInitInput</a> &amp;input, <a class="code" href="structplanning_1_1TrajSpeedInitOutput.html">TrajSpeedInitOutput</a> &amp;output);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceplanning.html#acf4d24b55f3ecf39be24aabcc31da8c1">getMinDistanceOfPoint</a>(<span class="keyword">const</span> <a class="code" href="structplanning_1_1GetMinObjDisParam.html">GetMinObjDisParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structplanning_1_1GetMinObjDisInput.html">GetMinObjDisInput</a> &amp;input, <a class="code" href="structplanning_1_1GetMinObjDisOutput.html">GetMinObjDisOutput</a> &amp;output);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceplanning.html#a2097585607d130714741eb572e310f50">getDistance</a>(<span class="keyword">const</span> <a class="code" href="structplanning_1_1GetDistanceParam.html">GetDistanceParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structplanning_1_1GetDistanceInput.html">GetDistanceInput</a> &amp;input, <a class="code" href="structplanning_1_1GetDistanceOutput.html">GetDistanceOutput</a> &amp;output);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceplanning.html#ad208a008409d5c89bc7cbbde82d35c49">speedModel</a>(<span class="keyword">const</span> <a class="code" href="structplanning_1_1SpeedModelParam.html">SpeedModelParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structplanning_1_1SpeedModelInput.html">SpeedModelInput</a> &amp;input, <a class="code" href="structplanning_1_1SpeedModelOutput.html">SpeedModelOutput</a> &amp;output);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceplanning.html#a2be679b5025c5737adccf6e6d29e981a">findMin</a>(<span class="keyword">const</span> <a class="code" href="structplanning_1_1FindMinParam.html">FindMinParam</a> &amp;param, <span class="keyword">const</span> <a class="code" href="structplanning_1_1FindMinInput.html">FindMinInput</a> &amp;input, <a class="code" href="structplanning_1_1FindMinOutput.html">FindMinOutput</a> &amp;output);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* initTrajectorySpeed_hpp */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceplanning_html_accc3cf99ecaf13f22022e56f18556877"><div class="ttname"><a href="namespaceplanning.html#accc3cf99ecaf13f22022e56f18556877">planning::initSpeedForTrajectory</a></div><div class="ttdeci">void initSpeedForTrajectory(const TrajSpeedInitParam &amp;param, const TrajSpeedInitInput &amp;input, TrajSpeedInitOutput &amp;output)</div><div class="ttdoc">根据障碍物位置，轨迹速度规划初始化</div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.cpp:28</div></div>
+<div class="ttc" id="anamespaceplanning_html_a2be679b5025c5737adccf6e6d29e981a"><div class="ttname"><a href="namespaceplanning.html#a2be679b5025c5737adccf6e6d29e981a">planning::findMin</a></div><div class="ttdeci">void findMin(const findMinParam &amp;param, const findMinInput &amp;input, findMinOutput &amp;output)</div><div class="ttdoc">返回double数组最小值</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3170</div></div>
+<div class="ttc" id="anamespaceplanning_html"><div class="ttname"><a href="namespaceplanning.html">planning</a></div><div class="ttdoc">planning namespace</div><div class="ttdef"><b>Definition:</b> bSpline.cpp:13</div></div>
+<div class="ttc" id="astructplanning_1_1PlanningPoint_html"><div class="ttname"><a href="structplanning_1_1PlanningPoint.html">planning::PlanningPoint</a></div><div class="ttdef"><b>Definition:</b> bSpline.hpp:24</div></div>
+<div class="ttc" id="astructplanning_1_1GetDistanceOutput_html"><div class="ttname"><a href="structplanning_1_1GetDistanceOutput.html">planning::GetDistanceOutput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:94</div></div>
+<div class="ttc" id="aclassprediction_1_1ObjectList_html"><div class="ttname"><a href="classprediction_1_1ObjectList.html">prediction::ObjectList</a></div><div class="ttdef"><b>Definition:</b> prediction.pb.h:471</div></div>
+<div class="ttc" id="astructplanning_1_1TrajSpeedInitInput_html"><div class="ttname"><a href="structplanning_1_1TrajSpeedInitInput.html">planning::TrajSpeedInitInput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:61</div></div>
+<div class="ttc" id="anamespaceplanning_html_a2097585607d130714741eb572e310f50"><div class="ttname"><a href="namespaceplanning.html#a2097585607d130714741eb572e310f50">planning::getDistance</a></div><div class="ttdeci">void getDistance(const getDistanceParam &amp;param, const getDistanceInput &amp;input, getDistanceOutput &amp;output)</div><div class="ttdoc">计算两点之间的距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1674</div></div>
+<div class="ttc" id="astructplanning_1_1SpeedModelInput_html"><div class="ttname"><a href="structplanning_1_1SpeedModelInput.html">planning::SpeedModelInput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:105</div></div>
+<div class="ttc" id="astructplanning_1_1SpeedModelOutput_html"><div class="ttname"><a href="structplanning_1_1SpeedModelOutput.html">planning::SpeedModelOutput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:109</div></div>
+<div class="ttc" id="astructplanning_1_1GetMinObjDisInput_html"><div class="ttname"><a href="structplanning_1_1GetMinObjDisInput.html">planning::GetMinObjDisInput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:74</div></div>
+<div class="ttc" id="astructplanning_1_1GetMinObjDisParam_html"><div class="ttname"><a href="structplanning_1_1GetMinObjDisParam.html">planning::GetMinObjDisParam</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:70</div></div>
+<div class="ttc" id="astructplanning_1_1SpeedModelParam_html"><div class="ttname"><a href="structplanning_1_1SpeedModelParam.html">planning::SpeedModelParam</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:98</div></div>
+<div class="ttc" id="astructplanning_1_1GetDistanceInput_html"><div class="ttname"><a href="structplanning_1_1GetDistanceInput.html">planning::GetDistanceInput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:87</div></div>
+<div class="ttc" id="astructplanning_1_1GetMinObjDisOutput_html"><div class="ttname"><a href="structplanning_1_1GetMinObjDisOutput.html">planning::GetMinObjDisOutput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:80</div></div>
+<div class="ttc" id="astructplanning_1_1FindMinParam_html"><div class="ttname"><a href="structplanning_1_1FindMinParam.html">planning::FindMinParam</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:113</div></div>
+<div class="ttc" id="astructplanning_1_1TrajSpeedInitParam_html"><div class="ttname"><a href="structplanning_1_1TrajSpeedInitParam.html">planning::TrajSpeedInitParam</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:58</div></div>
+<div class="ttc" id="anamespaceplanning_html_ad208a008409d5c89bc7cbbde82d35c49"><div class="ttname"><a href="namespaceplanning.html#ad208a008409d5c89bc7cbbde82d35c49">planning::speedModel</a></div><div class="ttdeci">void speedModel(const SpeedModelParam &amp;param, const SpeedModelInput &amp;input, SpeedModelOutput &amp;output)</div><div class="ttdoc">根据最大最小速度，与距离障碍物距离，生成速度的模型</div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.cpp:217</div></div>
+<div class="ttc" id="astructplanning_1_1PlanningTrajectory_html"><div class="ttname"><a href="structplanning_1_1PlanningTrajectory.html">planning::PlanningTrajectory</a></div><div class="ttdef"><b>Definition:</b> bSpline.hpp:53</div></div>
+<div class="ttc" id="astructplanning_1_1GetDistanceParam_html"><div class="ttname"><a href="structplanning_1_1GetDistanceParam.html">planning::GetDistanceParam</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:84</div></div>
+<div class="ttc" id="astructplanning_1_1TrajSpeedInitOutput_html"><div class="ttname"><a href="structplanning_1_1TrajSpeedInitOutput.html">planning::TrajSpeedInitOutput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:66</div></div>
+<div class="ttc" id="anamespaceplanning_html_acf4d24b55f3ecf39be24aabcc31da8c1"><div class="ttname"><a href="namespaceplanning.html#acf4d24b55f3ecf39be24aabcc31da8c1">planning::getMinDistanceOfPoint</a></div><div class="ttdeci">void getMinDistanceOfPoint(const getMinDistanceOfPointParam &amp;param, const getMinDistanceOfPointInput &amp;input, getMinDistanceOfPointOutput &amp;output)</div><div class="ttdoc">返回点距离障碍物最近距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3033</div></div>
+<div class="ttc" id="astructplanning_1_1FindMinInput_html"><div class="ttname"><a href="structplanning_1_1FindMinInput.html">planning::FindMinInput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:116</div></div>
+<div class="ttc" id="astructplanning_1_1FindMinOutput_html"><div class="ttname"><a href="structplanning_1_1FindMinOutput.html">planning::FindMinOutput</a></div><div class="ttdef"><b>Definition:</b> initTrajectorySpeed.hpp:120</div></div>
+<div class="ttc" id="astructt_html"><div class="ttname"><a href="structt.html">t</a></div><div class="ttdef"><b>Definition:</b> dataType.h:24</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

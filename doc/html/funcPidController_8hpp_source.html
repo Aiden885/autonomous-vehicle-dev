@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/include/funcPidController.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_f8d9a1cccf2878e05ce0a8a09b388292.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">funcPidController.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="funcPidController_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="controlPIDController_8hpp.html">controlPIDController.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceControl.html">Control</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceControl.html">Control</a>{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// pidControllerUpdate</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structControl_1_1UpdateParamStruct.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classControl_1_1PID.html">PID</a> c;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}<a class="code" href="structControl_1_1UpdateParamStruct.html">UpdateParamStruct</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structControl_1_1UpdateInputStruct.html">   29</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> errorInput;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}<a class="code" href="structControl_1_1UpdateInputStruct.html">UpdateInputStruct</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structControl_1_1UpdateOutputStruct.html">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">double</span> controlOutput;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}<a class="code" href="structControl_1_1UpdateOutputStruct.html">UpdateOutputStruct</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// pidControllerModifyGains</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structControl_1_1ModifyGainsParamStruct.html">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classControl_1_1PID.html">PID</a> c;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}<a class="code" href="structControl_1_1ModifyGainsParamStruct.html">ModifyGainsParamStruct</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structControl_1_1ModifyGainsInputStruct.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">double</span> newKp;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">double</span> newKi;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">double</span> newKd;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}<a class="code" href="structControl_1_1ModifyGainsInputStruct.html">ModifyGainsInputStruct</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structControl_1_1ModifyGainsOutputStruct.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}<a class="code" href="structControl_1_1ModifyGainsOutputStruct.html">ModifyGainsOutputStruct</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// pidControllerResetI</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structControl_1_1ResetIParamStruct.html">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classControl_1_1PID.html">PID</a> c; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}<a class="code" href="structControl_1_1ResetIParamStruct.html">ResetIParamStruct</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structControl_1_1ResetIInputStruct.html">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}<a class="code" href="structControl_1_1ResetIInputStruct.html">ResetIInputStruct</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structControl_1_1ResetIOutputStruct.html">   62</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}<a class="code" href="structControl_1_1ResetIOutputStruct.html">ResetIOutputStruct</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// pidLoadPIDYamlConfig</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structControl_1_1ConfigParamStruct.html">   67</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    YAML::Node config; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}<a class="code" href="structControl_1_1ConfigParamStruct.html">ConfigParamStruct</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structControl_1_1ConfigInputStruct.html">   71</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::string name;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">double</span> dt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}<a class="code" href="structControl_1_1ConfigInputStruct.html">ConfigInputStruct</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structControl_1_1ConfigOutputStruct.html">   76</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="classControl_1_1PID.html">PID</a> pid;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}<a class="code" href="structControl_1_1ConfigOutputStruct.html">ConfigOutputStruct</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// initialPIDController</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structControl_1_1InitialParamStruct.html">   81</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::string configFile;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}<a class="code" href="structControl_1_1InitialParamStruct.html">InitialParamStruct</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structControl_1_1InitialInputStruct.html">   85</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">double</span> maxSteer;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> ratioWheelToSteer;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">double</span> dt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}<a class="code" href="structControl_1_1InitialInputStruct.html">InitialInputStruct</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structControl_1_1InitialOutputStruct.html">   91</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// PIDController pidController;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}<a class="code" href="structControl_1_1InitialOutputStruct.html">InitialOutputStruct</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// pidPIDControllerCalcErrors</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structControl_1_1CalcErrorsParamStruct.html">   96</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">size_t</span> nearestID;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">size_t</span> previewID;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}<a class="code" href="structControl_1_1CalcErrorsParamStruct.html">CalcErrorsParamStruct</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structControl_1_1CalcErrorsInputStruct.html">  101</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="structControl_1_1State.html">State</a> state;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    Traj traj;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// PIDLibs inPids;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}<a class="code" href="structControl_1_1CalcErrorsInputStruct.html">CalcErrorsInputStruct</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="structControl_1_1CalcErrorsOutputStruct.html">  107</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// PIDLibs outPids;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}<a class="code" href="structControl_1_1CalcErrorsOutputStruct.html">CalcErrorsOutputStruct</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#a07ae5716f5f8f486c2dcee57c9504940">pidControllerUpdate</a>(<a class="code" href="structControl_1_1UpdateParamStruct.html">UpdateParamStruct</a> &amp;, <a class="code" href="structControl_1_1UpdateInputStruct.html">UpdateInputStruct</a> &amp;, <a class="code" href="structControl_1_1UpdateOutputStruct.html">UpdateOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#aeb21e59bd0deb6b04ae063838923474a">pidControllerModifyGains</a>(<a class="code" href="structControl_1_1ModifyGainsParamStruct.html">ModifyGainsParamStruct</a> &amp;, <a class="code" href="structControl_1_1ModifyGainsInputStruct.html">ModifyGainsInputStruct</a> &amp;, <a class="code" href="structControl_1_1ModifyGainsOutputStruct.html">ModifyGainsOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#a2c9a4efcc34d98f3bf221b3d84a717d3">pidControllerResetI</a>(<a class="code" href="structControl_1_1ResetIParamStruct.html">ResetIParamStruct</a> &amp;, <a class="code" href="structControl_1_1ResetIInputStruct.html">ResetIInputStruct</a> &amp;, <a class="code" href="structControl_1_1ResetIOutputStruct.html">ResetIOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#a31b9d824fc8580077998ebf66d086c6f">pidLoadPIDYamlConfig</a>(<a class="code" href="structControl_1_1ConfigParamStruct.html">ConfigParamStruct</a> &amp;, <a class="code" href="structControl_1_1ConfigInputStruct.html">ConfigInputStruct</a> &amp;, <a class="code" href="structControl_1_1ConfigOutputStruct.html">ConfigOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#aa6210e037ef0cf7323bd47e6559ca727">initialPIDController</a>(<a class="code" href="structControl_1_1InitialParamStruct.html">InitialParamStruct</a> &amp;, <a class="code" href="structControl_1_1InitialInputStruct.html">InitialInputStruct</a> &amp;, <a class="code" href="structControl_1_1InitialOutputStruct.html">InitialOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceControl.html#a598a0eb859cf2f49ea3cc80876be0d32">pidPIDControllerCalcErrors</a>(<a class="code" href="structControl_1_1CalcErrorsParamStruct.html">CalcErrorsParamStruct</a> &amp;, <a class="code" href="structControl_1_1CalcErrorsInputStruct.html">CalcErrorsInputStruct</a> &amp;, <a class="code" href="structControl_1_1CalcErrorsOutputStruct.html">CalcErrorsOutputStruct</a> &amp;);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// double pidControllerUpdate(PidController&amp; c, double errorInput);</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">// void pidControllerModifyGains(PidController&amp; c, double newKp, double newKi, double newKd);</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">// void pidControllerResetI(PidController&amp; c);</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructControl_1_1ModifyGainsInputStruct_html"><div class="ttname"><a href="structControl_1_1ModifyGainsInputStruct.html">Control::ModifyGainsInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:43</div></div>
+<div class="ttc" id="astructControl_1_1ResetIOutputStruct_html"><div class="ttname"><a href="structControl_1_1ResetIOutputStruct.html">Control::ResetIOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:62</div></div>
+<div class="ttc" id="anamespaceControl_html"><div class="ttname"><a href="namespaceControl.html">Control</a></div><div class="ttdoc">Control namespace</div><div class="ttdef"><b>Definition:</b> controlController.cc:26</div></div>
+<div class="ttc" id="astructControl_1_1UpdateParamStruct_html"><div class="ttname"><a href="structControl_1_1UpdateParamStruct.html">Control::UpdateParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:25</div></div>
+<div class="ttc" id="anamespaceControl_html_a07ae5716f5f8f486c2dcee57c9504940"><div class="ttname"><a href="namespaceControl.html#a07ae5716f5f8f486c2dcee57c9504940">Control::pidControllerUpdate</a></div><div class="ttdeci">void pidControllerUpdate(UpdateParamStruct &amp;param01, UpdateInputStruct &amp;input01, UpdateOutputStruct &amp;output01)</div><div class="ttdoc">PID输出</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:14</div></div>
+<div class="ttc" id="astructControl_1_1State_html"><div class="ttname"><a href="structControl_1_1State.html">Control::State</a></div><div class="ttdoc">输入车辆位置信息</div><div class="ttdef"><b>Definition:</b> controlData.hpp:29</div></div>
+<div class="ttc" id="astructControl_1_1ConfigOutputStruct_html"><div class="ttname"><a href="structControl_1_1ConfigOutputStruct.html">Control::ConfigOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:76</div></div>
+<div class="ttc" id="anamespaceControl_html_aeb21e59bd0deb6b04ae063838923474a"><div class="ttname"><a href="namespaceControl.html#aeb21e59bd0deb6b04ae063838923474a">Control::pidControllerModifyGains</a></div><div class="ttdeci">void pidControllerModifyGains(ModifyGainsParamStruct &amp;param02, ModifyGainsInputStruct &amp;input02, ModifyGainsOutputStruct &amp;output02)</div><div class="ttdoc">PID增益修改</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:33</div></div>
+<div class="ttc" id="astructControl_1_1UpdateOutputStruct_html"><div class="ttname"><a href="structControl_1_1UpdateOutputStruct.html">Control::UpdateOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:33</div></div>
+<div class="ttc" id="astructControl_1_1ConfigInputStruct_html"><div class="ttname"><a href="structControl_1_1ConfigInputStruct.html">Control::ConfigInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:71</div></div>
+<div class="ttc" id="astructControl_1_1InitialParamStruct_html"><div class="ttname"><a href="structControl_1_1InitialParamStruct.html">Control::InitialParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:81</div></div>
+<div class="ttc" id="astructControl_1_1CalcErrorsOutputStruct_html"><div class="ttname"><a href="structControl_1_1CalcErrorsOutputStruct.html">Control::CalcErrorsOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:107</div></div>
+<div class="ttc" id="astructControl_1_1ModifyGainsParamStruct_html"><div class="ttname"><a href="structControl_1_1ModifyGainsParamStruct.html">Control::ModifyGainsParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:39</div></div>
+<div class="ttc" id="astructControl_1_1ResetIInputStruct_html"><div class="ttname"><a href="structControl_1_1ResetIInputStruct.html">Control::ResetIInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:58</div></div>
+<div class="ttc" id="astructControl_1_1UpdateInputStruct_html"><div class="ttname"><a href="structControl_1_1UpdateInputStruct.html">Control::UpdateInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:29</div></div>
+<div class="ttc" id="aclassControl_1_1PID_html"><div class="ttname"><a href="classControl_1_1PID.html">Control::PID</a></div><div class="ttdoc">PID 控制器类</div><div class="ttdef"><b>Definition:</b> controlPIDController.hpp:34</div></div>
+<div class="ttc" id="anamespaceControl_html_a2c9a4efcc34d98f3bf221b3d84a717d3"><div class="ttname"><a href="namespaceControl.html#a2c9a4efcc34d98f3bf221b3d84a717d3">Control::pidControllerResetI</a></div><div class="ttdeci">void pidControllerResetI(ResetIParamStruct &amp;param03, ResetIInputStruct &amp;input03, ResetIOutputStruct &amp;output03)</div><div class="ttdoc">PID积分重置</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:52</div></div>
+<div class="ttc" id="astructControl_1_1CalcErrorsInputStruct_html"><div class="ttname"><a href="structControl_1_1CalcErrorsInputStruct.html">Control::CalcErrorsInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:101</div></div>
+<div class="ttc" id="astructControl_1_1ResetIParamStruct_html"><div class="ttname"><a href="structControl_1_1ResetIParamStruct.html">Control::ResetIParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:54</div></div>
+<div class="ttc" id="astructControl_1_1CalcErrorsParamStruct_html"><div class="ttname"><a href="structControl_1_1CalcErrorsParamStruct.html">Control::CalcErrorsParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:96</div></div>
+<div class="ttc" id="anamespaceControl_html_a598a0eb859cf2f49ea3cc80876be0d32"><div class="ttname"><a href="namespaceControl.html#a598a0eb859cf2f49ea3cc80876be0d32">Control::pidPIDControllerCalcErrors</a></div><div class="ttdeci">void pidPIDControllerCalcErrors(CalcErrorsParamStruct &amp;param06, CalcErrorsInputStruct &amp;input06, CalcErrorsOutputStruct &amp;output06)</div><div class="ttdoc">PID误差计算</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:102</div></div>
+<div class="ttc" id="astructControl_1_1InitialInputStruct_html"><div class="ttname"><a href="structControl_1_1InitialInputStruct.html">Control::InitialInputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:85</div></div>
+<div class="ttc" id="astructControl_1_1ConfigParamStruct_html"><div class="ttname"><a href="structControl_1_1ConfigParamStruct.html">Control::ConfigParamStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:67</div></div>
+<div class="ttc" id="astructControl_1_1InitialOutputStruct_html"><div class="ttname"><a href="structControl_1_1InitialOutputStruct.html">Control::InitialOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:91</div></div>
+<div class="ttc" id="acontrolPIDController_8hpp_html"><div class="ttname"><a href="controlPIDController_8hpp.html">controlPIDController.hpp</a></div><div class="ttdoc">PID控制器 和 PID横向控制器</div></div>
+<div class="ttc" id="anamespaceControl_html_aa6210e037ef0cf7323bd47e6559ca727"><div class="ttname"><a href="namespaceControl.html#aa6210e037ef0cf7323bd47e6559ca727">Control::initialPIDController</a></div><div class="ttdeci">void initialPIDController(InitialParamStruct &amp;param05, InitialInputStruct &amp;input05, InitialOutputStruct &amp;output05)</div><div class="ttdoc">PID参数初始化</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:84</div></div>
+<div class="ttc" id="anamespaceControl_html_a31b9d824fc8580077998ebf66d086c6f"><div class="ttname"><a href="namespaceControl.html#a31b9d824fc8580077998ebf66d086c6f">Control::pidLoadPIDYamlConfig</a></div><div class="ttdeci">void pidLoadPIDYamlConfig(ConfigParamStruct &amp;param04, ConfigInputStruct &amp;input04, ConfigOutputStruct &amp;output04)</div><div class="ttdoc">读取 yaml 文件中pid_conf相关字段内容，并返回控制器</div><div class="ttdef"><b>Definition:</b> funcPidController.cpp:68</div></div>
+<div class="ttc" id="astructControl_1_1ModifyGainsOutputStruct_html"><div class="ttname"><a href="structControl_1_1ModifyGainsOutputStruct.html">Control::ModifyGainsOutputStruct</a></div><div class="ttdef"><b>Definition:</b> funcPidController.hpp:49</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

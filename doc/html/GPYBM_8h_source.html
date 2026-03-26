@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/GPS/dependence/GPYBM.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_b28c0c2c23114389da097ff5bd1375b9.html">GPS</a></li><li class="navelem"><a class="el" href="dir_b4966b2f9dc95d9c7f8129bd982a3286.html">dependence</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GPYBM.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef NMEA_GPYBM_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define NMEA_GPYBM_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;NMEABase.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNMEAGPYBM.html">NMEAGPYBM</a> : <span class="keyword">public</span> <a class="code" href="classNMEABase.html">NMEABase</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classNMEAGPYBM.html#a54e32622696f0a93bf561ba0ce2c3a36">NMEAGPYBM</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNMEAGPYBM.html#afec80966ed5093ff0fdcb75541519238">Parse</a>(<span class="keywordtype">string</span> strBuff);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#abb69263400525b239ef813f44d445e9d">   23</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEAGPYBM.html#abb69263400525b239ef813f44d445e9d">strSerialNO</a>;     </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#ac05623fc2c92795df721cb5c9237a719">   24</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#ac05623fc2c92795df721cb5c9237a719">dTod</a>;                </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#afc3e88d9137a8cc458fb586c97c1f00d">   25</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#afc3e88d9137a8cc458fb586c97c1f00d">dLatitude</a>;      </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#abe310a639a1c750dbfc2f002ab87a2c3">   26</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#abe310a639a1c750dbfc2f002ab87a2c3">dLongtitude</a>;     </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a833c9dcc07592dc525d7d59202055dfa">   27</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a833c9dcc07592dc525d7d59202055dfa">dElpHeight</a>;       </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a134d2d87ccfad978931d53e5f726222e">   28</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a134d2d87ccfad978931d53e5f726222e">dHeading</a>;         </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a2a9e6c9ced4d04d67782936149c03c51">   29</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a2a9e6c9ced4d04d67782936149c03c51">dPitch</a>;            </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a4bb15258364cf1ffb68820e7ab1f3785">   30</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a4bb15258364cf1ffb68820e7ab1f3785">dVn</a>;             </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#aaf38c8eb416f8ed325d2b4db236b054d">   31</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#aaf38c8eb416f8ed325d2b4db236b054d">dVe</a>;             </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#aa07f472c5584fb9118773837074636c2">   32</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#aa07f472c5584fb9118773837074636c2">dVu</a>;             </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#ac00664a155b72771aa581eaff1e8b239">   33</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#ac00664a155b72771aa581eaff1e8b239">dVelocity</a>;       </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a1eed09a35c9e440d6f40eabac8267f17">   34</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a1eed09a35c9e440d6f40eabac8267f17">dNorthing</a>;       </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a2efae47afaf81c58f2f7432c8c02aa14">   35</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a2efae47afaf81c58f2f7432c8c02aa14">dEasting</a>;        </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a1700a591771be2b9020f40e4ac1e2475">   36</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a1700a591771be2b9020f40e4ac1e2475">dNorthDis</a>;       </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a33bcbeb1ff8dfcf9eb5b53d3522aa174">   37</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a33bcbeb1ff8dfcf9eb5b53d3522aa174">dEastDis</a>;        </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#ad288acaf27e30a279b92b2b590a80381">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#ad288acaf27e30a279b92b2b590a80381">nPositionIndicator</a>; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a2be2053bcf87cdabaea4481df0eb0c29">   39</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#a2be2053bcf87cdabaea4481df0eb0c29">nHeadingIndicator</a>;  </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a527f2066a3a34f05c967ed75cfed8ac9">   40</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#a527f2066a3a34f05c967ed75cfed8ac9">nSVMaster</a>;          </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a9bd092b4a9bb689e5d710f328da7ed2a">   41</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a9bd092b4a9bb689e5d710f328da7ed2a">dAge</a>;            </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a9f73186832f346a59dc1bd28e903d93e">   42</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEAGPYBM.html#a9f73186832f346a59dc1bd28e903d93e">strRefStationID</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a8eb0fdf6a9e9eaa8bd58ddf6605ee321">   43</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a8eb0fdf6a9e9eaa8bd58ddf6605ee321">dBaselineLength</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#aef8e303a42b7570b90dc161d40da2d8c">   44</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#aef8e303a42b7570b90dc161d40da2d8c">nSVRover</a>;           </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#a6e37898e22e97197e486b6a9e08001c9">   45</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNMEAGPYBM.html#a6e37898e22e97197e486b6a9e08001c9">dRoll</a>;           </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#ab1275d20682cbec20708c20e19109bf4">   47</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#ab1275d20682cbec20708c20e19109bf4">nQuality</a>; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classNMEAGPYBM.html#ae71e5354ab1d001bf2563abb16243e40">   48</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNMEAGPYBM.html#ae71e5354ab1d001bf2563abb16243e40">nNumber</a>;  </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassNMEAGPYBM_html_aa07f472c5584fb9118773837074636c2"><div class="ttname"><a href="classNMEAGPYBM.html#aa07f472c5584fb9118773837074636c2">NMEAGPYBM::dVu</a></div><div class="ttdeci">double dVu</div><div class="ttdoc">Vel D 地向速度.xxx（m/s）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:32</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a2be2053bcf87cdabaea4481df0eb0c29"><div class="ttname"><a href="classNMEAGPYBM.html#a2be2053bcf87cdabaea4481df0eb0c29">NMEAGPYBM::nHeadingIndicator</a></div><div class="ttdeci">int nHeadingIndicator</div><div class="ttdoc">定向解状态:0=未定位 1=单点定位 4=定向RTK 固定解 5=定向RTK 浮点解</div><div class="ttdef"><b>Definition:</b> GPYBM.h:39</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a2a9e6c9ced4d04d67782936149c03c51"><div class="ttname"><a href="classNMEAGPYBM.html#a2a9e6c9ced4d04d67782936149c03c51">NMEAGPYBM::dPitch</a></div><div class="ttdeci">double dPitch</div><div class="ttdoc">俯仰角 -90～90° .xxx（度）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:29</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a54e32622696f0a93bf561ba0ce2c3a36"><div class="ttname"><a href="classNMEAGPYBM.html#a54e32622696f0a93bf561ba0ce2c3a36">NMEAGPYBM::NMEAGPYBM</a></div><div class="ttdeci">NMEAGPYBM()</div><div class="ttdoc">Construct a new NMEAGPYBM object</div><div class="ttdef"><b>Definition:</b> GPYBM.cpp:11</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_ae71e5354ab1d001bf2563abb16243e40"><div class="ttname"><a href="classNMEAGPYBM.html#ae71e5354ab1d001bf2563abb16243e40">NMEAGPYBM::nNumber</a></div><div class="ttdeci">int nNumber</div><div class="ttdoc">卫星数</div><div class="ttdef"><b>Definition:</b> GPYBM.h:48</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_aef8e303a42b7570b90dc161d40da2d8c"><div class="ttname"><a href="classNMEAGPYBM.html#aef8e303a42b7570b90dc161d40da2d8c">NMEAGPYBM::nSVRover</a></div><div class="ttdeci">int nSVRover</div><div class="ttdoc">Solution sv 从站参与解算的卫星数</div><div class="ttdef"><b>Definition:</b> GPYBM.h:44</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a134d2d87ccfad978931d53e5f726222e"><div class="ttname"><a href="classNMEAGPYBM.html#a134d2d87ccfad978931d53e5f726222e">NMEAGPYBM::dHeading</a></div><div class="ttdeci">double dHeading</div><div class="ttdoc">航向角0-360°.xxx（度）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:28</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a1700a591771be2b9020f40e4ac1e2475"><div class="ttname"><a href="classNMEAGPYBM.html#a1700a591771be2b9020f40e4ac1e2475">NMEAGPYBM::dNorthDis</a></div><div class="ttdeci">double dNorthDis</div><div class="ttdoc">North Distance 基站坐标系下的移动站X 坐标（基站坐标为原点）+：北，-：南 .xxx（m）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:36</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a4bb15258364cf1ffb68820e7ab1f3785"><div class="ttname"><a href="classNMEAGPYBM.html#a4bb15258364cf1ffb68820e7ab1f3785">NMEAGPYBM::dVn</a></div><div class="ttdeci">double dVn</div><div class="ttdoc">Vel N 北方向速度.xxx（m/s）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:30</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_afc3e88d9137a8cc458fb586c97c1f00d"><div class="ttname"><a href="classNMEAGPYBM.html#afc3e88d9137a8cc458fb586c97c1f00d">NMEAGPYBM::dLatitude</a></div><div class="ttdeci">double dLatitude</div><div class="ttdoc">Lat 纬度，度 +：北纬，-：南纬 dd.ddddddddd</div><div class="ttdef"><b>Definition:</b> GPYBM.h:25</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a1eed09a35c9e440d6f40eabac8267f17"><div class="ttname"><a href="classNMEAGPYBM.html#a1eed09a35c9e440d6f40eabac8267f17">NMEAGPYBM::dNorthing</a></div><div class="ttdeci">double dNorthing</div><div class="ttdoc">Coordinate Northing 高斯投影坐标X 轴 参考PTNL 和PJL .xxx（m）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:34</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_afec80966ed5093ff0fdcb75541519238"><div class="ttname"><a href="classNMEAGPYBM.html#afec80966ed5093ff0fdcb75541519238">NMEAGPYBM::Parse</a></div><div class="ttdeci">bool Parse(string strBuff)</div><div class="ttdoc">解析数据包</div><div class="ttdef"><b>Definition:</b> GPYBM.cpp:18</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a527f2066a3a34f05c967ed75cfed8ac9"><div class="ttname"><a href="classNMEAGPYBM.html#a527f2066a3a34f05c967ed75cfed8ac9">NMEAGPYBM::nSVMaster</a></div><div class="ttdeci">int nSVMaster</div><div class="ttdoc">主站天线收星数</div><div class="ttdef"><b>Definition:</b> GPYBM.h:40</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_ab1275d20682cbec20708c20e19109bf4"><div class="ttname"><a href="classNMEAGPYBM.html#ab1275d20682cbec20708c20e19109bf4">NMEAGPYBM::nQuality</a></div><div class="ttdeci">int nQuality</div><div class="ttdoc">定位状态</div><div class="ttdef"><b>Definition:</b> GPYBM.h:47</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_aaf38c8eb416f8ed325d2b4db236b054d"><div class="ttname"><a href="classNMEAGPYBM.html#aaf38c8eb416f8ed325d2b4db236b054d">NMEAGPYBM::dVe</a></div><div class="ttdeci">double dVe</div><div class="ttdoc">Vel E 东方向速度.xxx（m/s）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:31</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a9bd092b4a9bb689e5d710f328da7ed2a"><div class="ttname"><a href="classNMEAGPYBM.html#a9bd092b4a9bb689e5d710f328da7ed2a">NMEAGPYBM::dAge</a></div><div class="ttdeci">double dAge</div><div class="ttdoc">Diff Age 差分延迟</div><div class="ttdef"><b>Definition:</b> GPYBM.h:41</div></div>
+<div class="ttc" id="aclassNMEABase_html"><div class="ttname"><a href="classNMEABase.html">NMEABase</a></div><div class="ttdef"><b>Definition:</b> NMEABase.h:7</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_abb69263400525b239ef813f44d445e9d"><div class="ttname"><a href="classNMEAGPYBM.html#abb69263400525b239ef813f44d445e9d">NMEAGPYBM::strSerialNO</a></div><div class="ttdeci">string strSerialNO</div><div class="ttdoc">serial no 设备序列号SNxxxxxxxx,x=0-9</div><div class="ttdef"><b>Definition:</b> GPYBM.h:23</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a2efae47afaf81c58f2f7432c8c02aa14"><div class="ttname"><a href="classNMEAGPYBM.html#a2efae47afaf81c58f2f7432c8c02aa14">NMEAGPYBM::dEasting</a></div><div class="ttdeci">double dEasting</div><div class="ttdoc">Coordinate Easting 高斯投影坐标Y 轴 参考PTNL 和PJK .xxx（m）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:35</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a33bcbeb1ff8dfcf9eb5b53d3522aa174"><div class="ttname"><a href="classNMEAGPYBM.html#a33bcbeb1ff8dfcf9eb5b53d3522aa174">NMEAGPYBM::dEastDis</a></div><div class="ttdeci">double dEastDis</div><div class="ttdoc">16 East Distance 基站坐标系下的移动站Y 轴 坐标（基站坐标为原点） +：东，-：西 .xxx（m）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:37</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a6e37898e22e97197e486b6a9e08001c9"><div class="ttname"><a href="classNMEAGPYBM.html#a6e37898e22e97197e486b6a9e08001c9">NMEAGPYBM::dRoll</a></div><div class="ttdeci">double dRoll</div><div class="ttdoc">横滚角（仅带有惯导模块的板卡或整机支持）.xxx（度）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:45</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a8eb0fdf6a9e9eaa8bd58ddf6605ee321"><div class="ttname"><a href="classNMEAGPYBM.html#a8eb0fdf6a9e9eaa8bd58ddf6605ee321">NMEAGPYBM::dBaselineLength</a></div><div class="ttdeci">double dBaselineLength</div><div class="ttdoc">主站和从站内之间的距离（双天线基线长）.xxx（米）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:43</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a833c9dcc07592dc525d7d59202055dfa"><div class="ttname"><a href="classNMEAGPYBM.html#a833c9dcc07592dc525d7d59202055dfa">NMEAGPYBM::dElpHeight</a></div><div class="ttdeci">double dElpHeight</div><div class="ttdoc">椭球高.xxx（m）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:27</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_ad288acaf27e30a279b92b2b590a80381"><div class="ttname"><a href="classNMEAGPYBM.html#ad288acaf27e30a279b92b2b590a80381">NMEAGPYBM::nPositionIndicator</a></div><div class="ttdeci">int nPositionIndicator</div><div class="ttdoc">定位状态 Position Indicator 定位解状态：0=未定位或无效解 1=单点定位 4=定位RTK 固定解 5=定位RTK 浮点解</div><div class="ttdef"><b>Definition:</b> GPYBM.h:38</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_abe310a639a1c750dbfc2f002ab87a2c3"><div class="ttname"><a href="classNMEAGPYBM.html#abe310a639a1c750dbfc2f002ab87a2c3">NMEAGPYBM::dLongtitude</a></div><div class="ttdeci">double dLongtitude</div><div class="ttdoc">5 Lon 经度，度 +：东经，-：西经 ddd.ddddddddd</div><div class="ttdef"><b>Definition:</b> GPYBM.h:26</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_a9f73186832f346a59dc1bd28e903d93e"><div class="ttname"><a href="classNMEAGPYBM.html#a9f73186832f346a59dc1bd28e903d93e">NMEAGPYBM::strRefStationID</a></div><div class="ttdeci">string strRefStationID</div><div class="ttdoc">Station ID 基准站ID 0000</div><div class="ttdef"><b>Definition:</b> GPYBM.h:42</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_ac00664a155b72771aa581eaff1e8b239"><div class="ttname"><a href="classNMEAGPYBM.html#ac00664a155b72771aa581eaff1e8b239">NMEAGPYBM::dVelocity</a></div><div class="ttdeci">double dVelocity</div><div class="ttdoc">Vel G 地面速度.xxx（m/s）</div><div class="ttdef"><b>Definition:</b> GPYBM.h:33</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html"><div class="ttname"><a href="classNMEAGPYBM.html">NMEAGPYBM</a></div><div class="ttdef"><b>Definition:</b> GPYBM.h:6</div></div>
+<div class="ttc" id="aclassNMEAGPYBM_html_ac05623fc2c92795df721cb5c9237a719"><div class="ttname"><a href="classNMEAGPYBM.html#ac05623fc2c92795df721cb5c9237a719">NMEAGPYBM::dTod</a></div><div class="ttdeci">double dTod</div><div class="ttdoc">UTC 时间（时/分/秒/小数秒） hhmmss.ss</div><div class="ttdef"><b>Definition:</b> GPYBM.h:24</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

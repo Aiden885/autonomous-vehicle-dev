@@ -1,0 +1,65 @@
+\hypertarget{InversePerspectiveMapping_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+cv/src/\+Inverse\+Perspective\+Mapping.cpp 文件参考}
+\label{InversePerspectiveMapping_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/perception\_cv/src/InversePerspectiveMapping.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/perception\_cv/src/InversePerspectiveMapping.cpp}}
+
+
+Implements inverse perspective mapping functionality for lane detection  
+
+
+{\ttfamily \#include \char`\"{}Inverse\+Perspective\+Mapping.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Camera\+Info\+Opt.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+Inverse\+Perspective\+Mapping.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{InversePerspectiveMapping_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceperception}{perception}}
+\begin{DoxyCompactList}\small\item\em perception namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a39851373f0e206f237cbaa5493b65b06}\label{InversePerspectiveMapping_8cpp_a39851373f0e206f237cbaa5493b65b06}} 
+\#define {\bfseries V\+P\+\_\+\+P\+O\+R\+T\+I\+ON}~0.\+05
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceperception_a0201d22c98df9ee719df63c431aac0f4}{perception\+::im\+Get\+I\+PM}} (const cv\+::\+Mat \&in\+Image, cv\+::\+Mat \&out\+Image, I\+P\+M\+Info $\ast$ipm\+Info, const Camera\+Info $\ast$camera\+Info, std\+::list$<$ cv\+::\+Point $>$ $\ast$out\+Points)
+\begin{DoxyCompactList}\small\item\em Coordinate system description \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_af417385eefb7589cd44a3f84d7f8f29a}{perception\+::im\+Transform\+Image2\+Ground}} (const cv\+::\+Mat \&in\+Points, cv\+::\+Mat \&out\+Points, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Transforms points from image frame to ground plane \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a5ff4a7fc4c2a91bb102badfdf774d2c0}{perception\+::im\+Transform\+Ground2\+Image}} (const cv\+::\+Mat \&in\+Points, cv\+::\+Mat \&out\+Points, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Transforms points from ground plane to image frame \end{DoxyCompactList}\item 
+cv\+::\+Point2f \mbox{\hyperlink{namespaceperception_a3c6e79147f18028580a00b6ea3f1659a}{perception\+::im\+Get\+Vanishing\+Point}} (const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Computes vanishing point in image plane \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_aa3c3a78843788a9c088ef3dfff52c3e8}{perception\+::im\+Point\+Im\+I\+P\+M2\+World}} (cv\+::\+Point2f \&point, const I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Converts point from I\+PM pixel coordinates to world coordinates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ae755a581d6e21c6aef6abb1403ee789a}{perception\+::im\+Transform\+Im\+I\+P\+M2\+Ground}} (const cv\+::\+Mat \&in\+Mat, cv\+::\+Mat \&out\+Mat, const I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Converts points from I\+PM pixel coordinates to world coordinates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_af0b756bb9fb5f67cc0a7a9eb77d4adf2}{perception\+::im\+Transform\+Im\+I\+P\+M2\+Im}} (const cv\+::\+Mat \&in\+Mat, cv\+::\+Mat \&out\+Mat, const I\+P\+M\+Info $\ast$ipm\+Info, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Converts points from I\+PM pixel coordinates to image coordinates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_afbd59b06182f88499c0c804d633ce496}{perception\+::im\+Init\+Camera\+Info}} (char $\ast$const file\+Name, Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Initializes camera info structure from config file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a1d4a43cf154d81dba4778cfdd12565cf}{perception\+::im\+Scale\+Camera\+Info}} (Camera\+Info $\ast$camera\+Info, cv\+::\+Size size)
+\begin{DoxyCompactList}\small\item\em Scales camera parameters according to input image size \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a255a0536b91b7a54f695efc67acf9800}{perception\+::im\+Get\+I\+P\+M\+Extent}} (const Camera\+Info $\ast$camera\+Info, I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Calculates extent of image on ground plane \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+Implements inverse perspective mapping functionality for lane detection 
+
+\begin{DoxyAuthor}{作者}
+Mohamed Aly \href{mailto:malaa@caltech.edu}{\texttt{ malaa@caltech.\+edu}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+11/29/2006 
+\end{DoxyDate}

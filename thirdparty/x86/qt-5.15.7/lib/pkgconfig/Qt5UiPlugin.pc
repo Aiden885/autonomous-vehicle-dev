@@ -1,0 +1,12 @@
+prefix=/home/yukang/workspace/third_party_libs/qt-5.15.7
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 UiPlugin
+Description: Qt UiPlugin module
+Version: 5.15.7
+Cflags: -DQT_UIPLUGIN_LIB -I${includedir}/QtUiPlugin -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets
+

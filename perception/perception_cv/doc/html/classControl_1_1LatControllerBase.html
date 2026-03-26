@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Control::LatControllerBase类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>Control</b></li><li class="navelem"><a class="el" href="classControl_1_1LatControllerBase.html">LatControllerBase</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classControl_1_1LatControllerBase-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Control::LatControllerBase类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>横向控制器基类。  
+ <a href="classControl_1_1LatControllerBase.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="controlController_8hpp_source.html">controlController.hpp</a>&gt;</code></p>
+<div class="dynheader">
+类 Control::LatControllerBase 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classControl_1_1LatControllerBase__inherit__graph.png" border="0" usemap="#Control_1_1LatControllerBase_inherit__map" alt="Inheritance graph"/></div>
+<map name="Control_1_1LatControllerBase_inherit__map" id="Control_1_1LatControllerBase_inherit__map">
+<area shape="rect" title="横向控制器基类。" alt="" coords="185,5,379,32"/>
+<area shape="rect" href="classControl_1_1LQRController.html" title="LQR横向控制类" alt="" coords="5,80,172,107"/>
+<area shape="rect" href="classControl_1_1MPCController.html" title=" " alt="" coords="197,80,367,107"/>
+<area shape="rect" href="classControl_1_1PIDController.html" title="PID横向运动控制器" alt="" coords="391,80,554,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1515a9555c63598d11e316e1e64c5c7b"><td class="memItemLeft" align="right" valign="top"><a id="a1515a9555c63598d11e316e1e64c5c7b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LatControllerBase</b> (double maxSteer, double ratioWheelToSteer=20, double dt=0.1)</td></tr>
+<tr class="separator:a1515a9555c63598d11e316e1e64c5c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d827129de478a54ee3cff71d6d924c6"><td class="memItemLeft" align="right" valign="top"><a id="a4d827129de478a54ee3cff71d6d924c6"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>calcSteer</b> (<a class="el" href="structControl_1_1State.html">State</a> s, const Traj &amp;traj, size_t nearestID)=0</td></tr>
+<tr class="separator:a4d827129de478a54ee3cff71d6d924c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a76850a0c57bcdb3b72c671fd48fcb9c3"><td class="memItemLeft" align="right" valign="top"><a id="a76850a0c57bcdb3b72c671fd48fcb9c3"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>regulateOutput</b> (double steer)</td></tr>
+<tr class="separator:a76850a0c57bcdb3b72c671fd48fcb9c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a09b393c5c4bc66299207e86fa55b8fbb"><td class="memItemLeft" align="right" valign="top"><a id="a09b393c5c4bc66299207e86fa55b8fbb"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b></td></tr>
+<tr class="separator:a09b393c5c4bc66299207e86fa55b8fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b7c6c6d0b3f6a05ff60bc61c11d5bad"><td class="memItemLeft" align="right" valign="top"><a id="a0b7c6c6d0b3f6a05ff60bc61c11d5bad"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>maxSteer</b></td></tr>
+<tr class="separator:a0b7c6c6d0b3f6a05ff60bc61c11d5bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5228252ede177a3459701f1405567234"><td class="memItemLeft" align="right" valign="top"><a id="a5228252ede177a3459701f1405567234"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>ratioWheelToSteer</b></td></tr>
+<tr class="separator:a5228252ede177a3459701f1405567234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>横向控制器基类。 </p>
+<dl class="section note"><dt>注解</dt><dd>抽象类，子类控制器必须实现 <code>calcSteer</code>计算前轮转角方法 </dd></dl>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller/trajectory_tracking/include/<a class="el" href="controlController_8hpp_source.html">controlController.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

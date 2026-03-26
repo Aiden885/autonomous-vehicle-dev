@@ -1,0 +1,55 @@
+\hypertarget{structDecisionData}{}\doxysection{Decision\+Data结构体 参考}
+\label{structDecisionData}\index{DecisionData@{DecisionData}}
+
+
+Decision\+Data 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structDecisionData__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structDecisionData_accee4a6f2c2bab3d2104d097b5e1360c}\label{structDecisionData_accee4a6f2c2bab3d2104d097b5e1360c}} 
+std\+::vector$<$ \mbox{\hyperlink{structPlanningTrajectory}{Planning\+Trajectory}} $>$ {\bfseries final\+Path\+List}
+\item 
+\mbox{\Hypertarget{structDecisionData_a1c99ab4e089bb7b706c611efbc60435c}\label{structDecisionData_a1c99ab4e089bb7b706c611efbc60435c}} 
+\mbox{\hyperlink{structReferenceLine}{Reference\+Line}} {\bfseries reference\+Line}
+\item 
+\mbox{\Hypertarget{structDecisionData_a9cbb097f3127c5ecaf136a4437fc8115}\label{structDecisionData_a9cbb097f3127c5ecaf136a4437fc8115}} 
+\mbox{\hyperlink{structPlanningPoint}{Planning\+Point}} {\bfseries frenet\+Location\+Point}
+\item 
+\mbox{\Hypertarget{structDecisionData_a43012d4d9569b361c54c488940061865}\label{structDecisionData_a43012d4d9569b361c54c488940061865}} 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ {\bfseries speed\+List}
+\item 
+\mbox{\Hypertarget{structDecisionData_aa862360cc92cbc113f002ea0d86002b8}\label{structDecisionData_aa862360cc92cbc113f002ea0d86002b8}} 
+std\+::vector$<$ \mbox{\hyperlink{structPlanningTrajectory}{Planning\+Trajectory}} $>$ {\bfseries control\+Trajectory\+List}
+\item 
+\mbox{\Hypertarget{structDecisionData_a638b440799207173d49851abdc2ef450}\label{structDecisionData_a638b440799207173d49851abdc2ef450}} 
+std\+::vector$<$ int32\+\_\+t $>$ {\bfseries feasible\+Trajectory\+Index\+List}
+\item 
+\mbox{\Hypertarget{structDecisionData_acf7f64a1281eba50ad9048e5752d5cc5}\label{structDecisionData_acf7f64a1281eba50ad9048e5752d5cc5}} 
+\mbox{\hyperlink{structPlanningTrajectory}{Planning\+Trajectory}} {\bfseries optimal\+Global\+Trajectory}
+\item 
+\mbox{\Hypertarget{structDecisionData_a46c7bf7fa9a4c108e6c4b4e9969f237a}\label{structDecisionData_a46c7bf7fa9a4c108e6c4b4e9969f237a}} 
+int32\+\_\+t {\bfseries optimal\+Trajectory\+Index}
+\item 
+\mbox{\Hypertarget{structDecisionData_ae0bf055f2c6d3ff936b50f027a22e157}\label{structDecisionData_ae0bf055f2c6d3ff936b50f027a22e157}} 
+int32\+\_\+t {\bfseries current\+Id} = 0
+\item 
+\mbox{\Hypertarget{structDecisionData_a2c2a5ed3715c9958981f1dcd2c364c66}\label{structDecisionData_a2c2a5ed3715c9958981f1dcd2c364c66}} 
+int32\+\_\+t {\bfseries current\+Lane\+Id} = 0
+\item 
+\mbox{\Hypertarget{structDecisionData_a61ec934a6cc078a3f37520bed3391348}\label{structDecisionData_a61ec934a6cc078a3f37520bed3391348}} 
+int32\+\_\+t {\bfseries current\+Index} = 0
+\item 
+\mbox{\Hypertarget{structDecisionData_a488d382939cf50de9db8b6c35b5dcd62}\label{structDecisionData_a488d382939cf50de9db8b6c35b5dcd62}} 
+std\+::tuple$<$ int32\+\_\+t, int32\+\_\+t $>$ {\bfseries next\+Id} = std\+::tuple$<$int32\+\_\+t, int32\+\_\+t$>$(0, 0)
+\end{DoxyCompactItemize}
+
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+include/local\+Planning.\+hpp\end{DoxyCompactItemize}

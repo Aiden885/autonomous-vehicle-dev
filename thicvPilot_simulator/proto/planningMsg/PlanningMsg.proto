@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+
+
+package Planning;
+
+
+message TrajectoryPoint
+{
+    double X=1;
+    double Y=2;
+    double Theta=3;
+    double Speed=4;
+    double Curvature=5;
+    double S=6;
+    double obstacleDistance=7;
+}
+
+////这个只用于给unity临时性发送数据，相应数据比调度发过来的要少，
+//另外，以后还是应该单独发送，不放在这里
+message ObjectsProtoForUnity
+{
+    int32 type=1;
+    int32  objectid=2;
+    double lat=3;
+    double lon=4;
+    double yaw=5;
+    double velocity=6;
+    int32 len=7;
+    int32 width=8;
+    int32 height=9;
+    int64 timestamp=10;
+	int32 status=11;
+    int32 vctype=12;
+}
+
+////这个只用于给unity临时性发送数据，相应数据比路测发过来的要少，
+//另外，以后还是应该单独发送，不放在这里
+message TrafficLightForUnity
+{
+
+    int32 state = 1;  //0 red 、 1 yellow 、 2 green 
+    int32  lightDirerction = 2;  //0 直行 、 1 右转 、 2  左转、 3 掉头 
+
+}
+
+message TrajectoryPointVec
+{
+    repeated TrajectoryPoint TrajectoryPoints=1;
+    repeated  ObjectsProtoForUnity objectsForUnity=2;
+    TrafficLightForUnity trafficLightForUnity=3;
+    repeated int32 roadForUnity=4; //道路的list
+
+}
+
+//import "serverMsg/objects.proto";
+//本来想引用serverMsg里面的ObjectsProto，但是编译proto文件可以通过，但是make的时候不行，需要修改cpp文件里面的引用函数，去掉包名称,这部分没搞明白
+//另外，proto变量的赋值依然是一个很麻烦的过程，那就算了，简单点直接另外定义一个变量吧，这里本身也是临时的
+//protoc -I./ -I../  --cpp_out=./ ./PlanningMsg.proto

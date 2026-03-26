@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "objects.proto";
+import "decision.proto";
+package infopack;
+
+message DecisionsListProto
+{
+   repeated infopack.DispatchProto dispatch=1;
+   repeated infopack.ObjectsProto objects=2;
+}

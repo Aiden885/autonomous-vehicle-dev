@@ -1,0 +1,37 @@
+whellBase: 1.95 # cs55 2.56
+frontWhellMaxSteer: 32.0
+dT: 0.05 #控制周期s   20Hz  
+
+PreviewCTL:
+  
+  initialPreviewDistance: 8.5 # m
+  minPreviewDist: 6.65 # m 4.58
+  maxPreviewDist: 12.0 # m 11.0
+  k_min: 0.00025 # 完全直道阈值
+  k_max: 0.0065 # 急弯阈值（曲率较大）0.010
+  winN: 16 # 前瞻窗口长度（单位：点数）
+  k_enter: 0.0080 # 进入弯道判定阈值 0.045
+  k_exit: 0.0012 # 退出弯道判定阈值
+  
+  previewDist_lp: 7.8 # 低通状态量（滤波器内部状态）
+  tau_L: 0.25 #一阶低通时间常数（秒），调大更稳、调小更灵,tau_L 取小：既能抑毛刺，又不会迟钝 0.25
+
+  dL_downMax: 7.0 #变短 = 进弯或加急，允许更快（大 dL_down_max）7.5
+  dL_upMax: 3.2 #变长 = 出弯回直道，放慢一些（小 dL_up_max）3.2
+
+lat_pid:
+  kp: 0.065  # 0.065
+  ki: 0.008
+  kd: 0.003
+  maxIntegral: 10.0
+
+lon_pid:
+  vKp: 0.5
+  vKi: 0.0
+  vKd: 0.0
+  aKp: 0.12
+  aKi: 0.0
+  aKd: 0.0
+
+
+debugFlag: 1  # 1/0

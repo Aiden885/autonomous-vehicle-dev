@@ -1,0 +1,145 @@
+\hypertarget{classLogic_1_1DecisionTree}{}\doxysection{Logic\+::Decision\+Tree类 参考}
+\label{classLogic_1_1DecisionTree}\index{Logic::DecisionTree@{Logic::DecisionTree}}
+
+
+Logic\+::Decision\+Tree 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classLogic_1_1DecisionTree__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_adfae5d5aaf1f0a45f34808b102073122}\label{classLogic_1_1DecisionTree_adfae5d5aaf1f0a45f34808b102073122}} 
+{\bfseries Decision\+Tree} (const char $\ast$filename, int depth, int line)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_ad82bfbb5ddaa05b705e13fb5c83aa2ea}\label{classLogic_1_1DecisionTree_ad82bfbb5ddaa05b705e13fb5c83aa2ea}} 
+{\bfseries Decision\+Tree} (const vector$<$ vector$<$ double $>$$>$ \&train\+Data, const vector$<$ int $>$ \&train\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_adf398de096f4f09391c797f8598d58aa}\label{classLogic_1_1DecisionTree_adf398de096f4f09391c797f8598d58aa}} 
+void {\bfseries load\+Data} (const vector$<$ vector$<$ double $>$$>$ \&train\+Data, const vector$<$ int $>$ \&train\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a2ad62c079f18092891ffec12aa001f2e}\label{classLogic_1_1DecisionTree_a2ad62c079f18092891ffec12aa001f2e}} 
+map$<$ int, int $>$ {\bfseries label\+Count} (vector$<$ int $>$ \&dataset)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_afc35a7ce698c4a0922267c79c3e4c4d9}\label{classLogic_1_1DecisionTree_afc35a7ce698c4a0922267c79c3e4c4d9}} 
+double {\bfseries calculate\+Gini\+Value} (vector$<$ int $>$ \&dataset)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_afb87ec2dcac14861843c715366dbd347}\label{classLogic_1_1DecisionTree_afb87ec2dcac14861843c715366dbd347}} 
+vector$<$ int $>$ {\bfseries split\+Dataset} (vector$<$ int $>$ \&dataset, int \&feature, double \&threshold, bool bigger)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a9b4f5c613d4811afbdd877c19478bba1}\label{classLogic_1_1DecisionTree_a9b4f5c613d4811afbdd877c19478bba1}} 
+double {\bfseries calculate\+Gini\+Index} (vector$<$ int $>$ \&dataset, int \&feature, double \&threshold)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a37ed3ee31cf58ceddb4999783d3fc267}\label{classLogic_1_1DecisionTree_a37ed3ee31cf58ceddb4999783d3fc267}} 
+int {\bfseries get\+Max\+Times\+Label} (map$<$ int, int $>$ \&label\+Count)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a3e557a90de51417a2ad8240fbf7e381d}\label{classLogic_1_1DecisionTree_a3e557a90de51417a2ad8240fbf7e381d}} 
+void {\bfseries find\+Split} (vector$<$ int $>$ \&dataset, vector$<$ int $>$ \&features, vector$<$ int $>$ \&left\+Dataset, vector$<$ int $>$ \&right\+Dataset, int \&feature\+Id, double \&threshold)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a6f6b9e163087168c881fbcdce0e5ca4f}\label{classLogic_1_1DecisionTree_a6f6b9e163087168c881fbcdce0e5ca4f}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries create\+Tree} (vector$<$ int $>$ \&dataset, vector$<$ int $>$ \&features)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a560d09222d9f095f3164116a0ea2d4a6}\label{classLogic_1_1DecisionTree_a560d09222d9f095f3164116a0ea2d4a6}} 
+int {\bfseries classify\+Data} (const vector$<$ double $>$ \&test\+Data, \mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$root) const
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a01bebf1a384ddea8bbae1f855eb5250f}\label{classLogic_1_1DecisionTree_a01bebf1a384ddea8bbae1f855eb5250f}} 
+void {\bfseries print\+Tree} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node, int depth)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_ae3729f6ad46f4b3f253314ca193c6f62}\label{classLogic_1_1DecisionTree_ae3729f6ad46f4b3f253314ca193c6f62}} 
+void {\bfseries save\+Tree} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node, const char $\ast$filename, int depth)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a2f8e369f7f93f5c0d582a45c0872e62a}\label{classLogic_1_1DecisionTree_a2f8e369f7f93f5c0d582a45c0872e62a}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries load\+Tree} (const char $\ast$filename, int depth, int $\ast$line)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_afad398d8d25c0d0740dac2f5b551a3fe}\label{classLogic_1_1DecisionTree_afad398d8d25c0d0740dac2f5b551a3fe}} 
+double {\bfseries test\+Tree} (\mbox{\hyperlink{classLogic_1_1DecisionTree}{Decision\+Tree}} \&dt, const vector$<$ vector$<$ double $>$$>$ \&test\+Data, const vector$<$ int $>$ \&test\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a65d8740839d7fc8c23588b940f8a537a}\label{classLogic_1_1DecisionTree_a65d8740839d7fc8c23588b940f8a537a}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries find\+Pruning\+Node} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a7eec4dc088a1c06e1ac7dc7aa79390f5}\label{classLogic_1_1DecisionTree_a7eec4dc088a1c06e1ac7dc7aa79390f5}} 
+void {\bfseries tree\+Pruning} (\mbox{\hyperlink{classLogic_1_1DecisionTree}{Decision\+Tree}} \&dt, const vector$<$ vector$<$ double $>$$>$ \&verify\+Data, const vector$<$ int $>$ \&verify\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_adfae5d5aaf1f0a45f34808b102073122}\label{classLogic_1_1DecisionTree_adfae5d5aaf1f0a45f34808b102073122}} 
+{\bfseries Decision\+Tree} (const char $\ast$filename, int depth, int line)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a4291d6220310a8c7183305ce49df91dc}\label{classLogic_1_1DecisionTree_a4291d6220310a8c7183305ce49df91dc}} 
+{\bfseries Decision\+Tree} (const vector$<$ vector$<$ int $>$$>$ \&train\+Data, const vector$<$ int $>$ \&train\+Label, const bool rate\+Flag)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_abfb707e10f64fde18c84f79f69006a39}\label{classLogic_1_1DecisionTree_abfb707e10f64fde18c84f79f69006a39}} 
+void {\bfseries load\+Data} (const vector$<$ vector$<$ int $>$$>$ \&train\+Data, const vector$<$ int $>$ \&train\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a22d85c7bae534bf9f388e9ef29e76e33}\label{classLogic_1_1DecisionTree_a22d85c7bae534bf9f388e9ef29e76e33}} 
+map$<$ int, int $>$ {\bfseries label\+Count} (vector$<$ int $>$ \&dataset)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_aa7e74b0830b0ed30a2c5da57dfce4e3e}\label{classLogic_1_1DecisionTree_aa7e74b0830b0ed30a2c5da57dfce4e3e}} 
+double {\bfseries calculate\+Entropy} (vector$<$ int $>$ \&dataset)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_abc051b2c80784ae3e16618cb3425fa10}\label{classLogic_1_1DecisionTree_abc051b2c80784ae3e16618cb3425fa10}} 
+vector$<$ int $>$ {\bfseries split\+Dataset} (vector$<$ int $>$ \&dataset, int \&feature, int \&value)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_aa77bd96e108ed9ee8781970067cb038d}\label{classLogic_1_1DecisionTree_aa77bd96e108ed9ee8781970067cb038d}} 
+double {\bfseries calculate\+Gain\+Or\+Rate} (vector$<$ int $>$ \&dataset, int \&feature, bool rate\+Flag)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a37ed3ee31cf58ceddb4999783d3fc267}\label{classLogic_1_1DecisionTree_a37ed3ee31cf58ceddb4999783d3fc267}} 
+int {\bfseries get\+Max\+Times\+Label} (map$<$ int, int $>$ \&label\+Count)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a0e321c86b8421fbfd80ee96201b6acd4}\label{classLogic_1_1DecisionTree_a0e321c86b8421fbfd80ee96201b6acd4}} 
+int {\bfseries get\+Max\+Result\+Feature} (map$<$ int, double $>$ \&gains)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a043c4725cda00b35e391679cbf46d4fd}\label{classLogic_1_1DecisionTree_a043c4725cda00b35e391679cbf46d4fd}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries create\+Tree} (vector$<$ int $>$ \&dataset, vector$<$ int $>$ \&features, bool rate\+Flag)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_aed1ba749f0b352f8db777bf08239abfe}\label{classLogic_1_1DecisionTree_aed1ba749f0b352f8db777bf08239abfe}} 
+int {\bfseries classify\+Data} (const vector$<$ int $>$ \&test\+Data, \mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$root) const
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a01bebf1a384ddea8bbae1f855eb5250f}\label{classLogic_1_1DecisionTree_a01bebf1a384ddea8bbae1f855eb5250f}} 
+void {\bfseries print\+Tree} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node, int depth)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_ae3729f6ad46f4b3f253314ca193c6f62}\label{classLogic_1_1DecisionTree_ae3729f6ad46f4b3f253314ca193c6f62}} 
+void {\bfseries save\+Tree} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node, const char $\ast$filename, int depth)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_af9e8fdaf6a39e1883e352a37a24f0dca}\label{classLogic_1_1DecisionTree_af9e8fdaf6a39e1883e352a37a24f0dca}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries load\+Tree} (const char $\ast$filename, int depth, int $\ast$line)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a2a69196f29b88d89aa35c86553b83bee}\label{classLogic_1_1DecisionTree_a2a69196f29b88d89aa35c86553b83bee}} 
+double {\bfseries test\+Tree} (\mbox{\hyperlink{classLogic_1_1DecisionTree}{Decision\+Tree}} \&dt, const vector$<$ vector$<$ int $>$$>$ \&test\+Data, const vector$<$ int $>$ \&test\+Label)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_adf26871e2d0958abe62574fe2c7791c7}\label{classLogic_1_1DecisionTree_adf26871e2d0958abe62574fe2c7791c7}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries find\+Pruning\+Node} (\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$Node)
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_af09b7758d7bf77f5a85c92c17d5545a3}\label{classLogic_1_1DecisionTree_af09b7758d7bf77f5a85c92c17d5545a3}} 
+void {\bfseries tree\+Pruning} (\mbox{\hyperlink{classLogic_1_1DecisionTree}{Decision\+Tree}} \&dt, const vector$<$ vector$<$ int $>$$>$ \&verify\+Data, const vector$<$ int $>$ \&verify\+Label)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a74706613138749971388647440f13904}\label{classLogic_1_1DecisionTree_a74706613138749971388647440f13904}} 
+vector$<$ vector$<$ double $>$ $>$ {\bfseries train\+Data}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_abdfa5f1ac7875238df32bb87201513d1}\label{classLogic_1_1DecisionTree_abdfa5f1ac7875238df32bb87201513d1}} 
+vector$<$ int $>$ {\bfseries train\+Label}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a060b0f360f2c04b859eafbb36347f00e}\label{classLogic_1_1DecisionTree_a060b0f360f2c04b859eafbb36347f00e}} 
+map$<$ int, set$<$ int $>$ $>$ {\bfseries feature\+Values}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a060e13c3a903795aa6dcc5d20c2c9a44}\label{classLogic_1_1DecisionTree_a060e13c3a903795aa6dcc5d20c2c9a44}} 
+\mbox{\hyperlink{structLogic_1_1TreeNode}{Tree\+Node}} $\ast$ {\bfseries decision\+Tree\+Root}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_aba90d51995c6bcac7b85406d4eb441a6}\label{classLogic_1_1DecisionTree_aba90d51995c6bcac7b85406d4eb441a6}} 
+vector$<$ vector$<$ int $>$ $>$ {\bfseries train\+Data}
+\item 
+\mbox{\Hypertarget{classLogic_1_1DecisionTree_a86161ed1981b5f4f3c32f0db7b70bd2f}\label{classLogic_1_1DecisionTree_a86161ed1981b5f4f3c32f0db7b70bd2f}} 
+vector$<$ int $>$ {\bfseries dataset}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Logic/\+Decision\+Tree/\+C\+A\+R\+T/dependence/Logic\+Decision\+Tree\+C\+A\+R\+T\+Head.\+hpp\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Logic/\+Decision\+Tree/\+I\+D3\+C4.\+5/dependence/Logic\+Decision\+Tree\+Head.\+hpp\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Logic/\+Decision\+Tree/\+C\+A\+R\+T/dependence/Logic\+Decision\+Tree\+C\+A\+R\+T\+Function.\+cpp\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Logic/\+Decision\+Tree/\+I\+D3\+C4.\+5/dependence/Logic\+Decision\+Tree\+Function.\+cpp\end{DoxyCompactItemize}

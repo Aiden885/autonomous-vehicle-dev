@@ -1,0 +1,82 @@
+\hypertarget{namespaceinterp__m}{}\doxysection{interp\+\_\+m 命名空间参考}
+\label{namespaceinterp__m}\index{interp\_m@{interp\_m}}
+
+
+这是一个名为interp\+\_\+m的namespace。  
+
+
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpConstAccInput}{interp\+Const\+Acc\+Input}}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpConstAccOutput}{interp\+Const\+Acc\+Output}}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpConstAccParam}{interp\+Const\+Acc\+Param}}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpLinearInput}{interp\+Linear\+Input}}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpLinearOutput}{interp\+Linear\+Output}}
+\item 
+struct \mbox{\hyperlink{structinterp__m_1_1interpLinearParam}{interp\+Linear\+Param}}
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceinterp__m_a900778866899caa81efcf15a71b87139}{linear}} (const \mbox{\hyperlink{structinterp__m_1_1interpLinearParam}{interp\+Linear\+Param}} \&param, const \mbox{\hyperlink{structinterp__m_1_1interpLinearInput}{interp\+Linear\+Input}} \&input, \mbox{\hyperlink{structinterp__m_1_1interpLinearOutput}{interp\+Linear\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据初值、终值和项数，进行线性插值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceinterp__m_a90c36092ceba9b1ac377c105ccbe3ea0}{constant\+\_\+acceleration}} (const \mbox{\hyperlink{structinterp__m_1_1interpConstAccParam}{interp\+Const\+Acc\+Param}} \&param, const \mbox{\hyperlink{structinterp__m_1_1interpConstAccInput}{interp\+Const\+Acc\+Input}} \&input, \mbox{\hyperlink{structinterp__m_1_1interpConstAccOutput}{interp\+Const\+Acc\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 在等间隔的情况下，进行匀加速度插值 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+这是一个名为interp\+\_\+m的namespace。 
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{namespaceinterp__m_a90c36092ceba9b1ac377c105ccbe3ea0}\label{namespaceinterp__m_a90c36092ceba9b1ac377c105ccbe3ea0}} 
+\index{interp\_m@{interp\_m}!constant\_acceleration@{constant\_acceleration}}
+\index{constant\_acceleration@{constant\_acceleration}!interp\_m@{interp\_m}}
+\doxysubsubsection{\texorpdfstring{constant\_acceleration()}{constant\_acceleration()}}
+{\footnotesize\ttfamily void interp\+\_\+m\+::constant\+\_\+acceleration (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structinterp__m_1_1interpConstAccParam}{interp\+Const\+Acc\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structinterp__m_1_1interpConstAccInput}{interp\+Const\+Acc\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structinterp__m_1_1interpConstAccOutput}{interp\+Const\+Acc\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+在等间隔的情况下，进行匀加速度插值 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 初值、终值、项数、加速度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 储存插值的向量数组\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 匀加速度插值
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{namespaceinterp__m_a900778866899caa81efcf15a71b87139}\label{namespaceinterp__m_a900778866899caa81efcf15a71b87139}} 
+\index{interp\_m@{interp\_m}!linear@{linear}}
+\index{linear@{linear}!interp\_m@{interp\_m}}
+\doxysubsubsection{\texorpdfstring{linear()}{linear()}}
+{\footnotesize\ttfamily void interp\+\_\+m\+::linear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structinterp__m_1_1interpLinearParam}{interp\+Linear\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structinterp__m_1_1interpLinearInput}{interp\+Linear\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structinterp__m_1_1interpLinearOutput}{interp\+Linear\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据初值、终值和项数，进行线性插值 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 无 \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 初值、终值、项数 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 储存插值的向量数组\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 线性插值
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning 

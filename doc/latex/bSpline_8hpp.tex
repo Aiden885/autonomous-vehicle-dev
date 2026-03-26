@@ -1,0 +1,69 @@
+\hypertarget{bSpline_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+Local\+Path\+Planning/\+Fixed\+Trajectory/\+B\+Spline/src/b\+Spline.hpp 文件参考}
+\label{bSpline_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/LocalPathPlanning/FixedTrajectory/BSpline/src/bSpline.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/LocalPathPlanning/FixedTrajectory/BSpline/src/bSpline.hpp}}
+
+
+B样条曲线生成相关声明  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+b\+Spline.\+hpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{bSpline_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{bSpline_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1PlanningPoint}{planning\+::\+Planning\+Point}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1PlanningTrajectory}{planning\+::\+Planning\+Trajectory}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1BSplineParam}{planning\+::\+B\+Spline\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1BSplineInput}{planning\+::\+B\+Spline\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1BSplineOutput}{planning\+::\+B\+Spline\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1CpBSplineParam}{planning\+::\+Cp\+B\+Spline\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1CpBSplineInput}{planning\+::\+Cp\+B\+Spline\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1CpBSplineOutput}{planning\+::\+Cp\+B\+Spline\+Output}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceplanning}{planning}}
+\begin{DoxyCompactList}\small\item\em planning namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplanning_af14da49f8acf75d943adaf9574644c7b}{planning\+::generate\+Bspline\+Path}} (const B\+Spline\+Param \&param, const B\+Spline\+Input \&input, B\+Spline\+Output \&output)
+\begin{DoxyCompactList}\small\item\em B样条曲线生成 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aaee2681402c8110c812ab55f70b11150}{planning\+::point\+On\+Cubic\+Bspline}} (const Cp\+B\+Spline\+Param \&param, const Cp\+B\+Spline\+Input \&input, Cp\+B\+Spline\+Output \&output)
+\begin{DoxyCompactList}\small\item\em B样条曲线轨迹点计算 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+B样条曲线生成相关声明 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zehang Zhu (\href{mailto:zzh22@mails.tsinghua.edu.cn}{\texttt{ zzh22@mails.\+tsinghua.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/25 
+\end{DoxyDate}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+package prediction;
+
+message PredictPoint
+{
+    double x=1;     //前
+    double y=2;     //左
+    double vx=3;
+    double vy=4;
+}
+
+message Object
+{
+    repeated PredictPoint predictPoint=1;
+    double z=2; 
+    double w=3;        //x方向距离
+    double h=4;
+    double l=5;         //y方向距离
+    int32 type=6;
+    int32 trackID=7;
+}
+
+message ObjectList
+{
+    repeated Object object=1;
+}

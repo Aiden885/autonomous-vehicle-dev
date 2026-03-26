@@ -1,0 +1,48 @@
+syntax = "proto3";
+package Planning;
+
+//全局规划的road端点的坐标序列，用于请求障碍物和红绿灯信息（高铁新城）
+message RoutingPoint
+{
+    double Longtitude=1;
+    double Latitude=2;
+    double Height=3;
+    //double Speed=4;
+    //double Curvature=5;
+    //double S=6;
+}
+
+//下一个路口的信息，用于请求红绿灯状态
+message NextIntersection
+{
+    //路口可以有多种表示方式，这里为了测试和直观，以不同方式进行表述
+    //1当前road lane point，下一条road lane,这个不是红绿灯的路点，是当前路点，查找的原数据
+    int32 currentRoadID = 1;
+    int32 currentLaneID = 2;
+    int32 currentPointID = 3;
+    int32 nextRoadID = 4;
+    int32 nextLaneID = 5;
+
+    //2红绿灯坐标、转向
+    double  trafficLightGaussX = 6;
+    double trafficLightGaussY=7;
+    double trafficLightHeight=8;
+    int32 directionOfTravel=9; //直行 0,右转 1,左转 2, 掉头 3,       
+
+    //3路口ID，相位ID，
+    string	 intersectionId =10;//路口ID ，有些是long 
+    int64 phaseID=11; //相位ID
+
+    string shape = 12;  // 灯的形状
+    int32 lightsum = 13;  // 这一组灯的数量
+    int32 lightIdx = 14;  // 子灯索引
+
+    
+     
+}
+
+message RoutingPointVec
+{
+    repeated RoutingPoint  RoutingPoints=1;
+    NextIntersection nextIntersection = 2;
+}

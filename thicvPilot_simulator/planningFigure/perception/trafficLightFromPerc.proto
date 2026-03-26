@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package infopack;
+
+//从感知识别出来的红绿灯信息
+message TrafficLightFromPerc
+{
+    //红绿灯坐标、转向，用于作红绿灯的验证？？？这个为传入的坐标，感知应该在这个坐标附近进行识别，如果超出范围，则不是需要的红绿灯信息
+    double  trafficLightGaussX = 1;
+    double trafficLightGaussY=2;
+    double trafficLightHeight=3;
+    int32 directionOfTravel=4; //直行 0,右转 1,左转 2, 掉头 3,       
+
+    //红绿灯的状态
+    bool active = 5; //状态是否有效，true 灯状态有效 ，false 灯状态无效
+    int32 state = 6;  //0 red 、 1 yellow 、 2 green 
+
+
+}
+

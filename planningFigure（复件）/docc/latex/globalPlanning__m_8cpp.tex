@@ -1,0 +1,296 @@
+\hypertarget{globalPlanning__m_8cpp}{}\doxysection{src/global\+Planning\+\_\+m.cpp 文件参考}
+\label{globalPlanning__m_8cpp}\index{src/globalPlanning\_m.cpp@{src/globalPlanning\_m.cpp}}
+
+
+global\+Planning  
+
+
+{\ttfamily \#include \char`\"{}global\+Planning\+\_\+m.\+h\char`\"{}}\newline
+global\+Planning\+\_\+m.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{globalPlanning__m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a60b1c11b08416260098737e9dbda5e3b}{Astar\+Map\+To\+Astar}} (const \mbox{\hyperlink{structAstarMapToAstarParam}{Astar\+Map\+To\+Astar\+Param}} \&param, const \mbox{\hyperlink{structAstarMapToAstarInput}{Astar\+Map\+To\+Astar\+Input}} \&input, \mbox{\hyperlink{structAstarMapToAstarOutput}{Astar\+Map\+To\+Astar\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 使用\+Map类构建\+Astar类 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_acb78c9c00f7b885f7ce78185c6248405}{Astar\+Get\+Path}} (const \mbox{\hyperlink{structAstarGetPathParam}{Astar\+Get\+Path\+Param}} \&param, const \mbox{\hyperlink{structAstarGetPathInput}{Astar\+Get\+Path\+Input}} \&input, \mbox{\hyperlink{structAstarGetPathOutput}{Astar\+Get\+Path\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 使用\+Astar算法获取路径，包括预处理、后处理等部分 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_afc2b9495bdd993756e58fa54a85e1324}{Astar\+Init\+Road}} (const \mbox{\hyperlink{structAstarInitRoadParam}{Astar\+Init\+Road\+Param}} \&param, const \mbox{\hyperlink{structAstarInitRoadInput}{Astar\+Init\+Road\+Input}} \&input, \mbox{\hyperlink{structAstarInitRoadOutput}{Astar\+Init\+Road\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em Astar道路初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a2ca94d03caff87080649792b8c56e82c}{Astar\+Init\+Link}} (const \mbox{\hyperlink{structAstarInitLinkParam}{Astar\+Init\+Link\+Param}} \&param, const \mbox{\hyperlink{structAstarInitLinkInput}{Astar\+Init\+Link\+Input}} \&input, \mbox{\hyperlink{structAstarInitLinkOutput}{Astar\+Init\+Link\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em Astar道路连接关系初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a557278b4ff6a42cc7b3cfa723f1fee61}{Astar\+Reset}} (const \mbox{\hyperlink{structAstarResetParam}{Astar\+Reset\+Param}} \&param, const \mbox{\hyperlink{structAstarResetInput}{Astar\+Reset\+Input}} \&input, \mbox{\hyperlink{structAstarResetOutput}{Astar\+Reset\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 在保留地图的情况下，初始化\+Astar参数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_ad2714f2455da7a56c96562cc510fb769}{Astar\+Module\+Self\+Check}} (const \mbox{\hyperlink{structAstarModuleSelfCheckParam}{Astar\+Module\+Self\+Check\+Param}} \&param, const \mbox{\hyperlink{structAstarModuleSelfCheckInput}{Astar\+Module\+Self\+Check\+Input}} \&input, \mbox{\hyperlink{structAstarModuleSelfCheckOutput}{Astar\+Module\+Self\+Check\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 检查\+Astar道路\+Id \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_aa6f5dfdc142a81158c5b91ec738c7c89}{Astar\+Module\+Self\+Check\+Print}} (const \mbox{\hyperlink{structAstarModuleSelfCheckPrintParam}{Astar\+Module\+Self\+Check\+Print\+Param}} \&param, const \mbox{\hyperlink{structAstarModuleSelfCheckPrintInput}{Astar\+Module\+Self\+Check\+Print\+Input}} \&input, \mbox{\hyperlink{structAstarModuleSelfCheckPrintOutput}{Astar\+Module\+Self\+Check\+Print\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 检查\+Astar道路\+Id打印 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a7a24e2757989b0db7794e1bb02792811}{Astar\+Find\+Lane}} (const \mbox{\hyperlink{structAstarFindLaneParam}{Astar\+Find\+Lane\+Param}} \&param, const \mbox{\hyperlink{structAstarFindLaneInput}{Astar\+Find\+Lane\+Input}} \&input, \mbox{\hyperlink{structAstarFindLaneOutput}{Astar\+Find\+Lane\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据\+Astar道路级全局规划结果，获得车道级全局规划结果 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a94f27a161a7717092a428eb8a9c23f4e}{Astar\+Find\+LaneR}} (const \mbox{\hyperlink{structAstarFindLaneRParam}{Astar\+Find\+Lane\+R\+Param}} \&param, const \mbox{\hyperlink{structAstarFindLaneRInput}{Astar\+Find\+Lane\+R\+Input}} \&input, \mbox{\hyperlink{structAstarFindLaneROutput}{Astar\+Find\+Lane\+R\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em 根据\+Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800}{Astar\+Recursive\+Find\+Lane}} (const \mbox{\hyperlink{structAstarRecursiveFindLaneParam}{Astar\+Recursive\+Find\+Lane\+Param}} \&param, const \mbox{\hyperlink{structAstarRecursiveFindLaneInput}{Astar\+Recursive\+Find\+Lane\+Input}} \&input, \mbox{\hyperlink{structAstarRecursiveFindLaneOutput}{Astar\+Recursive\+Find\+Lane\+Output}} \&output)
+\begin{DoxyCompactList}\small\item\em Astar递归获得车道级全局规划结果主体函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+global\+Planning 
+
+\begin{DoxyAuthor}{作者}
+
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2024-\/12-\/04
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{globalPlanning__m_8cpp_a7a24e2757989b0db7794e1bb02792811}\label{globalPlanning__m_8cpp_a7a24e2757989b0db7794e1bb02792811}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarFindLane@{AstarFindLane}}
+\index{AstarFindLane@{AstarFindLane}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarFindLane()}{AstarFindLane()}}
+{\footnotesize\ttfamily void Astar\+Find\+Lane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarFindLaneParam}{Astar\+Find\+Lane\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarFindLaneInput}{Astar\+Find\+Lane\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarFindLaneOutput}{Astar\+Find\+Lane\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据\+Astar道路级全局规划结果，获得车道级全局规划结果 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 地图、道路级全局规划结果 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar获得全局规划车道结果
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_a94f27a161a7717092a428eb8a9c23f4e}\label{globalPlanning__m_8cpp_a94f27a161a7717092a428eb8a9c23f4e}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarFindLaneR@{AstarFindLaneR}}
+\index{AstarFindLaneR@{AstarFindLaneR}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarFindLaneR()}{AstarFindLaneR()}}
+{\footnotesize\ttfamily void Astar\+Find\+LaneR (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarFindLaneRParam}{Astar\+Find\+Lane\+R\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarFindLaneRInput}{Astar\+Find\+Lane\+R\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarFindLaneROutput}{Astar\+Find\+Lane\+R\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+根据\+Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 道路向量数组、道路级全局规划结果、储存结果的向量数组、终点车道\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar递归地获得全局规划车道结果
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_acb78c9c00f7b885f7ce78185c6248405}\label{globalPlanning__m_8cpp_acb78c9c00f7b885f7ce78185c6248405}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarGetPath@{AstarGetPath}}
+\index{AstarGetPath@{AstarGetPath}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarGetPath()}{AstarGetPath()}}
+{\footnotesize\ttfamily void Astar\+Get\+Path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarGetPathParam}{Astar\+Get\+Path\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarGetPathInput}{Astar\+Get\+Path\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarGetPathOutput}{Astar\+Get\+Path\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+使用\+Astar算法获取路径，包括预处理、后处理等部分 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 起点、终点、起点\+Id、终点\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar，起点到终点的路径\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar获取全局路径
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_a2ca94d03caff87080649792b8c56e82c}\label{globalPlanning__m_8cpp_a2ca94d03caff87080649792b8c56e82c}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarInitLink@{AstarInitLink}}
+\index{AstarInitLink@{AstarInitLink}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarInitLink()}{AstarInitLink()}}
+{\footnotesize\ttfamily void Astar\+Init\+Link (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarInitLinkParam}{Astar\+Init\+Link\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarInitLinkInput}{Astar\+Init\+Link\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarInitLinkOutput}{Astar\+Init\+Link\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Astar道路连接关系初始化 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 起始道路\+Id，到达道路\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar添加道路连接关系
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_afc2b9495bdd993756e58fa54a85e1324}\label{globalPlanning__m_8cpp_afc2b9495bdd993756e58fa54a85e1324}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarInitRoad@{AstarInitRoad}}
+\index{AstarInitRoad@{AstarInitRoad}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarInitRoad()}{AstarInitRoad()}}
+{\footnotesize\ttfamily void Astar\+Init\+Road (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarInitRoadParam}{Astar\+Init\+Road\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarInitRoadInput}{Astar\+Init\+Road\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarInitRoadOutput}{Astar\+Init\+Road\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Astar道路初始化 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 道路\+Id，起点\+X\+Y，终点\+X\+Y，长度 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar添加道路
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_a60b1c11b08416260098737e9dbda5e3b}\label{globalPlanning__m_8cpp_a60b1c11b08416260098737e9dbda5e3b}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarMapToAstar@{AstarMapToAstar}}
+\index{AstarMapToAstar@{AstarMapToAstar}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarMapToAstar()}{AstarMapToAstar()}}
+{\footnotesize\ttfamily void Astar\+Map\+To\+Astar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarMapToAstarParam}{Astar\+Map\+To\+Astar\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarMapToAstarInput}{Astar\+Map\+To\+Astar\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarMapToAstarOutput}{Astar\+Map\+To\+Astar\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+使用\+Map类构建\+Astar类 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param 地图，初始化的\+Astar \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: 使用地图构建\+Astar
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_ad2714f2455da7a56c96562cc510fb769}\label{globalPlanning__m_8cpp_ad2714f2455da7a56c96562cc510fb769}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarModuleSelfCheck@{AstarModuleSelfCheck}}
+\index{AstarModuleSelfCheck@{AstarModuleSelfCheck}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarModuleSelfCheck()}{AstarModuleSelfCheck()}}
+{\footnotesize\ttfamily void Astar\+Module\+Self\+Check (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarModuleSelfCheckParam}{Astar\+Module\+Self\+Check\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarModuleSelfCheckInput}{Astar\+Module\+Self\+Check\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarModuleSelfCheckOutput}{Astar\+Module\+Self\+Check\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+检查\+Astar道路\+Id 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 无\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar道路\+Id检查
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_aa6f5dfdc142a81158c5b91ec738c7c89}\label{globalPlanning__m_8cpp_aa6f5dfdc142a81158c5b91ec738c7c89}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarModuleSelfCheckPrint@{AstarModuleSelfCheckPrint}}
+\index{AstarModuleSelfCheckPrint@{AstarModuleSelfCheckPrint}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarModuleSelfCheckPrint()}{AstarModuleSelfCheckPrint()}}
+{\footnotesize\ttfamily void Astar\+Module\+Self\+Check\+Print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarModuleSelfCheckPrintParam}{Astar\+Module\+Self\+Check\+Print\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarModuleSelfCheckPrintInput}{Astar\+Module\+Self\+Check\+Print\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarModuleSelfCheckPrintOutput}{Astar\+Module\+Self\+Check\+Print\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+检查\+Astar道路\+Id打印 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 无\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar道路\+Id打印
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning \mbox{\Hypertarget{globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800}\label{globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarRecursiveFindLane@{AstarRecursiveFindLane}}
+\index{AstarRecursiveFindLane@{AstarRecursiveFindLane}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarRecursiveFindLane()}{AstarRecursiveFindLane()}}
+{\footnotesize\ttfamily void Astar\+Recursive\+Find\+Lane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarRecursiveFindLaneParam}{Astar\+Recursive\+Find\+Lane\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarRecursiveFindLaneInput}{Astar\+Recursive\+Find\+Lane\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarRecursiveFindLaneOutput}{Astar\+Recursive\+Find\+Lane\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Astar递归获得车道级全局规划结果主体函数 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 道路、道路级全局规划结果、可递归车道、终点道路\+Id、终点车道\+Id \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar递归获得车道级全局规划结果主体函数
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning 函数调用图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{globalPlanning__m_8cpp_a557278b4ff6a42cc7b3cfa723f1fee61}\label{globalPlanning__m_8cpp_a557278b4ff6a42cc7b3cfa723f1fee61}} 
+\index{globalPlanning\_m.cpp@{globalPlanning\_m.cpp}!AstarReset@{AstarReset}}
+\index{AstarReset@{AstarReset}!globalPlanning\_m.cpp@{globalPlanning\_m.cpp}}
+\doxysubsubsection{\texorpdfstring{AstarReset()}{AstarReset()}}
+{\footnotesize\ttfamily void Astar\+Reset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAstarResetParam}{Astar\+Reset\+Param}} \&}]{param,  }\item[{const \mbox{\hyperlink{structAstarResetInput}{Astar\+Reset\+Input}} \&}]{input,  }\item[{\mbox{\hyperlink{structAstarResetOutput}{Astar\+Reset\+Output}} \&}]{output }\end{DoxyParamCaption})}
+
+
+
+在保留地图的情况下，初始化\+Astar参数 
+
+
+\begin{DoxyParams}{参数}
+{\em \mbox{[}\+I\+N\mbox{]}} & param \mbox{\hyperlink{classAstar}{Astar}} \\
+\hline
+{\em \mbox{[}\+I\+N\mbox{]}} & input 无 \\
+\hline
+{\em \mbox{[}\+O\+U\+T\mbox{]}} & output 更新的\+Astar\\
+\hline
+\end{DoxyParams}
+@cn\+\_\+name\+: Astar参数初始化
+
+@granularity\+: atomic //函数组件的粒度， atomic： 基础组件（原子），composite$>$： 复合组件（在前端可以向下一层展开）
+
+@tag\+: planning 

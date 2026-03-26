@@ -1,0 +1,58 @@
+map_resolution: 0.2
+
+# 右侧激光雷达外参
+Tranform16_0:
+[[-0.015391222201, 0.998800694942, 0.046479471028, 0.000000000000],
+ [-0.802482366562, 0.015391222201,-0.596477270126,-0.395580000000],
+ [-0.596477270126,-0.046479471028, 0.801283061504,-0.188340000000],
+ [ 0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000],]
+ 
+# 左侧激光雷达外参 左侧的平移在代码中执行，且还对xy轴进行了反向交换
+Tranform16_1:
+[[0.010758227669, 0.99947488308, 0.030565649271, 0.000000000000],
+ [-0.77960139513,-0.010758227669,  0.626183569431, 0.395580000000],
+ [0.626183569431,-0.030565649271, 0.779076278210,-0.188340000000],
+ [ 0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000],]
+
+# 中间激光雷达外参 北京cs55的pcl还是有问题，目前这个transform还没有用
+Tranform128:
+[[ 1.000000000000,-0.000003076067, 0.000160674477, 0.000000000000],
+ [-0.000003076067, 0.999267220497, 0.038275394589, 0.000000000000],
+ [-0.000160674477,-0.038275394589, 0.999267220497, 0.000000000000],
+ [ 0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000],]
+
+# 最终获得的点云数据原点整体平移至车的后车轴中心
+
+# 读写参数
+ReadPCD: 0
+ReadPCDFile: "/home/adlink/thicvPilot_0924_perception/perception/perception_lidar_coms_livox/data/"
+SavePCD: 0
+SavePCDFile: "../data/"
+
+PassThroughFilter_z_down: 0
+PassThroughFilter_z_up: 0
+ViewerMode: 1
+
+# 裁剪参数
+PassThroughFilter_z_down0: -2.0
+PassThroughFilter_z_up0: 2.0
+PassThroughFilter_x_min: 0.0
+PassThroughFilter_x_max: 40.0
+PassThroughFilter_y_min: -10.0
+PassThroughFilter_y_max: 10.0
+
+# 降采样参数
+DownsampleLeafSize_xy: 0.4
+DownsampleLeafSize_z: 0.1
+
+# 去地面参数
+GridSize: 0.6
+NormalEatimationKSearch: 5
+SlopeRate: 0.6  #0.2
+NormalThereshold: 0.9
+GridHeightComputeMode: 1
+GroundHeight: 0
+
+# 聚类参数
+clusterDis: 0.62
+trackingDis: 2.05

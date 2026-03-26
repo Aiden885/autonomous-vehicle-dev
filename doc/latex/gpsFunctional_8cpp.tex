@@ -1,0 +1,52 @@
+\hypertarget{gpsFunctional_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+G\+P\+S/src/gps\+Functional.cpp 文件参考}
+\label{gpsFunctional_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/GPS/src/gpsFunctional.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/GPS/src/gpsFunctional.cpp}}
+
+
+G\+P\+S源文件  
+
+
+{\ttfamily \#include \char`\"{}gps\+Functional.\+h\char`\"{}}\newline
+gps\+Functional.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gpsFunctional_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceLocalization}{Localization}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceLocalization}{Localization}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceLocalization_a2b679ac15f4412e0171ba5b1fa65635e}\label{namespaceLocalization_a2b679ac15f4412e0171ba5b1fa65635e}} 
+int {\bfseries Localization\+::open\+Q\+T\+Window} (int argc, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{namespaceLocalization_a81f693d3981e7a1178128973957369b2}{Localization\+::start\+G\+P\+S\+A\+PP}} (const para\+A\+PP \&para, const input\+A\+PP \&input, output\+A\+PP \&output)
+\begin{DoxyCompactList}\small\item\em 打开\+G\+P\+S窗口 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_af94c1d8a1a783737d559f4ea41694d64}{Localization\+::get\+G\+GA}} (const para\+G\+GA \&para, const input\+G\+GA \&input, output\+G\+GA \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+G\+A数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aef707e2ebf6fa05c13f1e5ff2a160614}{Localization\+::get\+G\+P\+F\+PD}} (const para\+G\+P\+F\+PD \&para, const input\+G\+P\+F\+PD \&input, output\+G\+P\+F\+PD \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+P\+F\+P\+D数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a05a362bf9b3a244e81ac049c6c57c1e0}{Localization\+::get\+G\+P\+Y\+BM}} (const para\+G\+P\+Y\+BM \&para, const input\+G\+P\+Y\+BM \&input, output\+G\+P\+Y\+BM \&output)
+\begin{DoxyCompactList}\small\item\em 解析\+G\+P\+Y\+B\+M数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a49110d5e3fd6bcd186bb8fd1db425d64}{Localization\+::calc\+Check\+Sum}} (calc\+Check\+Para \&para, calc\+Check\+Input \&input, calc\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算\+N\+E\+M\+A数据校验位 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_acafd275a0ffee71a4de02de254e29b62}{Localization\+::dmm2deg}} (dmm2deg\+Para \&para, dmm2deg\+Input \&input, dmm2deg\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 将\+N\+M\+E\+A中 ddmm.\+mm 格式转换为小数度 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+G\+P\+S源文件 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zihan Xie (\href{mailto:770178863@qq.com}{\texttt{ 770178863@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/27 
+\end{DoxyDate}

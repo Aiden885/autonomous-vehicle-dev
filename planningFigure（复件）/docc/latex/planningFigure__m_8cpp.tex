@@ -1,0 +1,118 @@
+\hypertarget{planningFigure__m_8cpp}{}\doxysection{src/planning\+Figure\+\_\+m.cpp 文件参考}
+\label{planningFigure__m_8cpp}\index{src/planningFigure\_m.cpp@{src/planningFigure\_m.cpp}}
+
+
+planning  
+
+
+{\ttfamily \#include \char`\"{}Planning\+Msg.\+pb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}define\+Color.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}global\+Planning\+\_\+m.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}local\+Planning\+\_\+m.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/highgui/highgui.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/imgproc/imgproc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}planning.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sys/time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}unistd.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+planning\+Figure\+\_\+m.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{planningFigure__m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a4d849ec5025f494f0e4f5b2c53e2d9aa}\label{planningFigure__m_8cpp_a4d849ec5025f494f0e4f5b2c53e2d9aa}} 
+\#define {\bfseries S\+T\+O\+P\+\_\+\+P\+O\+I\+N\+T\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+ME}~\char`\"{}../map\+Msg/stop\+Point.\+txt\char`\"{}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ae37ceed62d186bf903b985d08f78e193}\label{planningFigure__m_8cpp_ae37ceed62d186bf903b985d08f78e193}} 
+\#define {\bfseries S\+T\+O\+P\+\_\+\+P\+O\+I\+N\+T\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E\+\_\+\+Y\+A\+ML}~\char`\"{}../map\+Msg/stop\+Point.\+yaml\char`\"{}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a1cad36048c29825a9bf205f8b9ceaef3}\label{planningFigure__m_8cpp_a1cad36048c29825a9bf205f8b9ceaef3}} 
+\#define {\bfseries R\+E\+C\+V\+\_\+\+P\+E\+R\+I\+OD}~40
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a0391b411c24490db6a0d9cac41338538}\label{planningFigure__m_8cpp_a0391b411c24490db6a0d9cac41338538}} 
+\#define {\bfseries S\+E\+N\+D\+\_\+\+P\+E\+R\+I\+OD}~100
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ae12d0de86c269ef593c1214b712a909c}\label{planningFigure__m_8cpp_ae12d0de86c269ef593c1214b712a909c}} 
+\#define {\bfseries G\+L\+O\+B\+A\+L\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+P\+E\+R\+I\+OD}~100
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a22af71541d865a3017d339c37e5b1e7f}\label{planningFigure__m_8cpp_a22af71541d865a3017d339c37e5b1e7f}} 
+\#define {\bfseries L\+O\+C\+A\+L\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+P\+E\+R\+I\+OD}~100
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a57f243883cb0b226e5af5ec6ceea763b}\label{planningFigure__m_8cpp_a57f243883cb0b226e5af5ec6ceea763b}} 
+\#define {\bfseries M\+A\+P\+\_\+\+P\+A\+TH}~\char`\"{}../map\+Msg/road\+Mapsuzhoukcy20230315.\+xodr\char`\"{}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ae452c6bd689b3e9d7ec279b9efe54b3f}\label{planningFigure__m_8cpp_ae452c6bd689b3e9d7ec279b9efe54b3f}} 
+\#define {\bfseries grid\+In\+One\+Meter}~5
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a543b45ba0d0273acc9a68d200703ffd9}\label{planningFigure__m_8cpp_a543b45ba0d0273acc9a68d200703ffd9}} 
+\#define {\bfseries map\+Size\+X\+Meter}~120
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a2dccd5a2dff9f3a2e69fd24a38ab013e}\label{planningFigure__m_8cpp_a2dccd5a2dff9f3a2e69fd24a38ab013e}} 
+\#define {\bfseries map\+Size\+Y\+Meter}~120
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ac1152b15c0294eb62fab121d0f253fe7}\label{planningFigure__m_8cpp_ac1152b15c0294eb62fab121d0f253fe7}} 
+\#define {\bfseries map\+Y\+Zero}~200
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a58623254d3af01c8ca391a89cffe8913}\label{planningFigure__m_8cpp_a58623254d3af01c8ca391a89cffe8913}} 
+\#define {\bfseries H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+P\+E\+R\+I\+OD}~500
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a6bbb73c99b4288d8d3ca72a561a96415}\label{planningFigure__m_8cpp_a6bbb73c99b4288d8d3ca72a561a96415}} 
+\#define {\bfseries myself\+Vehicle\+ID}~15
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a64f5730f041ab9000f6cd409c12f2aa9}\label{planningFigure__m_8cpp_a64f5730f041ab9000f6cd409c12f2aa9}} 
+\#define {\bfseries myself\+Vehiclee\+Type}~0
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a302c84582ee70a3c447e94f0296a9d1f}\label{planningFigure__m_8cpp_a302c84582ee70a3c447e94f0296a9d1f}} 
+\#define {\bfseries myself\+V\+C\+Type}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ad4ea4d08ff632ae1ac17b558f1c2b453}\label{planningFigure__m_8cpp_ad4ea4d08ff632ae1ac17b558f1c2b453}} 
+cv\+::\+Point {\bfseries draw\+Regulate} (cv\+::\+Point input)
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a4a6db9258ac3cbbda1604f472462ce45}\label{planningFigure__m_8cpp_a4a6db9258ac3cbbda1604f472462ce45}} 
+long int {\bfseries cvt\+Thread\+Id2\+Long} (thread\+::id id)
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a4e90d86d2f66399f0e0a276b75d2fd16}\label{planningFigure__m_8cpp_a4e90d86d2f66399f0e0a276b75d2fd16}} 
+void {\bfseries check\+Thread\+Status} (int t\+Status, thread\+::id id)
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{planningFigure__m_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a3332fa30326ff93a229dde93aaf42986}\label{planningFigure__m_8cpp_a3332fa30326ff93a229dde93aaf42986}} 
+auto {\bfseries last\+Thead\+Time} = std\+::chrono\+::steady\+\_\+clock\+::now()
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a4236920afaeef827205a487fb161fc88}\label{planningFigure__m_8cpp_a4236920afaeef827205a487fb161fc88}} 
+auto {\bfseries last\+Thead\+Timeof\+Sub} = std\+::chrono\+::steady\+\_\+clock\+::now()
+\item 
+\mbox{\Hypertarget{planningFigure__m_8cpp_a6e0631a70b6d1dca4c32d96c4ae8ca8c}\label{planningFigure__m_8cpp_a6e0631a70b6d1dca4c32d96c4ae8ca8c}} 
+auto {\bfseries duration\+Fro\+Showof\+Sub} = std\+::chrono\+::duration\+\_\+cast$<$std\+::chrono\+::milliseconds$>$(std\+::chrono\+::steady\+\_\+clock\+::now() -\/ last\+Thead\+Timeof\+Sub)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+planning 
+
+\begin{DoxyAuthor}{作者}
+
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2024-\/12-\/04
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

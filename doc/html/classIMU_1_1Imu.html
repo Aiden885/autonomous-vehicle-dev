@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: IMU::Imu类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>IMU</b></li><li class="navelem"><a class="el" href="classIMU_1_1Imu.html">Imu</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classIMU_1_1Imu-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">IMU::Imu类 参考<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 IMU::Imu 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classIMU_1_1Imu__inherit__graph.png" border="0" usemap="#IMU_1_1Imu_inherit__map" alt="Inheritance graph"/></div>
+<map name="IMU_1_1Imu_inherit__map" id="IMU_1_1Imu_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,80,87,107"/>
+<area shape="rect" title=" " alt="" coords="6,5,86,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+IMU::Imu 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classIMU_1_1Imu__coll__graph.png" border="0" usemap="#IMU_1_1Imu_coll__map" alt="Collaboration graph"/></div>
+<map name="IMU_1_1Imu_coll__map" id="IMU_1_1Imu_coll__map">
+<area shape="rect" title=" " alt="" coords="67,95,149,121"/>
+<area shape="rect" title=" " alt="" coords="5,5,85,32"/>
+<area shape="rect" title=" " alt="" coords="109,5,235,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a6b09d316527663267ac1e2738b6a8f0e"><td class="memItemLeft" align="right" valign="top"><a id="a6b09d316527663267ac1e2738b6a8f0e"></a>enum &#160;</td><td class="memItemRight" valign="bottom">: int { <br />
+&#160;&#160;<b>kLongitudeFieldNumber</b> = 1, 
+<b>kLatitudeFieldNumber</b> = 2, 
+<b>kGaussXFieldNumber</b> = 3, 
+<b>kGaussYFieldNumber</b> = 4, 
+<br />
+&#160;&#160;<b>kTimeFieldNumber</b> = 6, 
+<b>kVelocityFieldNumber</b> = 7, 
+<b>kYawFieldNumber</b> = 8, 
+<b>kGpsValidFieldNumber</b> = 5
+<br />
+ }</td></tr>
+<tr class="separator:a6b09d316527663267ac1e2738b6a8f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a4b3e6f68e9f3f164f90848c771f75b47"><td class="memItemLeft" align="right" valign="top"><a id="a4b3e6f68e9f3f164f90848c771f75b47"></a>
+PROTOBUF_CONSTEXPR&#160;</td><td class="memItemRight" valign="bottom"><b>Imu</b> (::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)</td></tr>
+<tr class="separator:a4b3e6f68e9f3f164f90848c771f75b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeef76fb30140827ba9f547a72eed97f2"><td class="memItemLeft" align="right" valign="top"><a id="aeef76fb30140827ba9f547a72eed97f2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Imu</b> (const <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;from)</td></tr>
+<tr class="separator:aeef76fb30140827ba9f547a72eed97f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b5df43eaaa808a7f2945b08adba7e3"><td class="memItemLeft" align="right" valign="top"><a id="a80b5df43eaaa808a7f2945b08adba7e3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Imu</b> (<a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;&amp;from) noexcept</td></tr>
+<tr class="separator:a80b5df43eaaa808a7f2945b08adba7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51336c03d0a9b78bdc290e2757e1029e"><td class="memItemLeft" align="right" valign="top"><a id="a51336c03d0a9b78bdc290e2757e1029e"></a>
+<a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;from)</td></tr>
+<tr class="separator:a51336c03d0a9b78bdc290e2757e1029e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a908ea0e8c391f0307f14aa4f5d647326"><td class="memItemLeft" align="right" valign="top"><a id="a908ea0e8c391f0307f14aa4f5d647326"></a>
+<a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;&amp;from) noexcept</td></tr>
+<tr class="separator:a908ea0e8c391f0307f14aa4f5d647326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eaf147a1523630c736bffb4c12b32eb"><td class="memItemLeft" align="right" valign="top"><a id="a8eaf147a1523630c736bffb4c12b32eb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Swap</b> (<a class="el" href="classIMU_1_1Imu.html">Imu</a> *other)</td></tr>
+<tr class="separator:a8eaf147a1523630c736bffb4c12b32eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9580e5269e2d7ab339be48d0e077d90"><td class="memItemLeft" align="right" valign="top"><a id="ab9580e5269e2d7ab339be48d0e077d90"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UnsafeArenaSwap</b> (<a class="el" href="classIMU_1_1Imu.html">Imu</a> *other)</td></tr>
+<tr class="separator:ab9580e5269e2d7ab339be48d0e077d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9359b823e57b29dcf562dafd227467"><td class="memItemLeft" align="right" valign="top"><a id="a5a9359b823e57b29dcf562dafd227467"></a>
+<a class="el" href="classIMU_1_1Imu.html">Imu</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>New</b> (::PROTOBUF_NAMESPACE_ID::Arena *arena=nullptr) const final</td></tr>
+<tr class="separator:a5a9359b823e57b29dcf562dafd227467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d61838fa598c8cb957aeffd42d46294"><td class="memItemLeft" align="right" valign="top"><a id="a9d61838fa598c8cb957aeffd42d46294"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CopyFrom</b> (const <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;from)</td></tr>
+<tr class="separator:a9d61838fa598c8cb957aeffd42d46294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1959848067ac88373a09d495d8faa5"><td class="memItemLeft" align="right" valign="top"><a id="a6c1959848067ac88373a09d495d8faa5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MergeFrom</b> (const <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;from)</td></tr>
+<tr class="separator:a6c1959848067ac88373a09d495d8faa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f413e38bf5ec8d5c4aad4fec3c2172"><td class="memItemLeft" align="right" valign="top"><a id="a91f413e38bf5ec8d5c4aad4fec3c2172"></a>
+PROTOBUF_ATTRIBUTE_REINITIALIZES void&#160;</td><td class="memItemRight" valign="bottom"><b>Clear</b> () final</td></tr>
+<tr class="separator:a91f413e38bf5ec8d5c4aad4fec3c2172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c589895365aaa5bc36e45f8fd04c729"><td class="memItemLeft" align="right" valign="top"><a id="a9c589895365aaa5bc36e45f8fd04c729"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsInitialized</b> () const final</td></tr>
+<tr class="separator:a9c589895365aaa5bc36e45f8fd04c729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed216b323a7317d9a71ef40237af2271"><td class="memItemLeft" align="right" valign="top"><a id="aed216b323a7317d9a71ef40237af2271"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ByteSizeLong</b> () const final</td></tr>
+<tr class="separator:aed216b323a7317d9a71ef40237af2271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f8edfa513178cb313c674c0510dadf"><td class="memItemLeft" align="right" valign="top"><a id="a46f8edfa513178cb313c674c0510dadf"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>_InternalParse</b> (const char *ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) final</td></tr>
+<tr class="separator:a46f8edfa513178cb313c674c0510dadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae573c08c49b2e4d584eca5009d86cbf5"><td class="memItemLeft" align="right" valign="top"><a id="ae573c08c49b2e4d584eca5009d86cbf5"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>_InternalSerialize</b> (uint8_t *target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream *stream) const final</td></tr>
+<tr class="separator:ae573c08c49b2e4d584eca5009d86cbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f9c05c5f2f5257095512ae7bd60983"><td class="memItemLeft" align="right" valign="top"><a id="aa7f9c05c5f2f5257095512ae7bd60983"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetCachedSize</b> () const final</td></tr>
+<tr class="separator:aa7f9c05c5f2f5257095512ae7bd60983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae0cb053007922e35f6996953c368b9"><td class="memItemLeft" align="right" valign="top"><a id="a7ae0cb053007922e35f6996953c368b9"></a>
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData *&#160;</td><td class="memItemRight" valign="bottom"><b>GetClassData</b> () const final</td></tr>
+<tr class="separator:a7ae0cb053007922e35f6996953c368b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada860d11f3dc8e3b50320b88bf89502b"><td class="memItemLeft" align="right" valign="top"><a id="ada860d11f3dc8e3b50320b88bf89502b"></a>
+::PROTOBUF_NAMESPACE_ID::Metadata&#160;</td><td class="memItemRight" valign="bottom"><b>GetMetadata</b> () const final</td></tr>
+<tr class="separator:ada860d11f3dc8e3b50320b88bf89502b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79cce50e11082ead954418294e64b826"><td class="memItemLeft" align="right" valign="top"><a id="a79cce50e11082ead954418294e64b826"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_longitude</b> ()</td></tr>
+<tr class="separator:a79cce50e11082ead954418294e64b826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1235a733f31221c5634f14e46db1b4b"><td class="memItemLeft" align="right" valign="top"><a id="ab1235a733f31221c5634f14e46db1b4b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>longitude</b> () const</td></tr>
+<tr class="separator:ab1235a733f31221c5634f14e46db1b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a634aefa7db2594bd00fc0e59f60a07f0"><td class="memItemLeft" align="right" valign="top"><a id="a634aefa7db2594bd00fc0e59f60a07f0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_longitude</b> (double value)</td></tr>
+<tr class="separator:a634aefa7db2594bd00fc0e59f60a07f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00c20d62efa57e7d45acba28594d18c"><td class="memItemLeft" align="right" valign="top"><a id="ac00c20d62efa57e7d45acba28594d18c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_latitude</b> ()</td></tr>
+<tr class="separator:ac00c20d62efa57e7d45acba28594d18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06731619e160c5f0186f1ff7029f2a3a"><td class="memItemLeft" align="right" valign="top"><a id="a06731619e160c5f0186f1ff7029f2a3a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>latitude</b> () const</td></tr>
+<tr class="separator:a06731619e160c5f0186f1ff7029f2a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97d5532a175c2553c980d0164bd862a2"><td class="memItemLeft" align="right" valign="top"><a id="a97d5532a175c2553c980d0164bd862a2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_latitude</b> (double value)</td></tr>
+<tr class="separator:a97d5532a175c2553c980d0164bd862a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57f5707c567930a12052b276bae4edd"><td class="memItemLeft" align="right" valign="top"><a id="ac57f5707c567930a12052b276bae4edd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_gaussx</b> ()</td></tr>
+<tr class="separator:ac57f5707c567930a12052b276bae4edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fe2aa48cad4cd6aa40f0cdc1fd5e10"><td class="memItemLeft" align="right" valign="top"><a id="a01fe2aa48cad4cd6aa40f0cdc1fd5e10"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>gaussx</b> () const</td></tr>
+<tr class="separator:a01fe2aa48cad4cd6aa40f0cdc1fd5e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668f2e300c69242dbce4db0bc2b22282"><td class="memItemLeft" align="right" valign="top"><a id="a668f2e300c69242dbce4db0bc2b22282"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_gaussx</b> (double value)</td></tr>
+<tr class="separator:a668f2e300c69242dbce4db0bc2b22282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad262c5381c4db4cbc06b5fa086d30c1a"><td class="memItemLeft" align="right" valign="top"><a id="ad262c5381c4db4cbc06b5fa086d30c1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_gaussy</b> ()</td></tr>
+<tr class="separator:ad262c5381c4db4cbc06b5fa086d30c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395aabee16a0720b51420f862fd8aa7a"><td class="memItemLeft" align="right" valign="top"><a id="a395aabee16a0720b51420f862fd8aa7a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>gaussy</b> () const</td></tr>
+<tr class="separator:a395aabee16a0720b51420f862fd8aa7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c257fe8f523b45ad4fa25356b710524"><td class="memItemLeft" align="right" valign="top"><a id="a8c257fe8f523b45ad4fa25356b710524"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_gaussy</b> (double value)</td></tr>
+<tr class="separator:a8c257fe8f523b45ad4fa25356b710524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7b8a67326d336de5c344c9d5b4d81b"><td class="memItemLeft" align="right" valign="top"><a id="aee7b8a67326d336de5c344c9d5b4d81b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_time</b> ()</td></tr>
+<tr class="separator:aee7b8a67326d336de5c344c9d5b4d81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55740c988e4b381c3772eedb4287142"><td class="memItemLeft" align="right" valign="top"><a id="af55740c988e4b381c3772eedb4287142"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>time</b> () const</td></tr>
+<tr class="separator:af55740c988e4b381c3772eedb4287142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a386f11cd6d276cf19358a9d8b3534420"><td class="memItemLeft" align="right" valign="top"><a id="a386f11cd6d276cf19358a9d8b3534420"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_time</b> (double value)</td></tr>
+<tr class="separator:a386f11cd6d276cf19358a9d8b3534420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16065faaeb83c27a243a510e4fa25948"><td class="memItemLeft" align="right" valign="top"><a id="a16065faaeb83c27a243a510e4fa25948"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_velocity</b> ()</td></tr>
+<tr class="separator:a16065faaeb83c27a243a510e4fa25948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717f7bfcc1837d083c0d2c0d25f9533d"><td class="memItemLeft" align="right" valign="top"><a id="a717f7bfcc1837d083c0d2c0d25f9533d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>velocity</b> () const</td></tr>
+<tr class="separator:a717f7bfcc1837d083c0d2c0d25f9533d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae158fe86b5376b3e6fe816b14a3faabe"><td class="memItemLeft" align="right" valign="top"><a id="ae158fe86b5376b3e6fe816b14a3faabe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_velocity</b> (double value)</td></tr>
+<tr class="separator:ae158fe86b5376b3e6fe816b14a3faabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac08f52b9f2fb24803d0f2b2f90d890fc"><td class="memItemLeft" align="right" valign="top"><a id="ac08f52b9f2fb24803d0f2b2f90d890fc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_yaw</b> ()</td></tr>
+<tr class="separator:ac08f52b9f2fb24803d0f2b2f90d890fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57cbaa33a5be678464975aa30b26ca32"><td class="memItemLeft" align="right" valign="top"><a id="a57cbaa33a5be678464975aa30b26ca32"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>yaw</b> () const</td></tr>
+<tr class="separator:a57cbaa33a5be678464975aa30b26ca32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b08f743c111c180e96722deeb0846c5"><td class="memItemLeft" align="right" valign="top"><a id="a0b08f743c111c180e96722deeb0846c5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_yaw</b> (double value)</td></tr>
+<tr class="separator:a0b08f743c111c180e96722deeb0846c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b71f4580e2dfd5183cca6f928c65196"><td class="memItemLeft" align="right" valign="top"><a id="a4b71f4580e2dfd5183cca6f928c65196"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_gpsvalid</b> ()</td></tr>
+<tr class="separator:a4b71f4580e2dfd5183cca6f928c65196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00d05c0f20b49416bebdc5c41e6eff26"><td class="memItemLeft" align="right" valign="top"><a id="a00d05c0f20b49416bebdc5c41e6eff26"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>gpsvalid</b> () const</td></tr>
+<tr class="separator:a00d05c0f20b49416bebdc5c41e6eff26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dbcdce992eb1792afb8a2b202af6afa"><td class="memItemLeft" align="right" valign="top"><a id="a2dbcdce992eb1792afb8a2b202af6afa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_gpsvalid</b> (int32_t value)</td></tr>
+<tr class="separator:a2dbcdce992eb1792afb8a2b202af6afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ac7d4972e83e15f0d23a675afc40f3ad0"><td class="memItemLeft" align="right" valign="top"><a id="ac7d4972e83e15f0d23a675afc40f3ad0"></a>
+static const ::PROTOBUF_NAMESPACE_ID::Descriptor *&#160;</td><td class="memItemRight" valign="bottom"><b>descriptor</b> ()</td></tr>
+<tr class="separator:ac7d4972e83e15f0d23a675afc40f3ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b20a0483dd1a5f10816549d0a5e59c"><td class="memItemLeft" align="right" valign="top"><a id="a17b20a0483dd1a5f10816549d0a5e59c"></a>
+static const ::PROTOBUF_NAMESPACE_ID::Descriptor *&#160;</td><td class="memItemRight" valign="bottom"><b>GetDescriptor</b> ()</td></tr>
+<tr class="separator:a17b20a0483dd1a5f10816549d0a5e59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbca4a0518d2b27175d31cdccf529aac"><td class="memItemLeft" align="right" valign="top"><a id="adbca4a0518d2b27175d31cdccf529aac"></a>
+static const ::PROTOBUF_NAMESPACE_ID::Reflection *&#160;</td><td class="memItemRight" valign="bottom"><b>GetReflection</b> ()</td></tr>
+<tr class="separator:adbca4a0518d2b27175d31cdccf529aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ae5d8b16f9d7f9825586ac7b9af5ea"><td class="memItemLeft" align="right" valign="top"><a id="a35ae5d8b16f9d7f9825586ac7b9af5ea"></a>
+static const <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>default_instance</b> ()</td></tr>
+<tr class="separator:a35ae5d8b16f9d7f9825586ac7b9af5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add08959fe615a5daeb57b2b13afc283b"><td class="memItemLeft" align="right" valign="top"><a id="add08959fe615a5daeb57b2b13afc283b"></a>
+static const <a class="el" href="classIMU_1_1Imu.html">Imu</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>internal_default_instance</b> ()</td></tr>
+<tr class="separator:add08959fe615a5daeb57b2b13afc283b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:a2be192f82bfcd762587a1a5a5295bf71"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kIndexInFileMessages</b></td></tr>
+<tr class="separator:a2be192f82bfcd762587a1a5a5295bf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a13ef9c1f319eb0841ff3e93e3e8b1"><td class="memItemLeft" align="right" valign="top"><a id="a15a13ef9c1f319eb0841ff3e93e3e8b1"></a>
+static const ClassData&#160;</td><td class="memItemRight" valign="bottom"><b>_class_data_</b></td></tr>
+<tr class="separator:a15a13ef9c1f319eb0841ff3e93e3e8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a95caec566f3e3c64faae828b24895ace"><td class="memItemLeft" align="right" valign="top"><a id="a95caec566f3e3c64faae828b24895ace"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Imu</b> (::PROTOBUF_NAMESPACE_ID::Arena *arena, bool is_message_owned=false)</td></tr>
+<tr class="separator:a95caec566f3e3c64faae828b24895ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a9b35d94da3444084fc3673b7717b6cfe"><td class="memItemLeft" align="right" valign="top"><a id="a9b35d94da3444084fc3673b7717b6cfe"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata</b></td></tr>
+<tr class="separator:a9b35d94da3444084fc3673b7717b6cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab618dbbac4a8d749da0d85c32932df36"><td class="memTemplParams" colspan="2"><a id="ab618dbbac4a8d749da0d85c32932df36"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab618dbbac4a8d749da0d85c32932df36"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><b>::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper</b></td></tr>
+<tr class="separator:ab618dbbac4a8d749da0d85c32932df36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d5e5acc5a5974d5fffed89e7cdd42b"><td class="memItemLeft" align="right" valign="top"><a id="a94d5e5acc5a5974d5fffed89e7cdd42b"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>::TableStruct_imu_2eproto</b></td></tr>
+<tr class="separator:a94d5e5acc5a5974d5fffed89e7cdd42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb65be1792e1bdf448fafbe60dbd8a9a"><td class="memItemLeft" align="right" valign="top"><a id="abb65be1792e1bdf448fafbe60dbd8a9a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;a, <a class="el" href="classIMU_1_1Imu.html">Imu</a> &amp;b)</td></tr>
+<tr class="separator:abb65be1792e1bdf448fafbe60dbd8a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a2be192f82bfcd762587a1a5a5295bf71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be192f82bfcd762587a1a5a5295bf71">&#9670;&nbsp;</a></span>kIndexInFileMessages</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int IMU::Imu::kIndexInFileMessages</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    0</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_lidar_coms_livox/include/<a class="el" href="imu_8pb_8h_source.html">imu.pb.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

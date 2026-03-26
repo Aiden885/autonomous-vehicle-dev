@@ -1,0 +1,70 @@
+\hypertarget{controlPIDController_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/control\+P\+I\+D\+Controller.hpp 文件参考}
+\label{controlPIDController_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlPIDController.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlPIDController.hpp}}
+
+
+P\+I\+D控制器 和 P\+I\+D横向控制器  
+
+
+{\ttfamily \#include \char`\"{}control\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$yaml-\/cpp/yaml.\+h$>$}\newline
+control\+P\+I\+D\+Controller.\+hpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlPIDController_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlPIDController_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classControl_1_1PID}{Control\+::\+P\+ID}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classControl_1_1PID}{P\+ID}} 控制器类 \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classControl_1_1PIDController}{Control\+::\+P\+I\+D\+Controller}}
+\begin{DoxyCompactList}\small\item\em P\+I\+D横向运动控制器 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{类型定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceControl_a4f850e202ce3540d26b4ce57ccf6c7a3}\label{namespaceControl_a4f850e202ce3540d26b4ce57ccf6c7a3}} 
+using {\bfseries Control\+::\+P\+I\+D\+Libs} = std\+::map$<$ std\+::string, P\+ID $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControl_1_1PID}{P\+ID}} \mbox{\hyperlink{namespaceControl_aa9d0aaddc032bf7e678f34a8e4665c1f}{Control\+::load\+P\+I\+D\+Yaml\+Config}} (Y\+A\+M\+L\+::\+Node config, std\+::string name, double dt)
+\begin{DoxyCompactList}\small\item\em 读取 yaml 文件中pid\+\_\+conf相关字段内容，并返回控制器 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+P\+I\+D控制器 和 P\+I\+D横向控制器 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/16
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

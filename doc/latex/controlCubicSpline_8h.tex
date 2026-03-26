@@ -1,0 +1,87 @@
+\hypertarget{controlCubicSpline_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/control\+Cubic\+Spline.h 文件参考}
+\label{controlCubicSpline_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlCubicSpline.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/controlCubicSpline.h}}
+
+
+ref. \char`\"{}\+Cpp Robotics. Python Robotics.\char`\"{}  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Eigen$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include \char`\"{}control\+Data.\+hpp\char`\"{}}\newline
+control\+Cubic\+Spline.\+h 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlCubicSpline_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlCubicSpline_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classControl_1_1Spline}{Control\+::\+Spline}}
+\item 
+class \mbox{\hyperlink{classControl_1_1Spline2D}{Control\+::\+Spline2D}}
+\item 
+class \mbox{\hyperlink{classControl_1_1Spline2DWithV}{Control\+::\+Spline2\+D\+WithV}}
+\begin{DoxyCompactList}\small\item\em Traj\+Raw -\/$>$ Traj。插值所需类 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{类型定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceControl_a9fa7f37347a7a4cb86bdb3c1d2dfd633}\label{namespaceControl_a9fa7f37347a7a4cb86bdb3c1d2dfd633}} 
+using {\bfseries Control\+::\+Vec\+\_\+d} = std\+::vector$<$ double $>$
+\item 
+\mbox{\Hypertarget{namespaceControl_ad1e1ad99a462d90e049f56bca23b8b1c}\label{namespaceControl_ad1e1ad99a462d90e049f56bca23b8b1c}} 
+using {\bfseries Control\+::\+Poi\+\_\+d} = std\+::array$<$ double, 2 $>$
+\item 
+\mbox{\Hypertarget{namespaceControl_a8e89c771d71a1a7b4e11fc82ec4dbced}\label{namespaceControl_a8e89c771d71a1a7b4e11fc82ec4dbced}} 
+using {\bfseries Control\+::\+Vec\+\_\+\+Poi} = std\+::vector$<$ Poi\+\_\+d $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceControl_a2ffe8c40bd05c4df65b1d68662cec756}\label{namespaceControl_a2ffe8c40bd05c4df65b1d68662cec756}} 
+Vec\+\_\+d {\bfseries Control\+::vec\+Diff} (Vec\+\_\+d input)
+\item 
+\mbox{\Hypertarget{namespaceControl_a12a03b1dbc9a0e58e00d514bbfe9d8c0}\label{namespaceControl_a12a03b1dbc9a0e58e00d514bbfe9d8c0}} 
+Vec\+\_\+d {\bfseries Control\+::cum\+Sum} (Vec\+\_\+d input)
+\item 
+void \mbox{\hyperlink{namespaceControl_aa1244b3f46db63f8586b0c7793e211c1}{Control\+::calc\+Spline\+Course}} (Vec\+\_\+d x, Vec\+\_\+d y, Vec\+\_\+d \&rX, Vec\+\_\+d \&rY, Vec\+\_\+d \&r\+Yaw, Vec\+\_\+d \&r\+Curvature, Vec\+\_\+d \&rS, double ds)
+\begin{DoxyCompactList}\small\item\em 样条曲线插值轨迹，并计算相应的切向角度和曲率 \end{DoxyCompactList}\item 
+Traj \mbox{\hyperlink{namespaceControl_ac5cdb4de3df18a8e3ee5d93644b71da7}{Control\+::calc\+Spline\+With\+V\+Course}} (const Traj \&traj\+Raw, double ds)
+\begin{DoxyCompactList}\small\item\em 处理决策输入的原始轨迹(\+Traj\+: x y yaw)，输出插值并具有详细信息的轨迹(\+Traj\+: xy yaw v k s). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceControl_aac011e8469f7338516024cbd0a0dfb8d}\label{namespaceControl_aac011e8469f7338516024cbd0a0dfb8d}} 
+Traj {\bfseries Control\+::remove\+Duplicate} (const Traj \&traj\+Raw)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+ref. \char`\"{}\+Cpp Robotics. Python Robotics.\char`\"{} 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/16
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

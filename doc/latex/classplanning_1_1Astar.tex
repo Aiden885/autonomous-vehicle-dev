@@ -1,0 +1,105 @@
+\hypertarget{classplanning_1_1Astar}{}\doxysection{planning\+::Astar类 参考}
+\label{classplanning_1_1Astar}\index{planning::Astar@{planning::Astar}}
+
+
+planning\+::Astar 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classplanning_1_1Astar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a04846a5853617bc5a42dd53404989890}\label{classplanning_1_1Astar_a04846a5853617bc5a42dd53404989890}} 
+std\+::list$<$ int $>$ {\bfseries get\+Path} (int origin, int destination, int origin\+Point\+Id, int destination\+Point\+Id)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a579389c0fd55101e7fbbbc5e74149945}\label{classplanning_1_1Astar_a579389c0fd55101e7fbbbc5e74149945}} 
+void {\bfseries init\+Road} (int number, double x\+Start, double y\+Start, double x\+End, double y\+End, double length)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a5f9ea530bb3af54d97b320a754d7b5c2}\label{classplanning_1_1Astar_a5f9ea530bb3af54d97b320a754d7b5c2}} 
+void {\bfseries init\+Link} (int from, int to)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_ae67987f85c0e119c1f09c286fa4d7055}\label{classplanning_1_1Astar_ae67987f85c0e119c1f09c286fa4d7055}} 
+void {\bfseries reset} ()
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a775e7e44002d995d7b968e3053b4d997}\label{classplanning_1_1Astar_a775e7e44002d995d7b968e3053b4d997}} 
+void {\bfseries module\+Self\+Check} (std\+::list$<$ int $>$ path)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_ab5a0061dd516e3dfe24b9edb7a0a69a6}\label{classplanning_1_1Astar_ab5a0061dd516e3dfe24b9edb7a0a69a6}} 
+void {\bfseries module\+Self\+Check\+Print} (vector$<$ pair$<$ int, int $>$$>$ path\+Lanes)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a0ffdc5c7b45c8e97950da41905e4a8b4}\label{classplanning_1_1Astar_a0ffdc5c7b45c8e97950da41905e4a8b4}} 
+void {\bfseries map\+To\+Astar} (Road\+Map m, \mbox{\hyperlink{classplanning_1_1Astar}{Astar}} $\ast$as)
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a178efa1b8d381a01169784ebab117a74}\label{classplanning_1_1Astar_a178efa1b8d381a01169784ebab117a74}} 
+void {\bfseries find\+Lane} (Road\+Map m, list$<$ int $>$ path)
+\item 
+void \mbox{\hyperlink{classplanning_1_1Astar_a23249e4faad2e3c72dc9b2639b1ace33}{find\+Lane}} (std\+::vector$<$ Road $>$ \&roads\+\_\+, std\+::list$<$ int $>$ \&path\+\_\+, std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&path\+Lanes\+\_\+, int lane\+\_\+id\+\_\+)
+\begin{DoxyCompactList}\small\item\em overload \textquotesingle{}find\+Lane\textquotesingle{}, avoid to take an useless turn in the path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplanning_1_1Astar_a08dc69bbda85f2958ca7a30c2e20139c}{recursive\+Find\+Lane}} (std\+::vector$<$ Road $>$ \&roads\+\_\+, const std\+::list$<$ int $>$ \&path\+\_\+, std\+::vector$<$ std\+::tuple$<$ int, int, int $>$$>$ \&optional\+\_\+lanes\+\_\+, int road\+\_\+id\+\_\+, int lane\+\_\+id\+\_\+)
+\begin{DoxyCompactList}\small\item\em algorithm 1, this is globally excellent but not stable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a3b5391c2f1ec9ce214dc553a20855e70}\label{classplanning_1_1Astar_a3b5391c2f1ec9ce214dc553a20855e70}} 
+\mbox{\hyperlink{structplanning_1_1road}{road}} $\ast$ {\bfseries road\+List}
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_a7ac07daa82cbcf282567311e0623a32f}\label{classplanning_1_1Astar_a7ac07daa82cbcf282567311e0623a32f}} 
+list$<$ int $>$ {\bfseries path}
+\item 
+\mbox{\Hypertarget{classplanning_1_1Astar_ac43e41acce7db3aaa6cfdc8c5829ea6b}\label{classplanning_1_1Astar_ac43e41acce7db3aaa6cfdc8c5829ea6b}} 
+vector$<$ pair$<$ int, int $>$ $>$ {\bfseries path\+Lanes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classplanning_1_1Astar_a23249e4faad2e3c72dc9b2639b1ace33}\label{classplanning_1_1Astar_a23249e4faad2e3c72dc9b2639b1ace33}} 
+\index{planning::Astar@{planning::Astar}!findLane@{findLane}}
+\index{findLane@{findLane}!planning::Astar@{planning::Astar}}
+\doxysubsubsection{\texorpdfstring{findLane()}{findLane()}}
+{\footnotesize\ttfamily void planning\+::\+Astar\+::find\+Lane (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Road $>$ \&}]{roads\+\_\+,  }\item[{std\+::list$<$ int $>$ \&}]{path\+\_\+,  }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&}]{path\+Lanes\+\_\+,  }\item[{int}]{lane\+\_\+id\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+overload \textquotesingle{}find\+Lane\textquotesingle{}, avoid to take an useless turn in the path. 
+
+
+\begin{DoxyParams}{参数}
+{\em roads} & our road network \\
+\hline
+{\em path} & our road path \\
+\hline
+{\em path\+Lanes} & our lane path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classplanning_1_1Astar_a08dc69bbda85f2958ca7a30c2e20139c}\label{classplanning_1_1Astar_a08dc69bbda85f2958ca7a30c2e20139c}} 
+\index{planning::Astar@{planning::Astar}!recursiveFindLane@{recursiveFindLane}}
+\index{recursiveFindLane@{recursiveFindLane}!planning::Astar@{planning::Astar}}
+\doxysubsubsection{\texorpdfstring{recursiveFindLane()}{recursiveFindLane()}}
+{\footnotesize\ttfamily void planning\+::\+Astar\+::recursive\+Find\+Lane (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Road $>$ \&}]{roads\+\_\+,  }\item[{const std\+::list$<$ int $>$ \&}]{path\+\_\+,  }\item[{std\+::vector$<$ std\+::tuple$<$ int, int, int $>$$>$ \&}]{optional\+\_\+lanes\+\_\+,  }\item[{int}]{road\+\_\+id\+\_\+,  }\item[{int}]{lane\+\_\+id\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+algorithm 1, this is globally excellent but not stable 
+
+
+\begin{DoxyParams}{参数}
+{\em roads\+\_\+} & road network \\
+\hline
+{\em path\+\_\+} & road path \\
+\hline
+{\em optional\+\_\+lanes\+\_\+} & lane path for recursion \\
+\hline
+{\em road\+\_\+id\+\_\+} & destination road id \\
+\hline
+{\em lane\+\_\+id\+\_\+} & destination lane id \\
+\hline
+\end{DoxyParams}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+On\+Vehicle/dependence/global\+Planning.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+On\+Vehicle/dependence/global\+Planning.\+cpp\end{DoxyCompactItemize}

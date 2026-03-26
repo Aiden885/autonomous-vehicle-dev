@@ -1,0 +1,14 @@
+prefix=/home/yukang/workspace/third_party_libs/qt-5.15.7
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 OpenGLExtensions
+Description: Qt OpenGLExtensions module
+Version: 5.15.7
+Libs: -L${libdir} -lQt5OpenGLExtensions 
+Libs.private: /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Gui.so /home/yukang/workspace/third_party_libs/qt-5.15.7/lib/libQt5Core.so -lpthread -lGL   
+Cflags: -DQT_OPENGLEXTENSIONS_LIB -I${includedir}/QtOpenGLExtensions -I${includedir}
+Requires: Qt5Core Qt5Gui
+

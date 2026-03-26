@@ -1,0 +1,59 @@
+\hypertarget{structperception_1_1InputStruct01}{}\doxysection{perception\+::Input\+Struct01结构体 参考}
+\label{structperception_1_1InputStruct01}\index{perception::InputStruct01@{perception::InputStruct01}}
+
+
+classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件输入的参数， 用struct 封装  
+
+
+
+
+{\ttfamily \#include $<$function\+Lidar\+Detector.\+h$>$}
+
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_ac74970923f4d10adffe22268d288bbf4}\label{structperception_1_1InputStruct01_ac74970923f4d10adffe22268d288bbf4}} 
+const P\+O\+S\+I\+T\+I\+ON {\bfseries dets\+\_\+pos}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a278dba9c0c147f4b5c2cdae309d7346d}\label{structperception_1_1InputStruct01_a278dba9c0c147f4b5c2cdae309d7346d}} 
+const P\+O\+S\+I\+T\+I\+ON {\bfseries tracks\+\_\+pos}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_aad79a9bc99147d0d18f6c052d8052302}\label{structperception_1_1InputStruct01_aad79a9bc99147d0d18f6c052d8052302}} 
+const D\+E\+T\+E\+C\+T\+B\+OX {\bfseries measurement}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a86ff049ce54fc4b538421ac82ef09ed2}\label{structperception_1_1InputStruct01_a86ff049ce54fc4b538421ac82ef09ed2}} 
+K\+A\+L\+\_\+\+M\+E\+AN {\bfseries mean}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a3a65a3e6452ce38ec6ed509faf337ed0}\label{structperception_1_1InputStruct01_a3a65a3e6452ce38ec6ed509faf337ed0}} 
+K\+A\+L\+\_\+\+C\+O\+VA {\bfseries covariance}
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a868e933837208e3cc69459791bd82966}\label{structperception_1_1InputStruct01_a868e933837208e3cc69459791bd82966}} 
+float {\bfseries max\+\_\+euclidean\+\_\+distance} = 1.\+5
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a4a5c11ab6d292d8d1735084d330a375f}\label{structperception_1_1InputStruct01_a4a5c11ab6d292d8d1735084d330a375f}} 
+float {\bfseries max\+\_\+iou\+\_\+distance} = 0.\+9
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_aadcc0fa74b48b94760dc6c11851eedc3}\label{structperception_1_1InputStruct01_aadcc0fa74b48b94760dc6c11851eedc3}} 
+int {\bfseries max\+\_\+age} = 15
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a9e20a3570c0178afa5ff85c860d40069}\label{structperception_1_1InputStruct01_a9e20a3570c0178afa5ff85c860d40069}} 
+int {\bfseries n\+\_\+init} = 5
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_aac9a5ffee4ed7618dfd485fe7c369677}\label{structperception_1_1InputStruct01_aac9a5ffee4ed7618dfd485fe7c369677}} 
+float {\bfseries dt} = 0.\+1
+\item 
+\mbox{\Hypertarget{structperception_1_1InputStruct01_a2fdc062765152182abb414fe6c8add19}\label{structperception_1_1InputStruct01_a2fdc062765152182abb414fe6c8add19}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries cloud}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件输入的参数， 用struct 封装 
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Distance\+Cal/src/\mbox{\hyperlink{funcMatching_8h}{func\+Matching.\+h}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Kalman\+Filter/src/\mbox{\hyperlink{funcKalmanFilter_8h}{func\+Kalman\+Filter.\+h}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Kalman\+Tracking/src/\mbox{\hyperlink{funcKalmanTracking_8h}{func\+Kalman\+Tracking.\+h}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Muti\+Tracking/\+Object\+Tracking/src/\mbox{\hyperlink{funcObjTrack_8h}{func\+Obj\+Track.\+h}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Perception\+Lidar/src/\mbox{\hyperlink{PerceptionLidar_2src_2functionLidarDetector_8h}{function\+Lidar\+Detector.\+h}}\end{DoxyCompactItemize}

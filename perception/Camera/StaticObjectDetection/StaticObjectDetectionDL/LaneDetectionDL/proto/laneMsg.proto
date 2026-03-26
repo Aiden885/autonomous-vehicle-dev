@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package lane;
+
+message Point
+{
+    int32 x=1;
+    int32 y=2;
+}
+
+message Lane
+{
+    repeated Point point=1;
+}
+
+message LaneList
+{
+    repeated Lane lane=1;
+}

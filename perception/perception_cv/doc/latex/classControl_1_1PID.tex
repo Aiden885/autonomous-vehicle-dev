@@ -1,0 +1,67 @@
+\hypertarget{classControl_1_1PID}{}\doxysection{Control\+::P\+I\+D类 参考}
+\label{classControl_1_1PID}\index{Control::PID@{Control::PID}}
+
+
+\mbox{\hyperlink{classControl_1_1PID}{P\+ID}} 控制器类  
+
+
+
+
+{\ttfamily \#include $<$control\+P\+I\+D\+Controller.\+hpp$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControl_1_1PID_a547eae8410d1ec760bc630c70542e85a}{P\+ID}} (double kp, double ki, double kd, double dt, bool is\+Thresh\+On, double error\+Thresh, double d\+Thresh, bool isd\+Thresh\+On, double w)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classControl_1_1PID_a547eae8410d1ec760bc630c70542e85a}{P\+I\+D\+::\+P\+ID}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_1_1PID_aafeb88da37594a36c039c27da8a994e4}\label{classControl_1_1PID_aafeb88da37594a36c039c27da8a994e4}} 
+double {\bfseries update} (double error)
+\item 
+\mbox{\Hypertarget{classControl_1_1PID_a7dd4e3e5da37fcc933b3da011cb7fd3c}\label{classControl_1_1PID_a7dd4e3e5da37fcc933b3da011cb7fd3c}} 
+double {\bfseries output} ()
+\item 
+\mbox{\Hypertarget{classControl_1_1PID_a09dbca9aeff9d7c129474b9e67bcbb91}\label{classControl_1_1PID_a09dbca9aeff9d7c129474b9e67bcbb91}} 
+void {\bfseries modify\+Gains} (double kp, double ki, double kd)
+\item 
+\mbox{\Hypertarget{classControl_1_1PID_aa75bdd083457450755aef327f60dbf39}\label{classControl_1_1PID_aa75bdd083457450755aef327f60dbf39}} 
+void {\bfseries resetI} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\mbox{\hyperlink{classControl_1_1PID}{P\+ID}} 控制器类 
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{classControl_1_1PID_a547eae8410d1ec760bc630c70542e85a}\label{classControl_1_1PID_a547eae8410d1ec760bc630c70542e85a}} 
+\index{Control::PID@{Control::PID}!PID@{PID}}
+\index{PID@{PID}!Control::PID@{Control::PID}}
+\doxysubsubsection{\texorpdfstring{PID()}{PID()}}
+{\footnotesize\ttfamily Control\+::\+P\+I\+D\+::\+P\+ID (\begin{DoxyParamCaption}\item[{double}]{kp,  }\item[{double}]{ki,  }\item[{double}]{kd,  }\item[{double}]{dt,  }\item[{bool}]{is\+Thresh\+On,  }\item[{double}]{error\+Thresh,  }\item[{double}]{d\+Thresh,  }\item[{bool}]{isd\+Thresh\+On,  }\item[{double}]{w = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classControl_1_1PID_a547eae8410d1ec760bc630c70542e85a}{P\+I\+D\+::\+P\+ID}} object. 
+
+
+\begin{DoxyParams}{参数}
+{\em kp} & \\
+\hline
+{\em ki} & \\
+\hline
+{\em kd} & \\
+\hline
+{\em dt} & 控制器周期 \\
+\hline
+{\em is\+Thresh\+On} & 是否打开积分器阈值 \\
+\hline
+{\em error\+Thresh} & 积分器阈值上限 \\
+\hline
+\end{DoxyParams}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlPIDController_8hpp}{control\+P\+I\+D\+Controller.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/\mbox{\hyperlink{controlPIDController_8cc}{control\+P\+I\+D\+Controller.\+cc}}\end{DoxyCompactItemize}

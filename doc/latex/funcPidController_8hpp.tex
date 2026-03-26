@@ -1,0 +1,97 @@
+\hypertarget{funcPidController_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/func\+Pid\+Controller.hpp 文件参考}
+\label{funcPidController_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcPidController.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcPidController.hpp}}
+
+
+P\+I\+D控制函数  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}control\+P\+I\+D\+Controller.\+hpp\char`\"{}}\newline
+func\+Pid\+Controller.\+hpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcPidController_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{funcPidController_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structControl_1_1UpdateParamStruct}{Control\+::\+Update\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1UpdateInputStruct}{Control\+::\+Update\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1UpdateOutputStruct}{Control\+::\+Update\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ModifyGainsParamStruct}{Control\+::\+Modify\+Gains\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ModifyGainsInputStruct}{Control\+::\+Modify\+Gains\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ModifyGainsOutputStruct}{Control\+::\+Modify\+Gains\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ResetIParamStruct}{Control\+::\+Reset\+I\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ResetIInputStruct}{Control\+::\+Reset\+I\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ResetIOutputStruct}{Control\+::\+Reset\+I\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ConfigParamStruct}{Control\+::\+Config\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ConfigInputStruct}{Control\+::\+Config\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ConfigOutputStruct}{Control\+::\+Config\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1InitialParamStruct}{Control\+::\+Initial\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1InitialInputStruct}{Control\+::\+Initial\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1InitialOutputStruct}{Control\+::\+Initial\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcErrorsParamStruct}{Control\+::\+Calc\+Errors\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcErrorsInputStruct}{Control\+::\+Calc\+Errors\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcErrorsOutputStruct}{Control\+::\+Calc\+Errors\+Output\+Struct}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceControl_a07ae5716f5f8f486c2dcee57c9504940}{Control\+::pid\+Controller\+Update}} (\mbox{\hyperlink{structControl_1_1UpdateParamStruct}{Update\+Param\+Struct}} \&param01, \mbox{\hyperlink{structControl_1_1UpdateInputStruct}{Update\+Input\+Struct}} \&input01, \mbox{\hyperlink{structControl_1_1UpdateOutputStruct}{Update\+Output\+Struct}} \&output01)
+\begin{DoxyCompactList}\small\item\em P\+I\+D输出 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_aeb21e59bd0deb6b04ae063838923474a}{Control\+::pid\+Controller\+Modify\+Gains}} (\mbox{\hyperlink{structControl_1_1ModifyGainsParamStruct}{Modify\+Gains\+Param\+Struct}} \&param02, \mbox{\hyperlink{structControl_1_1ModifyGainsInputStruct}{Modify\+Gains\+Input\+Struct}} \&input02, \mbox{\hyperlink{structControl_1_1ModifyGainsOutputStruct}{Modify\+Gains\+Output\+Struct}} \&output02)
+\begin{DoxyCompactList}\small\item\em P\+I\+D增益修改 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a2c9a4efcc34d98f3bf221b3d84a717d3}{Control\+::pid\+Controller\+ResetI}} (\mbox{\hyperlink{structControl_1_1ResetIParamStruct}{Reset\+I\+Param\+Struct}} \&param03, \mbox{\hyperlink{structControl_1_1ResetIInputStruct}{Reset\+I\+Input\+Struct}} \&input03, \mbox{\hyperlink{structControl_1_1ResetIOutputStruct}{Reset\+I\+Output\+Struct}} \&output03)
+\begin{DoxyCompactList}\small\item\em P\+I\+D积分重置 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a31b9d824fc8580077998ebf66d086c6f}{Control\+::pid\+Load\+P\+I\+D\+Yaml\+Config}} (\mbox{\hyperlink{structControl_1_1ConfigParamStruct}{Config\+Param\+Struct}} \&param04, \mbox{\hyperlink{structControl_1_1ConfigInputStruct}{Config\+Input\+Struct}} \&input04, \mbox{\hyperlink{structControl_1_1ConfigOutputStruct}{Config\+Output\+Struct}} \&output04)
+\begin{DoxyCompactList}\small\item\em 读取 yaml 文件中pid\+\_\+conf相关字段内容，并返回控制器 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_aa6210e037ef0cf7323bd47e6559ca727}{Control\+::initial\+P\+I\+D\+Controller}} (\mbox{\hyperlink{structControl_1_1InitialParamStruct}{Initial\+Param\+Struct}} \&param05, \mbox{\hyperlink{structControl_1_1InitialInputStruct}{Initial\+Input\+Struct}} \&input05, \mbox{\hyperlink{structControl_1_1InitialOutputStruct}{Initial\+Output\+Struct}} \&output05)
+\begin{DoxyCompactList}\small\item\em P\+I\+D参数初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a598a0eb859cf2f49ea3cc80876be0d32}{Control\+::pid\+P\+I\+D\+Controller\+Calc\+Errors}} (\mbox{\hyperlink{structControl_1_1CalcErrorsParamStruct}{Calc\+Errors\+Param\+Struct}} \&param06, \mbox{\hyperlink{structControl_1_1CalcErrorsInputStruct}{Calc\+Errors\+Input\+Struct}} \&input06, \mbox{\hyperlink{structControl_1_1CalcErrorsOutputStruct}{Calc\+Errors\+Output\+Struct}} \&output06)
+\begin{DoxyCompactList}\small\item\em P\+I\+D误差计算 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+P\+I\+D控制函数 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Chaoyi Chen (\href{mailto:chency2023@tsinghua.edu.com}{\texttt{ chency2023@tsinghua.\+edu.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2024-\/01-\/31 
+\end{DoxyDate}

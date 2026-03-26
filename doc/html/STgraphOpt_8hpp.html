@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Planning/SpeedPlanning/SamplingMethod/STgraphOpt/src/STgraphOpt.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2265d85848d29287bb3825cf17fd0573.html">Planning</a></li><li class="navelem"><a class="el" href="dir_100f0b8fa8ea9fe9377660936b0e69c1.html">SpeedPlanning</a></li><li class="navelem"><a class="el" href="dir_7dc622f31e4af92fdb21850984ee9eb4.html">SamplingMethod</a></li><li class="navelem"><a class="el" href="dir_46b5e02674046ac812c81065e34e20cf.html">STgraphOpt</a></li><li class="navelem"><a class="el" href="dir_849eab0bc99f334b3a28e95cf0403cb2.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">STgraphOpt.hpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>ST图优化相关声明  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+STgraphOpt.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="STgraphOpt_8hpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hpp">
+<area shape="rect" title="ST图优化相关声明" alt="" coords="25,5,321,91"/>
+<area shape="rect" title=" " alt="" coords="5,139,68,165"/>
+<area shape="rect" title=" " alt="" coords="92,139,163,165"/>
+<area shape="rect" title=" " alt="" coords="187,139,249,165"/>
+<area shape="rect" title=" " alt="" coords="273,139,328,165"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="STgraphOpt_8hpp__dep__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hppdep" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hppdep" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2SpeedPlanning_2SamplingMethod_2STgraphOpt_2src_2STgraphOpt_8hppdep">
+<area shape="rect" title="ST图优化相关声明" alt="" coords="5,5,301,91"/>
+<area shape="rect" href="STgraphOpt_8cpp.html" title="ST图优化相关函数" alt="" coords="5,139,301,224"/>
+</map>
+</div>
+</div>
+<p><a href="STgraphOpt_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplanning_1_1PlanningPoint.html">planning::PlanningPoint</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplanning_1_1PlanningTrajectory.html">planning::PlanningTrajectory</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplanning_1_1STgraphOptParam.html">planning::STgraphOptParam</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplanning_1_1STgraphOptInput.html">planning::STgraphOptInput</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplanning_1_1STgraphOptOutput.html">planning::STgraphOptOutput</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceplanning"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning.html">planning</a></td></tr>
+<tr class="memdesc:namespaceplanning"><td class="mdescLeft">&#160;</td><td class="mdescRight">planning namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a5db983f4dee7e3e7b6a54633c16dbfe7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning.html#a5db983f4dee7e3e7b6a54633c16dbfe7">planning::STOptimization</a> (const STgraphOptParam &amp;param, const STgraphOptInput &amp;input, STgraphOptOutput &amp;output)</td></tr>
+<tr class="memdesc:a5db983f4dee7e3e7b6a54633c16dbfe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ST图优化  <a href="namespaceplanning.html#a5db983f4dee7e3e7b6a54633c16dbfe7">更多...</a><br /></td></tr>
+<tr class="separator:a5db983f4dee7e3e7b6a54633c16dbfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>ST图优化相关声明 </p>
+<dl class="section version"><dt>版本</dt><dd>0.0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>Zehang Zhu (<a href="#" onclick="location.href='mai'+'lto:'+'zzh'+'22'+'@ma'+'il'+'s.t'+'si'+'ngh'+'ua'+'.ed'+'u.'+'cn'; return false;">zzh22<span style="display: none;">.nosp@m.</span>@mai<span style="display: none;">.nosp@m.</span>ls.ts<span style="display: none;">.nosp@m.</span>ingh<span style="display: none;">.nosp@m.</span>ua.ed<span style="display: none;">.nosp@m.</span>u.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2023-11-25 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

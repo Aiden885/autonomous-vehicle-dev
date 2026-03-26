@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/MapProgram/MapAnlDemo/src/mapAnalysisAdd.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_becfa4266a0cfa1f878d95aebd0b8f48.html">MapProgram</a></li><li class="navelem"><a class="el" href="dir_6f4ad65322db6e7e6cfbc2d97ee60ca3.html">MapAnlDemo</a></li><li class="navelem"><a class="el" href="dir_44605edecfc77ca038e7a1fe5aa23b35.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mapAnalysisAdd.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mapAnalysisAdd_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;localization_MapAnalysis.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;rapidxml.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;rapidxml_utils.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;rapidxml_print.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include&lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceLocalization.html">Localization</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structLocalization_1_1RoadM.html">   22</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1RoadM.html">RoadM</a>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    RoadMap m;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structLocalization_1_1Path.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1Path.html">Path</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::string path;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structLocalization_1_1OSMFormatStru.html">   28</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1OSMFormatStru.html">OSMFormatStru</a>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    OSMFormat osmf;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structLocalization_1_1Empty.html">   31</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1Empty.html">Empty</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a8ab6815b8355e8d8bf4db9113ad28e21">roadMapGet</a>(<a class="code" href="structLocalization_1_1Path.html">Path</a> in1,<a class="code" href="structLocalization_1_1Empty.html">Empty</a> in2,<a class="code" href="structLocalization_1_1Empty.html">Empty</a> output);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a94cdaf3a9c7b974278b5189966faf15e">roadmapMapAnalysis</a>(<a class="code" href="structLocalization_1_1RoadM.html">RoadM</a>&amp; rm, <a class="code" href="structLocalization_1_1Path.html">Path</a>&amp; p, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a5283d3945ab1d240d7d6271e844b459b">roadmapNeighborLaneSort</a>(<a class="code" href="structLocalization_1_1RoadM.html">RoadM</a>&amp; rm, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; in2, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#af0253b2e3140e9ee9ed82cc0b1c997aa">roadmapModuleSelfCheck</a>(<a class="code" href="structLocalization_1_1RoadM.html">RoadM</a>&amp; rm, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; in2, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#adff4d53cfd8cfa1a677856d9eeb5ba36">roadmapModuleSelfCheckPrint</a>(<a class="code" href="structLocalization_1_1RoadM.html">RoadM</a>&amp; rm, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; in2, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a64e54a9c3a5e8ba2cf413b90a1c3191d">osmformatFormatConversion</a>(<a class="code" href="structLocalization_1_1OSMFormatStru.html">OSMFormatStru</a>&amp; of, <a class="code" href="structLocalization_1_1Path.html">Path</a>&amp; p, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a24fce68c93b40920a18589aa02759aba">osmformatSaveMapToOSM</a>(<a class="code" href="structLocalization_1_1OSMFormatStru.html">OSMFormatStru</a>&amp; of, <a class="code" href="structLocalization_1_1Path.html">Path</a>&amp; p, <a class="code" href="structLocalization_1_1Empty.html">Empty</a>&amp; output);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceLocalization_html"><div class="ttname"><a href="namespaceLocalization.html">Localization</a></div><div class="ttdoc">Localization namespace</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:12</div></div>
+<div class="ttc" id="astructLocalization_1_1Path_html"><div class="ttname"><a href="structLocalization_1_1Path.html">Localization::Path</a></div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.h:25</div></div>
+<div class="ttc" id="anamespaceLocalization_html_adff4d53cfd8cfa1a677856d9eeb5ba36"><div class="ttname"><a href="namespaceLocalization.html#adff4d53cfd8cfa1a677856d9eeb5ba36">Localization::roadmapModuleSelfCheckPrint</a></div><div class="ttdeci">void roadmapModuleSelfCheckPrint(RoadM &amp;rm, Empty &amp;in2, Empty &amp;output)</div><div class="ttdoc">输出打印显示函数，打印本模块的关键参数及输出</div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.cpp:90</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a8ab6815b8355e8d8bf4db9113ad28e21"><div class="ttname"><a href="namespaceLocalization.html#a8ab6815b8355e8d8bf4db9113ad28e21">Localization::roadMapGet</a></div><div class="ttdeci">void roadMapGet(Path in1, Empty in2, Empty output)</div><div class="ttdoc">获取路网地图</div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.cpp:26</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a5283d3945ab1d240d7d6271e844b459b"><div class="ttname"><a href="namespaceLocalization.html#a5283d3945ab1d240d7d6271e844b459b">Localization::roadmapNeighborLaneSort</a></div><div class="ttdeci">void roadmapNeighborLaneSort(RoadM &amp;rm, Empty &amp;in2, Empty &amp;output)</div><div class="ttdoc">neighborLaneSort成员函数用来给相邻车道id排序,离本车道越近在数组中排的越前</div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.cpp:58</div></div>
+<div class="ttc" id="astructLocalization_1_1Empty_html"><div class="ttname"><a href="structLocalization_1_1Empty.html">Localization::Empty</a></div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.h:31</div></div>
+<div class="ttc" id="astructLocalization_1_1OSMFormatStru_html"><div class="ttname"><a href="structLocalization_1_1OSMFormatStru.html">Localization::OSMFormatStru</a></div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.h:28</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a94cdaf3a9c7b974278b5189966faf15e"><div class="ttname"><a href="namespaceLocalization.html#a94cdaf3a9c7b974278b5189966faf15e">Localization::roadmapMapAnalysis</a></div><div class="ttdeci">void roadmapMapAnalysis(RoadM &amp;rm, Path &amp;p, Empty &amp;output)</div><div class="ttdoc">路段解析，数据解析到Map类的roads</div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.cpp:42</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a64e54a9c3a5e8ba2cf413b90a1c3191d"><div class="ttname"><a href="namespaceLocalization.html#a64e54a9c3a5e8ba2cf413b90a1c3191d">Localization::osmformatFormatConversion</a></div><div class="ttdeci">void osmformatFormatConversion(OSMFormatStru &amp;of, Path &amp;p, Empty &amp;output)</div><div class="ttdoc">读取oxdr文件内容并转换成osm文件内容</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a24fce68c93b40920a18589aa02759aba"><div class="ttname"><a href="namespaceLocalization.html#a24fce68c93b40920a18589aa02759aba">Localization::osmformatSaveMapToOSM</a></div><div class="ttdeci">void osmformatSaveMapToOSM(OSMFormatStru &amp;of, Path &amp;p, Empty &amp;output)</div><div class="ttdoc">将转换得来的osm文件内容储存进osm文件</div></div>
+<div class="ttc" id="anamespaceLocalization_html_af0253b2e3140e9ee9ed82cc0b1c997aa"><div class="ttname"><a href="namespaceLocalization.html#af0253b2e3140e9ee9ed82cc0b1c997aa">Localization::roadmapModuleSelfCheck</a></div><div class="ttdeci">void roadmapModuleSelfCheck(RoadM &amp;rm, Empty &amp;in2, Empty &amp;output)</div><div class="ttdoc">自我验证函数，检查本模块计算输出是否满足数据格式、范围要求</div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.cpp:74</div></div>
+<div class="ttc" id="astructLocalization_1_1RoadM_html"><div class="ttname"><a href="structLocalization_1_1RoadM.html">Localization::RoadM</a></div><div class="ttdef"><b>Definition:</b> mapAnalysisAdd.h:22</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,0 +1,56 @@
+\hypertarget{structplanning_1_1DecisionData}{}\doxysection{planning\+::Decision\+Data结构体 参考}
+\label{structplanning_1_1DecisionData}\index{planning::DecisionData@{planning::DecisionData}}
+
+
+planning\+::Decision\+Data 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structplanning_1_1DecisionData__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a3a2989598d1055c1ad5f5856ef255773}\label{structplanning_1_1DecisionData_a3a2989598d1055c1ad5f5856ef255773}} 
+std\+::vector$<$ \mbox{\hyperlink{structplanning_1_1PlanningTrajectory}{Planning\+Trajectory}} $>$ {\bfseries final\+Path\+List}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_aa9a2fbb3c312b417dac0c0572c95eaf8}\label{structplanning_1_1DecisionData_aa9a2fbb3c312b417dac0c0572c95eaf8}} 
+\mbox{\hyperlink{structplanning_1_1ReferenceLine}{Reference\+Line}} {\bfseries reference\+Line}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a8ed85bcb73b54391b96343ac9ada3d14}\label{structplanning_1_1DecisionData_a8ed85bcb73b54391b96343ac9ada3d14}} 
+\mbox{\hyperlink{structplanning_1_1PlanningPoint}{Planning\+Point}} {\bfseries frenet\+Location\+Point}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_aa9928d24251d40842dbb716153cda2c0}\label{structplanning_1_1DecisionData_aa9928d24251d40842dbb716153cda2c0}} 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ {\bfseries speed\+List}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a5bb8a6625d0857b22e403324a4f2a6fd}\label{structplanning_1_1DecisionData_a5bb8a6625d0857b22e403324a4f2a6fd}} 
+std\+::vector$<$ \mbox{\hyperlink{structplanning_1_1PlanningTrajectory}{Planning\+Trajectory}} $>$ {\bfseries control\+Trajectory\+List}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_ad9ec0a041c0c8ab8eceed055e28e51fd}\label{structplanning_1_1DecisionData_ad9ec0a041c0c8ab8eceed055e28e51fd}} 
+std\+::vector$<$ int32\+\_\+t $>$ {\bfseries feasible\+Trajectory\+Index\+List}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a41ce78a60759c7a07c840f76b0c547a6}\label{structplanning_1_1DecisionData_a41ce78a60759c7a07c840f76b0c547a6}} 
+\mbox{\hyperlink{structplanning_1_1PlanningTrajectory}{Planning\+Trajectory}} {\bfseries optimal\+Global\+Trajectory}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a4ebfbbeaa674a6e3f29bf528c88aaa1e}\label{structplanning_1_1DecisionData_a4ebfbbeaa674a6e3f29bf528c88aaa1e}} 
+int32\+\_\+t {\bfseries optimal\+Trajectory\+Index}
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_ab489fc7a1aedbabfe93c5a136d533161}\label{structplanning_1_1DecisionData_ab489fc7a1aedbabfe93c5a136d533161}} 
+int32\+\_\+t {\bfseries current\+Id} = 0
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_aea8a1988fc0e6d82238b55d09718b539}\label{structplanning_1_1DecisionData_aea8a1988fc0e6d82238b55d09718b539}} 
+int32\+\_\+t {\bfseries current\+Lane\+Id} = 0
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_acef8cf0e237686da3725b0be909d15c8}\label{structplanning_1_1DecisionData_acef8cf0e237686da3725b0be909d15c8}} 
+int32\+\_\+t {\bfseries current\+Index} = 0
+\item 
+\mbox{\Hypertarget{structplanning_1_1DecisionData_a10b8ce9f96e6bc85ecd91720b9d41e36}\label{structplanning_1_1DecisionData_a10b8ce9f96e6bc85ecd91720b9d41e36}} 
+std\+::tuple$<$ int32\+\_\+t, int32\+\_\+t $>$ {\bfseries next\+Id} = std\+::tuple$<$int32\+\_\+t, int32\+\_\+t$>$(0, 0)
+\end{DoxyCompactItemize}
+
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+On\+Vehicle/src/\mbox{\hyperlink{localPlanning__m_8hpp}{local\+Planning\+\_\+m.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+On\+Vehicle/dependence/local\+Planning.\+hpp\end{DoxyCompactItemize}

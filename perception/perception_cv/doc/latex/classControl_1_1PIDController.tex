@@ -1,0 +1,124 @@
+\hypertarget{classControl_1_1PIDController}{}\doxysection{Control\+::P\+I\+D\+Controller类 参考}
+\label{classControl_1_1PIDController}\index{Control::PIDController@{Control::PIDController}}
+
+
+P\+I\+D横向运动控制器  
+
+
+
+
+{\ttfamily \#include $<$control\+P\+I\+D\+Controller.\+hpp$>$}
+
+
+
+类 Control\+::P\+I\+D\+Controller 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classControl_1_1PIDController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Control\+::P\+I\+D\+Controller 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classControl_1_1PIDController__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControl_1_1PIDController_ad9589dae4ee46cebfa0fcb0ffe08e121}{P\+I\+D\+Controller}} (std\+::string config\+File, double max\+Steer, double ratio\+Wheel\+To\+Steer=20, double dt=0.\+1)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classControl_1_1PIDController_ad9589dae4ee46cebfa0fcb0ffe08e121}{P\+I\+D\+Controller\+::\+P\+I\+D\+Controller}} object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classControl_1_1PIDController_a1fd5e1f993ec2bacc635f849b6611efa}{calc\+Steer}} (\mbox{\hyperlink{structControl_1_1State}{State}} s, const Traj \&traj, size\+\_\+t nearest\+ID)
+\begin{DoxyCompactList}\small\item\em 计算前轮转角 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classControl_1_1PIDController_a4700f9ea200be746bb6bf15a77ed9ffa}{calc\+Feed\+Forward\+Angle}} (\mbox{\hyperlink{structControl_1_1State}{State}} state, const Traj \&traj, int n\+ID, int r\+ID)
+\begin{DoxyCompactList}\small\item\em 根据纯追踪，计算前轮转角，为前馈。详细推导见doc \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{额外继承的成员函数}
+
+
+\doxysubsection{详细描述}
+P\+I\+D横向运动控制器 
+
+继承横向控制虚基类\+Lat\+Controller\+Base。通过前馈+反馈生成控制量，算法原理 详见设计文档。 \begin{DoxySeeAlso}{参见}
+\mbox{\hyperlink{controlPIDController_8cc}{control\+P\+I\+D\+Controller.\+cc}} 横向控制\+P\+I\+D类的具体实现方法 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{classControl_1_1PIDController_ad9589dae4ee46cebfa0fcb0ffe08e121}\label{classControl_1_1PIDController_ad9589dae4ee46cebfa0fcb0ffe08e121}} 
+\index{Control::PIDController@{Control::PIDController}!PIDController@{PIDController}}
+\index{PIDController@{PIDController}!Control::PIDController@{Control::PIDController}}
+\doxysubsubsection{\texorpdfstring{PIDController()}{PIDController()}}
+{\footnotesize\ttfamily Control\+::\+P\+I\+D\+Controller\+::\+P\+I\+D\+Controller (\begin{DoxyParamCaption}\item[{std\+::string}]{config\+File,  }\item[{double}]{max\+Steer,  }\item[{double}]{ratio\+Wheel\+To\+Steer = {\ttfamily 20},  }\item[{double}]{dt = {\ttfamily 0.1} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classControl_1_1PIDController_ad9589dae4ee46cebfa0fcb0ffe08e121}{P\+I\+D\+Controller\+::\+P\+I\+D\+Controller}} object. 
+
+
+\begin{DoxyParams}{参数}
+{\em config\+File} & config file name. 控制配置文件地址 \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classControl_1_1PIDController_a4700f9ea200be746bb6bf15a77ed9ffa}\label{classControl_1_1PIDController_a4700f9ea200be746bb6bf15a77ed9ffa}} 
+\index{Control::PIDController@{Control::PIDController}!calcFeedForwardAngle@{calcFeedForwardAngle}}
+\index{calcFeedForwardAngle@{calcFeedForwardAngle}!Control::PIDController@{Control::PIDController}}
+\doxysubsubsection{\texorpdfstring{calcFeedForwardAngle()}{calcFeedForwardAngle()}}
+{\footnotesize\ttfamily double Control\+::\+P\+I\+D\+Controller\+::calc\+Feed\+Forward\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structControl_1_1State}{State}}}]{state,  }\item[{const Traj \&}]{traj,  }\item[{int}]{n\+ID,  }\item[{int}]{p\+ID }\end{DoxyParamCaption})}
+
+
+
+根据纯追踪，计算前轮转角，为前馈。详细推导见doc 
+
+
+\begin{DoxyParams}{参数}
+{\em state} & 车辆状态 \\
+\hline
+{\em traj} & 待跟踪轨迹 \\
+\hline
+{\em n\+ID} & 当前点\+ID \\
+\hline
+{\em p\+ID} & 预瞄点\+ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+double delta\+: 前轮转角 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classControl_1_1PIDController_a1fd5e1f993ec2bacc635f849b6611efa}\label{classControl_1_1PIDController_a1fd5e1f993ec2bacc635f849b6611efa}} 
+\index{Control::PIDController@{Control::PIDController}!calcSteer@{calcSteer}}
+\index{calcSteer@{calcSteer}!Control::PIDController@{Control::PIDController}}
+\doxysubsubsection{\texorpdfstring{calcSteer()}{calcSteer()}}
+{\footnotesize\ttfamily double Control\+::\+P\+I\+D\+Controller\+::calc\+Steer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structControl_1_1State}{State}}}]{s,  }\item[{const Traj \&}]{traj,  }\item[{size\+\_\+t}]{nearest\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+计算前轮转角 
+
+
+\begin{DoxyParams}{参数}
+{\em s} & 车辆状态 \\
+\hline
+{\em traj} & 待跟踪轨迹 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+double steer\+: 前馈+反馈前轮转角 
+\end{DoxyReturn}
+
+
+实现了 \mbox{\hyperlink{classControl_1_1LatControllerBase}{Control\+::\+Lat\+Controller\+Base}}.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/\mbox{\hyperlink{controlPIDController_8hpp}{control\+P\+I\+D\+Controller.\+hpp}}\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/src/\mbox{\hyperlink{controlPIDController_8cc}{control\+P\+I\+D\+Controller.\+cc}}\end{DoxyCompactItemize}

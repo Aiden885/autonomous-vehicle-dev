@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller/trajectory_tracking/include/controlController.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d3bff1ab3a40b4e5d0775c67ace1b0da.html">controller</a></li><li class="navelem"><a class="el" href="dir_418e9c1172f76dfaa430bfbe7052f977.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_dfe1e16fc543d90878e7f4b394de844d.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">controlController.hpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>总控制器模块，横向控制基类，纵向控制类定义  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;<a class="el" href="controlData_8hpp_source.html">controlData.hpp</a>&quot;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+controlController.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="controlController_8hpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hpp">
+<area shape="rect" title="总控制器模块，横向控制基类，纵向控制类定义" alt="" coords="49,5,264,91"/>
+<area shape="rect" title=" " alt="" coords="5,213,68,240"/>
+<area shape="rect" title=" " alt="" coords="108,213,171,240"/>
+<area shape="rect" title=" " alt="" coords="206,213,286,240"/>
+<area shape="rect" href="controlData_8hpp.html" title="模块使用数据类型" alt="" coords="93,139,220,165"/>
+<area shape="rect" title=" " alt="" coords="295,139,365,165"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="controlController_8hpp__dep__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hppdep" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hppdep" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller_2trajectory__tracking_2include_2controlController_8hppdep">
+<area shape="rect" title="总控制器模块，横向控制基类，纵向控制类定义" alt="" coords="336,5,551,91"/>
+<area shape="rect" href="controlController_8cc.html" title="横纵向控制器基类实现" alt="" coords="244,272,459,357"/>
+<area shape="rect" href="controlLQRController_8hpp.html" title="LQR横向控制模块定义" alt="" coords="89,139,328,224"/>
+<area shape="rect" href="controlMPCController_8hpp.html" title=" " alt="" coords="691,139,934,224"/>
+<area shape="rect" href="controlPIDController_8hpp.html" title="PID控制器 和 PID横向控制器" alt="" coords="403,139,638,224"/>
+<area shape="rect" href="controlLQRController_8cc.html" title="LQR横向控制器" alt="" coords="5,272,220,357"/>
+<area shape="rect" href="controlMPCController_8cc.html" title=" " alt="" coords="721,272,936,357"/>
+<area shape="rect" href="controlPIDController_8cc.html" title="PID控制器，PID横向运动控制器" alt="" coords="483,272,697,357"/>
+</map>
+</div>
+</div>
+<p><a href="controlController_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControl_1_1LatControllerBase.html">Control::LatControllerBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">横向控制器基类。  <a href="classControl_1_1LatControllerBase.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControl_1_1LonController.html">Control::LonController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">longitude 纵向控制器  <a href="classControl_1_1LonController.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControl_1_1Controller.html">Control::Controller</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">横纵向控制器基类 控制模块为该主要模块。内部分为横向控制和纵向控制  <a href="classControl_1_1Controller.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac2141282fe1391c71c81c990e90beb8c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="controlController_8cc.html#ac2141282fe1391c71c81c990e90beb8c">Control::getNearestIndex</a> (<a class="el" href="structState.html">State</a> state, const Traj &amp;traj)</td></tr>
+<tr class="memdesc:ac2141282fe1391c71c81c990e90beb8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找最近点ID. 比较曲线中每个点和当前点的距离  <a href="controlController_8cc.html#ac2141282fe1391c71c81c990e90beb8c">更多...</a><br /></td></tr>
+<tr class="separator:ac2141282fe1391c71c81c990e90beb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>总控制器模块，横向控制基类，纵向控制类定义 </p>
+<dl class="section author"><dt>作者</dt><dd>yibin, yining (<a href="#" onclick="location.href='mai'+'lto:'+'852'+'48'+'806'+'2@'+'qq.'+'co'+'m'; return false;">85248<span style="display: none;">.nosp@m.</span>8062<span style="display: none;">.nosp@m.</span>@qq.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-08-18</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="ac2141282fe1391c71c81c990e90beb8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2141282fe1391c71c81c990e90beb8c">&#9670;&nbsp;</a></span>getNearestIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Control::getNearestIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structControl_1_1State.html">State</a>&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Traj &amp;&#160;</td>
+          <td class="paramname"><em>traj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查找最近点ID. 比较曲线中每个点和当前点的距离 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>车辆状态 </td></tr>
+    <tr><td class="paramname">traj</td><td>待跟踪轨迹 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>int nID: nearset ID 最近点ID </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

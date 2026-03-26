@@ -1,0 +1,79 @@
+\hypertarget{funcControlMainZMQ_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/func\+Control\+Main\+Z\+MQ.hpp 文件参考}
+\label{funcControlMainZMQ_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcControlMainZMQ.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcControlMainZMQ.hpp}}
+
+
+控制主函数  
+
+
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$future$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$zmq.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}qing\+Color.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include \char`\"{}control\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}control\+Data.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$imu.\+pb.\+h$>$}\newline
+{\ttfamily \#include $<$control.\+pb.\+h$>$}\newline
+{\ttfamily \#include $<$Planning\+Msg.\+pb.\+h$>$}\newline
+func\+Control\+Main\+Z\+M\+Q.\+hpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcControlMainZMQ_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{funcControlMainZMQ_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQParamStruct01}{Control\+::\+Main\+Z\+M\+Q\+Param\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQInputStruct01}{Control\+::\+Main\+Z\+M\+Q\+Input\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQOutputStruct01}{Control\+::\+Main\+Z\+M\+Q\+Output\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQParamStruct02}{Control\+::\+Main\+Z\+M\+Q\+Param\+Struct02}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQInputStruct02}{Control\+::\+Main\+Z\+M\+Q\+Input\+Struct02}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1MainZMQOutputStruct02}{Control\+::\+Main\+Z\+M\+Q\+Output\+Struct02}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceControl_ac51be1bb70dd8c6a08a617ea4ec08fa7}{Control\+::parse\+State\+Data}} (Main\+Z\+M\+Q\+Param\+Struct01 \&param01, Main\+Z\+M\+Q\+Input\+Struct01 \&input01, Main\+Z\+M\+Q\+Output\+Struct01 \&output01)
+\begin{DoxyCompactList}\small\item\em 反序列化字符串，提取【状态】信息 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a384e0257c3ea296ec6e4d39a9dee1bed}{Control\+::parse\+Traj\+Data}} (Main\+Z\+M\+Q\+Param\+Struct02 \&param02, Main\+Z\+M\+Q\+Input\+Struct02 \&input02, Main\+Z\+M\+Q\+Output\+Struct02 \&output02)
+\begin{DoxyCompactList}\small\item\em 反序列化字符串，提取【轨迹】信息 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+控制主函数 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Chaoyi Chen (\href{mailto:chency2023@tsinghua.edu.cn}{\texttt{ chency2023@tsinghua.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/12-\/26 
+\end{DoxyDate}

@@ -1,0 +1,82 @@
+\hypertarget{classRoadMap}{}\doxysection{Road\+Map类 参考}
+\label{classRoadMap}\index{RoadMap@{RoadMap}}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structRoadMap_1_1mapAnalysisInput}{map\+Analysis\+Input}}
+\item 
+struct \mbox{\hyperlink{structRoadMap_1_1mapAnalysisOutput}{map\+Analysis\+Output}}
+\item 
+struct \mbox{\hyperlink{structRoadMap_1_1mapAnalysisParam}{map\+Analysis\+Param}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRoadMap_ae3e80aa7de9e444768e13ebaacd60211}\label{classRoadMap_ae3e80aa7de9e444768e13ebaacd60211}} 
+{\bfseries Road\+Map} (std\+::string path)
+\item 
+\mbox{\Hypertarget{classRoadMap_a8f821048eb6bcc3c71b2cdac9849276c}\label{classRoadMap_a8f821048eb6bcc3c71b2cdac9849276c}} 
+void {\bfseries map\+Analysis} (std\+::string path)
+\item 
+\mbox{\Hypertarget{classRoadMap_a4b0611b23de7df94c6e05bd8a3033d54}\label{classRoadMap_a4b0611b23de7df94c6e05bd8a3033d54}} 
+void {\bfseries neighbor\+Lane\+Sort} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_a7f196d2f7a82338c97e65f67717906b3}\label{classRoadMap_a7f196d2f7a82338c97e65f67717906b3}} 
+void {\bfseries module\+Self\+Check} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_ac3b93a4087468099e8cc777e702aa41a}\label{classRoadMap_ac3b93a4087468099e8cc777e702aa41a}} 
+void {\bfseries module\+Self\+Check\+Print} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_a73af438862bfc0976c4e535f6b856cd6}\label{classRoadMap_a73af438862bfc0976c4e535f6b856cd6}} 
+bool {\bfseries Get\+Road\+By\+Road\+ID} (int road\+ID, \mbox{\hyperlink{classRoad}{Road}} \&road)
+\item 
+\mbox{\Hypertarget{classRoadMap_af6a4d457a2c1a55afb62a2386eb1467c}\label{classRoadMap_af6a4d457a2c1a55afb62a2386eb1467c}} 
+bool {\bfseries Get\+Lane\+By\+Lane\+ID} (int lane\+ID, \mbox{\hyperlink{classRoad}{Road}} road, \mbox{\hyperlink{classLane}{Lane}} \&lane)
+\item 
+\mbox{\Hypertarget{classRoadMap_a684beba45fb71a33e60c0fa4f1a1a8f1}\label{classRoadMap_a684beba45fb71a33e60c0fa4f1a1a8f1}} 
+bool {\bfseries Get\+Start\+Point\+By\+Road\+ID} (int road\+ID, double \&GaussX, double \&GaussY)
+\item 
+\mbox{\Hypertarget{classRoadMap_a648728dc1fe0b2b26b1f1609d9d691de}\label{classRoadMap_a648728dc1fe0b2b26b1f1609d9d691de}} 
+bool {\bfseries Get\+End\+Point\+By\+Road\+ID} (int road\+ID, double \&GaussX, double \&GaussY)
+\item 
+\mbox{\Hypertarget{classRoadMap_ae3e80aa7de9e444768e13ebaacd60211}\label{classRoadMap_ae3e80aa7de9e444768e13ebaacd60211}} 
+{\bfseries Road\+Map} (std\+::string path)
+\item 
+\mbox{\Hypertarget{classRoadMap_a98e6ca052007c9566cb9c4f85f12923f}\label{classRoadMap_a98e6ca052007c9566cb9c4f85f12923f}} 
+void {\bfseries map\+Analysis} (const \mbox{\hyperlink{structRoadMap_1_1mapAnalysisParam}{map\+Analysis\+Param}} \&param, const \mbox{\hyperlink{structRoadMap_1_1mapAnalysisInput}{map\+Analysis\+Input}} \&input, const \mbox{\hyperlink{structRoadMap_1_1mapAnalysisOutput}{map\+Analysis\+Output}} \&output)
+\item 
+\mbox{\Hypertarget{classRoadMap_a4b0611b23de7df94c6e05bd8a3033d54}\label{classRoadMap_a4b0611b23de7df94c6e05bd8a3033d54}} 
+void {\bfseries neighbor\+Lane\+Sort} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_a7f196d2f7a82338c97e65f67717906b3}\label{classRoadMap_a7f196d2f7a82338c97e65f67717906b3}} 
+void {\bfseries module\+Self\+Check} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_ac3b93a4087468099e8cc777e702aa41a}\label{classRoadMap_ac3b93a4087468099e8cc777e702aa41a}} 
+void {\bfseries module\+Self\+Check\+Print} ()
+\item 
+\mbox{\Hypertarget{classRoadMap_a73af438862bfc0976c4e535f6b856cd6}\label{classRoadMap_a73af438862bfc0976c4e535f6b856cd6}} 
+bool {\bfseries Get\+Road\+By\+Road\+ID} (int road\+ID, \mbox{\hyperlink{classRoad}{Road}} \&road)
+\item 
+\mbox{\Hypertarget{classRoadMap_af6a4d457a2c1a55afb62a2386eb1467c}\label{classRoadMap_af6a4d457a2c1a55afb62a2386eb1467c}} 
+bool {\bfseries Get\+Lane\+By\+Lane\+ID} (int lane\+ID, \mbox{\hyperlink{classRoad}{Road}} road, \mbox{\hyperlink{classLane}{Lane}} \&lane)
+\item 
+\mbox{\Hypertarget{classRoadMap_a684beba45fb71a33e60c0fa4f1a1a8f1}\label{classRoadMap_a684beba45fb71a33e60c0fa4f1a1a8f1}} 
+bool {\bfseries Get\+Start\+Point\+By\+Road\+ID} (int road\+ID, double \&GaussX, double \&GaussY)
+\item 
+\mbox{\Hypertarget{classRoadMap_a648728dc1fe0b2b26b1f1609d9d691de}\label{classRoadMap_a648728dc1fe0b2b26b1f1609d9d691de}} 
+bool {\bfseries Get\+End\+Point\+By\+Road\+ID} (int road\+ID, double \&GaussX, double \&GaussY)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRoadMap_a69d24845b0ac5b8066d3b8bc327c5b9b}\label{classRoadMap_a69d24845b0ac5b8066d3b8bc327c5b9b}} 
+std\+::vector$<$ \mbox{\hyperlink{classRoad}{Road}} $>$ {\bfseries roads}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/localization\+\_\+\+Map\+Analysis.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/localization\+\_\+\+Map\+Analysis\+\_\+m.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/localization\+\_\+\+Map\+Analysis.\+cpp\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/localization\+\_\+\+Map\+Analysis\+\_\+m.\+cpp\end{DoxyCompactItemize}

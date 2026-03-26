@@ -1,0 +1,14 @@
+syntax = "proto3";
+package pc;
+
+message Imu
+{
+    double longitude = 1;
+    double latitude = 2;
+    double gaussX = 3;
+    double gaussY = 4;
+    int32 gpsValid = 5;
+    double time = 6;
+    double velocity = 7;
+    double yaw = 8;
+}

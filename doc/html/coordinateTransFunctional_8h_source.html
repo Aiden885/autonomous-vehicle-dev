@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/CoordinateTrans/src/coordinateTransFunctional.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_41b9353734a2255ed4ca7b27f3d67851.html">CoordinateTrans</a></li><li class="navelem"><a class="el" href="dir_48bceccf776388dda2ca2b84b0920a73.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">coordinateTransFunctional.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="coordinateTransFunctional_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;ztgeographycoordinatetransform.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceLocalization.html">Localization</a>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structLocalization_1_1XY2BLParam.html">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XY2BLParam.html">XY2BLParam</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structLocalization_1_1XY2BLInput.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XY2BLInput.html">XY2BLInput</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">double</span> xInput;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">double</span> yInput;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structLocalization_1_1XY2BLOutput.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XY2BLOutput.html">XY2BLOutput</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">double</span> latOutput;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">double</span> lonOutput;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structLocalization_1_1BL2XYParam.html">   31</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BL2XYParam.html">BL2XYParam</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structLocalization_1_1BL2XYInput.html">   35</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BL2XYInput.html">BL2XYInput</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> latInput;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> lonInput;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structLocalization_1_1BL2XYOutput.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BL2XYOutput.html">BL2XYOutput</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> xOutput;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> yOutput;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structLocalization_1_1XYZ2BLHParam.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XYZ2BLHParam.html">XYZ2BLHParam</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structLocalization_1_1XYZ2BLHInput.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XYZ2BLHInput.html">XYZ2BLHInput</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">double</span> xInput;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">double</span> yInput;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">double</span> zInput;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structLocalization_1_1XYZ2BLHOutput.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1XYZ2BLHOutput.html">XYZ2BLHOutput</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">double</span> latOutput;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">double</span> lonOutput;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">double</span> highOutput;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2XYZParam.html">   63</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2XYZParam.html">BLH2XYZParam</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2XYZInput.html">   67</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2XYZInput.html">BLH2XYZInput</a></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">double</span> latInput;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">double</span> lonInput;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">double</span> highInput;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2XYZOutput.html">   73</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2XYZOutput.html">BLH2XYZOutput</a></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">double</span> xOutput;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">double</span> yOutput;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> zOutput;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structLocalization_1_1V2BLHParam.html">   80</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1V2BLHParam.html">V2BLHParam</a></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structLocalization_1_1V2BLHInput.html">   84</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1V2BLHInput.html">V2BLHInput</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">double</span> x0Input, y0Input, z0Input, x_vInput, y_vInput, z_vInput, thetaInput;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structLocalization_1_1V2BLHOutput.html">   88</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1V2BLHOutput.html">V2BLHOutput</a></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">double</span> x_wOutput, y_wOutput, z_wOutput;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2VParam.html">   93</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2VParam.html">BLH2VParam</a></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classLocalization_1_1ZtGeographyCoordinateTransform.html">ZtGeographyCoordinateTransform</a> Zt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2VInput.html">   97</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2VInput.html">BLH2VInput</a></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">double</span> x0Input, y0Input, z0Input, x_wInput, y_wInput, z_wInput, thetaInput;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structLocalization_1_1BLH2VOutput.html">  101</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLocalization_1_1BLH2VOutput.html">BLH2VOutput</a></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">double</span> x_vOutput, y_vOutput, z_vOutput;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a69dc92dbbaf51c2c3523b03f7eaa7023">ztGeographyCoordinateTransformXY2BL</a>(<a class="code" href="structLocalization_1_1XY2BLParam.html">XY2BLParam</a> &amp;param01, <a class="code" href="structLocalization_1_1XY2BLInput.html">XY2BLInput</a> &amp;input01, <a class="code" href="structLocalization_1_1XY2BLOutput.html">XY2BLOutput</a> &amp;output01);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#ad5975f5bd61274b331ce45c8d639e202">ztGeographyCoordinateTransformBL2XY</a>(<a class="code" href="structLocalization_1_1BL2XYParam.html">BL2XYParam</a> &amp;param02, <a class="code" href="structLocalization_1_1BL2XYInput.html">BL2XYInput</a> &amp;input02, <a class="code" href="structLocalization_1_1BL2XYOutput.html">BL2XYOutput</a> &amp;output02);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a6e8e1dda99be2b24fb9aaa98d5ce8a50">ztGeographyCoordinateTransformXYZ2BLH</a>(<a class="code" href="structLocalization_1_1XYZ2BLHParam.html">XYZ2BLHParam</a> &amp;param03, <a class="code" href="structLocalization_1_1XYZ2BLHInput.html">XYZ2BLHInput</a> &amp;input03, <a class="code" href="structLocalization_1_1XYZ2BLHOutput.html">XYZ2BLHOutput</a> &amp;output03);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a4c1f32073a7cec2d421b1565e71abf2e">ztGeographyCoordinateTransformBLH2XYZ</a>(<a class="code" href="structLocalization_1_1BLH2XYZParam.html">BLH2XYZParam</a> &amp;param04, <a class="code" href="structLocalization_1_1BLH2XYZInput.html">BLH2XYZInput</a> &amp;input04, <a class="code" href="structLocalization_1_1BLH2XYZOutput.html">BLH2XYZOutput</a> &amp;output04);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#a84d6906687f02abe5c5291ab79110242">ztGeographyCoordinateTransformV2BLH</a>(<a class="code" href="structLocalization_1_1V2BLHParam.html">V2BLHParam</a> &amp;param05, <a class="code" href="structLocalization_1_1V2BLHInput.html">V2BLHInput</a> &amp;input05, <a class="code" href="structLocalization_1_1V2BLHOutput.html">V2BLHOutput</a> &amp;output05);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLocalization.html#ade779ee2059ce71f7ca28e16287e4763">ztGeographyCoordinateTransformBLH2V</a>(<a class="code" href="structLocalization_1_1BLH2VParam.html">BLH2VParam</a> &amp;param06, <a class="code" href="structLocalization_1_1BLH2VInput.html">BLH2VInput</a> &amp;input06, <a class="code" href="structLocalization_1_1BLH2VOutput.html">BLH2VOutput</a> &amp;output06);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructLocalization_1_1BLH2XYZParam_html"><div class="ttname"><a href="structLocalization_1_1BLH2XYZParam.html">Localization::BLH2XYZParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:63</div></div>
+<div class="ttc" id="astructLocalization_1_1BLH2XYZInput_html"><div class="ttname"><a href="structLocalization_1_1BLH2XYZInput.html">Localization::BLH2XYZInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:67</div></div>
+<div class="ttc" id="astructLocalization_1_1BLH2VInput_html"><div class="ttname"><a href="structLocalization_1_1BLH2VInput.html">Localization::BLH2VInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:97</div></div>
+<div class="ttc" id="anamespaceLocalization_html"><div class="ttname"><a href="namespaceLocalization.html">Localization</a></div><div class="ttdoc">Localization namespace</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:12</div></div>
+<div class="ttc" id="astructLocalization_1_1XYZ2BLHParam_html"><div class="ttname"><a href="structLocalization_1_1XYZ2BLHParam.html">Localization::XYZ2BLHParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:46</div></div>
+<div class="ttc" id="astructLocalization_1_1BLH2VParam_html"><div class="ttname"><a href="structLocalization_1_1BLH2VParam.html">Localization::BLH2VParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:93</div></div>
+<div class="ttc" id="astructLocalization_1_1XY2BLInput_html"><div class="ttname"><a href="structLocalization_1_1XY2BLInput.html">Localization::XY2BLInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:20</div></div>
+<div class="ttc" id="astructLocalization_1_1V2BLHOutput_html"><div class="ttname"><a href="structLocalization_1_1V2BLHOutput.html">Localization::V2BLHOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:88</div></div>
+<div class="ttc" id="astructLocalization_1_1BLH2XYZOutput_html"><div class="ttname"><a href="structLocalization_1_1BLH2XYZOutput.html">Localization::BLH2XYZOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:73</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a4c1f32073a7cec2d421b1565e71abf2e"><div class="ttname"><a href="namespaceLocalization.html#a4c1f32073a7cec2d421b1565e71abf2e">Localization::ztGeographyCoordinateTransformBLH2XYZ</a></div><div class="ttdeci">void ztGeographyCoordinateTransformBLH2XYZ(BLH2XYZParam &amp;param04, BLH2XYZInput &amp;input04, BLH2XYZOutput &amp;output04)</div><div class="ttdoc">LLA转ENU（三维）</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:90</div></div>
+<div class="ttc" id="astructLocalization_1_1BLH2VOutput_html"><div class="ttname"><a href="structLocalization_1_1BLH2VOutput.html">Localization::BLH2VOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:101</div></div>
+<div class="ttc" id="astructLocalization_1_1XY2BLParam_html"><div class="ttname"><a href="structLocalization_1_1XY2BLParam.html">Localization::XY2BLParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:16</div></div>
+<div class="ttc" id="astructLocalization_1_1BL2XYOutput_html"><div class="ttname"><a href="structLocalization_1_1BL2XYOutput.html">Localization::BL2XYOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:40</div></div>
+<div class="ttc" id="astructLocalization_1_1BL2XYParam_html"><div class="ttname"><a href="structLocalization_1_1BL2XYParam.html">Localization::BL2XYParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:31</div></div>
+<div class="ttc" id="astructLocalization_1_1V2BLHParam_html"><div class="ttname"><a href="structLocalization_1_1V2BLHParam.html">Localization::V2BLHParam</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:80</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a84d6906687f02abe5c5291ab79110242"><div class="ttname"><a href="namespaceLocalization.html#a84d6906687f02abe5c5291ab79110242">Localization::ztGeographyCoordinateTransformV2BLH</a></div><div class="ttdeci">void ztGeographyCoordinateTransformV2BLH(V2BLHParam &amp;param05, V2BLHInput &amp;input05, V2BLHOutput &amp;output05)</div><div class="ttdoc">全局坐标ENU</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:113</div></div>
+<div class="ttc" id="anamespaceLocalization_html_ad5975f5bd61274b331ce45c8d639e202"><div class="ttname"><a href="namespaceLocalization.html#ad5975f5bd61274b331ce45c8d639e202">Localization::ztGeographyCoordinateTransformBL2XY</a></div><div class="ttdeci">void ztGeographyCoordinateTransformBL2XY(BL2XYParam &amp;param02, BL2XYInput &amp;input02, BL2XYOutput &amp;output02)</div><div class="ttdoc">LLA转ENU（二维）</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:46</div></div>
+<div class="ttc" id="astructLocalization_1_1V2BLHInput_html"><div class="ttname"><a href="structLocalization_1_1V2BLHInput.html">Localization::V2BLHInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:84</div></div>
+<div class="ttc" id="anamespaceLocalization_html_ade779ee2059ce71f7ca28e16287e4763"><div class="ttname"><a href="namespaceLocalization.html#ade779ee2059ce71f7ca28e16287e4763">Localization::ztGeographyCoordinateTransformBLH2V</a></div><div class="ttdeci">void ztGeographyCoordinateTransformBLH2V(BLH2VParam &amp;param06, BLH2VInput &amp;input06, BLH2VOutput &amp;output06)</div><div class="ttdoc">全局坐标系（ENU）转车辆坐标系</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:140</div></div>
+<div class="ttc" id="astructLocalization_1_1XY2BLOutput_html"><div class="ttname"><a href="structLocalization_1_1XY2BLOutput.html">Localization::XY2BLOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:25</div></div>
+<div class="ttc" id="astructLocalization_1_1XYZ2BLHOutput_html"><div class="ttname"><a href="structLocalization_1_1XYZ2BLHOutput.html">Localization::XYZ2BLHOutput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:56</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a69dc92dbbaf51c2c3523b03f7eaa7023"><div class="ttname"><a href="namespaceLocalization.html#a69dc92dbbaf51c2c3523b03f7eaa7023">Localization::ztGeographyCoordinateTransformXY2BL</a></div><div class="ttdeci">void ztGeographyCoordinateTransformXY2BL(XY2BLParam &amp;param01, XY2BLInput &amp;input01, XY2BLOutput &amp;output01)</div><div class="ttdoc">ENU转LLA(二维)</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:25</div></div>
+<div class="ttc" id="astructLocalization_1_1XYZ2BLHInput_html"><div class="ttname"><a href="structLocalization_1_1XYZ2BLHInput.html">Localization::XYZ2BLHInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:50</div></div>
+<div class="ttc" id="astructLocalization_1_1BL2XYInput_html"><div class="ttname"><a href="structLocalization_1_1BL2XYInput.html">Localization::BL2XYInput</a></div><div class="ttdef"><b>Definition:</b> coordinateTransFunctional.h:35</div></div>
+<div class="ttc" id="anamespaceLocalization_html_a6e8e1dda99be2b24fb9aaa98d5ce8a50"><div class="ttname"><a href="namespaceLocalization.html#a6e8e1dda99be2b24fb9aaa98d5ce8a50">Localization::ztGeographyCoordinateTransformXYZ2BLH</a></div><div class="ttdeci">void ztGeographyCoordinateTransformXYZ2BLH(XYZ2BLHParam &amp;param03, XYZ2BLHInput &amp;input03, XYZ2BLHOutput &amp;output03)</div><div class="ttdoc">ENU转LLA(三维)</div><div class="ttdef"><b>Definition:</b> CoordinateTransFunctional.cpp:67</div></div>
+<div class="ttc" id="aclassLocalization_1_1ZtGeographyCoordinateTransform_html"><div class="ttname"><a href="classLocalization_1_1ZtGeographyCoordinateTransform.html">Localization::ZtGeographyCoordinateTransform</a></div><div class="ttdef"><b>Definition:</b> ztgeographycoordinatetransform.h:82</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,0 +1,46 @@
+\hypertarget{funcControlController_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/src/func\+Control\+Controller.cpp 文件参考}
+\label{funcControlController_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/src/funcControlController.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/src/funcControlController.cpp}}
+
+
+控制器函数  
+
+
+{\ttfamily \#include \char`\"{}func\+Control\+Controller.\+hpp\char`\"{}}\newline
+func\+Control\+Controller.\+cpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcControlController_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceControl_ad86151b81deff428b7957735ada6ba1e}{Control\+::\+Calc\+Control\+C\+MD}} (Control\+C\+M\+D\+Param\+Struct01 \&param03, Control\+C\+M\+D\+Input\+Struct01 \&input03, Control\+C\+M\+D\+Output\+Struct01 \&output03)
+\begin{DoxyCompactList}\small\item\em 由车辆状态生成控制指令 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a662b63225889b5224f1500fb86aedfd4}{Control\+::\+Calc\+Speed}} (Calc\+Speed\+Param\+Struct \&param, Calc\+Speed\+Input\+Struct \&input, Calc\+Speed\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 由车辆状态，车辆原始轨迹计算期望速度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_aecc725191410a2adbd5a83fcc781815d}{Control\+::func\+Transfer\+Gauss2\+Right\+Hand}} (transfer\+Gauss2\+Right\+Hand\+Param\+Struct \&param, transfer\+Gauss2\+Right\+Hand\+Input\+Struct \&input, transfer\+Gauss2\+Right\+Hand\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 转化高斯坐标系到右手坐标系 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a036fe7f76aacba1ff811c960d3007ab4}{Control\+::func\+Get\+Nearest\+Index}} (get\+Nearest\+Index\+Param\+Struct \&param, get\+Nearest\+Index\+Input\+Struct \&input, get\+Nearest\+Index\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 查找最近点\+ID \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+控制器函数 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Chaoyi Chen (\href{mailto:chency2023@tsinghua.edu.com}{\texttt{ chency2023@tsinghua.\+edu.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2024-\/01-\/04 
+\end{DoxyDate}

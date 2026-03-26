@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/include/controlLQRController.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_f8d9a1cccf2878e05ce0a8a09b388292.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">controlLQRController.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="controlLQRController_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _CONTROL_LQR_CONTROLLER_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _CONTROL_LQR_CONTROLLER_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// #include &quot;controlCubicSpline.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;Eigen/Dense&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"># include &quot;<a class="code" href="controlController_8hpp.html">controlController.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> Mat = Eigen::MatrixXd;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> Vec = Eigen::VectorXd;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> Matrix5d = Eigen::Matrix&lt;double, 5, 5&gt;;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> Matrix52d = Eigen::Matrix&lt;double, 5, 2&gt;;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> Matrix25d = Eigen::Matrix&lt;double, 2, 5&gt;;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> RowVector5d = Eigen::Matrix&lt;double, 1, 5&gt;;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> Vector5d = Eigen::Matrix&lt;double, 5, 1&gt;;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceControl.html">Control</a>{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classControl_1_1LQR.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classControl_1_1LQR.html">LQR</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classControl_1_1LQR.html">LQR</a>(){};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classControl_1_1LQR.html">LQR</a>(){};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    Mat <a class="code" href="classControl_1_1LQR.html#a801ae168e6b8947c756cc5c72ee53c51">solveDARE</a>(Mat A, Mat B, Mat Q, Mat R);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    Mat <a class="code" href="classControl_1_1LQR.html#afd715f66655860f5222817f6b5ac6692">dLQR</a>(Mat A, Mat B, Mat Q, Mat R);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classControl_1_1LQRController.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classControl_1_1LQRController.html">LQRController</a>:<span class="keyword">public</span> <a class="code" href="classControl_1_1LatControllerBase.html">LatControllerBase</a>{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classControl_1_1LQRController.html">LQRController</a>(<span class="keywordtype">double</span> wheelbase, <span class="keywordtype">double</span> maxSteer, <span class="keywordtype">double</span> ratioWheelToSteer, <span class="keywordtype">double</span> dt=0.1): <a class="code" href="classControl_1_1LatControllerBase.html">LatControllerBase</a>(maxSteer, ratioWheelToSteer,dt){</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="comment">// Params: </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">//  L: wheelbase.轴距</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            this-&gt;L = wheelbase;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ~<a class="code" href="classControl_1_1LQRController.html">LQRController</a>(){};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classControl_1_1LQRController.html#a769963456653cc7a6ecacb44cf1db4ef">calcSteer</a>(<a class="code" href="structControl_1_1State.html">State</a> s, <span class="keyword">const</span> Traj&amp; traj, <span class="keywordtype">size_t</span> nearestID);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">double</span> L;       <span class="comment">// vehicle wheelbase</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassControl_1_1LQRController_html_a769963456653cc7a6ecacb44cf1db4ef"><div class="ttname"><a href="classControl_1_1LQRController.html#a769963456653cc7a6ecacb44cf1db4ef">Control::LQRController::calcSteer</a></div><div class="ttdeci">double calcSteer(State s, const Traj &amp;traj, size_t nearestID)</div><div class="ttdoc">求解横向控制量</div><div class="ttdef"><b>Definition:</b> controlLQRController.cc:64</div></div>
+<div class="ttc" id="anamespaceControl_html"><div class="ttname"><a href="namespaceControl.html">Control</a></div><div class="ttdoc">Control namespace</div><div class="ttdef"><b>Definition:</b> controlController.cc:26</div></div>
+<div class="ttc" id="aclassControl_1_1LQRController_html"><div class="ttname"><a href="classControl_1_1LQRController.html">Control::LQRController</a></div><div class="ttdoc">LQR横向控制类</div><div class="ttdef"><b>Definition:</b> controlLQRController.hpp:47</div></div>
+<div class="ttc" id="astructControl_1_1State_html"><div class="ttname"><a href="structControl_1_1State.html">Control::State</a></div><div class="ttdoc">输入车辆位置信息</div><div class="ttdef"><b>Definition:</b> controlData.hpp:29</div></div>
+<div class="ttc" id="acontrolController_8hpp_html"><div class="ttname"><a href="controlController_8hpp.html">controlController.hpp</a></div><div class="ttdoc">总控制器模块，横向控制基类，纵向控制类定义</div></div>
+<div class="ttc" id="aclassControl_1_1LatControllerBase_html"><div class="ttname"><a href="classControl_1_1LatControllerBase.html">Control::LatControllerBase</a></div><div class="ttdoc">横向控制器基类。</div><div class="ttdef"><b>Definition:</b> controlController.hpp:39</div></div>
+<div class="ttc" id="aclassControl_1_1LQR_html"><div class="ttname"><a href="classControl_1_1LQR.html">Control::LQR</a></div><div class="ttdef"><b>Definition:</b> controlLQRController.hpp:33</div></div>
+<div class="ttc" id="aclassControl_1_1LQR_html_a801ae168e6b8947c756cc5c72ee53c51"><div class="ttname"><a href="classControl_1_1LQR.html#a801ae168e6b8947c756cc5c72ee53c51">Control::LQR::solveDARE</a></div><div class="ttdeci">Mat solveDARE(Mat A, Mat B, Mat Q, Mat R)</div><div class="ttdoc">solve a discrete time_Algebraic Riccati equation (DARE) 用迭代法求解离散时间黎卡提方程。</div><div class="ttdef"><b>Definition:</b> controlLQRController.cc:23</div></div>
+<div class="ttc" id="aclassControl_1_1LQR_html_afd715f66655860f5222817f6b5ac6692"><div class="ttname"><a href="classControl_1_1LQR.html#afd715f66655860f5222817f6b5ac6692">Control::LQR::dLQR</a></div><div class="ttdeci">Mat dLQR(Mat A, Mat B, Mat Q, Mat R)</div><div class="ttdoc">Solve the discrete time lqr controller. 求解离散时间LQR控制率 K. ref Bertsekas, p.151</div><div class="ttdef"><b>Definition:</b> controlLQRController.cc:44</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

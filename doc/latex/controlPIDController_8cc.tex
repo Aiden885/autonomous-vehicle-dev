@@ -1,0 +1,49 @@
+\hypertarget{controlPIDController_8cc}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/src/control\+P\+I\+D\+Controller.cc 文件参考}
+\label{controlPIDController_8cc}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/src/controlPIDController.cc@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/src/controlPIDController.cc}}
+
+
+P\+I\+D控制器，\+P\+I\+D横向运动控制器  
+
+
+{\ttfamily \#include \char`\"{}control\+P\+I\+D\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}control\+Cubic\+Spline.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}func\+Pid\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}qing\+Color.\+h\char`\"{}}\newline
+control\+P\+I\+D\+Controller.\+cc 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlPIDController_8cc__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControl_1_1PID}{P\+ID}} \mbox{\hyperlink{namespaceControl_aa9d0aaddc032bf7e678f34a8e4665c1f}{Control\+::load\+P\+I\+D\+Yaml\+Config}} (Y\+A\+M\+L\+::\+Node config, std\+::string name, double dt)
+\begin{DoxyCompactList}\small\item\em 读取 yaml 文件中pid\+\_\+conf相关字段内容，并返回控制器 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceControl_a52f08942d789ea776cb4ae809152d04f}{Control\+::compare\+Traj\+Distance}} (const \mbox{\hyperlink{structControl_1_1TrajPoint}{Traj\+Point}} \&p1, const \mbox{\hyperlink{structControl_1_1TrajPoint}{Traj\+Point}} \&p2)
+\begin{DoxyCompactList}\small\item\em 寻找预瞄点，根据路程大小，比较两个路点的先后。用于后面的get\+Preview\+I\+D中 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+P\+I\+D控制器，\+P\+I\+D横向运动控制器 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/16
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

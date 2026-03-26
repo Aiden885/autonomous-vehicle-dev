@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_cv/src/InversePerspectiveMapping.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_85916f0b90164c3695644f7c783d5aff.html">perception</a></li><li class="navelem"><a class="el" href="dir_6aa6ce8a0d05f0b1ea93966c7b832c5e.html">perception_cv</a></li><li class="navelem"><a class="el" href="dir_6a57deada94fe827707e826381c7fd3f.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">InversePerspectiveMapping.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implements inverse perspective mapping functionality for lane detection  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;InversePerspectiveMapping.hpp&quot;</code><br />
+<code>#include &quot;CameraInfoOpt.h&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+InversePerspectiveMapping.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="InversePerspectiveMapping_8cpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp">
+<area shape="rect" title="Implements inverse perspective mapping functionality for lane detection" alt="" coords="247,5,481,91"/>
+<area shape="rect" href="InversePerspectiveMapping_8hpp_source.html" title=" " alt="" coords="57,139,287,165"/>
+<area shape="rect" title=" " alt="" coords="5,213,48,240"/>
+<area shape="rect" href="CameraInfoOpt_8h_source.html" title=" " alt="" coords="259,213,392,240"/>
+<area shape="rect" title=" " alt="" coords="363,139,443,165"/>
+<area shape="rect" title=" " alt="" coords="467,139,535,165"/>
+<area shape="rect" title=" " alt="" coords="560,139,635,165"/>
+<area shape="rect" title=" " alt="" coords="80,213,235,240"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceperception"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html">perception</a></td></tr>
+<tr class="memdesc:namespaceperception"><td class="mdescLeft">&#160;</td><td class="mdescRight">perception namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a39851373f0e206f237cbaa5493b65b06"><td class="memItemLeft" align="right" valign="top"><a id="a39851373f0e206f237cbaa5493b65b06"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VP_PORTION</b>&#160;&#160;&#160;0.05</td></tr>
+<tr class="separator:a39851373f0e206f237cbaa5493b65b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a0201d22c98df9ee719df63c431aac0f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#a0201d22c98df9ee719df63c431aac0f4">perception::imGetIPM</a> (const cv::Mat &amp;inImage, cv::Mat &amp;outImage, IPMInfo *ipmInfo, const CameraInfo *cameraInfo, std::list&lt; cv::Point &gt; *outPoints)</td></tr>
+<tr class="memdesc:a0201d22c98df9ee719df63c431aac0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordinate system description  <a href="namespaceperception.html#a0201d22c98df9ee719df63c431aac0f4">更多...</a><br /></td></tr>
+<tr class="separator:a0201d22c98df9ee719df63c431aac0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af417385eefb7589cd44a3f84d7f8f29a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#af417385eefb7589cd44a3f84d7f8f29a">perception::imTransformImage2Ground</a> (const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:af417385eefb7589cd44a3f84d7f8f29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms points from image frame to ground plane  <a href="namespaceperception.html#af417385eefb7589cd44a3f84d7f8f29a">更多...</a><br /></td></tr>
+<tr class="separator:af417385eefb7589cd44a3f84d7f8f29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff4a7fc4c2a91bb102badfdf774d2c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#a5ff4a7fc4c2a91bb102badfdf774d2c0">perception::imTransformGround2Image</a> (const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:a5ff4a7fc4c2a91bb102badfdf774d2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms points from ground plane to image frame  <a href="namespaceperception.html#a5ff4a7fc4c2a91bb102badfdf774d2c0">更多...</a><br /></td></tr>
+<tr class="separator:a5ff4a7fc4c2a91bb102badfdf774d2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c6e79147f18028580a00b6ea3f1659a"><td class="memItemLeft" align="right" valign="top">cv::Point2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#a3c6e79147f18028580a00b6ea3f1659a">perception::imGetVanishingPoint</a> (const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:a3c6e79147f18028580a00b6ea3f1659a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes vanishing point in image plane  <a href="namespaceperception.html#a3c6e79147f18028580a00b6ea3f1659a">更多...</a><br /></td></tr>
+<tr class="separator:a3c6e79147f18028580a00b6ea3f1659a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3c3a78843788a9c088ef3dfff52c3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#aa3c3a78843788a9c088ef3dfff52c3e8">perception::imPointImIPM2World</a> (cv::Point2f &amp;point, const IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:aa3c3a78843788a9c088ef3dfff52c3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts point from IPM pixel coordinates to world coordinates  <a href="namespaceperception.html#aa3c3a78843788a9c088ef3dfff52c3e8">更多...</a><br /></td></tr>
+<tr class="separator:aa3c3a78843788a9c088ef3dfff52c3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae755a581d6e21c6aef6abb1403ee789a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#ae755a581d6e21c6aef6abb1403ee789a">perception::imTransformImIPM2Ground</a> (const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:ae755a581d6e21c6aef6abb1403ee789a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts points from IPM pixel coordinates to world coordinates  <a href="namespaceperception.html#ae755a581d6e21c6aef6abb1403ee789a">更多...</a><br /></td></tr>
+<tr class="separator:ae755a581d6e21c6aef6abb1403ee789a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b756bb9fb5f67cc0a7a9eb77d4adf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#af0b756bb9fb5f67cc0a7a9eb77d4adf2">perception::imTransformImIPM2Im</a> (const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:af0b756bb9fb5f67cc0a7a9eb77d4adf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts points from IPM pixel coordinates to image coordinates  <a href="namespaceperception.html#af0b756bb9fb5f67cc0a7a9eb77d4adf2">更多...</a><br /></td></tr>
+<tr class="separator:af0b756bb9fb5f67cc0a7a9eb77d4adf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd59b06182f88499c0c804d633ce496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#afbd59b06182f88499c0c804d633ce496">perception::imInitCameraInfo</a> (char *const fileName, CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:afbd59b06182f88499c0c804d633ce496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes camera info structure from config file  <a href="namespaceperception.html#afbd59b06182f88499c0c804d633ce496">更多...</a><br /></td></tr>
+<tr class="separator:afbd59b06182f88499c0c804d633ce496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4a43cf154d81dba4778cfdd12565cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#a1d4a43cf154d81dba4778cfdd12565cf">perception::imScaleCameraInfo</a> (CameraInfo *cameraInfo, cv::Size size)</td></tr>
+<tr class="memdesc:a1d4a43cf154d81dba4778cfdd12565cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales camera parameters according to input image size  <a href="namespaceperception.html#a1d4a43cf154d81dba4778cfdd12565cf">更多...</a><br /></td></tr>
+<tr class="separator:a1d4a43cf154d81dba4778cfdd12565cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255a0536b91b7a54f695efc67acf9800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceperception.html#a255a0536b91b7a54f695efc67acf9800">perception::imGetIPMExtent</a> (const CameraInfo *cameraInfo, IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:a255a0536b91b7a54f695efc67acf9800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates extent of image on ground plane  <a href="namespaceperception.html#a255a0536b91b7a54f695efc67acf9800">更多...</a><br /></td></tr>
+<tr class="separator:a255a0536b91b7a54f695efc67acf9800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Implements inverse perspective mapping functionality for lane detection </p>
+<dl class="section author"><dt>作者</dt><dd>Mohamed Aly <a href="#" onclick="location.href='mai'+'lto:'+'mal'+'aa'+'@ca'+'lt'+'ech'+'.e'+'du'; return false;">malaa<span style="display: none;">.nosp@m.</span>@cal<span style="display: none;">.nosp@m.</span>tech.<span style="display: none;">.nosp@m.</span>edu</a> </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>11/29/2006 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

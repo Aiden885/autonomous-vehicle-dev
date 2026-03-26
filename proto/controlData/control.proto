@@ -1,0 +1,16 @@
+syntax = "proto3";
+package controlData;
+
+message ControlCMD
+{
+    float targetSteeringAngle=1;
+    float targetSpeed=2;
+    double obstacleDIS=3;
+}
+
+message ChassisInfo
+{
+    float speed=1;
+    float steeringAngle=2;
+    int32 mode=3;
+}

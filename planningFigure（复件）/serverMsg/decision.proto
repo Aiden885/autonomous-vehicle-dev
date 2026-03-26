@@ -1,0 +1,17 @@
+
+syntax = "proto3";
+
+package infopack;
+
+message DispatchProto
+{
+    int32 vehicleid=1;
+    double desx=2;
+    double desy=3;
+    repeated int32 road=4;
+    repeated int32 stopx=5;
+    repeated int32 stopy=6;
+    int32 ispassenger=7;
+	int32 curstatus=8;
+}
+

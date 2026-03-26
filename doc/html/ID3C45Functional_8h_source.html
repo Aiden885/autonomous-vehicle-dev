@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Logic/DecisionTree/ID3C4.5/src/ID3C45Functional.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_431317b2a5ab8e1409cdf5bbbce19c0e.html">Logic</a></li><li class="navelem"><a class="el" href="dir_e878be0495e87879accd46242023d689.html">DecisionTree</a></li><li class="navelem"><a class="el" href="dir_c6cd4a80aac443734600ea86a6ac2b72.html">ID3C4.5</a></li><li class="navelem"><a class="el" href="dir_1c40e8f66e503df1b6951b5f91184454.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ID3C45Functional.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ID3C45Functional_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;LogicDecisionTreeHead.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceLogic.html">Logic</a>{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structLogic_1_1loadDataParam.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadDataParam.html">loadDataParam</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadDataInput.html">loadDataInput</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    vector&lt;vector&lt;int&gt;&gt; &amp;trainDataInput;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structLogic_1_1loadDataOutput.html">   27</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadDataOutput.html">loadDataOutput</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    vector&lt;int&gt; &amp;trainLabelOutput;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structLogic_1_1labelCountParam.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1labelCountParam.html">labelCountParam</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1labelCountInput.html">labelCountInput</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    vector&lt;int&gt; datasetInput;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">struct </span>labelCountOutput</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    map&lt;int,int&gt; LabelCountOutput;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateEntropyParam.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateEntropyParam.html">calculateEntropyParam</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateEntropyInput.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateEntropyInput.html">calculateEntropyInput</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    vector&lt;int&gt; dataset;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateEntropyOutput.html">   53</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateEntropyOutput.html">calculateEntropyOutput</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">double</span> entropyOutput;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateGainOrRateParam.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateGainOrRateParam.html">calculateGainOrRateParam</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateGainOrRateInput.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateGainOrRateInput.html">calculateGainOrRateInput</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    vector&lt;int&gt; datasetInput;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> featureInput;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span> rateFlagInput;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structLogic_1_1calculateGainOrRateOutput.html">   68</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1calculateGainOrRateOutput.html">calculateGainOrRateOutput</a></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">double</span> CalculateGainOrRateOutput;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structLogic_1_1classifyDataParam.html">   73</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1classifyDataParam.html">classifyDataParam</a></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structLogic_1_1classifyDataInput.html">   77</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1classifyDataInput.html">classifyDataInput</a></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    vector&lt;int&gt; testDataInput;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a> *rootInput;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structLogic_1_1classifyDataOutput.html">   82</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1classifyDataOutput.html">classifyDataOutput</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> ClassifyDataOutput;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structLogic_1_1createTreeParam.html">   87</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1createTreeParam.html">createTreeParam</a></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structLogic_1_1createTreeInput.html">   91</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1createTreeInput.html">createTreeInput</a></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    vector&lt;int&gt; datasetInput;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    vector&lt;int&gt; featuresInput;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span> rateFlagInput;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;};</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="structLogic_1_1createTreeOutput.html">   97</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1createTreeOutput.html">createTreeOutput</a></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a>* <a class="code" href="structLogic_1_1createTreeOutput.html">createTreeOutput</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxResultFeatureParam.html">  102</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxResultFeatureParam.html">getMaxResultFeatureParam</a></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxResultFeatureInput.html">  106</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxResultFeatureInput.html">getMaxResultFeatureInput</a></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    map&lt;int,double&gt; resultsInput;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxResultFeatureOutput.html">  110</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxResultFeatureOutput.html">getMaxResultFeatureOutput</a></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structLogic_1_1getMaxResultFeatureOutput.html">getMaxResultFeatureOutput</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxTimesLabelParam.html">  115</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxTimesLabelParam.html">getMaxTimesLabelParam</a></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxTimesLabelInput.html">  119</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxTimesLabelInput.html">getMaxTimesLabelInput</a></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    map&lt;int,int&gt; <a class="code" href="structLogic_1_1labelCountInput.html">labelCountInput</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;};</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="structLogic_1_1getMaxTimesLabelOutput.html">  123</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1getMaxTimesLabelOutput.html">getMaxTimesLabelOutput</a></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structLogic_1_1getMaxTimesLabelOutput.html">getMaxTimesLabelOutput</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;};</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structLogic_1_1printTreeParam.html">  128</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1printTreeParam.html">printTreeParam</a></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;};</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="structLogic_1_1printTreeInput.html">  132</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1printTreeInput.html">printTreeInput</a></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;{</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a>* NodeInput;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">int</span> depthInput;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;};</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="structLogic_1_1printTreeOutput.html">  137</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1printTreeOutput.html">printTreeOutput</a></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;};</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structLogic_1_1splitDatasetParam.html">  142</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1splitDatasetParam.html">splitDatasetParam</a></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;};</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structLogic_1_1splitDatasetInput.html">  146</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1splitDatasetInput.html">splitDatasetInput</a></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    vector&lt;int&gt; datasetInput;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">int</span> featureInput;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">int</span> valueInput;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;};</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structLogic_1_1splitDatasetOutput.html">  152</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1splitDatasetOutput.html">splitDatasetOutput</a></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    vector&lt;int&gt; SplitDatasetOutput;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;};</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="structLogic_1_1saveTreeParam.html">  157</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1saveTreeParam.html">saveTreeParam</a></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;};</div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="structLogic_1_1saveTreeInput.html">  161</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1saveTreeInput.html">saveTreeInput</a></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a>* NodeInput;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* filenameInput;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">int</span> depthInput;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;};</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="structLogic_1_1saveTreeOutput.html">  167</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1saveTreeOutput.html">saveTreeOutput</a></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;};</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="structLogic_1_1loadTreeParam.html">  172</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadTreeParam.html">loadTreeParam</a></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;{</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadTreeInput.html">loadTreeInput</a></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* filenameInput;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">int</span> depthInput;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;};</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="structLogic_1_1loadTreeOutput.html">  181</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1loadTreeOutput.html">loadTreeOutput</a></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a>* LoadTreeOutput;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;};</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="structLogic_1_1testTreeParam.html">  186</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1testTreeParam.html">testTreeParam</a></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1testTreeInput.html">testTreeInput</a></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;{</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    vector&lt;vector&lt;int&gt;&gt; testDataInput;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    vector&lt;int&gt; testLabelInput;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;};</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword">struct </span>testTreeOutput</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">double</span> testTreeOutput;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;};</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="structLogic_1_1findPruningNodeParam.html">  199</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1findPruningNodeParam.html">findPruningNodeParam</a></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="structLogic_1_1findPruningNodeInput.html">  203</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1findPruningNodeInput.html">findPruningNodeInput</a></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a> *NodeInput;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;};</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structLogic_1_1findPruningNodeOutput.html">  207</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1findPruningNodeOutput.html">findPruningNodeOutput</a></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="structLogic_1_1TreeNode.html">TreeNode</a>* <a class="code" href="structLogic_1_1findPruningNodeOutput.html">findPruningNodeOutput</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;};</div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="structLogic_1_1treePruningParam.html">  211</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1treePruningParam.html">treePruningParam</a></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;{</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="classLogic_1_1DecisionTree.html">DecisionTree</a> &amp;Dt;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;};</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="structLogic_1_1treePruningInput.html">  215</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1treePruningInput.html">treePruningInput</a></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    vector&lt;vector&lt;int&gt;&gt; verifyDataInput;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    vector&lt;int&gt; verifyLabelInput;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;};</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="structLogic_1_1treePruningOutput.html">  220</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogic_1_1treePruningOutput.html">treePruningOutput</a></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;};</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a0d67d6e8b8544652abf21681c8a17ff3">calcDecisionTreeEntropy</a>(<a class="code" href="structLogic_1_1calculateEntropyParam.html">calculateEntropyParam</a> &amp;param01, <a class="code" href="structLogic_1_1calculateEntropyInput.html">calculateEntropyInput</a> &amp;input01, <a class="code" href="structLogic_1_1calculateEntropyOutput.html">calculateEntropyOutput</a> &amp;output01);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a34eda8967a822da04ebdb21c1c68b540">calcDecisionTreeGainOrRate</a>(<a class="code" href="structLogic_1_1calculateGainOrRateParam.html">calculateGainOrRateParam</a> &amp;param02, <a class="code" href="structLogic_1_1calculateGainOrRateInput.html">calculateGainOrRateInput</a> &amp;input02, <a class="code" href="structLogic_1_1calculateGainOrRateOutput.html">calculateGainOrRateOutput</a> &amp;output02);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#aded13713677c38905cef428ca98e318a">classifyDecisionTreeData</a>(<a class="code" href="structLogic_1_1classifyDataParam.html">classifyDataParam</a> &amp;param03, <a class="code" href="structLogic_1_1classifyDataInput.html">classifyDataInput</a> &amp;input03, <a class="code" href="structLogic_1_1classifyDataOutput.html">classifyDataOutput</a> &amp;output03);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#ab4195944463d73012ad261fc5f76f80d">createDecisionTree</a>(<a class="code" href="structLogic_1_1createTreeParam.html">createTreeParam</a> &amp;param04, <a class="code" href="structLogic_1_1createTreeInput.html">createTreeInput</a> &amp;input04, <a class="code" href="structLogic_1_1createTreeOutput.html">createTreeOutput</a> &amp;output04);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#adba067ab76bd599858876ee1a88d2e22">getDecisionTreeGetMaxResultFeature</a>(<a class="code" href="structLogic_1_1getMaxResultFeatureParam.html">getMaxResultFeatureParam</a> &amp;param05, <a class="code" href="structLogic_1_1getMaxResultFeatureInput.html">getMaxResultFeatureInput</a> &amp;input05, <a class="code" href="structLogic_1_1getMaxResultFeatureOutput.html">getMaxResultFeatureOutput</a> &amp;output05);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a8ba252f3ff2161ebf29d007207332690">getDecisionTreeGetMaxTimesLabel</a>(<a class="code" href="structLogic_1_1getMaxTimesLabelParam.html">getMaxTimesLabelParam</a> &amp;param06, <a class="code" href="structLogic_1_1getMaxTimesLabelInput.html">getMaxTimesLabelInput</a> &amp;input06, <a class="code" href="structLogic_1_1getMaxTimesLabelOutput.html">getMaxTimesLabelOutput</a> &amp;output06);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#aa4880927f1bd03ba48141067673d32fd">getDecisionTreeLabelNum</a>(<a class="code" href="structLogic_1_1labelCountParam.html">labelCountParam</a> &amp;param07, <a class="code" href="structLogic_1_1labelCountInput.html">labelCountInput</a> &amp;input07, <a class="code" href="structLogic_1_1labelCountOutput.html">labelCountOutput</a> &amp;output07);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a26cfc39e6b0f7123c969f18ca0478725">loadDecisionTreeData</a>(<a class="code" href="structLogic_1_1loadDataParam.html">loadDataParam</a> &amp;param08, <a class="code" href="structLogic_1_1loadDataInput.html">loadDataInput</a> &amp;input08, <a class="code" href="structLogic_1_1loadDataOutput.html">loadDataOutput</a> &amp;output08);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a672d03e8f7e15f7c7262aeeb109e2dcf">printDecisionTree</a>(<a class="code" href="structLogic_1_1printTreeParam.html">printTreeParam</a> &amp;param09, <a class="code" href="structLogic_1_1printTreeInput.html">printTreeInput</a> &amp;input09, <a class="code" href="structLogic_1_1printTreeOutput.html">printTreeOutput</a> &amp;output09);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#aaa193502550015837687d536ed248b3a">splitDecisionTreeDataset</a>(<a class="code" href="structLogic_1_1splitDatasetParam.html">splitDatasetParam</a> &amp;param10, <a class="code" href="structLogic_1_1splitDatasetInput.html">splitDatasetInput</a> &amp;input10, <a class="code" href="structLogic_1_1splitDatasetOutput.html">splitDatasetOutput</a> &amp;output10);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a34abdf724c8a0562dd59c268811c003e">saveDecisionTree</a>(<a class="code" href="structLogic_1_1saveTreeParam.html">saveTreeParam</a> &amp;param11, <a class="code" href="structLogic_1_1saveTreeInput.html">saveTreeInput</a> &amp;input11, <a class="code" href="structLogic_1_1saveTreeOutput.html">saveTreeOutput</a> &amp;output11);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a956211ee432e6b0fabf42981ef02eedc">loadDecisionTree</a>(<a class="code" href="structLogic_1_1loadTreeParam.html">loadTreeParam</a> &amp;param12, <a class="code" href="structLogic_1_1loadTreeInput.html">loadTreeInput</a> &amp;input12, <a class="code" href="structLogic_1_1loadTreeOutput.html">loadTreeOutput</a> &amp;output12);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#aa780da0e09fb229260044e620c480425">testDecisionTree</a>(<a class="code" href="structLogic_1_1testTreeParam.html">testTreeParam</a> &amp;param, <a class="code" href="structLogic_1_1testTreeInput.html">testTreeInput</a> &amp;input, <a class="code" href="structLogic_1_1testTreeOutput.html">testTreeOutput</a> &amp;output);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a0bd1048a9236f663ce493759738bf570">findDecisionTreePruningNode</a>(<a class="code" href="structLogic_1_1findPruningNodeParam.html">findPruningNodeParam</a> &amp;param, <a class="code" href="structLogic_1_1findPruningNodeInput.html">findPruningNodeInput</a> &amp;input, <a class="code" href="structLogic_1_1findPruningNodeOutput.html">findPruningNodeOutput</a> &amp;output);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceLogic.html#a73f4a3ca467fb2b1019cad5b90881268">pruningDecisionTree</a>(<a class="code" href="structLogic_1_1treePruningParam.html">treePruningParam</a> &amp;param, <a class="code" href="structLogic_1_1treePruningInput.html">treePruningInput</a> &amp;input, <a class="code" href="structLogic_1_1treePruningOutput.html">treePruningOutput</a> &amp;output);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceLogic_html_a0bd1048a9236f663ce493759738bf570"><div class="ttname"><a href="namespaceLogic.html#a0bd1048a9236f663ce493759738bf570">Logic::findDecisionTreePruningNode</a></div><div class="ttdeci">void findDecisionTreePruningNode(findPruningNodeParam &amp;param, findPruningNodeInput &amp;input, findPruningNodeOutput &amp;output)</div><div class="ttdoc">寻找决策树剪枝节点</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:237</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxTimesLabelInput_html"><div class="ttname"><a href="structLogic_1_1getMaxTimesLabelInput.html">Logic::getMaxTimesLabelInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:119</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxResultFeatureInput_html"><div class="ttname"><a href="structLogic_1_1getMaxResultFeatureInput.html">Logic::getMaxResultFeatureInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:106</div></div>
+<div class="ttc" id="anamespaceLogic_html_a34eda8967a822da04ebdb21c1c68b540"><div class="ttname"><a href="namespaceLogic.html#a34eda8967a822da04ebdb21c1c68b540">Logic::calcDecisionTreeGainOrRate</a></div><div class="ttdeci">void calcDecisionTreeGainOrRate(calculateGainOrRateParam &amp;param, calculateGainOrRateInput &amp;input, calculateGainOrRateOutput &amp;output)</div><div class="ttdoc">计算决策树信息增益</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:75</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxTimesLabelOutput_html"><div class="ttname"><a href="structLogic_1_1getMaxTimesLabelOutput.html">Logic::getMaxTimesLabelOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:123</div></div>
+<div class="ttc" id="astructLogic_1_1treePruningInput_html"><div class="ttname"><a href="structLogic_1_1treePruningInput.html">Logic::treePruningInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:215</div></div>
+<div class="ttc" id="astructLogic_1_1treePruningOutput_html"><div class="ttname"><a href="structLogic_1_1treePruningOutput.html">Logic::treePruningOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:220</div></div>
+<div class="ttc" id="astructLogic_1_1splitDatasetOutput_html"><div class="ttname"><a href="structLogic_1_1splitDatasetOutput.html">Logic::splitDatasetOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:152</div></div>
+<div class="ttc" id="astructLogic_1_1loadDataParam_html"><div class="ttname"><a href="structLogic_1_1loadDataParam.html">Logic::loadDataParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:19</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountInput_html"><div class="ttname"><a href="structLogic_1_1labelCountInput.html">Logic::labelCountInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:56</div></div>
+<div class="ttc" id="anamespaceLogic_html"><div class="ttname"><a href="namespaceLogic.html">Logic</a></div><div class="ttdoc">Logic namespace</div><div class="ttdef"><b>Definition:</b> cartFunctional.cpp:12</div></div>
+<div class="ttc" id="anamespaceLogic_html_a672d03e8f7e15f7c7262aeeb109e2dcf"><div class="ttname"><a href="namespaceLogic.html#a672d03e8f7e15f7c7262aeeb109e2dcf">Logic::printDecisionTree</a></div><div class="ttdeci">void printDecisionTree(printTreeParam &amp;param, printTreeInput &amp;input, printTreeOutput &amp;output)</div><div class="ttdoc">打印决策树</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:171</div></div>
+<div class="ttc" id="astructLogic_1_1treePruningParam_html"><div class="ttname"><a href="structLogic_1_1treePruningParam.html">Logic::treePruningParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:211</div></div>
+<div class="ttc" id="anamespaceLogic_html_aa780da0e09fb229260044e620c480425"><div class="ttname"><a href="namespaceLogic.html#aa780da0e09fb229260044e620c480425">Logic::testDecisionTree</a></div><div class="ttdeci">void testDecisionTree(testTreeParam &amp;param, testTreeInput &amp;input, testTreeOutput &amp;output)</div><div class="ttdoc">测试决策树</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:221</div></div>
+<div class="ttc" id="anamespaceLogic_html_aded13713677c38905cef428ca98e318a"><div class="ttname"><a href="namespaceLogic.html#aded13713677c38905cef428ca98e318a">Logic::classifyDecisionTreeData</a></div><div class="ttdeci">void classifyDecisionTreeData(classifyDataParam &amp;param, classifyDataInput &amp;input, classifyDataOutput &amp;output)</div><div class="ttdoc">决策树分类</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:155</div></div>
+<div class="ttc" id="anamespaceLogic_html_a34abdf724c8a0562dd59c268811c003e"><div class="ttname"><a href="namespaceLogic.html#a34abdf724c8a0562dd59c268811c003e">Logic::saveDecisionTree</a></div><div class="ttdeci">void saveDecisionTree(saveTreeParam &amp;param, saveTreeInput &amp;input, saveTreeOutput &amp;output)</div><div class="ttdoc">保存决策树</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:187</div></div>
+<div class="ttc" id="astructLogic_1_1loadTreeInput_html"><div class="ttname"><a href="structLogic_1_1loadTreeInput.html">Logic::loadTreeInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:115</div></div>
+<div class="ttc" id="astructLogic_1_1printTreeInput_html"><div class="ttname"><a href="structLogic_1_1printTreeInput.html">Logic::printTreeInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:132</div></div>
+<div class="ttc" id="astructLogic_1_1findPruningNodeOutput_html"><div class="ttname"><a href="structLogic_1_1findPruningNodeOutput.html">Logic::findPruningNodeOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:207</div></div>
+<div class="ttc" id="anamespaceLogic_html_a26cfc39e6b0f7123c969f18ca0478725"><div class="ttname"><a href="namespaceLogic.html#a26cfc39e6b0f7123c969f18ca0478725">Logic::loadDecisionTreeData</a></div><div class="ttdeci">void loadDecisionTreeData(loadDataParam &amp;param, loadDataInput &amp;input, loadDataOutput &amp;output)</div><div class="ttdoc">导入决策树数据</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:27</div></div>
+<div class="ttc" id="astructLogic_1_1createTreeInput_html"><div class="ttname"><a href="structLogic_1_1createTreeInput.html">Logic::createTreeInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:91</div></div>
+<div class="ttc" id="astructLogic_1_1calculateGainOrRateInput_html"><div class="ttname"><a href="structLogic_1_1calculateGainOrRateInput.html">Logic::calculateGainOrRateInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:62</div></div>
+<div class="ttc" id="astructLogic_1_1calculateEntropyParam_html"><div class="ttname"><a href="structLogic_1_1calculateEntropyParam.html">Logic::calculateEntropyParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:45</div></div>
+<div class="ttc" id="astructLogic_1_1calculateEntropyOutput_html"><div class="ttname"><a href="structLogic_1_1calculateEntropyOutput.html">Logic::calculateEntropyOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:53</div></div>
+<div class="ttc" id="anamespaceLogic_html_a956211ee432e6b0fabf42981ef02eedc"><div class="ttname"><a href="namespaceLogic.html#a956211ee432e6b0fabf42981ef02eedc">Logic::loadDecisionTree</a></div><div class="ttdeci">void loadDecisionTree(loadTreeParam &amp;param, loadTreeInput &amp;input, loadTreeOutput &amp;output)</div><div class="ttdoc">决策树读取文件，加载决策树</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:203</div></div>
+<div class="ttc" id="astructLogic_1_1testTreeOutput_html"><div class="ttname"><a href="structLogic_1_1testTreeOutput.html">Logic::testTreeOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:128</div></div>
+<div class="ttc" id="astructLogic_1_1calculateGainOrRateParam_html"><div class="ttname"><a href="structLogic_1_1calculateGainOrRateParam.html">Logic::calculateGainOrRateParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:58</div></div>
+<div class="ttc" id="astructLogic_1_1loadTreeOutput_html"><div class="ttname"><a href="structLogic_1_1loadTreeOutput.html">Logic::loadTreeOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:181</div></div>
+<div class="ttc" id="astructLogic_1_1findPruningNodeParam_html"><div class="ttname"><a href="structLogic_1_1findPruningNodeParam.html">Logic::findPruningNodeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:199</div></div>
+<div class="ttc" id="astructLogic_1_1createTreeParam_html"><div class="ttname"><a href="structLogic_1_1createTreeParam.html">Logic::createTreeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:87</div></div>
+<div class="ttc" id="astructLogic_1_1splitDatasetInput_html"><div class="ttname"><a href="structLogic_1_1splitDatasetInput.html">Logic::splitDatasetInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:146</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxResultFeatureOutput_html"><div class="ttname"><a href="structLogic_1_1getMaxResultFeatureOutput.html">Logic::getMaxResultFeatureOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:110</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountParam_html"><div class="ttname"><a href="structLogic_1_1labelCountParam.html">Logic::labelCountParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:32</div></div>
+<div class="ttc" id="anamespaceLogic_html_aa4880927f1bd03ba48141067673d32fd"><div class="ttname"><a href="namespaceLogic.html#aa4880927f1bd03ba48141067673d32fd">Logic::getDecisionTreeLabelNum</a></div><div class="ttdeci">void getDecisionTreeLabelNum(labelCountParam &amp;param, labelCountInput &amp;input, labelCountOutput &amp;output)</div><div class="ttdoc">决策树类别数量</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:43</div></div>
+<div class="ttc" id="astructLogic_1_1saveTreeInput_html"><div class="ttname"><a href="structLogic_1_1saveTreeInput.html">Logic::saveTreeInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:161</div></div>
+<div class="ttc" id="astructLogic_1_1labelCountOutput_html"><div class="ttname"><a href="structLogic_1_1labelCountOutput.html">Logic::labelCountOutput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:58</div></div>
+<div class="ttc" id="astructLogic_1_1saveTreeOutput_html"><div class="ttname"><a href="structLogic_1_1saveTreeOutput.html">Logic::saveTreeOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:167</div></div>
+<div class="ttc" id="astructLogic_1_1findPruningNodeInput_html"><div class="ttname"><a href="structLogic_1_1findPruningNodeInput.html">Logic::findPruningNodeInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:203</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxTimesLabelParam_html"><div class="ttname"><a href="structLogic_1_1getMaxTimesLabelParam.html">Logic::getMaxTimesLabelParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:115</div></div>
+<div class="ttc" id="astructLogic_1_1getMaxResultFeatureParam_html"><div class="ttname"><a href="structLogic_1_1getMaxResultFeatureParam.html">Logic::getMaxResultFeatureParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:102</div></div>
+<div class="ttc" id="astructLogic_1_1TreeNode_html"><div class="ttname"><a href="structLogic_1_1TreeNode.html">Logic::TreeNode</a></div><div class="ttdef"><b>Definition:</b> LogicDecisionTreeCARTHead.hpp:18</div></div>
+<div class="ttc" id="astructLogic_1_1classifyDataOutput_html"><div class="ttname"><a href="structLogic_1_1classifyDataOutput.html">Logic::classifyDataOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:82</div></div>
+<div class="ttc" id="astructLogic_1_1classifyDataInput_html"><div class="ttname"><a href="structLogic_1_1classifyDataInput.html">Logic::classifyDataInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:77</div></div>
+<div class="ttc" id="anamespaceLogic_html_a0d67d6e8b8544652abf21681c8a17ff3"><div class="ttname"><a href="namespaceLogic.html#a0d67d6e8b8544652abf21681c8a17ff3">Logic::calcDecisionTreeEntropy</a></div><div class="ttdeci">void calcDecisionTreeEntropy(calculateEntropyParam &amp;param, calculateEntropyInput &amp;input, calculateEntropyOutput &amp;output)</div><div class="ttdoc">计算决策树信息熵</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:59</div></div>
+<div class="ttc" id="astructLogic_1_1createTreeOutput_html"><div class="ttname"><a href="structLogic_1_1createTreeOutput.html">Logic::createTreeOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:97</div></div>
+<div class="ttc" id="astructLogic_1_1calculateEntropyInput_html"><div class="ttname"><a href="structLogic_1_1calculateEntropyInput.html">Logic::calculateEntropyInput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:49</div></div>
+<div class="ttc" id="astructLogic_1_1splitDatasetParam_html"><div class="ttname"><a href="structLogic_1_1splitDatasetParam.html">Logic::splitDatasetParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:142</div></div>
+<div class="ttc" id="astructLogic_1_1loadDataOutput_html"><div class="ttname"><a href="structLogic_1_1loadDataOutput.html">Logic::loadDataOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:27</div></div>
+<div class="ttc" id="astructLogic_1_1calculateGainOrRateOutput_html"><div class="ttname"><a href="structLogic_1_1calculateGainOrRateOutput.html">Logic::calculateGainOrRateOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:68</div></div>
+<div class="ttc" id="astructLogic_1_1printTreeParam_html"><div class="ttname"><a href="structLogic_1_1printTreeParam.html">Logic::printTreeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:128</div></div>
+<div class="ttc" id="astructLogic_1_1testTreeInput_html"><div class="ttname"><a href="structLogic_1_1testTreeInput.html">Logic::testTreeInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:122</div></div>
+<div class="ttc" id="astructLogic_1_1classifyDataParam_html"><div class="ttname"><a href="structLogic_1_1classifyDataParam.html">Logic::classifyDataParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:73</div></div>
+<div class="ttc" id="astructLogic_1_1saveTreeParam_html"><div class="ttname"><a href="structLogic_1_1saveTreeParam.html">Logic::saveTreeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:157</div></div>
+<div class="ttc" id="anamespaceLogic_html_ab4195944463d73012ad261fc5f76f80d"><div class="ttname"><a href="namespaceLogic.html#ab4195944463d73012ad261fc5f76f80d">Logic::createDecisionTree</a></div><div class="ttdeci">void createDecisionTree(createTreeParam &amp;param, createTreeInput &amp;input, createTreeOutput &amp;output)</div><div class="ttdoc">创建决策树</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:139</div></div>
+<div class="ttc" id="anamespaceLogic_html_a73f4a3ca467fb2b1019cad5b90881268"><div class="ttname"><a href="namespaceLogic.html#a73f4a3ca467fb2b1019cad5b90881268">Logic::pruningDecisionTree</a></div><div class="ttdeci">void pruningDecisionTree(treePruningParam &amp;param, treePruningInput &amp;input, treePruningOutput &amp;output)</div><div class="ttdoc">决策树剪枝</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:253</div></div>
+<div class="ttc" id="anamespaceLogic_html_adba067ab76bd599858876ee1a88d2e22"><div class="ttname"><a href="namespaceLogic.html#adba067ab76bd599858876ee1a88d2e22">Logic::getDecisionTreeGetMaxResultFeature</a></div><div class="ttdeci">void getDecisionTreeGetMaxResultFeature(getMaxResultFeatureParam &amp;param, getMaxResultFeatureInput &amp;input, getMaxResultFeatureOutput &amp;output)</div><div class="ttdoc">决策树获取特征集信息增益中最大的分类信息（信息增益、信息增益率）和所对应的特征</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:91</div></div>
+<div class="ttc" id="astructLogic_1_1loadDataInput_html"><div class="ttname"><a href="structLogic_1_1loadDataInput.html">Logic::loadDataInput</a></div><div class="ttdef"><b>Definition:</b> cartFunctional.h:48</div></div>
+<div class="ttc" id="astructLogic_1_1testTreeParam_html"><div class="ttname"><a href="structLogic_1_1testTreeParam.html">Logic::testTreeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:186</div></div>
+<div class="ttc" id="anamespaceLogic_html_aaa193502550015837687d536ed248b3a"><div class="ttname"><a href="namespaceLogic.html#aaa193502550015837687d536ed248b3a">Logic::splitDecisionTreeDataset</a></div><div class="ttdeci">void splitDecisionTreeDataset(splitDatasetParam &amp;param, splitDatasetInput &amp;input, splitDatasetOutput &amp;output)</div><div class="ttdoc">划分决策树子集</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:123</div></div>
+<div class="ttc" id="aclassLogic_1_1DecisionTree_html"><div class="ttname"><a href="classLogic_1_1DecisionTree.html">Logic::DecisionTree</a></div><div class="ttdef"><b>Definition:</b> LogicDecisionTreeCARTHead.hpp:28</div></div>
+<div class="ttc" id="astructLogic_1_1printTreeOutput_html"><div class="ttname"><a href="structLogic_1_1printTreeOutput.html">Logic::printTreeOutput</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:137</div></div>
+<div class="ttc" id="anamespaceLogic_html_a8ba252f3ff2161ebf29d007207332690"><div class="ttname"><a href="namespaceLogic.html#a8ba252f3ff2161ebf29d007207332690">Logic::getDecisionTreeGetMaxTimesLabel</a></div><div class="ttdeci">void getDecisionTreeGetMaxTimesLabel(getMaxTimesLabelParam &amp;param, getMaxTimesLabelInput &amp;input, getMaxTimesLabelOutput &amp;output)</div><div class="ttdoc">获取标签统计中出现次数最多的标签</div><div class="ttdef"><b>Definition:</b> ID3C45Functional.cpp:107</div></div>
+<div class="ttc" id="astructLogic_1_1loadTreeParam_html"><div class="ttname"><a href="structLogic_1_1loadTreeParam.html">Logic::loadTreeParam</a></div><div class="ttdef"><b>Definition:</b> ID3C45Functional.h:172</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

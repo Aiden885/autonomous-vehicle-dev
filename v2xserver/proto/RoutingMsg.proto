@@ -1,0 +1,17 @@
+syntax = "proto3";
+package Planning;
+
+message RoutingPoint
+{
+    double Longtitude=1;
+    double Latitude=2;
+    double Height=3;
+    //double Speed=4;
+    //double Curvature=5;
+    //double S=6;
+}
+
+message RoutingPointVec
+{
+    repeated RoutingPoint  RoutingPoints=1;
+}

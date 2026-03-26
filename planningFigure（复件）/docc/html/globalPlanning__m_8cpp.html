@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project planning: src/globalPlanning_m.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project planning
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">globalPlanning_m.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>globalPlanning  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;globalPlanning_m.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+globalPlanning_m.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="globalPlanning__m_8cpp__incl.png" border="0" usemap="#src_2globalPlanning__m_8cpp" alt=""/></div>
+<map name="src_2globalPlanning__m_8cpp" id="src_2globalPlanning__m_8cpp">
+<area shape="rect" title="globalPlanning" alt="" coords="898,5,1039,47"/>
+<area shape="rect" href="globalPlanning__m_8h_source.html" title=" " alt="" coords="893,95,1044,121"/>
+<area shape="rect" href="localization__MapAnalysis_8h_source.html" title=" " alt="" coords="427,244,625,271"/>
+<area shape="rect" title=" " alt="" coords="640,393,703,420"/>
+<area shape="rect" title=" " alt="" coords="727,393,807,420"/>
+<area shape="rect" href="globalPlanning_8h_source.html" title=" " alt="" coords="801,169,931,196"/>
+<area shape="rect" title=" " alt="" coords="902,244,945,271"/>
+<area shape="rect" title=" " alt="" coords="969,244,1032,271"/>
+<area shape="rect" title=" " alt="" coords="1056,244,1116,271"/>
+<area shape="rect" title=" " alt="" coords="1108,169,1176,196"/>
+<area shape="rect" title=" " alt="" coords="1200,169,1255,196"/>
+<area shape="rect" href="rapidxml_8hpp.html" title=" " alt="" coords="200,393,308,420"/>
+<area shape="rect" href="rapidxml__utils_8hpp.html" title=" " alt="" coords="300,319,443,345"/>
+<area shape="rect" title=" " alt="" coords="482,393,541,420"/>
+<area shape="rect" href="rapidxml__print_8hpp.html" title=" " alt="" coords="72,319,217,345"/>
+<area shape="rect" href="TrafficLight_8h_source.html" title=" " alt="" coords="518,319,625,345"/>
+<area shape="rect" title=" " alt="" coords="221,468,287,495"/>
+<area shape="rect" title=" " alt="" coords="54,468,123,495"/>
+<area shape="rect" title=" " alt="" coords="148,468,197,495"/>
+<area shape="rect" title=" " alt="" coords="311,468,397,495"/>
+<area shape="rect" title=" " alt="" coords="384,393,457,420"/>
+<area shape="rect" title=" " alt="" coords="5,393,81,420"/>
+<area shape="rect" title=" " alt="" coords="105,393,176,420"/>
+<area shape="rect" title=" " alt="" coords="565,393,615,420"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a60b1c11b08416260098737e9dbda5e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a60b1c11b08416260098737e9dbda5e3b">AstarMapToAstar</a> (const <a class="el" href="structAstarMapToAstarParam.html">AstarMapToAstarParam</a> &amp;param, const <a class="el" href="structAstarMapToAstarInput.html">AstarMapToAstarInput</a> &amp;input, <a class="el" href="structAstarMapToAstarOutput.html">AstarMapToAstarOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a60b1c11b08416260098737e9dbda5e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用Map类构建Astar类  <a href="globalPlanning__m_8cpp.html#a60b1c11b08416260098737e9dbda5e3b">更多...</a><br /></td></tr>
+<tr class="separator:a60b1c11b08416260098737e9dbda5e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb78c9c00f7b885f7ce78185c6248405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#acb78c9c00f7b885f7ce78185c6248405">AstarGetPath</a> (const <a class="el" href="structAstarGetPathParam.html">AstarGetPathParam</a> &amp;param, const <a class="el" href="structAstarGetPathInput.html">AstarGetPathInput</a> &amp;input, <a class="el" href="structAstarGetPathOutput.html">AstarGetPathOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:acb78c9c00f7b885f7ce78185c6248405"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用Astar算法获取路径，包括预处理、后处理等部分  <a href="globalPlanning__m_8cpp.html#acb78c9c00f7b885f7ce78185c6248405">更多...</a><br /></td></tr>
+<tr class="separator:acb78c9c00f7b885f7ce78185c6248405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc2b9495bdd993756e58fa54a85e1324"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#afc2b9495bdd993756e58fa54a85e1324">AstarInitRoad</a> (const <a class="el" href="structAstarInitRoadParam.html">AstarInitRoadParam</a> &amp;param, const <a class="el" href="structAstarInitRoadInput.html">AstarInitRoadInput</a> &amp;input, <a class="el" href="structAstarInitRoadOutput.html">AstarInitRoadOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:afc2b9495bdd993756e58fa54a85e1324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astar道路初始化  <a href="globalPlanning__m_8cpp.html#afc2b9495bdd993756e58fa54a85e1324">更多...</a><br /></td></tr>
+<tr class="separator:afc2b9495bdd993756e58fa54a85e1324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ca94d03caff87080649792b8c56e82c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a2ca94d03caff87080649792b8c56e82c">AstarInitLink</a> (const <a class="el" href="structAstarInitLinkParam.html">AstarInitLinkParam</a> &amp;param, const <a class="el" href="structAstarInitLinkInput.html">AstarInitLinkInput</a> &amp;input, <a class="el" href="structAstarInitLinkOutput.html">AstarInitLinkOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a2ca94d03caff87080649792b8c56e82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astar道路连接关系初始化  <a href="globalPlanning__m_8cpp.html#a2ca94d03caff87080649792b8c56e82c">更多...</a><br /></td></tr>
+<tr class="separator:a2ca94d03caff87080649792b8c56e82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557278b4ff6a42cc7b3cfa723f1fee61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a557278b4ff6a42cc7b3cfa723f1fee61">AstarReset</a> (const <a class="el" href="structAstarResetParam.html">AstarResetParam</a> &amp;param, const <a class="el" href="structAstarResetInput.html">AstarResetInput</a> &amp;input, <a class="el" href="structAstarResetOutput.html">AstarResetOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a557278b4ff6a42cc7b3cfa723f1fee61"><td class="mdescLeft">&#160;</td><td class="mdescRight">在保留地图的情况下，初始化Astar参数  <a href="globalPlanning__m_8cpp.html#a557278b4ff6a42cc7b3cfa723f1fee61">更多...</a><br /></td></tr>
+<tr class="separator:a557278b4ff6a42cc7b3cfa723f1fee61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2714f2455da7a56c96562cc510fb769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#ad2714f2455da7a56c96562cc510fb769">AstarModuleSelfCheck</a> (const <a class="el" href="structAstarModuleSelfCheckParam.html">AstarModuleSelfCheckParam</a> &amp;param, const <a class="el" href="structAstarModuleSelfCheckInput.html">AstarModuleSelfCheckInput</a> &amp;input, <a class="el" href="structAstarModuleSelfCheckOutput.html">AstarModuleSelfCheckOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:ad2714f2455da7a56c96562cc510fb769"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查Astar道路Id  <a href="globalPlanning__m_8cpp.html#ad2714f2455da7a56c96562cc510fb769">更多...</a><br /></td></tr>
+<tr class="separator:ad2714f2455da7a56c96562cc510fb769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f5dfdc142a81158c5b91ec738c7c89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#aa6f5dfdc142a81158c5b91ec738c7c89">AstarModuleSelfCheckPrint</a> (const <a class="el" href="structAstarModuleSelfCheckPrintParam.html">AstarModuleSelfCheckPrintParam</a> &amp;param, const <a class="el" href="structAstarModuleSelfCheckPrintInput.html">AstarModuleSelfCheckPrintInput</a> &amp;input, <a class="el" href="structAstarModuleSelfCheckPrintOutput.html">AstarModuleSelfCheckPrintOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:aa6f5dfdc142a81158c5b91ec738c7c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查Astar道路Id打印  <a href="globalPlanning__m_8cpp.html#aa6f5dfdc142a81158c5b91ec738c7c89">更多...</a><br /></td></tr>
+<tr class="separator:aa6f5dfdc142a81158c5b91ec738c7c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a24e2757989b0db7794e1bb02792811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a7a24e2757989b0db7794e1bb02792811">AstarFindLane</a> (const <a class="el" href="structAstarFindLaneParam.html">AstarFindLaneParam</a> &amp;param, const <a class="el" href="structAstarFindLaneInput.html">AstarFindLaneInput</a> &amp;input, <a class="el" href="structAstarFindLaneOutput.html">AstarFindLaneOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a7a24e2757989b0db7794e1bb02792811"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据Astar道路级全局规划结果，获得车道级全局规划结果  <a href="globalPlanning__m_8cpp.html#a7a24e2757989b0db7794e1bb02792811">更多...</a><br /></td></tr>
+<tr class="separator:a7a24e2757989b0db7794e1bb02792811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f27a161a7717092a428eb8a9c23f4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a94f27a161a7717092a428eb8a9c23f4e">AstarFindLaneR</a> (const <a class="el" href="structAstarFindLaneRParam.html">AstarFindLaneRParam</a> &amp;param, const <a class="el" href="structAstarFindLaneRInput.html">AstarFindLaneRInput</a> &amp;input, <a class="el" href="structAstarFindLaneROutput.html">AstarFindLaneROutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a94f27a161a7717092a428eb8a9c23f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果  <a href="globalPlanning__m_8cpp.html#a94f27a161a7717092a428eb8a9c23f4e">更多...</a><br /></td></tr>
+<tr class="separator:a94f27a161a7717092a428eb8a9c23f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac90c60b6462d599b5c7268b4985800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalPlanning__m_8cpp.html#a1ac90c60b6462d599b5c7268b4985800">AstarRecursiveFindLane</a> (const <a class="el" href="structAstarRecursiveFindLaneParam.html">AstarRecursiveFindLaneParam</a> &amp;param, const <a class="el" href="structAstarRecursiveFindLaneInput.html">AstarRecursiveFindLaneInput</a> &amp;input, <a class="el" href="structAstarRecursiveFindLaneOutput.html">AstarRecursiveFindLaneOutput</a> &amp;output)</td></tr>
+<tr class="memdesc:a1ac90c60b6462d599b5c7268b4985800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astar递归获得车道级全局规划结果主体函数  <a href="globalPlanning__m_8cpp.html#a1ac90c60b6462d599b5c7268b4985800">更多...</a><br /></td></tr>
+<tr class="separator:a1ac90c60b6462d599b5c7268b4985800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>globalPlanning </p>
+<dl class="section author"><dt>作者</dt><dd></dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-12-04</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a7a24e2757989b0db7794e1bb02792811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a24e2757989b0db7794e1bb02792811">&#9670;&nbsp;</a></span>AstarFindLane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarFindLane </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarFindLaneParam.html">AstarFindLaneParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarFindLaneInput.html">AstarFindLaneInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarFindLaneOutput.html">AstarFindLaneOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据Astar道路级全局规划结果，获得车道级全局规划结果 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 地图、道路级全局规划结果 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar获得全局规划车道结果</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a94f27a161a7717092a428eb8a9c23f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f27a161a7717092a428eb8a9c23f4e">&#9670;&nbsp;</a></span>AstarFindLaneR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarFindLaneR </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarFindLaneRParam.html">AstarFindLaneRParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarFindLaneRInput.html">AstarFindLaneRInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarFindLaneROutput.html">AstarFindLaneROutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据Astar道路级全局规划结果，使用递归的方法获得车道级全局规划结果 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 道路向量数组、道路级全局规划结果、储存结果的向量数组、终点车道Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar递归地获得全局规划车道结果</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="acb78c9c00f7b885f7ce78185c6248405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb78c9c00f7b885f7ce78185c6248405">&#9670;&nbsp;</a></span>AstarGetPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarGetPath </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarGetPathParam.html">AstarGetPathParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarGetPathInput.html">AstarGetPathInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarGetPathOutput.html">AstarGetPathOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用Astar算法获取路径，包括预处理、后处理等部分 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 起点、终点、起点Id、终点Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar，起点到终点的路径</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar获取全局路径</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a2ca94d03caff87080649792b8c56e82c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca94d03caff87080649792b8c56e82c">&#9670;&nbsp;</a></span>AstarInitLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarInitLink </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarInitLinkParam.html">AstarInitLinkParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarInitLinkInput.html">AstarInitLinkInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarInitLinkOutput.html">AstarInitLinkOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Astar道路连接关系初始化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 起始道路Id，到达道路Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar添加道路连接关系</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="afc2b9495bdd993756e58fa54a85e1324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc2b9495bdd993756e58fa54a85e1324">&#9670;&nbsp;</a></span>AstarInitRoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarInitRoad </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarInitRoadParam.html">AstarInitRoadParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarInitRoadInput.html">AstarInitRoadInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarInitRoadOutput.html">AstarInitRoadOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Astar道路初始化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 道路Id，起点XY，终点XY，长度 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar添加道路</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a60b1c11b08416260098737e9dbda5e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b1c11b08416260098737e9dbda5e3b">&#9670;&nbsp;</a></span>AstarMapToAstar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarMapToAstar </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarMapToAstarParam.html">AstarMapToAstarParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarMapToAstarInput.html">AstarMapToAstarInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarMapToAstarOutput.html">AstarMapToAstarOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用Map类构建Astar类 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param 地图，初始化的Astar </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: 使用地图构建Astar</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="ad2714f2455da7a56c96562cc510fb769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2714f2455da7a56c96562cc510fb769">&#9670;&nbsp;</a></span>AstarModuleSelfCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarModuleSelfCheck </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarModuleSelfCheckParam.html">AstarModuleSelfCheckParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarModuleSelfCheckInput.html">AstarModuleSelfCheckInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarModuleSelfCheckOutput.html">AstarModuleSelfCheckOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检查Astar道路Id </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 无</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar道路Id检查</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="aa6f5dfdc142a81158c5b91ec738c7c89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f5dfdc142a81158c5b91ec738c7c89">&#9670;&nbsp;</a></span>AstarModuleSelfCheckPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarModuleSelfCheckPrint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarModuleSelfCheckPrintParam.html">AstarModuleSelfCheckPrintParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarModuleSelfCheckPrintInput.html">AstarModuleSelfCheckPrintInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarModuleSelfCheckPrintOutput.html">AstarModuleSelfCheckPrintOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检查Astar道路Id打印 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 无</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar道路Id打印</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+<a id="a1ac90c60b6462d599b5c7268b4985800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac90c60b6462d599b5c7268b4985800">&#9670;&nbsp;</a></span>AstarRecursiveFindLane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarRecursiveFindLane </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarRecursiveFindLaneParam.html">AstarRecursiveFindLaneParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarRecursiveFindLaneInput.html">AstarRecursiveFindLaneInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarRecursiveFindLaneOutput.html">AstarRecursiveFindLaneOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Astar递归获得车道级全局规划结果主体函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 道路、道路级全局规划结果、可递归车道、终点道路Id、终点车道Id </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar递归获得车道级全局规划结果主体函数</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800_cgraph.png" border="0" usemap="#globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800_cgraph" alt=""/></div>
+<map name="globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800_cgraph" id="globalPlanning__m_8cpp_a1ac90c60b6462d599b5c7268b4985800_cgraph">
+<area shape="rect" title="Astar递归获得车道级全局规划结果主体函数" alt="" coords="5,5,183,32"/>
+<area shape="rect" href="classAstar.html#a5f8affab08f22ac10c7f372650a5ba1e" title="algorithm 1, this is globally excellent but not stable" alt="" coords="231,5,412,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a557278b4ff6a42cc7b3cfa723f1fee61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557278b4ff6a42cc7b3cfa723f1fee61">&#9670;&nbsp;</a></span>AstarReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarReset </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structAstarResetParam.html">AstarResetParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structAstarResetInput.html">AstarResetInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structAstarResetOutput.html">AstarResetOutput</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在保留地图的情况下，初始化Astar参数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[IN]</td><td>param <a class="el" href="classAstar.html">Astar</a> </td></tr>
+    <tr><td class="paramname">[IN]</td><td>input 无 </td></tr>
+    <tr><td class="paramname">[OUT]</td><td>output 更新的Astar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>@cn_name: Astar参数初始化</p>
+<p>@granularity: atomic //函数组件的粒度， atomic： 基础组件（原子），composite&gt;： 复合组件（在前端可以向下一层展开）</p>
+<p>@tag: planning </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,0 +1,96 @@
+\hypertarget{localizationDeclaration_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+Map\+Program/\+Map\+Const\+Demo/src/localization\+Declaration.h 文件参考}
+\label{localizationDeclaration_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/MapProgram/MapConstDemo/src/localizationDeclaration.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/MapProgram/MapConstDemo/src/localizationDeclaration.h}}
+
+
+地图分析功能  
+
+
+{\ttfamily \#include \char`\"{}rapidxml.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rapidxml\+\_\+print.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}localization\+\_\+\+Map\+Construction.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+localization\+Declaration.\+h 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{localizationDeclaration_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{localizationDeclaration_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1MapCon}{Localization\+::\+Map\+Con}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1Path}{Localization\+::\+Path}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1IntStru}{Localization\+::\+Int\+Stru}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1LaneStru}{Localization\+::\+Lane\+Stru}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1RoadStru}{Localization\+::\+Road\+Stru}}
+\item 
+struct \mbox{\hyperlink{structLocalization_1_1Empty}{Localization\+::\+Empty}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceLocalization}{Localization}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceLocalization}{Localization}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceLocalization_a364a520f6bbe7da566d6af92a2317e63}{Localization\+::lane\+Update\+Id}} (Lane\+Stru \&lane, Int\+Stru \&id, Empty output)
+\begin{DoxyCompactList}\small\item\em 对路径id进行更新 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a8543adabd6ba14f96eb66b6777cafa25}{Localization\+::lane\+Get\+Gauss\+Road\+Point}} (Lane\+Stru \&lane, Empty in, Empty output)
+\begin{DoxyCompactList}\small\item\em 将原始经纬度路点进行漂移点删除、坐标转换、插值等过程得到处理后的高斯坐标路点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a8c76b47d8159d548dac60eeacafd94f3}{Localization\+::lane\+Get\+Yaw\+Cruvature}} (Lane\+Stru \&lane, Empty in, Empty output)
+\begin{DoxyCompactList}\small\item\em 根据每个路点的高斯坐标计算每个路点的航向角yaw和曲率curvature \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aaf1540f1f74812eaf1ffc5c80fc057a1}{Localization\+::lane\+Corect\+Gauss\+XY}} (Lane\+Stru \&lane, Empty in, Empty output)
+\begin{DoxyCompactList}\small\item\em 高斯坐标修正，包括加上x\+\_\+min和y\+\_\+min进行还原，以及考虑车载天线和车辆中心线的偏移 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a0470e29e909ac3f2a791a28259b07f72}{Localization\+::lane\+Calc\+Speed\+Profile}} (Lane\+Stru \&lane, Empty in, Empty output)
+\begin{DoxyCompactList}\small\item\em 根据曲率信息计算限速，单位m/s \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a5aa9bc6ffcc404fcd0177434d02f83e4}{Localization\+::road\+Update\+Id}} (Road\+Stru \&road, Int\+Stru \&id, Empty output)
+\begin{DoxyCompactList}\small\item\em 对路径id进行更新 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a57f6b4241c476cc3b79bdcbb708eebcf}{Localization\+::mapconst\+Get\+All\+File\+Names}} (Map\+Con \&map, Path \&pa, Empty output)
+\begin{DoxyCompactList}\small\item\em 获取所有路点txt文件的文件名，path为所有txt文件所在的文件夹路径 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aadfbeda26b2401b6b93fe98840f1f42f}{Localization\+::mapconst\+Load\+Raw\+Road\+Point}} (Map\+Con \&in1, Path \&in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 加载所有原始经纬度路点数据并储存 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_abfd4c52f75745c42c0d99fc7a6be2977}{Localization\+::mapconst\+Process\+Raw\+Road\+Point}} (Map\+Con \&in1, Empty in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 对原始经纬度路点数据进行处理 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_ae9c50c2ba3125af547dd04dc5797c436}{Localization\+::mapconst\+Load\+Successor}} (Map\+Con \&in1, Path \&in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 加载路段后继路段id的txt文件并储存内容 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aa85c60966b653914a6d147d3b043b37a}{Localization\+::mapconst\+Load\+Lane\+Neighbor\+Id}} (Map\+Con \&in1, Path \&in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 加载车道相邻车道的id的txt文件并储存内容 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a5616cb9119fdbb10930b8f4d4adbc3f6}{Localization\+::mapconst\+Load\+Lane\+Successor\+Id}} (Map\+Con \&in1, Path \&in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 加载车道后继车道的id的txt文件并储存内容 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_abafdcccdb693b8e7283fc8835d51b68f}{Localization\+::mapconst\+Load\+Lane\+Change}} (Map\+Con \&in1, Path \&in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 加载不能换道的路段id的txt文件并储存内容 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a4f7b1cdb2e054340fb167498e651f503}{Localization\+::mapconst\+Get\+X\+M\+L\+Info}} (Map\+Con \&in1, Empty in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 将处理好的地图数据转化成xml语言能够储存的string类型的数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a4efc8132f0327b131710977ae3b5eda8}{Localization\+::mapconst\+Save\+Map\+To\+X\+ML}} (Map\+Con in1, Path in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 将处理好的地图数据储存进xodr文件 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_ab10d9228825761530294d53057a0294f}{Localization\+::mapconst\+Module\+Self\+Check}} (Map\+Con \&in1, Empty in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 自我验证函数，检查本模块计算输出是否满足数据格式、范围要求 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_aad6940fa02775530fe2b2e05d7b84889}{Localization\+::mapconst\+Module\+Self\+Check\+Print}} (Map\+Con \&in1, Empty in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 输出打印显示函数，打印本模块的关键参数及输出 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+地图分析功能 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Wenliang Xu (\href{mailto:xuwenliang2000@163.com}{\texttt{ xuwenliang2000@163.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/22 
+\end{DoxyDate}

@@ -1,0 +1,118 @@
+\hypertarget{classNMEABase}{}\doxysection{N\+M\+E\+A\+Base类 参考}
+\label{classNMEABase}\index{NMEABase@{NMEABase}}
+
+
+类 N\+M\+E\+A\+Base 继承关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classNMEABase__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNMEABase_a1ed821e8b6cd8328ff68546a71d9262f}{N\+M\+E\+A\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classNMEABase}{N\+M\+E\+A\+Base}} object \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classNMEABase_a9329da0750bbf854ca7038b415300d55}{Parse}} (string str\+Buff)
+\begin{DoxyCompactList}\small\item\em 解析数据包 \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{classNMEABase_a9c54d4c9c52c25a4fb39cfbd2fd2b372}{Calc\+Check\+Sum}} (string str\+Buff)
+\begin{DoxyCompactList}\small\item\em 计算校验位 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classNMEABase_a11780a21d1b65cf18537fc4107c4cdaa}{dmm2deg}} (double dmm)
+\begin{DoxyCompactList}\small\item\em 将\+N\+M\+E\+A中 ddmm.\+mm 格式转换为小数度，用于经纬度转换 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNMEABase_a6c3e410a21afff668a4f57d06f4df6f4}\label{classNMEABase_a6c3e410a21afff668a4f57d06f4df6f4}} 
+string \mbox{\hyperlink{classNMEABase_a6c3e410a21afff668a4f57d06f4df6f4}{str\+Start}}
+\begin{DoxyCompactList}\small\item\em 起始符 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classNMEABase_a105a5b5b631d35f896fc8068a1f6a1bf}\label{classNMEABase_a105a5b5b631d35f896fc8068a1f6a1bf}} 
+string \mbox{\hyperlink{classNMEABase_a105a5b5b631d35f896fc8068a1f6a1bf}{str\+Talker\+ID}}
+\begin{DoxyCompactList}\small\item\em talker ID \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classNMEABase_a4bc44b581f5708c471182586e80bf67e}\label{classNMEABase_a4bc44b581f5708c471182586e80bf67e}} 
+string \mbox{\hyperlink{classNMEABase_a4bc44b581f5708c471182586e80bf67e}{str\+Check\+Sum}}
+\begin{DoxyCompactList}\small\item\em 校验位 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classNMEABase_aa36cb625f15d7e801ec173f9ffdf8830}\label{classNMEABase_aa36cb625f15d7e801ec173f9ffdf8830}} 
+string \mbox{\hyperlink{classNMEABase_aa36cb625f15d7e801ec173f9ffdf8830}{str\+End}}
+\begin{DoxyCompactList}\small\item\em 截止符 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classNMEABase_a818ba04928a2f442fd70770ca98b04e7}\label{classNMEABase_a818ba04928a2f442fd70770ca98b04e7}} 
+int {\bfseries n\+Filed\+Num}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{classNMEABase_a1ed821e8b6cd8328ff68546a71d9262f}\label{classNMEABase_a1ed821e8b6cd8328ff68546a71d9262f}} 
+\index{NMEABase@{NMEABase}!NMEABase@{NMEABase}}
+\index{NMEABase@{NMEABase}!NMEABase@{NMEABase}}
+\doxysubsubsection{\texorpdfstring{NMEABase()}{NMEABase()}}
+{\footnotesize\ttfamily N\+M\+E\+A\+Base\+::\+N\+M\+E\+A\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classNMEABase}{N\+M\+E\+A\+Base}} object 
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classNMEABase_a9c54d4c9c52c25a4fb39cfbd2fd2b372}\label{classNMEABase_a9c54d4c9c52c25a4fb39cfbd2fd2b372}} 
+\index{NMEABase@{NMEABase}!CalcCheckSum@{CalcCheckSum}}
+\index{CalcCheckSum@{CalcCheckSum}!NMEABase@{NMEABase}}
+\doxysubsubsection{\texorpdfstring{CalcCheckSum()}{CalcCheckSum()}}
+{\footnotesize\ttfamily long N\+M\+E\+A\+Base\+::\+Calc\+Check\+Sum (\begin{DoxyParamCaption}\item[{string}]{str\+Buff }\end{DoxyParamCaption})}
+
+
+
+计算校验位 
+
+
+\begin{DoxyParams}{参数}
+{\em str\+Buff} & 计算校验位字符串 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+long 校验位对应的16进制数，用于进行比较 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNMEABase_a11780a21d1b65cf18537fc4107c4cdaa}\label{classNMEABase_a11780a21d1b65cf18537fc4107c4cdaa}} 
+\index{NMEABase@{NMEABase}!dmm2deg@{dmm2deg}}
+\index{dmm2deg@{dmm2deg}!NMEABase@{NMEABase}}
+\doxysubsubsection{\texorpdfstring{dmm2deg()}{dmm2deg()}}
+{\footnotesize\ttfamily double N\+M\+E\+A\+Base\+::dmm2deg (\begin{DoxyParamCaption}\item[{double}]{dmm }\end{DoxyParamCaption})}
+
+
+
+将\+N\+M\+E\+A中 ddmm.\+mm 格式转换为小数度，用于经纬度转换 
+
+
+\begin{DoxyParams}{参数}
+{\em dmm} & ddmm.\+mm格式经纬度 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+double 小数度格式的经纬度 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNMEABase_a9329da0750bbf854ca7038b415300d55}\label{classNMEABase_a9329da0750bbf854ca7038b415300d55}} 
+\index{NMEABase@{NMEABase}!Parse@{Parse}}
+\index{Parse@{Parse}!NMEABase@{NMEABase}}
+\doxysubsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily bool N\+M\+E\+A\+Base\+::\+Parse (\begin{DoxyParamCaption}\item[{string}]{str\+Buff }\end{DoxyParamCaption})}
+
+
+
+解析数据包 
+
+
+\begin{DoxyParams}{参数}
+{\em str\+Buff} & 接收的一条\+N\+M\+E\+A语句 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true 解析成功 
+
+false 解析失败 
+\end{DoxyReturn}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+G\+P\+S/dependence/N\+M\+E\+A\+Base.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+G\+P\+S/dependence/N\+M\+E\+A\+Base.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+# 编译产物
+build/
+*.o
+*.a
+*.so
+*.so.*
+
+# 可执行文件（编译生成）
+planning
+controller
+controllerZMQ
+strThreadDemo
+gpsDriver
+v2xServ
+
+# 日志
+logs/
+*.log
+.pids
+
+# 大型源码包（Docker构建用，不需要放Git）
+*.gz
+*.zip
+
+# CLion 工程文件
+.idea/
+cmake-build-*/
+
+# Python缓存
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
+Thumbs.db

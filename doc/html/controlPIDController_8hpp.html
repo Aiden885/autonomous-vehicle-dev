@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/controller_ver1/trajectory_tracking/include/controlPIDController.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_238bd79184b142f62a61286d371343c8.html">controller_ver1</a></li><li class="navelem"><a class="el" href="dir_e47c16742f406a22d5972d38ee0e00a7.html">trajectory_tracking</a></li><li class="navelem"><a class="el" href="dir_f8d9a1cccf2878e05ce0a8a09b388292.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">controlPIDController.hpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>PID控制器 和 PID横向控制器  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="controlController_8hpp_source.html">controlController.hpp</a>&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;yaml-cpp/yaml.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+controlPIDController.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="controlPIDController_8hpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hpp">
+<area shape="rect" title="PID控制器 和 PID横向控制器" alt="" coords="454,5,750,91"/>
+<area shape="rect" href="controlController_8hpp.html" title="总控制器模块，横向控制基类，纵向控制类定义" alt="" coords="152,139,311,165"/>
+<area shape="rect" title=" " alt="" coords="5,288,68,315"/>
+<area shape="rect" title=" " alt="" coords="343,288,423,315"/>
+<area shape="rect" title=" " alt="" coords="472,139,540,165"/>
+<area shape="rect" title=" " alt="" coords="565,139,639,165"/>
+<area shape="rect" title=" " alt="" coords="663,139,722,165"/>
+<area shape="rect" title=" " alt="" coords="746,139,810,165"/>
+<area shape="rect" title=" " alt="" coords="834,139,885,165"/>
+<area shape="rect" title=" " alt="" coords="909,139,1041,165"/>
+<area shape="rect" title=" " alt="" coords="200,288,263,315"/>
+<area shape="rect" href="controlData_8hpp.html" title="模块使用数据类型" alt="" coords="219,213,345,240"/>
+<area shape="rect" title=" " alt="" coords="74,213,143,240"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="controlPIDController_8hpp__dep__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hppdep" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hppdep" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2controller__ver1_2trajectory__tracking_2include_2controlPIDController_8hppdep">
+<area shape="rect" title="PID控制器 和 PID横向控制器" alt="" coords="130,5,426,91"/>
+<area shape="rect" href="controlController_8cc.html" title="横纵向控制器基类实现" alt="" coords="5,139,241,224"/>
+<area shape="rect" href="controlPIDController_8cc.html" title="PID控制器，PID横向运动控制器" alt="" coords="237,272,495,357"/>
+<area shape="rect" href="funcPidController_8hpp.html" title="PID控制函数" alt="" coords="315,139,593,224"/>
+</map>
+</div>
+</div>
+<p><a href="controlPIDController_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControl_1_1PID.html">Control::PID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classControl_1_1PID.html" title="PID 控制器类">PID</a> 控制器类  <a href="classControl_1_1PID.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControl_1_1PIDController.html">Control::PIDController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID横向运动控制器  <a href="classControl_1_1PIDController.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceControl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html">Control</a></td></tr>
+<tr class="memdesc:namespaceControl"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceControl.html" title="Control namespace">Control</a> namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a4f850e202ce3540d26b4ce57ccf6c7a3"><td class="memItemLeft" align="right" valign="top"><a id="a4f850e202ce3540d26b4ce57ccf6c7a3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Control::PIDLibs</b> = std::map&lt; std::string, PID &gt;</td></tr>
+<tr class="separator:a4f850e202ce3540d26b4ce57ccf6c7a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:aa9d0aaddc032bf7e678f34a8e4665c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classControl_1_1PID.html">PID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceControl.html#aa9d0aaddc032bf7e678f34a8e4665c1f">Control::loadPIDYamlConfig</a> (YAML::Node config, std::string name, double dt)</td></tr>
+<tr class="memdesc:aa9d0aaddc032bf7e678f34a8e4665c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取 yaml 文件中pid_conf相关字段内容，并返回控制器  <a href="namespaceControl.html#aa9d0aaddc032bf7e678f34a8e4665c1f">更多...</a><br /></td></tr>
+<tr class="separator:aa9d0aaddc032bf7e678f34a8e4665c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>PID控制器 和 PID横向控制器 </p>
+<dl class="section author"><dt>作者</dt><dd>yibin, yining (<a href="#" onclick="location.href='mai'+'lto:'+'852'+'48'+'806'+'2@'+'qq.'+'co'+'m'; return false;">85248<span style="display: none;">.nosp@m.</span>8062<span style="display: none;">.nosp@m.</span>@qq.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-08-16</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

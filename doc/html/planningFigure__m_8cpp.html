@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Planning/OnVehicle/src/planningFigure_m.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2265d85848d29287bb3825cf17fd0573.html">Planning</a></li><li class="navelem"><a class="el" href="dir_56d8475141f60fc33b12caa3ed01389b.html">OnVehicle</a></li><li class="navelem"><a class="el" href="dir_6c04d341ab1bf92091132226343b5e76.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">planningFigure_m.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>规划主函数  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;PlanningMsg.pb.h&quot;</code><br />
+<code>#include &quot;defineColor.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="globalPlanning__m_8h_source.html">globalPlanning_m.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="localPlanning__m_8hpp_source.html">localPlanning_m.hpp</a>&quot;</code><br />
+<code>#include &quot;opencv2/highgui/highgui.hpp&quot;</code><br />
+<code>#include &quot;opencv2/imgproc/imgproc.hpp&quot;</code><br />
+<code>#include &quot;planning.hpp&quot;</code><br />
+<code>#include &quot;sys/time.h&quot;</code><br />
+<code>#include &quot;unistd.h&quot;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+planningFigure_m.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="planningFigure__m_8cpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2OnVehicle_2src_2planningFigure__m_8cpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2OnVehicle_2src_2planningFigure__m_8cpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2Planning_2OnVehicle_2src_2planningFigure__m_8cpp">
+<area shape="rect" title="规划主函数" alt="" coords="2181,5,2502,76"/>
+<area shape="rect" title=" " alt="" coords="610,124,747,151"/>
+<area shape="rect" href="defineColor_8h_source.html" title=" " alt="" coords="2739,295,2848,322"/>
+<area shape="rect" href="globalPlanning__m_8h.html" title="全局规划函数生成相关声明" alt="" coords="771,124,922,151"/>
+<area shape="rect" href="localPlanning__m_8hpp.html" title="局部规划函数相关声明" alt="" coords="2141,206,2299,233"/>
+<area shape="rect" title=" " alt="" coords="2309,124,2518,151"/>
+<area shape="rect" title=" " alt="" coords="2543,124,2761,151"/>
+<area shape="rect" href="planning_8hpp_source.html" title=" " alt="" coords="947,124,1053,151"/>
+<area shape="rect" title=" " alt="" coords="2043,206,2117,233"/>
+<area shape="rect" title=" " alt="" coords="2785,124,2876,151"/>
+<area shape="rect" title=" " alt="" coords="2900,124,2967,151"/>
+<area shape="rect" title=" " alt="" coords="2991,124,3055,151"/>
+<area shape="rect" title=" " alt="" coords="3079,124,3153,151"/>
+<area shape="rect" href="globalPlanning_8h_source.html" title=" " alt="" coords="115,206,245,233"/>
+<area shape="rect" title=" " alt="" coords="71,295,270,322"/>
+<area shape="rect" title=" " alt="" coords="631,295,711,322"/>
+<area shape="rect" title=" " alt="" coords="5,295,48,322"/>
+<area shape="rect" title=" " alt="" coords="822,295,885,322"/>
+<area shape="rect" title=" " alt="" coords="294,295,354,322"/>
+<area shape="rect" title=" " alt="" coords="735,295,798,322"/>
+<area shape="rect" title=" " alt="" coords="2115,295,2178,322"/>
+<area shape="rect" title=" " alt="" coords="2202,295,2275,322"/>
+<area shape="rect" title=" " alt="" coords="2640,295,2715,322"/>
+<area shape="rect" title=" " alt="" coords="1332,295,1407,322"/>
+<area shape="rect" title=" " alt="" coords="1431,295,1497,322"/>
+<area shape="rect" title=" " alt="" coords="1522,295,1697,322"/>
+<area shape="rect" title=" " alt="" coords="2299,295,2434,322"/>
+<area shape="rect" title=" " alt="" coords="2459,288,2616,329"/>
+<area shape="rect" title=" " alt="" coords="1721,295,1935,322"/>
+<area shape="rect" title=" " alt="" coords="1135,295,1308,322"/>
+<area shape="rect" title=" " alt="" coords="909,295,1110,322"/>
+<area shape="rect" title=" " alt="" coords="1959,295,2091,322"/>
+<area shape="rect" title=" " alt="" coords="611,206,685,233"/>
+<area shape="rect" title=" " alt="" coords="709,206,773,233"/>
+<area shape="rect" title=" " alt="" coords="798,206,861,233"/>
+<area shape="rect" href="localPlanning_8hpp_source.html" title=" " alt="" coords="1427,206,1565,233"/>
+<area shape="rect" title=" " alt="" coords="1037,206,1147,233"/>
+<area shape="rect" title=" " alt="" coords="1171,206,1351,233"/>
+<area shape="rect" title=" " alt="" coords="1589,206,1798,233"/>
+<area shape="rect" title=" " alt="" coords="1822,206,2018,233"/>
+<area shape="rect" title=" " alt="" coords="270,199,437,240"/>
+<area shape="rect" title=" " alt="" coords="461,206,587,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceplanning"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning.html">planning</a></td></tr>
+<tr class="memdesc:namespaceplanning"><td class="mdescLeft">&#160;</td><td class="mdescRight">planning namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a4d849ec5025f494f0e4f5b2c53e2d9aa"><td class="memItemLeft" align="right" valign="top"><a id="a4d849ec5025f494f0e4f5b2c53e2d9aa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP_POINT_FILE_NAME</b>&#160;&#160;&#160;&quot;../mapMsg/stopPoint.txt&quot;</td></tr>
+<tr class="separator:a4d849ec5025f494f0e4f5b2c53e2d9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae37ceed62d186bf903b985d08f78e193"><td class="memItemLeft" align="right" valign="top"><a id="ae37ceed62d186bf903b985d08f78e193"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP_POINT_FILE_NAME_YAML</b>&#160;&#160;&#160;&quot;../mapMsg/stopPoint.yaml&quot;</td></tr>
+<tr class="separator:ae37ceed62d186bf903b985d08f78e193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cad36048c29825a9bf205f8b9ceaef3"><td class="memItemLeft" align="right" valign="top"><a id="a1cad36048c29825a9bf205f8b9ceaef3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RECV_PERIOD</b>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:a1cad36048c29825a9bf205f8b9ceaef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0391b411c24490db6a0d9cac41338538"><td class="memItemLeft" align="right" valign="top"><a id="a0391b411c24490db6a0d9cac41338538"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SEND_PERIOD</b>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:a0391b411c24490db6a0d9cac41338538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12d0de86c269ef593c1214b712a909c"><td class="memItemLeft" align="right" valign="top"><a id="ae12d0de86c269ef593c1214b712a909c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GLOBAL_PLANNING_PERIOD</b>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:ae12d0de86c269ef593c1214b712a909c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22af71541d865a3017d339c37e5b1e7f"><td class="memItemLeft" align="right" valign="top"><a id="a22af71541d865a3017d339c37e5b1e7f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LOCAL_PLANNING_PERIOD</b>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:a22af71541d865a3017d339c37e5b1e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f243883cb0b226e5af5ec6ceea763b"><td class="memItemLeft" align="right" valign="top"><a id="a57f243883cb0b226e5af5ec6ceea763b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAP_PATH</b>&#160;&#160;&#160;&quot;../mapMsg/roadMap_KCYTemp.xodr&quot;</td></tr>
+<tr class="separator:a57f243883cb0b226e5af5ec6ceea763b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae452c6bd689b3e9d7ec279b9efe54b3f"><td class="memItemLeft" align="right" valign="top"><a id="ae452c6bd689b3e9d7ec279b9efe54b3f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>gridInOneMeter</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:ae452c6bd689b3e9d7ec279b9efe54b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a543b45ba0d0273acc9a68d200703ffd9"><td class="memItemLeft" align="right" valign="top"><a id="a543b45ba0d0273acc9a68d200703ffd9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>mapSizeXMeter</b>&#160;&#160;&#160;120</td></tr>
+<tr class="separator:a543b45ba0d0273acc9a68d200703ffd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dccd5a2dff9f3a2e69fd24a38ab013e"><td class="memItemLeft" align="right" valign="top"><a id="a2dccd5a2dff9f3a2e69fd24a38ab013e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>mapSizeYMeter</b>&#160;&#160;&#160;120</td></tr>
+<tr class="separator:a2dccd5a2dff9f3a2e69fd24a38ab013e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1152b15c0294eb62fab121d0f253fe7"><td class="memItemLeft" align="right" valign="top"><a id="ac1152b15c0294eb62fab121d0f253fe7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>mapYZero</b>&#160;&#160;&#160;200</td></tr>
+<tr class="separator:ac1152b15c0294eb62fab121d0f253fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58623254d3af01c8ca391a89cffe8913"><td class="memItemLeft" align="right" valign="top"><a id="a58623254d3af01c8ca391a89cffe8913"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEARTBEAT_PERIOD</b>&#160;&#160;&#160;500</td></tr>
+<tr class="separator:a58623254d3af01c8ca391a89cffe8913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bbb73c99b4288d8d3ca72a561a96415"><td class="memItemLeft" align="right" valign="top"><a id="a6bbb73c99b4288d8d3ca72a561a96415"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>myselfVehicleID</b>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a6bbb73c99b4288d8d3ca72a561a96415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f5730f041ab9000f6cd409c12f2aa9"><td class="memItemLeft" align="right" valign="top"><a id="a64f5730f041ab9000f6cd409c12f2aa9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>myselfVehicleeType</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a64f5730f041ab9000f6cd409c12f2aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a302c84582ee70a3c447e94f0296a9d1f"><td class="memItemLeft" align="right" valign="top"><a id="a302c84582ee70a3c447e94f0296a9d1f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>myselfVCType</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a302c84582ee70a3c447e94f0296a9d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:acda84e0842b2734e78bc41f3e79e6096"><td class="memItemLeft" align="right" valign="top"><a id="acda84e0842b2734e78bc41f3e79e6096"></a>
+cv::Point&#160;</td><td class="memItemRight" valign="bottom"><b>planning::drawRegulate</b> (cv::Point input)</td></tr>
+<tr class="separator:acda84e0842b2734e78bc41f3e79e6096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bd5792434d9d890b425df2e5fa8bf6a"><td class="memItemLeft" align="right" valign="top"><a id="a4bd5792434d9d890b425df2e5fa8bf6a"></a>
+long int&#160;</td><td class="memItemRight" valign="bottom"><b>planning::cvtThreadId2Long</b> (thread::id id)</td></tr>
+<tr class="separator:a4bd5792434d9d890b425df2e5fa8bf6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d34a44394861ea4f85245a4e41bc99f"><td class="memItemLeft" align="right" valign="top"><a id="a0d34a44394861ea4f85245a4e41bc99f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>planning::checkThreadStatus</b> (int tStatus, thread::id id)</td></tr>
+<tr class="separator:a0d34a44394861ea4f85245a4e41bc99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605c687596d814c7eab0891b58ce1970"><td class="memItemLeft" align="right" valign="top"><a id="a605c687596d814c7eab0891b58ce1970"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>planning::main</b> ()</td></tr>
+<tr class="separator:a605c687596d814c7eab0891b58ce1970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:af8e47b3e142ddd70e91df2817e9da329"><td class="memItemLeft" align="right" valign="top"><a id="af8e47b3e142ddd70e91df2817e9da329"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>planning::lastTheadTime</b> = std::chrono::steady_clock::now()</td></tr>
+<tr class="separator:af8e47b3e142ddd70e91df2817e9da329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9bdbbd90fca78dfa9ac7e8f0c7fc1f"><td class="memItemLeft" align="right" valign="top"><a id="abe9bdbbd90fca78dfa9ac7e8f0c7fc1f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>planning::lastTheadTimeofSub</b> = std::chrono::steady_clock::now()</td></tr>
+<tr class="separator:abe9bdbbd90fca78dfa9ac7e8f0c7fc1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88997a90fadfcb9175ef73554ba37401"><td class="memItemLeft" align="right" valign="top"><a id="a88997a90fadfcb9175ef73554ba37401"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>planning::durationFroShowofSub</b> = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::steady_clock::now() - lastTheadTimeofSub)</td></tr>
+<tr class="separator:a88997a90fadfcb9175ef73554ba37401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>规划主函数 </p>
+<dl class="section version"><dt>版本</dt><dd>0.0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>Zehang Zhu (<a href="#" onclick="location.href='mai'+'lto:'+'zzh'+'22'+'@ma'+'il'+'s.t'+'si'+'ngh'+'ua'+'.ed'+'u.'+'cn'; return false;">zzh22<span style="display: none;">.nosp@m.</span>@mai<span style="display: none;">.nosp@m.</span>ls.ts<span style="display: none;">.nosp@m.</span>ingh<span style="display: none;">.nosp@m.</span>ua.ed<span style="display: none;">.nosp@m.</span>u.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2023-11-25 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

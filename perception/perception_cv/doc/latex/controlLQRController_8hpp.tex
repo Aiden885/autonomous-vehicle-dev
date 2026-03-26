@@ -1,0 +1,73 @@
+\hypertarget{controlLQRController_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller/trajectory\+\_\+tracking/include/control\+L\+Q\+R\+Controller.hpp 文件参考}
+\label{controlLQRController_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller/trajectory\_tracking/include/controlLQRController.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller/trajectory\_tracking/include/controlLQRController.hpp}}
+
+
+L\+Q\+R横向控制模块定义  
+
+
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\newline
+{\ttfamily \#include \char`\"{}control\+Controller.\+hpp\char`\"{}}\newline
+control\+L\+Q\+R\+Controller.\+hpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlLQRController_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controlLQRController_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classControl_1_1LQR}{Control\+::\+L\+QR}}
+\item 
+class \mbox{\hyperlink{classControl_1_1LQRController}{Control\+::\+L\+Q\+R\+Controller}}
+\begin{DoxyCompactList}\small\item\em L\+Q\+R横向控制类 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{类型定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_ac9df8723119335051ad09d1dc82cb101}\label{controlLQRController_8hpp_ac9df8723119335051ad09d1dc82cb101}} 
+using {\bfseries Mat} = Eigen\+::\+Matrix\+Xd
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_ad7310d7ffb591629de3cb8703b7f7815}\label{controlLQRController_8hpp_ad7310d7ffb591629de3cb8703b7f7815}} 
+using {\bfseries Vec} = Eigen\+::\+Vector\+Xd
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_aea55b386100df84cecc78aa6be263246}\label{controlLQRController_8hpp_aea55b386100df84cecc78aa6be263246}} 
+using {\bfseries Matrix5d} = Eigen\+::\+Matrix$<$ double, 5, 5 $>$
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_aaee3dedf556d01a05b1e1c6731ce36c6}\label{controlLQRController_8hpp_aaee3dedf556d01a05b1e1c6731ce36c6}} 
+using {\bfseries Matrix52d} = Eigen\+::\+Matrix$<$ double, 5, 2 $>$
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_aae9fb1210bdd93118eec7d1cbbd4ba57}\label{controlLQRController_8hpp_aae9fb1210bdd93118eec7d1cbbd4ba57}} 
+using {\bfseries Matrix25d} = Eigen\+::\+Matrix$<$ double, 2, 5 $>$
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_ad9210c0822f76afe9e2ad0a25952b40a}\label{controlLQRController_8hpp_ad9210c0822f76afe9e2ad0a25952b40a}} 
+using {\bfseries Row\+Vector5d} = Eigen\+::\+Matrix$<$ double, 1, 5 $>$
+\item 
+\mbox{\Hypertarget{controlLQRController_8hpp_ae03339b80912811ff55c8c5310880590}\label{controlLQRController_8hpp_ae03339b80912811ff55c8c5310880590}} 
+using {\bfseries Vector5d} = Eigen\+::\+Matrix$<$ double, 5, 1 $>$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+L\+Q\+R横向控制模块定义 
+
+\begin{DoxyAuthor}{作者}
+yibin, yining (\href{mailto:852488062@qq.com}{\texttt{ 852488062@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}

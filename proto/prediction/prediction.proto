@@ -1,0 +1,26 @@
+syntax = "proto3";
+package prediction;
+
+message PredictPoint
+{
+    double x=1;//自车坐标系的X坐标，单位m
+    double y=2;//自车坐标系的y坐标，单位m
+    double vx=3;
+    double vy=4;
+}
+
+message Object
+{
+    repeated PredictPoint predictPoint=1;
+    double z=2; 
+    double w=3;//自车坐标系X方向的障碍物尺寸，单位m
+    double h=4;
+    double l=5;//自车坐标系y方向的障碍物尺寸，单位m
+    int32 type=6;
+    int32 trackID=7;
+}
+
+message ObjectList
+{
+    repeated Object object=1;
+}

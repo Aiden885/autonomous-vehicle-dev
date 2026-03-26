@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project planning: include/localPlanning.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project planning
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">localPlanning.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __LOCALPLANNING_HPP__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __LOCALPLANNING_HPP__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;controlMsg/control.pb.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;defineColor.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;imuMsg/imu.pb.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;mapMsg/localization_MapAnalysis.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;predictionMsg/prediction.pb.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;serverMsg/objects.pb.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;serverMsg/traffic_light.pb.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;yaml-cpp/yaml.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define MINIMAL_ID 0</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define OFFSET_X -0.3</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define OFFSET_Y 0</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// curve related.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CP_DISTANCE 3</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define CURVE_POINT_NUM 15 // 20230215  reduce  to 15 from 75</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define CURVE_NUM 1        // 20230215 reduce  9 // init is 9 //规划曲线的数量</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define CURVE_DISTANCE 1.5 // 20230215   0.4 //两条规划曲线终点间距</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define CP_DISTANCE_SECOND 1</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structPlanningPoint.html">   34</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structPlanningPoint.html">PlanningPoint</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// local path</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> x;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> y;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">double</span> angle;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// global path</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">double</span> gaussX;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> gaussY;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> gaussAngle;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// frenet path</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">double</span> s;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">double</span> l;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">double</span> frenetAngle;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// speed</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">double</span> v;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// curvature</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">double</span> curvature;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// accumS</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">double</span> accumS;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structPlanningTrajectory.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::vector&lt;PlanningPoint&gt; planningPoints;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">// struct Point</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">//   double x;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">//   double y;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">//   double angle;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// struct Curve</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//   int32_t index = 0;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//   Point points[CURVE_POINT_NUM];</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//   std::vector&lt;Point&gt; pointList;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">// struct TrajectoryPoint</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">//   double x = 0.0;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">//   double y = 0.0;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//   double theta = 0.0;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//   double v = 0.0;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// }; // 20220825</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">// struct Trajectory</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//   std::vector&lt;TrajectoryPoint&gt; trajectoryPoints;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// struct GlobalTrajectoryPoint</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//   double GaussX;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">//   double GaussY;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//   double yaw;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//   double v;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//   double curvature;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//   double s;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">// struct GlobalTrajectory</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">//   std::vector&lt;GlobalTrajectoryPoint&gt; globalTrajectoryPoints;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">// struct FrenetTrajectoryPoint</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">//   double s;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//   double l;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//   double angle;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">// struct FrenetTrajectory</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">// {</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">//   std::vector&lt;FrenetTrajectoryPoint&gt; FrenetTrajectoryPoints;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structReferenceLine.html">  115</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structReferenceLine.html">ReferenceLine</a></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::vector&lt;PlanningPoint&gt; referenceLinePoints;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="structDecisionData.html">  120</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structDecisionData.html">DecisionData</a></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::vector&lt;PlanningTrajectory&gt; finalPathList;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="structReferenceLine.html">ReferenceLine</a> referenceLine;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="structPlanningPoint.html">PlanningPoint</a> frenetLocationPoint;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; speedList;            <span class="comment">// 20220821 每种速度采样上每个点的速度</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::vector&lt;PlanningTrajectory&gt; controlTrajectoryList; <span class="comment">// 20220826 轨迹</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::vector&lt;int32_t&gt; feasibleTrajectoryIndexList;      <span class="comment">// 20220904</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> optimalGlobalTrajectory;            <span class="comment">// 最优轨迹转化成全局坐标</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    int32_t optimalTrajectoryIndex;                        <span class="comment">// 最优轨迹序号</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    int32_t currentId = 0;                                 <span class="comment">// 当前RoadID</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    int32_t currentLaneId = 0;                             <span class="comment">// 当前LaneID          20220825添加</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    int32_t currentIndex = 0;                              <span class="comment">// 当前路点index</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::tuple&lt;int32_t, int32_t&gt; nextId = std::tuple&lt;int32_t, int32_t&gt;(0, 0); <span class="comment">// 后继路的roadindex 和laneIndex</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">// TODO:delete useless structs</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#ab0c33f1bde12ba69245517cb468cd8f1">courseAngleRevise</a>(<span class="keywordtype">double</span> ang);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">double</span> speedSmoothing(<span class="keywordtype">double</span> lastTargetSpeed, <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a572cfaa68a6eafec25c9fbce22be58f1">loadStopPoints</a>(<span class="keyword">const</span> std::string fileName, std::vector&lt;GaussRoadPoint&gt; &amp;rawStopPoints,</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    std::tuple&lt;int32_t, int32_t, int32_t&gt; &amp;stopPointRoadLaneId, <span class="keywordtype">double</span> offsetX,</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <span class="keywordtype">double</span> offsetY);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#aa28e587fc6e0650ee9e96b05e2597245">loadStopPointsFromYaml</a>(<span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map_, <span class="keyword">const</span> std::string &amp;fileName,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                            std::vector&lt;GaussRoadPoint&gt; &amp;rawStopPoints,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                            std::tuple&lt;int32_t, int32_t, int32_t&gt; &amp;stopPointRoadLanePointId, <span class="keywordtype">double</span> offsetX,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                            <span class="keywordtype">double</span> offsetY);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;std::tuple&lt;int32_t, int32_t&gt; <a class="code" href="localPlanning__m_8cpp.html#abf7a5a33c481b3077c1a365feb6e7b2b">getNextRoadLaneId</a>(std::tuple&lt;int32_t, int32_t&gt; currentId,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                               <span class="keyword">const</span> std::vector&lt;std::tuple&lt;int32_t, int32_t&gt;&gt; &amp;routingList);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a603957659141af389fe56e5659de66ee">pointDistance</a>(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> y2);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#ae9d5ad9600741ad7b9bcce3455f55c44">getPlanningDistance</a>(<span class="keywordtype">double</span> velocity, <span class="keywordtype">double</span> curvature);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> <a class="code" href="localPlanning__m_8cpp.html#a54e322e9dd48a95af52ac68c43fbc213">getPlanningPoint</a>(<span class="keywordtype">double</span> distance, <span class="keyword">const</span> <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> &amp;currentPoint,</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                <span class="keyword">const</span> <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keywordtype">double</span> yaw,</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                std::tuple&lt;int32_t, int32_t&gt; nextId, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#aceb934788ac59a4dd5a890b8bd5988f5">limitPlanningDistance</a>(<span class="keywordtype">double</span> targetDistance, <span class="keywordtype">double</span> lastTargetDistance);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a1f2ab502562c0b5cdaa920864965d04d">getAngle</a>(<span class="keywordtype">double</span> x0, <span class="keywordtype">double</span> y0, <span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#ad174ae3dfe5302cb5a2fffaa15cefcef">getAngleDiff</a>(<span class="keywordtype">double</span> ang0, <span class="keywordtype">double</span> ang1);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">double</span> getYawDiff(<span class="keywordtype">double</span> yawVehicle, <span class="keywordtype">double</span> yawRoad);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> localPlanning(<span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, <span class="keywordtype">double</span> velocity, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map, <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                   <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;predictionMsg,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                   <span class="keyword">const</span> std::vector&lt;std::tuple&lt;int32_t, int32_t&gt;&gt; &amp;routingList,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                   <span class="keyword">const</span> std::vector&lt;GaussRoadPoint&gt; stopPoints, <span class="keyword">const</span> <a class="code" href="classinfopack_1_1TrafficLight.html">infopack::TrafficLight</a> &amp;trafficLights,</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                   std::vector&lt;infopack::ObjectsProto&gt; objectsCmd);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#ae1465540ad2745e2531c5c980c3c710b">inArea</a>(<span class="keywordtype">double</span> longitudeX, <span class="keywordtype">double</span> latitudeY, <span class="keywordtype">double</span> targetX, <span class="keywordtype">double</span> targetY);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#af53e528451b5ff3e429347df1cc4c00b">stopPointJudge</a>(<span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, <span class="keyword">const</span> std::vector&lt;GaussRoadPoint&gt; &amp;stopPoints);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<a class="code" href="structPlanningPoint.html">PlanningPoint</a> <a class="code" href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724">pointOnCubicBezier</a>(std::vector&lt;PlanningPoint&gt; cp, <span class="keywordtype">double</span> t);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965">generateBezierPathInFrenet</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;startPoint, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;endPoint,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                <a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> &amp;curve);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a007880750244bfeeff6f9532de7a6ec9">clearPathList</a>(std::vector&lt;PlanningTrajectory&gt; &amp;pathList);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;int32_t <a class="code" href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b">getTrajectoryPlanningResult</a>(<span class="keywordtype">double</span> velocity, <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;predictionMsg, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="structReferenceLine.html">ReferenceLine</a> &amp;<a class="code" href="structReferenceLine.html">ReferenceLine</a>,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="classinfopack_1_1TrafficLight.html">infopack::TrafficLight</a> &amp;trafficLight,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                    std::vector&lt;infopack::ObjectsProto&gt; objectsCmd);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">// 20220826</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">// 计算欧式距离</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b">getDistance</a>(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y2);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">// 计算点到线段距离</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a7e673d9855400ef1c5c04fb98bd1122d">pointToLineDistance</a>(<span class="keyword">const</span> <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> &amp;startPoint, <span class="keyword">const</span> <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> &amp;stopPoint,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                           <span class="keyword">const</span> <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> &amp;checkPoint);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">// 寻找当前位置：RoadID、LaneID、当前点ID</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a90cc5e19c44b65d660afb028ff83cfb6">getCurrentPosition</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keywordtype">bool</span> getCurrentPositionDuringLaneChanging(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">// 生成速度采样后，多种  轨迹上每个点的速度</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a090a56998296fc27987a8ec717e4f374">generateSpeedList</a>(<span class="keywordtype">double</span> velocity, <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData,</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                       std::vector&lt;infopack::ObjectsProto&gt; objectsCmd, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">// 生成轨迹采样结果</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a49560bf7195a2f9e3c4a13670f4f6901">generateTrajectoryList</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">// 在一组轨迹中选择最好的</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;int32_t <a class="code" href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea">getOptimalTrajectoryIndex</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;prediction,</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                  <span class="keyword">const</span> <a class="code" href="classinfopack_1_1TrafficLight.html">infopack::TrafficLight</a> &amp;trafficLight,</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                  std::vector&lt;infopack::ObjectsProto&gt; objectsCmd, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#acd812f13e27ab10c67c7e752b7dc012d">trajectoryCollisionCheck</a>(<a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> &amp;trajectory, <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;prediction);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a1839601772fcb43e22b06453b7c11861">ableToPassYellowLight</a>(<a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> &amp;trajectory, <span class="keywordtype">double</span> remaining_time,</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                           <span class="keywordtype">double</span> lane_length_before_intersection);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a9673ed746e166b4e273051bbf8c18a04">pointCollisionCheck</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;trajectoryPoint, <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;predictPoint, <span class="keywordtype">double</span> w,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                         <span class="keywordtype">double</span> l);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a07abb29775692cf43b900f9c8bfc0b74">boundaryCollisionCheck</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p0, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p1, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p2,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                            <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p3);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a7cd5e98d51d7ec0a9a239194a218e89d">innerCollisionCheck</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p0, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p1, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p2,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                         <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p3, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;obj);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">// 通过当前预瞄点，计算换道后的预瞄点</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#a4b96b7cfb737fbe9dbfbdd2c164f5a21">changeCurrentPoint</a>(<span class="keyword">const</span> <a class="code" href="classRoad.html">Road</a> &amp;<a class="code" href="structroad.html">road</a>, <span class="keyword">const</span> <a class="code" href="classLane.html">Lane</a> &amp;curLane, <span class="keywordtype">int</span> &amp;laneId, <span class="keywordtype">int</span> &amp;pointIndex,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> &amp;currentPoint, <span class="keywordtype">bool</span> isLeft);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> <a class="code" href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa">changeLocalToGlobal</a>(<a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> &amp;trajectory, <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> gaussRoadPoint);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">// 停车</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a03c9a4b8fb5f1711a92e7f061449bd0e">stop</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keywordtype">double</span> velocity);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;std::tuple&lt;int32_t, int32_t&gt; <a class="code" href="localPlanning__m_8cpp.html#af379577e4ea200d4e7eb20278662c88f">fixRoadLaneIndex</a>(<span class="keyword">const</span> <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a91dd96dd46612b623947be4ae32cc050">calculateCurvature</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p0, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p1, <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;p2);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">// 局部规划初始化</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a601d6ae079dd9cea28845f83d7eca073">initLocalPlanning</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573">assessTrajectory</a>(<a class="code" href="structPlanningTrajectory.html">PlanningTrajectory</a> &amp;trajectory, <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;prediction,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        std::vector&lt;infopack::ObjectsProto&gt; objectsCmd, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">// 20130214</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">// double getMinDistanceOfPoint(const PlanningPoint &amp;point, const prediction::ObjectList &amp;prediction, const</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">// double &amp;t = 0);</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163">getMinDistanceOfPoint</a>(<span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;point, <span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;prediction,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                             std::vector&lt;infopack::ObjectsProto&gt; objectsCmd, <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<a class="code" href="structReferenceLine.html">ReferenceLine</a> <a class="code" href="localPlanning__m_8cpp.html#a0648cb2d2633f4c9ed449ff4187308bc">getReferenceLine</a>(<span class="keyword">const</span> <a class="code" href="classRoadMap.html">RoadMap</a> &amp;map, <span class="keyword">const</span> <a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                               <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> locationPoint);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#abede3722a48c7be83fe3244e490ccdf0">getFrenetLocationPoint</a>(<a class="code" href="structDecisionData.html">DecisionData</a> &amp;decisionData, <span class="keyword">const</span> <a class="code" href="structReferenceLine.html">ReferenceLine</a> &amp;referenceLine,</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                            <a class="code" href="structGaussRoadPoint.html">GaussRoadPoint</a> locationPoint);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100">findMin</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;array);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a1036b5ec9683b7c47764e32c533bda9e">findMax</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;array);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#ad4c6d016fa752d47a9d68bef89f32d3e">frenet2Cartesian</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;s, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;l, <span class="keywordtype">double</span> &amp;x, <span class="keywordtype">double</span> &amp;y,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                      <span class="keyword">const</span> <a class="code" href="structReferenceLine.html">ReferenceLine</a> &amp;referenceLine, <span class="keywordtype">int</span> &amp;lastIndex, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;prevIndex);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e">generateBezierPathListInFrenet</a>(<span class="keyword">const</span> <a class="code" href="structReferenceLine.html">ReferenceLine</a> &amp;referenceLine,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="structPlanningPoint.html">PlanningPoint</a> &amp;frenetLocationPoint,</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                    std::vector&lt;PlanningTrajectory&gt; &amp;pathList);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#ae46745cb3754d10c22ed26abd5542a11">restart</a>(<span class="keyword">const</span> <a class="code" href="classprediction_1_1ObjectList.html">prediction::ObjectList</a> &amp;prediction, <span class="keywordtype">double</span> velocity);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">// bool calculateTrajectoryCost(const std::vector&lt;Trajectory&gt; &amp;trajectoryList, const prediction::ObjectList</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">// &amp;prediction, Trajectory &amp;selectTrajectory);</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">// double speedModel(const double &amp;distance, const double &amp;maxspeed = 10, const double &amp;minspeed = 0, const</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">// double &amp;d1 = 4.5, const double &amp;d2 = 0.5);</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">// void initSpeedForTrajectory(Trajectory &amp;trajectory, const prediction::ObjectList &amp;prediction);</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="localPlanning__m_8cpp.html#ac903f5f04b7e6b9055bfb92a4c8a60a7">hasPrecedingVehicle</a>(</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu, <span class="keyword">const</span> std::vector&lt;infopack::ObjectsProto&gt; objectsCmd); <span class="comment">// 车辆前方是否有需要跟随的车辆</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keywordtype">double</span> <a class="code" href="localPlanning__m_8cpp.html#a0589033b65b384ad8b64c6455725515a">cruiseController</a>(<span class="keyword">const</span> <a class="code" href="classpc_1_1Imu.html">pc::Imu</a> &amp;imu,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        <span class="keyword">const</span> std::vector&lt;infopack::ObjectsProto&gt; objectsCmd); <span class="comment">// 计算ACC跟车速度</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keywordtype">void</span> <a class="code" href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26">gaussConvert</a>(<span class="keywordtype">double</span> longitude1, <span class="keywordtype">double</span> latitude1, <span class="keywordtype">double</span> &amp;dNorth_X, <span class="keywordtype">double</span> &amp;dEast_Y);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keywordtype">void</span> CoordTran2DForNew0INOld(<span class="keywordtype">double</span> &amp;dX, <span class="keywordtype">double</span> &amp;dY, <span class="keywordtype">double</span> &amp;dPhi, <span class="keywordtype">double</span> dX0, <span class="keywordtype">double</span> dY0, <span class="keywordtype">double</span> dPhi0);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructDecisionData_html"><div class="ttname"><a href="structDecisionData.html">DecisionData</a></div><div class="ttdef"><b>Definition:</b> localPlanning.hpp:120</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ac903f5f04b7e6b9055bfb92a4c8a60a7"><div class="ttname"><a href="localPlanning__m_8cpp.html#ac903f5f04b7e6b9055bfb92a4c8a60a7">hasPrecedingVehicle</a></div><div class="ttdeci">void hasPrecedingVehicle(const hasPrecedingVehicleParam &amp;param, const hasPrecedingVehicleInput &amp;input, hasPrecedingVehicleOutput &amp;output)</div><div class="ttdoc">判断车辆前方是否有需要跟随的车辆</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3528</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a8adfb6f5dac3c879f559584066cfafaa"><div class="ttname"><a href="localPlanning__m_8cpp.html#a8adfb6f5dac3c879f559584066cfafaa">changeLocalToGlobal</a></div><div class="ttdeci">void changeLocalToGlobal(const changeLocalToGlobalParam &amp;param, const changeLocalToGlobalInput &amp;input, changeLocalToGlobalOutput &amp;output)</div><div class="ttdoc">局部坐标轨迹转为全局轨迹</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2771</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_af379577e4ea200d4e7eb20278662c88f"><div class="ttname"><a href="localPlanning__m_8cpp.html#af379577e4ea200d4e7eb20278662c88f">fixRoadLaneIndex</a></div><div class="ttdeci">void fixRoadLaneIndex(const fixRoadLaneIndexParam &amp;param, const fixRoadLaneIndexInput &amp;input, fixRoadLaneIndexOutput &amp;output)</div><div class="ttdoc">返回decisionDate中roadID 和laneID的索引</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2888</div></div>
+<div class="ttc" id="astructroad_html"><div class="ttname"><a href="structroad.html">road</a></div><div class="ttdef"><b>Definition:</b> globalPlanning.h:10</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ab0c33f1bde12ba69245517cb468cd8f1"><div class="ttname"><a href="localPlanning__m_8cpp.html#ab0c33f1bde12ba69245517cb468cd8f1">courseAngleRevise</a></div><div class="ttdeci">void courseAngleRevise(const courseAngleReviseParam &amp;param, const courseAngleReviseInput &amp;input, courseAngleReviseOutput &amp;output)</div><div class="ttdoc">逆时针旋转坐标系90度，向东0度变成向北0度</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:217</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a06d3bb8831030a8e1b7b1df4f6a7b573"><div class="ttname"><a href="localPlanning__m_8cpp.html#a06d3bb8831030a8e1b7b1df4f6a7b573">assessTrajectory</a></div><div class="ttdeci">void assessTrajectory(const assessTrajectoryParam &amp;param, const assessTrajectoryInput &amp;input, assessTrajectoryOutput &amp;output)</div><div class="ttdoc">返回距离障碍物最近距离，进行轨迹评估</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2980</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_abede3722a48c7be83fe3244e490ccdf0"><div class="ttname"><a href="localPlanning__m_8cpp.html#abede3722a48c7be83fe3244e490ccdf0">getFrenetLocationPoint</a></div><div class="ttdeci">void getFrenetLocationPoint(const getFrenetLocationPointParam &amp;param, const getFrenetLocationPointInput &amp;input, getFrenetLocationPointOutput &amp;output)</div><div class="ttdoc">获取车辆当前位置在frenet坐标系中坐标值</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3377</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_abf7a5a33c481b3077c1a365feb6e7b2b"><div class="ttname"><a href="localPlanning__m_8cpp.html#abf7a5a33c481b3077c1a365feb6e7b2b">getNextRoadLaneId</a></div><div class="ttdeci">void getNextRoadLaneId(const getNextRoadLaneIdParam &amp;param, const getNextRoadLaneIdInput &amp;input, getNextRoadLaneIdOutput &amp;output)</div><div class="ttdoc">从全局规划中，获取后续车道和道路Id</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:410</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a91dd96dd46612b623947be4ae32cc050"><div class="ttname"><a href="localPlanning__m_8cpp.html#a91dd96dd46612b623947be4ae32cc050">calculateCurvature</a></div><div class="ttdeci">void calculateCurvature(const calculateCurvatureParam &amp;param, const calculateCurvatureInput &amp;input, calculateCurvatureOutput &amp;output)</div><div class="ttdoc">由相邻三点近似计算曲率</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2936</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a25ba9cbfa417d5e8ceaac09d8662ceea"><div class="ttname"><a href="localPlanning__m_8cpp.html#a25ba9cbfa417d5e8ceaac09d8662ceea">getOptimalTrajectoryIndex</a></div><div class="ttdeci">void getOptimalTrajectoryIndex(const getOptimalTrajectoryIndexParam &amp;param, const getOptimalTrajectoryIndexInput &amp;input, getOptimalTrajectoryIndexOutput &amp;output)</div><div class="ttdoc">评估轨迹，并获取最优轨迹索引</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2283</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a03c9a4b8fb5f1711a92e7f061449bd0e"><div class="ttname"><a href="localPlanning__m_8cpp.html#a03c9a4b8fb5f1711a92e7f061449bd0e">stop</a></div><div class="ttdeci">void stop(const stopParam &amp;param, const stopInput &amp;input, stopOutput &amp;output)</div><div class="ttdoc">停车时修改速度曲线</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1311</div></div>
+<div class="ttc" id="astructReferenceLine_html"><div class="ttname"><a href="structReferenceLine.html">ReferenceLine</a></div><div class="ttdef"><b>Definition:</b> localPlanning.hpp:115</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a572cfaa68a6eafec25c9fbce22be58f1"><div class="ttname"><a href="localPlanning__m_8cpp.html#a572cfaa68a6eafec25c9fbce22be58f1">loadStopPoints</a></div><div class="ttdeci">void loadStopPoints(const loadStopPointsParam &amp;param, const loadStopPointsInput &amp;input, loadStopPointsOutput &amp;output)</div><div class="ttdoc">从文件中加载停止点</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:244</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a090a56998296fc27987a8ec717e4f374"><div class="ttname"><a href="localPlanning__m_8cpp.html#a090a56998296fc27987a8ec717e4f374">generateSpeedList</a></div><div class="ttdeci">void generateSpeedList(const generateSpeedListParam &amp;param, const generateSpeedListInput &amp;input, generateSpeedListOutput &amp;output)</div><div class="ttdoc">根据道路信息等，采样生成速度曲线</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2116</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a9673ed746e166b4e273051bbf8c18a04"><div class="ttname"><a href="localPlanning__m_8cpp.html#a9673ed746e166b4e273051bbf8c18a04">pointCollisionCheck</a></div><div class="ttdeci">void pointCollisionCheck(const pointCollisionCheckParam &amp;param, const pointCollisionCheckInput &amp;input, pointCollisionCheckOutput &amp;output)</div><div class="ttdoc">轨迹点碰撞检测</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2500</div></div>
+<div class="ttc" id="aclassprediction_1_1ObjectList_html"><div class="ttname"><a href="classprediction_1_1ObjectList.html">prediction::ObjectList</a></div><div class="ttdef"><b>Definition:</b> prediction.pb.h:345</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a0648cb2d2633f4c9ed449ff4187308bc"><div class="ttname"><a href="localPlanning__m_8cpp.html#a0648cb2d2633f4c9ed449ff4187308bc">getReferenceLine</a></div><div class="ttdeci">void getReferenceLine(const getReferenceLineParam &amp;param, const getReferenceLineInput &amp;input, getReferenceLineOutput &amp;output)</div><div class="ttdoc">获取局部规划参考轨迹</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3235</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a4a4df2e0314b2bef4571ca3350cff100"><div class="ttname"><a href="localPlanning__m_8cpp.html#a4a4df2e0314b2bef4571ca3350cff100">findMin</a></div><div class="ttdeci">void findMin(const findMinParam &amp;param, const findMinInput &amp;input, findMinOutput &amp;output)</div><div class="ttdoc">返回double数组最小值</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3167</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a7dfff6655bc05b018db306bfbc09b965"><div class="ttname"><a href="localPlanning__m_8cpp.html#a7dfff6655bc05b018db306bfbc09b965">generateBezierPathInFrenet</a></div><div class="ttdeci">void generateBezierPathInFrenet(const generateBezierPathInFrenetParam &amp;param, const generateBezierPathInFrenetInput &amp;input, generateBezierPathInFrenetOutput &amp;output)</div><div class="ttdoc">在frenet中生成贝塞尔曲线</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1452</div></div>
+<div class="ttc" id="aclassRoadMap_html"><div class="ttname"><a href="classRoadMap.html">RoadMap</a></div><div class="ttdef"><b>Definition:</b> localization_MapAnalysis.h:65</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_aceb934788ac59a4dd5a890b8bd5988f5"><div class="ttname"><a href="localPlanning__m_8cpp.html#aceb934788ac59a4dd5a890b8bd5988f5">limitPlanningDistance</a></div><div class="ttdeci">void limitPlanningDistance(const limitPlanningDistanceParam &amp;param, const limitPlanningDistanceInput &amp;input, limitPlanningDistanceOutput &amp;output)</div><div class="ttdoc">限制规划距离，防止突变</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:745</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_add815e7406aeaa10d0a316e09d33da26"><div class="ttname"><a href="localPlanning__m_8cpp.html#add815e7406aeaa10d0a316e09d33da26">gaussConvert</a></div><div class="ttdeci">void gaussConvert(const gaussConvertParam &amp;param, const gaussConvertInput &amp;input, gaussConvertOutput &amp;output)</div><div class="ttdoc">经纬度转全局坐标</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:60</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a1036b5ec9683b7c47764e32c533bda9e"><div class="ttname"><a href="localPlanning__m_8cpp.html#a1036b5ec9683b7c47764e32c533bda9e">findMax</a></div><div class="ttdeci">void findMax(const findMaxParam &amp;param, const findMaxInput &amp;input, findMaxOutput &amp;output)</div><div class="ttdoc">返回double数组最大值</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3201</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a1839601772fcb43e22b06453b7c11861"><div class="ttname"><a href="localPlanning__m_8cpp.html#a1839601772fcb43e22b06453b7c11861">ableToPassYellowLight</a></div><div class="ttdeci">void ableToPassYellowLight(const ableToPassYellowLightParam &amp;param, const ableToPassYellowLightInput &amp;input, ableToPassYellowLightOutput &amp;output)</div><div class="ttdoc">判断是否能通过黄灯</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2444</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a07abb29775692cf43b900f9c8bfc0b74"><div class="ttname"><a href="localPlanning__m_8cpp.html#a07abb29775692cf43b900f9c8bfc0b74">boundaryCollisionCheck</a></div><div class="ttdeci">void boundaryCollisionCheck(const boundaryCollisionCheckParam &amp;param, const boundaryCollisionCheckInput &amp;input, boundaryCollisionCheckOutput &amp;output)</div><div class="ttdoc">边碰撞检测</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2579</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a007880750244bfeeff6f9532de7a6ec9"><div class="ttname"><a href="localPlanning__m_8cpp.html#a007880750244bfeeff6f9532de7a6ec9">clearPathList</a></div><div class="ttdeci">void clearPathList(const clearPathListParam &amp;param, const clearPathListInput &amp;input, clearPathListOutput &amp;output)</div><div class="ttdoc">清除上次生成的轨迹</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1547</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a7e673d9855400ef1c5c04fb98bd1122d"><div class="ttname"><a href="localPlanning__m_8cpp.html#a7e673d9855400ef1c5c04fb98bd1122d">pointToLineDistance</a></div><div class="ttdeci">void pointToLineDistance(const pointToLineDistanceParam &amp;param, const pointToLineDistanceInput &amp;input, pointToLineDistanceOutput &amp;output)</div><div class="ttdoc">计算点到线段的距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1695</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a4b96b7cfb737fbe9dbfbdd2c164f5a21"><div class="ttname"><a href="localPlanning__m_8cpp.html#a4b96b7cfb737fbe9dbfbdd2c164f5a21">changeCurrentPoint</a></div><div class="ttdeci">void changeCurrentPoint(const changeCurrentPointParam &amp;param, const changeCurrentPointInput &amp;input, changeCurrentPointOutput &amp;output)</div><div class="ttdoc">判断是否可以换道</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2677</div></div>
+<div class="ttc" id="astructPlanningPoint_html"><div class="ttname"><a href="structPlanningPoint.html">PlanningPoint</a></div><div class="ttdef"><b>Definition:</b> localPlanning.hpp:34</div></div>
+<div class="ttc" id="aclassLane_html"><div class="ttname"><a href="classLane.html">Lane</a></div><div class="ttdef"><b>Definition:</b> localization_MapAnalysis.h:31</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_af1b4ed46cd8feea3d9246d37dd82979b"><div class="ttname"><a href="localPlanning__m_8cpp.html#af1b4ed46cd8feea3d9246d37dd82979b">getDistance</a></div><div class="ttdeci">void getDistance(const getDistanceParam &amp;param, const getDistanceInput &amp;input, getDistanceOutput &amp;output)</div><div class="ttdoc">计算两点之间的距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1671</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ad174ae3dfe5302cb5a2fffaa15cefcef"><div class="ttname"><a href="localPlanning__m_8cpp.html#ad174ae3dfe5302cb5a2fffaa15cefcef">getAngleDiff</a></div><div class="ttdeci">void getAngleDiff(const getAngleDiffParam &amp;param, const getAngleDiffInput &amp;input, getAngleDiffOutput &amp;output)</div><div class="ttdoc">计算两角度之差，并正则化</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:803</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ac9d5ea05e8363d959d053f33d5e04a9b"><div class="ttname"><a href="localPlanning__m_8cpp.html#ac9d5ea05e8363d959d053f33d5e04a9b">getTrajectoryPlanningResult</a></div><div class="ttdeci">void getTrajectoryPlanningResult(const getTrajectoryPlanningResultParam &amp;param, const getTrajectoryPlanningResultInput &amp;input, getTrajectoryPlanningResultOutput &amp;output)</div><div class="ttdoc">完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1567</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a90cc5e19c44b65d660afb028ff83cfb6"><div class="ttname"><a href="localPlanning__m_8cpp.html#a90cc5e19c44b65d660afb028ff83cfb6">getCurrentPosition</a></div><div class="ttdeci">void getCurrentPosition(const getCurrentPositionParam &amp;param, const getCurrentPositionInput &amp;input, getCurrentPositionOutput &amp;output)</div><div class="ttdoc">寻找距离车辆位置最近的路点</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1777</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a1f2ab502562c0b5cdaa920864965d04d"><div class="ttname"><a href="localPlanning__m_8cpp.html#a1f2ab502562c0b5cdaa920864965d04d">getAngle</a></div><div class="ttdeci">void getAngle(const getAngleParam &amp;param, const getAngleInput &amp;input, getAngleOutput &amp;output)</div><div class="ttdoc">计算坐标系中两点角度</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:776</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ae7e309acd6a1ac4589609a3e7fd28724"><div class="ttname"><a href="localPlanning__m_8cpp.html#ae7e309acd6a1ac4589609a3e7fd28724">pointOnCubicBezier</a></div><div class="ttdeci">void pointOnCubicBezier(const pointOnCubicBezierParam &amp;param, const pointOnCubicBezierInput &amp;input, pointOnCubicBezierOutput &amp;output)</div><div class="ttdoc">计算贝塞尔曲线上的点</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1398</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a49560bf7195a2f9e3c4a13670f4f6901"><div class="ttname"><a href="localPlanning__m_8cpp.html#a49560bf7195a2f9e3c4a13670f4f6901">generateTrajectoryList</a></div><div class="ttdeci">void generateTrajectoryList(const generateTrajectoryListParam &amp;param, const generateTrajectoryListInput &amp;input, generateTrajectoryListOutput &amp;output)</div><div class="ttdoc">生成采样轨迹，供后续选择</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2189</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_aa28e587fc6e0650ee9e96b05e2597245"><div class="ttname"><a href="localPlanning__m_8cpp.html#aa28e587fc6e0650ee9e96b05e2597245">loadStopPointsFromYaml</a></div><div class="ttdeci">void loadStopPointsFromYaml(const loadStopPointsFromYamlParam &amp;param, const loadStopPointsFromYamlInput &amp;input, loadStopPointsFromYamlOutput &amp;output)</div><div class="ttdoc">从文件中加载停止点</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:295</div></div>
+<div class="ttc" id="aclassinfopack_1_1TrafficLight_html"><div class="ttname"><a href="classinfopack_1_1TrafficLight.html">infopack::TrafficLight</a></div><div class="ttdef"><b>Definition:</b> traffic_light.pb.h:85</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ae46745cb3754d10c22ed26abd5542a11"><div class="ttname"><a href="localPlanning__m_8cpp.html#ae46745cb3754d10c22ed26abd5542a11">restart</a></div><div class="ttdeci">void restart(const restartParam &amp;param, const restartInput &amp;input, restartOutput &amp;output)</div><div class="ttdoc">车辆停车后，判断能否重新启动</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1264</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a77c0436817095ed34b2e7a21291c567e"><div class="ttname"><a href="localPlanning__m_8cpp.html#a77c0436817095ed34b2e7a21291c567e">generateBezierPathListInFrenet</a></div><div class="ttdeci">void generateBezierPathListInFrenet(const generateBezierPathListInFrenetParam &amp;param, const generateBezierPathListInFrenetInput &amp;input, generateBezierPathListInFrenetOutput &amp;output)</div><div class="ttdoc">在frenet坐标系中生成多条贝塞尔曲线</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3468</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_acd812f13e27ab10c67c7e752b7dc012d"><div class="ttname"><a href="localPlanning__m_8cpp.html#acd812f13e27ab10c67c7e752b7dc012d">trajectoryCollisionCheck</a></div><div class="ttdeci">void trajectoryCollisionCheck(const trajectoryCollisionCheckParam &amp;param, const trajectoryCollisionCheckInput &amp;input, trajectoryCollisionCheckOutput &amp;output)</div><div class="ttdoc">轨迹碰撞检测，true表示可行，false表示碰撞</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2366</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ae1465540ad2745e2531c5c980c3c710b"><div class="ttname"><a href="localPlanning__m_8cpp.html#ae1465540ad2745e2531c5c980c3c710b">inArea</a></div><div class="ttdeci">void inArea(const inAreaParam &amp;param, const inAreaInput &amp;input, inAreaOutput &amp;output)</div><div class="ttdoc">判断点是否在区域内</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:153</div></div>
+<div class="ttc" id="astructPlanningTrajectory_html"><div class="ttname"><a href="structPlanningTrajectory.html">PlanningTrajectory</a></div><div class="ttdef"><b>Definition:</b> localPlanning.hpp:56</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ad4c6d016fa752d47a9d68bef89f32d3e"><div class="ttname"><a href="localPlanning__m_8cpp.html#ad4c6d016fa752d47a9d68bef89f32d3e">frenet2Cartesian</a></div><div class="ttdeci">void frenet2Cartesian(const frenet2CartesianParam &amp;param, const frenet2CartesianInput &amp;input, frenet2CartesianOutput &amp;output)</div><div class="ttdoc">将frenet坐标系坐标转为自车坐标系坐标，xy为右前</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3406</div></div>
+<div class="ttc" id="aclassRoad_html"><div class="ttname"><a href="classRoad.html">Road</a></div><div class="ttdef"><b>Definition:</b> localization_MapAnalysis.h:50</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a54e322e9dd48a95af52ac68c43fbc213"><div class="ttname"><a href="localPlanning__m_8cpp.html#a54e322e9dd48a95af52ac68c43fbc213">getPlanningPoint</a></div><div class="ttdeci">void getPlanningPoint(const getPlanningPointParam &amp;param, const getPlanningPointInput &amp;input, getPlanningPointOutput &amp;output)</div><div class="ttdoc">根据车辆信息获取规划预瞄点</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:585</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a603957659141af389fe56e5659de66ee"><div class="ttname"><a href="localPlanning__m_8cpp.html#a603957659141af389fe56e5659de66ee">pointDistance</a></div><div class="ttdeci">void pointDistance(const pointDistanceParam &amp;param, const pointDistanceInput &amp;input, pointDistanceOutput &amp;output)</div><div class="ttdoc">计算两点之间的距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:187</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a601d6ae079dd9cea28845f83d7eca073"><div class="ttname"><a href="localPlanning__m_8cpp.html#a601d6ae079dd9cea28845f83d7eca073">initLocalPlanning</a></div><div class="ttdeci">void initLocalPlanning(const initLocalPlanningParam &amp;param, const initLocalPlanningInput &amp;input, initLocalPlanningOutput &amp;output)</div><div class="ttdoc">局部规划决策数据初始化</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2852</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_ae9d5ad9600741ad7b9bcce3455f55c44"><div class="ttname"><a href="localPlanning__m_8cpp.html#ae9d5ad9600741ad7b9bcce3455f55c44">getPlanningDistance</a></div><div class="ttdeci">void getPlanningDistance(const getPlanningDistanceParam &amp;param, const getPlanningDistanceInput &amp;input, getPlanningDistanceOutput &amp;output)</div><div class="ttdoc">根据速度、曲率获取规划距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:517</div></div>
+<div class="ttc" id="astructGaussRoadPoint_html"><div class="ttname"><a href="structGaussRoadPoint.html">GaussRoadPoint</a></div><div class="ttdef"><b>Definition:</b> localization_MapAnalysis.h:20</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a0e6d78efa9226164b520b887319fe163"><div class="ttname"><a href="localPlanning__m_8cpp.html#a0e6d78efa9226164b520b887319fe163">getMinDistanceOfPoint</a></div><div class="ttdeci">void getMinDistanceOfPoint(const getMinDistanceOfPointParam &amp;param, const getMinDistanceOfPointInput &amp;input, getMinDistanceOfPointOutput &amp;output)</div><div class="ttdoc">返回点距离障碍物最近距离</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3030</div></div>
+<div class="ttc" id="aclasspc_1_1Imu_html"><div class="ttname"><a href="classpc_1_1Imu.html">pc::Imu</a></div><div class="ttdef"><b>Definition:</b> imu.pb.h:62</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_af53e528451b5ff3e429347df1cc4c00b"><div class="ttname"><a href="localPlanning__m_8cpp.html#af53e528451b5ff3e429347df1cc4c00b">stopPointJudge</a></div><div class="ttdeci">void stopPointJudge(const stopPointJudgeParam &amp;param, const stopPointJudgeInput &amp;input, stopPointJudgeOutput &amp;output)</div><div class="ttdoc">判断车辆是否在停车区域</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:1364</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a0589033b65b384ad8b64c6455725515a"><div class="ttname"><a href="localPlanning__m_8cpp.html#a0589033b65b384ad8b64c6455725515a">cruiseController</a></div><div class="ttdeci">void cruiseController(const cruiseControllerParam &amp;param, const cruiseControllerInput &amp;input, cruiseControllerOutput &amp;output)</div><div class="ttdoc">acc场景下，车辆目标速度计算</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:3575</div></div>
+<div class="ttc" id="alocalPlanning__m_8cpp_html_a7cd5e98d51d7ec0a9a239194a218e89d"><div class="ttname"><a href="localPlanning__m_8cpp.html#a7cd5e98d51d7ec0a9a239194a218e89d">innerCollisionCheck</a></div><div class="ttdeci">void innerCollisionCheck(const innerCollisionCheckParam &amp;param, const innerCollisionCheckInput &amp;input, innerCollisionCheckOutput &amp;output)</div><div class="ttdoc">内部包含检测</div><div class="ttdef"><b>Definition:</b> localPlanning_m.cpp:2616</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

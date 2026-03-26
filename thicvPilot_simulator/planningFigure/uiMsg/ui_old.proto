@@ -1,0 +1,112 @@
+syntax = "proto3";
+//import public "google/protobuf/timestamp.proto";
+
+package ui;
+
+message  UiPad2VData//平板到车的信息
+{
+    bool b_stopFlag = 1; //停车 ，平板界面0：go， 1：  stop
+    bool b_speedOff = 2;//纵向控制使能，平板界面on ：0  ，off ：1
+    bool b_steeringOff = 3;//横向控制使能 ，平板界面on ：0 ， off ：1 
+  //  bool b_smallCircleSelected = true;
+    bool b_isValid = 4;//控制使能？？
+    bool b_config1 = 5;//界面acc 勾选 ：1，不选： 0
+    int32  s_targetPath = 6;//路径控制选择，本地？云控平板界面path1 ：0； path 2： 1
+    //google.protobuf.Timestamp firstStoppedTime = 7;//？？时间
+    bool b_isAlive = 7;  //在线状态
+
+};
+
+message Imu
+{
+    double time = 1 ;
+    double velocity = 2;
+    double roll = 3;
+    double yaw =4 ;
+    double pitch =5 ;
+    bool b_isValid = 6;
+    bool b_gpsValid = 7;
+    double latitude = 8;
+    double longitude = 9;
+    double gaussX = 10;
+    double gaussY = 11;
+    double yawRate = 12;
+
+    //boost::posix_time::ptime lastPacketTime;
+    bool b_isAlive = 13;
+};
+
+message Gnss
+{
+    double longitude = 1;
+    double latitude =2;
+    double gaussX = 3;
+    double gaussY = 4;
+    double yaw = 5;
+    int32 gpsQuality = 6;//对应jason Status
+    double utc_second = 7;
+
+    bool b_isValid = 8;
+    bool b_isDiffitial = 9;
+
+    //boost::posix_time::ptime lastPacketTime;
+    bool b_isAlive = 10; 
+};
+
+message Posture
+{
+    repeated Imu imu =1;
+    repeated Gnss gnss =2;
+    bool b_isAlive = 3;
+};
+
+message Iov //信号灯信息ulight
+{
+  bool b_isValid = 1;
+  bool b_isAlive = 2;
+  //boost::posix_time::ptime lastPacketTime;
+
+  bool b_vehicleValid = 3;
+  int32 vehicleId = 4;
+  int32 vehicleType = 5;
+  double vehicleGaussX = 6;
+  double vehicleGaussY = 7;
+  double vehicleSpeed = 8;
+  double vehicleTime = 9;
+  double vehicleAdvisedSpeed = 10;
+
+  bool b_lightValid = 11;
+  int32 lightPhase = 12;//对应jason Phase
+  double lightTime = 13;//对应jason Time
+  double lightAdvisedSpeed = 14;
+};
+
+message Cv //网联信息
+{
+  bool b_isValid = 1;
+  bool b_isAlive = 2;//在线状态，只用到了这个，对应jason IsAlive
+  //boost::posix_time::ptime lastPacketTime;
+
+  bool b_vehicleValid = 3;
+  int32 vehicleId = 4;
+  int32 vehicleType = 5;
+  double vehicleGaussX = 6;
+  double vehicleGaussY = 7;
+  double vehicleSpeed = 8;
+  double vehicleTime = 9;
+  double vehicleAdvisedSpeed = 10;
+
+  bool b_lightValid = 11;
+  int32 lightPhase = 12;
+  double lightTime = 13;
+  double lightAdvisedSpeed = 14;
+
+};
+
+message  UiV2PadData//车到平板的信息
+{
+    repeated Posture  posture = 1; //IMU或GPS位置信息
+    repeated Iov iov= 2; //信号灯信息，对应原jason uilight
+    repeated Cv cv = 3;//网联信息，对应原jason Iov，界面显示也是IOV状态
+ };
+

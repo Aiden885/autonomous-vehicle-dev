@@ -1,0 +1,59 @@
+\hypertarget{mapAnalysisAdd_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Localization/\+Map\+Program/\+Map\+Anl\+Demo/src/map\+Analysis\+Add.cpp 文件参考}
+\label{mapAnalysisAdd_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/MapProgram/MapAnlDemo/src/mapAnalysisAdd.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Localization/MapProgram/MapAnlDemo/src/mapAnalysisAdd.cpp}}
+
+
+地图分析功能  
+
+
+{\ttfamily \#include \char`\"{}../src/map\+Analysis\+Add.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+map\+Analysis\+Add.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mapAnalysisAdd_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceLocalization}{Localization}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceLocalization}{Localization}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceLocalization_a8ab6815b8355e8d8bf4db9113ad28e21}{Localization\+::road\+Map\+Get}} (Path in1, Empty in2, Empty output)
+\begin{DoxyCompactList}\small\item\em 获取路网地图 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a94cdaf3a9c7b974278b5189966faf15e}{Localization\+::roadmap\+Map\+Analysis}} (RoadM \&rm, Path \&p, Empty \&output)
+\begin{DoxyCompactList}\small\item\em 路段解析，数据解析到\+Map类的roads \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_a5283d3945ab1d240d7d6271e844b459b}{Localization\+::roadmap\+Neighbor\+Lane\+Sort}} (RoadM \&rm, Empty \&in2, Empty \&output)
+\begin{DoxyCompactList}\small\item\em neighbor\+Lane\+Sort成员函数用来给相邻车道id排序,离本车道越近在数组中排的越前 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_af0253b2e3140e9ee9ed82cc0b1c997aa}{Localization\+::roadmap\+Module\+Self\+Check}} (RoadM \&rm, Empty \&in2, Empty \&output)
+\begin{DoxyCompactList}\small\item\em 自我验证函数，检查本模块计算输出是否满足数据格式、范围要求 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLocalization_adff4d53cfd8cfa1a677856d9eeb5ba36}{Localization\+::roadmap\+Module\+Self\+Check\+Print}} (RoadM \&rm, Empty \&in2, Empty \&output)
+\begin{DoxyCompactList}\small\item\em 输出打印显示函数，打印本模块的关键参数及输出 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceLocalization_a2fa88779b3b0f9b794f9eaac365b5499}\label{namespaceLocalization_a2fa88779b3b0f9b794f9eaac365b5499}} 
+Map\+Anl\+Demo $\ast$ {\bfseries Localization\+::granularity}
+\item 
+\mbox{\Hypertarget{namespaceLocalization_a8b4044182115fdef07c1c1a635580d13}\label{namespaceLocalization_a8b4044182115fdef07c1c1a635580d13}} 
+Map\+Anl\+Demo Path \& {\bfseries Localization\+::p}
+\item 
+Map\+Anl\+Demo Path Empty \& {\bfseries Localization\+::output}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+地图分析功能 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Wenliang Xu (\href{mailto:xuwenliang2000@163.com}{\texttt{ xuwenliang2000@163.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/22 
+\end{DoxyDate}

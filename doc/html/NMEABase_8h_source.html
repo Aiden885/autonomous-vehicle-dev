@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/GPS/dependence/NMEABase.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_b28c0c2c23114389da097ff5bd1375b9.html">GPS</a></li><li class="navelem"><a class="el" href="dir_b4966b2f9dc95d9c7f8129bd982a3286.html">dependence</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NMEABase.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef NMEA_BASE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define NMEA_BASE_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classNMEABase.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNMEABase.html">NMEABase</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classNMEABase.html">NMEABase</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> Parse(<span class="keywordtype">string</span> strBuff);        </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">long</span> CalcCheckSum(<span class="keywordtype">string</span> strBuff); <span class="comment">//计算校验位</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="namespaceLocalization.html#acafd275a0ffee71a4de02de254e29b62">dmm2deg</a>(<span class="keywordtype">double</span> dmm);        </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classNMEABase.html#a6c3e410a21afff668a4f57d06f4df6f4">   39</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEABase.html#a6c3e410a21afff668a4f57d06f4df6f4">strStart</a>; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classNMEABase.html#a105a5b5b631d35f896fc8068a1f6a1bf">   40</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEABase.html#a105a5b5b631d35f896fc8068a1f6a1bf">strTalkerID</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classNMEABase.html#a4bc44b581f5708c471182586e80bf67e">   41</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEABase.html#a4bc44b581f5708c471182586e80bf67e">strCheckSum</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classNMEABase.html#aa36cb625f15d7e801ec173f9ffdf8830">   42</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classNMEABase.html#aa36cb625f15d7e801ec173f9ffdf8830">strEnd</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> nFiledNum; <span class="comment">//字段数量</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassNMEABase_html_a6c3e410a21afff668a4f57d06f4df6f4"><div class="ttname"><a href="classNMEABase.html#a6c3e410a21afff668a4f57d06f4df6f4">NMEABase::strStart</a></div><div class="ttdeci">string strStart</div><div class="ttdoc">起始符</div><div class="ttdef"><b>Definition:</b> NMEABase.h:39</div></div>
+<div class="ttc" id="aclassNMEABase_html_a105a5b5b631d35f896fc8068a1f6a1bf"><div class="ttname"><a href="classNMEABase.html#a105a5b5b631d35f896fc8068a1f6a1bf">NMEABase::strTalkerID</a></div><div class="ttdeci">string strTalkerID</div><div class="ttdoc">talker ID</div><div class="ttdef"><b>Definition:</b> NMEABase.h:40</div></div>
+<div class="ttc" id="aclassNMEABase_html"><div class="ttname"><a href="classNMEABase.html">NMEABase</a></div><div class="ttdef"><b>Definition:</b> NMEABase.h:7</div></div>
+<div class="ttc" id="anamespaceLocalization_html_acafd275a0ffee71a4de02de254e29b62"><div class="ttname"><a href="namespaceLocalization.html#acafd275a0ffee71a4de02de254e29b62">Localization::dmm2deg</a></div><div class="ttdeci">void dmm2deg(dmm2degPara &amp;para, dmm2degInput &amp;input, dmm2degOutput &amp;output)</div><div class="ttdoc">将NMEA中 ddmm.mm 格式转换为小数度</div><div class="ttdef"><b>Definition:</b> gpsFunctional.cpp:125</div></div>
+<div class="ttc" id="aclassNMEABase_html_a4bc44b581f5708c471182586e80bf67e"><div class="ttname"><a href="classNMEABase.html#a4bc44b581f5708c471182586e80bf67e">NMEABase::strCheckSum</a></div><div class="ttdeci">string strCheckSum</div><div class="ttdoc">校验位</div><div class="ttdef"><b>Definition:</b> NMEABase.h:41</div></div>
+<div class="ttc" id="aclassNMEABase_html_aa36cb625f15d7e801ec173f9ffdf8830"><div class="ttname"><a href="classNMEABase.html#aa36cb625f15d7e801ec173f9ffdf8830">NMEABase::strEnd</a></div><div class="ttdeci">string strEnd</div><div class="ttdoc">截止符</div><div class="ttdef"><b>Definition:</b> NMEABase.h:42</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

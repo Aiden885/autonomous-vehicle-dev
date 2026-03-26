@@ -1,0 +1,83 @@
+\hypertarget{classTrafficLight}{}\doxysection{Traffic\+Light类 参考}
+\label{classTrafficLight}\index{TrafficLight@{TrafficLight}}
+\doxysubsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a25314f143e4ee70ba5bedf7aeadf631d}\label{classTrafficLight_a25314f143e4ee70ba5bedf7aeadf631d}} 
+enum {\bfseries Direction\+Of\+Travel} \{ {\bfseries S\+T\+R\+A\+I\+G\+HT} = 0, 
+{\bfseries R\+I\+G\+HT} = 1, 
+{\bfseries L\+E\+FT} = 2, 
+{\bfseries U\+T\+U\+RN} = 3
+ \}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a61bbfdba90b48088cd2a9e1dcbb7620a}\label{classTrafficLight_a61bbfdba90b48088cd2a9e1dcbb7620a}} 
+enum {\bfseries Direction\+Of\+Light} \{ {\bfseries H\+O\+R\+I\+Z\+O\+N\+T\+AL} = 0, 
+{\bfseries V\+E\+R\+T\+I\+C\+AL} =1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a02d30209c49011cfacfb7136155b0693}\label{classTrafficLight_a02d30209c49011cfacfb7136155b0693}} 
+std\+::string {\bfseries get\+Road\+Lane\+Key} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTrafficLight_af657204c5e67d5470f0ea98a53bc8d12}\label{classTrafficLight_af657204c5e67d5470f0ea98a53bc8d12}} 
+static std\+::string {\bfseries Create\+Road\+Lane\+Key} (int current\+Road\+ID, int current\+Lane\+ID, int next\+Road\+ID, int next\+Lane\+ID)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTrafficLight_aec2925e96b8cbdaae8e3c07a73e39cc1}\label{classTrafficLight_aec2925e96b8cbdaae8e3c07a73e39cc1}} 
+std\+::string {\bfseries intersetion\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a5f37188e3ee0db6748a567720676d17a}\label{classTrafficLight_a5f37188e3ee0db6748a567720676d17a}} 
+long {\bfseries phase\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_af1c4b80163f0bdcf31edef783276d60a}\label{classTrafficLight_af1c4b80163f0bdcf31edef783276d60a}} 
+int {\bfseries current\+Road\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_ae18e65bcb375d95638c3c64841bd3029}\label{classTrafficLight_ae18e65bcb375d95638c3c64841bd3029}} 
+int {\bfseries current\+Lane\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_ab1fafee79b7522f03f7bc15a067d24c2}\label{classTrafficLight_ab1fafee79b7522f03f7bc15a067d24c2}} 
+int {\bfseries next\+Road\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_ad8c4391b21ea4e452d295b5f91bb15f5}\label{classTrafficLight_ad8c4391b21ea4e452d295b5f91bb15f5}} 
+int {\bfseries next\+Lane\+I\+D\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_ace87da53a9c80a3eb0d2e064e5524043}\label{classTrafficLight_ace87da53a9c80a3eb0d2e064e5524043}} 
+int {\bfseries stop\+Point\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_aa23ed5fbfff985b7a456e77eda9bd096}\label{classTrafficLight_aa23ed5fbfff985b7a456e77eda9bd096}} 
+Direction\+Of\+Travel {\bfseries directionof\+Travel\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a1453063577ac6f049d684951b2bba854}\label{classTrafficLight_a1453063577ac6f049d684951b2bba854}} 
+double {\bfseries gauss\+X\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a13a8ad8904dee1ad418add0655f7cfa3}\label{classTrafficLight_a13a8ad8904dee1ad418add0655f7cfa3}} 
+double {\bfseries gauss\+Y\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_ad775bec263c3bda91113985422a50fa7}\label{classTrafficLight_ad775bec263c3bda91113985422a50fa7}} 
+double {\bfseries height\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a2c595cf5c2ffe7bf01782c0311a36943}\label{classTrafficLight_a2c595cf5c2ffe7bf01782c0311a36943}} 
+int {\bfseries group\+Size\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a824e47180571a534cc67824523e3053a}\label{classTrafficLight_a824e47180571a534cc67824523e3053a}} 
+int {\bfseries group\+Index\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a284aadfbe1a9d3e18e190a63bbf988e4}\label{classTrafficLight_a284aadfbe1a9d3e18e190a63bbf988e4}} 
+int {\bfseries light\+Shape\+Flag\+\_\+}
+\item 
+\mbox{\Hypertarget{classTrafficLight_a4a4a601a3c0811e3ed184c7a9323751a}\label{classTrafficLight_a4a4a601a3c0811e3ed184c7a9323751a}} 
+std\+::string {\bfseries light\+Shape\+\_\+}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+map\+Msg/Traffic\+Light.\+h\item 
+map\+Msg/Traffic\+Light.\+cpp\end{DoxyCompactItemize}

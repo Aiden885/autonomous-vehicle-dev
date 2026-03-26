@@ -1,0 +1,71 @@
+\hypertarget{structperception_1_1IPMInfo}{}\doxysection{perception\+::I\+P\+M\+Info结构体 参考}
+\label{structperception_1_1IPMInfo}\index{perception::IPMInfo@{perception::IPMInfo}}
+
+
+{\ttfamily \#include $<$Inverse\+Perspective\+Mapping.\+hpp$>$}
+
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a793e08c50551243dc476e7d843befb1c}\label{structperception_1_1IPMInfo_a793e08c50551243dc476e7d843befb1c}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a793e08c50551243dc476e7d843befb1c}{x\+Limits}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em min and max x-\/value on ground in world coordinates \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a920336205e4a309b994c549bef627bec}\label{structperception_1_1IPMInfo_a920336205e4a309b994c549bef627bec}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a920336205e4a309b994c549bef627bec}{y\+Limits}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em min and max y-\/value on ground in world coordinates \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a8d2d37f0e4bf40b9df613338ba12aff6}{x\+Scale}}
+\item 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a9eb8e58fff941f5768df78724ba73cad}{y\+Scale}}
+\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a09498135e35dd18558e83cd3189ae934}\label{structperception_1_1IPMInfo_a09498135e35dd18558e83cd3189ae934}} 
+int \mbox{\hyperlink{structperception_1_1IPMInfo_a09498135e35dd18558e83cd3189ae934}{width}}
+\begin{DoxyCompactList}\small\item\em width \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_aed1a775e1284f2bbfdc718ca28102941}\label{structperception_1_1IPMInfo_aed1a775e1284f2bbfdc718ca28102941}} 
+int \mbox{\hyperlink{structperception_1_1IPMInfo_aed1a775e1284f2bbfdc718ca28102941}{height}}
+\begin{DoxyCompactList}\small\item\em height \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a1ecfcc1c570dba42e45cb62c601992cd}{vp\+Portion}}
+\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a5071f166033a4dceb62e2787e1460e7c}\label{structperception_1_1IPMInfo_a5071f166033a4dceb62e2787e1460e7c}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a5071f166033a4dceb62e2787e1460e7c}{ipm\+Left}}
+\begin{DoxyCompactList}\small\item\em Left point in original image of region to make I\+PM for \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_af11db264c23e94e6fc3de5f61f7c8981}\label{structperception_1_1IPMInfo_af11db264c23e94e6fc3de5f61f7c8981}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_af11db264c23e94e6fc3de5f61f7c8981}{ipm\+Right}}
+\begin{DoxyCompactList}\small\item\em Right point in original image of region to make I\+PM for \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a881f2457c0731cbdb500657977fc03a3}\label{structperception_1_1IPMInfo_a881f2457c0731cbdb500657977fc03a3}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a881f2457c0731cbdb500657977fc03a3}{ipm\+Top}}
+\begin{DoxyCompactList}\small\item\em Top point in original image of region to make I\+PM for \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a01ba47251facb0d53751a5dd82f44c37}\label{structperception_1_1IPMInfo_a01ba47251facb0d53751a5dd82f44c37}} 
+float \mbox{\hyperlink{structperception_1_1IPMInfo_a01ba47251facb0d53751a5dd82f44c37}{ipm\+Bottom}}
+\begin{DoxyCompactList}\small\item\em Bottom point in original image of region to make I\+PM for \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a3679708a55bc9fd5579be6ebe74059fe}\label{structperception_1_1IPMInfo_a3679708a55bc9fd5579be6ebe74059fe}} 
+int \mbox{\hyperlink{structperception_1_1IPMInfo_a3679708a55bc9fd5579be6ebe74059fe}{ipm\+Interpolation}}
+\begin{DoxyCompactList}\small\item\em interpolation to use for I\+PM (0\+: bilinear, 1\+:nearest neighbor) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+Structure to hold the info about I\+PM transformation 
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{structperception_1_1IPMInfo_a1ecfcc1c570dba42e45cb62c601992cd}\label{structperception_1_1IPMInfo_a1ecfcc1c570dba42e45cb62c601992cd}} 
+\index{perception::IPMInfo@{perception::IPMInfo}!vpPortion@{vpPortion}}
+\index{vpPortion@{vpPortion}!perception::IPMInfo@{perception::IPMInfo}}
+\doxysubsubsection{\texorpdfstring{vpPortion}{vpPortion}}
+{\footnotesize\ttfamily float perception\+::\+I\+P\+M\+Info\+::vp\+Portion}
+
+portion of image height to add to y-\/coordinate of vanishing point \mbox{\Hypertarget{structperception_1_1IPMInfo_a8d2d37f0e4bf40b9df613338ba12aff6}\label{structperception_1_1IPMInfo_a8d2d37f0e4bf40b9df613338ba12aff6}} 
+\index{perception::IPMInfo@{perception::IPMInfo}!xScale@{xScale}}
+\index{xScale@{xScale}!perception::IPMInfo@{perception::IPMInfo}}
+\doxysubsubsection{\texorpdfstring{xScale}{xScale}}
+{\footnotesize\ttfamily float perception\+::\+I\+P\+M\+Info\+::x\+Scale}
+
+conversion between mm in world coordinate on the ground in x-\/direction and pixel in image \mbox{\Hypertarget{structperception_1_1IPMInfo_a9eb8e58fff941f5768df78724ba73cad}\label{structperception_1_1IPMInfo_a9eb8e58fff941f5768df78724ba73cad}} 
+\index{perception::IPMInfo@{perception::IPMInfo}!yScale@{yScale}}
+\index{yScale@{yScale}!perception::IPMInfo@{perception::IPMInfo}}
+\doxysubsubsection{\texorpdfstring{yScale}{yScale}}
+{\footnotesize\ttfamily float perception\+::\+I\+P\+M\+Info\+::y\+Scale}
+
+conversion between mm in world coordinate on the ground in y-\/direction and pixel in image 
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+cv/include/Inverse\+Perspective\+Mapping.\+hpp\end{DoxyCompactItemize}

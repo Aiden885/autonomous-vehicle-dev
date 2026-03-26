@@ -1,0 +1,59 @@
+\hypertarget{rapidxml__utils_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Thread/rapidxml\+\_\+utils.hpp 文件参考}
+\label{rapidxml__utils_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Thread/rapidxml\_utils.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Thread/rapidxml\_utils.hpp}}
+{\ttfamily \#include \char`\"{}rapidxml.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+rapidxml\+\_\+utils.\+hpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rapidxml__utils_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rapidxml__utils_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classrapidxml_1_1file}{rapidxml\+::file$<$ Ch $>$}}
+\begin{DoxyCompactList}\small\item\em Represents data loaded from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Ch $>$ }\\std\+::size\+\_\+t \mbox{\hyperlink{rapidxml__utils_8hpp_a21c1cf2814019385e6b8d09e75af1d34}{rapidxml\+::count\+\_\+children}} (xml\+\_\+node$<$ Ch $>$ $\ast$node)
+\item 
+{\footnotesize template$<$class Ch $>$ }\\std\+::size\+\_\+t \mbox{\hyperlink{rapidxml__utils_8hpp_a6255d15e5d8ad12ebcd7c60da51c97e2}{rapidxml\+::count\+\_\+attributes}} (xml\+\_\+node$<$ Ch $>$ $\ast$node)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+This file contains high-\/level rapidxml utilities that can be useful in certain simple scenarios. They should probably not be used if maximizing performance is the main objective. 
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{rapidxml__utils_8hpp_a6255d15e5d8ad12ebcd7c60da51c97e2}\label{rapidxml__utils_8hpp_a6255d15e5d8ad12ebcd7c60da51c97e2}} 
+\index{rapidxml\_utils.hpp@{rapidxml\_utils.hpp}!count\_attributes@{count\_attributes}}
+\index{count\_attributes@{count\_attributes}!rapidxml\_utils.hpp@{rapidxml\_utils.hpp}}
+\doxysubsubsection{\texorpdfstring{count\_attributes()}{count\_attributes()}}
+{\footnotesize\ttfamily template$<$class Ch $>$ \\
+std\+::size\+\_\+t rapidxml\+::count\+\_\+attributes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}}$<$ Ch $>$ $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Counts attributes of node. Time complexity is O(n). \begin{DoxyReturn}{返回}
+Number of attributes of node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rapidxml__utils_8hpp_a21c1cf2814019385e6b8d09e75af1d34}\label{rapidxml__utils_8hpp_a21c1cf2814019385e6b8d09e75af1d34}} 
+\index{rapidxml\_utils.hpp@{rapidxml\_utils.hpp}!count\_children@{count\_children}}
+\index{count\_children@{count\_children}!rapidxml\_utils.hpp@{rapidxml\_utils.hpp}}
+\doxysubsubsection{\texorpdfstring{count\_children()}{count\_children()}}
+{\footnotesize\ttfamily template$<$class Ch $>$ \\
+std\+::size\+\_\+t rapidxml\+::count\+\_\+children (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classrapidxml_1_1xml__node}{xml\+\_\+node}}$<$ Ch $>$ $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Counts children of node. Time complexity is O(n). \begin{DoxyReturn}{返回}
+Number of children of node 
+\end{DoxyReturn}

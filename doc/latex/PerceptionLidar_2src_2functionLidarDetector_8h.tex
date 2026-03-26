@@ -1,0 +1,220 @@
+\hypertarget{PerceptionLidar_2src_2functionLidarDetector_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/\+Perception\+Lidar/src/function\+Lidar\+Detector.h 文件参考}
+\label{PerceptionLidar_2src_2functionLidarDetector_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/PerceptionLidar/src/functionLidarDetector.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/PerceptionLidar/src/functionLidarDetector.h}}
+
+
+文件说明  
+
+
+{\ttfamily \#include \char`\"{}classic\+Lidar\+Detector.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+function\+Lidar\+Detector.\+h 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PerceptionLidar_2src_2functionLidarDetector_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{PerceptionLidar_2src_2functionLidarDetector_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct01}{perception\+::\+Param\+Struct01}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct01}{perception\+::\+Input\+Struct01}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct01}{perception\+::\+Output\+Struct01}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct02}{perception\+::\+Param\+Struct02}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pass\+Through\+Filter 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct02}{perception\+::\+Input\+Struct02}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pass\+Through\+Filter 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct02}{perception\+::\+Output\+Struct02}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pass\+Through\+Filter 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct03}{perception\+::\+Param\+Struct03}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pointcloud\+\_\+to\+\_\+grid 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct03}{perception\+::\+Input\+Struct03}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pointcloud\+\_\+to\+\_\+grid 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct03}{perception\+::\+Output\+Struct03}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pointcloud\+\_\+to\+\_\+grid 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct04}{perception\+::\+Param\+Struct04}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Inputcloud 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct04}{perception\+::\+Input\+Struct04}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Inputcloud 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct04}{perception\+::\+Output\+Struct04}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Inputcloud 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct05}{perception\+::\+Param\+Struct05}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+Camera 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct05}{perception\+::\+Input\+Struct05}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+Camera 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct05}{perception\+::\+Output\+Struct05}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+Camera 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct06}{perception\+::\+Param\+Struct06}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Find\+\_\+\+Z\+\_\+value 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct06}{perception\+::\+Input\+Struct06}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+View 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct06}{perception\+::\+Output\+Struct06}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+View 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct07}{perception\+::\+Param\+Struct07}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Check\+Alive 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct07}{perception\+::\+Input\+Struct07}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Check\+Alive 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct07}{perception\+::\+Output\+Struct07}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Check\+Alive 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct08}{perception\+::\+Param\+Struct08}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Receive\+Cloud 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct08}{perception\+::\+Input\+Struct08}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Receive\+Cloud 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct08}{perception\+::\+Output\+Struct08}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Receive\+Cloud 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct09}{perception\+::\+Param\+Struct09}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+R\+Point\+Cloud 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct09}{perception\+::\+Input\+Struct09}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+R\+Point\+Cloud 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct09}{perception\+::\+Output\+Struct09}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+R\+Point\+Cloud 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct10}{perception\+::\+Param\+Struct10}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Point\+Cloud 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct10}{perception\+::\+Input\+Struct10}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Point\+Cloud 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct10}{perception\+::\+Output\+Struct10}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Point\+Cloud 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct11}{perception\+::\+Param\+Struct11}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Swap\+X\+AndY 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct11}{perception\+::\+Input\+Struct11}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Swap\+X\+AndY 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct11}{perception\+::\+Output\+Struct11}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Swap\+X\+AndY 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct13}{perception\+::\+Param\+Struct13}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Num\+Points 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct13}{perception\+::\+Input\+Struct13}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Num\+Points 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct13}{perception\+::\+Output\+Struct13}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Num\+Points 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct14}{perception\+::\+Param\+Struct14}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Get\+Viewer 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct14}{perception\+::\+Input\+Struct14}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Get\+Viewer 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct14}{perception\+::\+Output\+Struct14}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Get\+Viewer 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct15}{perception\+::\+Param\+Struct15}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clip\+Plane 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct15}{perception\+::\+Input\+Struct15}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clip\+Plane 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct15}{perception\+::\+Output\+Struct15}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clip\+Plane 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct16}{perception\+::\+Param\+Struct16}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Filter\+Cloud 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct16}{perception\+::\+Input\+Struct16}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Filter\+Cloud 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct16}{perception\+::\+Output\+Struct16}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Filter\+Cloud 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct19}{perception\+::\+Param\+Struct19}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clustering 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct19}{perception\+::\+Input\+Struct19}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clustering 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct19}{perception\+::\+Output\+Struct19}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clustering 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct20}{perception\+::\+Param\+Struct20}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Grid\+Ground\+Filter 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct20}{perception\+::\+Input\+Struct20}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Grid\+Ground\+Filter 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct20}{perception\+::\+Output\+Struct20}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Grid\+Ground\+Filter\+Simple 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct21}{perception\+::\+Param\+Struct21}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Box 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct21}{perception\+::\+Input\+Struct21}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Box 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct21}{perception\+::\+Output\+Struct21}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Box 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct22}{perception\+::\+Param\+Struct22}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Pca\+Box 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct22}{perception\+::\+Input\+Struct22}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Pca\+Box 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct22}{perception\+::\+Output\+Struct22}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Pca\+Box 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct25}{perception\+::\+Param\+Struct25}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct25}{perception\+::\+Input\+Struct25}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct25}{perception\+::\+Output\+Struct25}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1ParamStruct26}{perception\+::\+Param\+Struct26}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件可以配置的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1InputStruct26}{perception\+::\+Input\+Struct26}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件输入的参数， 用struct 封装 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structperception_1_1OutputStruct26}{perception\+::\+Output\+Struct26}}
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数组件输出的参数， 用struct 封装 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceperception}{perception}}
+\begin{DoxyCompactList}\small\item\em perception namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceperception_a68724ed6beb39042436dd151d6ce845b}{perception\+::classic\+Lidar\+Detector\+FindZ}} (Param\+Struct01 \&param01, Input\+Struct01 \&input01, Output\+Struct01 \&output01)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+FindZ 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a16a6038f402fd778c1dca775766677f3}{perception\+::classic\+Lidar\+Detector\+Pass\+Through\+Filter}} (Param\+Struct02 \&param02, Input\+Struct02 \&input02, Output\+Struct02 \&output02)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Pass\+Through\+Filter 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ab48aac559053a0b6ada055ac47f94fcb}{perception\+::classic\+Lidar\+Detector\+Point\+Cloud\+To\+Grid}} (Param\+Struct03 \&param03, Input\+Struct03 \&input03, Output\+Struct03 \&output03)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Point\+Cloud\+To\+Grid 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a159f43bf6eb8669cd2cfa40c86c495d4}{perception\+::classic\+Lidar\+Detector\+Inputcloud}} (Param\+Struct04 \&param04, Input\+Struct04 \&input04, Output\+Struct04 \&output04)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Inputcloud 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a3438f550006637a86f676e359c60a325}{perception\+::classic\+Lidar\+Detector\+Init\+Camera}} (Param\+Struct05 \&param05, Input\+Struct05 \&input05, Output\+Struct05 \&output05)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+Camera 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a2579abf10abc3ae39a53e56e64ba732c}{perception\+::classic\+Lidar\+Detector\+Init\+View}} (Param\+Struct06 \&param06, Input\+Struct06 \&input06, Output\+Struct06 \&output06)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Init\+View 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a965c15d4ead0eecdc55537f15cd51ac2}{perception\+::classic\+Lidar\+Detector\+Check\+Alive}} (Param\+Struct07 \&param07, Input\+Struct07 \&input07, Output\+Struct07 \&output07)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Check\+Alive 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a87607db5abb968c84dd57e626109e409}{perception\+::classic\+Lidar\+Detector\+Receive\+Cloud}} (Param\+Struct08 \&param08, Input\+Struct08 \&input08, Output\+Struct08 \&output08)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Receive\+Cloud 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a56503de818192e6bc93dfe90297c586a}{perception\+::classic\+Lidar\+Detector\+R\+Point\+Cloud}} (Param\+Struct09 \&param09, Input\+Struct09 \&input09, Output\+Struct09 \&output09)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+R\+Point\+Cloud 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ae59db4fd7f82f770f5da6b7db5536a80}{perception\+::classic\+Lidar\+Detector\+Render\+Point\+Cloud}} (Param\+Struct10 \&param10, Input\+Struct10 \&input10, Output\+Struct10 \&output10)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Point\+Cloud 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a6145bd9b621eca3e5363cd0f47d92247}{perception\+::classic\+Lidar\+Detector\+Swap\+X\+AndY}} (Param\+Struct11 \&param11, Input\+Struct11 \&input11, Output\+Struct11 \&output11)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Swap\+X\+AndY 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ab996c26eae9cd23b52f94baafb03f749}{perception\+::classic\+Lidar\+Detector\+Num\+Points}} (Param\+Struct13 \&param13, Input\+Struct13 \&input13, Output\+Struct13 \&output13)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Num\+Points 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a2afd4f8640f2e8a64b81819a1ca812da}{perception\+::classic\+Lidar\+Detector\+Get\+Viewer}} (Param\+Struct14 \&param14, Input\+Struct14 \&input14, Output\+Struct14 \&output14)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Get\+Viewer 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a2d67f5a694d72b77bd1160b6bc772b6e}{perception\+::classic\+Lidar\+Detector\+Clip\+Plane}} (Param\+Struct15 \&param15, Input\+Struct15 \&input15, Output\+Struct15 \&output15)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clip\+Plane 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_abadb8e2cdbef5b21ce99b2aff331517a}{perception\+::classic\+Lidar\+Detector\+Filter\+Cloud}} (Param\+Struct16 \&param16, Input\+Struct16 \&input16, Output\+Struct16 \&output16)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Filter\+Cloud 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ac01aed8872221323d89e47917f300f17}{perception\+::classic\+Lidar\+Detector\+Clustering}} (Param\+Struct19 \&param19, Input\+Struct19 \&input19, Output\+Struct19 \&output19)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Clustering 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ab74e4e5c76f2c965c69f9599238ccec8}{perception\+::classic\+Lidar\+Detector\+Grid\+Ground\+Filter}} (Param\+Struct20 \&param20, Input\+Struct20 \&input20, Output\+Struct20 \&output20)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Grid\+Ground\+Filter 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_ae214d18df404614376eb2f31f0f7fd80}{perception\+::classic\+Lidar\+Detector\+Render\+Box}} (Param\+Struct21 \&param21, Input\+Struct21 \&input21, Output\+Struct21 \&output21)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Box 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a6376b38fab42cb24e089e61eda03e03f}{perception\+::classic\+Lidar\+Detector\+Render\+Pca\+Box}} (Param\+Struct22 \&param22, Input\+Struct22 \&input22, Output\+Struct22 \&output22)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detector\+Render\+Pca\+Box 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a757e36e8ab551eb0944f472b636e040e}{perception\+::classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC}} (Param\+Struct25 \&param25, Input\+Struct25 \&input25, Output\+Struct25 \&output25)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+R\+A\+N\+S\+AC 函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceperception_a2126454ee74687f179287c9e1f735315}{perception\+::classic\+Lidar\+Detecto\+Grid\+Patch}} (Param\+Struct26 \&param26, Input\+Struct26 \&input26, Output\+Struct26 \&output26)
+\begin{DoxyCompactList}\small\item\em classic\+Lidar\+Detecto\+Grid\+Patch 函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+文件说明 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Tianqi Ke (\href{mailto:ktq23@mails.tsinghua.edu.cn}{\texttt{ ktq23@mails.\+tsinghua.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/12-\/12 
+\end{DoxyDate}

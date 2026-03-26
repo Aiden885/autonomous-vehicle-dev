@@ -1,0 +1,21 @@
+syntax = "proto3";
+package perception;
+
+message Object
+{
+    double x=1;
+    double y=2;
+    double z=3;
+    double w=4;
+    double h=5;
+    double l=6;
+    int32 type=7;
+    int32 trackID=8;
+    double vx=9;
+    double vy=10; 
+}
+
+message ObjectList
+{
+    repeated Object object=1;
+}

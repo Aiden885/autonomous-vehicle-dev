@@ -1,0 +1,217 @@
+\hypertarget{localPlanning__m_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+On\+Vehicle/src/local\+Planning\+\_\+m.cpp 文件参考}
+\label{localPlanning__m_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/OnVehicle/src/localPlanning\_m.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/OnVehicle/src/localPlanning\_m.cpp}}
+
+
+局部规划函数  
+
+
+{\ttfamily \#include \char`\"{}local\+Planning\+\_\+m.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}interpolate\+\_\+m.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+local\+Planning\+\_\+m.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{localPlanning__m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceplanning}{planning}}
+\begin{DoxyCompactList}\small\item\em planning namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4037c81e3bbbd26d0b723be46fe6c9f0}\label{localPlanning__m_8cpp_a4037c81e3bbbd26d0b723be46fe6c9f0}} 
+\#define {\bfseries P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}~2.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aad81f4379de6d04933e626e97a741107}\label{localPlanning__m_8cpp_aad81f4379de6d04933e626e97a741107}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a600bfe54622e3784956cd9955c87818b}\label{localPlanning__m_8cpp_a600bfe54622e3784956cd9955c87818b}} 
+\#define {\bfseries M\+A\+X\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4361b5036aa60ee02a43af5499a3460a}\label{localPlanning__m_8cpp_a4361b5036aa60ee02a43af5499a3460a}} 
+\#define {\bfseries M\+I\+N\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_abd8e457080f30fe8d945e69fe7ef1f7c}\label{localPlanning__m_8cpp_abd8e457080f30fe8d945e69fe7ef1f7c}} 
+\#define {\bfseries D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+R\+A\+N\+GE}~3
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_afe3b2b4048dd724031b6a9b05083a5ad}\label{localPlanning__m_8cpp_afe3b2b4048dd724031b6a9b05083a5ad}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+P\+L\+A\+N\+N\+I\+N\+G\+\_\+\+D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+L\+O\+N\+G\+ER}~5
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a0306f06511d028578cccad089906e8f8}\label{localPlanning__m_8cpp_a0306f06511d028578cccad089906e8f8}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+D\+I\+S\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+O\+N\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+A\+NE}~3
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a159747386342b706578feb9d4b480e95}\label{localPlanning__m_8cpp_a159747386342b706578feb9d4b480e95}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+D\+I\+S\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+O\+N\+\_\+\+O\+T\+H\+E\+R\+\_\+\+L\+A\+NE}~2
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a4b48d48fce85a9566080e1594744c7a1}\label{localPlanning__m_8cpp_a4b48d48fce85a9566080e1594744c7a1}} 
+\#define {\bfseries P\+O\+I\+N\+T\+\_\+\+A\+N\+G\+L\+E\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~120
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aeafd216dd0438d66b23be5be7fbe415e}\label{localPlanning__m_8cpp_aeafd216dd0438d66b23be5be7fbe415e}} 
+\#define {\bfseries E\+N\+D\+\_\+\+S\+P\+E\+E\+D\+\_\+\+N\+UM}~1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a13a54d2b7fc10c047cb8392ccd91d4bf}\label{localPlanning__m_8cpp_a13a54d2b7fc10c047cb8392ccd91d4bf}} 
+\#define {\bfseries D\+E\+S\+I\+R\+E\+D\+\_\+\+S\+P\+E\+ED}~12 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_af9feff0565831f1df947a935850835ca}\label{localPlanning__m_8cpp_af9feff0565831f1df947a935850835ca}} 
+\#define {\bfseries S\+P\+E\+E\+D\+\_\+\+R\+A\+N\+GE}~3 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_afcae6e95ecea695707e48b31d638a27a}\label{localPlanning__m_8cpp_afcae6e95ecea695707e48b31d638a27a}} 
+\#define {\bfseries C\+U\+R\+V\+A\+T\+U\+R\+E\+\_\+\+S\+P\+E\+ED}~10 / 3.\+6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ad5a5a1dcd2cd423bdd90c1c9287ee5b8}\label{localPlanning__m_8cpp_ad5a5a1dcd2cd423bdd90c1c9287ee5b8}} 
+\#define {\bfseries C\+U\+R\+V\+A\+T\+U\+R\+E\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LS}~0.\+1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a62cc9d25d2b2113efbcc07dbea668937}\label{localPlanning__m_8cpp_a62cc9d25d2b2113efbcc07dbea668937}} 
+\#define {\bfseries V\+E\+H\+I\+C\+L\+E\+\_\+\+D\+I\+A\+G\+O\+N\+AL}~2.\+7951
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a5da34d7bdbc24eeda7b2cb3475408a69}\label{localPlanning__m_8cpp_a5da34d7bdbc24eeda7b2cb3475408a69}} 
+\#define {\bfseries V\+E\+H\+I\+C\+L\+E\+\_\+\+D\+I\+A\+G\+O\+N\+A\+L\+\_\+\+D\+E\+G\+R\+EE}~26.\+5651
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ab5309dc30dcdfe8148f822524232781c}\label{localPlanning__m_8cpp_ab5309dc30dcdfe8148f822524232781c}} 
+\#define {\bfseries P\+R\+E\+D\+I\+C\+T\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}~0.\+1
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a3214b5175e1b289b1acc33e75afdafdb}\label{localPlanning__m_8cpp_a3214b5175e1b289b1acc33e75afdafdb}} 
+\#define {\bfseries S\+T\+O\+P\+\_\+\+J\+U\+D\+G\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~6
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_ab23eb23fe4aef6b90c20b38b9d7b9f5e}\label{localPlanning__m_8cpp_ab23eb23fe4aef6b90c20b38b9d7b9f5e}} 
+\#define {\bfseries M\+A\+X\+\_\+\+F\+R\+E\+N\+E\+T\+\_\+S}~8
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a7200ae8c091444648e7ff9ade5efbb1e}\label{localPlanning__m_8cpp_a7200ae8c091444648e7ff9ade5efbb1e}} 
+\#define {\bfseries A\+C\+C\+\_\+\+R\+E\+L\+A\+\_\+\+D\+I\+ST}~15.\+0
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a5ca9c47c311f4f7e544bf34e39365dc6}\label{localPlanning__m_8cpp_a5ca9c47c311f4f7e544bf34e39365dc6}} 
+\#define {\bfseries A\+C\+C\+\_\+\+B\+E\+G\+I\+N\+\_\+\+D\+I\+ST}~(A\+C\+C\+\_\+\+R\+E\+L\+A\+\_\+\+D\+I\+ST + 30)
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_a97019380d9fcd54c3c3313b5b5de679e}\label{localPlanning__m_8cpp_a97019380d9fcd54c3c3313b5b5de679e}} 
+\#define {\bfseries A\+C\+C\+\_\+\+F\+O\+L\+L\+O\+W\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+ID}~2
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_adf617da9cd2dc357543f4593793ebe3c}\label{localPlanning__m_8cpp_adf617da9cd2dc357543f4593793ebe3c}} 
+\#define {\bfseries do\+Nothing}()
+\item 
+\mbox{\Hypertarget{localPlanning__m_8cpp_aabc11e39e577da8617ac3640b01eaa21}\label{localPlanning__m_8cpp_aabc11e39e577da8617ac3640b01eaa21}} 
+\#define {\bfseries S\+A\+F\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE}~1.\+0
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplanning_a2f032dda83a26e3654fbc6b70ad82650}{planning\+::gauss\+Convert}} (const gauss\+Convert\+Param \&param, const gauss\+Convert\+Input \&input, gauss\+Convert\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 经纬度转全局坐标 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad2bbbe04d3ef41514e9233b4b14ffe59}{planning\+::coord\+Tran2D}} (const coord\+Tran2\+D\+Param \&param, const coord\+Tran2\+D\+Input \&input, coord\+Tran2\+D\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 全局坐标转局部坐标 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a4833cecf1866ad81fd69870b4b59ab9e}{planning\+::in\+Area}} (const in\+Area\+Param \&param, const in\+Area\+Input \&input, in\+Area\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 判断点是否在区域内 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a6b095fdbfefb0e4e53d55d7169be1e84}{planning\+::point\+Distance}} (const point\+Distance\+Param \&param, const point\+Distance\+Input \&input, point\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算两点之间的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a49ee132c2237dc76f24a7950fa2600d6}{planning\+::course\+Angle\+Revise}} (const course\+Angle\+Revise\+Param \&param, const course\+Angle\+Revise\+Input \&input, course\+Angle\+Revise\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 逆时针旋转坐标系90度，向东0度变成向北0度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a34677fb9a0cce5b72189834e4a2f4b17}{planning\+::load\+Stop\+Points}} (const load\+Stop\+Points\+Param \&param, const load\+Stop\+Points\+Input \&input, load\+Stop\+Points\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 从文件中加载停止点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a60ad41f2b2bbfd620af52a31e5b953c0}{planning\+::load\+Stop\+Points\+From\+Yaml}} (const load\+Stop\+Points\+From\+Yaml\+Param \&param, const load\+Stop\+Points\+From\+Yaml\+Input \&input, load\+Stop\+Points\+From\+Yaml\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 从文件中加载停止点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a984291a7c964f1b10e237086eb6ccc30}{planning\+::get\+Next\+Road\+Lane\+Id}} (const get\+Next\+Road\+Lane\+Id\+Param \&param, const get\+Next\+Road\+Lane\+Id\+Input \&input, get\+Next\+Road\+Lane\+Id\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 从全局规划中，获取后续车道和道路\+Id \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad31cc85159cad85de2bf416ebb4ea999}{planning\+::get\+Planning\+Distance}} (const get\+Planning\+Distance\+Param \&param, const get\+Planning\+Distance\+Input \&input, get\+Planning\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据速度、曲率获取规划距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a2b048b52ff7f2c5396d31da1ac33dc26}{planning\+::get\+Planning\+Point}} (const get\+Planning\+Point\+Param \&param, const get\+Planning\+Point\+Input \&input, get\+Planning\+Point\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据车辆信息获取规划预瞄点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a28a3cd18b1a7e3d5f9f883b9358a8902}{planning\+::limit\+Planning\+Distance}} (const limit\+Planning\+Distance\+Param \&param, const limit\+Planning\+Distance\+Input \&input, limit\+Planning\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 限制规划距离，防止突变 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aaf88b3bf538b4ee1b9d9bb2fc8f9fdf9}{planning\+::get\+Angle}} (const get\+Angle\+Param \&param, const get\+Angle\+Input \&input, get\+Angle\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算坐标系中两点角度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad58497a23f430a3ee616f327c76c9297}{planning\+::get\+Angle\+Diff}} (const get\+Angle\+Diff\+Param \&param, const get\+Angle\+Diff\+Input \&input, get\+Angle\+Diff\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算两角度之差，并正则化 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceplanning_a8a5f2acf9635630cb79a00b3a633d47d}\label{namespaceplanning_a8a5f2acf9635630cb79a00b3a633d47d}} 
+void {\bfseries planning\+::local\+Planning} (const pc\+::\+Imu \&imu, double velocity, const Road\+Map \&map, Decision\+Data \&decision\+Data, const \mbox{\hyperlink{classprediction_1_1ObjectList}{prediction\+::\+Object\+List}} \&prediction\+Msg, const std\+::vector$<$ std\+::tuple$<$ int32\+\_\+t, int32\+\_\+t $>$$>$ \&routing\+List, const std\+::vector$<$ Gauss\+Road\+Point $>$ stop\+Points, const infopack\+::\+Traffic\+Light \&traffic\+Light, std\+::vector$<$ infopack\+::\+Objects\+Proto $>$ objects\+Cmd)
+\item 
+void \mbox{\hyperlink{namespaceplanning_a07f2c0d1123e52b130e0f7fd3fcb7ef7}{planning\+::restart}} (const restart\+Param \&param, const restart\+Input \&input, restart\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 车辆停车后，判断能否重新启动 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a241c8e4bd491c3d15c64423e789ddf08}{planning\+::stop}} (const stop\+Param \&param, const stop\+Input \&input, stop\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 停车时修改速度曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a857d7e4d87fcfd37b6a579a853c18146}{planning\+::stop\+Point\+Judge}} (const stop\+Point\+Judge\+Param \&param, const stop\+Point\+Judge\+Input \&input, stop\+Point\+Judge\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 判断车辆是否在停车区域 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a05a692feeff4d48168a41fcfb31694af}{planning\+::point\+On\+Cubic\+Bezier}} (const point\+On\+Cubic\+Bezier\+Param \&param, const point\+On\+Cubic\+Bezier\+Input \&input, point\+On\+Cubic\+Bezier\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算贝塞尔曲线上的点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a38eae81d8b575542bfcc43fe4de6f890}{planning\+::generate\+Bezier\+Path\+In\+Frenet}} (const generate\+Bezier\+Path\+In\+Frenet\+Param \&param, const generate\+Bezier\+Path\+In\+Frenet\+Input \&input, generate\+Bezier\+Path\+In\+Frenet\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 在frenet中生成贝塞尔曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a05dc893facbecf3aec97314653eb4b2b}{planning\+::clear\+Path\+List}} (const clear\+Path\+List\+Param \&param, const clear\+Path\+List\+Input \&input, clear\+Path\+List\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 清除上次生成的轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad01873c7c9f87d696093cd4863f2f95a}{planning\+::get\+Trajectory\+Planning\+Result}} (const get\+Trajectory\+Planning\+Result\+Param \&param, const get\+Trajectory\+Planning\+Result\+Input \&input, get\+Trajectory\+Planning\+Result\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 完成了多条轨迹和速度曲线的生成，并转化到笛卡尔坐标系中，作出了轨迹的选择 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a2097585607d130714741eb572e310f50}{planning\+::get\+Distance}} (const get\+Distance\+Param \&param, const get\+Distance\+Input \&input, get\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算两点之间的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a937a379a7961645322d41eec030de8f5}{planning\+::point\+To\+Line\+Distance}} (const point\+To\+Line\+Distance\+Param \&param, const point\+To\+Line\+Distance\+Input \&input, point\+To\+Line\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算点到线段的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ae83822a4950c75a2f611446212fb2cee}{planning\+::angle\+Regulate}} (const angle\+Regulate\+Param \&param, const angle\+Regulate\+Input \&input, angle\+Regulate\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 转化角度到0-\/180中，便于比较 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aa15903b79aa0cde9d03a54ddeb6d2ab0}{planning\+::get\+Current\+Position}} (const get\+Current\+Position\+Param \&param, const get\+Current\+Position\+Input \&input, get\+Current\+Position\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 寻找距离车辆位置最近的路点 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a03858c904de5445d562f7286096891ea}{planning\+::generate\+Speed\+List}} (const generate\+Speed\+List\+Param \&param, const generate\+Speed\+List\+Input \&input, generate\+Speed\+List\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据道路信息等，采样生成速度曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a36ef276901d20634294d2894c68ed16f}{planning\+::generate\+Trajectory\+List}} (const generate\+Trajectory\+List\+Param \&param, const generate\+Trajectory\+List\+Input \&input, generate\+Trajectory\+List\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 生成采样轨迹，供后续选择 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a6b8128b63bacd72fa8bafb72e50770ec}{planning\+::process\+Traffic\+Light}} (const process\+Traffic\+Light\+Param \&param, const process\+Traffic\+Light\+Input \&input, process\+Traffic\+Light\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据红绿灯信息更新决策数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a9164eb7484e6a0fcb43216e613cb3f58}{planning\+::get\+Optimal\+Trajectory\+Index}} (const get\+Optimal\+Trajectory\+Index\+Param \&param, const get\+Optimal\+Trajectory\+Index\+Input \&input, get\+Optimal\+Trajectory\+Index\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 评估轨迹，并获取最优轨迹索引 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ab825661e8e1effc44496f4bb2f9ae400}{planning\+::trajectory\+Collision\+Check}} (const trajectory\+Collision\+Check\+Param \&param, const trajectory\+Collision\+Check\+Input \&input, trajectory\+Collision\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 轨迹碰撞检测，true表示可行，false表示碰撞 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a4c7853c7e376af04e04e817464df7df9}{planning\+::able\+To\+Pass\+Yellow\+Light}} (const able\+To\+Pass\+Yellow\+Light\+Param \&param, const able\+To\+Pass\+Yellow\+Light\+Input \&input, able\+To\+Pass\+Yellow\+Light\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 判断是否能通过黄灯 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a840c77eb21efced86799d3973bf9d67d}{planning\+::point\+Collision\+Check}} (const point\+Collision\+Check\+Param \&param, const point\+Collision\+Check\+Input \&input, point\+Collision\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 轨迹点碰撞检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad46a016c48396ef5688a222ae90a2359}{planning\+::boundary\+Collision\+Check}} (const boundary\+Collision\+Check\+Param \&param, const boundary\+Collision\+Check\+Input \&input, boundary\+Collision\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 边碰撞检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a610de4e806030de02b840487610b6400}{planning\+::inner\+Collision\+Check}} (const inner\+Collision\+Check\+Param \&param, const inner\+Collision\+Check\+Input \&input, inner\+Collision\+Check\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 内部包含检测 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a46b526574547fca441787a7cd776aab5}{planning\+::change\+Current\+Point}} (const change\+Current\+Point\+Param \&param, const change\+Current\+Point\+Input \&input, change\+Current\+Point\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 判断是否可以换道 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ae20f8afc396dc68c6f896a2a11d4b019}{planning\+::change\+Local\+To\+Global}} (const change\+Local\+To\+Global\+Param \&param, const change\+Local\+To\+Global\+Input \&input, change\+Local\+To\+Global\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 局部坐标轨迹转为全局轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aa771d078958eb54c564ece5ddaa9af96}{planning\+::init\+Local\+Planning}} (const init\+Local\+Planning\+Param \&param, const init\+Local\+Planning\+Input \&input, init\+Local\+Planning\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 局部规划决策数据初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad34e927db00c43f9c372dd64ec289bda}{planning\+::fix\+Road\+Lane\+Index}} (const fix\+Road\+Lane\+Index\+Param \&param, const fix\+Road\+Lane\+Index\+Input \&input, fix\+Road\+Lane\+Index\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 返回decision\+Date中road\+ID 和lane\+I\+D的索引 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a6855c0a0f0f27bf1f2681393d7228de4}{planning\+::calculate\+Curvature}} (const calculate\+Curvature\+Param \&param, const calculate\+Curvature\+Input \&input, calculate\+Curvature\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 由相邻三点近似计算曲率 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a81e610742759cfdf1b6524a2b1efad7c}{planning\+::assess\+Trajectory}} (const assess\+Trajectory\+Param \&param, const assess\+Trajectory\+Input \&input, assess\+Trajectory\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 返回距离障碍物最近距离，进行轨迹评估 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_acf4d24b55f3ecf39be24aabcc31da8c1}{planning\+::get\+Min\+Distance\+Of\+Point}} (const get\+Min\+Distance\+Of\+Point\+Param \&param, const get\+Min\+Distance\+Of\+Point\+Input \&input, get\+Min\+Distance\+Of\+Point\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 返回点距离障碍物最近距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a2be679b5025c5737adccf6e6d29e981a}{planning\+::find\+Min}} (const find\+Min\+Param \&param, const find\+Min\+Input \&input, find\+Min\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 返回double数组最小值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_aaffe428627c56dfd20949aaba86991c8}{planning\+::find\+Max}} (const find\+Max\+Param \&param, const find\+Max\+Input \&input, find\+Max\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 返回double数组最大值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_abd3342bae0b9a79ff3152188d28b8cf3}{planning\+::get\+Reference\+Line}} (const get\+Reference\+Line\+Param \&param, const get\+Reference\+Line\+Input \&input, get\+Reference\+Line\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 获取局部规划参考轨迹 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ae65b79f47b428163b1c235bc0f591fc0}{planning\+::get\+Frenet\+Location\+Point}} (const get\+Frenet\+Location\+Point\+Param \&param, const get\+Frenet\+Location\+Point\+Input \&input, get\+Frenet\+Location\+Point\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 获取车辆当前位置在frenet坐标系中坐标值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_af6f7551b6ef0d26621dfd5aa4eb1c93a}{planning\+::frenet2\+Cartesian}} (const frenet2\+Cartesian\+Param \&param, const frenet2\+Cartesian\+Input \&input, frenet2\+Cartesian\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 将frenet坐标系坐标转为自车坐标系坐标，xy为右前 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a15b5f515833c292a07cbb46d3aa6c9a0}{planning\+::generate\+Bezier\+Path\+List\+In\+Frenet}} (const generate\+Bezier\+Path\+List\+In\+Frenet\+Param \&param, const generate\+Bezier\+Path\+List\+In\+Frenet\+Input \&input, generate\+Bezier\+Path\+List\+In\+Frenet\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 在frenet坐标系中生成多条贝塞尔曲线 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad122684eece0dea4eb3c91a2235bb78d}{planning\+::has\+Preceding\+Vehicle}} (const has\+Preceding\+Vehicle\+Param \&param, const has\+Preceding\+Vehicle\+Input \&input, has\+Preceding\+Vehicle\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 判断车辆前方是否有需要跟随的车辆 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a44443e4ded8dab44a6f9f8e9afaee709}{planning\+::cruise\+Controller}} (const cruise\+Controller\+Param \&param, const cruise\+Controller\+Input \&input, cruise\+Controller\+Output \&output)
+\begin{DoxyCompactList}\small\item\em acc场景下，车辆目标速度计算 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+局部规划函数 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zehang Zhu (\href{mailto:zzh22@mails.tsinghua.edu.cn}{\texttt{ zzh22@mails.\+tsinghua.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/25 
+\end{DoxyDate}

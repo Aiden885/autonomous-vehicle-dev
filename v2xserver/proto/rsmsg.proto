@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message ObjectsVec
+{
+
+repeated ObjectsProto objMsg =1;
+int32 sensorid=2;
+	message ObjectsProto
+	{
+		int32 type=1;
+		int32  objectid=2;
+		double lat=3;
+		double lon=4;
+		double x=5;
+		double y=6;
+		double yaw=7;
+		double velocity=8;
+		double power=9;
+		bool finish=10;
+		int32 len=11;
+		int32 width=12;
+		int32 height=13;
+		int64 timestamp=14;
+	}
+}

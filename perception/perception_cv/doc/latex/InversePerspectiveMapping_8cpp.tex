@@ -1,0 +1,352 @@
+\hypertarget{InversePerspectiveMapping_8cpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+cv/src/\+Inverse\+Perspective\+Mapping.cpp 文件参考}
+\label{InversePerspectiveMapping_8cpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/perception\_cv/src/InversePerspectiveMapping.cpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/perception/perception\_cv/src/InversePerspectiveMapping.cpp}}
+
+
+Implements inverse perspective mapping functionality for lane detection.  
+
+
+{\ttfamily \#include \char`\"{}Inverse\+Perspective\+Mapping.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Camera\+Info\+Opt.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+Inverse\+Perspective\+Mapping.\+cpp 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{InversePerspectiveMapping_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a39851373f0e206f237cbaa5493b65b06}\label{InversePerspectiveMapping_8cpp_a39851373f0e206f237cbaa5493b65b06}} 
+\#define {\bfseries V\+P\+\_\+\+P\+O\+R\+T\+I\+ON}~0.\+05
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_ad46af22f9c8a075fdff816a74bdcbb9a}{Lane\+Detector\+::im\+Get\+I\+PM}} (const cv\+::\+Mat \&in\+Image, cv\+::\+Mat \&out\+Image, I\+P\+M\+Info $\ast$ipm\+Info, const Camera\+Info $\ast$camera\+Info, std\+::list$<$ cv\+::\+Point $>$ $\ast$out\+Points)
+\begin{DoxyCompactList}\small\item\em Coordinate system description. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a35ac6161fef931d352a12ad3949fd8ed}{Lane\+Detector\+::im\+Transform\+Image2\+Ground}} (const cv\+::\+Mat \&in\+Points, cv\+::\+Mat \&out\+Points, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Transforms points from image frame to ground plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a31ce2f2a5e3f6380a7e16765e0401695}{Lane\+Detector\+::im\+Transform\+Ground2\+Image}} (const cv\+::\+Mat \&in\+Points, cv\+::\+Mat \&out\+Points, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Transforms points from ground plane to image frame. \end{DoxyCompactList}\item 
+cv\+::\+Point2f \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a77be6fa5f108a68f8e086a064ac08dd2}{Lane\+Detector\+::im\+Get\+Vanishing\+Point}} (const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Computes vanishing point in image plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a6ab51ac04f0ee19bf1d0a71c5775c507}{Lane\+Detector\+::im\+Point\+Im\+I\+P\+M2\+World}} (cv\+::\+Point2f \&point, const I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Converts point from I\+PM pixel coordinates to world coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_ac8729381b595be35212fde276aa17209}{Lane\+Detector\+::im\+Transform\+Im\+I\+P\+M2\+Ground}} (const cv\+::\+Mat \&in\+Mat, cv\+::\+Mat \&out\+Mat, const I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Converts points from I\+PM pixel coordinates to world coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_afa8fe8963d420afb2a96f1266e70046c}{Lane\+Detector\+::im\+Transform\+Im\+I\+P\+M2\+Im}} (const cv\+::\+Mat \&in\+Mat, cv\+::\+Mat \&out\+Mat, const I\+P\+M\+Info $\ast$ipm\+Info, const Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Converts points from I\+PM pixel coordinates to image coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_ade2a81318f3c1f34836b2d88a9d0c44d}{Lane\+Detector\+::im\+Init\+Camera\+Info}} (char $\ast$const file\+Name, Camera\+Info $\ast$camera\+Info)
+\begin{DoxyCompactList}\small\item\em Initializes camera info structure from config file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a4cd9b9ac8dc2aaa8302098c01677c3de}{Lane\+Detector\+::im\+Scale\+Camera\+Info}} (Camera\+Info $\ast$camera\+Info, cv\+::\+Size size)
+\begin{DoxyCompactList}\small\item\em Scales camera parameters according to input image size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{InversePerspectiveMapping_8cpp_a8567591791d3d00792fac764a96f842d}{Lane\+Detector\+::im\+Get\+I\+P\+M\+Extent}} (const Camera\+Info $\ast$camera\+Info, I\+P\+M\+Info $\ast$ipm\+Info)
+\begin{DoxyCompactList}\small\item\em Calculates extent of image on ground plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+Implements inverse perspective mapping functionality for lane detection. 
+
+\begin{DoxyAuthor}{作者}
+Mohamed Aly \href{mailto:malaa@caltech.edu}{\texttt{ malaa@caltech.\+edu}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+11/29/2006 
+\end{DoxyDate}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_ad46af22f9c8a075fdff816a74bdcbb9a}\label{InversePerspectiveMapping_8cpp_ad46af22f9c8a075fdff816a74bdcbb9a}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imGetIPM@{imGetIPM}}
+\index{imGetIPM@{imGetIPM}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imGetIPM()}{imGetIPM()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Get\+I\+PM (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{in\+Image,  }\item[{cv\+::\+Mat \&}]{out\+Image,  }\item[{\mbox{\hyperlink{structLaneDetector_1_1IPMInfo}{I\+P\+M\+Info}} $\ast$}]{ipm\+Info,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info,  }\item[{std\+::list$<$ cv\+::\+Point $>$ $\ast$}]{out\+Points }\end{DoxyParamCaption})}
+
+
+
+Coordinate system description. 
+
+We are assuming the world coordinate frame center is at the camera, the ground plane is at height -\/h, the X-\/axis is going right, the Y-\/axis is going forward, the Z-\/axis is going up. The camera is looking forward with optical axis in direction of Y-\/axis, with possible pitch angle (above or below the Y-\/axis) and yaw angle (left or right). The camera coordinates have the same center as the world, but the Xc-\/axis goes right, the Yc-\/axis goes down, and the Zc-\/axis (optical cxis) goes forward. The uv-\/plane of the image is such that u is horizontal going right, v is vertical going down. The image coordinates uv are such that the pixels are at half coordinates i.\+e. first pixel is (.5,.5) ...etc where the top-\/left point is (0,0) i.\+e. the tip of the first pixel is (0,0)
+
+Generates Inverse Perspective Mapping of input image 
+\begin{DoxyParams}{参数}
+{\em in\+Image} & Input image to transform \\
+\hline
+{\em out\+Image} & Output I\+PM transformed image \\
+\hline
+{\em ipm\+Info} & I\+PM parameters and info for the transformation \\
+\hline
+{\em camera\+Info} & Camera calibration parameters \\
+\hline
+{\em out\+Points} & Optional list to store indices of points outside image bounds\\
+\hline
+\end{DoxyParams}
+Performs I\+PM transform assuming flat ground plane using camera parameters \mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a8567591791d3d00792fac764a96f842d}\label{InversePerspectiveMapping_8cpp_a8567591791d3d00792fac764a96f842d}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imGetIPMExtent@{imGetIPMExtent}}
+\index{imGetIPMExtent@{imGetIPMExtent}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imGetIPMExtent()}{imGetIPMExtent()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Get\+I\+P\+M\+Extent (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info,  }\item[{\mbox{\hyperlink{structLaneDetector_1_1IPMInfo}{I\+P\+M\+Info}} $\ast$}]{ipm\+Info }\end{DoxyParamCaption})}
+
+
+
+Calculates extent of image on ground plane. 
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & Camera calibration parameters \\
+\hline
+{\em ipm\+Info} & I\+PM parameters structure (x\+Limits and y\+Limits are updated)\\
+\hline
+\end{DoxyParams}
+Computes the boundaries of the image when projected onto ground plane
+
+Gets the extent of the image on the ground plane given the camera parameters
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & the input camera info \\
+\hline
+{\em ipm\+Info} & the I\+PM info containing the extent on ground plane\+: x\+Limits \& y\+Limits only are changed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a77be6fa5f108a68f8e086a064ac08dd2}\label{InversePerspectiveMapping_8cpp_a77be6fa5f108a68f8e086a064ac08dd2}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imGetVanishingPoint@{imGetVanishingPoint}}
+\index{imGetVanishingPoint@{imGetVanishingPoint}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imGetVanishingPoint()}{imGetVanishingPoint()}}
+{\footnotesize\ttfamily cv\+::\+Point2f Lane\+Detector\+::im\+Get\+Vanishing\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info }\end{DoxyParamCaption})}
+
+
+
+Computes vanishing point in image plane. 
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & Camera calibration parameters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Vanishing point coordinates in image frame
+\end{DoxyReturn}
+Finds intersection of image plane with line in X\+Y-\/plane making yaw angle with Y-\/axis
+
+Computes the vanishing point in the image plane uv. It is the point of intersection of the image plane with the line in the X\+Y-\/plane in the world coordinates that makes an angle yaw clockwise (form Y-\/axis) with Y-\/axis
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & the input camera parameter\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+the computed vanishing point in image frame 
+\end{DoxyReturn}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_ade2a81318f3c1f34836b2d88a9d0c44d}\label{InversePerspectiveMapping_8cpp_ade2a81318f3c1f34836b2d88a9d0c44d}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imInitCameraInfo@{imInitCameraInfo}}
+\index{imInitCameraInfo@{imInitCameraInfo}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imInitCameraInfo()}{imInitCameraInfo()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Init\+Camera\+Info (\begin{DoxyParamCaption}\item[{char $\ast$const}]{file\+Name,  }\item[{\mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info }\end{DoxyParamCaption})}
+
+
+
+Initializes camera info structure from config file. 
+
+
+\begin{DoxyParams}{参数}
+{\em file\+Name} & Path to camera configuration file \\
+\hline
+{\em camera\+Info} & Camera parameters structure to initialize\\
+\hline
+\end{DoxyParams}
+Initializes the camera\+Info structure with data read from the conf file
+
+
+\begin{DoxyParams}{参数}
+{\em file\+Name} & the input camera conf file name \\
+\hline
+{\em camera\+Info} & the returned camera parametrs struct \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a6ab51ac04f0ee19bf1d0a71c5775c507}\label{InversePerspectiveMapping_8cpp_a6ab51ac04f0ee19bf1d0a71c5775c507}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imPointImIPM2World@{imPointImIPM2World}}
+\index{imPointImIPM2World@{imPointImIPM2World}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imPointImIPM2World()}{imPointImIPM2World()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Point\+Im\+I\+P\+M2\+World (\begin{DoxyParamCaption}\item[{cv\+::\+Point2f \&}]{point,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1IPMInfo}{I\+P\+M\+Info}} $\ast$}]{ipm\+Info }\end{DoxyParamCaption})}
+
+
+
+Converts point from I\+PM pixel coordinates to world coordinates. 
+
+
+\begin{DoxyParams}{参数}
+{\em point} & Point to transform (in/out parameter) \\
+\hline
+{\em ipm\+Info} & I\+PM parameters from im\+Get\+I\+PM\\
+\hline
+\end{DoxyParams}
+Converts a point from I\+PM pixel coordinates into world coordinates
+
+
+\begin{DoxyParams}{参数}
+{\em point} & in/out point \\
+\hline
+{\em ipm\+Info} & the ipm info from im\+Get\+I\+PM \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a4cd9b9ac8dc2aaa8302098c01677c3de}\label{InversePerspectiveMapping_8cpp_a4cd9b9ac8dc2aaa8302098c01677c3de}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imScaleCameraInfo@{imScaleCameraInfo}}
+\index{imScaleCameraInfo@{imScaleCameraInfo}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imScaleCameraInfo()}{imScaleCameraInfo()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Scale\+Camera\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info,  }\item[{cv\+::\+Size}]{size }\end{DoxyParamCaption})}
+
+
+
+Scales camera parameters according to input image size. 
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & Camera parameters to scale (in/out) \\
+\hline
+{\em size} & Target image dimensions\\
+\hline
+\end{DoxyParams}
+Scales the camera\+Info according to the input image size
+
+
+\begin{DoxyParams}{参数}
+{\em camera\+Info} & the input/return structure \\
+\hline
+{\em size} & the input image size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a31ce2f2a5e3f6380a7e16765e0401695}\label{InversePerspectiveMapping_8cpp_a31ce2f2a5e3f6380a7e16765e0401695}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imTransformGround2Image@{imTransformGround2Image}}
+\index{imTransformGround2Image@{imTransformGround2Image}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imTransformGround2Image()}{imTransformGround2Image()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Transform\+Ground2\+Image (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{in\+Points,  }\item[{cv\+::\+Mat \&}]{out\+Points,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info }\end{DoxyParamCaption})}
+
+
+
+Transforms points from ground plane to image frame. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Points} & Input points in world coordinates on ground plane (2xN matrix) \\
+\hline
+{\em out\+Points} & Output points in image coordinates (2xN matrix) \\
+\hline
+{\em camera\+Info} & Camera calibration parameters\\
+\hline
+\end{DoxyParams}
+Projects points from XY coordinates on ground plane Z=-\/height to image UV coordinates
+
+Transforms points from the ground plane (z=-\/h) in the world frame into points on the image in image frame (uv-\/coordinates)
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Points} & 2xN array of input points on the ground in world coordinates \\
+\hline
+{\em out\+Points} & 2xN output points in on the image in image coordinates \\
+\hline
+{\em camera\+Info} & the camera parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_a35ac6161fef931d352a12ad3949fd8ed}\label{InversePerspectiveMapping_8cpp_a35ac6161fef931d352a12ad3949fd8ed}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imTransformImage2Ground@{imTransformImage2Ground}}
+\index{imTransformImage2Ground@{imTransformImage2Ground}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imTransformImage2Ground()}{imTransformImage2Ground()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Transform\+Image2\+Ground (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{in\+Points,  }\item[{cv\+::\+Mat \&}]{out\+Points,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info }\end{DoxyParamCaption})}
+
+
+
+Transforms points from image frame to ground plane. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Points} & Input points in image coordinates (2xN matrix) \\
+\hline
+{\em out\+Points} & Output points in world coordinates on ground plane (2xN matrix) \\
+\hline
+{\em camera\+Info} & Camera calibration parameters\\
+\hline
+\end{DoxyParams}
+Projects points from image UV coordinates to XY coordinates on ground plane Z=-\/height
+
+Transforms points from the image frame (uv-\/coordinates) into the real world frame on the ground plane (z=-\/height)
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Points} & input points in the image frame (2xN matrix) \\
+\hline
+{\em out\+Points} & output points in the world frame on the ground (z=-\/height) (2xN matrix with xw, yw and implicit z=-\/height) \\
+\hline
+{\em cemara\+Info} & the input camera parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_ac8729381b595be35212fde276aa17209}\label{InversePerspectiveMapping_8cpp_ac8729381b595be35212fde276aa17209}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imTransformImIPM2Ground@{imTransformImIPM2Ground}}
+\index{imTransformImIPM2Ground@{imTransformImIPM2Ground}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imTransformImIPM2Ground()}{imTransformImIPM2Ground()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Transform\+Im\+I\+P\+M2\+Ground (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{in\+Mat,  }\item[{cv\+::\+Mat \&}]{out\+Mat,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1IPMInfo}{I\+P\+M\+Info}} $\ast$}]{ipm\+Info }\end{DoxyParamCaption})}
+
+
+
+Converts points from I\+PM pixel coordinates to world coordinates. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Mat} & Input matrix of points (2xN) \\
+\hline
+{\em out\+Mat} & Output matrix of transformed points (2xN) \\
+\hline
+{\em ipm\+Info} & I\+PM parameters from im\+Get\+I\+PM\\
+\hline
+\end{DoxyParams}
+Converts from I\+PM pixel coordinates into world coordinates
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Mat} & input matrix 2xN \\
+\hline
+{\em out\+Mat} & output matrix 2xN \\
+\hline
+{\em ipm\+Info} & the ipm info from im\+Get\+I\+PM \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{InversePerspectiveMapping_8cpp_afa8fe8963d420afb2a96f1266e70046c}\label{InversePerspectiveMapping_8cpp_afa8fe8963d420afb2a96f1266e70046c}} 
+\index{InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}!imTransformImIPM2Im@{imTransformImIPM2Im}}
+\index{imTransformImIPM2Im@{imTransformImIPM2Im}!InversePerspectiveMapping.cpp@{InversePerspectiveMapping.cpp}}
+\doxysubsubsection{\texorpdfstring{imTransformImIPM2Im()}{imTransformImIPM2Im()}}
+{\footnotesize\ttfamily void Lane\+Detector\+::im\+Transform\+Im\+I\+P\+M2\+Im (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{in\+Mat,  }\item[{cv\+::\+Mat \&}]{out\+Mat,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1IPMInfo}{I\+P\+M\+Info}} $\ast$}]{ipm\+Info,  }\item[{const \mbox{\hyperlink{structLaneDetector_1_1CameraInfo}{Camera\+Info}} $\ast$}]{camera\+Info }\end{DoxyParamCaption})}
+
+
+
+Converts points from I\+PM pixel coordinates to image coordinates. 
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Mat} & Input matrix of points (2xN) \\
+\hline
+{\em out\+Mat} & Output matrix of transformed points (2xN) \\
+\hline
+{\em ipm\+Info} & I\+PM parameters from im\+Get\+I\+PM \\
+\hline
+{\em camera\+Info} & Camera calibration parameters\\
+\hline
+\end{DoxyParams}
+Converts from I\+PM pixel coordinates into Image coordinates
+
+
+\begin{DoxyParams}{参数}
+{\em in\+Mat} & input matrix 2xN \\
+\hline
+{\em out\+Mat} & output matrix 2xN \\
+\hline
+{\em ipm\+Info} & the ipm info from im\+Get\+I\+PM \\
+\hline
+{\em camera\+Info} & the camera info \\
+\hline
+\end{DoxyParams}

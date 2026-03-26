@@ -1,0 +1,17 @@
+syntax = "proto3";
+package Planning;
+
+message TrajectoryPoint
+{
+    double X=1;
+    double Y=2;
+    double Theta=3;
+    double Speed=4;
+    double Curvature=5;
+    double S=6;
+}
+
+message TrajectoryPointVec
+{
+    repeated TrajectoryPoint TrajectoryPoints=1;
+}

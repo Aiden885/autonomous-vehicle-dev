@@ -1,0 +1,166 @@
+\hypertarget{classPointCloudsDetector}{}\doxysection{Point\+Clouds\+Detector类 参考}
+\label{classPointCloudsDetector}\index{PointCloudsDetector@{PointCloudsDetector}}
+
+
+类 Point\+Clouds\+Detector 继承关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classPointCloudsDetector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Point\+Clouds\+Detector 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classPointCloudsDetector__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPointCloudsDetector_1_1GridInfos}{Grid\+Infos}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ab9f92cf5fc36095543b673223e64a04c}\label{classPointCloudsDetector_ab9f92cf5fc36095543b673223e64a04c}} 
+void {\bfseries find\+\_\+\+Z\+\_\+value} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a27e693aa8f4df998811b56cf170ec5a1}\label{classPointCloudsDetector_a27e693aa8f4df998811b56cf170ec5a1}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries Pass\+Through\+Filter} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, double z\+\_\+max, double z\+\_\+min)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a831726e30cee383a6b25d6fc13429d93}\label{classPointCloudsDetector_a831726e30cee383a6b25d6fc13429d93}} 
+vector$<$ int $>$ {\bfseries Pointcloud\+\_\+to\+\_\+grid} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, double map\+\_\+resolution)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ab31fe21d8666695d5952d90531a186b9}\label{classPointCloudsDetector_ab31fe21d8666695d5952d90531a186b9}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries inputcloud} (int i)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a068d75e574ba8e434c38a7dc10bbb761}\label{classPointCloudsDetector_a068d75e574ba8e434c38a7dc10bbb761}} 
+void {\bfseries init\+Camera} (Camera\+Angle set\+Angle)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_abf7ef480bda62f910cb0a4cb228d138d}\label{classPointCloudsDetector_abf7ef480bda62f910cb0a4cb228d138d}} 
+void {\bfseries init\+View} ()
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ab1c41f7f781761cc724652f5a3cbd600}\label{classPointCloudsDetector_ab1c41f7f781761cc724652f5a3cbd600}} 
+bool {\bfseries check\+Alive} ()
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ae7b9f42bb2e257dd57b0c280575bec05}\label{classPointCloudsDetector_ae7b9f42bb2e257dd57b0c280575bec05}} 
+void {\bfseries receive\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input) override
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a5fd74c3b1dc1fd5f581a985f5d650a91}\label{classPointCloudsDetector_a5fd74c3b1dc1fd5f581a985f5d650a91}} 
+void {\bfseries r\+Point\+Cloud} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr \&cloud)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a009611fe108948fdb8332fec1566ee82}\label{classPointCloudsDetector_a009611fe108948fdb8332fec1566ee82}} 
+void {\bfseries render\+Point\+Cloud} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr \&cloud, std\+::string name, \mbox{\hyperlink{structColor}{Color}} color)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_af01abbb5e0e37c3f589d89c06967c4ad}\label{classPointCloudsDetector_af01abbb5e0e37c3f589d89c06967c4ad}} 
+\mbox{\hyperlink{structBox}{Box}} {\bfseries set\+Bounding\+Box} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cluster)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a9d4829bd8df74209e094bb9558c2055e}\label{classPointCloudsDetector_a9d4829bd8df74209e094bb9558c2055e}} 
+\mbox{\hyperlink{structPcaBox}{Pca\+Box}} {\bfseries set\+Pca\+Box} (\mbox{\hyperlink{structFrame}{Frame}} frame)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_af22f72cdc4984cf1a0beefd28657ea3f}\label{classPointCloudsDetector_af22f72cdc4984cf1a0beefd28657ea3f}} 
+\mbox{\hyperlink{structFrame}{Frame}} {\bfseries object} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cluster, double tracking\+Dis)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a4724407931b91d8ab72d5a668cecbf85}\label{classPointCloudsDetector_a4724407931b91d8ab72d5a668cecbf85}} 
+std\+::vector$<$ \mbox{\hyperlink{structFrame}{Frame}} $>$ {\bfseries Obstacle\+Bounding} (std\+::vector$<$ pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr $>$ cluster\+Cloud, double tracking\+Dis)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a8e85b10a38c33f6d0eb80d7fbdfade7c}\label{classPointCloudsDetector_a8e85b10a38c33f6d0eb80d7fbdfade7c}} 
+void {\bfseries render\+Box} (\mbox{\hyperlink{structBox}{Box}} box, int id, \mbox{\hyperlink{structColor}{Color}} color=\mbox{\hyperlink{structColor}{Color}}(0, 1, 0), float opacity=1)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a4e292615e246bb2d620a3a39ce04a702}\label{classPointCloudsDetector_a4e292615e246bb2d620a3a39ce04a702}} 
+void {\bfseries render\+Pca\+Box} (\mbox{\hyperlink{structPcaBox}{Pca\+Box}} box, int id, \mbox{\hyperlink{structColor}{Color}} color=\mbox{\hyperlink{structColor}{Color}}(0, 1, 0), float opacity=1)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a5e82c3485e7eafb406e43932152d9d60}\label{classPointCloudsDetector_a5e82c3485e7eafb406e43932152d9d60}} 
+void {\bfseries swap\+X\+AndY} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_af36757f318ee0ec24d4b2592831ae71a}\label{classPointCloudsDetector_af36757f318ee0ec24d4b2592831ae71a}} 
+void {\bfseries swap\+Y\+AndX} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ab038e524bcc45fe7042bfda92c511662}\label{classPointCloudsDetector_ab038e524bcc45fe7042bfda92c511662}} 
+void {\bfseries num\+Points} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_aa322d806b2804e1d5fa5fee0bc83bd7a}\label{classPointCloudsDetector_aa322d806b2804e1d5fa5fee0bc83bd7a}} 
+pcl\+::visualization\+::\+P\+C\+L\+Visualizer\+::\+Ptr {\bfseries get\+Viewer} () override
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_af366cd42e783e80c74c033cd109d8794}\label{classPointCloudsDetector_af366cd42e783e80c74c033cd109d8794}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries clip\+Plane} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr src\+\_\+cloud, const Eigen\+::\+Vector4f plane, bool negative)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_aea42e85728416fc4d37db79ea008a5c9}\label{classPointCloudsDetector_aea42e85728416fc4d37db79ea008a5c9}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries filter\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, float filter\+Res\+\_\+x, float filter\+Res\+\_\+y, float filter\+Res\+\_\+z, Eigen\+::\+Vector4f min\+Point, Eigen\+::\+Vector4f max\+Point)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a9d0cfcc28e746bf1fb52bd23c5a7ccb2}\label{classPointCloudsDetector_a9d0cfcc28e746bf1fb52bd23c5a7ccb2}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries rmv\+Near\+Points} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, Eigen\+::\+Vector4f min\+Point, Eigen\+::\+Vector4f max\+Point)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a6ba7f818840b028da580fd5f47bed736}\label{classPointCloudsDetector_a6ba7f818840b028da580fd5f47bed736}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries R\+A\+N\+S\+A\+C3d} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, int max\+Iterations, float distance\+Threshold)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_aab56b0d21765145bba58bc1482e1f6c7}\label{classPointCloudsDetector_aab56b0d21765145bba58bc1482e1f6c7}} 
+std\+::vector$<$ pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr $>$ {\bfseries Clustering} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr cloud, float cluster\+Tolerance, int min\+Size, int max\+Size)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a68d76395882f802c99a27d1b50e300da}\label{classPointCloudsDetector_a68d76395882f802c99a27d1b50e300da}} 
+std\+::vector$<$ int $>$ {\bfseries Grid\+Ground\+Filter} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr filtered\+\_\+cloud, int normal\+\_\+estimation\+\_\+\+Ksearch, float slope\+\_\+rate, float normal\+\_\+thereshold, int grid\+\_\+height\+\_\+mode, float car\+\_\+height, float grid\+\_\+size, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a3b8ade781e0cd1f40e13f74de9798e2d}\label{classPointCloudsDetector_a3b8ade781e0cd1f40e13f74de9798e2d}} 
+std\+::vector$<$ int $>$ {\bfseries Grid\+Ground\+Filter\+Simple} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr filtered\+\_\+cloud, int normal\+\_\+estimation\+\_\+\+Ksearch, float slope\+\_\+rate, float normal\+\_\+thereshold, int grid\+\_\+height\+\_\+mode, float car\+\_\+height, float grid\+\_\+size, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a690829747fc586782ae09d1ea05dcc8b}\label{classPointCloudsDetector_a690829747fc586782ae09d1ea05dcc8b}} 
+std\+::vector$<$ int $>$ {\bfseries Grid\+R\+A\+N\+S\+AC} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr filtered\+\_\+cloud, float ransac\+\_\+threshold, int normal\+\_\+estimation\+\_\+\+Ksearch, float slope\+\_\+rate, float normal\+\_\+thereshold, int grid\+\_\+height\+\_\+mode, float car\+\_\+height, float grid\+\_\+size, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a3b729a4374b5cc249f6c0ecdb0826836}\label{classPointCloudsDetector_a3b729a4374b5cc249f6c0ecdb0826836}} 
+void {\bfseries read\+\_\+pcd\+\_\+to\+\_\+eigen} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr point\+\_\+cloudi, Eigen\+::\+Matrix\+Xf \&cloud, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_adc6f0273eb69076d7e937150e78f7a17}\label{classPointCloudsDetector_adc6f0273eb69076d7e937150e78f7a17}} 
+void {\bfseries process\+Point\+Clouds} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr point\+\_\+cloudi, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_af7496e175f902e154e59df5a9c657a06}\label{classPointCloudsDetector_af7496e175f902e154e59df5a9c657a06}} 
+std\+::vector$<$ int $>$ {\bfseries Grid\+Patchworkpp} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr point\+\_\+cloudi, int normal\+\_\+estimation\+\_\+\+Ksearch, float slope\+\_\+rate, float normal\+\_\+thereshold, int grid\+\_\+height\+\_\+mode, float car\+\_\+height, float grid\+\_\+size, float right\+\_\+left\+\_\+distance, float back\+\_\+distance, float front\+\_\+distance)
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a88065b93da6086f7ed2d12ff21b40fe0}\label{classPointCloudsDetector_a88065b93da6086f7ed2d12ff21b40fe0}} 
+std\+::pair$<$ std\+::vector$<$ int $>$, std\+::vector$<$ \mbox{\hyperlink{structFrame}{Frame}} $>$ $>$ {\bfseries run} () override
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a3789d85e9ec6947a7b509be569588e68}\label{classPointCloudsDetector_a3789d85e9ec6947a7b509be569588e68}} 
+void {\bfseries test} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_ae49bf9c1a7d854ccae08765ebf8a7691}\label{classPointCloudsDetector_ae49bf9c1a7d854ccae08765ebf8a7691}} 
+boost\+::shared\+\_\+ptr$<$ pcl\+::visualization\+::\+P\+C\+L\+Visualizer $>$ {\bfseries viewer}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a18345426c69db71c7b874e880a8ad7bc}\label{classPointCloudsDetector_a18345426c69db71c7b874e880a8ad7bc}} 
+double {\bfseries max\+\_\+z}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a94a082101dd6f79ca5d31d68240a599e}\label{classPointCloudsDetector_a94a082101dd6f79ca5d31d68240a599e}} 
+double {\bfseries min\+\_\+z}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_aabc303439702440dc5df61fd8bb27b3f}\label{classPointCloudsDetector_aabc303439702440dc5df61fd8bb27b3f}} 
+int {\bfseries wi} = 0
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_abf91e26ef29af70ef337cbd1e4594882}\label{classPointCloudsDetector_abf91e26ef29af70ef337cbd1e4594882}} 
+int {\bfseries frame\+\_\+id} = 0
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a5fec3e3ecf30719babb3059a75295ed4}\label{classPointCloudsDetector_a5fec3e3ecf30719babb3059a75295ed4}} 
+int {\bfseries time\+\_\+id} = 0
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a3909660de3a7c7cbed83e79fa6066cbe}\label{classPointCloudsDetector_a3909660de3a7c7cbed83e79fa6066cbe}} 
+int {\bfseries id} = 0
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a7a5a0e14f6aca6577c3f96417a2899b0}\label{classPointCloudsDetector_a7a5a0e14f6aca6577c3f96417a2899b0}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries ground\+\_\+point}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_a6a8d4ff82cb543c228655ae282c888f2}\label{classPointCloudsDetector_a6a8d4ff82cb543c228655ae282c888f2}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries nonground\+\_\+point}
+\item 
+\mbox{\Hypertarget{classPointCloudsDetector_afad6bd6118e0a7a03243f18c166a205b}\label{classPointCloudsDetector_afad6bd6118e0a7a03243f18c166a205b}} 
+std\+::vector$<$ \mbox{\hyperlink{structFrame}{Frame}} $>$ {\bfseries frames}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+lidar\+\_\+coms\+\_\+livox/include/classic\+Lidar\+Detector.\+h\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+lidar\+\_\+coms\+\_\+livox/src/classic\+Lidar\+Detector.\+cpp\end{DoxyCompactItemize}

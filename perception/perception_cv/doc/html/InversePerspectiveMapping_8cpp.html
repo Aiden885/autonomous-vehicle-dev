@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/perception_cv/src/InversePerspectiveMapping.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_6a57deada94fe827707e826381c7fd3f.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">InversePerspectiveMapping.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implements inverse perspective mapping functionality for lane detection.  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;InversePerspectiveMapping.hpp&quot;</code><br />
+<code>#include &quot;CameraInfoOpt.h&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+InversePerspectiveMapping.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="InversePerspectiveMapping_8cpp__incl.png" border="0" usemap="#_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp" alt=""/></div>
+<map name="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp" id="_2home_2ran_2workspace_2projects_2tsinghua_2thicvpilot_2thicvpilot__planning__modul_2perception_2perception__cv_2src_2InversePerspectiveMapping_8cpp">
+<area shape="rect" title="Implements inverse perspective mapping functionality for lane detection." alt="" coords="247,5,481,91"/>
+<area shape="rect" href="InversePerspectiveMapping_8hpp_source.html" title=" " alt="" coords="57,139,287,165"/>
+<area shape="rect" title=" " alt="" coords="5,213,48,240"/>
+<area shape="rect" href="CameraInfoOpt_8h_source.html" title=" " alt="" coords="259,213,392,240"/>
+<area shape="rect" title=" " alt="" coords="363,139,443,165"/>
+<area shape="rect" title=" " alt="" coords="467,139,535,165"/>
+<area shape="rect" title=" " alt="" coords="560,139,635,165"/>
+<area shape="rect" title=" " alt="" coords="80,213,235,240"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a39851373f0e206f237cbaa5493b65b06"><td class="memItemLeft" align="right" valign="top"><a id="a39851373f0e206f237cbaa5493b65b06"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VP_PORTION</b>&#160;&#160;&#160;0.05</td></tr>
+<tr class="separator:a39851373f0e206f237cbaa5493b65b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ad46af22f9c8a075fdff816a74bdcbb9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#ad46af22f9c8a075fdff816a74bdcbb9a">LaneDetector::imGetIPM</a> (const cv::Mat &amp;inImage, cv::Mat &amp;outImage, IPMInfo *ipmInfo, const CameraInfo *cameraInfo, std::list&lt; cv::Point &gt; *outPoints)</td></tr>
+<tr class="memdesc:ad46af22f9c8a075fdff816a74bdcbb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordinate system description.  <a href="InversePerspectiveMapping_8cpp.html#ad46af22f9c8a075fdff816a74bdcbb9a">更多...</a><br /></td></tr>
+<tr class="separator:ad46af22f9c8a075fdff816a74bdcbb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ac6161fef931d352a12ad3949fd8ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a35ac6161fef931d352a12ad3949fd8ed">LaneDetector::imTransformImage2Ground</a> (const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:a35ac6161fef931d352a12ad3949fd8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms points from image frame to ground plane.  <a href="InversePerspectiveMapping_8cpp.html#a35ac6161fef931d352a12ad3949fd8ed">更多...</a><br /></td></tr>
+<tr class="separator:a35ac6161fef931d352a12ad3949fd8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ce2f2a5e3f6380a7e16765e0401695"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a31ce2f2a5e3f6380a7e16765e0401695">LaneDetector::imTransformGround2Image</a> (const cv::Mat &amp;inPoints, cv::Mat &amp;outPoints, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:a31ce2f2a5e3f6380a7e16765e0401695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms points from ground plane to image frame.  <a href="InversePerspectiveMapping_8cpp.html#a31ce2f2a5e3f6380a7e16765e0401695">更多...</a><br /></td></tr>
+<tr class="separator:a31ce2f2a5e3f6380a7e16765e0401695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77be6fa5f108a68f8e086a064ac08dd2"><td class="memItemLeft" align="right" valign="top">cv::Point2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a77be6fa5f108a68f8e086a064ac08dd2">LaneDetector::imGetVanishingPoint</a> (const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:a77be6fa5f108a68f8e086a064ac08dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes vanishing point in image plane.  <a href="InversePerspectiveMapping_8cpp.html#a77be6fa5f108a68f8e086a064ac08dd2">更多...</a><br /></td></tr>
+<tr class="separator:a77be6fa5f108a68f8e086a064ac08dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab51ac04f0ee19bf1d0a71c5775c507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a6ab51ac04f0ee19bf1d0a71c5775c507">LaneDetector::imPointImIPM2World</a> (cv::Point2f &amp;point, const IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:a6ab51ac04f0ee19bf1d0a71c5775c507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts point from IPM pixel coordinates to world coordinates.  <a href="InversePerspectiveMapping_8cpp.html#a6ab51ac04f0ee19bf1d0a71c5775c507">更多...</a><br /></td></tr>
+<tr class="separator:a6ab51ac04f0ee19bf1d0a71c5775c507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8729381b595be35212fde276aa17209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#ac8729381b595be35212fde276aa17209">LaneDetector::imTransformImIPM2Ground</a> (const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:ac8729381b595be35212fde276aa17209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts points from IPM pixel coordinates to world coordinates.  <a href="InversePerspectiveMapping_8cpp.html#ac8729381b595be35212fde276aa17209">更多...</a><br /></td></tr>
+<tr class="separator:ac8729381b595be35212fde276aa17209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8fe8963d420afb2a96f1266e70046c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#afa8fe8963d420afb2a96f1266e70046c">LaneDetector::imTransformImIPM2Im</a> (const cv::Mat &amp;inMat, cv::Mat &amp;outMat, const IPMInfo *ipmInfo, const CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:afa8fe8963d420afb2a96f1266e70046c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts points from IPM pixel coordinates to image coordinates.  <a href="InversePerspectiveMapping_8cpp.html#afa8fe8963d420afb2a96f1266e70046c">更多...</a><br /></td></tr>
+<tr class="separator:afa8fe8963d420afb2a96f1266e70046c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade2a81318f3c1f34836b2d88a9d0c44d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#ade2a81318f3c1f34836b2d88a9d0c44d">LaneDetector::imInitCameraInfo</a> (char *const fileName, CameraInfo *cameraInfo)</td></tr>
+<tr class="memdesc:ade2a81318f3c1f34836b2d88a9d0c44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes camera info structure from config file.  <a href="InversePerspectiveMapping_8cpp.html#ade2a81318f3c1f34836b2d88a9d0c44d">更多...</a><br /></td></tr>
+<tr class="separator:ade2a81318f3c1f34836b2d88a9d0c44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd9b9ac8dc2aaa8302098c01677c3de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a4cd9b9ac8dc2aaa8302098c01677c3de">LaneDetector::imScaleCameraInfo</a> (CameraInfo *cameraInfo, cv::Size size)</td></tr>
+<tr class="memdesc:a4cd9b9ac8dc2aaa8302098c01677c3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales camera parameters according to input image size.  <a href="InversePerspectiveMapping_8cpp.html#a4cd9b9ac8dc2aaa8302098c01677c3de">更多...</a><br /></td></tr>
+<tr class="separator:a4cd9b9ac8dc2aaa8302098c01677c3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8567591791d3d00792fac764a96f842d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="InversePerspectiveMapping_8cpp.html#a8567591791d3d00792fac764a96f842d">LaneDetector::imGetIPMExtent</a> (const CameraInfo *cameraInfo, IPMInfo *ipmInfo)</td></tr>
+<tr class="memdesc:a8567591791d3d00792fac764a96f842d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates extent of image on ground plane.  <a href="InversePerspectiveMapping_8cpp.html#a8567591791d3d00792fac764a96f842d">更多...</a><br /></td></tr>
+<tr class="separator:a8567591791d3d00792fac764a96f842d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Implements inverse perspective mapping functionality for lane detection. </p>
+<dl class="section author"><dt>作者</dt><dd>Mohamed Aly <a href="#" onclick="location.href='mai'+'lto:'+'mal'+'aa'+'@ca'+'lt'+'ech'+'.e'+'du'; return false;">malaa<span style="display: none;">.nosp@m.</span>@cal<span style="display: none;">.nosp@m.</span>tech.<span style="display: none;">.nosp@m.</span>edu</a> </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>11/29/2006 </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="ad46af22f9c8a075fdff816a74bdcbb9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad46af22f9c8a075fdff816a74bdcbb9a">&#9670;&nbsp;</a></span>imGetIPM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imGetIPM </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>inImage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>outImage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *&#160;</td>
+          <td class="paramname"><em>ipmInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::list&lt; cv::Point &gt; *&#160;</td>
+          <td class="paramname"><em>outPoints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Coordinate system description. </p>
+<p>We are assuming the world coordinate frame center is at the camera, the ground plane is at height -h, the X-axis is going right, the Y-axis is going forward, the Z-axis is going up. The camera is looking forward with optical axis in direction of Y-axis, with possible pitch angle (above or below the Y-axis) and yaw angle (left or right). The camera coordinates have the same center as the world, but the Xc-axis goes right, the Yc-axis goes down, and the Zc-axis (optical cxis) goes forward. The uv-plane of the image is such that u is horizontal going right, v is vertical going down. The image coordinates uv are such that the pixels are at half coordinates i.e. first pixel is (.5,.5) ...etc where the top-left point is (0,0) i.e. the tip of the first pixel is (0,0)</p>
+<p>Generates Inverse Perspective Mapping of input image </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inImage</td><td>Input image to transform </td></tr>
+    <tr><td class="paramname">outImage</td><td>Output IPM transformed image </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>IPM parameters and info for the transformation </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters </td></tr>
+    <tr><td class="paramname">outPoints</td><td>Optional list to store indices of points outside image bounds</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Performs IPM transform assuming flat ground plane using camera parameters </p>
+
+</div>
+</div>
+<a id="a8567591791d3d00792fac764a96f842d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8567591791d3d00792fac764a96f842d">&#9670;&nbsp;</a></span>imGetIPMExtent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imGetIPMExtent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *&#160;</td>
+          <td class="paramname"><em>ipmInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates extent of image on ground plane. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>IPM parameters structure (xLimits and yLimits are updated)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Computes the boundaries of the image when projected onto ground plane</p>
+<p>Gets the extent of the image on the ground plane given the camera parameters</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>the input camera info </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>the IPM info containing the extent on ground plane: xLimits &amp; yLimits only are changed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a77be6fa5f108a68f8e086a064ac08dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77be6fa5f108a68f8e086a064ac08dd2">&#9670;&nbsp;</a></span>imGetVanishingPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cv::Point2f LaneDetector::imGetVanishingPoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes vanishing point in image plane. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Vanishing point coordinates in image frame</dd></dl>
+<p>Finds intersection of image plane with line in XY-plane making yaw angle with Y-axis</p>
+<p>Computes the vanishing point in the image plane uv. It is the point of intersection of the image plane with the line in the XY-plane in the world coordinates that makes an angle yaw clockwise (form Y-axis) with Y-axis</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>the input camera parameter</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>the computed vanishing point in image frame </dd></dl>
+
+</div>
+</div>
+<a id="ade2a81318f3c1f34836b2d88a9d0c44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade2a81318f3c1f34836b2d88a9d0c44d">&#9670;&nbsp;</a></span>imInitCameraInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imInitCameraInfo </td>
+          <td>(</td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes camera info structure from config file. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>Path to camera configuration file </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>Camera parameters structure to initialize</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the cameraInfo structure with data read from the conf file</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>the input camera conf file name </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>the returned camera parametrs struct </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6ab51ac04f0ee19bf1d0a71c5775c507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab51ac04f0ee19bf1d0a71c5775c507">&#9670;&nbsp;</a></span>imPointImIPM2World()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imPointImIPM2World </td>
+          <td>(</td>
+          <td class="paramtype">cv::Point2f &amp;&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *&#160;</td>
+          <td class="paramname"><em>ipmInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts point from IPM pixel coordinates to world coordinates. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>Point to transform (in/out parameter) </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>IPM parameters from imGetIPM</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Converts a point from IPM pixel coordinates into world coordinates</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>in/out point </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>the ipm info from imGetIPM </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4cd9b9ac8dc2aaa8302098c01677c3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd9b9ac8dc2aaa8302098c01677c3de">&#9670;&nbsp;</a></span>imScaleCameraInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imScaleCameraInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Size&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scales camera parameters according to input image size. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>Camera parameters to scale (in/out) </td></tr>
+    <tr><td class="paramname">size</td><td>Target image dimensions</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Scales the cameraInfo according to the input image size</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraInfo</td><td>the input/return structure </td></tr>
+    <tr><td class="paramname">size</td><td>the input image size </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a31ce2f2a5e3f6380a7e16765e0401695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ce2f2a5e3f6380a7e16765e0401695">&#9670;&nbsp;</a></span>imTransformGround2Image()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imTransformGround2Image </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>inPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>outPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transforms points from ground plane to image frame. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inPoints</td><td>Input points in world coordinates on ground plane (2xN matrix) </td></tr>
+    <tr><td class="paramname">outPoints</td><td>Output points in image coordinates (2xN matrix) </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Projects points from XY coordinates on ground plane Z=-height to image UV coordinates</p>
+<p>Transforms points from the ground plane (z=-h) in the world frame into points on the image in image frame (uv-coordinates)</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inPoints</td><td>2xN array of input points on the ground in world coordinates </td></tr>
+    <tr><td class="paramname">outPoints</td><td>2xN output points in on the image in image coordinates </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>the camera parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a35ac6161fef931d352a12ad3949fd8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ac6161fef931d352a12ad3949fd8ed">&#9670;&nbsp;</a></span>imTransformImage2Ground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imTransformImage2Ground </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>inPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>outPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transforms points from image frame to ground plane. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inPoints</td><td>Input points in image coordinates (2xN matrix) </td></tr>
+    <tr><td class="paramname">outPoints</td><td>Output points in world coordinates on ground plane (2xN matrix) </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Projects points from image UV coordinates to XY coordinates on ground plane Z=-height</p>
+<p>Transforms points from the image frame (uv-coordinates) into the real world frame on the ground plane (z=-height)</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inPoints</td><td>input points in the image frame (2xN matrix) </td></tr>
+    <tr><td class="paramname">outPoints</td><td>output points in the world frame on the ground (z=-height) (2xN matrix with xw, yw and implicit z=-height) </td></tr>
+    <tr><td class="paramname">cemaraInfo</td><td>the input camera parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac8729381b595be35212fde276aa17209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8729381b595be35212fde276aa17209">&#9670;&nbsp;</a></span>imTransformImIPM2Ground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imTransformImIPM2Ground </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>inMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>outMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *&#160;</td>
+          <td class="paramname"><em>ipmInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts points from IPM pixel coordinates to world coordinates. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMat</td><td>Input matrix of points (2xN) </td></tr>
+    <tr><td class="paramname">outMat</td><td>Output matrix of transformed points (2xN) </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>IPM parameters from imGetIPM</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Converts from IPM pixel coordinates into world coordinates</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMat</td><td>input matrix 2xN </td></tr>
+    <tr><td class="paramname">outMat</td><td>output matrix 2xN </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>the ipm info from imGetIPM </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afa8fe8963d420afb2a96f1266e70046c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8fe8963d420afb2a96f1266e70046c">&#9670;&nbsp;</a></span>imTransformImIPM2Im()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LaneDetector::imTransformImIPM2Im </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>inMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>outMat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1IPMInfo.html">IPMInfo</a> *&#160;</td>
+          <td class="paramname"><em>ipmInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLaneDetector_1_1CameraInfo.html">CameraInfo</a> *&#160;</td>
+          <td class="paramname"><em>cameraInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts points from IPM pixel coordinates to image coordinates. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMat</td><td>Input matrix of points (2xN) </td></tr>
+    <tr><td class="paramname">outMat</td><td>Output matrix of transformed points (2xN) </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>IPM parameters from imGetIPM </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>Camera calibration parameters</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Converts from IPM pixel coordinates into Image coordinates</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMat</td><td>input matrix 2xN </td></tr>
+    <tr><td class="paramname">outMat</td><td>output matrix 2xN </td></tr>
+    <tr><td class="paramname">ipmInfo</td><td>the ipm info from imGetIPM </td></tr>
+    <tr><td class="paramname">cameraInfo</td><td>the camera info </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

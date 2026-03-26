@@ -1,0 +1,62 @@
+\hypertarget{classLidarBaseObjectDetector}{}\doxysection{Lidar\+Base\+Object\+Detector类 参考}
+\label{classLidarBaseObjectDetector}\index{LidarBaseObjectDetector@{LidarBaseObjectDetector}}
+
+
+类 Lidar\+Base\+Object\+Detector 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classLidarBaseObjectDetector__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a89c159b301b9833d9cf051fb564e0c47}\label{classLidarBaseObjectDetector_a89c159b301b9833d9cf051fb564e0c47}} 
+virtual std\+::pair$<$ std\+::vector$<$ int $>$, std\+::vector$<$ \mbox{\hyperlink{structFrame}{Frame}} $>$ $>$ {\bfseries run} ()=0
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a45afd6efe24efc06c73e008bd75a452e}\label{classLidarBaseObjectDetector_a45afd6efe24efc06c73e008bd75a452e}} 
+virtual void {\bfseries receive\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr input)=0
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_af4a35bc46504eb8d524021b9adf5e60a}\label{classLidarBaseObjectDetector_af4a35bc46504eb8d524021b9adf5e60a}} 
+virtual pcl\+::visualization\+::\+P\+C\+L\+Visualizer\+::\+Ptr {\bfseries get\+Viewer} ()=0
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a5b26e3af5e2b31c02ff70bfca9084cf0}\label{classLidarBaseObjectDetector_a5b26e3af5e2b31c02ff70bfca9084cf0}} 
+bool {\bfseries send\+Result\+Init} ()
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a8ab3dfc5cb66354900bec9f2829b5cc8}\label{classLidarBaseObjectDetector_a8ab3dfc5cb66354900bec9f2829b5cc8}} 
+void {\bfseries send\+Result} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_ac1fb0e704efe4127d258d6f1afe2b0f5}\label{classLidarBaseObjectDetector_ac1fb0e704efe4127d258d6f1afe2b0f5}} 
+perception\+::\+Object\+List {\bfseries obj\+Result\+List}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_acde3a77e4b1de8ca9609c33abedf0b21}\label{classLidarBaseObjectDetector_acde3a77e4b1de8ca9609c33abedf0b21}} 
+pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+ZI $>$\+::Ptr {\bfseries input\+\_\+cloud}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a2c354717fa464ac410c4e27c98f3fda1}\label{classLidarBaseObjectDetector_a2c354717fa464ac410c4e27c98f3fda1}} 
+double {\bfseries imu\+\_\+x}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a279b184adcf10adaae3b96e19994bc60}\label{classLidarBaseObjectDetector_a279b184adcf10adaae3b96e19994bc60}} 
+double {\bfseries imu\+\_\+y}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_ab5825cac8945b9d84656ccb3e429719d}\label{classLidarBaseObjectDetector_ab5825cac8945b9d84656ccb3e429719d}} 
+double {\bfseries imu\+\_\+yaw}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_aff2bd7a3077a22ec74d6054c12a19882}\label{classLidarBaseObjectDetector_aff2bd7a3077a22ec74d6054c12a19882}} 
+double {\bfseries imu\+\_\+v}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_a9b95379205ff025f7fa86ab191c54c88}\label{classLidarBaseObjectDetector_a9b95379205ff025f7fa86ab191c54c88}} 
+double {\bfseries imu\+\_\+rtk\+Mode}
+\item 
+\mbox{\Hypertarget{classLidarBaseObjectDetector_ab92bf55c69895780fde3a6b7c8cf7c31}\label{classLidarBaseObjectDetector_ab92bf55c69895780fde3a6b7c8cf7c31}} 
+void $\ast$ {\bfseries publisher}
+\end{DoxyCompactItemize}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/perception/perception\+\_\+lidar\+\_\+coms\+\_\+livox/include/base\+Lidar\+Object\+Detector.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\hypertarget{initTrajectorySpeed_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Planning/\+Speed\+Planning/\+Sampling\+Method/\+Speed\+Generating/src/init\+Trajectory\+Speed.hpp 文件参考}
+\label{initTrajectorySpeed_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/SpeedPlanning/SamplingMethod/SpeedGenerating/src/initTrajectorySpeed.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Planning/SpeedPlanning/SamplingMethod/SpeedGenerating/src/initTrajectorySpeed.hpp}}
+
+
+轨迹速度规划初始化相关声明  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}prediction.\+pb.\+h\char`\"{}}\newline
+init\+Trajectory\+Speed.\+hpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{initTrajectorySpeed_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{initTrajectorySpeed_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1PlanningPoint}{planning\+::\+Planning\+Point}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1PlanningTrajectory}{planning\+::\+Planning\+Trajectory}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1TrajSpeedInitParam}{planning\+::\+Traj\+Speed\+Init\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1TrajSpeedInitInput}{planning\+::\+Traj\+Speed\+Init\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1TrajSpeedInitOutput}{planning\+::\+Traj\+Speed\+Init\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetMinObjDisParam}{planning\+::\+Get\+Min\+Obj\+Dis\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetMinObjDisInput}{planning\+::\+Get\+Min\+Obj\+Dis\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetMinObjDisOutput}{planning\+::\+Get\+Min\+Obj\+Dis\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetDistanceParam}{planning\+::\+Get\+Distance\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetDistanceInput}{planning\+::\+Get\+Distance\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1GetDistanceOutput}{planning\+::\+Get\+Distance\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1SpeedModelParam}{planning\+::\+Speed\+Model\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1SpeedModelInput}{planning\+::\+Speed\+Model\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1SpeedModelOutput}{planning\+::\+Speed\+Model\+Output}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1FindMinParam}{planning\+::\+Find\+Min\+Param}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1FindMinInput}{planning\+::\+Find\+Min\+Input}}
+\item 
+struct \mbox{\hyperlink{structplanning_1_1FindMinOutput}{planning\+::\+Find\+Min\+Output}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceplanning}{planning}}
+\begin{DoxyCompactList}\small\item\em planning namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplanning_accc3cf99ecaf13f22022e56f18556877}{planning\+::init\+Speed\+For\+Trajectory}} (const Traj\+Speed\+Init\+Param \&param, const Traj\+Speed\+Init\+Input \&input, Traj\+Speed\+Init\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据障碍物位置，轨迹速度规划初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a7dc2069ab0c3b02779382013ae2c76d0}{planning\+::get\+Min\+Distance\+Of\+Point}} (const Get\+Min\+Obj\+Dis\+Param \&param, const Get\+Min\+Obj\+Dis\+Input \&input, Get\+Min\+Obj\+Dis\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 在预测范围内，动态计算轨迹点到最近障碍物的距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a6eba068820427213d133d628472dcd6b}{planning\+::get\+Distance}} (const Get\+Distance\+Param \&param, const Get\+Distance\+Input \&input, Get\+Distance\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算距离 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_ad208a008409d5c89bc7cbbde82d35c49}{planning\+::speed\+Model}} (const Speed\+Model\+Param \&param, const Speed\+Model\+Input \&input, Speed\+Model\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 根据最大最小速度，与距离障碍物距离，生成速度的模型 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplanning_a84ff84f0f960044e1119b40ec20e5c8c}{planning\+::find\+Min}} (const Find\+Min\+Param \&param, const Find\+Min\+Input \&input, Find\+Min\+Output \&output)
+\begin{DoxyCompactList}\small\item\em double数组最小值 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+轨迹速度规划初始化相关声明 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zehang Zhu (\href{mailto:zzh22@mails.tsinghua.edu.cn}{\texttt{ zzh22@mails.\+tsinghua.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/25 
+\end{DoxyDate}

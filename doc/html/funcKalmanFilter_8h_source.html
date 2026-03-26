@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/MutiTracking/KalmanFilter/src/funcKalmanFilter.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_85916f0b90164c3695644f7c783d5aff.html">perception</a></li><li class="navelem"><a class="el" href="dir_2e1dd01d62b3383007659d13cee0fba3.html">MutiTracking</a></li><li class="navelem"><a class="el" href="dir_0de8d9f7f7a362a3598a277ac122bf54.html">KalmanFilter</a></li><li class="navelem"><a class="el" href="dir_2289ee9ebccf90ac637732e6e2bb8bde.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">funcKalmanFilter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="funcKalmanFilter_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;kalmanfilter.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    KalmanFilter c;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}ParamStruct01;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> DETECTBOX measurement;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}InputStruct01;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    KAL_DATA output;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}OutputStruct01;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a27a38b07f52647736e86403963accab4">kalmanFilterKALInitiate</a>(ParamStruct01 &amp;param1, InputStruct01 &amp;input1, OutputStruct01 &amp;output1);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// KAL_DATA initiate(const DETECTBOX &amp;measurement);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    KalmanFilter c;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}ParamStruct02;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    KAL_MEAN mean;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    KAL_COVA covariance;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}InputStruct02;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}OutputStruct02;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a863058fda16561771660816b86611d7e">kalmanFilterPredict</a>(ParamStruct02 &amp;param2, InputStruct02 &amp;input2, OutputStruct02 &amp;output2);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// void predict(KAL_MEAN &amp;mean, KAL_COVA &amp;covariance);</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structperception_1_1ParamStruct04.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classperception_1_1KalmanFilter.html">KalmanFilter</a> c;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}<a class="code" href="structperception_1_1ParamStruct04.html">ParamStruct04</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structperception_1_1InputStruct04.html">   95</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">const</span> KAL_MEAN mean;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">const</span> KAL_COVA covariance;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">const</span> DETECTBOX measurement;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}<a class="code" href="structperception_1_1InputStruct04.html">InputStruct04</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structperception_1_1OutputStruct04.html">  102</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    KAL_DATA output;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}<a class="code" href="structperception_1_1OutputStruct04.html">OutputStruct04</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceperception.html#a9f40ad5ec35fc1164f275b63adc6ebda">kalmanFilterUpdate</a>(<a class="code" href="structperception_1_1ParamStruct04.html">ParamStruct04</a> &amp;param4, <a class="code" href="structperception_1_1InputStruct04.html">InputStruct04</a> &amp;input4, <a class="code" href="structperception_1_1OutputStruct04.html">OutputStruct04</a> &amp;output4);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// KAL_DATA update(const KAL_MEAN &amp;mean, const KAL_COVA &amp;covariance, const DETECTBOX &amp;measurement);</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceperception_html_a863058fda16561771660816b86611d7e"><div class="ttname"><a href="namespaceperception.html#a863058fda16561771660816b86611d7e">perception::kalmanFilterPredict</a></div><div class="ttdeci">void kalmanFilterPredict(ParamStruct02 &amp;param2, InputStruct02 &amp;input2, OutputStruct02 &amp;output2)</div><div class="ttdoc">kalmanFilterPredict 函数</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.cpp:47</div></div>
+<div class="ttc" id="astructperception_1_1ParamStruct04_html"><div class="ttname"><a href="structperception_1_1ParamStruct04.html">perception::ParamStruct04</a></div><div class="ttdoc">classicLidarDetectorInputcloud 函数组件可以配置的参数， 用struct 封装</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.h:90</div></div>
+<div class="ttc" id="anamespaceperception_html_a9f40ad5ec35fc1164f275b63adc6ebda"><div class="ttname"><a href="namespaceperception.html#a9f40ad5ec35fc1164f275b63adc6ebda">perception::kalmanFilterUpdate</a></div><div class="ttdeci">void kalmanFilterUpdate(ParamStruct04 &amp;param4, InputStruct04 &amp;input4, OutputStruct04 &amp;output4)</div><div class="ttdoc">kalmanFilterUpdate 函数</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.cpp:70</div></div>
+<div class="ttc" id="astructperception_1_1InputStruct04_html"><div class="ttname"><a href="structperception_1_1InputStruct04.html">perception::InputStruct04</a></div><div class="ttdoc">classicLidarDetectorInputcloud 函数组件输入的参数， 用struct 封装</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.h:95</div></div>
+<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdoc">perception namespace</div><div class="ttdef"><b>Definition:</b> funcMatching.cpp:12</div></div>
+<div class="ttc" id="astructperception_1_1OutputStruct04_html"><div class="ttname"><a href="structperception_1_1OutputStruct04.html">perception::OutputStruct04</a></div><div class="ttdoc">classicLidarDetectorInputcloud 函数组件输出的参数， 用struct 封装</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.h:102</div></div>
+<div class="ttc" id="aclassperception_1_1KalmanFilter_html"><div class="ttname"><a href="classperception_1_1KalmanFilter.html">perception::KalmanFilter</a></div><div class="ttdef"><b>Definition:</b> kalmanfilter.h:13</div></div>
+<div class="ttc" id="anamespaceperception_html_a27a38b07f52647736e86403963accab4"><div class="ttname"><a href="namespaceperception.html#a27a38b07f52647736e86403963accab4">perception::kalmanFilterKALInitiate</a></div><div class="ttdeci">void kalmanFilterKALInitiate(ParamStruct01 &amp;param1, InputStruct01 &amp;input1, OutputStruct01 &amp;output1)</div><div class="ttdoc">kalmanFilterKALInitiate 函数</div><div class="ttdef"><b>Definition:</b> funcKalmanFilter.cpp:26</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

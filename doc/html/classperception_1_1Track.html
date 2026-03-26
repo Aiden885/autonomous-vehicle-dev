@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: perception::Track类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceperception.html">perception</a></li><li class="navelem"><a class="el" href="classperception_1_1Track.html">Track</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classperception_1_1Track-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">perception::Track类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a831a06261296c006f6c891f14d942efc"><td class="memItemLeft" align="right" valign="top"><a id="a831a06261296c006f6c891f14d942efc"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>TrackState</b> { <b>Tentative</b> = 1, 
+<b>Confirmed</b>, 
+<b>Deleted</b>
+ }</td></tr>
+<tr class="separator:a831a06261296c006f6c891f14d942efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1e3a3e13d8d2c70ab30eac35ee9b0d8b"><td class="memItemLeft" align="right" valign="top"><a id="a1e3a3e13d8d2c70ab30eac35ee9b0d8b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Track</b> (KAL_MEAN &amp;mean, KAL_COVA &amp;covariance, int track_id, int n_init, int max_age, const std::string &amp;det_class=&quot;&quot;)</td></tr>
+<tr class="separator:a1e3a3e13d8d2c70ab30eac35ee9b0d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc779384eadafe0aea5317ead7b06cd7"><td class="memItemLeft" align="right" valign="top"><a id="abc779384eadafe0aea5317ead7b06cd7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>predit</b> (std::shared_ptr&lt; <a class="el" href="classperception_1_1KalmanFilter.html">KalmanFilter</a> &gt; &amp;kf)</td></tr>
+<tr class="separator:abc779384eadafe0aea5317ead7b06cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a889808ee11a4559834d6ce0beb3b1b4d"><td class="memItemLeft" align="right" valign="top"><a id="a889808ee11a4559834d6ce0beb3b1b4d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (std::shared_ptr&lt; <a class="el" href="classperception_1_1KalmanFilter.html">KalmanFilter</a> &gt; &amp;kf, const <a class="el" href="classDETECTION__ROW.html">DETECTION_ROW</a> &amp;detection)</td></tr>
+<tr class="separator:a889808ee11a4559834d6ce0beb3b1b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abbfd96e2b18b5b3cd8c94befd5961d"><td class="memItemLeft" align="right" valign="top"><a id="a7abbfd96e2b18b5b3cd8c94befd5961d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_dt</b> (std::shared_ptr&lt; <a class="el" href="classperception_1_1KalmanFilter.html">KalmanFilter</a> &gt; &amp;kf, const float &amp;dt)</td></tr>
+<tr class="separator:a7abbfd96e2b18b5b3cd8c94befd5961d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4e7e125aa430002921edf64194d8d4"><td class="memItemLeft" align="right" valign="top"><a id="a4f4e7e125aa430002921edf64194d8d4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mark_missed</b> ()</td></tr>
+<tr class="separator:a4f4e7e125aa430002921edf64194d8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab8688011d56b739195b1acfbde2906"><td class="memItemLeft" align="right" valign="top"><a id="a7ab8688011d56b739195b1acfbde2906"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_confirmed</b> ()</td></tr>
+<tr class="separator:a7ab8688011d56b739195b1acfbde2906"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c855dfb3b927e71db1fc296e4463ba"><td class="memItemLeft" align="right" valign="top"><a id="a58c855dfb3b927e71db1fc296e4463ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_deleted</b> ()</td></tr>
+<tr class="separator:a58c855dfb3b927e71db1fc296e4463ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff70856d1a58f5981cff3a5b5e5fb2f"><td class="memItemLeft" align="right" valign="top"><a id="a1ff70856d1a58f5981cff3a5b5e5fb2f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_tentative</b> ()</td></tr>
+<tr class="separator:a1ff70856d1a58f5981cff3a5b5e5fb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add742fdd322e41652e699a1e47edc85b"><td class="memItemLeft" align="right" valign="top"><a id="add742fdd322e41652e699a1e47edc85b"></a>
+DETECTBOX&#160;</td><td class="memItemRight" valign="bottom"><b>to_tlwh</b> ()</td></tr>
+<tr class="separator:add742fdd322e41652e699a1e47edc85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78cdc64c5fb8813926feb7b71fa078c"><td class="memItemLeft" align="right" valign="top"><a id="ab78cdc64c5fb8813926feb7b71fa078c"></a>
+DETECTBOX&#160;</td><td class="memItemRight" valign="bottom"><b>to_xyah</b> ()</td></tr>
+<tr class="separator:ab78cdc64c5fb8813926feb7b71fa078c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a97ffa38381bac89c6d0279a6a01913f7"><td class="memItemLeft" align="right" valign="top"><a id="a97ffa38381bac89c6d0279a6a01913f7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>time_since_update</b></td></tr>
+<tr class="separator:a97ffa38381bac89c6d0279a6a01913f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7f2d4ed1e4999b566edc67175411c09"><td class="memItemLeft" align="right" valign="top"><a id="af7f2d4ed1e4999b566edc67175411c09"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>track_id</b></td></tr>
+<tr class="separator:af7f2d4ed1e4999b566edc67175411c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390b334e4438abf987ce7b088dc92f65"><td class="memItemLeft" align="right" valign="top"><a id="a390b334e4438abf987ce7b088dc92f65"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>detection_class</b></td></tr>
+<tr class="separator:a390b334e4438abf987ce7b088dc92f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66919bc1bd72eb675a1f4ea12a6145aa"><td class="memItemLeft" align="right" valign="top"><a id="a66919bc1bd72eb675a1f4ea12a6145aa"></a>
+KAL_MEAN&#160;</td><td class="memItemRight" valign="bottom"><b>mean</b></td></tr>
+<tr class="separator:a66919bc1bd72eb675a1f4ea12a6145aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606d765ba126c0367d1a2feaa2599cd6"><td class="memItemLeft" align="right" valign="top"><a id="a606d765ba126c0367d1a2feaa2599cd6"></a>
+KAL_COVA&#160;</td><td class="memItemRight" valign="bottom"><b>covariance</b></td></tr>
+<tr class="separator:a606d765ba126c0367d1a2feaa2599cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7c75f50b1295c64ac7906495fa3595"><td class="memItemLeft" align="right" valign="top"><a id="a9f7c75f50b1295c64ac7906495fa3595"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>hits</b></td></tr>
+<tr class="separator:a9f7c75f50b1295c64ac7906495fa3595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02532c96961c5d19ebde596c52cfc5a9"><td class="memItemLeft" align="right" valign="top"><a id="a02532c96961c5d19ebde596c52cfc5a9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>age</b></td></tr>
+<tr class="separator:a02532c96961c5d19ebde596c52cfc5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a30f3a7e9f143af02fd9c00c9d7c45"><td class="memItemLeft" align="right" valign="top"><a id="a00a30f3a7e9f143af02fd9c00c9d7c45"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_n_init</b></td></tr>
+<tr class="separator:a00a30f3a7e9f143af02fd9c00c9d7c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14df871c1d9c12a1dc1e87d7ec1a9bfb"><td class="memItemLeft" align="right" valign="top"><a id="a14df871c1d9c12a1dc1e87d7ec1a9bfb"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_max_age</b></td></tr>
+<tr class="separator:a14df871c1d9c12a1dc1e87d7ec1a9bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24261f9934acf344a164ef53dfbefeb"><td class="memItemLeft" align="right" valign="top"><a id="ad24261f9934acf344a164ef53dfbefeb"></a>
+TrackState&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:ad24261f9934acf344a164ef53dfbefeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/MutiTracking/KalmanTracking/dependence/<a class="el" href="track_8h_source.html">track.h</a></li>
+<li>/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/perception/MutiTracking/KalmanTracking/dependence/track.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

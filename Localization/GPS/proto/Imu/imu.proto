@@ -1,0 +1,32 @@
+syntax = "proto3";
+package IMU;
+
+message Imu
+{
+    double longitude = 1;
+    double latitude = 2;
+    double gaussX = 3;
+    double gaussY = 4;
+    int32 gpsValid = 5;
+    double time = 6;//之前定义的时间,天内秒
+    double velocity = 7;
+    double yaw = 8;
+
+//add for test
+    int64 ltime = 9;//C语言的时间，longlong
+    double velocityEast = 10;
+    double velocityNorth = 11;
+    double velocityUp = 12;
+    double gyroX = 13;
+    double gyroY = 14;
+    double gyroZ = 15;
+    double accX = 16;
+    double accY = 17;
+    double accZ = 18;
+    double pjatime = 19;//潘博士定义的时间，数据打包发送的时间，单位秒
+
+//
+    double pitch = 20;
+    double roll = 21;
+	
+}

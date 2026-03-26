@@ -1,0 +1,103 @@
+\hypertarget{funcControlController_8hpp}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/controller\+\_\+ver1/trajectory\+\_\+tracking/include/func\+Control\+Controller.hpp 文件参考}
+\label{funcControlController_8hpp}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcControlController.hpp@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/controller\_ver1/trajectory\_tracking/include/funcControlController.hpp}}
+
+
+控制器函数  
+
+
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$future$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$zmq.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}qing\+Color.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include \char`\"{}control\+Controller.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}control\+Data.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$imu.\+pb.\+h$>$}\newline
+{\ttfamily \#include $<$control.\+pb.\+h$>$}\newline
+{\ttfamily \#include $<$Planning\+Msg.\+pb.\+h$>$}\newline
+func\+Control\+Controller.\+hpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcControlController_8hpp__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcControlController_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ControlCMDParamStruct01}{Control\+::\+Control\+C\+M\+D\+Param\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ControlCMDInputStruct01}{Control\+::\+Control\+C\+M\+D\+Input\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1ControlCMDOutputStruct01}{Control\+::\+Control\+C\+M\+D\+Output\+Struct01}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSpeedParamStruct}{Control\+::\+Calc\+Speed\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSpeedInputStruct}{Control\+::\+Calc\+Speed\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSpeedOutputStruct}{Control\+::\+Calc\+Speed\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1transferGauss2RightHandParamStruct}{Control\+::transfer\+Gauss2\+Right\+Hand\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1transferGauss2RightHandInputStruct}{Control\+::transfer\+Gauss2\+Right\+Hand\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1transferGauss2RightHandOutputStruct}{Control\+::transfer\+Gauss2\+Right\+Hand\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1getNearestIndexParamStruct}{Control\+::get\+Nearest\+Index\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1getNearestIndexInputStruct}{Control\+::get\+Nearest\+Index\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1getNearestIndexOutputStruct}{Control\+::get\+Nearest\+Index\+Output\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSteerParamStruct}{Control\+::\+Calc\+Steer\+Param\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSteerInputStruct}{Control\+::\+Calc\+Steer\+Input\+Struct}}
+\item 
+struct \mbox{\hyperlink{structControl_1_1CalcSteerOutputStruct}{Control\+::\+Calc\+Steer\+Output\+Struct}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceControl}{Control}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceControl}{Control}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceControl_ad86151b81deff428b7957735ada6ba1e}{Control\+::\+Calc\+Control\+C\+MD}} (Control\+C\+M\+D\+Param\+Struct01 \&param03, Control\+C\+M\+D\+Input\+Struct01 \&input03, Control\+C\+M\+D\+Output\+Struct01 \&output03)
+\begin{DoxyCompactList}\small\item\em 由车辆状态生成控制指令 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a662b63225889b5224f1500fb86aedfd4}{Control\+::\+Calc\+Speed}} (Calc\+Speed\+Param\+Struct \&param, Calc\+Speed\+Input\+Struct \&input, Calc\+Speed\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 由车辆状态，车辆原始轨迹计算期望速度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_aecc725191410a2adbd5a83fcc781815d}{Control\+::func\+Transfer\+Gauss2\+Right\+Hand}} (transfer\+Gauss2\+Right\+Hand\+Param\+Struct \&param, transfer\+Gauss2\+Right\+Hand\+Input\+Struct \&input, transfer\+Gauss2\+Right\+Hand\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 转化高斯坐标系到右手坐标系 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_a036fe7f76aacba1ff811c960d3007ab4}{Control\+::func\+Get\+Nearest\+Index}} (get\+Nearest\+Index\+Param\+Struct \&param, get\+Nearest\+Index\+Input\+Struct \&input, get\+Nearest\+Index\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 查找最近点\+ID \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceControl_acd7ccba2748eb81346c41ba82d3e3f76}{Control\+::func\+Calc\+Steer}} (Calc\+Steer\+Param\+Struct \&param, Calc\+Steer\+Input\+Struct \&input, Calc\+Steer\+Output\+Struct \&output)
+\begin{DoxyCompactList}\small\item\em 期望前轮转向角计算 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+控制器函数 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Chaoyi Chen (\href{mailto:chency2023@tsinghua.edu.com}{\texttt{ chency2023@tsinghua.\+edu.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2024-\/01-\/04 
+\end{DoxyDate}

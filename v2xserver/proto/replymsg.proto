@@ -1,0 +1,13 @@
+syntax = "proto3";
+package infopack;
+
+message InstructionsProto
+{
+   int32 sensorid=1;
+   double angle=2;
+}
+message InstructionsVec
+{
+   repeated infopack.InstructionsProto insproto =1;
+
+}

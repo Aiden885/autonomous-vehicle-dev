@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: /home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot_planning_modul/Localization/GPS/dependence/GGA.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b3249ec0a9c8177ea7b3c4369fa904fd.html">Localization</a></li><li class="navelem"><a class="el" href="dir_b28c0c2c23114389da097ff5bd1375b9.html">GPS</a></li><li class="navelem"><a class="el" href="dir_b4966b2f9dc95d9c7f8129bd982a3286.html">dependence</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GGA.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef  NMEA_GGA_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define NMEA_GGA_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;NMEABase.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classNMEAGGA.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNMEAGGA.html">NMEAGGA</a>:<span class="keyword">public</span> <a class="code" href="classNMEABase.html">NMEABase</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classNMEAGGA.html#a41c7cc051a61563a17ce0c5d8566805a">NMEAGGA</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classNMEAGGA.html#af24b46e952e9f535aa826adca0b1354b">Parse</a>(<span class="keywordtype">string</span> strBuff);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;           </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#a4dc0d19cf4d65904c312056bc8181085">   24</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#a4dc0d19cf4d65904c312056bc8181085">dTod</a>; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#aef6f7903171cbd9c68cd4cc69650298a">   25</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#aef6f7903171cbd9c68cd4cc69650298a">dLatitude</a>; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#afba76ce6f30618968b8df6d931432802">   26</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classNMEAGGA.html#afba76ce6f30618968b8df6d931432802">chNs</a>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#af9e9e8d082a4d17fb4fbbb5165f899ec">   27</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#af9e9e8d082a4d17fb4fbbb5165f899ec">dLongtitude</a>; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#a9ad9376640dce6252024dfda9a22fe5f">   28</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classNMEAGGA.html#a9ad9376640dce6252024dfda9a22fe5f">chEw</a>; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#a22bd3d95b7f84609207e6ac6b38873fb">   29</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classNMEAGGA.html#a22bd3d95b7f84609207e6ac6b38873fb">nQuality</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#aca14ff6acbbe8aca17e0eca24d2facee">   30</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classNMEAGGA.html#aca14ff6acbbe8aca17e0eca24d2facee">nNumber</a>; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#aee8f06be2a3a7e10fcb025c1ab985d8c">   31</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#aee8f06be2a3a7e10fcb025c1ab985d8c">dHdop</a>; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#a2be0285ff32abccc1004ff04b9a8eb5c">   32</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#a2be0285ff32abccc1004ff04b9a8eb5c">dAltitude</a>; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#aafc7df5a82562dea1e716563cb597185">   33</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classNMEAGGA.html#aafc7df5a82562dea1e716563cb597185">chUa</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#abb9cace79e0179b698170d4f6a75ae3f">   34</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#abb9cace79e0179b698170d4f6a75ae3f">dMsl</a>; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#a7fc60f0eb1ec8bfd5957a2a5b9c7d798">   35</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="classNMEAGGA.html#a7fc60f0eb1ec8bfd5957a2a5b9c7d798">chUm</a>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#aa64a12dccdd72692ba59f810d22a0217">   36</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNMEAGGA.html#aa64a12dccdd72692ba59f810d22a0217">dAge</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classNMEAGGA.html#ad51ade3758a663422209b575add540c5">   37</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="classNMEAGGA.html#ad51ade3758a663422209b575add540c5">strRefStationID</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassNMEAGGA_html_aee8f06be2a3a7e10fcb025c1ab985d8c"><div class="ttname"><a href="classNMEAGGA.html#aee8f06be2a3a7e10fcb025c1ab985d8c">NMEAGGA::dHdop</a></div><div class="ttdeci">double dHdop</div><div class="ttdoc">HDOP Horizontal dilution of position</div><div class="ttdef"><b>Definition:</b> GGA.h:31</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_abb9cace79e0179b698170d4f6a75ae3f"><div class="ttname"><a href="classNMEAGGA.html#abb9cace79e0179b698170d4f6a75ae3f">NMEAGGA::dMsl</a></div><div class="ttdeci">double dMsl</div><div class="ttdoc">Geoid separation</div><div class="ttdef"><b>Definition:</b> GGA.h:34</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_aef6f7903171cbd9c68cd4cc69650298a"><div class="ttname"><a href="classNMEAGGA.html#aef6f7903171cbd9c68cd4cc69650298a">NMEAGGA::dLatitude</a></div><div class="ttdeci">double dLatitude</div><div class="ttdoc">Latitude</div><div class="ttdef"><b>Definition:</b> GGA.h:25</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a4dc0d19cf4d65904c312056bc8181085"><div class="ttname"><a href="classNMEAGGA.html#a4dc0d19cf4d65904c312056bc8181085">NMEAGGA::dTod</a></div><div class="ttdeci">double dTod</div><div class="ttdoc">UTC of position (hhmmss) 待定</div><div class="ttdef"><b>Definition:</b> GGA.h:24</div></div>
+<div class="ttc" id="aclassNMEAGGA_html"><div class="ttname"><a href="classNMEAGGA.html">NMEAGGA</a></div><div class="ttdef"><b>Definition:</b> GGA.h:6</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a22bd3d95b7f84609207e6ac6b38873fb"><div class="ttname"><a href="classNMEAGGA.html#a22bd3d95b7f84609207e6ac6b38873fb">NMEAGGA::nQuality</a></div><div class="ttdeci">int nQuality</div><div class="ttdoc">GPS quality indicator</div><div class="ttdef"><b>Definition:</b> GGA.h:29</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_af24b46e952e9f535aa826adca0b1354b"><div class="ttname"><a href="classNMEAGGA.html#af24b46e952e9f535aa826adca0b1354b">NMEAGGA::Parse</a></div><div class="ttdeci">bool Parse(string strBuff)</div><div class="ttdoc">解析数据包</div><div class="ttdef"><b>Definition:</b> GGA.cpp:17</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a7fc60f0eb1ec8bfd5957a2a5b9c7d798"><div class="ttname"><a href="classNMEAGGA.html#a7fc60f0eb1ec8bfd5957a2a5b9c7d798">NMEAGGA::chUm</a></div><div class="ttdeci">char chUm</div><div class="ttdoc">unit (M)</div><div class="ttdef"><b>Definition:</b> GGA.h:35</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a9ad9376640dce6252024dfda9a22fe5f"><div class="ttname"><a href="classNMEAGGA.html#a9ad9376640dce6252024dfda9a22fe5f">NMEAGGA::chEw</a></div><div class="ttdeci">char chEw</div><div class="ttdoc">E=east,W=west</div><div class="ttdef"><b>Definition:</b> GGA.h:28</div></div>
+<div class="ttc" id="aclassNMEABase_html"><div class="ttname"><a href="classNMEABase.html">NMEABase</a></div><div class="ttdef"><b>Definition:</b> NMEABase.h:7</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_ad51ade3758a663422209b575add540c5"><div class="ttname"><a href="classNMEAGGA.html#ad51ade3758a663422209b575add540c5">NMEAGGA::strRefStationID</a></div><div class="ttdeci">string strRefStationID</div><div class="ttdoc">reference station ID</div><div class="ttdef"><b>Definition:</b> GGA.h:37</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_af9e9e8d082a4d17fb4fbbb5165f899ec"><div class="ttname"><a href="classNMEAGGA.html#af9e9e8d082a4d17fb4fbbb5165f899ec">NMEAGGA::dLongtitude</a></div><div class="ttdeci">double dLongtitude</div><div class="ttdoc">Longitude</div><div class="ttdef"><b>Definition:</b> GGA.h:27</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a2be0285ff32abccc1004ff04b9a8eb5c"><div class="ttname"><a href="classNMEAGGA.html#a2be0285ff32abccc1004ff04b9a8eb5c">NMEAGGA::dAltitude</a></div><div class="ttdeci">double dAltitude</div><div class="ttdoc">Antenna altitude above/below mean sea level (geoid)</div><div class="ttdef"><b>Definition:</b> GGA.h:32</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_afba76ce6f30618968b8df6d931432802"><div class="ttname"><a href="classNMEAGGA.html#afba76ce6f30618968b8df6d931432802">NMEAGGA::chNs</a></div><div class="ttdeci">char chNs</div><div class="ttdoc">N=north,S=south</div><div class="ttdef"><b>Definition:</b> GGA.h:26</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_aa64a12dccdd72692ba59f810d22a0217"><div class="ttname"><a href="classNMEAGGA.html#aa64a12dccdd72692ba59f810d22a0217">NMEAGGA::dAge</a></div><div class="ttdeci">double dAge</div><div class="ttdoc">Age of differential</div><div class="ttdef"><b>Definition:</b> GGA.h:36</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_aafc7df5a82562dea1e716563cb597185"><div class="ttname"><a href="classNMEAGGA.html#aafc7df5a82562dea1e716563cb597185">NMEAGGA::chUa</a></div><div class="ttdeci">char chUa</div><div class="ttdoc">unit (M)</div><div class="ttdef"><b>Definition:</b> GGA.h:33</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_aca14ff6acbbe8aca17e0eca24d2facee"><div class="ttname"><a href="classNMEAGGA.html#aca14ff6acbbe8aca17e0eca24d2facee">NMEAGGA::nNumber</a></div><div class="ttdeci">int nNumber</div><div class="ttdoc">Number of satellites in use</div><div class="ttdef"><b>Definition:</b> GGA.h:30</div></div>
+<div class="ttc" id="aclassNMEAGGA_html_a41c7cc051a61563a17ce0c5d8566805a"><div class="ttname"><a href="classNMEAGGA.html#a41c7cc051a61563a17ce0c5d8566805a">NMEAGGA::NMEAGGA</a></div><div class="ttdeci">NMEAGGA()</div><div class="ttdoc">Construct a new NMEAGGA object</div><div class="ttdef"><b>Definition:</b> GGA.cpp:10</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

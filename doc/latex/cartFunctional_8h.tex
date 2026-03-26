@@ -1,0 +1,141 @@
+\hypertarget{cartFunctional_8h}{}\doxysection{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\+\_\+planning\+\_\+modul/\+Logic/\+Decision\+Tree/\+C\+A\+R\+T/src/cart\+Functional.h 文件参考}
+\label{cartFunctional_8h}\index{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Logic/DecisionTree/CART/src/cartFunctional.h@{/home/ran/workspace/projects/tsinghua/thicvpilot/thicvpilot\_planning\_modul/Logic/DecisionTree/CART/src/cartFunctional.h}}
+
+
+cart头文件  
+
+
+{\ttfamily \#include \char`\"{}Logic\+Decision\+Tree\+C\+A\+R\+T\+Head.\+hpp\char`\"{}}\newline
+cart\+Functional.\+h 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cartFunctional_8h__incl}
+\end{center}
+\end{figure}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{cartFunctional_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1treeParam}{Logic\+::tree\+Param}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1trainInput}{Logic\+::train\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1verifyInput}{Logic\+::verify\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1predictInput}{Logic\+::predict\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1predictOutput}{Logic\+::predict\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1cartTree}{Logic\+::cart\+Tree}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1loadDataPara}{Logic\+::load\+Data\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1loadDataInput}{Logic\+::load\+Data\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1labelCountPara}{Logic\+::label\+Count\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1labelCountInput}{Logic\+::label\+Count\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1labelCountOutput}{Logic\+::label\+Count\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1calcGiniValueInput}{Logic\+::calc\+Gini\+Value\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1calcGiniValueOutput}{Logic\+::calc\+Gini\+Value\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1splitDataInput}{Logic\+::split\+Data\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1calcGiniIndexInput}{Logic\+::calc\+Gini\+Index\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1calcGiniIndexOutput}{Logic\+::calc\+Gini\+Index\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1splitDataOutput}{Logic\+::split\+Data\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1createPara}{Logic\+::create\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1createInput}{Logic\+::create\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1classInput}{Logic\+::class\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1classOutput}{Logic\+::class\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1printPara}{Logic\+::print\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1printOutput}{Logic\+::print\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1savePara}{Logic\+::save\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1saveInput}{Logic\+::save\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1saveOutput}{Logic\+::save\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1loadTreePara}{Logic\+::load\+Tree\+Para}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1loadTreeInput}{Logic\+::load\+Tree\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1testTreeInput}{Logic\+::test\+Tree\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1testTreeOutput}{Logic\+::test\+Tree\+Output}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1getMaxInput}{Logic\+::get\+Max\+Input}}
+\item 
+struct \mbox{\hyperlink{structLogic_1_1getMaxOutput}{Logic\+::get\+Max\+Output}}
+\end{DoxyCompactItemize}
+\doxysubsection*{命名空间}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceLogic}{Logic}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespaceLogic}{Logic}} namespace \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceLogic_a763f43c561bf1ea32540e618819d9c1b}{Logic\+::load\+C\+A\+R\+T\+Data}} (const load\+Data\+Para \&para, const load\+Data\+Input \&input, cart\+Tree \&output)
+\begin{DoxyCompactList}\small\item\em 加载\+C\+A\+R\+T数据 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a017e79f91d42dd7a04a93580041ed49b}{Logic\+::getcart\+Label\+Count}} (cart\+Tree \&para, label\+Count\+Input \&input, label\+Count\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 获取\+C\+A\+R\+T计算类别数量 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a73724e030029452d61c7b586e51208da}{Logic\+::calc\+C\+A\+R\+T\+Gini\+Value}} (cart\+Tree \&para, calc\+Gini\+Value\+Input \&input, calc\+Gini\+Value\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算\+C\+A\+R\+T基尼值 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a406f0260550ab9010777bad14cf0b9de}{Logic\+::train\+C\+A\+RT}} (const tree\+Param \&param, const train\+Input \&input, cart\+Tree \&output)
+\begin{DoxyCompactList}\small\item\em 训练\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a57e04797dbd4b8c6b42711dd1499635a}{Logic\+::predict\+C\+A\+RT}} (const cart\+Tree \&param, const predict\+Input \&input, predict\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 预测\+C\+A\+R\+T样本 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a8afa0a600edfc2e10c94fd0839fd43bc}{Logic\+::pruning\+C\+A\+RT}} (const tree\+Param \&param, const verify\+Input \&input, cart\+Tree \&output)
+\begin{DoxyCompactList}\small\item\em 剪枝\+C\+A\+RT \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a81c8d5e5fa71b901869623ae65d71737}{Logic\+::split\+C\+A\+R\+T\+Dataset}} (cart\+Tree \&para, split\+Data\+Input \&input, split\+Data\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 分离\+C\+A\+R\+T数据集 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a60290212fd536a2caad99abf43c5a3b1}{Logic\+::calc\+C\+A\+R\+T\+Gini\+Index}} (cart\+Tree \&para, calc\+Gini\+Index\+Input \&input, calc\+Gini\+Index\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 计算\+C\+A\+R\+T基尼系数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_ae6522d46ef2dd9d3311e3ffb95f58724}{Logic\+::create\+C\+A\+R\+T\+Tree}} (create\+Para \&para, create\+Input \&input, cart\+Tree \&output)
+\begin{DoxyCompactList}\small\item\em 建立\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a9f40ad1bcf442173f288bb1dcb4b18f0}{Logic\+::classify\+C\+A\+R\+T\+Data}} (cart\+Tree \&para, class\+Input \&input, class\+Output \&output)
+\begin{DoxyCompactList}\small\item\em C\+A\+R\+T分类 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_ab6a76d0bb9f3d096f02d49d2fe963271}{Logic\+::print\+C\+A\+R\+T\+Tree}} (print\+Para \&para, cart\+Tree \&input, print\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 打印\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_af0b686d189fa5590b897eadb88899972}{Logic\+::save\+C\+A\+R\+T\+Tree}} (save\+Para \&para, save\+Input \&input, save\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 保存\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a721f8f4668c3779e63cd6cac7fc9789f}{Logic\+::load\+C\+A\+R\+T\+Tree}} (load\+Tree\+Para \&para, load\+Tree\+Input \&input, cart\+Tree \&output)
+\begin{DoxyCompactList}\small\item\em 加载\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a8ada6543ccb633dd828d43419d3756e0}{Logic\+::test\+C\+A\+R\+T\+Tree}} (cart\+Tree \&para, test\+Tree\+Input \&input, test\+Tree\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 测试\+C\+A\+R\+T决策树 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceLogic_a5ce825c6e945c7008e3caa12a01088d0}{Logic\+::get\+C\+A\+R\+T\+Max\+Times\+Label}} (cart\+Tree \&para, get\+Max\+Input \&input, get\+Max\+Output \&output)
+\begin{DoxyCompactList}\small\item\em 获取\+C\+A\+R\+T最多的类别 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+cart头文件 
+
+\begin{DoxyVersion}{版本}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+Zihan Xie (\href{mailto:770178863@qq.com}{\texttt{ 770178863@qq.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2023-\/11-\/27 
+\end{DoxyDate}
