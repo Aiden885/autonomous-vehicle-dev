@@ -313,6 +313,72 @@ cd /data/aiden/文档/Modularization/Thread/build
 
 ---
 
+## 版本管理规范
+
+项目有两个独立的 Git 仓库，分别用于不同目的，提交时严格区分。
+
+### 仓库说明
+
+| 仓库 | 地址 | 用途 | 管理范围 |
+|------|------|------|---------|
+| **个人 GitHub**（remote: `personal`） | `github.com/Aiden885/autonomous-vehicle-dev` | 个人学习记录，完整存档 | 整个 `Modularization/` 主目录 |
+| **Gitee 审核库**（remote: `origin`） | `gitee.com/sensizlik-lou/thicv-pilot` | 提交上级审核的代码 | 仅 `huanyuan1/thicv-pilot/` 子目录 |
+
+> `huanyuan1/thicv-pilot/` 是一个**独立的 Git 子仓库**，有自己的 `.git`，`origin` 直接指向 Gitee。
+
+---
+
+### 日常提交流程
+
+#### 方式一：CLion 直接 Push（推荐）
+
+CLion 会自动识别两个仓库并分别推送：
+- 粉红色 `Modularization` → 推向 GitHub（`personal`）
+- 绿色 `huanyuan1/thicv-pilot` → 推向 Gitee（`origin`）
+
+操作步骤：
+```
+1. Ctrl+K  打开 Commit 窗口
+2. 在 Changes 里勾选要提交的文件（注意区分属于哪个仓库）
+3. 填写 Commit Message
+4. 点击 "Commit and Push"
+```
+
+#### 方式二：命令行操作
+
+```bash
+# ---- 提交到 Gitee（给上级审核）----
+cd /data/aiden/文档/Modularization/huanyuan1/thicv-pilot
+git add <修改的文件>
+git commit -m "说明修改内容"
+git push origin master
+
+# ---- 提交到 GitHub（个人记录）----
+cd /data/aiden/文档/Modularization
+git add huanyuan1/thicv-pilot   # 同步子仓库指针
+git add <其他修改的文件>
+git commit -m "说明修改内容"
+git push personal master
+```
+
+---
+
+### 注意事项
+
+1. **先提交子仓库，再提交主仓库**：修改 `huanyuan1/thicv-pilot/` 内的文件时，先在子仓库 commit + push 到 Gitee，再回到主仓库更新子模块指针并 push 到 GitHub。
+
+2. **`planningFigure/build/` 已加入 `.gitignore`**：编译产物不会被提交，无需手动排除。
+
+3. **`trajectory_tracking/` 和 `planning/thicv-pilot/`** 是工作目录中额外的独立 Git 仓库（参考代码），不向任何远程推送，CLion 提交时不要勾选这两个仓库的文件。
+
+4. **Gitee 认证**：子仓库 `origin` 的 URL 已内置 token，直接 push 无需额外输入密码。token 过期后需更新：
+   ```bash
+   cd huanyuan1/thicv-pilot
+   git remote set-url origin https://Zhao_Yukun0912:<新token>@gitee.com/sensizlik-lou/thicv-pilot.git
+   ```
+
+---
+
 ## C++ → C 转换规范
 
 ### 1. 类 → 结构体 + 函数（结构体名加 Cpp 后缀）
