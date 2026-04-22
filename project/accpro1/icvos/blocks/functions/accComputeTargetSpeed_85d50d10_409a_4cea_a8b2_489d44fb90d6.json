@@ -1,0 +1,199 @@
+{
+  "componentType": "atomic-block",
+  "name": "accComputeTargetSpeed_85d50d10_409a_4cea_a8b2_489d44fb90d6",
+  "alias": "计算ACC目标跟车速度",
+  "description": "根据车间距和速度差计算ACC目标跟车速度",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "85d50d10-409a-4cea-a8b2-489d44fb90d6",
+  "originId": "29abcbb7-78dd-54b8-a278-0224fabb36f2",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "规划与决策",
+    "速度规划"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": []
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "function_body": "double accComputeTargetSpeed(\n    double egoV,\n    double leadV,\n    double distance\n)\n{\n    double kDist        = 0.5;   /* 距离误差增益（与 cruiseController 保持一致，硬编码）*/\n    double kSpeed       = 0.5;   /* 速度差增益（与 cruiseController 保持一致，硬编码）*/\n    double distDiff     = 0.0;   /* 当前车间距与期望车间距之差（m）*/\n    double speedDiff    = 0.0;   /* 前车速度与自车速度之差（m/s）*/\n    double targetSpeed0 = 0.0;   /* ACC控制律输出的原始目标速度（m/s，未限幅）*/\n    double targetSpeed1 = 0.0;   /* 限幅后的最终目标速度（m/s）*/\n    bool tooSlow        = false; /* 原始目标速度 <= 0，下钳位为 0 */\n    bool tooFast        = false; /* 原始目标速度 > ACC_MAX_SPEED，上钳位 */\n    bool inputValid     = false; /* egoV / leadV / distance 均为有限值 */\n    double distanceSafe = 0.0;   /* 负距离钳位后的车间距（m），保证 >= 0 */\n\n    /* 步骤0：输入合法性检查，非有限值（NaN / Inf）直接返回 0（安全停车）*/\n    inputValid = (isfinite(egoV) && isfinite(leadV) && isfinite(distance));\n    if (!inputValid)\n    {\n        targetSpeed1 = 0.0;\n    }\n    else\n    {\n\n    /* ---- 来源：generateSpeedList.c cruiseController（2026-01-19）----\n     * 将原始 Protobuf 入参（Pc__Imu*, Infopack__ObjectsVec*）替换为普通 double，\n     * 控制律完全相同，适用于仿真/无传感器场景 */\n\n    /* 步骤1：距离下界钳位（distance 应为正值，负值表示前车在身后，视为 0）*/\n    bool distanceNegative = (distance < 0.0); /* distance 为负，钳位为 0 */\n    if (distanceNegative)\n    {\n        distanceSafe = 0.0;\n    }\n    else\n    {\n        distanceSafe = distance;\n    }\n\n    /* 步骤2：计算距离误差和速度差 */\n    distDiff  = distanceSafe - ACC_DESIRED_DIST;\n    speedDiff = leadV - egoV;\n\n    /* 步骤3：ACC控制律合成原始目标速度\n     *   距离偏大（distDiff > 0）→ targetSpeed 升高，加速追赶\n     *   距离偏小（distDiff < 0）→ targetSpeed 降低，减速保距\n     *   速度差前馈保证稳态时与前车同速 */\n    targetSpeed0 = kDist * distDiff + kSpeed * speedDiff + leadV;\n\n    /* 步骤4：限幅到 [0, ACC_MAX_SPEED]\n     *   下界 0：防止倒车指令\n     *   上界 ACC_MAX_SPEED：不超过期望巡航速度 */\n    tooSlow = (targetSpeed0 <= 0.0);\n    tooFast = (targetSpeed0 > ACC_MAX_SPEED);\n\n    if (tooSlow)\n    {\n        targetSpeed1 = 0.0;\n    }\n    else\n    {\n        if (tooFast)\n        {\n            targetSpeed1 = ACC_MAX_SPEED;\n        }\n        else\n        {\n            targetSpeed1 = targetSpeed0;\n        }\n    }\n\n    } /* end else (inputValid) */\n\n    return targetSpeed1;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "accComputeTargetSpeed_egoV_In",
+          "name": "egoV",
+          "alias": "egoV",
+          "direction": "In",
+          "description": "自车当前速度（m/s）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "accComputeTargetSpeed_leadV_In",
+          "name": "leadV",
+          "alias": "leadV",
+          "direction": "In",
+          "description": "前车当前速度（m/s）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "accComputeTargetSpeed_distance_In",
+          "name": "distance",
+          "alias": "distance",
+          "direction": "In",
+          "description": "当前车间距（m，需为正值）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "accComputeTargetSpeed_targetSpeed1_Out",
+          "name": "targetSpeed1",
+          "alias": "targetSpeed1",
+          "direction": "Out",
+          "description": "限幅后的ACC目标速度（m/s），范围 [0, ACC_MAX_SPEED]",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 4,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

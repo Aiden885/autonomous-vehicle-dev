@@ -1,0 +1,3713 @@
+{
+  "componentType": "composite-function",
+  "name": "pidTestMain_16044152_4d25_400b_a90c_555a157c2bda",
+  "alias": "测试主函数",
+  "description": "基于简单纵向运动学模型完成PID模块测试",
+  "author": "lupeng",
+  "version": "1.0",
+  "instanceId": "16044152-4d25-400b-a90c-555a157c2bda",
+  "originId": "250e3914-0651-5e25-905a-b5833044e946",
+  "isCustom": false,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 1,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "车辆控制",
+    "PID控制测试"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {}
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "constant",
+      "name": "0.05_b719503b_b730_4b52_9ab3_93cf589ac585",
+      "alias": "0.05",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "b719503b-b730-4b52-9ab3-93cf589ac585",
+      "originId": "ecf4cd0a-08cd-4b48-b1b2-56a492113994",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.05"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.05_1_output_value_Out",
+              "name": "value",
+              "alias": "0.05",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "variable",
+      "name": "pidState_2579cb4d_12ff_4e75_9c63_953d2407f3e9",
+      "alias": "pidState",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "2579cb4d-12ff-4e75-9c63-953d2407f3e9",
+      "originId": "658ec0c4-2409-4b07-b270-566a7121bb2b",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "pidState",
+              "dataType": "PIDState",
+              "category": 1,
+              "dataValue": "",
+              "usr": "c:pidTestMain.c@460@F@pidTestMain@pidState"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_variable_pidState_2_input_pidState_In",
+              "name": "pidState",
+              "alias": "pidState",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_variable_pidState_2_output_pidState_Out",
+              "name": "pidState",
+              "alias": "pidState",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "struct-assignment",
+      "name": "pidState_b2afe8f4_38cb_4fea_af48_b2491616f9d2",
+      "alias": "结构体赋值",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "b2afe8f4-38cb-4fea-af48-b2491616f9d2",
+      "originId": "068beb25-26e1-4f36-bae3-e3d863a8cabc",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "pidState",
+              "dataType": "PIDState",
+              "operateKeys": [
+                ".integral"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_3_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_3_input_integral_In",
+              "name": "integral",
+              "alias": "integral",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_3_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.0_f501af05_dfac_403d_b57e_b68fec860291",
+      "alias": "0.0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "f501af05-dfac-403d-b57e-b68fec860291",
+      "originId": "edfa3df4-322d-451c-9c84-7017d72589f3",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.0"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.0_4_output_value_Out",
+              "name": "value",
+              "alias": "0.0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "struct-assignment",
+      "name": "pidState_51d2c9cc_2ff8_408a_a464_1101ceea509a",
+      "alias": "结构体赋值",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "51d2c9cc-2ff8-408a-a464-1101ceea509a",
+      "originId": "892a36b0-769a-483a-87e4-5b7c4c1f61d6",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "pidState",
+              "dataType": "PIDState",
+              "operateKeys": [
+                ".lastError"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_5_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_5_input_lastError_In",
+              "name": "lastError",
+              "alias": "lastError",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_pidState_5_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.0_9ba3dc58_6d0c_49a4_a111_83800d068ed8",
+      "alias": "0.0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "9ba3dc58-6d0c-49a4-a111-83800d068ed8",
+      "originId": "44bd2178-534a-4798-b41f-8799d15c22ac",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.0"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.0_6_output_value_Out",
+              "name": "value",
+              "alias": "0.0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "1.2_52745941_e4b0_472c_af74_08724cb140f4",
+      "alias": "1.2",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "52745941-e4b0-472c-af74-08724cb140f4",
+      "originId": "927261a6-5ab3-4798-8a56-4c2ae3d376f3",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "1.2"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_1.2_7_output_value_Out",
+              "name": "value",
+              "alias": "1.2",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.8_ccd7d08f_e74b_4616_ae8c_dd4796a14d56",
+      "alias": "0.8",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "ccd7d08f-e74b-4616-ae8c-dd4796a14d56",
+      "originId": "12f22c89-ade5-42b3-b3d0-afcba04ad165",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": 0.1
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.8_8_output_value_Out",
+              "name": "value",
+              "alias": "0.8",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.05_0bdc7199_f689_4671_9219_09d672746462",
+      "alias": "0.05",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "0bdc7199-f689-4671-9219-09d672746462",
+      "originId": "32d7a95e-e300-42f7-977b-ce07b1dd391c",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.05"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.05_9_output_value_Out",
+              "name": "value",
+              "alias": "0.05",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "variable",
+      "name": "vehicle_6ab48bd3_d2de_42bf_8e0b_415b93f61338",
+      "alias": "vehicle",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "6ab48bd3-d2de-42bf-8e0b-415b93f61338",
+      "originId": "2758c890-628a-4daa-8ebd-d4ec51253372",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "vehicle",
+              "dataType": "VehicleState",
+              "category": 1,
+              "dataValue": "",
+              "usr": "c:pidTestMain.c@632@F@pidTestMain@vehicle"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_variable_vehicle_11_input_vehicle_In",
+              "name": "vehicle",
+              "alias": "vehicle",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_variable_vehicle_11_output_vehicle_Out",
+              "name": "vehicle",
+              "alias": "vehicle",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "struct-assignment",
+      "name": "vehicle_02fb6abb_aee4_4cb8_90dc_e3fa414d14eb",
+      "alias": "结构体赋值",
+      "description": "车辆状态结构体",
+      "author": "",
+      "version": "",
+      "instanceId": "02fb6abb-aee4-4cb8-90dc-e3fa414d14eb",
+      "originId": "1eb86a11-b12a-4e7f-ad52-3de91a90ace7",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "vehicle",
+              "dataType": "VehicleState",
+              "operateKeys": [
+                ".x"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_12_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_12_input_x_In",
+              "name": "x",
+              "alias": "x",
+              "direction": "In",
+              "description": "车辆在全局坐标系下的纵向 x 位置",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_12_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.0_f7aa4ef2_4d80_4cf6_b4d5_e07bdb13cef5",
+      "alias": "0.0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "f7aa4ef2-4d80-4cf6-b4d5-e07bdb13cef5",
+      "originId": "5a850ac5-bcb2-4714-ba23-e80d6e383e19",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.0"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.0_13_output_value_Out",
+              "name": "value",
+              "alias": "0.0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "struct-assignment",
+      "name": "vehicle_04b2c3c7_0aca_47a2_a3d2_975f23b32f85",
+      "alias": "结构体赋值",
+      "description": "车辆状态结构体",
+      "author": "",
+      "version": "",
+      "instanceId": "04b2c3c7-0aca-47a2-a3d2-975f23b32f85",
+      "originId": "3391bfd2-f152-4c05-96de-2ce6973c9b3c",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "vehicle",
+              "dataType": "VehicleState",
+              "operateKeys": [
+                ".v"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_14_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_14_input_v_In",
+              "name": "v",
+              "alias": "v",
+              "direction": "In",
+              "description": "车辆对应的车辆速度",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_14_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.0_4db2785c_50c0_45d8_b3f5_4e51baa8ff84",
+      "alias": "0.0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "4db2785c-50c0-45d8-b3f5-4e51baa8ff84",
+      "originId": "5b5754bf-880d-4d4c-b21a-baa9dce5cf67",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": 0
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.0_15_output_value_Out",
+              "name": "value",
+              "alias": "0.0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "struct-assignment",
+      "name": "vehicle_3bade638_ae41_42cb_ad51_a2dc15896a6b",
+      "alias": "结构体赋值",
+      "description": "车辆状态结构体",
+      "author": "",
+      "version": "",
+      "instanceId": "3bade638-ae41-42cb-ad51-a2dc15896a6b",
+      "originId": "89695d13-aaef-4ad9-bd8c-c1f2600c49de",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "vehicle",
+              "dataType": "VehicleState",
+              "operateKeys": [
+                ".a"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_16_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "In",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_16_input_a_In",
+              "name": "a",
+              "alias": "a",
+              "direction": "In",
+              "description": "车辆对应的纵向加速度",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_struct_reference_vehicle_16_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0.0_933e9022_8309_44bd_90b1_00c0f586aa60",
+      "alias": "0.0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "933e9022-8309-44bd-90b1-00c0f586aa60",
+      "originId": "7b9f382b-10d2-4519-ad3c-077b2dc72ec4",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "double",
+              "dataValue": "0.0"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0.0_17_output_value_Out",
+              "name": "value",
+              "alias": "0.0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "address-of",
+      "name": "address_of_64be3096_f5ca_462e_8aba_d529ff0b4a41",
+      "alias": "取地址(&)",
+      "description": "一元操作符: &",
+      "author": "",
+      "version": "",
+      "instanceId": "64be3096-f5ca-462e-8aba-d529ff0b4a41",
+      "originId": "e89d35fe-a9c3-5f3e-a962-e53ce6359833",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "inputNumber": 1,
+              "isReal": false
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_operator_address-of_18_input_operand_In",
+              "name": "vehicle",
+              "alias": "vehicle",
+              "direction": "In",
+              "description": "操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState *",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_operator_address-of_18_output_result_Out",
+              "name": "result",
+              "alias": "结果",
+              "direction": "Out",
+              "description": "运算结果",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "VehicleState *",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "0_4b375a55_c261_4064_a92f_0bd78ea1e9b0",
+      "alias": "0",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "4b375a55-c261-4064-a92f-0bd78ea1e9b0",
+      "originId": "fffb0735-b4a7-4e04-907c-dee276647c7a",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "int",
+              "dataValue": "0"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_0_21_output_value_Out",
+              "name": "value",
+              "alias": "0",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "500_749a724b_f467_4248_967f_beeef1ab2c30",
+      "alias": "500",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "749a724b-f467-4248-967f-beeef1ab2c30",
+      "originId": "4fc68d83-3c90-4e8f-8311-733cd1b0ef6b",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "int",
+              "dataValue": 200
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_500_22_output_value_Out",
+              "name": "value",
+              "alias": "500",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "constant",
+      "name": "1_23ab8c01_668b_4576_92f7_41d4e8375505",
+      "alias": "1",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "23ab8c01-668b-4576-92f7-41d4e8375505",
+      "originId": "c0beb4a4-57c7-4bd8-ad24-4d823265b46d",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "",
+              "dataType": "int",
+              "dataValue": "1"
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_constant_const_1_23_output_value_Out",
+              "name": "value",
+              "alias": "1",
+              "direction": "Out",
+              "description": "",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "for-body",
+      "name": "for_62b9e23c_23be_4fdc_a4b4_e336b51516f7",
+      "alias": "for循环",
+      "description": "",
+      "author": "",
+      "version": "",
+      "instanceId": "62b9e23c-23be-4fdc-a4b4-e336b51516f7",
+      "originId": "a2eaf2ed-2723-46d8-9896-745c527ea31c",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [
+        "c4684909-8c26-4f79-9326-d2e0a92d84b3"
+      ],
+      "parent": "",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "is_using_iterator": false,
+              "judgment_logic": 0
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_for_for_19_input_start_In",
+              "name": "start",
+              "alias": "start",
+              "direction": "Top",
+              "description": "循环起始值",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_for_for_19_input_step_In",
+              "name": "step",
+              "alias": "step",
+              "direction": "Top",
+              "description": "循环步长",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_pidTestMain_for_for_19_input_target_In",
+              "name": "target",
+              "alias": "target",
+              "direction": "Top",
+              "description": "循环目标值",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_pidTestMain_for_for_19_output_iterator_Out",
+              "name": "iterator",
+              "alias": "iterator",
+              "direction": "Inside",
+              "description": "循环迭代值",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "execute-block",
+      "name": "execute_c4684909_8c26_4f79_9326_d2e0a92d84b3",
+      "alias": "for循环体",
+      "description": "for循环体内部逻辑",
+      "author": "",
+      "version": "",
+      "instanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "originId": "dd594018-108e-47b1-8b1f-a72b1f18ca90",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "62b9e23c-23be-4fdc-a4b4-e336b51516f7",
+      "tags": [
+        "功能模块库",
+        "车辆控制",
+        "PID控制测试"
+      ],
+      "vendor": "THICV",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": []
+        },
+        {
+          "key": "other_config",
+          "value": [
+            {
+              "standard_library_function": false,
+              "function_body": "",
+              "function_link_obj": ""
+            }
+          ]
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "65d26d2f-5290-4fd9-81dd-e31e611461ba",
+              "name": "vehiclePoint",
+              "alias": "vehiclePoint",
+              "direction": "In",
+              "description": "外部变量 vehiclePoint",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "vehiclePoint",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "VehicleState *",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 1,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "07d5c3ea-df8d-4672-9943-e6225818fd01",
+              "name": "kp",
+              "alias": "kp",
+              "direction": "In",
+              "description": "外部变量 kp",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "kp",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "bd1ca5cf-99c4-42f4-b38e-3c1dcea650ec",
+              "name": "ki",
+              "alias": "ki",
+              "direction": "In",
+              "description": "外部变量 ki",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "ki",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "8d077579-16b4-4813-b03d-7d6ffd14c1b3",
+              "name": "kd",
+              "alias": "kd",
+              "direction": "In",
+              "description": "外部变量 kd",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "kd",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "440e801e-e216-41c1-b224-1f9df9ae99cb",
+              "name": "dt",
+              "alias": "dt",
+              "direction": "In",
+              "description": "外部变量 dt",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "dt",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "afa0b384-f12f-4b5e-bdf9-6eb028af6e6a",
+              "name": "pidState",
+              "alias": "pidState",
+              "direction": "In",
+              "description": "外部变量 pidState",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "pidState",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "PIDState",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 1,
+                  "props": []
+                },
+                {
+                  "key": "dataValue",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "usr",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "function_output_ports",
+          "value": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "2579cb4d-12ff-4e75-9c63-953d2407f3e9",
+      "fromInstancePortId": "Component_pidTestMain_variable_pidState_2_output_pidState_Out",
+      "toInstanceId": "b2afe8f4-38cb-4fea-af48-b2491616f9d2",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_pidState_3_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "f501af05-dfac-403d-b57e-b68fec860291",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.0_4_output_value_Out",
+      "toInstanceId": "b2afe8f4-38cb-4fea-af48-b2491616f9d2",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_pidState_3_input_integral_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "b2afe8f4-38cb-4fea-af48-b2491616f9d2",
+      "fromInstancePortId": "Component_pidTestMain_struct_reference_pidState_3_output_result_Out",
+      "toInstanceId": "51d2c9cc-2ff8-408a-a464-1101ceea509a",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_pidState_5_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "9ba3dc58-6d0c-49a4-a111-83800d068ed8",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.0_6_output_value_Out",
+      "toInstanceId": "51d2c9cc-2ff8-408a-a464-1101ceea509a",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_pidState_5_input_lastError_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "6ab48bd3-d2de-42bf-8e0b-415b93f61338",
+      "fromInstancePortId": "Component_pidTestMain_variable_vehicle_11_output_vehicle_Out",
+      "toInstanceId": "02fb6abb-aee4-4cb8-90dc-e3fa414d14eb",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_12_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "f7aa4ef2-4d80-4cf6-b4d5-e07bdb13cef5",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.0_13_output_value_Out",
+      "toInstanceId": "02fb6abb-aee4-4cb8-90dc-e3fa414d14eb",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_12_input_x_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "02fb6abb-aee4-4cb8-90dc-e3fa414d14eb",
+      "fromInstancePortId": "Component_pidTestMain_struct_reference_vehicle_12_output_result_Out",
+      "toInstanceId": "04b2c3c7-0aca-47a2-a3d2-975f23b32f85",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_14_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "4db2785c-50c0-45d8-b3f5-4e51baa8ff84",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.0_15_output_value_Out",
+      "toInstanceId": "04b2c3c7-0aca-47a2-a3d2-975f23b32f85",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_14_input_v_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "04b2c3c7-0aca-47a2-a3d2-975f23b32f85",
+      "fromInstancePortId": "Component_pidTestMain_struct_reference_vehicle_14_output_result_Out",
+      "toInstanceId": "3bade638-ae41-42cb-ad51-a2dc15896a6b",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_16_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "933e9022-8309-44bd-90b1-00c0f586aa60",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.0_17_output_value_Out",
+      "toInstanceId": "3bade638-ae41-42cb-ad51-a2dc15896a6b",
+      "toInstancePortId": "Component_pidTestMain_struct_reference_vehicle_16_input_a_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "3bade638-ae41-42cb-ad51-a2dc15896a6b",
+      "fromInstancePortId": "Component_pidTestMain_struct_reference_vehicle_16_output_result_Out",
+      "toInstanceId": "64be3096-f5ca-462e-8aba-d529ff0b4a41",
+      "toInstancePortId": "Component_pidTestMain_operator_address-of_18_input_operand_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": ""
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "4b375a55-c261-4064-a92f-0bd78ea1e9b0",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0_21_output_value_Out",
+      "toInstanceId": "62b9e23c-23be-4fdc-a4b4-e336b51516f7",
+      "toInstancePortId": "Component_pidTestMain_for_for_19_input_start_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "start"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "749a724b-f467-4248-967f-beeef1ab2c30",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_500_22_output_value_Out",
+      "toInstanceId": "62b9e23c-23be-4fdc-a4b4-e336b51516f7",
+      "toInstancePortId": "Component_pidTestMain_for_for_19_input_target_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "target"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "23ab8c01-668b-4576-92f7-41d4e8375505",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_1_23_output_value_Out",
+      "toInstanceId": "62b9e23c-23be-4fdc-a4b4-e336b51516f7",
+      "toInstancePortId": "Component_pidTestMain_for_for_19_input_step_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "step"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "64be3096-f5ca-462e-8aba-d529ff0b4a41",
+      "fromInstancePortId": "Component_pidTestMain_operator_address-of_18_output_result_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "65d26d2f-5290-4fd9-81dd-e31e611461ba",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "vehiclePoint"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "52745941-e4b0-472c-af74-08724cb140f4",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_1.2_7_output_value_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "07d5c3ea-df8d-4672-9943-e6225818fd01",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "kp"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "ccd7d08f-e74b-4616-ae8c-dd4796a14d56",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.8_8_output_value_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "bd1ca5cf-99c4-42f4-b38e-3c1dcea650ec",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "ki"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "0bdc7199-f689-4671-9219-09d672746462",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.05_9_output_value_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "8d077579-16b4-4813-b03d-7d6ffd14c1b3",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "kd"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "b719503b-b730-4b52-9ab3-93cf589ac585",
+      "fromInstancePortId": "Component_pidTestMain_constant_const_0.05_1_output_value_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "440e801e-e216-41c1-b224-1f9df9ae99cb",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "dt"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "51d2c9cc-2ff8-408a-a464-1101ceea509a",
+      "fromInstancePortId": "Component_pidTestMain_struct_reference_pidState_5_output_result_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "afa0b384-f12f-4b5e-bdf9-6eb028af6e6a",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "variableParam": "pidState"
+            }
+          ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

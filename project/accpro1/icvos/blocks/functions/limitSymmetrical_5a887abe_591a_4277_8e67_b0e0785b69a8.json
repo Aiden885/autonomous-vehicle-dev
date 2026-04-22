@@ -1,0 +1,174 @@
+{
+  "componentType": "atomic-function",
+  "name": "limitSymmetrical_5a887abe_591a_4277_8e67_b0e0785b69a8",
+  "alias": "对称限幅函数_2",
+  "description": "对称限幅函数",
+  "author": "",
+  "version": "",
+  "instanceId": "5a887abe-591a-4277-8e67-b0e0785b69a8",
+  "originId": "2f224308-e4da-5add-89c5-4aab0ecab3dc",
+  "isCustom": false,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": 1,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "车辆控制",
+    "PID控制"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": []
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "double limitSymmetrical(double value, double limit)\n{\n    // if (value > limit) value = limit;\n    // if (value < -limit) value = -limit;\n    // return value;\n\n    double value0 = value;\n    /* 第一次判断 */\n    double value1;\n    if (value0 > limit)\n        value1 = limit;\n    else\n        value1 = value0;\n    /* 第二次判断 */\n    double value2;\n    if (value1 < -limit)\n        value2 = -limit;\n    else\n        value2 = value1;\n    return value2;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "Component_pid_function_limitSymmetrical_18_in_value_In",
+          "name": "value",
+          "alias": "value",
+          "direction": "In",
+          "description": "输入值",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ]
+        },
+        {
+          "id": "Component_pid_function_limitSymmetrical_18_in_limit_In",
+          "name": "limit",
+          "alias": "limit",
+          "direction": "In",
+          "description": "正限幅值",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "Component_pid_function_limitSymmetrical_18_out_value_Out",
+          "name": "value",
+          "alias": "value",
+          "direction": "Out",
+          "description": "限幅后的值，范围[-limit,limit]",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}
