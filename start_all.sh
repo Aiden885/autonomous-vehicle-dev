@@ -43,6 +43,11 @@ start_all() {
         fi
     done
 
+    # Bug修复③：备份 planning binary，防止 make 失败时删除唯一可运行版本
+    if [ -f "$PLANNING_BIN" ]; then
+        cp "$PLANNING_BIN" "${PLANNING_BIN}.bak" 2>/dev/null || true
+    fi
+
     echo ">>> 启动定位模块 (strThreadDemo)..."
     cd "$LOCALIZATION_DIR"
     nohup ./strThreadDemo > "$LOG_DIR/localization.log" 2>&1 &

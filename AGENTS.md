@@ -1,5 +1,7 @@
 # AGENTS.md — 规划控制模块化项目（Claude Code & Codex 共享规范）
 
+> **新开会话必读**：先看 [WORKLOG.md](WORKLOG.md)，里面有当前进度和下一步任务。
+
 ## 项目概述
 
 自动驾驶小车（Scout底盘 + Livox激光雷达）软件模块化重构。
@@ -265,6 +267,63 @@ typedef enum {
 ```c
 #define DMAMOD 0xF0002000    /* DMA对象地址 */
 ```
+
+---
+
+## 坐标系约定（务必遵守，违反会导致障碍物位置计算错误）
+
+### gaussConvert 输出字段的正确含义
+
+| 字段 | 数学含义 | 对应规划坐标轴 |
+|------|----------|----------------|
+| `dNorth_X` | 北坐标 Northing（子午弧长公式，无偏移）| `y` |
+| `dEast_Y`  | 东坐标 Easting（含 500000m 假东偏移）| `x` |
+
+本项目规划/显示坐标约定：**x = 东（East），y = 北（North）**。
+
+### 正确的 gaussConvert 调用模式
+
+```c
+gaussConvert(&inputGC, &outputGC);
+
+/* 正确：按字段含义赋值 */
+gaussNorthTemp = outputGC.dNorth_X;   /* North ← dNorth_X */
+gaussEastTemp  = outputGC.dEast_Y;    /* East  ← dEast_Y  */
+
+/* 正确：映射到规划坐标系 */
+dXForShow = gaussEastTemp;   /* x = East */
+dYForShow = gaussNorthTemp;  /* y = North */
+```
+
+### 禁止复制的错误写法
+
+`localPlanning_m.cpp` 第 3257~3258 行存在已知 Bug，**不得照抄**：
+
+```c
+/* ❌ 错误：East 和 North 写反了（localPlanning_m.cpp:3257 的 Bug）*/
+gaussEastTemp  = outputGC.dNorth_X;
+gaussNorthTemp = outputGC.dEast_Y;
+```
+
+此 Bug 在当前代码中不引起运行异常的原因：后续只计算欧氏距离 `sqrt(dx²+dy²)`，
+x/y 分量对调不改变距离值。但若未来增加方向相关逻辑，此 Bug 会立刻暴露。
+
+### IMU 高斯坐标字段
+
+```c
+imu->gaussx  /* 北坐标 Northing → 对应规划 y */
+imu->gaussy  /* 东坐标 Easting  → 对应规划 x */
+
+/* 正确用法 */
+dXVehicle = imu->gaussy;   /* x = East */
+dYVehicle = imu->gaussx;   /* y = North */
+```
+
+### 参考正确实现
+
+- `planningFigure_m.cpp:1047-1054`（可视化画图，正确）
+- `localPlanning.cpp:2120-2124`（老版直接函数调用，正确）
+- `getMinDistanceOfPoint.c` appendSingleRoadsideObjectDistances（已修正）
 
 ---
 

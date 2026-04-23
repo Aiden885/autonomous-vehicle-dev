@@ -16,37 +16,37 @@ double pid_db9453ce_cfb7_4712_9c92_507dced3adf5(
     
     
     double output;
-    double temp134711;
-    double temp135025;
-    double temp135589;
-    double temp135741;
-    double temp137079;
-    double temp137663;
-    double temp138244;
-    double temp138594;
-    double temp139066;
-    double temp139597;
+    double temp854773;
+    double temp854987;
+    double temp855154;
+    double temp855363;
+    double temp856240;
+    double temp856594;
+    double temp856995;
+    double temp857184;
+    double temp857337;
+    double temp857656;
     
     
-    temp137079 = error * dt;
-    temp138244 = kp * error;
-    temp137663 = error - state->lastError;
-    temp134711 = state->integral + temp137079;
-    temp135589 = temp137663 / dt;
+    temp856240 = error * dt;
+    temp856995 = kp * error;
+    temp856594 = error - state->lastError;
+    temp854773 = state->integral + temp856240;
+    temp855154 = temp856594 / dt;
     /* 对称限幅函数 */
-    temp135025 = limitSymmetrical(temp134711, integral_max);
+    temp854987 = limitSymmetrical(temp854773, integral_max);
 
     /* 对称限幅函数 */
-    temp135741 = limitSymmetrical(temp135589, derivative_max);
+    temp855363 = limitSymmetrical(temp855154, derivative_max);
 
-    temp138594 = ki * temp135025;
+    temp857184 = ki * temp854987;
 
-         state->integral = temp135025;
-    temp139066 = kd * temp135741;
-    temp139597 = temp138244 + temp138594;
+         state->integral = temp854987;
+    temp857337 = kd * temp855363;
+    temp857656 = temp856995 + temp857184;
 
          state->lastError = error;
-    output = temp139597 + temp139066;
+    output = temp857656 + temp857337;
 
     
     return output;

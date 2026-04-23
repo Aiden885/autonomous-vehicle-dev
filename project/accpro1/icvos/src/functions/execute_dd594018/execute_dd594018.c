@@ -8,35 +8,38 @@ void execute_dd594018(
     double ki,  // [in] 外部变量 ki
     double kd,  // [in] 外部变量 kd
     double dt,  // [in] 外部变量 dt
-    PIDState pidState  // [in] 外部变量 pidState
+    PIDState pidState,  // [in] 外部变量 pidState
+    VehicleState * leadPoint  // [in] 函数输入端口（指针，指向外部leadVehicle）
 )
 {
     
-    const double leadX = 30;  // 常量
-    const double leadV = 3;  // 常量
+    const double accel = 0;  // 常量
     
-    double temp146678;
-    PIDState * temp146818;
-    double temp147211;
-    double temp148259;
-    double temp148428;
+    double temp865543;
+    PIDState * temp865653;
+    double temp865886;
+    double temp866621;
+    double temp866723;
     
     
-    temp146818 = &pidState;
+    temp865653 = &pidState;
+    /* 更新车辆状态函数 */
+    vehicleModelUpdate(accel, dt, leadPoint);
+
     /* 纵向车间距计算 */
-    temp148259 = computeDistance1D(leadX, vehiclePoint->x);
+    temp866621 = computeDistance1D(leadPoint->x, vehiclePoint->x);
 
     /* 计算ACC目标跟车速度 */
-    temp148428 = accComputeTargetSpeed(vehiclePoint->v, leadV, temp148259);
+    temp866723 = accComputeTargetSpeed(vehiclePoint->v, leadPoint->v, temp866621);
 
     /* 速度误差计算 */
-    temp146678 = computeSpeedError(temp148428, vehiclePoint->v);
+    temp865543 = computeSpeedError(temp866723, vehiclePoint->v);
 
     /* 更新PID控制器的输出值 */
-    temp147211 = pid_db9453ce_cfb7_4712_9c92_507dced3adf5(kp, ki, kd, dt, 10, 10, temp146678, temp146818);
+    temp865886 = pid_db9453ce_cfb7_4712_9c92_507dced3adf5(kp, ki, kd, dt, 10, 10, temp865543, temp865653);
 
     /* 更新车辆状态函数 */
-    vehicleModelUpdate(temp147211, dt, vehiclePoint);
+    vehicleModelUpdate(temp865886, dt, vehiclePoint);
 
 
     

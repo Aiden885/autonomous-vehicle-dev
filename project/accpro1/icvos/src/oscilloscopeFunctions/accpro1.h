@@ -435,6 +435,7 @@ double pid_db9453ce_cfb7_4712_9c92_507dced3adf5(
  double limitSymmetrical(double value, double limit);
  double computeDistance1D(double leadX, double egoX);
  double computeSpeedError(double targetSpeed, double egoV);
+ void vehicleModelUpdate( double accel, double dt, VehicleState* state );
  /* for循环体内部逻辑 */
 void execute_dd594018(
     VehicleState * vehiclePoint,  // [in] 外部变量 vehiclePoint
@@ -442,9 +443,9 @@ void execute_dd594018(
     double ki,  // [in] 外部变量 ki
     double kd,  // [in] 外部变量 kd
     double dt,  // [in] 外部变量 dt
-    PIDState pidState  // [in] 外部变量 pidState
+    PIDState pidState,  // [in] 外部变量 pidState
+    VehicleState * leadPoint  // [in] 函数输入端口
 );
- void vehicleModelUpdate( double accel, double dt, VehicleState* state );
  /* 基于简单纵向运动学模型完成PID模块测试 */
 void pidTestMain_16044152_4d25_400b_a90c_555a157c2bda(
 );

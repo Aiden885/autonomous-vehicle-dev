@@ -3186,12 +3186,333 @@
                   "props": []
                 }
               ]
+            },
+            {
+              "id": "07e5d51b-6e2a-4d20-bbd8-0921fa00192b",
+              "name": "leadPoint",
+              "direction": "In",
+              "description": "函数输入端口",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "leadPoint",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 1,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "VehicleState",
+                  "props": []
+                }
+              ]
             }
           ]
         },
         {
           "key": "function_output_ports",
           "value": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "variable",
+      "name": "variable_62854cde_624e_4cf4_af83_abacc0dec282",
+      "alias": "变量",
+      "description": "变量",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "62854cde-624e-4cf4-af83-abacc0dec282",
+      "originId": "variable_init_0.0.1",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "语句函数",
+        "变量与数据结构"
+      ],
+      "vendor": "default",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "name": "leadVehicle",
+              "category": 1,
+              "shape": [],
+              "dataType": "VehicleState",
+              "dataValue": {
+                "x": 30,
+                "v": 3,
+                "a": 0
+              }
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "name": "in",
+              "dataType": "",
+              "description": "in",
+              "alias": "in",
+              "direction": "In",
+              "id": "in",
+              "props": [
+                {
+                  "key": "datatype",
+                  "value": "const std::string &",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 0,
+                  "props": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "name": "out",
+              "dataType": "out",
+              "description": "out",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "datatype",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "address-of",
+      "name": "address_of_ef921a0e_80b0_4028_b709_c313dba991c7",
+      "alias": "取地址(&)",
+      "description": "一元操作符: &",
+      "author": "",
+      "version": "1.0",
+      "instanceId": "ef921a0e-80b0-4028-b709-c313dba991c7",
+      "originId": "e89d35fe-a9c3-5f3e-a962-e53ce6359833",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "语句函数",
+        "指针与内存"
+      ],
+      "vendor": "default",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "inputNumber": 1,
+              "isReal": true
+            }
+          ]
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "address-of_input_operand_In",
+              "name": "operand",
+              "alias": "operand",
+              "direction": "In",
+              "description": "操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "address-of_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "运算结果",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
         },
         {
           "key": "module_input_ports",
@@ -3699,6 +4020,44 @@
               "variableParam": "pidState"
             }
           ],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "62854cde-624e-4cf4-af83-abacc0dec282",
+      "fromInstancePortId": "out",
+      "toInstanceId": "ef921a0e-80b0-4028-b709-c313dba991c7",
+      "toInstancePortId": "address-of_input_operand_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "ef921a0e-80b0-4028-b709-c313dba991c7",
+      "fromInstancePortId": "address-of_output_result_Out",
+      "toInstanceId": "c4684909-8c26-4f79-9326-d2e0a92d84b3",
+      "toInstancePortId": "07e5d51b-6e2a-4d20-bbd8-0921fa00192b",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
           "props": [
             {
               "key": "connectionType",
