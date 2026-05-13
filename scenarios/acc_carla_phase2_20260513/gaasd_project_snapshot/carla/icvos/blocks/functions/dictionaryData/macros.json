@@ -1,0 +1,435 @@
+{
+    "CURVE_NUM": {
+        "value": "(9)",
+        "raw": "(9)",
+        "comment": "class=param,type=int,name=曲线数量（CURVE_NUM）,group=Planning,range=[1,9],desc=\"贝塞尔曲线数量\""
+    },
+    "CURVE_DISTANCE": {
+        "value": "(1.0)",
+        "raw": "(1.0)",
+        "comment": "class=param,type=double,name=曲线间距（CURVE_DISTANCE）,group=Planning,range=[0.5，1],desc=\"贝塞尔曲线间距\""
+    },
+    "CP_DISTANCE": {
+        "value": "(3)",
+        "raw": "(3)",
+        "comment": "class=param,type=int,name=控制点间距（CP_DISTANCE）,group=Planning,range=[1，3],desc=\"贝塞尔曲线控制点间距\""
+    },
+    "CURVE_POINT_NUM": {
+        "value": "(15)",
+        "raw": "(15)",
+        "comment": "class=param,type=int,name=曲线点数量（CURVE_POINT_NUM）,group=Planning,range=[15,20],desc=\"贝塞尔曲线上点数量\""
+    },
+    "BEZIER_POINT_NUM": {
+        "value": "(100)",
+        "raw": "(100)",
+        "comment": "class=param,type=int,name=参考线点数量（BEZIER_POINT_NUM）,group=Planning,range=[10,100],desc=\"参考线上最大点数量\""
+    },
+    "BEZIER_CONTROL_POINT_NUM": {
+        "value": "(4)",
+        "raw": "(4)",
+        "comment": "class=param,type=int,name=贝塞尔曲线控制点数量（BEZIER_CONTROL_POINT_NUM）,group=Planning,range=[3,4],desc=\"贝塞尔曲线控制点数量\""
+    },
+    "DESIRED_SPEED": {
+        "value": "(12 / 3.6)",
+        "raw": "(12 / 3.6)",
+        "comment": "class=param,type=double,name=期望速度（DESIRED_SPEED）,group=Planning,range=[5,12],desc=\"期望速度\""
+    },
+    "ACC_RELA_DIST": {
+        "value": "(15.0)",
+        "raw": "(15.0)",
+        "comment": "class=param,type=double,name=ACC跟车距离（ACC_RELA_DIST）,group=Planning,range=[10,15],desc=\"ACC跟车距离\""
+    },
+    "ACC_BEGIN_DIST": {
+        "value": "(45)",
+        "raw": "(45)",
+        "comment": "class=param,type=double,name=ACC进入跟车距离（ACC_BEGIN_DIST）,group=Planning,range=[40,45],desc=\"ACC进入跟车距离\""
+    },
+    "ACC_FOLLOW_OBJECT_ID": {
+        "value": "(2)",
+        "raw": "(2)",
+        "comment": "class=param,type=int,name=ACC跟车目标ID（ACC_FOLLOW_OBJECT_ID）,group=Planning,range=[1,4],desc=\"ACC跟车目标ID\""
+    },
+    "SAFE_DISTANCE": {
+        "value": "(1.0)",
+        "raw": "(1.0)",
+        "comment": "class=param,type=double,name=安全距离（SAFE_DISTANCE）,group=Planning,range=[0.5,1],desc=\"安全距离\""
+    },
+    "STOP_JUDGE_DISTANCE": {
+        "value": "(6.0)",
+        "raw": "(6.0)",
+        "comment": "class=param,type=double,name=停止判断距离（STOP_JUDGE_DISTANCE）,group=Planning,range=[5,6],desc=\"停止判断距离\""
+    },
+    "MAX_GRAPH_NODES": {
+        "value": 64,
+        "raw": "64",
+        "comment": "图的最大节点数"
+    },
+    "INFINITY_DIST": {
+        "value": "1.0e30f",
+        "raw": "1.0e30f",
+        "comment": "表示不可达的极大距离"
+    },
+    "INVALID_NODE_IDX": {
+        "value": "(-1)",
+        "raw": "(-1)",
+        "comment": "无效节点索引哨兵值"
+    },
+    "RESET": {
+        "value": "\\033[0m",
+        "raw": "\"\\033[0m\"",
+        "comment": ""
+    },
+    "BLACK": {
+        "value": "\"\\033[30m\"      /* Black */",
+        "raw": "\"\\033[30m\"      /* Black */",
+        "comment": ""
+    },
+    "RED": {
+        "value": "\"\\033[31m\"      /* Red */",
+        "raw": "\"\\033[31m\"      /* Red */",
+        "comment": ""
+    },
+    "GREEN": {
+        "value": "\"\\033[32m\"      /* Green */",
+        "raw": "\"\\033[32m\"      /* Green */",
+        "comment": ""
+    },
+    "YELLOW": {
+        "value": "\"\\033[33m\"      /* Yellow */",
+        "raw": "\"\\033[33m\"      /* Yellow */",
+        "comment": ""
+    },
+    "BLUE": {
+        "value": "\"\\033[34m\"      /* Blue */",
+        "raw": "\"\\033[34m\"      /* Blue */",
+        "comment": ""
+    },
+    "MAGENTA": {
+        "value": "\"\\033[35m\"      /* Magenta */",
+        "raw": "\"\\033[35m\"      /* Magenta */",
+        "comment": ""
+    },
+    "CYAN": {
+        "value": "\"\\033[36m\"      /* Cyan */",
+        "raw": "\"\\033[36m\"      /* Cyan */",
+        "comment": ""
+    },
+    "WHITE": {
+        "value": "\"\\033[37m\"      /* White */",
+        "raw": "\"\\033[37m\"      /* White */",
+        "comment": ""
+    },
+    "BOLDBLACK": {
+        "value": "\"\\033[1m\\033[30m\"      /* Bold Black */",
+        "raw": "\"\\033[1m\\033[30m\"      /* Bold Black */",
+        "comment": ""
+    },
+    "BOLDRED": {
+        "value": "\"\\033[1m\\033[31m\"      /* Bold Red */",
+        "raw": "\"\\033[1m\\033[31m\"      /* Bold Red */",
+        "comment": ""
+    },
+    "BOLDGREEN": {
+        "value": "\"\\033[1m\\033[32m\"      /* Bold Green */",
+        "raw": "\"\\033[1m\\033[32m\"      /* Bold Green */",
+        "comment": ""
+    },
+    "BOLDYELLOW": {
+        "value": "\"\\033[1m\\033[33m\"      /* Bold Yellow */",
+        "raw": "\"\\033[1m\\033[33m\"      /* Bold Yellow */",
+        "comment": ""
+    },
+    "BOLDBLUE": {
+        "value": "\"\\033[1m\\033[34m\"      /* Bold Blue */",
+        "raw": "\"\\033[1m\\033[34m\"      /* Bold Blue */",
+        "comment": ""
+    },
+    "BOLDMAGENTA": {
+        "value": "\"\\033[1m\\033[35m\"      /* Bold Magenta */",
+        "raw": "\"\\033[1m\\033[35m\"      /* Bold Magenta */",
+        "comment": ""
+    },
+    "BOLDCYAN": {
+        "value": "\"\\033[1m\\033[36m\"      /* Bold Cyan */",
+        "raw": "\"\\033[1m\\033[36m\"      /* Bold Cyan */",
+        "comment": ""
+    },
+    "BOLDWHITE": {
+        "value": "\"\\033[1m\\033[37m\"      /* Bold White */",
+        "raw": "\"\\033[1m\\033[37m\"      /* Bold White */",
+        "comment": ""
+    },
+    "PLANNING__TRAJECTORY_POINT__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&planning__trajectory_point__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&planning__trajectory_point__descriptor)     , 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "PLANNING__TRAJECTORY_POINT_VEC__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&planning__trajectory_point_vec__descriptor)",
+            0,
+            "NULL"
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&planning__trajectory_point_vec__descriptor)     , 0,NULL }",
+        "comment": ""
+    },
+    "CONTROL_DATA__CHASSIS_INFO__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&control_data__chassis_info__descriptor)",
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&control_data__chassis_info__descriptor)     , 0, 0, 0 }",
+        "comment": ""
+    },
+    "INFOPACK__OBJECTS_VEC__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&infopack__objects_vec__descriptor)",
+            0,
+            "NULL",
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&infopack__objects_vec__descriptor)     , 0,NULL, 0 }",
+        "comment": ""
+    },
+    "INFOPACK__TRAFFIC_LIGHT__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&infopack__traffic_light__descriptor)",
+            0,
+            "INFOPACK__TRAFFIC_LIGHT__STATE__RED_LIGHT",
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&infopack__traffic_light__descriptor)     , 0, INFOPACK__TRAFFIC_LIGHT__STATE__RED_LIGHT, 0, 0 }",
+        "comment": ""
+    },
+    "INFOPACK__OBJECTS_PROTO__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&infopack__objects_proto__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&infopack__objects_proto__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "INFOPACK__DISPATCH_PROTO__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&infopack__dispatch_proto__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            "NULL",
+            0,
+            "NULL",
+            0,
+            "NULL",
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&infopack__dispatch_proto__descriptor)     , 0, 0, 0, 0,NULL, 0,NULL, 0,NULL, 0, 0 }",
+        "comment": ""
+    },
+    "INFOPACK__DECISIONS_LIST_PROTO__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&infopack__decisions_list_proto__descriptor)",
+            0,
+            "NULL",
+            0,
+            "NULL"
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&infopack__decisions_list_proto__descriptor)     , 0,NULL, 0,NULL }",
+        "comment": ""
+    },
+    "PREDICTION__PREDICT_POINT__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&prediction__predict_point__descriptor)",
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&prediction__predict_point__descriptor)     , 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "PREDICTION__OBJECT__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&prediction__object__descriptor)",
+            0,
+            "NULL",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&prediction__object__descriptor)     , 0,NULL, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "PREDICTION__OBJECT_LIST__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&prediction__object_list__descriptor)",
+            0,
+            "NULL"
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&prediction__object_list__descriptor)     , 0,NULL }",
+        "comment": ""
+    },
+    "UI__UI_PAD2_VDATA__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__ui_pad2_vdata__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__ui_pad2_vdata__descriptor)     , 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "UI__IMU__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__imu__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__imu__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "UI__GNSS__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__gnss__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__gnss__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "UI__POSTURE__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__posture__descriptor)",
+            0,
+            "NULL",
+            0,
+            "NULL",
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__posture__descriptor)     , 0,NULL, 0,NULL, 0 }",
+        "comment": ""
+    },
+    "UI__IOV__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__iov__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__iov__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "UI__CV__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__cv__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__cv__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    },
+    "UI__UI_V2_PAD_DATA__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&ui__ui_v2_pad_data__descriptor)",
+            0,
+            "NULL",
+            0,
+            "NULL",
+            0,
+            "NULL"
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&ui__ui_v2_pad_data__descriptor)     , 0,NULL, 0,NULL, 0,NULL }",
+        "comment": ""
+    },
+    "PC__IMU__INIT": {
+        "value": [
+            "PROTOBUF_C_MESSAGE_INIT (&pc__imu__descriptor)",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "raw": "{ PROTOBUF_C_MESSAGE_INIT (&pc__imu__descriptor)     , 0, 0, 0, 0, 0, 0, 0, 0 }",
+        "comment": ""
+    }
+}

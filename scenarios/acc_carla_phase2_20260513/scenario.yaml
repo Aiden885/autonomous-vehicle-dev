@@ -1,0 +1,78 @@
+name: acc_carla_phase2_20260513
+description: ACC 跟车 CARLA-GAASD 联合仿真快照
+created_at: "2026-05-13 15:53:47 +0800"
+
+environment:
+  host_os: Ubuntu
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  gaasd_runtime_container: "ubuntuenv.tar:env"
+  python: "python3.8"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 25
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: traffic_manager
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  main_program: bridge_snapshot/tools/carla_bridge/carla_bridge.py
+  adapter_source: bridge_snapshot/tools/carla_bridge/adapter
+  prebuilt_adapter: prebuilt/ubuntu-env/libcarla_gaasd_adapter.so
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  speed_pid:
+    kp: 0.7
+    ki: 0.05
+    kd: 0.08
+    integral_limit: 2.0
+    deadband_mps: 0.05
+    max_throttle: 0.7
+    max_brake: 0.35
+
+gaasd_projects:
+  carla_closed_loop:
+    snapshot_path: gaasd_project_snapshot/carla
+    restore_default_path: project/carla_restored_20260513
+    purpose: CARLA 联调 ACC 最小闭环画布工程
+    important_files:
+      - data/cbdes.db
+      - data/temp.db
+      - icvos/blocks/functions
+      - icvos/src/functions
+      - icvos/src/oscilloscopeFunctions
+      - objectCode/total/DLL
+  accpro1_reference:
+    snapshot_path: gaasd_project_snapshot/accpro1_reference
+    restore_default_path: project/accpro1_reference_20260513
+    purpose: 原 ACC 画布工程参考快照
+
+gaasd_signals:
+  oscilloscope_period_sec: 0.1
+  observed:
+    - targetSpeed
+    - egoV
+    - leadV
+    - distance
+
+expected_result:
+  duration_sec: 60
+  target_distance_m: 15
+  expected_behavior: 自车从较大车距开始追踪低速前车，distance 向 15m 附近收敛，egoV 最终接近 leadV。
+  reference_log: "/home/aiden/gaasd_server/codeTools/dist/logs/run_simulation_20260512_161508.log"
+  reference_metrics:
+    start_distance_m: 37.805
+    min_distance_m: 16.534
+    end_distance_m: 16.804
+    end_ego_speed_mps: 1.963
+    end_lead_speed_mps: 1.955
+    end_target_speed_mps: 2.581

@@ -1,0 +1,98 @@
+{
+    "name": "CARLAACCLongitudinalCmd",
+    "componentType": "atomic-function",
+    "alias": "CARLA纵向控制命令",
+    "description": "发布CARLA纵向速度控制命令",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "870ba80a-b09b-50df-8323-50a9696b2b25",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "CARLAACCLongitudinalCmd_param_speed_In",
+                    "name": "speed",
+                    "alias": "speed",
+                    "direction": "In",
+                    "description": "目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAACCLongitudinalCmd_param_enable_In",
+                    "name": "enable",
+                    "alias": "enable",
+                    "direction": "In",
+                    "description": "控制使能，1表示使能",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": []
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLAACCLongitudinalCmd(double speed, int enable)\n{\n    extern int carla_adapter_publish_longitudinal_cmd(double targetSpeed, int enable);\n    int rc = 0;\n\n    rc = carla_adapter_publish_longitudinal_cmd(speed, enable);\n    (void)rc;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

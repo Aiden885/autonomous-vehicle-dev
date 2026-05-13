@@ -1,0 +1,25 @@
+Build target: libcarla_gaasd_adapter.so
+Purpose: GAASD C components <-> CARLA Bridge ZMQ/JSON adapter
+Runtime ABI target: GAASD ubuntuenv.tar:env / ubuntu:env compatible environment
+Source snapshot: ../../bridge_snapshot/tools/carla_bridge/adapter
+
+Dynamic library metadata:
+- SONAME: libcarla_gaasd_adapter.so
+- NEEDED: libzmq.so.5
+- NEEDED: libstdc++.so.6
+- NEEDED: libgcc_s.so.1
+- NEEDED: libc.so.6
+
+Included runtime libraries:
+- libcarla_gaasd_adapter.so
+- libzmq.so.5.2.2 and symlinks libzmq.so.5, libzmq.so
+- libsodium.so.23.3.0 and symlinks
+- libpgm-5.2.so.0.0.122 and symlinks
+- libnorm.so.1.5.8 and symlinks
+
+SHA256:
+- libcarla_gaasd_adapter.so: 45e50610addfcfc263f4e668f381ad07e6451ee7e97ec59235d0b309a485d6b1
+- libzmq.so.5.2.2: 449d8a420f1c1434b40eb99cf48724a4125ff29788aa648e47b2b1b46e554598
+- libsodium.so.23.3.0: dd8f0ded89c635afa4c1634d8f9072cf0d33dfc9932f86c0bf3a8065f4587238
+- libpgm-5.2.so.0.0.122: 3d994467295cee2abae5732f48ab03cb13ad9728a8674f4ff53a74d09cae6bf2
+- libnorm.so.1.5.8: 9be6141d56508555ac5e2c6e8a50f3b4b58525dc08c26dcd79aba9e71dd71961

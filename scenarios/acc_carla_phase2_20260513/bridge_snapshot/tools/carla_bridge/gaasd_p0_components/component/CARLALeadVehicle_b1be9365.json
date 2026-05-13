@@ -1,0 +1,170 @@
+{
+    "name": "CARLALeadVehicle",
+    "componentType": "atomic-function",
+    "alias": "CARLA前车状态",
+    "description": "读取CARLA前车状态",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "b1be9365-38a7-54a1-be4d-ff7bb6ee1a41",
+    "isCustom": false,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "仿真输入"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLALeadVehicle_param_leadV_Out",
+                    "name": "leadV",
+                    "alias": "leadV",
+                    "direction": "Out",
+                    "description": "前车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALeadVehicle_param_distance_Out",
+                    "name": "distance",
+                    "alias": "distance",
+                    "direction": "Out",
+                    "description": "自车到前车净距离，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALeadVehicle_param_relativeSpeed_Out",
+                    "name": "relativeSpeed",
+                    "alias": "relativeSpeed",
+                    "direction": "Out",
+                    "description": "前车相对自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALeadVehicle_param_ttc_Out",
+                    "name": "ttc",
+                    "alias": "ttc",
+                    "direction": "Out",
+                    "description": "碰撞时间估计，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALeadVehicle_param_valid_Out",
+                    "name": "valid",
+                    "alias": "valid",
+                    "direction": "Out",
+                    "description": "数据有效标志，1表示有效",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLALeadVehicle(\n    double *leadV,\n    double *distance,\n    double *relativeSpeed,\n    double *ttc,\n    int *valid)\n{\n    extern int carla_adapter_read_lead_vehicle(\n        double *leadV,\n        double *distance,\n        double *relativeSpeed,\n        double *ttc,\n        int *valid);\n    int rc = 0;\n\n    rc = carla_adapter_read_lead_vehicle(leadV, distance, relativeSpeed, ttc, valid);\n    if (rc != 0) {\n        if (leadV != 0) {\n            *leadV = 0.0;\n        }\n        if (distance != 0) {\n            *distance = 1000000.0;\n        }\n        if (relativeSpeed != 0) {\n            *relativeSpeed = 0.0;\n        }\n        if (ttc != 0) {\n            *ttc = 1000000.0;\n        }\n        if (valid != 0) {\n            *valid = 0;\n        }\n    }\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

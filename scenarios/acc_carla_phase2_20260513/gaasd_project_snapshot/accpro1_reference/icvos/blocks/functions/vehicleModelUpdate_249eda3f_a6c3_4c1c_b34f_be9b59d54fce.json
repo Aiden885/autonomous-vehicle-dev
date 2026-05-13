@@ -1,0 +1,173 @@
+{
+  "componentType": "atomic-function",
+  "name": "vehicleModelUpdate_249eda3f_a6c3_4c1c_b34f_be9b59d54fce",
+  "alias": "更新车辆状态函数",
+  "description": "更新车辆状态（基于简单纵向运动学模型）",
+  "author": "",
+  "version": "",
+  "instanceId": "249eda3f-a6c3-4c1c-b34f-be9b59d54fce",
+  "originId": "38002b37-dc5c-5d98-8997-80bc4e5e3d8d",
+  "isCustom": false,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": 1,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "车辆控制",
+    "PID控制测试"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": []
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "void vehicleModelUpdate(\n    double accel,\n    double dt,\n    VehicleState* state\n)\n{\n    // 读取旧状态\n    double x0 = state->x;\n    double v0 = state->v;\n    double a0 = state->a;\n\n    // ---------- 更新位置 ----------\n    double x1 = x0 + v0 * dt + 0.5 * accel * dt * dt;\n\n    // ---------- 更新速度 ----------\n    double v1 = v0 + accel * dt;\n\n    // ---------- 更新加速度 ----------\n    double a1 = accel;\n\n    // ---------- 写回状态 ----------\n    state->x = x1;\n    state->v = v1;\n    state->a = a1;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "Component_pidTestMain_function_vehicleModelUpdate_30_in_accel_In",
+          "name": "accel",
+          "alias": "accel",
+          "direction": "In",
+          "description": "",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ]
+        },
+        {
+          "id": "Component_pidTestMain_function_vehicleModelUpdate_30_in_dt_In",
+          "name": "dt",
+          "alias": "dt",
+          "direction": "In",
+          "description": "",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ]
+        },
+        {
+          "id": "Component_pidTestMain_function_vehicleModelUpdate_30_in_state_In",
+          "name": "state",
+          "alias": "state",
+          "direction": "In",
+          "description": "指向车辆状态结构体的指针",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "VehicleState *",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [],
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}
