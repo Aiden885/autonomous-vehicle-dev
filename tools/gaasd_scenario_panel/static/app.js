@@ -59,6 +59,7 @@ function updateActionState(raw) {
   startBtn.disabled   = busy || !hasScenario;
   stopBtn.disabled    = busy || !hasScenario;
   $("healthBtn").disabled   = busy || !hasScenario;
+  $("fixGeneratedBtn").disabled = busy || !hasScenario;
   $("copyPathBtn").disabled = !hasScenario;
   $("readmeBtn").disabled   = !hasScenario;
   $("forceRestore").disabled = busy || !hasScenario;
@@ -266,6 +267,7 @@ function bindEvents() {
   $("startBtn").onclick   = () => runAction("start");
   $("stopBtn").onclick    = () => runAction("stop");
   $("healthBtn").onclick  = () => healthCheck(true);
+  $("fixGeneratedBtn").onclick = () => runAction("fix-generated");
   $("copyPathBtn").onclick = copyProjectPath;
   $("readmeBtn").onclick  = openReadme;
   $("clearLogBtn").onclick = () => {

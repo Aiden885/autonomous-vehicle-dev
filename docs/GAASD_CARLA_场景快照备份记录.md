@@ -66,6 +66,8 @@ http://127.0.0.1:8765/
 4. 在示波器中运行仿真，建议周期 `0.1s`。
 5. 观测 `targetSpeed`、`egoV`、`leadV`、`distance`。
 
+如果 GAASD 重新保存或重新生成代码后出现 `protobuf-c/protobuf-c.h` 缺失、`Infopack__TrafficLight__State` 未定义等编译错误，可以在 UI 面板中点击“修复生成代码”。该按钮会修复当前场景对应 GAASD 工程里的 `functions/carla.h` 和 `oscilloscopeFunctions/carla.h`。
+
 如需恢复 GAASD 工程快照：
 
 ```bash

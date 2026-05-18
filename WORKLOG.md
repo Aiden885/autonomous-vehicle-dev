@@ -20,6 +20,7 @@
   - `start-gaasd-carla-manual.sh` 后台跟随前先执行一次 `--once` 固定初始视角。
 - UI 页面代码保存在 `tools/gaasd_scenario_panel/`。
 - 可复现快照记录见 `docs/GAASD_CARLA_场景快照备份记录.md`。
+- GAASD 重新生成代码后的 `carla.h` 兼容修复已标准化：`tools/carla_bridge/fix-gaasd-generated-code.py` 可修复 `protobuf-c` 头文件缺失和 `Infopack__TrafficLight__State` 枚举缺失问题，并已接入 UI 面板“修复生成代码”按钮。
 
 **下一步任务**：
 - 将场景快照、UI 面板、根目录 CARLA 工具脚本提交并推送到远端备份。

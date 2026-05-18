@@ -5,6 +5,7 @@ import os
 import re
 import socket
 import subprocess
+import sys
 import threading
 from datetime import datetime
 from pathlib import Path
@@ -184,6 +185,27 @@ def script_path(scenario_dir: Path, kind: str) -> Optional[Path]:
     return None
 
 
+def generated_fix_project_paths(data: Dict[str, Any]) -> List[str]:
+    candidates: List[Path] = []
+    restore_path = absolute_restore_path(data)
+    if restore_path:
+        candidates.append(Path(restore_path))
+
+    # Current working project used during active debugging.
+    candidates.append(REPO_ROOT / "project" / "carla")
+
+    result: List[str] = []
+    seen = set()
+    for candidate in candidates:
+        path = candidate if candidate.is_absolute() else REPO_ROOT / candidate
+        resolved = path.resolve()
+        if resolved in seen or not resolved.exists():
+            continue
+        seen.add(resolved)
+        result.append(str(resolved))
+    return result
+
+
 def run_script_job(scenario_id: str, action: str, command: List[str]) -> Tuple[bool, str]:
     state = get_state(scenario_id)
     with state.lock:
@@ -336,6 +358,29 @@ def api_stop(scenario_id: str) -> Response:
         return jsonify({"error": "stop script not found"}), 404
     ok, message = run_script_job(scenario_id, "stop", ["bash", str(script)])
     return jsonify({"ok": ok, "message": message}), (202 if ok else 409)
+
+
+@app.post("/api/scenarios/<scenario_id>/fix-generated")
+def api_fix_generated(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+
+    script = REPO_ROOT / "tools" / "carla_bridge" / "fix-gaasd-generated-code.py"
+    if not script.exists():
+        return jsonify({"error": "fix script not found"}), 404
+
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    project_paths = generated_fix_project_paths(data)
+    if not project_paths:
+        return jsonify({"error": "no GAASD project directory found to patch"}), 404
+
+    command = [sys.executable, str(script)]
+    for project_path in project_paths:
+        command.extend(["--project", project_path])
+
+    ok, message = run_script_job(scenario_id, "fix-generated", command)
+    return jsonify({"ok": ok, "message": message, "projects": project_paths}), (202 if ok else 409)
 
 
 @app.get("/api/scenarios/<scenario_id>/logs")

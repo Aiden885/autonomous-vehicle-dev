@@ -31,6 +31,7 @@ http://127.0.0.1:8765
 - 启动 CARLA + Bridge + 当前工况
 - 停止联调环境
 - 健康检查 CARLA / Bridge 端口
+- 一键修复 GAASD 生成工程中的 CARLA 头文件兼容问题
 - 实时显示脚本日志
 - 复制恢复后的 GAASD 工程路径
 
