@@ -1,0 +1,47 @@
+{
+  "carla": {
+    "host": "127.0.0.1",
+    "port": 2000,
+    "timeout_sec": 5.0,
+    "root": "/home/aiden/snap/code/app/carla-package",
+    "python_api_paths": [
+      "/home/aiden/snap/code/app/carla-package/PythonAPI/carla"
+    ],
+    "sync_mode": true,
+    "fixed_delta_seconds": 0.05,
+    "realtime_pacing": true,
+    "map_name": "",
+    "ego_role_name": "hero",
+    "auto_spawn_ego": true,
+    "ego_blueprint_filter": "vehicle.*model3*",
+    "ego_spawn_point_index": 0
+  },
+  "zmq": {
+    "publish_bind": "tcp://127.0.0.1:5701",
+    "control_bind": "tcp://127.0.0.1:5702",
+    "status_period_sec": 1.0
+  },
+  "objects": {
+    "max_objects": 64,
+    "include_vehicles": true,
+    "include_walkers": false,
+    "lead_max_lateral_m": 3.5,
+    "preferred_lead_role_name": "gaasd_lead",
+    "preferred_lead_max_lateral_m": 3.5
+  },
+  "control": {
+    "max_accel_mps2": 4.0,
+    "max_brake_mps2": 8.0,
+    "max_abs_steer_rad": 0.6,
+    "speed_kp": 0.6,
+    "speed_ki": 0.0,
+    "speed_kd": 0.05,
+    "speed_integral_limit": 2.0,
+    "speed_deadband_mps": 0.03,
+    "max_throttle": 1.0,
+    "max_brake": 1.0,
+    "timeout_sec": 0.2,
+    "timeout_brake": 1.0,
+    "prefer_speed_target": true
+  }
+}

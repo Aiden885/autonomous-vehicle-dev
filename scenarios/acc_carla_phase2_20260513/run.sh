@@ -15,8 +15,15 @@ echo "[Scenario] using bridge snapshot: ${BRIDGE_DIR}"
 echo "[Scenario] using config: ${CONFIG_PATH}"
 
 "${BRIDGE_DIR}/start-gaasd-carla-manual.sh" \
+  --ego-spawn-index 198 \
+  --lead-distance 25 \
+  --lead-speed 2 \
   --lead-placement lane_waypoint \
   --lead-behavior traffic_manager \
+  --follow-spectator \
+  --spectator-back 8 \
+  --spectator-up 6 \
+  --spectator-pitch -25 \
   --no-probe
 
 echo "[Scenario] CARLA + Bridge ready. Open GAASD and run the oscilloscope simulation."

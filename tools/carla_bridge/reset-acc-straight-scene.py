@@ -102,7 +102,6 @@ def main() -> int:
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=2000)
     parser.add_argument("--timeout-sec", type=float, default=5.0)
-    parser.add_argument("--wait-ego-sec", type=float, default=15.0)
     parser.add_argument("--ego-role-name", default="hero")
     parser.add_argument("--lead-role-name", default="gaasd_lead")
     parser.add_argument("--ego-spawn-index", type=int, default=198)
@@ -128,22 +127,9 @@ def main() -> int:
     if not spawn_points:
         raise SystemExit("[ResetScene] no spawn points in current map")
 
-    # Bridge binds ZMQ ports before it finishes spawning ego.
-    # Poll until ego appears or we time out.
-    ego = None
-    deadline = time.monotonic() + args.wait_ego_sec
-    while ego is None:
-        ego = find_vehicle_by_role(world, args.ego_role_name)
-        if ego is not None:
-            break
-        if time.monotonic() >= deadline:
-            raise SystemExit(
-                f"[ResetScene] ego role_name={args.ego_role_name} not found "
-                f"within {args.wait_ego_sec:.0f}s"
-            )
-        print(f"[ResetScene] waiting for ego ({args.ego_role_name})…")
-        time.sleep(0.5)
-        wait_for_world_frame(world, 1.0)
+    ego = find_vehicle_by_role(world, args.ego_role_name)
+    if ego is None:
+        raise SystemExit(f"[ResetScene] ego role_name={args.ego_role_name} not found")
 
     destroyed = destroy_vehicles_by_role(world, args.lead_role_name)
     wait_for_world_frame(world, args.timeout_sec)

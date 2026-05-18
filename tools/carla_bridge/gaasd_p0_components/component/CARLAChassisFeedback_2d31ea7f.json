@@ -1,0 +1,146 @@
+{
+    "name": "CARLAChassisFeedback",
+    "componentType": "atomic-function",
+    "alias": "CARLA底盘反馈",
+    "description": "读取CARLA底盘控制反馈",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "2d31ea7f-e779-5241-b3b4-c8c9a0e47ace",
+    "isCustom": false,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "仿真输入"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLAChassisFeedback_param_speed_Out",
+                    "name": "speed",
+                    "alias": "speed",
+                    "direction": "Out",
+                    "description": "当前车辆速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAChassisFeedback_param_steerRad_Out",
+                    "name": "steerRad",
+                    "alias": "steerRad",
+                    "direction": "Out",
+                    "description": "当前转向角，单位rad",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAChassisFeedback_param_mode_Out",
+                    "name": "mode",
+                    "alias": "mode",
+                    "direction": "Out",
+                    "description": "控制模式",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAChassisFeedback_param_valid_Out",
+                    "name": "valid",
+                    "alias": "valid",
+                    "direction": "Out",
+                    "description": "数据有效标志，1表示有效",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLAChassisFeedback(\n    double *speed,\n    double *steerRad,\n    int *mode,\n    int *valid)\n{\n    extern int carla_adapter_read_chassis_feedback(\n        double *speed,\n        double *steerRad,\n        int *mode,\n        int *valid);\n    int rc = 0;\n\n    rc = carla_adapter_read_chassis_feedback(speed, steerRad, mode, valid);\n    if (rc != 0) {\n        if (speed != 0) {\n            *speed = 0.0;\n        }\n        if (steerRad != 0) {\n            *steerRad = 0.0;\n        }\n        if (mode != 0) {\n            *mode = 0;\n        }\n        if (valid != 0) {\n            *valid = 0;\n        }\n    }\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

@@ -2,6 +2,18 @@
 
 本目录保存 2026-05-13 前后的 ACC 跟车联合仿真可复现快照，用于后续快速恢复、演示和对比新版本修改。
 
+## 当前确认状态
+
+2026-05-18 已确认：通过本机场景启动面板 `http://127.0.0.1:8765/` 点击“启动环境”后，本快照可以直接启动 CARLA + Bridge + ACC 测试场景；CARLA 视角会自动切到已确认的跟随视角，前车和自车位置符合当前设计，可作为后续快速演示和回归测试的基准场景。
+
+本次固定的关键逻辑：
+
+- `run.sh` 调用本快照内的 `bridge_snapshot/tools/carla_bridge/start-gaasd-carla-manual.sh`，不依赖根目录工作版脚本。
+- `reset-acc-straight-scene.py` 在 `ego_spawn_index=198` 超出 Town01 地图 `spawn_points` 范围时，不再退出，而是沿用 Bridge 已经放置好的 ego 位置。
+- `set-spectator-follow.py` 的后台跟随循环使用 `time.sleep()`，不再通过 `world.wait_for_tick()` 参与 CARLA tick。
+- `start-gaasd-carla-manual.sh` 会先同步执行一次 `set-spectator-follow.py --once`，再启动后台跟随循环，保证启动后的第一帧视角就是正确位置。
+- `gaasd_project_snapshot/carla` 中保留了当前可运行的 GAASD 画布工程、示波器工程和 `objectCode/total/DLL` 运行依赖。
+
 ## 内容
 
 | 路径 | 说明 |
@@ -40,6 +52,14 @@ scenarios/acc_carla_phase2_20260513/run.sh
 ```
 
 脚本启动完成后，进入 GAASD 页面，打开对应工程并通过示波器“开始”运行仿真。建议示波器周期为 `0.1s`，观测信号包括 `targetSpeed`、`egoV`、`leadV`、`distance`。
+
+也可以通过本机 UI 面板启动：
+
+```bash
+python3 tools/gaasd_scenario_panel/app.py
+```
+
+浏览器打开 `http://127.0.0.1:8765/`，选择 `ACC 跟车 CARLA-GAASD 联合仿真快照` 后点击“启动环境”。
 
 ## 注意
 
