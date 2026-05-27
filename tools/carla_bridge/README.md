@@ -15,11 +15,19 @@
 | `stop-bridge.sh` | 停止后台启动的 Bridge |
 | `start-gaasd-carla-manual.sh` | 阶段二联调用的一键启动脚本：CARLA + Bridge + 测试前车 |
 | `stop-gaasd-carla-manual.sh` | 停止手动联调栈：Bridge + CARLA + 残留仿真进程/容器 |
-| `health-carla.sh` | 检查 CARLA TCP 端口是否可连接 |
+| `health-carla.sh` | 通过 CARLA Python API 检查服务是否可用，避免裸连 RPC 端口 |
 | `probe-pub.py` | 订阅 Bridge PUB 端口，检查协议消息是否发出 |
 | `send-control.py` | 向 Bridge 发送一组测试控制命令 |
 | `acc-runner.py` | 阶段一独立 ACC 闭环测试 Runner |
 | `spawn-lead-vehicle.py` | 在 ego 前方生成一辆测试前车 |
+| `gaasd_p0_acc_min_components/` | ACC 最小闭环组件包，优先用于当前已跑通的 ACC 测试 |
+| `gaasd_p1_components/` | P1 扩展组件包，提供 `ObjectList`、横向控制和横纵向联合控制 |
+| `gaasd_carla_p1_components.tar.gz` | P1 组件包压缩文件，可用于 GAASD 导入 |
+| `gaasd_lks_components/` | LKS 单车闭环组件包，提供车道偏差输入和联合控制输出 |
+| `gaasd_carla_lks_components.tar.gz` | LKS 组件包压缩文件，可用于 GAASD 导入 |
+| `reset-lks-straight-scene.py` | 设置单车车道保持测试的初始横向/航向偏差 |
+| `build-adapter-ubuntu-env.sh` | 在 GAASD 运行镜像中构建并验证 adapter 动态库 |
+| `adapter/` | `libcarla_gaasd_adapter.so` 源码，封装 GAASD C ABI 到 ZMQ JSON Bridge |
 
 ## 环境要求
 
@@ -171,6 +179,7 @@ Bridge 发布：
 | `gaasd.carla.object_list.v1` | 障碍物列表 |
 | `gaasd.carla.lead_vehicle.v1` | ACC 前车便捷消息 |
 | `gaasd.carla.chassis_feedback.v1` | 底盘反馈 |
+| `gaasd.carla.lane_tracking.v1` | LKS 车道偏差与航向误差 |
 
 Bridge 订阅：
 

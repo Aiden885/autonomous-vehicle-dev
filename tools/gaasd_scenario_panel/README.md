@@ -24,6 +24,22 @@ python3 tools/gaasd_scenario_panel/app.py
 http://127.0.0.1:8765
 ```
 
+也可以使用一键启动脚本，脚本会自动启动后端并打开浏览器：
+
+```bash
+cd ~/文档/Modularization
+tools/gaasd_scenario_panel/start-panel.sh
+```
+
+如需桌面图标入口，执行一次：
+
+```bash
+cd ~/文档/Modularization
+tools/gaasd_scenario_panel/install-desktop-launcher.sh
+```
+
+安装后可以从桌面或系统应用菜单打开 `GAASD-CARLA 场景面板`。
+
 ## 功能
 
 - 自动扫描 `scenarios/*/scenario.yaml`

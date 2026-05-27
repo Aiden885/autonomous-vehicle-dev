@@ -1,12 +1,5 @@
 
 #include "accpro1.h"
-#ifndef ACC_DESIRED_DIST
-#define ACC_DESIRED_DIST (15.0)
-#endif
-#ifndef ACC_MAX_SPEED
-#define ACC_MAX_SPEED (12.0 / 3.6)
-#endif
-
 double accComputeTargetSpeed(
     double egoV,
     double leadV,

@@ -30,8 +30,41 @@ int carla_adapter_read_chassis_feedback(
     int *mode,
     int *valid);
 
+int carla_adapter_read_lane_tracking(
+    double *lateralOffset,
+    double *headingError,
+    int *laneId,
+    int *roadId,
+    int *valid);
+
+int carla_adapter_read_object_list(
+    int maxObjects,
+    int *objectCount,
+    int *objectId,
+    int *objectType,
+    double *objectX,
+    double *objectY,
+    double *objectYawRad,
+    double *objectV,
+    double *objectVx,
+    double *objectVy,
+    double *objectLength,
+    double *objectWidth,
+    double *objectHeight,
+    int *valid);
+
 int carla_adapter_publish_longitudinal_cmd(
     double targetSpeed,
+    int enable);
+
+int carla_adapter_publish_lateral_cmd(
+    double steerRad,
+    int enable);
+
+int carla_adapter_publish_control_cmd(
+    double targetSpeed,
+    double targetAccel,
+    double steerRad,
     int enable);
 
 int carla_adapter_get_status(

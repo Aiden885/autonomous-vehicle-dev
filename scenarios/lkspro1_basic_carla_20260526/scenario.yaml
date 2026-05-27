@@ -1,0 +1,42 @@
+name: lkspro1_basic_carla_20260526
+description: LKS 基础模块版 CARLA-GAASD 单车联合仿真场景
+created_at: "2026-05-26 00:00:00 +0800"
+verified_status: "CARLA/Bridge/lane_tracking/adapter 真实通信已验证；待在 GAASD 中导入组件并搭建画布验证。"
+
+environment:
+  host_os: Ubuntu
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  gaasd_runtime_container: "ubuntuenv.tar:env"
+  python: "python3.8"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  initial_lateral_offset_m: 0.8
+  initial_heading_error_deg: 5.0
+  lead_behavior: none
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  main_program: ../../tools/carla_bridge/carla_bridge.py
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  lane_tracking_topic: gaasd.carla.lane_tracking.v1
+
+gaasd_signals:
+  oscilloscope_period_sec: 0.1
+  observed:
+    - lateralOffset
+    - headingError
+    - steerRad
+    - egoV
+
+expected_result:
+  duration_sec: 30
+  expected_behavior: 自车以低速前进，横向偏差与航向误差逐步收敛至零附近，且不依赖 Bridge 内置车道保持。

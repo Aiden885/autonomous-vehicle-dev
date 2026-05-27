@@ -10,6 +10,7 @@
 #include <cstring>
 #include <string>
 #include <thread>
+#include <vector>
 
 namespace {
 
@@ -19,8 +20,10 @@ constexpr const char *kTopicPrefix = "gaasd.carla.";
 constexpr const char *kProtocol = "gaasd_carla_bridge";
 constexpr const char *kProtocolVersion = "0.3.0";
 constexpr const char *kEgoTopic = "gaasd.carla.ego_state.v1";
+constexpr const char *kObjectListTopic = "gaasd.carla.object_list.v1";
 constexpr const char *kLeadTopic = "gaasd.carla.lead_vehicle.v1";
 constexpr const char *kChassisTopic = "gaasd.carla.chassis_feedback.v1";
+constexpr const char *kLaneTrackingTopic = "gaasd.carla.lane_tracking.v1";
 constexpr const char *kControlTopic = "gaasd.carla.control_cmd.v1";
 
 struct EgoState {
@@ -48,6 +51,29 @@ struct ChassisFeedback {
     double lastWallSec = 0.0;
 };
 
+struct LaneTracking {
+    double lateralOffset = 0.0;
+    double headingError = 0.0;
+    int laneId = 0;
+    int roadId = 0;
+    int valid = 0;
+    double lastWallSec = 0.0;
+};
+
+struct ObjectState {
+    int objectId = 0;
+    int objectType = 0;
+    double x = 0.0;
+    double y = 0.0;
+    double yaw = 0.0;
+    double speed = 0.0;
+    double vx = 0.0;
+    double vy = 0.0;
+    double length = 0.0;
+    double width = 0.0;
+    double height = 0.0;
+};
+
 struct Adapter {
     void *context = nullptr;
     void *sub = nullptr;
@@ -68,6 +94,9 @@ struct Adapter {
     EgoState ego;
     LeadVehicle lead;
     ChassisFeedback chassis;
+    LaneTracking laneTracking;
+    std::vector<ObjectState> objects;
+    double objectsLastWallSec = 0.0;
 };
 
 Adapter g_adapter;
@@ -233,6 +262,48 @@ void update_chassis(const Json &payload)
     g_adapter.chassis.lastWallSec = now_sec();
 }
 
+void update_lane_tracking(const Json &payload)
+{
+    g_adapter.laneTracking.lateralOffset = get_double(payload, {"lateral_offset_m"}, 0.0);
+    g_adapter.laneTracking.headingError = get_double(payload, {"heading_error_rad"}, 0.0);
+    g_adapter.laneTracking.laneId = get_int(payload, {"lane_id"}, 0);
+    g_adapter.laneTracking.roadId = get_int(payload, {"road_id"}, 0);
+    g_adapter.laneTracking.valid = get_bool_int(payload, {"valid"}, 0);
+    g_adapter.laneTracking.lastWallSec = now_sec();
+}
+
+void update_object_list(const Json &payload)
+{
+    g_adapter.objects.clear();
+    const Json *objects = find_path(payload, {"objects"});
+    if (objects == nullptr || !objects->is_array()) {
+        g_adapter.objectsLastWallSec = now_sec();
+        return;
+    }
+
+    const std::size_t maxObjects = 256U;
+    g_adapter.objects.reserve(std::min(objects->size(), maxObjects));
+    for (const Json &item : *objects) {
+        if (g_adapter.objects.size() >= maxObjects) {
+            break;
+        }
+        ObjectState object;
+        object.objectId = get_int(item, {"object_id"}, 0);
+        object.objectType = get_int(item, {"type_code"}, 0);
+        object.x = get_double(item, {"pose", "x_m"}, 0.0);
+        object.y = get_double(item, {"pose", "y_m"}, 0.0);
+        object.yaw = get_double(item, {"pose", "yaw_rad"}, 0.0);
+        object.speed = get_double(item, {"velocity", "speed_mps"}, 0.0);
+        object.vx = get_double(item, {"velocity", "vx_mps"}, 0.0);
+        object.vy = get_double(item, {"velocity", "vy_mps"}, 0.0);
+        object.length = get_double(item, {"dimension", "length_m"}, 0.0);
+        object.width = get_double(item, {"dimension", "width_m"}, 0.0);
+        object.height = get_double(item, {"dimension", "height_m"}, 0.0);
+        g_adapter.objects.push_back(object);
+    }
+    g_adapter.objectsLastWallSec = now_sec();
+}
+
 void update_cache(const std::string &topic, const std::string &text)
 {
     try {
@@ -243,10 +314,14 @@ void update_cache(const std::string &topic, const std::string &text)
         }
         if (topic == kEgoTopic) {
             update_ego(*payload);
+        } else if (topic == kObjectListTopic) {
+            update_object_list(*payload);
         } else if (topic == kLeadTopic) {
             update_lead(*payload);
         } else if (topic == kChassisTopic) {
             update_chassis(*payload);
+        } else if (topic == kLaneTrackingTopic) {
+            update_lane_tracking(*payload);
         }
     } catch (...) {
         return;
@@ -306,20 +381,27 @@ Json make_header(unsigned long long sequence)
     };
 }
 
-int send_control(double targetSpeed, int enable)
+int send_control(double targetSpeed, double targetAccel, double steerRad, int enable,
+                 bool includeSpeed, bool includeAccel, bool includeSteer)
 {
     const unsigned long long sequence = g_adapter.sequence++;
     const double safeTarget = std::max(0.0, targetSpeed);
+    Json target = Json::object();
+    if (includeSpeed) {
+        target["target_speed_mps"] = safeTarget;
+    }
+    if (includeAccel) {
+        target["target_accel_mps2"] = targetAccel;
+    }
+    if (includeSteer) {
+        target["steer_rad"] = steerRad;
+    }
     const Json message{
         {"header", make_header(sequence)},
         {"payload", Json{
             {"command_id", sequence},
             {"enable", enable != 0},
-            {"target", Json{
-                {"target_speed_mps", safeTarget},
-                {"target_accel_mps2", 0.0},
-                {"steer_rad", 0.0},
-            }},
+            {"target", target},
             {"safety", Json{
                 {"max_speed_mps", g_adapter.safetyMaxSpeed},
                 {"max_abs_steer_rad", g_adapter.safetyMaxSteer},
@@ -390,8 +472,10 @@ extern "C" int carla_adapter_init(void)
     set_linger_zero(g_adapter.sub);
     set_linger_zero(g_adapter.pub);
     if (subscribe(g_adapter.sub, kEgoTopic) != 0 ||
+        subscribe(g_adapter.sub, kObjectListTopic) != 0 ||
         subscribe(g_adapter.sub, kLeadTopic) != 0 ||
-        subscribe(g_adapter.sub, kChassisTopic) != 0) {
+        subscribe(g_adapter.sub, kChassisTopic) != 0 ||
+        subscribe(g_adapter.sub, kLaneTrackingTopic) != 0) {
         shutdown_adapter();
         return -3;
     }
@@ -524,13 +608,126 @@ extern "C" int carla_adapter_read_chassis_feedback(
     return 0;
 }
 
+extern "C" int carla_adapter_read_lane_tracking(
+    double *lateralOffset,
+    double *headingError,
+    int *laneId,
+    int *roadId,
+    int *valid)
+{
+    if (lateralOffset == nullptr || headingError == nullptr ||
+        laneId == nullptr || roadId == nullptr || valid == nullptr) {
+        return -45;
+    }
+    const int pollRc = carla_adapter_poll(0);
+    if (pollRc < 0) {
+        return pollRc;
+    }
+    *lateralOffset = g_adapter.laneTracking.lateralOffset;
+    *headingError = g_adapter.laneTracking.headingError;
+    *laneId = g_adapter.laneTracking.laneId;
+    *roadId = g_adapter.laneTracking.roadId;
+    *valid = (is_fresh(g_adapter.laneTracking.lastWallSec) && g_adapter.laneTracking.valid != 0) ? 1 : 0;
+    return 0;
+}
+
+extern "C" int carla_adapter_read_object_list(
+    int maxObjects,
+    int *objectCount,
+    int *objectId,
+    int *objectType,
+    double *objectX,
+    double *objectY,
+    double *objectYawRad,
+    double *objectV,
+    double *objectVx,
+    double *objectVy,
+    double *objectLength,
+    double *objectWidth,
+    double *objectHeight,
+    int *valid)
+{
+    if (maxObjects <= 0 || objectCount == nullptr || valid == nullptr) {
+        return -60;
+    }
+    const int pollRc = carla_adapter_poll(0);
+    if (pollRc < 0) {
+        return pollRc;
+    }
+
+    const int available = static_cast<int>(g_adapter.objects.size());
+    const int count = std::min(maxObjects, available);
+    for (int i = 0; i < count; ++i) {
+        const ObjectState &object = g_adapter.objects[static_cast<std::size_t>(i)];
+        if (objectId != nullptr) {
+            objectId[i] = object.objectId;
+        }
+        if (objectType != nullptr) {
+            objectType[i] = object.objectType;
+        }
+        if (objectX != nullptr) {
+            objectX[i] = object.x;
+        }
+        if (objectY != nullptr) {
+            objectY[i] = object.y;
+        }
+        if (objectYawRad != nullptr) {
+            objectYawRad[i] = object.yaw;
+        }
+        if (objectV != nullptr) {
+            objectV[i] = object.speed;
+        }
+        if (objectVx != nullptr) {
+            objectVx[i] = object.vx;
+        }
+        if (objectVy != nullptr) {
+            objectVy[i] = object.vy;
+        }
+        if (objectLength != nullptr) {
+            objectLength[i] = object.length;
+        }
+        if (objectWidth != nullptr) {
+            objectWidth[i] = object.width;
+        }
+        if (objectHeight != nullptr) {
+            objectHeight[i] = object.height;
+        }
+    }
+
+    *objectCount = count;
+    *valid = is_fresh(g_adapter.objectsLastWallSec) ? 1 : 0;
+    return 0;
+}
+
 extern "C" int carla_adapter_publish_longitudinal_cmd(double targetSpeed, int enable)
 {
     const int initRc = carla_adapter_init();
     if (initRc != 0) {
         return initRc;
     }
-    return send_control(targetSpeed, enable);
+    return send_control(targetSpeed, 0.0, 0.0, enable, true, true, true);
+}
+
+extern "C" int carla_adapter_publish_lateral_cmd(double steerRad, int enable)
+{
+    const int initRc = carla_adapter_init();
+    if (initRc != 0) {
+        return initRc;
+    }
+    return send_control(0.0, 0.0, steerRad, enable, false, false, true);
+}
+
+extern "C" int carla_adapter_publish_control_cmd(
+    double targetSpeed,
+    double targetAccel,
+    double steerRad,
+    int enable)
+{
+    const int initRc = carla_adapter_init();
+    if (initRc != 0) {
+        return initRc;
+    }
+    return send_control(targetSpeed, targetAccel, steerRad, enable, true, true, true);
 }
 
 extern "C" int carla_adapter_get_status(

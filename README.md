@@ -313,6 +313,71 @@ cd /data/aiden/文档/Modularization/Thread/build
 
 ---
 
+## GAASD-CARLA 联合仿真
+
+本项目同时维护一套基于 GAASD + CARLA 0.9.15 的闭环仿真验证框架，用于在真实物理引擎中验证控制算法。
+
+### 工具目录
+
+| 目录/文件 | 说明 |
+|---|---|
+| `tools/carla_bridge/` | CARLA ↔ GAASD ZMQ 桥接工具、适配器动态库源码 |
+| `tools/gaasd_scenario_panel/` | 场景管理面板（Flask Web UI，端口 8765） |
+| `scenarios/` | 标准化场景目录，每个场景含 `scenario.yaml` + `run.sh` |
+
+### 已验证场景
+
+| 场景 | 状态 | 说明 |
+|---|---|---|
+| `acc_carla_phase2_20260513` | ✅ 可运行 | ACC 纵向跟车（P0 最小闭环 + P1 ObjectList 扩展），前车 `constant_velocity` 模式 |
+| `lkspro1_basic_carla_20260526` | 🔧 待验证 | LKS 单车车道保持，初始横向偏差 0.8m + 航向偏差 5° |
+
+### 当前 Bridge topic 清单
+
+| topic | 方向 | 说明 |
+|---|---|---|
+| `gaasd.carla.ego_state.v1` | Bridge → GAASD | 自车状态（速度/位置/航向） |
+| `gaasd.carla.lead_vehicle.v1` | Bridge → GAASD | ACC 前车便捷消息 |
+| `gaasd.carla.object_list.v1` | Bridge → GAASD | 全量障碍物列表（P1） |
+| `gaasd.carla.lane_tracking.v1` | Bridge → GAASD | 车道偏差 + 航向误差（LKS，新增） |
+| `gaasd.carla.chassis_feedback.v1` | Bridge → GAASD | 底盘反馈 |
+| `gaasd.carla.control_cmd.v1` | GAASD → Bridge | 控制输出（纵向速度 + 横向转角） |
+
+### GAASD 组件包
+
+| 包名 | 组件 | 用途 |
+|---|---|---|
+| `gaasd_p0_acc_min_components` | `CARLAEgoSpeed`、`CARLALeadDistance`、`CARLALongitudinalCmd` | ACC P0 最小闭环（已验证） |
+| `gaasd_p1_components` | `CARLAObjectList`、`CARLALateralCmd`、`CARLAControlCmd` | P1 扩展（含 null 指针 bug 已修复） |
+| `gaasd_lks_components` | `CARLALKSLateralOffset`、`CARLALKSHeadingError`、`CARLALKSValid`、`CARLALKSControlCmd` | LKS 单车闭环（待 GAASD 画布验证） |
+
+### LKS 控制算法
+
+```
+steerRad = clamp(Ky × lateralOffset + Kpsi × headingError, -maxSteer, maxSteer)
+
+参数：Ky=0.072, Kpsi=0.48, maxSteer=0.15 rad
+正号约定：lateralOffset > 0 = 车道中心在自车右侧 → 正转向修正
+```
+
+### 已知问题与修复记录
+
+| 问题 | 原因 | 修复 |
+|---|---|---|
+| CARLA 运行 90s 后崩溃 | 健康检查裸 TCP 连接 CARLA:2000，第 29 次触发 LibRPC session cleanup bug | 改为检测 Bridge ZMQ 端口 5701/5702，间接推断 CARLA 存活 |
+| 前车速度始终为 0 | Bridge 同步模式下 `traffic_manager.set_synchronous_mode(True)` 静默失败，TM 不 tick | 切换为 `constant_velocity` 模式直接设置物理速度 |
+| P1 null 指针比较 | `CARLALateralCmd`/`CARLAControlCmd` 中 `if (status != 0)` 将指针与整数比较 | 改为 `if (status != NULL)` |
+
+### 后续计划
+
+- [ ] LKS 验证：导入 `gaasd_lks_components` 包，GAASD 画布搭建 `lkspro1` 场景，运行 60 秒示波器测试，验证横向偏差收敛
+- [ ] LKS 参数整定：根据仿真曲线调整 Ky / Kpsi，消除超调
+- [ ] 曲线道路 LKS：换用弯道地图（Town03），验证稳态跟踪性能
+- [ ] ACC + LKS 联合：横纵向同时闭环，验证 `CARLAControlCmd` 横纵向联合输出
+- [ ] 更多场景扩展：障碍物切入、坡道、低摩擦路面等
+
+---
+
 ## 版本管理规范
 
 项目有两个独立的 Git 仓库，分别用于不同目的，提交时严格区分。

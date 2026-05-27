@@ -5,6 +5,10 @@ const state = {
   renderedLog: "",
 };
 
+const LOG_POLL_MS = 1000;
+const SCENARIO_REFRESH_MS = 5000;
+const HEALTH_POLL_MS = 3000;
+
 const $ = (id) => document.getElementById(id);
 
 function escapeHtml(value) {
@@ -227,13 +231,13 @@ async function healthCheck(writeLog = true) {
   const id = state.selectedId;
   if (!id) return;
   try {
-    const data = await requestJson(`/api/scenarios/${id}/health`);
+    const data = await requestJson(`/api/scenarios/${id}/health?log=${writeLog ? "1" : "0"}`);
     updateHealthChip("carla",          data.carla,          data.ports?.carla);
     updateHealthChip("bridge_pub",     data.bridge_pub,     data.ports?.bridge_pub);
     updateHealthChip("bridge_control", data.bridge_control, data.ports?.bridge_control);
     if (writeLog) await pollLogs();
   } catch (err) {
-    appendLocalLog(`健康检查失败: ${err.message}`);
+    if (writeLog) appendLocalLog(`健康检查失败: ${err.message}`);
   }
 }
 
@@ -308,8 +312,9 @@ async function boot() {
   bindVisualEffects();
   await loadScenarios();
   await healthCheck(false);
-  setInterval(pollLogs, 1000);
-  setInterval(() => loadScenarios().catch(() => {}), 5000);
+  setInterval(pollLogs, LOG_POLL_MS);
+  setInterval(() => loadScenarios().catch(() => {}), SCENARIO_REFRESH_MS);
+  setInterval(() => healthCheck(false).catch(() => {}), HEALTH_POLL_MS);
 }
 
 boot().catch((err) => appendLocalLog(err.message));

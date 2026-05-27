@@ -1,0 +1,387 @@
+{
+    "name": "CARLAObjectList",
+    "componentType": "atomic-function",
+    "alias": "CARLA障碍物列表",
+    "description": "读取CARLA障碍物列表",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "537cbb21-542a-5ac9-b5ec-4de38219df27",
+    "isCustom": false,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "仿真输入"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "CARLAObjectList_param_maxObjects_In",
+                    "name": "maxObjects",
+                    "alias": "maxObjects",
+                    "direction": "In",
+                    "description": "最大输出目标数量",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLAObjectList_param_objectCount_Out",
+                    "name": "objectCount",
+                    "alias": "objectCount",
+                    "direction": "Out",
+                    "description": "实际输出目标数量",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectId_Out",
+                    "name": "objectId",
+                    "alias": "objectId",
+                    "direction": "Out",
+                    "description": "目标ID数组",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectType_Out",
+                    "name": "objectType",
+                    "alias": "objectType",
+                    "direction": "Out",
+                    "description": "目标类型数组，1表示车辆，2表示行人",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectX_Out",
+                    "name": "objectX",
+                    "alias": "objectX",
+                    "direction": "Out",
+                    "description": "目标ENU坐标X数组，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectY_Out",
+                    "name": "objectY",
+                    "alias": "objectY",
+                    "direction": "Out",
+                    "description": "目标ENU坐标Y数组，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 6,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectYawRad_Out",
+                    "name": "objectYawRad",
+                    "alias": "objectYawRad",
+                    "direction": "Out",
+                    "description": "目标航向角数组，单位rad",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 7,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectV_Out",
+                    "name": "objectV",
+                    "alias": "objectV",
+                    "direction": "Out",
+                    "description": "目标速度数组，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 8,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectVx_Out",
+                    "name": "objectVx",
+                    "alias": "objectVx",
+                    "direction": "Out",
+                    "description": "目标X向速度数组，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 9,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectVy_Out",
+                    "name": "objectVy",
+                    "alias": "objectVy",
+                    "direction": "Out",
+                    "description": "目标Y向速度数组，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 10,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectLength_Out",
+                    "name": "objectLength",
+                    "alias": "objectLength",
+                    "direction": "Out",
+                    "description": "目标长度数组，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 11,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectWidth_Out",
+                    "name": "objectWidth",
+                    "alias": "objectWidth",
+                    "direction": "Out",
+                    "description": "目标宽度数组，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 12,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_objectHeight_Out",
+                    "name": "objectHeight",
+                    "alias": "objectHeight",
+                    "direction": "Out",
+                    "description": "目标高度数组，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 13,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAObjectList_param_valid_Out",
+                    "name": "valid",
+                    "alias": "valid",
+                    "direction": "Out",
+                    "description": "数据有效标志，1表示有效",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 14,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLAObjectList(\n    int maxObjects,\n    int *objectCount,\n    int *objectId,\n    int *objectType,\n    double *objectX,\n    double *objectY,\n    double *objectYawRad,\n    double *objectV,\n    double *objectVx,\n    double *objectVy,\n    double *objectLength,\n    double *objectWidth,\n    double *objectHeight,\n    int *valid)\n{\n    extern int carla_adapter_read_object_list(\n        int maxObjects,\n        int *objectCount,\n        int *objectId,\n        int *objectType,\n        double *objectX,\n        double *objectY,\n        double *objectYawRad,\n        double *objectV,\n        double *objectVx,\n        double *objectVy,\n        double *objectLength,\n        double *objectWidth,\n        double *objectHeight,\n        int *valid);\n    int rc = 0;\n\n    rc = carla_adapter_read_object_list(\n        maxObjects,\n        objectCount,\n        objectId,\n        objectType,\n        objectX,\n        objectY,\n        objectYawRad,\n        objectV,\n        objectVx,\n        objectVy,\n        objectLength,\n        objectWidth,\n        objectHeight,\n        valid);\n    if (rc != 0) {\n        if (objectCount != 0) {\n            *objectCount = 0;\n        }\n        if (valid != 0) {\n            *valid = 0;\n        }\n    }\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

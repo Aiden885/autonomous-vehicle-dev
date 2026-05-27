@@ -39,10 +39,12 @@ TRAFFIC_LIGHT_ENUM = """typedef enum {
 
 def generated_headers(project_dir: Path) -> List[Path]:
     src_dir = project_dir / "icvos" / "src"
-    return [
-        src_dir / "functions" / "carla.h",
-        src_dir / "oscilloscopeFunctions" / "carla.h",
-    ]
+    headers: List[Path] = []
+    for source_dir in (src_dir / "functions", src_dir / "oscilloscopeFunctions"):
+        if not source_dir.exists():
+            continue
+        headers.extend(sorted(source_dir.glob("*.h")))
+    return headers
 
 
 def patch_header(path: Path) -> Tuple[bool, str]:

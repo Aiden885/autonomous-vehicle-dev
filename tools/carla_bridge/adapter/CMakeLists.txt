@@ -66,3 +66,9 @@ add_executable(carla_gaasd_adapter_bridge_live
 )
 target_include_directories(carla_gaasd_adapter_bridge_live PRIVATE include)
 target_link_libraries(carla_gaasd_adapter_bridge_live PRIVATE carla_gaasd_adapter)
+
+add_executable(carla_gaasd_adapter_lks_live
+    test/adapter_lks_live_test.c
+)
+target_include_directories(carla_gaasd_adapter_lks_live PRIVATE include)
+target_link_libraries(carla_gaasd_adapter_lks_live PRIVATE carla_gaasd_adapter)

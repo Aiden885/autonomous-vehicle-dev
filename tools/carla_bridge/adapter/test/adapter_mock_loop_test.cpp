@@ -18,8 +18,10 @@ using Json = nlohmann::json;
 constexpr const char *kInputEndpoint = "tcp://127.0.0.1:15701";
 constexpr const char *kOutputEndpoint = "tcp://127.0.0.1:15702";
 constexpr const char *kEgoTopic = "gaasd.carla.ego_state.v1";
+constexpr const char *kObjectListTopic = "gaasd.carla.object_list.v1";
 constexpr const char *kLeadTopic = "gaasd.carla.lead_vehicle.v1";
 constexpr const char *kChassisTopic = "gaasd.carla.chassis_feedback.v1";
+constexpr const char *kLaneTrackingTopic = "gaasd.carla.lane_tracking.v1";
 constexpr const char *kControlTopic = "gaasd.carla.control_cmd.v1";
 
 void set_linger_zero(void *socket)
@@ -148,6 +150,26 @@ int main()
             {"steering_angle_rad", 0.05},
             {"mode", 1},
         });
+        send_json(mock_pub, kLaneTrackingTopic, Json{
+            {"valid", true},
+            {"lateral_offset_m", 0.8},
+            {"heading_error_rad", -0.12},
+            {"lane_id", 1},
+            {"road_id", 7},
+        });
+        send_json(mock_pub, kObjectListTopic, Json{
+            {"source_type", "ground_truth"},
+            {"object_count", 1},
+            {"objects", Json::array({
+                Json{
+                    {"object_id", 42},
+                    {"type_code", 1},
+                    {"pose", Json{{"x_m", 21.0}, {"y_m", 2.0}, {"yaw_rad", 0.2}}},
+                    {"velocity", Json{{"speed_mps", 2.3}, {"vx_mps", 2.0}, {"vy_mps", 0.1}}},
+                    {"dimension", Json{{"length_m", 4.5}, {"width_m", 1.8}, {"height_m", 1.6}}},
+                },
+            })},
+        });
         (void)carla_adapter_poll(50);
     }
 
@@ -163,9 +185,27 @@ int main()
         double ttc = 0.0;
         double chassis_speed = 0.0;
         double steer = 0.0;
+        int object_count = 0;
+        int object_id[2] = {0, 0};
+        int object_type[2] = {0, 0};
+        double object_x[2] = {0.0, 0.0};
+        double object_y[2] = {0.0, 0.0};
+        double object_yaw[2] = {0.0, 0.0};
+        double object_v[2] = {0.0, 0.0};
+        double object_vx[2] = {0.0, 0.0};
+        double object_vy[2] = {0.0, 0.0};
+        double object_length[2] = {0.0, 0.0};
+        double object_width[2] = {0.0, 0.0};
+        double object_height[2] = {0.0, 0.0};
         int valid = 0;
         int lead_valid = 0;
         int chassis_valid = 0;
+        double lateral_offset = 0.0;
+        double heading_error = 0.0;
+        int lane_id = 0;
+        int road_id = 0;
+        int lane_valid = 0;
+        int object_valid = 0;
         int mode = 0;
 
         if (carla_adapter_read_ego_state(&ego_v, &ego_x, &ego_y, &ego_yaw, &ego_acc, &valid) != 0 ||
@@ -197,6 +237,53 @@ int main()
             std::cerr << "chassis read mismatch\n";
             goto cleanup;
         }
+
+        if (carla_adapter_read_lane_tracking(
+                &lateral_offset,
+                &heading_error,
+                &lane_id,
+                &road_id,
+                &lane_valid) != 0 ||
+            lane_valid != 1 ||
+            lane_id != 1 ||
+            road_id != 7 ||
+            !near_value(lateral_offset, 0.8) ||
+            !near_value(heading_error, -0.12)) {
+            std::cerr << "lane tracking read mismatch\n";
+            goto cleanup;
+        }
+
+        if (carla_adapter_read_object_list(
+                2,
+                &object_count,
+                object_id,
+                object_type,
+                object_x,
+                object_y,
+                object_yaw,
+                object_v,
+                object_vx,
+                object_vy,
+                object_length,
+                object_width,
+                object_height,
+                &object_valid) != 0 ||
+            object_valid != 1 ||
+            object_count != 1 ||
+            object_id[0] != 42 ||
+            object_type[0] != 1 ||
+            !near_value(object_x[0], 21.0) ||
+            !near_value(object_y[0], 2.0) ||
+            !near_value(object_yaw[0], 0.2) ||
+            !near_value(object_v[0], 2.3) ||
+            !near_value(object_vx[0], 2.0) ||
+            !near_value(object_vy[0], 0.1) ||
+            !near_value(object_length[0], 4.5) ||
+            !near_value(object_width[0], 1.8) ||
+            !near_value(object_height[0], 1.6)) {
+            std::cerr << "object list read mismatch\n";
+            goto cleanup;
+        }
     }
 
     {
@@ -220,6 +307,49 @@ int main()
         const bool enable = control["payload"]["enable"].get<bool>();
         if (!near_value(target_speed, 3.5) || !enable) {
             std::cerr << "control payload mismatch\n";
+            goto cleanup;
+        }
+    }
+
+    {
+        Json control;
+        bool received = false;
+        for (int i = 0; i < 10 && !received; ++i) {
+            if (carla_adapter_publish_lateral_cmd(0.12, 1) != 0) {
+                std::cerr << "publish lateral command failed\n";
+                goto cleanup;
+            }
+            received = recv_control(mock_sub, &control);
+            if (!received) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            }
+        }
+        if (!received ||
+            !near_value(control["payload"]["target"]["steer_rad"].get<double>(), 0.12) ||
+            control["payload"]["target"].contains("target_speed_mps")) {
+            std::cerr << "lateral control payload mismatch\n";
+            goto cleanup;
+        }
+    }
+
+    {
+        Json control;
+        bool received = false;
+        for (int i = 0; i < 10 && !received; ++i) {
+            if (carla_adapter_publish_control_cmd(4.4, 0.3, -0.08, 1) != 0) {
+                std::cerr << "publish full command failed\n";
+                goto cleanup;
+            }
+            received = recv_control(mock_sub, &control);
+            if (!received) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            }
+        }
+        if (!received ||
+            !near_value(control["payload"]["target"]["target_speed_mps"].get<double>(), 4.4) ||
+            !near_value(control["payload"]["target"]["target_accel_mps2"].get<double>(), 0.3) ||
+            !near_value(control["payload"]["target"]["steer_rad"].get<double>(), -0.08)) {
+            std::cerr << "full control payload mismatch\n";
             goto cleanup;
         }
     }

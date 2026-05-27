@@ -1,0 +1,65 @@
+name: accpro2_basic_carla_20260520
+description: ACC 基础模块版 CARLA-GAASD 联合仿真场景
+created_at: "2026-05-20 00:00:00 +0800"
+verified_status: "已完成画布生成代码检查；待通过 GAASD 示波器进行 CARLA 闭环运行验证。"
+
+environment:
+  host_os: Ubuntu
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  gaasd_runtime_container: "ubuntuenv.tar:env"
+  python: "python3.8"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 25
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: traffic_manager
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  main_program: ../acc_carla_phase2_20260513/bridge_snapshot/tools/carla_bridge/carla_bridge.py
+  prebuilt_adapter: gaasd_project_snapshot/accpro2/objectCode/total/DLL/libcarla_gaasd_adapter.so
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  speed_pid:
+    kp: 0.7
+    ki: 0.05
+    kd: 0.08
+    integral_limit: 2.0
+    deadband_mps: 0.05
+    max_throttle: 0.7
+    max_brake: 0.35
+
+gaasd_projects:
+  carla_closed_loop:
+    snapshot_path: gaasd_project_snapshot/accpro2
+    restore_default_path: project/accpro2
+    purpose: ACC 基础模块版 CARLA 联合仿真画布工程
+    important_files:
+      - data/cbdes.db
+      - data/temp.db
+      - icvos/blocks/functions
+      - icvos/src/functions
+      - objectCode/total/DLL
+
+gaasd_signals:
+  oscilloscope_period_sec: 0.1
+  observed:
+    - targetSpeed
+    - egoV
+    - leadV
+    - distance
+
+expected_result:
+  duration_sec: 60
+  target_distance_m: 15
+  expected_behavior: 使用 GAASD 官方基础运算模块计算 ACC 目标速度，自车在 CARLA 中跟随低速前车，distance 向 15m 附近收敛。

@@ -412,21 +412,16 @@ export WATCH_CAMERA_LOG_FILE="${WATCH_CAMERA_LOG_FILE:-${LOG_DIR}/watch-camera.l
 
 log "logs: ${LOG_DIR}"
 
-if tcp_open "$CARLA_HOST" "$CARLA_PORT"; then
-    log "CARLA already reachable at ${CARLA_HOST}:${CARLA_PORT}"
+if carla_api_ready "$CARLA_HOST" "$CARLA_PORT" "$CARLA_ROOT"; then
+    log "CARLA Python API already ready at ${CARLA_HOST}:${CARLA_PORT}"
 else
     log "starting CARLA from ${CARLA_ROOT}"
     "${SCRIPT_DIR}/start-carla.sh" --background --root "$CARLA_ROOT" --log "$CARLA_LOG_FILE" --pid-file "$CARLA_PID_FILE" ${QUALITY_OPT}
 fi
 
-if ! wait_tcp "CARLA" "$CARLA_HOST" "$CARLA_PORT" "$WAIT_CARLA_SEC"; then
-    tail -80 "$CARLA_LOG_FILE" 2>/dev/null || true
-    fail "CARLA did not become ready within ${WAIT_CARLA_SEC}s"
-fi
-
 if ! wait_carla_api "$WAIT_CARLA_SEC"; then
     tail -120 "$CARLA_LOG_FILE" 2>/dev/null || true
-    fail "CARLA TCP is open, but Python API did not become ready within ${WAIT_CARLA_SEC}s"
+    fail "CARLA Python API did not become ready within ${WAIT_CARLA_SEC}s"
 fi
 
 if tcp_open "127.0.0.1" "5701" && tcp_open "127.0.0.1" "5702"; then

@@ -6,9 +6,46 @@
 
 ---
 
-## 当前状态（2026-05-18 更新）
+## 当前状态（2026-05-26 更新）
 
-**当前工作目标**：保留已跑通的 ACC 跟车 CARLA-GAASD 联合仿真快照，保证后续可通过本机 UI 快速恢复和演示。
+**LKS 单车联合仿真准备**：
+
+- Bridge 新增 `gaasd.carla.lane_tracking.v1`，持续发布 `lateral_offset_m`、`heading_error_rad`、道路标识及有效标志；数据发布不依赖 Bridge 内置车道保持开关。
+- adapter 新增 `carla_adapter_read_lane_tracking()`，并用 `ubuntu:env` 容器构建及 mock 测试验证通过；产物位于 `tools/carla_bridge/adapter/dist/ubuntu_env/libcarla_gaasd_adapter.so`。
+- 新增 GAASD LKS 单输出组件源码及扫描包：`tools/carla_bridge/gaasd_lks_components_src/`、`tools/carla_bridge/gaasd_lks_components/`、`tools/carla_bridge/gaasd_carla_lks_components.tar.gz`。
+- 新增单车测试场景 `scenarios/lkspro1_basic_carla_20260526/`：不生成前车，初始横向偏差 `0.8 m`、航向误差 `5 deg`，配置中显式关闭 `lane_keep_enabled`。
+- LKS 首版画布公式确定为 `steerRad = limit(0.072 * lateralOffset + 0.48 * headingError, -0.15, 0.15)`，目标速度固定为 `2.0 m/s`。
+- 实际消息探测通过：Bridge 输出 `lateral_offset_m=0.800000`、`heading_error_rad=0.087267`、`valid=true`。
+- adapter 真实通信短测通过：`lks_live_result ego_valid=48 lane_valid=48 chassis_valid=48 commands=31 lateral_offset=0.800000 heading_error=0.087267`。
+
+**启动稳定性修复**：
+
+- `tools/carla_bridge/start-gaasd-carla-manual.sh` 不再以裸 TCP 方式检测 CARLA RPC 端口；旧 ACC 场景快照启动脚本同步修复。
+- `tools/carla_bridge/health-carla.sh` 改用 CARLA Python API 健康检查；UI 面板只探测 Bridge 端口，不触碰 CARLA RPC 端口。
+
+**下一步任务**：
+
+- 在 GAASD 页面导入 `gaasd_lks_components`，新建 `lkspro1` 画布并按场景 README 连线。
+- GAASD 生成工程后，将新版 `libcarla_gaasd_adapter.so` 放入工程 `objectCode/total/DLL/`，再运行示波器验证横向偏差收敛。
+
+---
+
+## 当前状态（2026-05-25 更新）
+
+**Bug 修复：UI 面板健康检查导致 CARLA 崩溃**
+
+- **现象**：联调仿真启动约 90 秒后 CARLA 无故退出，崩溃报告显示 `SecondsSinceStart≈33`、`rpc::detail::server_session::close()` + `close: Bad file descriptor`。
+- **根本原因**：UI 面板每 3 秒自动对 CARLA 2000 端口做一次"裸 TCP 连接后立即断开"的健康探测。CARLA 2000 端口是 LibRPC 会话端口（非普通 HTTP），连上后不按协议通信直接断开，会触发 CARLA 0.9.15 服务端会话清理路径的隐藏 bug（文件句柄已关闭再次关闭），**第 29 次**连接时 CARLA 崩溃。复现验证：单独运行 CARLA 稳定；加入 Bridge + 前车场景稳定；对正常运行的 CARLA 重复执行裸 TCP 探测，第 29 次后崩溃，调用栈一致。
+- **修复内容**：
+  - `tools/gaasd_scenario_panel/app.py:294`：CARLA 健康状态不再调用 `socket_open(2000)`，改为 `bridge_pub_ok and bridge_control_ok` 推断（Bridge 存活即 CARLA 存活）。
+  - `scenarios/acc_carla_phase2_20260513/bridge_snapshot/tools/carla_bridge/health-carla.sh`：重写，探测 Bridge ZMQ 5701/5702，不再碰 CARLA 2000 端口。
+  - `start-gaasd-carla-manual.sh`：启动时"CARLA 是否已在运行"的判断从 `tcp_open` 改为 `carla_api_ready`（Python CARLA API 方式，安全）。
+
+---
+
+## 当前状态（2026-05-19 更新）
+
+**当前工作目标**：保留已跑通的 ACC 跟车 CARLA-GAASD 联合仿真快照，并在 P0 最小闭环基础上逐步扩展通用 CARLA 接口。
 
 **已确认状态**：
 - `http://127.0.0.1:8765/` 本机场景启动面板可直接启动 `ACC 跟车 CARLA-GAASD 联合仿真快照`。
@@ -21,10 +58,28 @@
 - UI 页面代码保存在 `tools/gaasd_scenario_panel/`。
 - 可复现快照记录见 `docs/GAASD_CARLA_场景快照备份记录.md`。
 - GAASD 重新生成代码后的 `carla.h` 兼容修复已标准化：`tools/carla_bridge/fix-gaasd-generated-code.py` 可修复 `protobuf-c` 头文件缺失和 `Infopack__TrafficLight__State` 枚举缺失问题，并已接入 UI 面板“修复生成代码”按钮。
+- P1 扩展组件包已生成：
+  - 源码：`tools/carla_bridge/gaasd_p1_components_src/carlaP1Components.c`
+  - 扫描组件包：`tools/carla_bridge/gaasd_p1_components/`
+  - 压缩包：`tools/carla_bridge/gaasd_carla_p1_components.tar.gz`
+  - 组件：`CARLAObjectList`、`CARLALateralCmd`、`CARLAControlCmd`
+  - adapter 新增 C ABI：`carla_adapter_read_object_list`、`carla_adapter_publish_lateral_cmd`、`carla_adapter_publish_control_cmd`
+  - 验证：P1 组件源码 `cc -std=c99 -Wall -Wextra -fPIC -c` 通过；`ubuntu:env` 内 adapter CMake 构建通过；`carla_gaasd_adapter_mock_loop` 已覆盖 `object_list`、横向控制和联合控制命令，输出 `mock_loop_ok`。
+- 2026-05-20 新增 `accpro2` 基础模块版 ACC 测试场景：
+  - `project/accpro2` 画布使用官方基础运算模块拼出 ACC 目标速度公式。
+  - 生成代码主链路为 `CARLAACCLeadDistance / CARLAACCLeadSpeed / CARLAACCEgoSpeed -> subtract / multiply / add -> CARLAACCLongitudinalCmd`。
+  - 当前生成公式为 `targetSpeed = 0.35 * (distance - 15.0) + 0.8 * (leadV - egoV) + leadV`。
+  - 已补充 `project/accpro2/objectCode/total/DLL/` 的 `libcarla_gaasd_adapter.so` 与 ZMQ 运行库。
+  - `tools/carla_bridge/fix-gaasd-generated-code.py` 已扩展为修复任意 GAASD 生成头文件，当前已修复 `project/accpro2/icvos/src/functions/accpro2.h`。
+  - 新增 UI 场景目录 `scenarios/accpro2_basic_carla_20260520/`，可在 `http://127.0.0.1:8765/` 中选择并启动 CARLA + Bridge 环境。
+  - 通过 GAASD 示波器运行按钮已生成 `project/accpro2/icvos/src/oscilloscopeFunctions/.../FuncStep.c`。
+  - `FuncStep.c` 已包含 `scope_push_send(...)` 和 `CARLAACCLongitudinalCmd(...)`，示波器观测顺序为 `targetSpeed`、`egoV`、`leadV`、`distance`。
 
 **下一步任务**：
-- 将场景快照、UI 面板、根目录 CARLA 工具脚本提交并推送到远端备份。
 - 后续继续基于该快照做动态前车跟车调参和稳定性验证。
+- 在 GAASD 页面导入 P1 组件包，验证 `CARLAObjectList` 的数组/多输出端口是否符合当前代码生成器能力。
+- 若数组端口在 GAASD 生成工程中不稳定，补充 P1 标量拆分组件或推动 GAASD 代码生成器支持固定长度数组端口。
+- 在 `accpro2` 画布中补充 `limit(rawTarget, 0.0, 5.0)` 后重新生成代码。
 
 ---
 

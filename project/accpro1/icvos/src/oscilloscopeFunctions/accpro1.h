@@ -6,10 +6,7 @@
 // INCLUDES_START
 
 #include "math.h"
-// #include "protobuf-c/protobuf-c.h"
-typedef struct { int dummy; } ProtobufCMessage;
-typedef int Infopack__TrafficLight__State;
-#define PROTOBUF_C_MESSAGE_INIT(x) {0}
+#include "protobuf-c/protobuf-c.h"
 #include "scope_push.h"
 #include "stdbool.h"
 #include "stddef.h"
@@ -444,7 +441,7 @@ void execute_dd594018(
     double kd,  // [in] 外部变量 kd
     double dt,  // [in] 外部变量 dt
     PIDState pidState,  // [in] 外部变量 pidState
-    VehicleState * leadPoint  // [in] 函数输入端口
+    VehicleState leadPoint  // [in] 函数输入端口
 );
  /* 基于简单纵向运动学模型完成PID模块测试 */
 void pidTestMain_16044152_4d25_400b_a90c_555a157c2bda(

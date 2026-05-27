@@ -18,10 +18,10 @@ void pidTestMain_16044152_4d25_400b_a90c_555a157c2bda(
     double ki = 0.1;
     double kd = 0.05;
     double dt = 0.05;
-    VehicleState * temp134760;
+    double* temp579292;
     
     
-    temp134760 = &leadVehicle;
+    temp579292 = &leadVehicle;
 
          pidState.integral = 0.0;
 
@@ -35,7 +35,7 @@ void pidTestMain_16044152_4d25_400b_a90c_555a157c2bda(
     vehiclePoint = &vehicle;
     for(start; start < target; start += step) {
         /* for循环体 */
-        execute_dd594018(vehiclePoint, kp, ki, kd, dt, pidState, temp134760);
+        execute_dd594018(vehiclePoint, kp, ki, kd, dt, pidState, temp579292);
 
     }
 

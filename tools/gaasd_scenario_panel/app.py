@@ -99,8 +99,15 @@ def scenario_dir_for(scenario_id: str) -> Optional[Path]:
     return None
 
 
+def scenario_stop_script(scenario_dir: Path) -> Path:
+    local_script = scenario_dir / "stop.sh"
+    if local_script.exists():
+        return local_script
+    return scenario_dir / "bridge_snapshot" / "tools" / "carla_bridge" / "stop-gaasd-carla-manual.sh"
+
+
 def scenario_scripts(scenario_dir: Path) -> Dict[str, str]:
-    stop_script = scenario_dir / "bridge_snapshot" / "tools" / "carla_bridge" / "stop-gaasd-carla-manual.sh"
+    stop_script = scenario_stop_script(scenario_dir)
     return {
         "restore": safe_rel(scenario_dir / "restore_gaasd_project.sh"),
         "start": safe_rel(scenario_dir / "run.sh"),
@@ -181,7 +188,7 @@ def script_path(scenario_dir: Path, kind: str) -> Optional[Path]:
     if kind == "start":
         return scenario_dir / "run.sh"
     if kind == "stop":
-        return scenario_dir / "bridge_snapshot" / "tools" / "carla_bridge" / "stop-gaasd-carla-manual.sh"
+        return scenario_stop_script(scenario_dir)
     return None
 
 
@@ -290,10 +297,15 @@ def health_for(data: Dict[str, Any]) -> Dict[str, Any]:
     if control.rsplit(":", 1)[-1].isdigit():
         control_port = int(control.rsplit(":", 1)[-1])
 
+    bridge_pub_ok = socket_open(carla_host, pub_port)
+    bridge_control_ok = socket_open(carla_host, control_port)
+    # Never probe CARLA's RPC port with bare TCP: CARLA 0.9.x can crash on disconnect.
+    # This is a Bridge-readiness proxy; startup performs authoritative CARLA RPC checks.
+    carla_ok = bridge_pub_ok and bridge_control_ok
     return {
-        "carla": socket_open(carla_host, 2000),
-        "bridge_pub": socket_open(carla_host, pub_port),
-        "bridge_control": socket_open(carla_host, control_port),
+        "carla": carla_ok,
+        "bridge_pub": bridge_pub_ok,
+        "bridge_control": bridge_control_ok,
         "ports": {
             "carla": 2000,
             "bridge_pub": pub_port,
@@ -399,10 +411,11 @@ def api_health(scenario_id: str) -> Response:
         return jsonify({"error": "scenario not found"}), 404
     data = load_yaml_file(scenario_dir / "scenario.yaml")
     health = health_for(data)
-    get_state(scenario_id).append(
-        "info",
-        "健康检查: CARLA={carla}, PUB={bridge_pub}, CONTROL={bridge_control}".format(**health),
-    )
+    if request.args.get("log", "1") != "0":
+        get_state(scenario_id).append(
+            "info",
+            "健康检查: CARLA={carla}, PUB={bridge_pub}, CONTROL={bridge_control}".format(**health),
+        )
     return jsonify(health)
 
 

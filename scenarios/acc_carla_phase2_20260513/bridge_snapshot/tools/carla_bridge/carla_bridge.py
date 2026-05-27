@@ -425,6 +425,7 @@ class CarlaGaasdBridge:
             self.publish_ego_state(ego, snapshot)
             self.publish_object_list(enriched, snapshot)
             self.publish_lead_vehicle(ego, enriched, snapshot)
+            self.publish_lane_tracking(self.lane_tracking_payload(), snapshot)
             self.publish_chassis_feedback(snapshot)
         self.publish_bridge_status(snapshot)
 
@@ -692,6 +693,63 @@ class CarlaGaasdBridge:
         }
         self.publish("chassis_feedback", payload, snapshot)
 
+    def lane_tracking_payload(self) -> Dict[str, Any]:
+        payload = {
+            "valid": False,
+            "lateral_offset_m": 0.0,
+            "heading_error_rad": 0.0,
+            "lane_id": 0,
+            "road_id": 0,
+            "junction_id": 0,
+            "s_m": 0.0,
+        }
+        if self.ego is None or self.world is None or self.carla is None:
+            return payload
+
+        transform = self.ego.get_transform()
+        waypoint = self.world.get_map().get_waypoint(
+            transform.location,
+            project_to_road=True,
+            lane_type=self.carla.LaneType.Driving,
+        )
+        if waypoint is None:
+            return payload
+
+        lane_center = waypoint.transform.location
+        lane_forward = waypoint.transform.get_forward_vector()
+        to_center = self.carla.Vector3D(
+            lane_center.x - transform.location.x,
+            lane_center.y - transform.location.y,
+            0.0,
+        )
+        right_direction = self.carla.Vector3D(-lane_forward.y, lane_forward.x, 0.0)
+        right_norm = math.hypot(right_direction.x, right_direction.y)
+        if right_norm <= 1.0e-6:
+            return payload
+        right_direction.x = right_direction.x / right_norm
+        right_direction.y = right_direction.y / right_norm
+
+        # Positive offset means the lane center is to ego's right.
+        lateral_offset = finite(to_center.x * right_direction.x + to_center.y * right_direction.y)
+        lane_yaw = finite(waypoint.transform.rotation.yaw)
+        ego_yaw = finite(transform.rotation.yaw)
+        heading_error_deg = ((lane_yaw - ego_yaw + 180.0) % 360.0) - 180.0
+        payload.update(
+            {
+                "valid": True,
+                "lateral_offset_m": lateral_offset,
+                "heading_error_rad": math.radians(heading_error_deg),
+                "lane_id": int(waypoint.lane_id),
+                "road_id": int(waypoint.road_id),
+                "junction_id": int(waypoint.junction_id),
+                "s_m": finite(waypoint.s),
+            }
+        )
+        return payload
+
+    def publish_lane_tracking(self, payload: Dict[str, Any], snapshot: Any) -> None:
+        self.publish("lane_tracking", payload, snapshot)
+
     def publish_bridge_status(self, snapshot: Any) -> None:
         now = time.time()
         period = float(self.cfg["zmq"].get("status_period_sec", 1.0))
@@ -776,40 +834,11 @@ class CarlaGaasdBridge:
         ctrl_cfg = self.cfg["control"]
         if not bool(ctrl_cfg.get("lane_keep_enabled", False)):
             return 0.0
-        if self.ego is None or self.world is None or self.carla is None:
+        lane_tracking = self.lane_tracking_payload()
+        if not bool(lane_tracking["valid"]):
             return 0.0
-
-        carla_map = self.world.get_map()
-        transform = self.ego.get_transform()
-        waypoint = carla_map.get_waypoint(
-            transform.location,
-            project_to_road=True,
-            lane_type=self.carla.LaneType.Driving,
-        )
-        if waypoint is None:
-            return 0.0
-
-        lane_center = waypoint.transform.location
-        lane_forward = waypoint.transform.get_forward_vector()
-        vehicle_location = transform.location
-        to_center = self.carla.Vector3D(
-            lane_center.x - vehicle_location.x,
-            lane_center.y - vehicle_location.y,
-            0.0,
-        )
-        right_direction = self.carla.Vector3D(-lane_forward.y, lane_forward.x, 0.0)
-        right_norm = math.hypot(right_direction.x, right_direction.y)
-        if right_norm <= 1.0e-6:
-            return 0.0
-        right_direction.x = right_direction.x / right_norm
-        right_direction.y = right_direction.y / right_norm
-
-        # Positive error means the lane center is to ego's right, so positive steer corrects toward center.
-        offset_error = finite(to_center.x * right_direction.x + to_center.y * right_direction.y)
-        lane_yaw = finite(waypoint.transform.rotation.yaw)
-        ego_yaw = finite(transform.rotation.yaw)
-        heading_error_deg = ((lane_yaw - ego_yaw + 180.0) % 360.0) - 180.0
-        heading_error = math.radians(heading_error_deg)
+        offset_error = finite(lane_tracking["lateral_offset_m"])
+        heading_error = finite(lane_tracking["heading_error_rad"])
 
         now = time.monotonic()
         dt = now - self.lane_keep_prev_time if self.lane_keep_prev_time > 0.0 else 0.05
