@@ -699,6 +699,27 @@ extern "C" int carla_adapter_read_object_list(
     return 0;
 }
 
+extern "C" int carla_adapter_read_driver_command(int *commandType, int *valid)
+{
+    if (commandType == nullptr || valid == nullptr) {
+        return -50;
+    }
+
+    *commandType = 0;
+    *valid = 0;
+
+    const int initRc = carla_adapter_init();
+    if (initRc != 0) {
+        return initRc;
+    }
+
+    /* Default implementation: no driver command. A future Bridge/UI source can
+       replace this with one-cycle command pulses without changing GAASD canvas. */
+    *commandType = 0;
+    *valid = 1;
+    return 0;
+}
+
 extern "C" int carla_adapter_publish_longitudinal_cmd(double targetSpeed, int enable)
 {
     const int initRc = carla_adapter_init();

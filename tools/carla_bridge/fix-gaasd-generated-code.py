@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Patch GAASD generated CARLA headers after code generation.
+"""Patch GAASD generated CARLA headers and truth-table C files after code generation.
 
-GAASD currently regenerates ``carla.h`` with two issues for the CARLA P0
-components:
+GAASD currently regenerates headers and C files with the following issues:
 
 1. It includes protobuf-c headers that are not installed in ``ubuntuenv``.
 2. It may omit the ``Infopack__TrafficLight__State`` enum while still using it
    in generated structs.
+3. AssemblyTruthTable bug: the condition_code variable is overwritten on every
+   iteration of condition_matching, causing if() wrappers to be lost for any
+   scenario where a don't-care condition appears after a True condition.
 
-This helper is idempotent and only patches generated headers under the selected
+This helper is idempotent and only patches generated files under the selected
 GAASD project directory.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 from typing import Iterable, List, Tuple
@@ -82,6 +85,141 @@ def patch_header(path: Path) -> Tuple[bool, str]:
     return True, f"PATCHED {path}"
 
 
+def _build_truth_table_c(json_path: Path) -> str:
+    """Generate correct C code from a truth-table JSON config.
+
+    Workaround for gaas_codegen AssemblyTruthTable bug: condition_code is
+    overwritten on every loop iteration, losing the if() wrapper when a
+    don't-care condition follows a True condition.
+    """
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+
+    base_config = None
+    for ep in data.get("extensionProps", []):
+        if ep.get("key") == "base_config":
+            base_config = ep["value"][0]
+            break
+    if base_config is None:
+        return ""
+
+    conditions = {c["id"]: c["condition"] for c in base_config.get("conditions", [])}
+    actions    = {a["id"]: a["action"]    for a in base_config.get("actions", [])}
+
+    inputs, outputs = [], []
+    for ep in data.get("extensionProps", []):
+        if ep.get("key") == "function_input_ports":
+            inputs  = [(p["props"][1]["value"], p["props"][0]["value"]) for p in ep["value"]]
+        if ep.get("key") == "function_output_ports":
+            outputs = [(p["props"][1]["value"], p["props"][0]["value"]) for p in ep["value"]]
+
+    func_name   = data["name"]
+    return_type = outputs[0][0] if outputs else "int"
+    return_name = outputs[0][1] if outputs else "y"
+
+    param_lines = []
+    for i, (dtype, name) in enumerate(inputs):
+        comma = "," if i < len(inputs) - 1 else ""
+        param_lines.append(f"    {dtype} {name}{comma}")
+
+    branches = []
+    for scene in base_config.get("scenarios", []):
+        cm = scene.get("condition_matching", {})
+        true_conds = [conditions[cid] for cid, val in cm.items() if val == 1 and cid in conditions]
+        action = actions.get(scene.get("action_matching", ""), "")
+        if not true_conds:
+            branches.append(("else", None, action))
+        else:
+            branches.append(("if", "&&".join(true_conds), action))
+
+    lines = [f"/* 真值表 */", f"{return_type} {func_name}("]
+    lines.extend(param_lines)
+    lines += [")", "{", f"    {return_type} {return_name};"]
+    for i, (op, cond, action) in enumerate(branches):
+        if op == "else":
+            lines.append("    } else {")
+        elif i == 0:
+            lines.append(f"    if({cond}) {{")
+        else:
+            lines.append(f"    }} else if({cond}) {{")
+        lines.append(f"      {action};")
+    lines += ["    }", "", f"    return {return_name};", "}", ""]
+    return "\n".join(lines)
+
+
+def fix_truth_tables(project_dir: Path) -> List[str]:
+    """Regenerate all truth-table C files in a project, bypassing the codegen bug."""
+    messages: List[str] = []
+    blocks_dir = project_dir / "icvos" / "blocks" / "functions"
+    src_osc    = project_dir / "icvos" / "src" / "oscilloscopeFunctions"
+    src_fn     = project_dir / "icvos" / "src" / "functions"
+
+    for json_path in sorted(blocks_dir.glob("truth_table_*.json")):
+        name = json_path.stem
+        content = _build_truth_table_c(json_path)
+        if not content:
+            messages.append(f"SKIP {json_path.name}: could not parse config")
+            continue
+        for src_dir in (src_osc, src_fn):
+            c_path = src_dir / name / f"{name}.c"
+            if not c_path.parent.exists():
+                continue
+            existing = c_path.read_text(encoding="utf-8") if c_path.exists() else ""
+            if existing == content:
+                messages.append(f"OK {c_path}: already correct")
+            else:
+                c_path.write_text(content, encoding="utf-8")
+                messages.append(f"PATCHED {c_path}")
+    return messages
+
+
+def sync_funcstep_from_main(project_dir: Path) -> List[str]:
+    """Sync truth_table call arguments from src/functions/main.c into
+    src/oscilloscopeFunctions/FuncStep.c.
+
+    GAASD bug: 'generate code' updates main.c but not FuncStep.c, causing the
+    oscilloscope simulation to run with stale constant values.
+    """
+    messages: List[str] = []
+    fn_dir  = project_dir / "icvos" / "src" / "functions"
+    osc_dir = project_dir / "icvos" / "src" / "oscilloscopeFunctions"
+
+    for main_c in sorted(fn_dir.glob("*/main.c")):
+        component = main_c.parent.name
+        funcstep_c = osc_dir / component / "FuncStep.c"
+        if not funcstep_c.exists():
+            continue
+
+        main_text     = main_c.read_text(encoding="utf-8")
+        funcstep_text = funcstep_c.read_text(encoding="utf-8")
+
+        # Extract every function call line from main.c and apply to FuncStep.c
+        changed = False
+        updated = funcstep_text
+        for line in main_text.splitlines():
+            stripped = line.strip()
+            # Match assignment lines like: temp123 = some_func(args);
+            m = re.match(r"(\w+)\s*=\s*(\w+)\s*\((.+)\)\s*;", stripped)
+            if not m:
+                continue
+            func_name, args = m.group(2), m.group(3)
+            # Find the matching call in FuncStep.c (may have different temp var)
+            pattern = re.compile(
+                r"(\w+)\s*=\s*" + re.escape(func_name) + r"\s*\([^)]*\)\s*;"
+            )
+            replacement = f"\\1 = {func_name}({args});"
+            new_updated = pattern.sub(replacement, updated)
+            if new_updated != updated:
+                updated = new_updated
+                changed = True
+
+        if changed:
+            funcstep_c.write_text(updated, encoding="utf-8")
+            messages.append(f"SYNCED {funcstep_c}")
+        else:
+            messages.append(f"OK {funcstep_c}: in sync")
+    return messages
+
+
 def unique_existing_projects(projects: Iterable[str]) -> List[Path]:
     result: List[Path] = []
     seen = set()
@@ -95,7 +233,9 @@ def unique_existing_projects(projects: Iterable[str]) -> List[Path]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Patch GAASD generated CARLA headers.")
+    parser = argparse.ArgumentParser(
+        description="Patch GAASD generated CARLA headers, truth tables, and FuncStep files."
+    )
     parser.add_argument(
         "--project",
         action="append",
@@ -115,6 +255,10 @@ def main() -> int:
             changed, message = patch_header(header)
             checked_count = checked_count + 1
             changed_count = changed_count + (1 if changed else 0)
+            print(message)
+        for message in fix_truth_tables(project_dir):
+            print(message)
+        for message in sync_funcstep_from_main(project_dir):
             print(message)
 
     if checked_count == 0:

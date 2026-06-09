@@ -9,6 +9,7 @@
 | `CARLAACCEgoSpeed` | 输出 `egoV` | 读取自车纵向速度 |
 | `CARLAACCLeadSpeed` | 输出 `leadV` | 读取前车纵向速度 |
 | `CARLAACCLeadDistance` | 输出 `distance` | 读取自车到前车净距离 |
+| `CARLAACCDriverCommand` | 输出 `commandType` | 读取ACC驾驶指令类型，当前默认无指令 |
 | `CARLAACCComputeTargetSpeed` | 输入 `egoV`、`leadV`、`distance`，输出 `targetSpeed` | 计算 ACC 目标速度 |
 | `CARLAACCLongitudinalCmd` | 输入 `speed`、`enable` | 发布 CARLA 纵向速度控制命令 |
 
@@ -19,6 +20,7 @@
 | `CARLAACCEgoSpeed.egoV` | `CARLAACCComputeTargetSpeed.egoV` |
 | `CARLAACCLeadSpeed.leadV` | `CARLAACCComputeTargetSpeed.leadV` |
 | `CARLAACCLeadDistance.distance` | `CARLAACCComputeTargetSpeed.distance` |
+| `CARLAACCDriverCommand.commandType` | `ACCDecision.commandType` |
 | `CARLAACCComputeTargetSpeed.targetSpeed` | `CARLAACCLongitudinalCmd.speed` |
 | 常量 `1` | `CARLAACCLongitudinalCmd.enable` |
 

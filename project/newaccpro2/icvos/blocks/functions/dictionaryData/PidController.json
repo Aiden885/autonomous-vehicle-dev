@@ -1,0 +1,102 @@
+{
+  "Input": {
+    "description": "PID控制器输入信号。",
+    "alias": "PID控制器输入信号。",
+    "fields": [
+      {
+        "name": "r",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "设定值"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "过程反馈值"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "PID控制器输出信号。",
+    "alias": "PID控制器输出信号。",
+    "fields": [
+      {
+        "name": "u",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制器输出"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "PID控制器参数。",
+    "alias": "PID控制器参数。",
+    "fields": [
+      {
+        "name": "pidParam",
+        "category": 1,
+        "dataType": "PidParam",
+        "shape": [],
+        "dataValue": {
+          "gains": {
+            "kp": 1.0,
+            "ki": 0.1,
+            "kd": 0.01
+          },
+          "antiWindup": {
+            "uMin": -100.0,
+            "uMax": 100.0,
+            "kaw": 0.5
+          },
+          "ts": 0.01
+        },
+        "description": "PID 参数集"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "PID控制器跨周期状态。",
+    "alias": "PID控制器跨周期状态。",
+    "fields": [
+      {
+        "name": "ePrev",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一周期误差"
+      },
+      {
+        "name": "iSum",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "积分累计项"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "PID控制器子模块集合。",
+    "alias": "PID控制器子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -1,0 +1,74 @@
+{
+    "name": "CARLAACCDriverCommand",
+    "componentType": "atomic-function",
+    "alias": "CARLA驾驶指令",
+    "description": "读取ACC驾驶指令类型",
+    "author": "ZYK",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "9cf579a0-201f-53e4-81f7-bce41045c902",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLAACCDriverCommand_output_commandType_Out",
+                    "name": "commandType",
+                    "alias": "commandType",
+                    "direction": "Out",
+                    "description": "驾驶指令类型，0表示无指令，1到7表示ACC按键或踏板事件",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int CARLAACCDriverCommand(void)\n{\n    extern int carla_adapter_read_driver_command(int *commandType, int *valid);\n    int commandType = 0;\n    int valid = 0;\n    int rc = 0;\n    int result = 0;\n\n    rc = carla_adapter_read_driver_command(&commandType, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = commandType;\n    }\n\n    return result;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

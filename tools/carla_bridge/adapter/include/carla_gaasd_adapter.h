@@ -53,6 +53,10 @@ int carla_adapter_read_object_list(
     double *objectHeight,
     int *valid);
 
+int carla_adapter_read_driver_command(
+    int *commandType,
+    int *valid);
+
 int carla_adapter_publish_longitudinal_cmd(
     double targetSpeed,
     int enable);
