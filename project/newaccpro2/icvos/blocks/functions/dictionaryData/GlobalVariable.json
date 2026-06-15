@@ -1,27 +1,32 @@
 {
   "GlobalParams": [
     {
-      "id": "controlTs",
-      "name": "controlTs",
+      "id": "MinDistance",
+      "name": "MinDistance",
       "category": 0,
       "dataType": "double",
-      "dataTypeScope": "global",
-      "dataValue": 0.05,
-      "description": "全局控制周期 (s)"
+      "description": "",
+      "dataValue": 5,
+      "dataTypeScope": "global"
+    },
+    {
+      "id": "Kdist",
+      "name": "Kdist",
+      "category": 0,
+      "dataType": "double",
+      "description": "",
+      "dataValue": 0.9,
+      "dataTypeScope": "global"
+    },
+    {
+      "id": "Kspeed",
+      "name": "Kspeed",
+      "category": 0,
+      "dataType": "double",
+      "description": "",
+      "dataValue": 0.8,
+      "dataTypeScope": "global"
     }
   ],
-  "GlobalStates": [
-    {
-      "id": "feedback",
-      "name": "feedback",
-      "category": 1,
-      "dataType": "FeedbackState",
-      "dataTypeScope": "global",
-      "dataValue": {
-        "lonVelFb": 0.0,
-        "latPosFb": 0.0
-      },
-      "description": "顶层控制图共享反馈缓存"
-    }
-  ]
+  "GlobalStates": []
 }

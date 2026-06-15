@@ -1,0 +1,174 @@
+{
+  "componentType": "atomic-block",
+  "name": "computeDistance1D_47a56c26_e34e_4963_b23c_9bc7780a9c14",
+  "alias": "纵向车间距计算",
+  "description": "计算纵向一维车间距（前车 x 减自车 x）",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "47a56c26-e34e-4963-b23c-9bc7780a9c14",
+  "originId": "3039f13d-f27f-51f0-98a6-eac7a0d21a03",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "规划与决策",
+    "速度规划"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": []
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "function_body": "double computeDistance1D(double leadX, double egoX)\n{\n    double distance = 0.0;\n    distance = leadX - egoX;\n    return distance;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "computeDistance1D_leadX_In",
+          "name": "leadX",
+          "alias": "leadX",
+          "direction": "In",
+          "description": "前车纵向位置（m）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "computeDistance1D_egoX_In",
+          "name": "egoX",
+          "alias": "egoX",
+          "direction": "In",
+          "description": "自车纵向位置（m）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "computeDistance1D_车间距（m），正值表示前车在自车前方_Out",
+          "name": "车间距（m），正值表示前车在自车前方",
+          "alias": "车间距（m），正值表示前车在自车前方",
+          "direction": "Out",
+          "description": "",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

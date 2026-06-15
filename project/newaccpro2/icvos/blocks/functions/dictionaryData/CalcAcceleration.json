@@ -1,0 +1,82 @@
+{
+  "Input": {
+    "description": "车辆加速度计算模块输入端口集合。",
+    "alias": "车辆加速度计算模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 (m/s)"
+      },
+      {
+        "name": "lastSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一周期车辆速度 (m/s)"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制周期时长 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "车辆加速度计算模块输出端口集合。",
+    "alias": "车辆加速度计算模块输出端口集合。",
+    "fields": [
+      {
+        "name": "acceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "数值微分得到的车辆加速度 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "车辆加速度计算模块参数集合。",
+    "alias": "车辆加速度计算模块参数集合。",
+    "fields": [
+      {
+        "name": "minDt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0e-6,
+        "description": "防止除零的最小周期阈值 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "车辆加速度计算模块状态集合。",
+    "alias": "车辆加速度计算模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "车辆加速度计算模块子模块集合。",
+    "alias": "车辆加速度计算模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

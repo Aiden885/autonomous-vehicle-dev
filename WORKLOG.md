@@ -6,6 +6,296 @@
 
 ---
 
+## 当前状态（2026-06-15 更新）
+
+**newaccpro2 规范组件源码对比**：
+
+- 已对比团队提供的
+  `project/accpro2/newaccpro2_component_sources.zip` 与本地
+  `deliverables/newaccpro2_components_src_v2.zip`。
+- 两套代码均包含相同的六个 `FuncModule<Traits>` 组件，且
+  `FuncModule.hpp` 完全一致；主要差异不在框架，而在运行时边界端口契约。
+- 团队版读取组件输入为“业务值 + `adapterRc` + `valid`”，输出仅保留业务值；
+  本地 v2 输入为“业务值 + `valid`”，并继续输出业务值与 `valid`。
+- 团队版纵向命令输出为 `targetSpeed/enable`；本地 v2 输出为
+  `speed/enable/valid`。两者均已将实际 ZMQ 发布移出组件 `run()`。
+- 团队版保留可配置的 `defaultDistance`，并沿用 `desiredDist` 参数名；
+  本地 v2 将无前车距离固定为 `1000000.0`，参数名为
+  `desiredDistance`。两版速度上限数值均为 `5.0 m/s`。
+- 团队版压缩包的 CMake 未针对本机 GCC 9.4 添加 `-fconcepts`，直接构建
+  失败；显式增加 `-fconcepts` 后六个组件可以构建。本地 v2 已在 CMake
+  中处理 GCC 9 兼容并以严格警告构建通过。
+- `adapter_cpp` 不属于扫描组件，不应与六个 `FuncModule` 放在同一次扫描中。
+  但“不扫描”不代表“不需要集成”：GAASD 运行时/节点框架仍须调用 adapter，
+  将读取返回值映射到组件输入，并将控制组件输出交给 adapter 发布。
+- 当前 adapter 已提供 ACC 所需的读取和发布 C ABI，核心通信逻辑无需因本次
+  组件规范化重写；尚缺的是 GAASD 运行时的数据绑定层及双方最终端口契约确认。
+
+**LKS 决策与完整控制方案设计**：
+
+- 已读取并分析 `docs/LKS算法设计原理0206.docx`，以最终修订 V0.6 为准。
+- 已逐层解析原算法 `project/lks/LKS_tcp17.slx` 与
+  `project/lks/lks_tcp_s17.py`。原链路以 0.1 s 周期通过 TCP 传输
+  186 个 `double`，其中包含 `boolLD[60]`、`cx[60]`、`cy[60]`；
+  Simulink 将有效车道点压缩并补零为固定 60 维数组，再按欧氏距离选取
+  近、中、远三个预瞄点。
+- 原控制模型的预瞄距离为
+  `ld = (5 + 0.5 * v) / curvatureFactor`，三点权重为
+  `0.2/0.3/0.5`，比例增益为 `0.08`，并使用
+  `atan(3 * 2.9 / v^2) / 30 deg` 形式限制归一化转向值。
+- 确认正式控制算法为三预瞄点加权的位置式比例控制，不再单独使用航向误差；
+  启控时需要捕获并保持当前归一化转向值 `theta0`。
+- 确认原文档表 18 中弯道预瞄距离缩放系数为数学分数 `2/3`，不是文本提取
+  结果中的 `23`。
+- 决策层简化为布尔逻辑：低速、制动、主动换道任一成立即进入待命；车道线
+  有效状态在无感知测试阶段固定为 `1`，无需使用真值表。
+- 已确认新版 GAASD 基础组件库提供“数组取值”和“数组赋值”组件，数组索引
+  可作为动态输入端口，且两类组件已纳入代码生成流程。此前“GAASD 画布不能
+  处理数组”的假设不成立。
+- 已解包并核查当前 `codescan` 与 `gaas_codegen`：扫描器固定使用 C11，
+  文件白名单只有 `.c/.h`，因此不支持扫描 `.cpp` 或
+  `std::array<double, 60>`。
+- 最小扫描验证确认 `double input[60]` / `double output[60]` 会在组件
+  JSON 中保留为 `const double[60]` / `double[60]`，属于当前正式支持的
+  数组端口表示。
+- `typedef double LaneArray60[60]` 虽然函数本身能被扫描，但数组别名不会
+  写入 `typedef.json`；扫描器的 typedef 导出仅保留基础类型别名，因此不应
+  使用“整个数组的 typedef 别名”作为组件边界类型。
+- `typedef double Real; Real values[60]` 可以使用：`Real -> double` 会写入
+  `typedef.json`，数组维度仍由端口的 `[60]` 表达。
+- 当前 `gaas_codegen` 的函数调用生成逻辑对 `out/inout` 参数统一添加 `&`，
+  没有排除数组类型。对于 `void f(double output[60])`，可能生成
+  `f(&output)` 而不是 `f(output)`，因此“数组输出端口”仍有代码生成缺陷；
+  在修复前不能直接作为 LKS Bridge 数组输出边界。
+- 现有方案暂采用 Bridge 输出三次车道多项式和道路曲率，GAASD 画布使用基础
+  运算模块计算三个预瞄点误差、动态预瞄距离、加权比例控制和横向加速度动态
+  限幅；若固定长度数组最小验证通过，应重新评估是否改为与 Simulink 更一致的
+  60 点数组方案。
+- 根据原 Simulink 数组实现，若要求严格复现原算法，边界方案应优先调整为
+  Bridge 直接输出三个预瞄横向误差标量、道路曲率和有效点计数；多项式方案
+  可作为近似实现，但其按纵向位置求值与原模型按欧氏距离选点并不完全等价。
+- 当前基础组件库未发现反正切模块。完整实现需要标准 `atan` 数学组件，或新增
+  只封装 `std::atan` 的原子数学组件。
+- 详细架构、参数、模块实例和连线关系已写入
+  `docs/GAASD_LKS_完整控制画布方案.md`。
+
+**待确认**：
+
+- CARLA 首轮测试最低适控速度和固定测试速度。
+- LKS 使用键盘激活/取消还是先以常量自动激活。
+- 请 GAASD 团队修复数组 OUT/INOUT 参数调用时错误添加 `&` 的生成逻辑，并
+  提供固定长度数组跨组件编译用例。
+- 固定长度 C 数组完成跨组件连线、动态取值和数组赋值后的生成、编译、运行
+  验证。
+- 根据数组最小验证结果，在 60 点数组方案与车道多项式方案之间最终选型。
+
+---
+
+## 当前状态（2026-06-12 更新）
+
+**CARLA ACC 最小组件 C++ v1.0.33 规范化**：
+
+- 已依据 `docs/C++代码规范.docx v1.0.33` 重写
+  `generated/gaasd_p0_acc_min_components_src/`。
+- 六个组件统一采用 `FuncModule<Traits>` 与结构化
+  `Input/Output/Param/State/Sub`：
+  `CARLAACCEgoSpeed`、`CARLAACCLeadSpeed`、
+  `CARLAACCLeadDistance`、`CARLAACCDriverCommand`、
+  `CARLAACCLongitudinalCmd`、`CARLAACCComputeTargetSpeed`。
+- 组件 `run()` 已移除 `carla_adapter_*`、C ABI 指针出参、ZMQ/JSON
+  依赖和外部副作用；条件使用命名布尔量，语义块使用 Doxygen
+  `@brief` 注释，结果显式写入 `Output`。
+- `CARLAACCLongitudinalCmd` 现在输出 `speed/enable/valid`，由 GAASD
+  运行时或节点框架负责发布；输入组件由运行时向
+  `egoV/leadV/distance/commandType/valid` 端口注入数据。
+- `tools/carla_bridge/adapter/src/carla_gaasd_adapter.cpp` 保留为独立
+  通信基础设施，不属于 GAASD 扫描组件。将其外部调用放回组件
+  `run()` 会违反规范中的指针、依赖和函数体白名单。
+- GCC 9.4 C++20 自包含构建通过，并启用
+  `-Wall -Wextra -Wpedantic -Werror`；校验记录见
+  `generated/gaasd_p0_acc_min_components_src/校验报告.md`。
+- 已更新可发送源码目录
+  `deliverables/newaccpro2_component_sources/`，并生成
+  `deliverables/newaccpro2_components_src_v2.zip`。压缩包分别保留当前
+  画布 C 源码、规范版 C++ 组件和独立 adapter C++ 源码。
+
+**下一步任务**：
+
+- 使用团队提供的新版 C++ 扫描器仅扫描
+  `cpp_funcmodule_components/`，确认六个组件的端口和元数据可正常入库。
+- 由 GAASD 团队确认节点/运行时的数据绑定方式，把 Bridge 消息注入组件
+  `Input`，并把控制组件 `Output` 发布回 Bridge。
+
+---
+
+## 当前状态（2026-06-11 更新）
+
+**GAASD 2.7.0.5 代码生成模块更新**：
+
+- 已将 `/home/aiden/文档/temp/gaasd_code_tools_20260610.tar` 安装到隔离版新版 GAASD：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools`。
+- 更新前完整 `codeTools` 已备份到：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/20260611_094210/codeTools`。
+- 对比确认该包相对当前 20260606 环境只有 `gaas_codegen` 二进制发生变化；
+  `codescan`、`run_simulation.sh` 及其他脚本内容一致。原有 `.env` 和 `dist/logs` 已保留。
+- 新 `gaas_codegen` SHA-256：
+  `8480b21606eba811ec235484777618c9eb5446d9e3cbb3389e065ed4f31e6e8c`。
+- 已使用 `newaccpro2` 当前画布在 `/tmp/gaasd_codegen_20260610_smoke` 完成隔离代码生成，
+  生成器可正常启动、处理画布并产出 C++ 工程，未覆盖项目现有生成代码。
+- 隔离编译仍失败，已确认至少存在以下生成器问题：
+  - `GlobalParams` 同时生成在 `GlobalContext.hpp` 和 `GlobalContextTypes.hpp`，导致结构体重复定义。
+  - 主画布仍生成非法变量名 `C++_None`。
+  - 复合组件头文件声明 `run()`，调用端和实现端却使用 `composite_block()`，接口不一致。
+  - 复合组件仅初始化 `vMin`，`GapStep/MinGap/MaxGap/SpdStep/MinSpd` 等参数未按画布值完整初始化。
+- 结论：20260610 代码生成模块已正确替换，但 `newaccpro2` 当前仍不能直接通过生成代码编译运行；
+  后续应把上述最小复现结果提交给 GAASD 团队继续修复。
+
+---
+
+## 当前状态（2026-06-09 更新）
+
+**GAASD 2.7.0.5 隔离版更新完成**：
+
+- 使用 `GAASD_SETUP_20260608.tar.gz`、`gaasd_code_tools_20260606.tar` 和 `清华组件包_0608_1.tar` 更新了 `/home/aiden/gaasd_versions/gaasd-2.7.0.5`。
+- 系统旧版 `/opt/gaasd` 和 `/usr/bin/gaasd` 未修改；更新前文件和数据库保存在 `.../rollback/20260609_143740/`。
+- 基础组件已更新到 `1.0.8`，清华组件库已导入 28 个顶层组件和 1275 条包内组件详情；SQLite 完整性及 `originId` 唯一性检查通过。
+- code tools 环境记录已更新为 `20260606`；`gaas_codegen`、`codescan` 和 `run_simulation.sh` 基础检查通过。
+- 隔离启动脚本已处理 IDE 的 `ELECTRON_RUN_AS_NODE` 污染，并补建新版要求的 `cacheFile` 目录；GUI 冒烟启动通过。
+- 详细记录和回滚说明见 `docs/GAASD_2.7.0.5_20260608更新记录.md`。
+- 已知限制：0606 包内 `codescan` 仍是 C 扫描器，尚不能据此确认新版 C++ `FuncModule` 扫描链路。
+
+**`newaccpro2` 最新 ACC 决策控制画布进展**：
+
+- 本次复核以 `project/newaccpro2/data/cbdes.db` 和 `temp.db` 为事实源；两库内容一致且 SQLite 完整性检查通过。数据库最后更新时间为 2026-06-09 14:36，晚于 11:40 生成的 `FuncStep.c`，因此当前生成代码不能代表最新画布。
+- 工程数据库现有 87 个组件、241 条连线。其中 ACC 主画布包含 20 个组件、26 条连线，`ACCDecision` 复合组件内部包含 65 个组件、78 条连线。
+- 主画布已完成 CARLA 输入、驾驶指令、决策和纵向控制主链路：
+  - `CARLAACCEgoSpeed -> ACCDecision.egoV`
+  - `CARLAACCDriverCommand.commandType -> ACCDecision.commandType`
+  - `ACCDecision.enable -> CARLAACCLongitudinalCmd.enable`
+  - `egoV * timeGap -> max(MinDistance, ...) -> desiredDistance`
+  - `leadV + Kdist * (distance - desiredDistance) + Kspeed * (leadV - egoV)` 生成原始目标速度
+  - 目标速度经过非负限幅和 `ACCDecision.maxSpeed` 上限后连接 `CARLAACCLongitudinalCmd.speed`
+- `ACCDecision` 已不是半成品。当前已配置：
+  - 输入：`egoV`、`commandType`
+  - 输出：`enable`、`timeGap`、`maxSpeed`
+  - 局部状态：`controlEnabled=0`、`hasHistory=0`、`timeGap=1.8`、`maxSpeed=20`
+  - 局部参数：`vMin=1`、`GapStep=0.2`、`MinGap=1`、`MaxGap=5`、`SpdStep=4`、`MinSpd=0`
+- 状态计算、真值表和反馈链已经连接：低速状态判断、S0/S1/S2/S3 编码、`controlEnabled/hasHistory` 读写、`timeGap/maxSpeed` 读写均已进入画布。`enable` 当前由 `S0 = notLowSpeed && controlEnabled` 输出。
+- 真值表已配置 `systemState(u), commandType(v) -> y`，包含降速、增速、降距、增距、无继控制启控、继承控制启控、扭矩仲裁和待命分支。后级已对 `y=1..6` 中当前需要的分支进行解码，用于使能、时距和限速更新。
+- 时距更新链已完成：`y=3/4` 分别触发减小/增大时距，并通过 `MinGap/MaxGap` 限幅后写回 `state_.timeGap`。
+- 限速更新链已完成：`y=1/2` 分别触发降低/提高速度上限，通过 `MinSpd` 限幅后写回 `state_.maxSpeed`。
+- `CARLAACCDriverCommand` 已放入主画布并连接 `ACCDecision.commandType`，不再是“后续待放置”的画布组件。
+
+**本次已补齐的 CARLA 联调边界**：
+
+- 已实现 `watch-carla.py -> Bridge -> adapter -> CARLAACCDriverCommand` 驾驶指令链路：
+  - E/Q/T/R/C 作为单周期脉冲，adapter 每条只返回一次。
+  - W/S 在按下期间作为持续电平发送，释放后恢复 `commandType=0`；S 对应制动并退出 ACC。
+  - W/S 以 10 Hz 发送心跳，Bridge 超过 0.5 s 未收到更新会自动释放，避免窗口异常退出后残留指令。
+  - 当前只传输 `commandType`。W 的驾驶员油门扭矩仲裁暂不实现；S 不依赖扭矩仲裁，直接由画布退控链处理。
+- Bridge 新增 `gaasd.carla.driver_command.v1` 路由，控制输入和驾驶指令共用 `5702` 入口，但按 topic 分流；Bridge 再通过 `5701` 发布驾驶指令供 adapter 订阅。
+- adapter 已订阅驾驶指令 topic，并实现脉冲队列和持续指令缓存；Docker `ubuntu:env` 中构建和 mock loop 测试通过。
+- 已参考 `/home/aiden/PycharmProjects/CarlaAcc` 增加动态预瞄横向 PID：当前横向偏差权重 0.7、预瞄偏差权重 0.3，预瞄距离按 `8 + 0.3 * speed_mps` 在 5~15 m 内变化。
+- 已新增 `scenarios/newaccpro2_keyboard_carla_20260609` 联调场景，启动时自动打开键盘摄像头窗口，并使用 `newaccpro2`、动态前车和预瞄车道保持配置；重点验收 S 制动退出后保持待命。场景已保存当前 `newaccpro2` 画布快照并提供 UI 一键恢复脚本，覆盖恢复前会自动备份现有工程。
+
+**当前画布仍待联调确认的边界**：
+
+- `project/newaccpro2/icvos/src/oscilloscopeFunctions/.../FuncStep.c` 仍是更新前的固定 `desiredDistance=15`、固定 `enable=1` 版本。需要在新版 GAASD 中基于最新画布重新生成，才能检查完整决策代码。
+- 11:40 生成的真值表 C 代码仍暴露已知生成器问题：多条动作被无条件顺序赋值，不能据此运行验证真值表逻辑。画布真值表配置本身已完成，问题位于 GAASD 代码生成环节。
+- 当前 R7 只在真值表中表达 W 油门对应的“扭矩仲裁决策”。画布没有驾驶员油门扭矩数值输入，也没有 ACC 扭矩与驾驶员扭矩比较、选择和输出链，因此尚未实现 W 的物理控制量级扭矩仲裁。S 制动退出链已经连接，不属于该缺口。
+- 当前示波器仅连接 `egoV`、`leadV`、`distance`，第一个输入端口未连接。完整联调前应补充 `targetSpeed`，并根据需要增加 `commandType/y/enable/timeGap/maxSpeed` 的观测。
+
+**`newaccpro2` 下一步**：
+
+- 用最新画布重新生成代码，优先复核 `ACCDecision`、局部状态读写和真值表生成结果。
+- 修复或绕过真值表代码生成问题后，使用 `scenarios/newaccpro2_keyboard_carla_20260609/run.sh` 进行键盘指令、ACC 决策和 CARLA 闭环联调。
+- 后续若要求真实扭矩仲裁，需要新增驾驶员踏板或扭矩输入以及对应控制输出接口，不能只依赖 `commandType=5`。
+
+---
+
+## 当前状态（2026-06-04 更新）
+
+**ACC 决策层用「组件」(composite-block) 封装 + 官方范式确认**：
+
+- 确认新版「组件」= `composite-block`（带自有 cppClass，可配局部参数/局部状态），是决策子系统的正确容器；composite-function 不带局部状态。官方 PidController demo 即 composite-block + read-local-state/read-local-param 实现。
+- 解析 PidController 内部（34 子块）提炼 4 点范式并写入 `docs/GAASD_ACCDecision_复合函数连线清单.md`：
+  1. 子系统端口用组件内部的 `input`/`output` 块表示。
+  2. 可调增益用局部参数 Param + `read-local-param`（如 kDist/kSpeed/timeGapStep/限幅值），属性面板可调，不必改图重生成。
+  3. 结构性常量（判等 0-8）仍用 `constant`。
+  4. 关键中间量可用 `variable` 块命名。
+- 当时的 newaccpro2 体检结论（已被 2026-06-09 最新画布进展取代）：CARLA I/O + 基础控制律（仍是固定 15m 公式）已搭；状态计算半成品且 isActive/hasHistory 用常量；真值表已放未接（0 连线）；无任何状态记忆组件。
+- 已定方向：控制律升级为时距公式（egoV×timeGap）保留在主画布；全部决策状态机封进 `ACCDecision` 组件(composite-block)，输入 egoV/commandType，局部状态 controlEnabled/hasHistory/timeGap/maxSpeed，输出 enable/timeGap/maxSpeed。
+- 决策连线清单（约 75-85 块，分段 A-H）见 `docs/GAASD_ACCDecision_复合函数连线清单.md`；要求先搭“最小验证版（到 enable）”验证 composite-block + 状态组件 + 真值表的 codegen 能用，再加时距/限速。
+- 指令脉冲源（边沿检测/驾驶指令边界组件）列为后续，见主方案第 11 节，当前主线按“单周期脉冲”约定，画布不搭边沿检测。
+
+**CARLA ACC 边界组件严格扫描版（TM 问题闭环）**：
+
+- 针对 `docs/source_generated代码规范验证问题实例.md` 中 TM 指出的外部 adapter、C 指针出参、`.data()`、复合条件等问题，新增并行严格版目录：`generated/gaasd_p0_acc_min_components_strict_src/`。
+- 严格版保留 4 个 ACC 主线边界组件名：`CARLAACCEgoSpeed`、`CARLAACCLeadSpeed`、`CARLAACCLeadDistance`、`CARLAACCLongitudinalCmd`，但移除头文件 `extern "C"` 声明和 `run()` 内 `carla_adapter_*` 调用。
+- 严格版把 CARLA 数据改为结构化 `Input` 字段输入，把控制命令改为结构化 `Output` 字段输出；因此它用于新版 GAASD 扫描/入库讨论，不能直接替代当前可运行 adapter 版本。
+- 已验证：`cmake -S generated/gaasd_p0_acc_min_components_strict_src -B /tmp/gaasd_p0_acc_min_components_strict_build` 和 `cmake --build /tmp/gaasd_p0_acc_min_components_strict_build -j2` 均通过；源码目录扫描未发现 `carla_adapter_`、`extern "C"`、`.data()`、`double*`、`int*`。
+- 若采用严格版联调，GAASD 团队需要在运行时/节点层完成 Bridge 数据绑定：将 `egoV/leadV/distance/valid` 注入组件输入，并从 `CARLAACCLongitudinalCmd` 的 `speed/enable/valid` 输出发布到 Bridge。
+
+---
+
+**新版 GAASD 2.7.0.5 旁路安装与组件迁移**：
+
+- 新版以旁路方式安装，与旧版（`/opt/gaasd`、`~/gaasd_server`）完全隔离：
+  - 本体 `~/gaasd_versions/gaasd-2.7.0.5/app`，独立 profile `.../home`，启动脚本 `run-gaasd-2.7.0.5.sh`（隔离 HOME/XDG/`--user-data-dir`）。
+  - 安装包只含 GUI，后端 `gaasd_server`（codeTools/new_gaasd、hardwarePlatform、components）需单独导入；已通过 GUI「系统环境管理」导入到新 profile：环境镜像 `ubuntuEnv.tar`、工具包 `gaasd_code_tools_20260529.tar`、清华组件 `THICV`。
+  - 2026-06-04 已手动更新 0603 后端和组件包：
+    - 工具包：`/home/aiden/文档/temp/gaasd_code_tools_20260603.tar`
+    - 组件包：`/home/aiden/文档/temp/清华组件包_0603_3.tar`
+    - 更新目标：`/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools` 和 `.../components/THICV`
+    - 更新前备份：`backups/gaasd-2.7.0.5/20260604_103442/`
+  - 0603 版 `dist/run_simulation.sh` 已改变 `struct.json` 缺失处理：不再直接退出，而是输出警告并创建空 `{}`。这可能解决新版字典缺少旧 `struct.json` 导致仿真启动失败的问题。
+  - 0603 版 `codescan --help` 仍显示为“C代码扫描工具”，未发现 `new_gaasd` 可执行文件；新版 C++ FuncModule 扫描能力仍需实际验证或等待团队确认。
+
+- 新版重建工程 `project/newaccpro2`（此处记录的是初建阶段，当前完整进展见 2026-06-09 章节）：
+  - 自定义组件由 `gaasd_carla_p0_acc_min_components.tar.gz` 导入（4 个 CARLA 组件，THICV 供应商）。
+  - 适配器 `libcarla_gaasd_adapter.so`（5/26 版）已放入 `objectCode/total/DLL/`。
+  - 代码生成正常（FuncStep.c 正确），但示波器仿真报错。
+
+- **已定位的新版关键问题（GAASD 侧）**：
+  - 仿真报错根因：旧版 `run_simulation.sh` 第 248 行硬检查 `dictionaryData/struct.json`，而新版 GUI 生成的是新格式字典（`baseTypes.json`、`GlobalContext.json`、分散的 `*Types.json`），无 `struct.json` → 仿真启动即退出，未进编译。**已反馈开发团队（工具包内新旧组件不配套）。**
+  - 新版新增「全局/局部 状态与参数」体系：`GlobalVariable.json`(GlobalParams/GlobalStates)、复合组件 Param/State、`GlobalContext`；后端接口 `getGlobalVariableConfig` / `updateCompositeVariableConfig` 等（旧版无）。
+
+- **自定义组件按新版 C++ 规范改写完成**：
+  - 依据 `docs/C++代码规范.md`(v1.0.31) 与 `docs/组件改写执行提示词.md`，输出到 `generated/gaasd_p0_acc_min_components_src/`。
+  - 5 个模块改写为 `FuncModule<Traits>` C++20 组件（Input/Output/Param/State/Sub + run()），含固定 `FuncModule.hpp`、`CMakeLists.txt`、`校验报告.md`。
+  - 在 docker `ubuntu:env`（gcc9.4）自包含编译通过（产物 `libcarla_acc_min_components.a`）；GCC9 concepts 需 `-fconcepts`，已在 CMake 按版本条件追加。
+  - `CARLAACCComputeTargetSpeed` 纯计算完全合规；4 个 I/O 模块因 CARLA 适配器为 C ABI（指针出参），`run()` 含指针，与 `BODY-006`/`RUN-009` 冲突，**校验报告中标为「需确认」**（边界适配固有约束，待确认新版是否提供图级边界输入机制）。
+
+- **全部 5 组共 18 个组件已按新规范改写并编译通过**（acc_min 5、acc_decision 2、p0 4、lks 4、p1 3），均输出到 `generated/<工程>/`。
+
+- **组件重要性取舍（2026-06-03 决定，详见 `generated/组件状态与取舍.md`）**：
+  - 🟢 核心在用（维护、优先扫描入库）：`gaasd_p0_acc_min_components_src` 的 4 个 I/O（newaccpro2 用）+ `gaasd_lks_components_src` 的 4 个（lkspro1 用）。
+  - 🟡 未来扩展（保留待用）：`gaasd_p1_components_src`（ObjectList/LateralCmd/ControlCmd）。
+  - 🔴 废弃/已被取代（不再维护）：`gaasd_acc_decision_components_src`（决策已走真值表+基础块路线）、`gaasd_p0_components_src`（多输出版被 acc_min 单输出版取代）、acc_min 内的 `ComputeTargetSpeed`（目标速度用基础块算）。
+  - CARLAObjectList 为数组型边界接口，存在 TYPE-013/015、BODY-006/022 多条例外，列为未来扩展暂不使用。
+
+- **ACC 完整决策画布路线修正（2026-06-03）**：
+  - 主线明确为“CARLA 边界自定义组件 + ACC 内部基础模块搭建”。自定义组件只用于 `CARLAACCEgoSpeed`、`CARLAACCLeadSpeed`、`CARLAACCLeadDistance`、`CARLAACCLongitudinalCmd` 等 Bridge 通信边界。
+  - ACC 内部决策和控制尽量使用 GAASD 基础模块：`constant`、`read-local-state/write-local-state`、`add/subtract/multiply/divide`、`equal/not-equal`、`less/greater`、`logic-and/or/not`、`fmin/fmax`、`truth-table`、`oscilloscope`。新版局部状态组件优先，`static-variable` 只作为旧版或状态组件不可用时的兜底。
+  - 决策层以 `truth-table` 为主线，按旧版 `accpro2` 的 GAASD 真值表习惯直接输出端口 `y`。推荐定义 `y=0` 为无新动作/保持参数，`y=1..8` 对应 R1..R8；后级用基础比较块生成 `R1=(y==1)`、`R2=(y==2)` 等分支条件。
+  - 不再引入 `decisionEvent` / `activeDecisionY` / `lastActiveDecision` 这套额外命名和反馈链。`y=0` 时不触发 `timeGap/maxSpeed` 更新，参数由局部状态 `timeGap/maxSpeed/controlEnabled/hasHistory` 自然保持，避免无新指令时重复触发降距/增距。
+  - 真值表先按已验证的 2 输入形态设计：`systemState, commandType -> y`。当前主线把 `commandType` 定义为单周期驾驶指令脉冲，不在画布内搭边沿检测。
+  - `docs/GAASD_ACC_完整决策控制画布方案.md` 已补充完整画布连线表，按实例名和端口列出基础跟车、指令脉冲输入、S0-S3 状态、真值表、enable、timeGap、maxSpeed、hasHistory、示波器各阶段连接方式；同时补充 `Mul_/Sub_/Eq_/And_` 和 `RS_/WS_` 等实例名前缀与 GAASD 基础模块类型的对应关系，便于照表拖模块和连线。
+  - `commandType` 正常为 0；有驾驶指令时只允许非零保持 1 个 GAASD 仿真周期，然后回到 0。若后续输入源不能保证单周期脉冲，再补 `lastCommandType` 边沿检测模块。
+  - CARLA 静止起步测试需要处理低速 S3 死锁：文档一致模式可让 ego 初速高于 `vMin`；CARLA 测试模式建议 `vMin=0.0`。同时 R5 当前速度启控不能在 `egoV=0` 时把 `maxSpeed` 覆盖成 0，需加 `r5CaptureMinSpeed` 保护。
+  - 多个跨周期状态量（`controlEnabled`、`hasHistory`、`timeGap`、`maxSpeed`）必须先在新版局部 `State` 中配置，再通过 `read-local-state/write-local-state` 分阶段接入；每接一个状态写入后生成代码检查环路/拓扑排序，不能一次性全部铺开。
+  - `tools/carla_bridge/gaasd_acc_full_decision_components/` 已降级为备用验证件，不作为正式画布导入主线；正式方案见 `docs/GAASD_ACC_完整决策控制画布方案.md`。
+
+- **codescan 验证结论**：本地 codescan 是旧版 C 扫描器，扫旧 `.c` 能出 5 组件，但**完全识别不了新版 C++ FuncModule 格式**（0 组件）。即工具包 codescan / run_simulation / gaas_codegen 全是旧版，只有 GUI 是新版。改写后的 C++ 组件须等团队提供配套新版 codescan 才能扫描入库。
+
+**下一步任务**：
+
+- 等开发团队提供与新版 GUI 字典格式配套的 `run_simulation.sh`（或确认新版后端 `new_gaasd`），解决 `struct.json` 报错，跑通 newaccpro2 闭环。
+- 用新版 codescan 扫描 `generated/gaasd_p0_acc_min_components_src/`，确认改写后的 C++ 组件能被新版正确扫描入库。
+- 确认 I/O 边界模块的处理方式：保留 run() 内适配器调用，还是改为新版图级边界输入。
+
+---
+
 ## 当前状态（2026-05-26 更新）
 
 **LKS 单车联合仿真准备**：

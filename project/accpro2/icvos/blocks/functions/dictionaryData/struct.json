@@ -1,0 +1,1737 @@
+{
+    "Infopack__ObjectsProto": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "type",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "objectid",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "lat",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "lon",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "y",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "yaw",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "power",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "finish",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "len",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "width",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "height",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "timestamp",
+                "category": 0,
+                "dataType": "long long",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "status",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "vctype",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Pc__Imu": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "longitude",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "latitude",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "gaussx",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "gaussy",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "gpsvalid",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "time",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "yaw",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Infopack__ObjectsVec": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "n_objmsg",
+                "category": 0,
+                "dataType": "unsigned long",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "objmsg",
+                "category": 0,
+                "dataType": "Infopack__ObjectsProto **",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "sensorid",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Prediction__PredictPoint": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "y",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "vx",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "vy",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Prediction__Object": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "n_predictpoint",
+                "category": 0,
+                "dataType": "unsigned long",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "predictpoint",
+                "category": 0,
+                "dataType": "Prediction__PredictPoint **",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "z",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "w",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "h",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "l",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "type",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "trackid",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Prediction__ObjectList": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "n_object",
+                "category": 0,
+                "dataType": "unsigned long",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "object",
+                "category": 0,
+                "dataType": "Prediction__Object **",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "Infopack__TrafficLight": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "active",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "state",
+                "category": 0,
+                "dataType": "Infopack__TrafficLight__State",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "remaining_time",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "lane_length_before_intersection",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "protobuf-c"
+    },
+    "PlanningPoint": {
+        "description": "规划路径点结构体",
+        "alias": "路径点结构体",
+        "fields": [
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "x坐标值"
+            },
+            {
+                "name": "y",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "y坐标值"
+            },
+            {
+                "name": "angle",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "角度值"
+            },
+            {
+                "name": "gaussX",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "高斯坐标x值"
+            },
+            {
+                "name": "gaussY",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "高斯坐标y值"
+            },
+            {
+                "name": "gaussAngle",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "高斯角度值"
+            },
+            {
+                "name": "s",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "s坐标值"
+            },
+            {
+                "name": "l",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "l坐标值"
+            },
+            {
+                "name": "frenetAngle",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "frenet角度值"
+            },
+            {
+                "name": "v",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度值"
+            },
+            {
+                "name": "curvature",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "曲率值"
+            },
+            {
+                "name": "accumS",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "累积s值"
+            }
+        ],
+        "source": "code"
+    },
+    "GaussRoadPoint": {
+        "description": "地图路径点结构体",
+        "alias": "地图路径点结构体",
+        "fields": [
+            {
+                "name": "GaussX",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "高斯x坐标值"
+            },
+            {
+                "name": "GaussY",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "高斯y坐标值"
+            },
+            {
+                "name": "yaw",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "角度值"
+            },
+            {
+                "name": "curvature",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "曲率值"
+            },
+            {
+                "name": "s",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "累计长度值"
+            },
+            {
+                "name": "speedMax",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "最大速度值"
+            }
+        ],
+        "source": "code"
+    },
+    "PlanningTrajectory": {
+        "description": "规划路径集合结构体",
+        "alias": "路径点结构体",
+        "fields": [
+            {
+                "name": "planningPoints",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "轨迹点数组"
+            }
+        ],
+        "source": "code"
+    },
+    "ReferenceLine": {
+        "description": "参考线点集合结构体",
+        "alias": "参考线点集合结构体",
+        "fields": [
+            {
+                "name": "referenceLinePoints",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "参考线点数组"
+            },
+            {
+                "name": "referenceLinePointsNum",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "参考线点数量"
+            }
+        ],
+        "source": "code"
+    },
+    "RoadLaneIdPair": {
+        "description": "后继路的road和lane索引结构体",
+        "alias": "后继路的road和lane索引结构体",
+        "fields": [
+            {
+                "name": "roadIndex",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "road索引"
+            },
+            {
+                "name": "laneIndex",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "lane索引"
+            }
+        ],
+        "source": "code"
+    },
+    "DecisionData": {
+        "description": "规划决策所需数据结构体",
+        "alias": "规划所需数据结构体",
+        "fields": [
+            {
+                "name": "finalPathList",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "最后规划路径"
+            },
+            {
+                "name": "referenceLine",
+                "category": 0,
+                "dataType": "ReferenceLine",
+                "shape": [],
+                "description": "参考线"
+            },
+            {
+                "name": "frenetLocationPoint",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "frenet坐标系下车辆位置"
+            },
+            {
+                "name": "speedList",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度采样列表"
+            },
+            {
+                "name": "controlTrajectoryList",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "控制轨迹列表"
+            },
+            {
+                "name": "feasibleTrajectoryIndexList",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "可行轨迹索引列表"
+            },
+            {
+                "name": "optimalGlobalTrajectory",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "最优轨迹转化成全局坐标"
+            },
+            {
+                "name": "optimalTrajectoryIndex",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "最优轨迹序号"
+            },
+            {
+                "name": "currentId",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "当前RoadID"
+            },
+            {
+                "name": "currentLaneId",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "当前LaneID"
+            },
+            {
+                "name": "currentIndex",
+                "category": 0,
+                "dataType": "int",
+                "shape": [],
+                "description": "当前路点index"
+            },
+            {
+                "name": "nextId",
+                "category": 0,
+                "dataType": "RoadLaneIdPair",
+                "shape": [],
+                "description": "后继路的roadindex 和laneIndex"
+            }
+        ],
+        "source": "code"
+    },
+    "generateBezierPathListInFrenetInput": {
+        "description": "生成多条贝塞尔曲线函数输入结构体",
+        "alias": "生成多条贝塞尔曲线函数输入结构体",
+        "fields": [
+            {
+                "name": "referenceLine",
+                "category": 0,
+                "dataType": "ReferenceLine",
+                "shape": [],
+                "description": "参考线点数组"
+            },
+            {
+                "name": "frenetLocationPoint",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "路径点"
+            },
+            {
+                "name": "pathList",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "多条曲线数组"
+            }
+        ],
+        "source": "code"
+    },
+    "generateBezierPathListInFrenetOutput": {
+        "description": "生成多条贝塞尔曲线函数输出结构体",
+        "alias": "生成多条贝塞尔曲线函数输出结构体",
+        "fields": [
+            {
+                "name": "pathList",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "多条曲线数组"
+            }
+        ],
+        "source": "code"
+    },
+    "generateBezierPathInFrenetInput": {
+        "description": "计算单条贝塞尔曲线上点集合函数输入结构体",
+        "alias": "计算单条贝塞尔曲线上点集合函数输入结构体",
+        "fields": [
+            {
+                "name": "startPoint",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "贝塞尔曲线起点"
+            },
+            {
+                "name": "endPoint",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "贝塞尔曲线终点"
+            },
+            {
+                "name": "curve",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "贝塞尔曲线点集合"
+            }
+        ],
+        "source": "code"
+    },
+    "generateBezierPathInFrenetOutput": {
+        "description": "计算单条贝塞尔曲线上点集合函数输出结构体",
+        "alias": "计算单条贝塞尔曲线上点集合函数输出结构体",
+        "fields": [
+            {
+                "name": "curve",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "贝塞尔曲线点集合"
+            }
+        ],
+        "source": "code"
+    },
+    "pointOnCubicBezierInput": {
+        "description": "计算贝塞尔曲线上点函数输入结构体",
+        "alias": "计算贝塞尔曲线上点函数输入结构体",
+        "fields": [
+            {
+                "name": "cp",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "贝塞尔曲线控制点数组"
+            },
+            {
+                "name": "t",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "计算贝塞尔曲线步长"
+            }
+        ],
+        "source": "code"
+    },
+    "pointOnCubicBezierOutput": {
+        "description": "计算贝塞尔曲线上点函数输出结构体",
+        "alias": "计算贝塞尔曲线上点函数输出结构体",
+        "fields": [
+            {
+                "name": "result",
+                "category": 0,
+                "dataType": "PlanningPoint",
+                "shape": [],
+                "description": "贝塞尔曲线上的点"
+            }
+        ],
+        "source": "code"
+    },
+    "generateSpeedListParam": {
+        "description": "速度规划参数结构体",
+        "alias": "速度规划参数结构体",
+        "fields": [
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "障碍物信息"
+            },
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            }
+        ],
+        "source": "code"
+    },
+    "generateSpeedListInput": {
+        "description": "速度规划输入结构体",
+        "alias": "速度规划输入结构体",
+        "fields": [
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度"
+            },
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            }
+        ],
+        "source": "code"
+    },
+    "generateSpeedListOutput": {
+        "description": "速度规划输出结构体",
+        "alias": "速度规划输出结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            }
+        ],
+        "source": "code"
+    },
+    "hasPrecedingVehicleParam": {
+        "description": "判断跟车参数结构体",
+        "alias": "判断跟车参数结构体",
+        "fields": [
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "障碍物信息"
+            }
+        ],
+        "source": "code"
+    },
+    "hasPrecedingVehicleOutput": {
+        "description": "判断跟车输入结构体",
+        "alias": "判断跟车输入结构体",
+        "fields": [
+            {
+                "name": "flag",
+                "category": 0,
+                "dataType": "bool",
+                "shape": [],
+                "description": "是否跟车"
+            }
+        ],
+        "source": "code"
+    },
+    "getDistanceInput": {
+        "description": "计算距离输入结构体",
+        "alias": "计算距离输入结构体",
+        "fields": [
+            {
+                "name": "x1",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "坐标x1"
+            },
+            {
+                "name": "y1",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "坐标y1"
+            },
+            {
+                "name": "x2",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "坐标x2"
+            },
+            {
+                "name": "y2",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "坐标y2"
+            }
+        ],
+        "source": "code"
+    },
+    "getDistanceOutput": {
+        "description": "计算距离输出结构体",
+        "alias": "计算距离输出结构体",
+        "fields": [
+            {
+                "name": "dis",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "距离"
+            }
+        ],
+        "source": "code"
+    },
+    "cruiseControllerParam": {
+        "description": "计算跟车速度参数结构体",
+        "alias": "计算跟车速度参数结构体",
+        "fields": [
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "障碍物信息"
+            }
+        ],
+        "source": "code"
+    },
+    "cruiseControllerOutput": {
+        "description": "计算跟车速度输出结构体",
+        "alias": "计算跟车速度输出结构体",
+        "fields": [
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "障碍物信息"
+            },
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度"
+            }
+        ],
+        "source": "code"
+    },
+    "interpConstAccInput": {
+        "description": "计算定加速度参数结构体",
+        "alias": "计算定加速度参数结构体",
+        "fields": [
+            {
+                "name": "startSpeed",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "起始速度"
+            },
+            {
+                "name": "endSpeed",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "结束速度"
+            },
+            {
+                "name": "num",
+                "category": 0,
+                "dataType": "size_t",
+                "shape": [],
+                "description": "曲线点数"
+            },
+            {
+                "name": "acceleration",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "加速度"
+            }
+        ],
+        "source": "code"
+    },
+    "interpConstAccOutput": {
+        "description": "计算定加速度输出结构体",
+        "alias": "计算定加速度输出结构体",
+        "fields": [
+            {
+                "name": "result",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度信息"
+            }
+        ],
+        "source": "code"
+    },
+    "restartParam": {
+        "description": "判断是否在重启函数参数结构体",
+        "alias": "判断是否在重启函数参数结构体",
+        "fields": [
+            {
+                "name": "prediction",
+                "category": 0,
+                "dataType": "Prediction__ObjectList*",
+                "shape": [],
+                "description": "感知栅格信息"
+            }
+        ],
+        "source": "code"
+    },
+    "restartInput": {
+        "description": "判断是否在重启函数输入结构体",
+        "alias": "判断是否在重启函数输入结构体",
+        "fields": [
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "速度"
+            }
+        ],
+        "source": "code"
+    },
+    "restartOutput": {
+        "description": "判断是否在重启函数输出结构体",
+        "alias": "判断是否在重启函数输出结构体",
+        "fields": [
+            {
+                "name": "flag",
+                "category": 0,
+                "dataType": "bool",
+                "shape": [],
+                "description": "是否重新启动"
+            }
+        ],
+        "source": "code"
+    },
+    "inAreaInput": {
+        "description": "判断是否在区域内函数输入结构体",
+        "alias": "判断是否在区域内函数输入结构体",
+        "fields": [
+            {
+                "name": "longitudeX",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "点1坐标X"
+            },
+            {
+                "name": "latitudeY",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "点1坐标Y"
+            },
+            {
+                "name": "targetX",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "点2坐标X"
+            },
+            {
+                "name": "targetY",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "点2坐标Y"
+            }
+        ],
+        "source": "code"
+    },
+    "inAreaOutput": {
+        "description": "判断是否在区域内函数输出结构体",
+        "alias": "判断是否在区域内函数输出结构体",
+        "fields": [
+            {
+                "name": "flag",
+                "category": 0,
+                "dataType": "bool",
+                "shape": [],
+                "description": "是否在区域内"
+            }
+        ],
+        "source": "code"
+    },
+    "stopPointJudgeParam": {
+        "description": "判断车辆是否在停止点区域内函数参数结构体",
+        "alias": "判断车辆是否在停止点区域内函数参数结构体",
+        "fields": [
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "stopPoints",
+                "category": 0,
+                "dataType": "GaussRoadPoint",
+                "shape": [],
+                "description": "停止点信息"
+            }
+        ],
+        "source": "code"
+    },
+    "stopPointJudgeOutput": {
+        "description": "判断车辆是否在停止点区域内函数输出结构体",
+        "alias": "判断车辆是否在停止点区域内函数输出结构体",
+        "fields": [
+            {
+                "name": "flag",
+                "category": 0,
+                "dataType": "bool",
+                "shape": [],
+                "description": "是否在停止点区域内"
+            }
+        ],
+        "source": "code"
+    },
+    "stopInput": {
+        "description": "停车速度计算函数输入结构体",
+        "alias": "停车速度计算函数输入结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            },
+            {
+                "name": "velocity",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "当前速度"
+            }
+        ],
+        "source": "code"
+    },
+    "stopOutput": {
+        "description": "停车速度计算函数输出结构体",
+        "alias": "停车速度计算函数输出结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            }
+        ],
+        "source": "code"
+    },
+    "interpLinearInput": {
+        "description": "线型差值函数输入结构体",
+        "alias": "线型差值函数输入结构体",
+        "fields": [
+            {
+                "name": "startSpeed",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "起始速度"
+            },
+            {
+                "name": "endSpeed",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "结束速度"
+            },
+            {
+                "name": "num",
+                "category": 0,
+                "dataType": "size_t",
+                "shape": [],
+                "description": "差值个数"
+            }
+        ],
+        "source": "code"
+    },
+    "interpLinearOutput": {
+        "description": "线型差值函数输出结构体",
+        "alias": "线型差值函数输出结构体",
+        "fields": [
+            {
+                "name": "result",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "差值结果"
+            }
+        ],
+        "source": "code"
+    },
+    "getOptimalTrajectoryIndexParam": {
+        "description": "轨迹选择参数结构体",
+        "alias": "轨迹选择参数结构体",
+        "fields": [
+            {
+                "name": "prediction",
+                "category": 0,
+                "dataType": "Prediction__ObjectList*",
+                "shape": [],
+                "description": "感知栅格信息"
+            },
+            {
+                "name": "trafficLight",
+                "category": 0,
+                "dataType": "Infopack__TrafficLight*",
+                "shape": [],
+                "description": "交通等信息"
+            },
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "路侧感知目标信息"
+            }
+        ],
+        "source": "code"
+    },
+    "getOptimalTrajectoryIndexInput": {
+        "description": "轨迹选择输入结构体",
+        "alias": "轨迹选择输入结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            }
+        ],
+        "source": "code"
+    },
+    "getOptimalTrajectoryIndexOutput": {
+        "description": "轨迹选择输出结构体",
+        "alias": "轨迹选择输出结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            },
+            {
+                "name": "index",
+                "category": 0,
+                "dataType": "int32_t",
+                "shape": [],
+                "description": "最优轨迹索引"
+            }
+        ],
+        "source": "code"
+    },
+    "processTrafficLightParam": {
+        "description": "处理交通灯参数结构体",
+        "alias": "处理交通灯参数结构体",
+        "fields": [
+            {
+                "name": "prediction",
+                "category": 0,
+                "dataType": "Prediction__ObjectList*",
+                "shape": [],
+                "description": "感知栅格信息"
+            },
+            {
+                "name": "trafficLight",
+                "category": 0,
+                "dataType": "Infopack__TrafficLight*",
+                "shape": [],
+                "description": "交通等信息"
+            }
+        ],
+        "source": "code"
+    },
+    "processTrafficLightInput": {
+        "description": "处理交通灯输入结构体",
+        "alias": "处理交通灯输入结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            }
+        ],
+        "source": "code"
+    },
+    "processTrafficLightOutput": {
+        "description": "处理交通灯输出结构体",
+        "alias": "处理交通灯输出结构体",
+        "fields": [
+            {
+                "name": "decisionData",
+                "category": 0,
+                "dataType": "DecisionData",
+                "shape": [],
+                "description": "决策数据"
+            },
+            {
+                "name": "flag",
+                "category": 0,
+                "dataType": "int32_t",
+                "shape": [],
+                "description": "交通灯处理后的状态"
+            }
+        ],
+        "source": "code"
+    },
+    "assessTrajectoryParam": {
+        "description": "处理障碍物距离参数结构体",
+        "alias": "处理障碍物距离参数结构体",
+        "fields": [
+            {
+                "name": "prediction",
+                "category": 0,
+                "dataType": "Prediction__ObjectList*",
+                "shape": [],
+                "description": "感知栅格信息"
+            },
+            {
+                "name": "imu",
+                "category": 0,
+                "dataType": "Pc__Imu*",
+                "shape": [],
+                "description": "IMU信息"
+            },
+            {
+                "name": "objectsCmd",
+                "category": 0,
+                "dataType": "Infopack__ObjectsVec*",
+                "shape": [],
+                "description": "路侧感知目标信息"
+            }
+        ],
+        "source": "code"
+    },
+    "assessTrajectoryInput": {
+        "description": "处理障碍物距离输入结构体",
+        "alias": "处理障碍物距离输入结构体",
+        "fields": [
+            {
+                "name": "trajectory",
+                "category": 0,
+                "dataType": "PlanningTrajectory",
+                "shape": [],
+                "description": "轨迹"
+            }
+        ],
+        "source": "code"
+    },
+    "assessTrajectoryOutput": {
+        "description": "处理障碍物距离输出结构体",
+        "alias": "处理障碍物距离输出结构体",
+        "fields": [
+            {
+                "name": "minDistance",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "最小距离"
+            }
+        ],
+        "source": "code"
+    },
+    "TrajPoint": {
+        "description": "轨迹点结构体",
+        "alias": "轨迹点结构体",
+        "fields": [
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "轨迹点在全局坐标系下的 x 位置"
+            },
+            {
+                "name": "y",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "轨迹点在全局坐标系下的 y 位置"
+            },
+            {
+                "name": "yaw",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆航向角（以全局坐标系 X 轴为参考顺时针为正，范围[0-360））"
+            },
+            {
+                "name": "v",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "轨迹点对应的车辆速度"
+            },
+            {
+                "name": "k",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "轨迹点曲率，用于横向控制与转向前馈"
+            },
+            {
+                "name": "s",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "从轨迹起点到当前轨迹点的累计弧长"
+            },
+            {
+                "name": "acc",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "轨迹点对应的纵向加速度"
+            }
+        ],
+        "source": "code"
+    },
+    "Traj": {
+        "description": "轨迹结构体",
+        "alias": "轨迹",
+        "fields": [
+            {
+                "name": "points",
+                "category": 0,
+                "dataType": "TrajPoint*",
+                "shape": [],
+                "description": "轨迹点数组"
+            },
+            {
+                "name": "size",
+                "category": 0,
+                "dataType": "size_t",
+                "shape": [],
+                "description": "轨迹点数量"
+            }
+        ],
+        "source": "code"
+    },
+    "VehicleState": {
+        "description": "车辆状态结构体",
+        "alias": "车辆状态结构体",
+        "fields": [
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆在全局坐标系下的纵向 x 位置"
+            },
+            {
+                "name": "v",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆对应的车辆速度"
+            },
+            {
+                "name": "a",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆对应的纵向加速度"
+            }
+        ],
+        "source": "code"
+    },
+    "PIDState": {
+        "description": "",
+        "alias": "",
+        "fields": [
+            {
+                "name": "integral",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            },
+            {
+                "name": "lastError",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": ""
+            }
+        ],
+        "source": "code"
+    },
+    "State": {
+        "description": "车辆状态结构体",
+        "alias": "车辆状态结构体",
+        "fields": [
+            {
+                "name": "x",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆在全局/地图坐标系下的 X 位置"
+            },
+            {
+                "name": "y",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆在全局/地图坐标系下的 Y 位置"
+            },
+            {
+                "name": "yaw",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆航向角（以全局坐标系 X 轴为参考顺时针为正，范围[0-360））"
+            },
+            {
+                "name": "v",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆当前纵向速度"
+            },
+            {
+                "name": "accX",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "车辆纵向加速度（车体坐标系 X 轴方向）"
+            },
+            {
+                "name": "rtkMode",
+                "category": 0,
+                "dataType": "double",
+                "shape": [],
+                "description": "RTK 定位模式/状态标志"
+            }
+        ],
+        "source": "code"
+    },
+    "DijkstraStepInput_t": {
+        "description": "存储Dijkstra算法输入信号，包括邻接矩阵与源/目标节点",
+        "alias": "Dijkstra输入信号",
+        "fields": [
+            {
+                "name": "AdjMatrix",
+                "category": 2,
+                "dataType": "Real",
+                "shape": [
+                    64,
+                    64
+                ],
+                "description": "邻接矩阵，权重>0表示有边"
+            },
+            {
+                "name": "NodeCount",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "实际节点数量"
+            },
+            {
+                "name": "SourceNode",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "源节点索引（从0开始）"
+            },
+            {
+                "name": "TargetNode",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "目标节点索引（从0开始）"
+            }
+        ],
+        "source": "code"
+    },
+    "DijkstraStepParam_t": {
+        "description": "存储Dijkstra算法可调参数",
+        "alias": "Dijkstra可调参数",
+        "fields": [
+            {
+                "name": "MaxNodes",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "允许处理的最大节点数上限"
+            }
+        ],
+        "source": "code"
+    },
+    "DijkstraStepState_t": {
+        "description": "存储Dijkstra算法内部工作状态",
+        "alias": "Dijkstra内部状态",
+        "fields": [
+            {
+                "name": "Dist",
+                "category": 2,
+                "dataType": "Real",
+                "shape": [
+                    64
+                ],
+                "description": "各节点当前最短距离"
+            },
+            {
+                "name": "Visited",
+                "category": 2,
+                "dataType": "Boolean",
+                "shape": [
+                    64
+                ],
+                "description": "节点访问标记"
+            },
+            {
+                "name": "PrevNode",
+                "category": 2,
+                "dataType": "Integer",
+                "shape": [
+                    64
+                ],
+                "description": "最短路径前驱节点索引"
+            }
+        ],
+        "source": "code"
+    },
+    "DijkstraStepOutput_t": {
+        "description": "存储Dijkstra算法输出结果，包括最短距离与路径",
+        "alias": "Dijkstra输出结果",
+        "fields": [
+            {
+                "name": "ShortestDist",
+                "category": 0,
+                "dataType": "Real",
+                "shape": [],
+                "description": "源节点到目标节点的最短距离"
+            },
+            {
+                "name": "Path",
+                "category": 2,
+                "dataType": "Integer",
+                "shape": [
+                    64
+                ],
+                "description": "最短路径节点序列（从源到目标）"
+            },
+            {
+                "name": "PathLength",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "最短路径中的节点个数"
+            },
+            {
+                "name": "PathFound",
+                "category": 0,
+                "dataType": "Boolean",
+                "shape": [],
+                "description": "是否找到从源到目标的有效路径"
+            }
+        ],
+        "source": "code"
+    },
+    "FindMinNodeOutput_t": {
+        "description": "存储查找最小距离节点的输出结果",
+        "alias": "查找最小节点输出",
+        "fields": [
+            {
+                "name": "MinNode",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "最小距离的未访问节点索引"
+            },
+            {
+                "name": "MinDist",
+                "category": 0,
+                "dataType": "Real",
+                "shape": [],
+                "description": "该节点的当前最短距离"
+            }
+        ],
+        "source": "code"
+    },
+    "BacktrackPathOutput_t": {
+        "description": "存储路径回溯的输出结果",
+        "alias": "路径回溯输出",
+        "fields": [
+            {
+                "name": "Path",
+                "category": 2,
+                "dataType": "Integer",
+                "shape": [
+                    64
+                ],
+                "description": "回溯得到的路径（逆序：从目标到源）"
+            },
+            {
+                "name": "PathLength",
+                "category": 0,
+                "dataType": "Integer",
+                "shape": [],
+                "description": "路径中的节点个数"
+            }
+        ],
+        "source": "code"
+    }
+}

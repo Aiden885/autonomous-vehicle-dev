@@ -1,0 +1,82 @@
+{
+  "Input": {
+    "description": "比例控制扭矩计算模块输入端口集合。",
+    "alias": "比例控制扭矩计算模块输入端口集合。",
+    "fields": [
+      {
+        "name": "speedError",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车速控制偏差 Delta vi(t) (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "比例控制扭矩计算模块输出端口集合。",
+    "alias": "比例控制扭矩计算模块输出端口集合。",
+    "fields": [
+      {
+        "name": "torqueCommand",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "限幅后的控制扭矩命令 Ti(t) (Nm)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "比例控制扭矩计算模块参数集合。",
+    "alias": "比例控制扭矩计算模块参数集合。",
+    "fields": [
+      {
+        "name": "kp",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 50.0,
+        "description": "比例控制系数 (Nm*s/m)"
+      },
+      {
+        "name": "minTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最小扭矩限幅 (Nm)"
+      },
+      {
+        "name": "maxTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 300.0,
+        "description": "最大扭矩限幅 (Nm)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "比例控制扭矩计算模块状态集合。",
+    "alias": "比例控制扭矩计算模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "比例控制扭矩计算模块子模块集合。",
+    "alias": "比例控制扭矩计算模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

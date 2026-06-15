@@ -1,0 +1,195 @@
+{
+    "name": "ACCTimeGapNext",
+    "componentType": "atomic-function",
+    "alias": "ACC目标时距",
+    "description": "根据决策更新目标时距",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "b562d8b9-de44-544b-ac02-cd73e6d814de",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCTimeGapNext_param_decisionY_In",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "In",
+                    "description": "当前决策输出，1~8",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapNext_param_currentTimeGap_In",
+                    "name": "currentTimeGap",
+                    "alias": "currentTimeGap",
+                    "direction": "In",
+                    "description": "当前目标时距，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapNext_param_timeGapStep_In",
+                    "name": "timeGapStep",
+                    "alias": "timeGapStep",
+                    "direction": "In",
+                    "description": "时距调整步长，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapNext_param_minTimeGap_In",
+                    "name": "minTimeGap",
+                    "alias": "minTimeGap",
+                    "direction": "In",
+                    "description": "最小目标时距，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapNext_param_maxTimeGap_In",
+                    "name": "maxTimeGap",
+                    "alias": "maxTimeGap",
+                    "direction": "In",
+                    "description": "最大目标时距，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCTimeGapNext_output_nextTimeGap_Out",
+                    "name": "nextTimeGap",
+                    "alias": "nextTimeGap",
+                    "direction": "Out",
+                    "description": "下一目标时距，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 6,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCTimeGapNext(int decisionY, double currentTimeGap, double timeGapStep,\n                      double minTimeGap, double maxTimeGap)\n{\n    double nextTimeGap = currentTimeGap;\n\n    if (decisionY == 3) {\n        nextTimeGap = currentTimeGap - timeGapStep;\n    } else if (decisionY == 4) {\n        nextTimeGap = currentTimeGap + timeGapStep;\n    }\n\n    if (nextTimeGap < minTimeGap) {\n        nextTimeGap = minTimeGap;\n    }\n    if (nextTimeGap > maxTimeGap) {\n        nextTimeGap = maxTimeGap;\n    }\n\n    return nextTimeGap;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

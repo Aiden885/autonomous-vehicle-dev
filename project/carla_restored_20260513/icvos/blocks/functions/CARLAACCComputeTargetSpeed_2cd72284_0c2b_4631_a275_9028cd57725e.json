@@ -1,0 +1,202 @@
+{
+  "componentType": "atomic-function",
+  "name": "CARLAACCComputeTargetSpeed_2cd72284_0c2b_4631_a275_9028cd57725e",
+  "alias": "CARLA计算目标速度",
+  "description": "计算ACC目标跟车速度",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "2cd72284-0c2b-4631-a275-9028cd57725e",
+  "originId": "549b2f73-2ed0-5018-9bf9-038133f51ace",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "CARLA联合仿真",
+    "ACC最小闭环"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {}
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "double CARLAACCComputeTargetSpeed(double egoV, double leadV, double distance)\n{\n    double desiredDist = 15.0;\n    double maxSpeed = 18.0 / 3.6;\n    double kDist = 0.35;\n    double kSpeed = 0.8;\n    double distanceSafe = 0.0;\n    double distDiff = 0.0;\n    double speedDiff = 0.0;\n    double targetSpeed = 0.0;\n\n    if (distance < 0.0) {\n        distanceSafe = 0.0;\n    } else {\n        distanceSafe = distance;\n    }\n\n    distDiff = distanceSafe - desiredDist;\n    speedDiff = leadV - egoV;\n    targetSpeed = (kDist * distDiff) + (kSpeed * speedDiff) + leadV;\n\n    if (targetSpeed < 0.0) {\n        targetSpeed = 0.0;\n    }\n    if (targetSpeed > maxSpeed) {\n        targetSpeed = maxSpeed;\n    }\n\n    return targetSpeed;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "CARLAACCComputeTargetSpeed_param_egoV_In",
+          "name": "egoV",
+          "alias": "egoV",
+          "direction": "In",
+          "description": "自车当前速度，单位m/s",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "CARLAACCComputeTargetSpeed_param_leadV_In",
+          "name": "leadV",
+          "alias": "leadV",
+          "direction": "In",
+          "description": "前车当前速度，单位m/s",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "CARLAACCComputeTargetSpeed_param_distance_In",
+          "name": "distance",
+          "alias": "distance",
+          "direction": "In",
+          "description": "当前车间距，单位m",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "CARLAACCComputeTargetSpeed_output_targetSpeed_Out",
+          "name": "targetSpeed",
+          "alias": "targetSpeed",
+          "direction": "Out",
+          "description": "限幅后的ACC目标速度，单位m/s",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 4,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

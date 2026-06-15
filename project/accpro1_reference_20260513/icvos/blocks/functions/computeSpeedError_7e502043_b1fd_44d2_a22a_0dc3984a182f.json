@@ -1,0 +1,174 @@
+{
+  "componentType": "atomic-block",
+  "name": "computeSpeedError_7e502043_b1fd_44d2_a22a_0dc3984a182f",
+  "alias": "速度误差计算",
+  "description": "计算速度误差（目标速度减自车当前速度）",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "7e502043-b1fd-44d2-a22a-0dc3984a182f",
+  "originId": "cb935aaf-2682-51d2-a164-1d45bb88d19a",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "规划与决策",
+    "速度规划"
+  ],
+  "vendor": "THICV",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": []
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "function_body": "double computeSpeedError(double targetSpeed, double egoV)\n{\n    double error = 0.0;\n    error = targetSpeed - egoV;\n    return error;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "computeSpeedError_targetSpeed_In",
+          "name": "targetSpeed",
+          "alias": "targetSpeed",
+          "direction": "In",
+          "description": "ACC 目标速度（m/s）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "computeSpeedError_egoV_In",
+          "name": "egoV",
+          "alias": "egoV",
+          "direction": "In",
+          "description": "自车当前速度（m/s）",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "computeSpeedError_速度误差（m/s），正值表示自车需要加速_Out",
+          "name": "速度误差（m/s），正值表示自车需要加速",
+          "alias": "速度误差（m/s），正值表示自车需要加速",
+          "direction": "Out",
+          "description": "",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 3,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

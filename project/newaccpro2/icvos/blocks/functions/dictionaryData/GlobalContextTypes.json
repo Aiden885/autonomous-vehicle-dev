@@ -1,23 +1,31 @@
 {
-  "FeedbackState": {
-    "description": "控制图跨周期反馈状态缓存。",
-    "alias": "控制图跨周期反馈状态缓存。",
+  "GlobalParams": {
+    "description": "工程级全局参数集合。",
+    "alias": "工程级全局参数集合。",
     "fields": [
       {
-        "name": "lonVelFb",
+        "name": "MinDistance",
         "category": 0,
         "dataType": "double",
         "shape": [],
-        "dataValue": 0.0,
-        "description": "上一周期纵向速度反馈"
+        "dataValue": 5,
+        "description": ""
       },
       {
-        "name": "latPosFb",
+        "name": "Kdist",
         "category": 0,
         "dataType": "double",
         "shape": [],
-        "dataValue": 0.0,
-        "description": "上一周期横向位置反馈"
+        "dataValue": 0.9,
+        "description": ""
+      },
+      {
+        "name": "Kspeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.8,
+        "description": ""
       }
     ],
     "source": "code",

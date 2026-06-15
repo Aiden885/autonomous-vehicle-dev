@@ -22,6 +22,7 @@ constexpr const char *kObjectListTopic = "gaasd.carla.object_list.v1";
 constexpr const char *kLeadTopic = "gaasd.carla.lead_vehicle.v1";
 constexpr const char *kChassisTopic = "gaasd.carla.chassis_feedback.v1";
 constexpr const char *kLaneTrackingTopic = "gaasd.carla.lane_tracking.v1";
+constexpr const char *kDriverCommandTopic = "gaasd.carla.driver_command.v1";
 constexpr const char *kControlTopic = "gaasd.carla.control_cmd.v1";
 
 void set_linger_zero(void *socket)
@@ -170,6 +171,18 @@ int main()
                 },
             })},
         });
+        if (i == 0) {
+            send_json(mock_pub, kDriverCommandTopic, Json{
+                {"command_type", 1},
+                {"mode", "pulse"},
+                {"active", true},
+            });
+            send_json(mock_pub, kDriverCommandTopic, Json{
+                {"command_type", 5},
+                {"mode", "level"},
+                {"active", true},
+            });
+        }
         (void)carla_adapter_poll(50);
     }
 
@@ -206,6 +219,8 @@ int main()
         int road_id = 0;
         int lane_valid = 0;
         int object_valid = 0;
+        int command_type = 0;
+        int command_valid = 0;
         int mode = 0;
 
         if (carla_adapter_read_ego_state(&ego_v, &ego_x, &ego_y, &ego_yaw, &ego_acc, &valid) != 0 ||
@@ -282,6 +297,28 @@ int main()
             !near_value(object_width[0], 1.8) ||
             !near_value(object_height[0], 1.6)) {
             std::cerr << "object list read mismatch\n";
+            goto cleanup;
+        }
+
+        if (carla_adapter_read_driver_command(&command_type, &command_valid) != 0 ||
+            command_valid != 1 || command_type != 1) {
+            std::cerr << "driver pulse mismatch\n";
+            goto cleanup;
+        }
+        if (carla_adapter_read_driver_command(&command_type, &command_valid) != 0 ||
+            command_valid != 1 || command_type != 5) {
+            std::cerr << "driver level mismatch\n";
+            goto cleanup;
+        }
+        send_json(mock_pub, kDriverCommandTopic, Json{
+            {"command_type", 0},
+            {"mode", "level"},
+            {"active", false},
+        });
+        (void)carla_adapter_poll(50);
+        if (carla_adapter_read_driver_command(&command_type, &command_valid) != 0 ||
+            command_valid != 1 || command_type != 0) {
+            std::cerr << "driver release mismatch\n";
             goto cleanup;
         }
     }

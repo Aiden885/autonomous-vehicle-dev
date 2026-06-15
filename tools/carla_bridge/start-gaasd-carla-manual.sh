@@ -119,6 +119,26 @@ stop_stale_spectator_follow() {
     done
 }
 
+stop_stale_watch_camera() {
+    local pids
+
+    stop_pid_file_if_running "camera window" "$WATCH_CAMERA_PID_FILE"
+
+    pids="$(pgrep -f "tools/carla_bridge/watch-carla.py" || true)"
+    if [ -z "$pids" ]; then
+        return 0
+    fi
+
+    for pid in $pids; do
+        if [ "$pid" != "$$" ]; then
+            if kill "$pid" 2>/dev/null; then
+                log "stopped stale camera window pid=${pid}"
+                sleep 0.2
+            fi
+        fi
+    done
+}
+
 stop_stale_bridge() {
     local pids
 
@@ -494,6 +514,7 @@ fi
 start_spectator_follow
 
 if [ "$WATCH_CAMERA" = "1" ]; then
+    stop_stale_watch_camera
     log "starting pygame camera window (watch-carla.py)"
     nohup setsid "$PYTHON_BIN" "${SCRIPT_DIR}/watch-carla.py" \
         --carla-root "$CARLA_ROOT" \

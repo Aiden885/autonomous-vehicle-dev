@@ -1,0 +1,73 @@
+name: newaccpro2_keyboard_carla_20260609
+description: newaccpro2 键盘驾驶指令、ACC 完整决策和预瞄车道保持联合仿真
+created_at: "2026-06-09 00:00:00 +0800"
+verified_status: "键盘 commandType、S 制动退出链和预瞄横向控制已接入；待新版 GAASD 重新生成代码并完成实车闭环验证。"
+
+environment:
+  host_os: Ubuntu
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  gaasd_runtime_container: "ubuntuenv.tar:env"
+  python: "python3.8"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 25
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: traffic_manager
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  main_program: ../../tools/carla_bridge/carla_bridge.py
+  prebuilt_adapter: ../../project/newaccpro2/objectCode/total/DLL/libcarla_gaasd_adapter.so
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  speed_pid:
+    kp: 0.7
+    ki: 0.05
+    kd: 0.08
+    integral_limit: 2.0
+    deadband_mps: 0.05
+    max_throttle: 0.7
+    max_brake: 0.35
+
+gaasd_projects:
+  carla_closed_loop:
+    snapshot_path: scenarios/newaccpro2_keyboard_carla_20260609/gaasd_project_snapshot/newaccpro2
+    restore_default_path: project/newaccpro2
+    purpose: ACC 完整决策与时距控制 CARLA 联合仿真画布工程
+    important_files:
+      - data/cbdes.db
+      - data/temp.db
+      - icvos/blocks/functions
+      - icvos/src/functions
+      - objectCode/total/DLL
+
+gaasd_signals:
+  oscilloscope_period_sec: 0.1
+  observed:
+    - commandType
+    - y
+    - enable
+    - timeGap
+    - maxSpeed
+    - egoV
+    - leadV
+    - distance
+
+expected_result:
+  duration_sec: 60
+  target_distance_m: 15
+  expected_behavior: >
+    E/Q 可启控，T/R 每次只调整一个时距步长；S 产生 commandType=6，
+    使 controlEnabled 和 enable 变为 0 并触发制动，松开 S 后保持退出；
+    C 同样退出 ACC，再次按 E/Q 后才重新启控。W 仅验证指令传输，
+    本场景不验收真实扭矩仲裁。

@@ -27,6 +27,8 @@ except ImportError as exc:  # pragma: no cover - environment guard
 PROTOCOL = "gaasd_carla_bridge"
 PROTOCOL_VERSION = "0.3.0"
 TOPIC_PREFIX = "gaasd.carla"
+CONTROL_TOPIC = f"{TOPIC_PREFIX}.control_cmd.v1"
+DRIVER_COMMAND_TOPIC = f"{TOPIC_PREFIX}.driver_command.v1"
 
 
 def load_json(path: str) -> Dict[str, Any]:
@@ -86,6 +88,7 @@ def default_config() -> Dict[str, Any]:
             "timeout_brake": 1.0,
             "prefer_speed_target": True,
             "lane_keep_enabled": False,
+            "lane_keep_mode": "legacy",
             "lane_keep_override_zero_steer": False,
             "lane_keep_zero_steer_epsilon_rad": 1.0e-6,
             "lane_keep_kp": 0.12,
@@ -94,6 +97,13 @@ def default_config() -> Dict[str, Any]:
             "lane_keep_heading_kp": 0.8,
             "lane_keep_integral_limit": 2.0,
             "lane_keep_max_steer": 0.25,
+            "lane_keep_current_weight": 0.7,
+            "lane_keep_lookahead_weight": 0.3,
+            "lane_keep_lookahead_base_m": 8.0,
+            "lane_keep_lookahead_gain_s": 0.3,
+            "lane_keep_lookahead_min_m": 5.0,
+            "lane_keep_lookahead_max_m": 15.0,
+            "driver_command_level_timeout_sec": 0.5,
         },
     }
 
@@ -218,6 +228,10 @@ class CarlaGaasdBridge:
         self.last_error = ""
         self.last_command = LastCommand()
         self.control_cmd_count = 0
+        self.driver_command_count = 0
+        self.driver_command_level = 0
+        self.driver_command_level_active = False
+        self.driver_command_level_last_input = 0.0
         self.control_timeout_applied = False
         self.speed_pid_prev_error = 0.0
         self.speed_pid_integral_error = 0.0
@@ -426,6 +440,7 @@ class CarlaGaasdBridge:
             self.publish_object_list(enriched, snapshot)
             self.publish_lead_vehicle(ego, enriched, snapshot)
             self.publish_lane_tracking(self.lane_tracking_payload(), snapshot)
+            self.publish_driver_command_level(snapshot)
             self.publish_chassis_feedback(snapshot)
         self.publish_bridge_status(snapshot)
 
@@ -770,6 +785,7 @@ class CarlaGaasdBridge:
                 "ego_state": self.sequence.get(f"{TOPIC_PREFIX}.ego_state.v1", 0),
                 "object_list": self.sequence.get(f"{TOPIC_PREFIX}.object_list.v1", 0),
                 "control_cmd_received": self.control_cmd_count,
+                "driver_command_received": self.driver_command_count,
             },
         }
         self.publish("bridge_status", payload, snapshot)
@@ -785,15 +801,81 @@ class CarlaGaasdBridge:
     def process_control_messages(self) -> None:
         while True:
             try:
-                _topic, payload = self.sub.recv_multipart(flags=zmq.NOBLOCK)
+                topic_bytes, payload = self.sub.recv_multipart(flags=zmq.NOBLOCK)
             except zmq.Again:
                 return
             try:
+                topic = topic_bytes.decode("utf-8")
                 msg = json.loads(payload.decode("utf-8"))
-                self.control_cmd_count = self.control_cmd_count + 1
-                self.apply_control_message(msg)
+                if topic == CONTROL_TOPIC:
+                    self.control_cmd_count = self.control_cmd_count + 1
+                    self.apply_control_message(msg)
+                elif topic == DRIVER_COMMAND_TOPIC:
+                    self.driver_command_count = self.driver_command_count + 1
+                    self.apply_driver_command_message(msg)
+                else:
+                    self.last_error = f"unsupported inbound topic: {topic}"
             except Exception as exc:
                 self.last_error = f"control parse error: {exc}"
+
+    def apply_driver_command_message(self, msg: Dict[str, Any]) -> None:
+        payload = msg.get("payload", msg)
+        command_type = int(payload.get("command_type", 0))
+        mode = str(payload.get("mode", "pulse"))
+        active = bool(payload.get("active", command_type != 0))
+        if command_type < 0 or command_type > 7:
+            raise ValueError(f"invalid driver command_type: {command_type}")
+        normalized = {
+            "command_type": command_type,
+            "mode": mode,
+            "active": active,
+            "event_id": int(payload.get("event_id", self.driver_command_count)),
+            "description": str(payload.get("description", "")),
+            "source": str(msg.get("source", "keyboard")),
+        }
+        if mode == "level":
+            self.driver_command_level = command_type if active else 0
+            self.driver_command_level_active = active and command_type != 0
+            self.driver_command_level_last_input = time.monotonic()
+        else:
+            normalized["mode"] = "pulse"
+        self.publish("driver_command", normalized)
+
+    def publish_driver_command_level(self, snapshot: Any) -> None:
+        if not self.driver_command_level_active:
+            return
+        timeout = max(
+            finite(self.cfg["control"].get("driver_command_level_timeout_sec", 0.5), 0.5),
+            0.1,
+        )
+        if time.monotonic() - self.driver_command_level_last_input > timeout:
+            self.driver_command_level = 0
+            self.driver_command_level_active = False
+            self.publish(
+                "driver_command",
+                {
+                    "command_type": 0,
+                    "mode": "level",
+                    "active": False,
+                    "event_id": self.driver_command_count,
+                    "description": "驾驶指令超时释放",
+                    "source": "carla_bridge",
+                },
+                snapshot,
+            )
+            return
+        self.publish(
+            "driver_command",
+            {
+                "command_type": self.driver_command_level,
+                "mode": "level",
+                "active": True,
+                "event_id": self.driver_command_count,
+                "description": "持续驾驶指令",
+                "source": "carla_bridge",
+            },
+            snapshot,
+        )
 
     def apply_control_message(self, msg: Dict[str, Any]) -> None:
         if self.ego is None:
@@ -838,7 +920,17 @@ class CarlaGaasdBridge:
         if not bool(lane_tracking["valid"]):
             return 0.0
         offset_error = finite(lane_tracking["lateral_offset_m"])
-        heading_error = finite(lane_tracking["heading_error_rad"])
+        lane_keep_mode = str(ctrl_cfg.get("lane_keep_mode", "legacy"))
+        if lane_keep_mode == "lookahead_pid":
+            lookahead_error = self.lane_lookahead_offset_error()
+            current_weight = finite(ctrl_cfg.get("lane_keep_current_weight", 0.7), 0.7)
+            lookahead_weight = finite(ctrl_cfg.get("lane_keep_lookahead_weight", 0.3), 0.3)
+            weight_sum = current_weight + lookahead_weight
+            if weight_sum <= 1.0e-6:
+                current_weight, lookahead_weight, weight_sum = 1.0, 0.0, 1.0
+            offset_error = (
+                current_weight * offset_error + lookahead_weight * lookahead_error
+            ) / weight_sum
 
         now = time.monotonic()
         dt = now - self.lane_keep_prev_time if self.lane_keep_prev_time > 0.0 else 0.05
@@ -858,10 +950,53 @@ class CarlaGaasdBridge:
             finite(ctrl_cfg.get("lane_keep_kp", 0.12)) * offset_error
             + finite(ctrl_cfg.get("lane_keep_ki", 0.0)) * self.lane_keep_integral_error
             + finite(ctrl_cfg.get("lane_keep_kd", 0.04)) * derivative
-            + finite(ctrl_cfg.get("lane_keep_heading_kp", 0.8)) * heading_error
         )
+        if lane_keep_mode != "lookahead_pid":
+            heading_error = finite(lane_tracking["heading_error_rad"])
+            steer += finite(ctrl_cfg.get("lane_keep_heading_kp", 0.8)) * heading_error
         max_steer = clamp(finite(ctrl_cfg.get("lane_keep_max_steer", 0.25)), 0.0, 1.0)
         return clamp(steer, -max_steer, max_steer)
+
+    def lane_lookahead_offset_error(self) -> float:
+        if self.ego is None or self.world is None or self.carla is None:
+            return 0.0
+        ctrl_cfg = self.cfg["control"]
+        speed_mps = speed_2d(self.ego.get_velocity())
+        lookahead = (
+            finite(ctrl_cfg.get("lane_keep_lookahead_base_m", 8.0), 8.0)
+            + finite(ctrl_cfg.get("lane_keep_lookahead_gain_s", 0.3), 0.3) * speed_mps
+        )
+        lookahead = clamp(
+            lookahead,
+            finite(ctrl_cfg.get("lane_keep_lookahead_min_m", 5.0), 5.0),
+            finite(ctrl_cfg.get("lane_keep_lookahead_max_m", 15.0), 15.0),
+        )
+
+        transform = self.ego.get_transform()
+        waypoint = self.world.get_map().get_waypoint(
+            transform.location,
+            project_to_road=True,
+            lane_type=self.carla.LaneType.Driving,
+        )
+        if waypoint is None:
+            return 0.0
+        next_waypoints = waypoint.next(lookahead)
+        if not next_waypoints:
+            return 0.0
+        target = next_waypoints[0]
+        ego_yaw = math.radians(finite(transform.rotation.yaw))
+        predicted_x = finite(transform.location.x) + lookahead * math.cos(ego_yaw)
+        predicted_y = finite(transform.location.y) + lookahead * math.sin(ego_yaw)
+        lane_center = target.transform.location
+        lane_yaw = math.radians(finite(target.transform.rotation.yaw))
+        right_x = -math.sin(lane_yaw)
+        right_y = math.cos(lane_yaw)
+
+        # Positive error means the lookahead lane center is to ego's right.
+        return finite(
+            (finite(lane_center.x) - predicted_x) * right_x
+            + (finite(lane_center.y) - predicted_y) * right_y
+        )
 
     def apply_control_timeout_if_needed(self) -> None:
         if self.ego is None or self.carla is None:

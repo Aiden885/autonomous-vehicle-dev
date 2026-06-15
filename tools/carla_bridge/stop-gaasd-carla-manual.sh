@@ -122,8 +122,12 @@ done
 BRIDGE_PID_FILE="${BRIDGE_PID_FILE:-${LOG_DIR}/bridge.pid}"
 CARLA_PID_FILE="${CARLA_PID_FILE:-${LOG_DIR}/carla.pid}"
 SPECTATOR_PID_FILE="${SPECTATOR_PID_FILE:-${LOG_DIR}/spectator.pid}"
+WATCH_CAMERA_PID_FILE="${WATCH_CAMERA_PID_FILE:-${LOG_DIR}/watch-camera.pid}"
 
 log "stopping manual stack, log dir: ${LOG_DIR}"
+
+stop_pid_file "Camera window" "$WATCH_CAMERA_PID_FILE"
+stop_by_pattern "Camera window fallback" "tools/carla_bridge/watch-carla.py"
 
 stop_pid_file "Spectator follow" "$SPECTATOR_PID_FILE"
 stop_by_pattern "Spectator follow fallback" "tools/carla_bridge/set-spectator-follow.py"

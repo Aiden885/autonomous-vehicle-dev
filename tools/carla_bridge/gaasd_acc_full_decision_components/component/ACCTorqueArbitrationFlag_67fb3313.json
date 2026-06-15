@@ -1,0 +1,99 @@
+{
+    "name": "ACCTorqueArbitrationFlag",
+    "componentType": "atomic-function",
+    "alias": "ACC扭矩仲裁",
+    "description": "判断ACC扭矩仲裁标志",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "67fb3313-3494-544e-9e60-3c51ca8b8e23",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCTorqueArbitrationFlag_param_decisionY_In",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "In",
+                    "description": "当前决策输出，1~8",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCTorqueArbitrationFlag_output_arbitrationFlag_Out",
+                    "name": "arbitrationFlag",
+                    "alias": "arbitrationFlag",
+                    "direction": "Out",
+                    "description": "扭矩仲裁标志，0=未触发，1=触发R7",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCTorqueArbitrationFlag(int decisionY)\n{\n    int arbitrationFlag = 0;\n\n    if (decisionY == 7) {\n        arbitrationFlag = 1;\n    }\n\n    return arbitrationFlag;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

@@ -20,6 +20,7 @@
 | `send-control.py` | 向 Bridge 发送一组测试控制命令 |
 | `acc-runner.py` | 阶段一独立 ACC 闭环测试 Runner |
 | `spawn-lead-vehicle.py` | 在 ego 前方生成一辆测试前车 |
+| `watch-carla.py` | CARLA 摄像头观察窗口，并向 Bridge 发送 ACC 键盘驾驶指令 |
 | `gaasd_p0_acc_min_components/` | ACC 最小闭环组件包，优先用于当前已跑通的 ACC 测试 |
 | `gaasd_p1_components/` | P1 扩展组件包，提供 `ObjectList`、横向控制和横纵向联合控制 |
 | `gaasd_carla_p1_components.tar.gz` | P1 组件包压缩文件，可用于 GAASD 导入 |
@@ -131,6 +132,7 @@ tools/carla_bridge/start-gaasd-carla-manual.sh --no-probe
 该脚本会依次后台启动本机 CARLA、启动 Bridge、等待 `5701/5702` 端口、重置到 Town01 长直道测试场景、生成测试前车，并打开默认第三人称跟随视角。脚本完成后，再到 GAASD 页面点击示波器“开始”。
 
 默认测试视角为 `--spectator-back 8 --spectator-up 6 --spectator-pitch -25`。需要关闭跟随视角时追加 `--no-follow-spectator`。
+需要同时打开带键盘输入的摄像头窗口时追加 `--watch-camera`。
 
 常用参数：
 
@@ -139,9 +141,24 @@ tools/carla_bridge/start-gaasd-carla-manual.sh --lead-distance 25 --lead-speed 2
 tools/carla_bridge/start-gaasd-carla-manual.sh --lead-placement lane_waypoint --lead-behavior traffic_manager
 tools/carla_bridge/start-gaasd-carla-manual.sh --lead-placement ego_forward --lead-behavior constant_velocity
 tools/carla_bridge/start-gaasd-carla-manual.sh --spectator-back 8 --spectator-up 6 --spectator-pitch -25
+tools/carla_bridge/start-gaasd-carla-manual.sh --watch-camera
 tools/carla_bridge/start-gaasd-carla-manual.sh --no-lead
 tools/carla_bridge/start-gaasd-carla-manual.sh --high
 ```
+
+摄像头窗口键盘映射：
+
+| 按键 | `commandType` | 发送方式 |
+|---|---:|---|
+| E | 1 | 单周期脉冲：降低设定速度或按当前速度启控 |
+| Q | 2 | 单周期脉冲：提高设定速度或继承参数启控 |
+| T | 3 | 单周期脉冲：减小时距 |
+| R | 4 | 单周期脉冲：增大时距 |
+| W | 5 | 按下期间持续发送驾驶员油门指令 |
+| S | 6 | 按下期间持续发送驾驶员制动指令，并使 ACC 退出控制 |
+| C | 7 | 单周期脉冲：取消 ACC |
+
+W 当前只向 GAASD 传输驾驶员油门指令类型，尚未实现驾驶员扭矩与 ACC 扭矩的物理仲裁。S 不走扭矩仲裁：`commandType=6` 由 ACC 决策画布直接清除控制使能，使 Bridge 切换到制动状态。
 
 动态前车测试入口：
 
@@ -180,12 +197,14 @@ Bridge 发布：
 | `gaasd.carla.lead_vehicle.v1` | ACC 前车便捷消息 |
 | `gaasd.carla.chassis_feedback.v1` | 底盘反馈 |
 | `gaasd.carla.lane_tracking.v1` | LKS 车道偏差与航向误差 |
+| `gaasd.carla.driver_command.v1` | 转发给 GAASD 的 ACC 驾驶指令 |
 
 Bridge 订阅：
 
 | topic | 说明 |
 |---|---|
 | `gaasd.carla.control_cmd.v1` | GAASD 控制输出 |
+| `gaasd.carla.driver_command.v1` | 摄像头窗口或其他输入源发送的 ACC 驾驶指令 |
 
 ## 注意
 
@@ -194,4 +213,5 @@ Bridge 订阅：
 - `target_speed_mps` 会先经过 Bridge 速度 PID 转为期望加速度，再按 `max_accel_mps2` / `max_brake_mps2` 映射为 CARLA `throttle` / `brake`。
 - 控制命令超时后默认执行 `control.timeout_brake=1.0`，Bridge 会主动下发 `throttle=0, brake=1`。
 - `CARLALongitudinalCmd`、`CARLALateralCmd`、`CARLAControlCmd` 最终都映射到 `control_cmd`，同一时刻只能有一个控制输出组件 active。
+- `control.lane_keep_mode=lookahead_pid` 时，Bridge 使用当前车道偏差和动态预瞄偏差的加权值进行 PID 横向控制；该模式用于 ACC 联调时的基础车道保持。
 - `vehicle.get_speed_limit()` 在 CARLA 0.9.15 中返回 km/h，进入协议前必须除以 3.6 转成 m/s。

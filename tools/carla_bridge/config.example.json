@@ -42,6 +42,23 @@
     "max_brake": 1.0,
     "timeout_sec": 0.2,
     "timeout_brake": 1.0,
-    "prefer_speed_target": true
+    "prefer_speed_target": true,
+    "lane_keep_enabled": false,
+    "lane_keep_mode": "legacy",
+    "lane_keep_override_zero_steer": false,
+    "lane_keep_zero_steer_epsilon_rad": 0.000001,
+    "lane_keep_kp": 0.12,
+    "lane_keep_ki": 0.0,
+    "lane_keep_kd": 0.04,
+    "lane_keep_heading_kp": 0.8,
+    "lane_keep_integral_limit": 2.0,
+    "lane_keep_max_steer": 0.25,
+    "lane_keep_current_weight": 0.7,
+    "lane_keep_lookahead_weight": 0.3,
+    "lane_keep_lookahead_base_m": 8.0,
+    "lane_keep_lookahead_gain_s": 0.3,
+    "lane_keep_lookahead_min_m": 5.0,
+    "lane_keep_lookahead_max_m": 15.0,
+    "driver_command_level_timeout_sec": 0.5
   }
 }
