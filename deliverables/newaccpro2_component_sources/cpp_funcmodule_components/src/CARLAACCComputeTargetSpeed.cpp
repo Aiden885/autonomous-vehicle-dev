@@ -5,12 +5,12 @@ namespace control {
 /**
  * @brief 根据车间距与速度差计算限幅后的 ACC 目标跟车速度。
  * @cn_name CARLA计算目标速度
- * @type block
+ * @type atomic
  * @tag_level0 功能模块库
  * @tag_level1 CARLA联合仿真
  * @tag_level2 ACC最小闭环
- * @version 2.1
- * @date 2026-06-12
+ * @version 2.2
+ * @date 2026-06-16
  * @author liuruyu
  */
 void CARLAACCComputeTargetSpeed::run(const Input& input, Output& output) {

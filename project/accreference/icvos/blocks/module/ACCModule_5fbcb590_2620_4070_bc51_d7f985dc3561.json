@@ -1,0 +1,761 @@
+{
+  "componentType": "module",
+  "name": "ACCModule_5fbcb590_2620_4070_bc51_d7f985dc3561",
+  "cppClass": "",
+  "alias": "ACC参考模块",
+  "description": "ACC reference module",
+  "author": "",
+  "version": "2.0.0",
+  "instanceId": "5fbcb590-2620-4070-bc51-d7f985dc3561",
+  "originId": "module_ACCModule_2.0.0",
+  "isCustom": false,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "demo"
+  ],
+  "parentId": "34c86c3a-0476-4c24-8f59-4f571b201eda",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {
+        "node_name": "ACCModule",
+        "bind_cpu": "-1",
+        "node_priority": 0,
+        "depend_nodes": []
+      }
+    },
+    {
+      "key": "function_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": [
+        {
+          "name": "acc_input",
+          "alias": "acc_input",
+          "datatype": "INNER_SHM_DDS",
+          "description": "acc_input",
+          "direction": "In",
+          "id": "61d3d60e-cee8-4c96-8f52-5fd8cd0b6f93",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "acc_input",
+              "props": []
+            },
+            {
+              "key": "channel_var_name",
+              "value": "acc_input",
+              "props": []
+            },
+            {
+              "key": "bind_code",
+              "value": "ON",
+              "props": []
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".frame_id",
+                ".ego_speed_mps",
+                ".lead_speed_mps",
+                ".lead_distance_m",
+                ".enable"
+              ],
+              "props": []
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS",
+              "props": []
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_acc_input",
+              "props": []
+            },
+            {
+              "key": "task_bind",
+              "value": "acc_input",
+              "props": []
+            }
+          ],
+          "channelVersion": "43a0dead-1865-4367-9c6a-54d19770ef34"
+        }
+      ]
+    },
+    {
+      "key": "module_output_ports",
+      "value": [
+        {
+          "name": "acc_output",
+          "alias": "acc_output",
+          "datatype": "INNER_SHM_DDS",
+          "description": "acc_output",
+          "direction": "Out",
+          "id": "c93d3bf2-922f-4923-94cc-ef35df3e6e17",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "acc_output",
+              "props": []
+            },
+            {
+              "key": "channel_var_name",
+              "value": "acc_output",
+              "props": []
+            },
+            {
+              "key": "bind_code",
+              "value": "ON",
+              "props": []
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".frame_id",
+                ".ego_speed_mps",
+                ".lead_speed_mps",
+                ".lead_distance_m",
+                ".target_speed_mps",
+                ".enable",
+                ".valid"
+              ],
+              "props": []
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS",
+              "props": []
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_acc_output",
+              "props": []
+            }
+          ],
+          "channelVersion": "43a0dead-1865-4367-9c6a-54d19770ef34"
+        }
+      ]
+    },
+    {
+      "key": "module_client_ports",
+      "value": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": []
+    },
+    {
+      "key": "module_config",
+      "value": {
+        "basic": {
+          "path": "lib/libACCModule.so",
+          "module_type": "APP",
+          "ioconfig": {
+            "publishers": [
+              {
+                "channel": "acc_output",
+                "bindcode": "ON",
+                "name": "acc_output"
+              }
+            ],
+            "subscribers": [
+              {
+                "channel": "acc_input",
+                "bindcode": "ON",
+                "name": "acc_input"
+              }
+            ],
+            "servers": [],
+            "clients": []
+          }
+        },
+        "params": {
+          "work_root": "/share/pangu/install/planning/",
+          "timer_duration": 100,
+          "desired_distance_m": 15,
+          "max_speed_mps": 5,
+          "distance_gain": 0.35,
+          "speed_gain": 0.8,
+          "zmq_control_enable": true,
+          "enable_zmq_bridge": false,
+          "zmq_poll_timeout_ms": 0
+        }
+      }
+    },
+    {
+      "key": "conf_filename",
+      "value": "default.pt"
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": "pangu::modules"
+    },
+    {
+      "key": "node_name",
+      "value": "ACCModule",
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": [
+        {
+          "task_name": "acc_input",
+          "input": [
+            "acc_input"
+          ],
+          "task_params": {
+            "bindcode": "ON",
+            "task_option": {
+              "task_type": "POLICY_TYPE_MSG_NEWEST",
+              "message_num": 1,
+              "timer_trigger_interval": 20,
+              "input_trigger": [
+                "acc_input"
+              ],
+              "thread_pool_size": 0,
+              "drop_latest": false,
+              "task_queue_size": 0
+            }
+          }
+        }
+      ],
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "channel_input",
+      "name": "acc_input_f25b47c1_d406_4267_828d_a301ac04e58f",
+      "cppClass": "",
+      "alias": "输入通道",
+      "description": "acc_input 输入通道",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "f25b47c1-d406-4267-828d-a301ac04e58f",
+      "originId": "channel_input",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "5fbcb590-2620-4070-bc51-d7f985dc3561",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "acc_input",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.AccInput",
+                "channel_id": "INNER_SHM_DDS_acc_input",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true,
+                  "no_hybrid": false
+                },
+                "channel_type_config": [
+                  {
+                    "key": "shm_config",
+                    "type": 0,
+                    "block_size": 0
+                  },
+                  {
+                    "key": "dds_config",
+                    "durability": 0,
+                    "translayer_type": 0,
+                    "reliability": 0,
+                    "throughput_controller": 0
+                  }
+                ],
+                "channel_var_name": "acc_input",
+                "bind_code": "ON",
+                "task_id": "acc_input"
+              },
+              "operateKeys": [
+                ".ego_speed_mps",
+                ".lead_speed_mps",
+                ".lead_distance_m",
+                ".enable",
+                ".frame_id"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_ego_speed_mps_Out",
+              "name": "ego_speed_mps",
+              "alias": "ego_speed_mps",
+              "direction": "Out",
+              "description": "输出",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_lead_speed_mps_Out",
+              "name": "lead_speed_mps",
+              "alias": "lead_speed_mps",
+              "direction": "Out",
+              "description": "输出",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_lead_distance_m_Out",
+              "name": "lead_distance_m",
+              "alias": "lead_distance_m",
+              "direction": "Out",
+              "description": "输出",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 3,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_enable_Out",
+              "name": "enable",
+              "alias": "enable",
+              "direction": "Out",
+              "description": "输出",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 4,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_frame_id_Out",
+              "name": "frame_id",
+              "alias": "frame_id",
+              "direction": "Out",
+              "description": "输出",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 5,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "channel_output",
+      "name": "acc_output_6f4b64f1_a06b_4ae1_99dd_e2477c740789",
+      "cppClass": "",
+      "alias": "输出通道",
+      "description": "acc_output 输出通道",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "6f4b64f1-a06b-4ae1-99dd-e2477c740789",
+      "originId": "channel_output",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "5fbcb590-2620-4070-bc51-d7f985dc3561",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "acc_output",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.AccOutput",
+                "channel_id": "INNER_SHM_DDS_acc_output",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true,
+                  "no_hybrid": false
+                },
+                "channel_type_config": [
+                  {
+                    "key": "shm_config",
+                    "type": 0,
+                    "block_size": 0
+                  },
+                  {
+                    "key": "dds_config",
+                    "durability": 0,
+                    "translayer_type": 0,
+                    "reliability": 0,
+                    "throughput_controller": 0
+                  }
+                ],
+                "channel_var_name": "acc_output",
+                "bind_code": "ON",
+                "task_id": "acc_input"
+              },
+              "operateKeys": [
+                ".frame_id",
+                ".target_speed_mps",
+                ".enable",
+                ".valid"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "Component_channel_input_acc_output_0.0.1_f027b2cb_input_frame_id_In",
+              "name": "frame_id",
+              "alias": "frame_id",
+              "direction": "In",
+              "description": "输入",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_output_0.0.1_f027b2cb_input_target_speed_mps_In",
+              "name": "target_speed_mps",
+              "alias": "target_speed_mps",
+              "direction": "In",
+              "description": "输入",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_output_0.0.1_f027b2cb_input_enable_In",
+              "name": "enable",
+              "alias": "enable",
+              "direction": "In",
+              "description": "输入",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 3,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "Component_channel_input_acc_output_0.0.1_f027b2cb_input_valid_In",
+              "name": "valid",
+              "alias": "valid",
+              "direction": "In",
+              "description": "输入",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 4,
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "f25b47c1-d406-4267-828d-a301ac04e58f",
+      "fromInstancePortId": "Component_channel_input_acc_input_0.0.1_d0eebe82_output_frame_id_Out",
+      "toInstanceId": "6f4b64f1-a06b-4ae1-99dd-e2477c740789",
+      "toInstancePortId": "Component_channel_input_acc_output_0.0.1_f027b2cb_input_frame_id_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 1
+            }
+          ],
+          "value": []
+        }
+      ]
+    }
+  ]
+}

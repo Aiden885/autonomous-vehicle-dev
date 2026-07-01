@@ -11,10 +11,7 @@ struct CARLAACCDriverCommandTraits {
   /**
    * @brief 输入端口集合。
    */
-  struct Input {
-    int commandType = 0; ///< 运行时边界层提供的驾驶指令类型，0 表示无指令
-    int valid = 0;       ///< 驾驶指令有效标志，1 表示有效
-  };
+  struct Input {};
 
   /**
    * @brief 输出端口集合。
@@ -41,7 +38,7 @@ struct CARLAACCDriverCommandTraits {
 };
 
 /**
- * @brief 校验并输出运行时边界层提供的 CARLA 驾驶指令。
+ * @brief 通过 CARLA 适配器读取并输出驾驶指令。
  */
 class CARLAACCDriverCommand : public FuncModule<CARLAACCDriverCommandTraits> {
 public:

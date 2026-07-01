@@ -1,0 +1,486 @@
+ego_frame_name: "vehicle"
+world_frame_name: "world"
+tran_infos {
+  source_frame: "imu"
+  target_frame: "vehicle"
+  x: -0.195
+  y: 0
+  z: 0.28
+  yaw: -1.5707963
+  pitch: 0
+  roll: 0
+}
+tran_infos {
+  source_frame: "vehicle"
+  target_frame: "ground"
+  x: 0
+  y: 0
+  z: 0.36
+  yaw: 0
+  pitch: 0
+  roll: 0
+}
+tran_infos {
+  source_frame: "rslidar_m1"
+  target_frame: "vehicle"
+  x: 1.7601128
+  y: -0.038388
+  z: 1.208448
+  yaw: 0.02306557
+  pitch: 0.01527193
+  roll: 0.01593181
+}
+tran_infos {
+  source_frame: "inno_lidar"
+  target_frame: "imu"
+  x: -0.009907
+  y: 1.56558
+  z: 0.928215
+  yaw: 1.5956824066010011
+  pitch: -0.001904334617889747
+  roll: -0.0024478473193079576
+}
+tran_infos {
+  source_frame: "base_link"
+  target_frame: "vehicle"
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0
+  roll: 0
+}
+tran_infos {
+  source_frame: "rslidar_e1"
+  target_frame: "base_link"
+  x: 0.5103736637
+  y: 3.8713774999999995
+  z: -0.09174058899999993
+  yaw: 1.5538708
+  pitch: -0.0455004
+  roll: 0.0156616
+}
+tran_infos {
+  source_frame: "rslidar_front"
+  target_frame: "base_link"
+  x: 0.5095033353
+  y: 3.4007077599999995
+  z: 2.4774320700000003
+  yaw: 1.5539978
+  pitch: 0.0045918
+  roll: -0.0066956
+}
+tran_infos {
+  source_frame: "rslidar_left"
+  target_frame: "base_link"
+  x: -0.7595445900000001
+  y: 3.5213008299999995
+  z: -0.01813689899999993
+  yaw: -2.6065487
+  pitch: -0.0184247
+  roll: 0.0036494
+}
+tran_infos {
+  source_frame: "rslidar_right"
+  target_frame: "base_link"
+  x: 1.8380409700000002
+  y: 3.5322575900000004
+  z: -0.04787544499999996
+  yaw: -0.5166605
+  pitch: 0.0005692
+  roll: -0.0130707
+}
+tran_infos {
+  source_frame: "camera_front_narrow"
+  target_frame: "imu"
+  x: 0.011441
+  y: 1.59965
+  z: 0.805348
+  yaw: 0.034606790343910794
+  pitch: -0.00354113485630525
+  roll: -1.5571036030596774
+}
+tran_infos {
+  source_frame: "camera_front_wide"
+  target_frame: "imu"
+  x: -0.03441
+  y: 1.661927
+  z: 0.798716
+  yaw: 0.028266361234712167
+  pitch: -0.0033694386969471686
+  roll: -1.5548615581222227
+}
+tran_infos {
+  source_frame: "camera_front_left"
+  target_frame: "imu"
+  x: -1.050095
+  y: 2.099948
+  z: 0.326163
+  yaw: 1.0959753491694975
+  pitch: -0.0005573657004773746
+  roll: -1.5636178723078489
+}
+tran_infos {
+  source_frame: "camera_front_right"
+  target_frame: "imu"
+  x: 0.976079
+  y: 2.149295
+  z: 0.314478
+  yaw: -1.0207725402178878
+  pitch: 0.006005784936410574
+  roll: -1.57537759243934
+}
+tran_infos {
+  source_frame: "camera_rear_left"
+  target_frame: "imu"
+  x: -1.065627
+  y: 2.459671
+  z: 0.188891
+  yaw: 2.3163913551336965
+  pitch: -0.00874914866638754
+  roll: -1.5706531123627137
+}
+tran_infos {
+  source_frame: "camera_rear_right"
+  target_frame: "imu"
+  x: 1.002783
+  y: 2.495828
+  z: 0.191429
+  yaw: -2.2690971642094944
+  pitch: 0.0016227895680942517
+  roll: -1.577516993521425
+}
+tran_infos {
+  source_frame: "camera_rear"
+  target_frame: "imu"
+  x: 0.024807
+  y: -0.013572
+  z: 0.821768
+  yaw: -3.1015526277234686
+  pitch: 0.0024044131083995612
+  roll: -1.5620942585222135
+}
+tran_infos {
+  source_frame: "lidar_main"
+  target_frame: "imu"
+  x: -0.00225
+  y: 0.998689
+  z: 1.196934
+  yaw: 1.5689700166409626
+  pitch: 0.0011186261914202247
+  roll: 0.001529158986830438
+}
+tran_infos {
+  source_frame: "lidar_middle"
+  target_frame: "imu"
+  x: -0.009907
+  y: 1.56558
+  z: 0.928215
+  yaw: 1.59568325
+  pitch: -0.00190434
+  roll: -0.00244785
+}
+tran_infos {
+  source_frame: "radar_front"
+  target_frame: "imu"
+  x: -0.199827
+  y: 3.497487
+  z: -0.205554
+  yaw: 1.5689700166409626
+  pitch: 0.0011186261914202247
+  roll: 0.001529158986830438
+}
+tran_infos {
+  source_frame: "radar_fr"
+  target_frame: "imu"
+  x: 0.899957
+  y: 3.295588
+  z: -0.107013
+  yaw: 1.0977304813884414
+  pitch: 0.001691030042867192
+  roll: 0.0008536265837940144
+}
+tran_infos {
+  source_frame: "radar_rr"
+  target_frame: "imu"
+  x: 0.892287
+  y: -0.904402
+  z: -0.102315
+  yaw: -1.2235570406731886
+  pitch: -0.0005281893741282406
+  roll: 3.139774184859029
+}
+tran_infos {
+  source_frame: "radar_rl"
+  target_frame: "imu"
+  x: -0.907555
+  y: -0.901
+  z: 0.000438
+  yaw: -1.921687425363752
+  pitch: -0.0015742326895546996
+  roll: 3.1405388634231
+}
+tran_infos {
+  source_frame: "radar_fl"
+  target_frame: "imu"
+  x: -0.900037
+  y: 3.298878
+  z: -0.10426
+  yaw: 2.0402083762905097
+  pitch: 0.00030322473233934666
+  roll: 0.001869748832127446
+}
+tran_infos {
+  source_frame: "base_link"
+  target_frame: "imu_virtual_cam"
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0
+  roll: 0
+}
+tran_infos {
+  source_frame: "camera_front_narrow_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: 0.04809021
+  y: 0.32222081
+  z: -0.10034349
+  yaw: 0.00978122
+  pitch: 0.00638997
+  roll: -1.58889783
+}
+tran_infos {
+  source_frame: "camera_front_wide_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: -0.00891111
+  y: 0.36735652
+  z: -0.0998968
+  yaw: -0.01099185
+  pitch: 0.01013572
+  roll: -1.58140684
+}
+tran_infos {
+  source_frame: "camera_front_left_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: -1.01381314
+  y: 0.81976984
+  z: -0.58862729
+  yaw: 1.06430239
+  pitch: 0.02207012
+  roll: -1.56297287
+}
+tran_infos {
+  source_frame: "camera_front_right_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: 1.00404276
+  y: 0.80497624
+  z: -0.61349621
+  yaw: -1.04978132
+  pitch: -0.0083371
+  roll: -1.58125601
+}
+tran_infos {
+  source_frame: "camera_rear_left_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: -1.04797912
+  y: 1.17012509
+  z: -0.72467447
+  yaw: 2.30328667
+  pitch: 0.00790626
+  roll: -1.54615503
+}
+tran_infos {
+  source_frame: "camera_rear_right_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: 1.0183965
+  y: 1.1668505
+  z: -0.74986931
+  yaw: -2.29956436
+  pitch: -0.01837333
+  roll: -1.56674841
+}
+tran_infos {
+  source_frame: "camera_rear_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: -0.00462136
+  y: -1.29911826
+  z: -0.0715655
+  yaw: -3.13729167
+  pitch: -0.00966302
+  roll: -1.56091454
+}
+tran_infos {
+  source_frame: "lidar_main_virtual_cam"
+  target_frame: "imu_virtual_cam"
+  x: 0.0228157
+  y: 0.0165649
+  z: 0.23
+  yaw: 1.58425918
+  pitch: 0.02006187
+  roll: 0.00930768
+}
+tran_infos {
+  source_frame: "imu_virtual_cam"
+  target_frame: "vehicle_virtual_cam"
+  x: 1.435
+  y: 0
+  z: 1.16
+  yaw: -1.55246923
+  pitch: -0.01330314
+  roll: 0.01867353
+}
+intrinsics_infos {
+  camera_frame: "camera_front_narrow"
+  fx: 7328.5918131259
+  cx: 1887.2732785874
+  fy: 7327.6156151485
+  cy: 1082.9929904072
+  dist: 88.2505648608
+  dist: 0.3832955835
+  dist: 87.7725752829
+  dist: 88.5312651606
+  dist: 18.6100466726
+  dist: 100.0904118743
+  dist: 0.00036051
+  dist: 0.0000541399
+}
+intrinsics_infos {
+  camera_frame: "camera_front_wide"
+  fx: 1908.3241764279
+  cx: 1917.1594968739
+  fy: 1908.4540771603
+  cy: 1078.765973112
+  dist: 5.3650809756
+  dist: 2.5433491945
+  dist: 0.1145505264
+  dist: 5.7335117899
+  dist: 4.3897310849
+  dist: 0.6071142022
+  dist: 0.0000434641
+  dist: 0.0000100359
+}
+intrinsics_infos {
+  camera_frame: "camera_front_left"
+  fx: 1193.4599131983
+  cx: 960.2217296244
+  fy: 1193.629917614
+  cy: 537.9453624655
+  dist: 2.6454151423
+  dist: 0.1965439939
+  dist: -0.077871626
+  dist: 3.079027554
+  dist: 1.1936589102
+  dist: -0.1826342759
+  dist: 0.0001565957
+  dist: 0.00008175
+}
+intrinsics_infos {
+  camera_frame: "camera_front_right"
+  fx: 1192.9981583088
+  cx: 960.0728273146
+  fy: 1193.1999771192
+  cy: 537.1099474656
+  dist: 3.2468396953
+  dist: -0.3865218105
+  dist: -0.197679263
+  dist: 3.6823003262
+  dist: 0.8582873017
+  dist: -0.5860972096
+  dist: 0.0003110042
+  dist: 0.0000028563
+}
+intrinsics_infos {
+  camera_frame: "camera_rear_left"
+  fx: 1191.5061979215
+  cx: 961.6086495624
+  fy: 1191.402473291
+  cy: 537.9024922532
+  dist: 3.9138217853
+  dist: 0.9174954611
+  dist: -0.0358779492
+  dist: 4.3495737841
+  dist: 2.4509663873
+  dist: 0.0350989644
+  dist: 0.0004698364
+  dist: 0.0001433191
+}
+intrinsics_infos {
+  camera_frame: "camera_rear_right"
+  fx: 1190.3016428584
+  cx: 961.6739965836
+  fy: 1190.2823491465
+  cy: 534.7868893703
+  dist: 5.1500851088
+  dist: 1.2952831343
+  dist: -0.0439340118
+  dist: 5.5872046232
+  dist: 3.3519993802
+  dist: 0.0694008978
+  dist: 0.0002813877
+  dist: 0.0000759824
+}
+intrinsics_infos {
+  camera_frame: "camera_rear"
+  fx: 1190.9482900444
+  cx: 959.9601056878
+  fy: 1191.1402096698
+  cy: 538.0090023623
+  dist: 7.55851857
+  dist: 2.070495501
+  dist: -0.0886834307
+  dist: 7.996674612
+  dist: 5.1515017334
+  dist: 0.1048061883
+  dist: 0.0001263728
+  dist: 0.0000827389
+}
+intrinsics_infos {
+  camera_frame: "camera_front_narrow_virtual_cam"
+  fx: 7772.0934097670715
+  cx: 1922.6395697864486
+  fy: 9475.940544060331
+  cy: 1123.7865544785773
+}
+intrinsics_infos {
+  camera_frame: "camera_front_wide_virtual_cam"
+  fx: 2026.3856862224618
+  cx: 1899.9615820095644
+  fy: 2032.5357266204574
+  cy: 1072.8773284714405
+}
+intrinsics_infos {
+  camera_frame: "camera_front_left_virtual_cam"
+  fx: 1345.29215528064
+  cx: 937.8839404870023
+  fy: 1354.2204324659494
+  cy: 530.7218140425347
+}
+intrinsics_infos {
+  camera_frame: "camera_front_right_virtual_cam"
+  fx: 1348.0632126321316
+  cx: 938.1309205847718
+  fy: 1356.9639469464885
+  cy: 531.6062640426189
+}
+intrinsics_infos {
+  camera_frame: "camera_rear_left_virtual_cam"
+  fx: 1339.8779384470588
+  cx: 937.2202458352941
+  fy: 1348.6929248842105
+  cy: 530.6648244631579
+}
+intrinsics_infos {
+  camera_frame: "camera_rear_right_virtual_cam"
+  fx: 1346.9072515764706
+  cx: 939.238737317647
+  fy: 1355.768483494737
+  cy: 532.6796178947369
+}
+intrinsics_infos {
+  camera_frame: "camera_rear_virtual_cam"
+  fx: 1346.6810748323012
+  cx: 937.2140844962258
+  fy: 1355.8511203729768
+  cy: 533.0850925389348
+}

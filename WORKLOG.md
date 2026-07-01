@@ -6,13 +6,1332 @@
 
 ---
 
-## 当前状态（2026-06-15 更新）
+## 当前状态（2026-07-01 更新）
+
+**newaccpro3 Pangu-CARLA 可视化闭环场景**：
+
+- 已新增调试平台场景：
+
+```text
+scenarios/newaccpro3_pangu_carla_20260701/
+```
+
+- 该场景会一键启动：
+  - 本机 CARLA 0.9.15。
+  - Python Bridge。
+  - 直道 ACC 跟车场景，ego 位于 `spawn_points[198]`，前车约 `25m`，速度 `2m/s`。
+  - Pangu Docker 容器 `newaccpro3_pangu_carla`。
+  - `run.sh app_empty ZmqBridgeModule -nohup` direct mode 业务进程。
+- `run_all.sh app_empty` / topo 链路当前问题：
+  - 日志出现 `Failed to connect to aicc_flow_topo`。
+  - `run_all.sh` 仍打印 `run_all success`，但不会可靠拉起 `ZmqBridgeModule`。
+  - 当前判断是 topo 服务/拓扑拉起链路未 ready 或连接失败，不是 ACC 算法库和 ZMQ 链路本身失败。
+- direct mode 已验证能拉起：
+
+```bash
+bash /tmp/newaccpro3_pangu_codegen_build/install/run.sh app_empty ZmqBridgeModule -nohup
+```
+
+- 真实 CARLA 现象：
+  - CARLA/Bridge/Pangu 容器和业务进程均可启动。
+  - Bridge 能收到 Pangu 控制命令。
+  - 手动重新执行一次 `boost + E` 后，ego 能启动并跟随前车，肉眼观察跟车效果可接受。
+- 已定位启动时偶发不启控的主因：
+  - `E` 是单周期驾驶指令脉冲。
+  - 如果脚本在 Pangu ZMQ 订阅端 ready 之前发送 `E`，该脉冲会被丢失。
+  - 后续手动再发一次 `E` 时订阅端已经 ready，所以 ego 能启动。
+- 已加固 `scenarios/newaccpro3_pangu_carla_20260701/run.sh`：
+  - 等待 Pangu `dataflow_runner --process_name=ZmqBridgeModule` 存在。
+  - 再等待 `PANGU_COMMAND_READY_DELAY_SEC`。
+  - 然后执行一次 `boost-ego-speed.py` 和 `keyboard_command_publisher.py --once e`。
+  - 避免连续刷 `E`，防止在已启控后重复触发“降低设定速度”。
+- 调试平台入口：
+
+```bash
+cd /home/aiden/文档/Modularization
+python3 tools/gaasd_scenario_panel/app.py
+# 浏览器打开 http://127.0.0.1:8765/
+```
+
+- 调试平台已针对该场景补充手动测试按钮：
+  - `辅助启控`：执行一次 `boost + E`，用于 Pangu 订阅端 ready 后手动启控。
+  - `E/Q/T/R/C/S/0`：直接发送 ACC 驾驶指令到 Bridge `5702`，再由 Bridge 转发到 Pangu 输入总线。
+  - 健康检查新增 `Pangu ACC`，检查 Docker 容器内 `dataflow_runner --process_name=ZmqBridgeModule` 是否存在。
+
+**newaccpro3 Pangu 生成代码版 ACC mock 闭环复测**：
+
+- 已用 `sudo` 补齐 `/tmp/newaccpro3_pangu_codegen_build/install/image/` 下运行所需文件：
+  - `lib/libmodule_empty.so`
+  - `lib/libmodule_empty_core.so`
+  - `lib/libmodule_empty_conf_pb.so`
+  - `lib/libZmqBridgeModule.so`
+  - `conf/app_module/app_empty.pt`
+  - `conf/node_module/module_empty/*.pt`
+  - `conf/global_conf/global_module.pt/global_com.pt/tf.pt/icvos_machine.pt`
+- 结论一：`run_all.sh app_empty` 当前仍只显示 `run_all success`，但日志没有 `ZmqBridgeModule/module_empty` 被拉起的记录；该路径的问题更像是 `icvos_tools topo start app`/拓扑拉起链路问题，不是算法 `.so` 链路问题。
+- 结论二：绕过 topo、直接执行 `run.sh app_empty ZmqBridgeModule -nohup` 可以拉起生成代码版业务节点，`ZmqBridgeModule` 能通过 ZMQ 订阅 mock 输入并发布 `gaasd.carla.control_cmd.v1`。
+- 已修改 `tools/pangu_acc_closed_loop/verify_mock_command_sequence.sh`：
+  - 支持 `PANGU_START_MODE=direct`，用于直接启动单个 Pangu 进程。
+  - 支持 `MOCK_EGO_SPEED` 和 `MOCK_COAST_DECEL`，用于避开或验证 ACC 低速保护。
+  - 退控断言改为检查 `enable=0`，不再强制要求 `target=0`；生成代码当前退控后仍会计算 target，但使能为 0。
+- 复测命令：
+
+```bash
+docker run --rm -v /home:/home -v /data:/data -v /tmp:/tmp --net=host --shm-size=8193m \
+  docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5 \
+  /bin/bash -lc 'cd /data/aiden/文档/Modularization && \
+  PANGU_BUILD_ROOT=/tmp/newaccpro3_pangu_codegen_build \
+  PANGU_INSTALL_DIR=/tmp/newaccpro3_pangu_codegen_build/install \
+  LOG_DIR=/tmp/newaccpro3_codegen_mock_runtime_direct \
+  PANGU_START_MODE=direct \
+  PANGU_PROCESS_NAME=ZmqBridgeModule \
+  MOCK_EGO_SPEED=2 \
+  MOCK_COAST_DECEL=0 \
+  tools/pangu_acc_closed_loop/verify_mock_command_sequence.sh'
+```
+
+- 复测结果：
+  - `E/T/R/Q/C/E/S/0` 全部到达 mock Bridge。
+  - `E` 后生成代码版 ACC 输出 `enable=1`，目标速度从约 `3.75m/s` 逐步调整到约 `2.25m/s`。
+  - `C` 后输出 `enable=0`。
+  - 再次 `E` 后重新输出 `enable=1`。
+  - `S` 后输出 `enable=0`。
+  - 脚本最终输出 `[mock-seq] PASS`，退出码为 0。
+- 注意：生成代码中 `vMin=1`，低速保护有效。若 mock 初速为 0，或在 `run.sh -nohup` 的 10 秒等待期间自然滑行到 0，则 `enable` 会保持 0，这是符合当前画布设计的行为，不是链路失败。
+
+## 下一步任务（2026-07-01，按当前主流程）
+
+### P0：完成 newaccpro3 真实 CARLA 人工验收
+
+- [ ] 从调试平台启动 `newaccpro3_pangu_carla_20260701`，确认 CARLA、Bridge PUB、Bridge CONTROL、Pangu ACC 四项均在线。
+- [ ] 验证自动启控；若未自动起步，使用“辅助启控”复测，并记录是否仍存在首个 `E` 脉冲丢失。
+- [ ] 逐项验证 `E/Q/T/R/C/S/0`：启控、调速、调时距、取消和制动退出均应符合 `commandType` 约定。
+- [ ] 至少运行 60 秒，确认自车不碰撞、不丢前车、Pangu 业务进程和 CARLA 不异常退出。
+
+### P1：把“肉眼可用”升级为可量化验收
+
+- [ ] 持久化记录 `egoV/leadV/distance/targetSpeed/enable/commandType`，不只依赖 CARLA 画面。
+- [ ] 增加场景结果摘要：启控是否成功、最小车距、末端车距、速度稳态误差、退出响应和消息计数。
+- [ ] 在调试平台提供最新结果或日志入口，使一次测试能够留下可复核证据。
+
+### P2：固化可复现场景和开发团队交接包
+
+- [ ] 将已验证的 Pangu 构建产物从临时 `/tmp/newaccpro3_pangu_codegen_build` 迁移到仓库可构建/可恢复的位置；场景不能长期依赖 `/tmp`。
+- [ ] 固化 Docker 镜像、Pangu 配置、CARLA 地图/出生点、Bridge 配置、前车行为、相机参数和启动顺序。
+- [ ] 测试稳定后整理 GAASD 团队交接包：CARLA 场景脚本、Python Bridge、键盘指令脚本、Pangu 模块源码/配置、构建安装脚本和最小说明。
+- [ ] 交接前在干净目录或新容器中执行一次从构建到闭环的复现测试。
+
+### P3：回到 GAASD 生成代码验证轨道
+
+- [ ] 每次 GAASD/codegen 更新后重新生成 `newaccpro3`，先确认编译通过，再运行统一输入序列。
+- [ ] 使用与手写 oracle 相同的 `egoV/leadV/distance/commandType` 做逐周期 diff，区分算法差异和生成器缺陷。
+- [ ] 生成代码通过 diff 后，用生成代码替换当前临时修补/手写基准，再重复 mock 与真实 CARLA 60 秒测试。
+- [ ] `run_all/topo` 问题单独向 GAASD/Pangu 团队反馈；在修复前继续使用已验证的 direct `run.sh`，不让它阻塞算法闭环。
+
+### P4：ACC 基线稳定后开展 LKS 联调
+
+- [ ] 复用当前 Pangu、Bridge、场景和调试平台框架，扩展已确认的 LKS 输入输出接口。
+- [ ] 先做单车、固定纵向速度的 LKS 横向闭环，再接完整 LKS 画布生成代码。
+- [ ] 最后再考虑 ACC+LKS 组合测试，避免同时引入纵向和横向问题导致无法定位。
+
+---
+
+## 当前状态（2026-06-26 更新）
+
+**已审核的 ACC/LKS CARLA 联调接口变量（2026-06-29）**：
+
+- 最终确认文档：
+
+```text
+docs/GAASD_CARLA_ACC_LKS_接口变量清单.md
+```
+
+- 后续 ACC/LKS 与 CARLA/Pangu 通道、Bridge、mock 测试方案均以该文档为基准；不要再把已删除的扩展变量重新加入接口需求。
+
+- ACC 必须保留的接口：
+  - 输入：`egoV`，`double`，m/s，自车速度。
+  - 输入：`leadV`，`double`，m/s，前车速度。
+  - 输入：`distance`，`double`，m，自车到前车距离。
+  - 输入：`commandType`，`int`，驾驶指令事件。
+  - 输出：`targetSpeed` / `speed`，`double`，m/s，ACC 目标速度。
+  - 输出：`enable`，`int`，ACC 控制使能。
+
+- `commandType` 约定：
+  - `0`：无指令。
+  - `1`：降低设定速度；待命无历史时表示当前速度启控。
+  - `2`：提高设定速度；待命有历史时表示继承参数启控。
+  - `3`：减小时距。
+  - `4`：增大时距。
+  - `5`：驾驶员油门。
+  - `6`：驾驶员制动并退出 ACC。
+  - `7`：取消 ACC。
+  - 当前画布按单周期事件脉冲设计：无指令周期为 `0`，有指令时 `1..7` 只保持一个仿真周期，下一周期回到 `0`。如果输入源无法保证单周期脉冲，再考虑边沿检测。
+
+- LKS 必须保留的输入接口：
+  - `egoV`，`double`，m/s，自车速度，用于预瞄距离、横向加速度限幅、低速判断。
+  - `c0`，`double`，m，车道中心线多项式常数项，近似当前横向偏差。
+  - `c1`，`double`，1，车道中心线一阶项。
+  - `c2`，`double`，1/m，车道中心线二阶项。
+  - `c3`，`double`，1/m^2，车道中心线三阶项。
+  - `curvature`，`double`，1/m，道路曲率，用于弯道预瞄距离修正。
+  - `brakePressed`，`int`，是否制动，用于退出 LKS。
+  - `driverSteerNorm`，`double`，驾驶员方向盘输入归一化值，用于判断主动转向/换道。
+
+- LKS 必须保留的输出接口：
+  - `steerRad` / `lksSteerRad`，`double`，rad，LKS 横向转角命令。
+  - `controlEnabled`，`int`，LKS 横向控制使能。
+
+- LKS 特别注意：
+  - `driverSteerNorm` 必须表示驾驶员输入，不能使用 LKS 输出后的车辆实际转角，否则 LKS 自己产生的转向会被误判为驾驶员主动转向。
+  - 第一阶段测试可以默认 `laneValid=1`，但 `laneValid` 当前不作为必须接口变量列入最终精简清单。
+  - LKS 本身只负责横向控制；单车 LKS 仿真需要车辆持续运动时，固定纵向速度或外部纵向控制命令属于仿真场景支持，不属于 LKS 算法输出。
+
+**官方 accreference 示例项目复核**：
+
+**Pangu ACC 最小闭环执行产物（2026-06-29）**：
+
+- 已按最终方案从参考包复制并改造独立模块，位置：
+
+```text
+tools/pangu_acc_closed_loop/ACCClosedLoopModule
+```
+
+- 该目录来自 `/home/aiden/文档/temp/ACCModule.tar.gz`，未覆盖原始参考包。
+- `proto/ACCModule_config.proto` 已改为：
+  - `AccInput` 输入 `ego_speed_mps / lead_speed_mps / lead_distance_m / command_type`。
+  - `AccOutput` 输出 `target_speed_mps / enable / valid`，并额外带 `time_gap_s / max_speed_mps / decision / system_state` 作为调试字段。
+- `module_lib/AccTargetSpeed.*` 已从参考包的简单距离控制改为手写 ACC oracle：
+  - `commandType=1` 可从待命无历史状态按当前速度启控。
+  - `commandType=2` 支持待命有历史状态继承参数启控。
+  - `commandType=3/4` 调整时距。
+  - `commandType=6/7` 退出 ACC。
+  - 输出 `targetSpeed` 和 `enable`，并保留内部 `timeGap/maxSpeed/decision/systemState` 方便后续与 GAASD 生成代码做 diff。
+- `module_lib/acc_zmq_bridge.*` 已新增订阅：
+
+```text
+gaasd.carla.driver_command.v1
+```
+
+- 端口方向保持最终联调语义：
+  - `5701`：Bridge 对外发布 `ego_state / lead_vehicle / driver_command`。
+  - `5702`：Bridge 接收 `control_cmd / driver_command`。
+  - 键盘输入仍先进入 Bridge，再由 Bridge 归一化转发给 Pangu，不让键盘程序直接私连 Pangu。
+- 新增 mock 和键盘工具：
+
+```text
+tools/pangu_acc_closed_loop/mock_carla_bridge.py
+tools/pangu_acc_closed_loop/keyboard_command_publisher.py
+tools/pangu_acc_closed_loop/README.md
+```
+
+- 已完成的本地验证：
+  - Python 脚本 AST 语法检查通过。
+  - `AccTargetSpeed.cpp` 宿主机单文件编译通过。
+  - ACC oracle smoke test 通过：`commandType=1` 能启控，后续无指令时 `enable` 保持，目标速度为正。
+  - `acc_zmq_bridge.cpp` 使用 Pangu 第三方路径单独编译通过：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/panguFramework/pangu_gaasd/dependencies/thirdparty/X86/include
+```
+
+- Claude 审核后已修正 oracle 与当前 `newaccpro3` 真值表的差异：
+  - 当前真值表包含 `u==0&&(v==6||v==7)->R8`，且 catch-all 默认输出 R8。
+  - `ComputeDecision()` 默认输出已改为 R8，不再把未匹配格输出为 0。
+  - `hasHistory` 写回已按 `ACCHasHistoryNext` 语义收窄，只在已在控或真正启控时置历史。
+- 已完成完整 Pangu 模块临时构建验证：
+
+```text
+/tmp/pangu_acc_closed_loop_build_20260629_202705
+```
+
+- 构建方式：
+  - 在 `/tmp` 搭建临时 Pangu 构建树。
+  - 软链官方 `dependencies/configs`，复制官方 `script` 和当前 `ACCClosedLoopModule`。
+  - 手动 CMake 配置 whitelist，只构建 `ACCClosedLoopModule`。
+  - 构建前需要加载 Pangu thirdparty：
+
+```bash
+source dependencies/thirdparty/X86/setup.bash
+```
+
+- 已生成并通过依赖检查的产物：
+
+```text
+build_out/lib/libACCModule.so
+build_out/lib/libZmqBridgeModule.so
+build_out/lib/libACCModule_core.so
+build_out/lib/libACCModule_conf_pb.so
+```
+
+- `ldd` 检查未发现 `not found`，`libzmq.so.5` 和 `libprotobuf.so.26` 均来自 Pangu thirdparty。
+- 已安装最小运行目录并从 `project/accreference/icvos/src/configs` 补齐 `app_empty` 运行配置：
+  - `conf/app_module/app_empty.pt`
+  - `conf/global_conf/global_module.pt`
+  - `conf/global_conf/global_com.pt`
+  - `conf/global_conf/icvos_machine.pt`
+  - `conf/global_conf/tf.pt`
+- 已通过 `run_all.sh app_empty` 启动过 Pangu runtime，日志显示 `ACCModule` 和 `ZmqBridgeModule` 被加载到 `app_empty`。
+- `keyboard_command_publisher.py` 已新增 `--once` 单次指令模式，便于自动验证：
+
+```bash
+python3 tools/pangu_acc_closed_loop/keyboard_command_publisher.py --once e
+```
+
+- 已新增 mock 闭环复测脚本：
+
+```bash
+tools/pangu_acc_closed_loop/verify_mock_closed_loop.sh
+```
+
+  默认使用 `/tmp/pangu_acc_closed_loop_build_20260629_202705`，如构建目录变化可用
+  `PANGU_BUILD_ROOT=/path/to/build_root` 覆盖。
+- 复测脚本已修复两个运行坑：
+  - colcon/Pangu `setup.bash` 会引用未定义环境变量，脚本在 source 期间临时关闭 `nounset`。
+  - `app_empty.pt` 原始 `soc_name: "app_empty"` 与本机 `icvos_machine.pt` 的
+    `local_machine_name: "soc1"` 不一致，Pangu 不会真正拉起模块；脚本启动前会自动改为 `soc1`。
+- 已完成 mock 最小闭环验证：
+  - 键盘脚本发送 `commandType=1(E)` 后，mock 日志显示 `cmd=1`。
+  - 按当前 `newaccpro3` 画布语义，启控在下一周期生效；随后 Pangu 输出控制命令回到 mock，mock 日志显示 `target=5.00 enable=1`，自车速度开始上升。
+  - 键盘脚本发送 `commandType=7(C)` 后，退控在下一周期生效；随后 mock 日志显示 `target=0.00 enable=0`。
+  - 结论：`keyboard -> 5702 -> mock Bridge -> 5701 -> ZmqBridgeModule -> ACCModule -> ZmqBridgeModule -> 5702 -> mock`
+    这条最小闭环链路已跑通。
+- 已新增并通过 ACC oracle 计算序列测试：
+
+```bash
+tools/pangu_acc_closed_loop/verify_oracle_sequence.sh
+```
+
+  固定输入 `ego=2m/s、lead=2m/s、distance=20m` 下，已验证：
+  - `E`：无历史待命启控，`decision=5`，`systemState=2`，当前周期 `enable=0`，`targetSpeed=0`。
+  - 无指令保持：`systemState=0`，`decision=8`，下一周期 `enable=1`，`targetSpeed=5.0000`。
+  - `T`：`timeGap=1.8 -> 1.6`。
+  - `R`：`timeGap=1.6 -> 1.8`。
+  - `Q`：当前配置已在 `maxSpeedCap=5.0000` 上限，`maxSpeed` 保持 `5.0000`。
+  - 在控 `E`：`maxSpeed=5.0000 -> 3.6111`，`targetSpeed=3.6111`。
+  - `C`：取消 ACC，当前周期仍按旧状态输出，下一周期 `enable=0`，`targetSpeed=0`。
+  - 历史恢复 `Q`：`systemState=1`，`decision=6`，下一周期重新启控。
+  - `S`：制动退出，按下一周期退控处理。
+- 已新增并通过 mock 多指令链路测试：
+
+```bash
+tools/pangu_acc_closed_loop/verify_mock_command_sequence.sh
+```
+
+  默认发送 `E/T/R/Q/C/E/S/0`，已验证：
+  - 全部驾驶指令都到达 mock Bridge。
+  - Pangu 持续输出 `enable=1` 控制命令。
+  - `C/S` 后 Pangu 按下一周期退控，随后输出 `target=0.0000 enable=0`。
+  - mock 动态日志中目标速度随距离/速度变化从 `5.0000` 逐步下降到约 `3.1m/s`，说明目标速度计算在闭环中持续生效。
+- 已新增真实 CARLA/Bridge/Pangu 复测脚本：
+
+```bash
+tools/pangu_acc_closed_loop/verify_real_bridge_closed_loop.sh
+```
+
+- 已完成真实 Bridge 多指令闭环验证：
+  - `start-gaasd-carla-manual.sh` 能启动 CARLA、Bridge、Town01 ACC 直道场景。
+  - `verify_real_bridge_closed_loop.sh` 启动 Pangu `app_empty` 后默认发送 `E/T/R/Q/C/E/S/0`。
+  - Bridge 状态探针显示 `driver_command_received=8`。
+  - Bridge 状态探针显示 `control_cmd_received` 增长到 `257`，证明 Pangu 控制输出持续回到真实 Bridge。
+  - 结论：`keyboard -> 5702 -> carla_bridge.py -> 5701 -> ZmqBridgeModule -> ACCModule -> ZmqBridgeModule -> 5702 -> carla_bridge.py -> CARLA`
+    这条真实 Bridge 闭环链路已跑通。
+- 修复真实场景启动竞态：
+  - `reset-acc-straight-scene.py` 原来只查一次 `role_name=hero`，Bridge 刚生成 ego 时可能查不到。
+  - 已改为按 `--timeout-sec` 等待 ego 出现，避免场景 reset 偶发失败。
+- 当前真实验证中的 Pangu `disk_fault:loop*` 报警来自 snap loop 只读挂载使用率 100%，本次不影响 `run_all success` 和控制闭环验证。
+
+**newaccpro3 GAASD 生成代码修补验证（2026-06-30）**：
+
+- 当前生成代码目录：
+
+```text
+project/newaccpro3/icvos/src/temp_codegen_output
+```
+
+- 已确认生成代码的大体框架可用：
+  - `run_2f3edfa5_...` 顶层包含 CARLA 输入、`ACCDecision` 复合子块、目标速度计算、CARLA 纵向命令输出。
+  - `composite_block_empty_ea2170e7_...` 已生成 `Input/Output/Param/State`，可表达 ACC 决策状态保持。
+  - `callback_d3fdb632_..._FuncStep()` 能周期调用 `c_process -> run`。
+- 已手动修补的生成代码小问题：
+  - 新增 `GlobalContext.hpp`，补齐 `GlobalParams{MinDistance,Kdist,Kspeed}` 和 `global::params`。
+  - 新增 `MainInclude.hpp`，补齐 CARLA 边界函数包装和当前画布真值表函数。
+  - 修复复合组件实现名 `composite_block()` 与头文件 `run()` 不一致的问题。
+  - 修复复合组件漏声明 `temp204061`、`output.timeGap` 自赋值导致未输出时距的问题。
+  - 修复顶层非法变量名 `C++_None`，改为 `tempDriverCommand`。
+  - 修复顶层漏接线问题：`CARLAACCDriverCommand -> commandType`、`CARLAACCEgoSpeed -> egoV`。
+  - 修复顶层漏读取全局参数问题：`MinDistance/Kdist/Kspeed`。
+- 已完成构建验证：
+
+```bash
+cmake -S project/newaccpro3/icvos/src/temp_codegen_output -B /tmp/newaccpro3_codegen_build
+cmake --build /tmp/newaccpro3_codegen_build -j$(nproc)
+```
+
+  构建通过，生成 `libMainInclude_static.a` 和 `libMainInclude_shared.so`，当前无 `-Wall -Wextra` 警告。
+- 已完成 `ACCDecision` 子块离线序列验证：
+  - `E(commandType=1)` 后下一周期 `enable=1`，符合当前画布的一周期状态延迟语义。
+  - `T/R(commandType=3/4)` 可更新 `timeGap`。
+  - `Q(commandType=2)` 可提高 `maxSpeed`。
+  - `C/S(commandType=7/6)` 后下一周期 `enable=0`。
+- 已完成顶层 `run_2f3edfa5_...` 离线测试桩验证：
+  - 用本地测试桩模拟 `carla_adapter_read_driver_command/read_ego_state/read_lead_vehicle/publish_longitudinal_cmd`。
+  - `CARLA input -> ACCDecision -> targetSpeed -> CARLAACCLongitudinalCmd` 链路能串通。
+  - 固定 `egoV=2m/s、leadV=2m/s、distance=20m` 时，当前画布参数输出 `target=5.75m/s`。
+  - `target=5.75m/s` 的原因是当前生成画布中 `maxSpeed` 初值为 `20` 且没有额外 `5m/s` 上限；这是画布参数/结构差异，不是补丁引入的问题。
+- 已完成 Pangu 节点级最小补丁：
+  - `acc_zmq_bridge` 新增订阅 `gaasd.carla.driver_command.v1`，并缓存 `command_type/command_valid`。
+  - `ZmqBridgeModule` 新增生成 `ACCDecision` 子块实例。
+  - `ZmqBridgeModule::Proc()` 现在按 `ego_state + lead_vehicle + driver_command` 调用生成决策子块，计算 `targetSpeed` 并通过 `PublishControl()` 发布 `gaasd.carla.control_cmd.v1`。
+  - `module_empty/CMakeLists.txt` 已把 `temp_codegen_output/composite_block_empty_...cpp` 编入 `libZmqBridgeModule.so`。
+- 已完成 Pangu Docker ABI 编译验证：
+  - 临时构建树：`/tmp/newaccpro3_pangu_codegen_build`。
+  - 使用镜像：`docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5`。
+  - 容器内构建通过，生成：
+
+```text
+/tmp/newaccpro3_pangu_codegen_build/build_out/lib/libmodule_empty.so
+/tmp/newaccpro3_pangu_codegen_build/build_out/lib/libmodule_empty_core.so
+/tmp/newaccpro3_pangu_codegen_build/build_out/lib/libmodule_empty_conf_pb.so
+/tmp/newaccpro3_pangu_codegen_build/build_out/lib/libZmqBridgeModule.so
+```
+
+  - 容器内 `ldd` 检查无 `not found` 和 GLIBC 版本错误。
+  - 宿主机直接运行会因 Pangu `install/lib/libc.so.6` 与宿主机工具链冲突，不应在宿主机直接跑 Pangu runtime；运行验证应在 Pangu Docker 内执行。
+- 已尝试 mock 运行验证：
+  - 第一次失败原因：`run_all.sh` 使用 `install/image/conf`，而临时安装后 `app_empty` 和 `node_module/module_empty` 只在 `install/conf`，导致实际没有拉起 `ZmqBridgeModule`。
+  - 需要下一步把以下内容同步到 `/tmp/newaccpro3_pangu_codegen_build/install/image` 后重跑：
+    - `install/lib/libmodule_empty*.so` 和 `libZmqBridgeModule.so` -> `install/image/lib/`
+    - `project/newaccpro3/icvos/src/configs/app_module/app_empty.pt` -> `install/image/conf/app_module/`
+    - `install/conf/node_module/module_empty` -> `install/image/conf/node_module/`
+    - `project/newaccpro3/icvos/src/configs/global_conf/{global_module.pt,global_com.pt,tf.pt}` -> `install/image/conf/global_conf/`
+    - 已验证的 `icvos_machine.pt` -> `install/image/conf/global_conf/icvos_machine.pt`
+  - 当前会话继续同步时需要 root 权限，因为 `install/image` 由 Docker root 创建；本次 sudo/escalation 被系统拒绝，未继续绕过。
+- 仍未完成：
+  - 重跑 Docker 内 mock 闭环，确认 `driver_command -> generated ACCDecision -> control_cmd`。
+  - 真实 CARLA/Bridge 联调。
+  - 与 GAASD 团队确认：正式代码生成应直接把 `app_empty/node_module` 安装到 `install/image/conf`，否则 `run_all.sh` 会跑不到生成节点。
+
+- 后续放入官方 Docker 场景时，建议将键盘脚本随 CARLA/Bridge 工具放到：
+
+```text
+/opt/carla/carla_tools/keyboard_command_publisher.py
+```
+
+- 场景脚本可以从 `/opt/carla/carla_tools/scenario/` 调用该脚本；端口方向保持 `keyboard -> 5702 -> Bridge -> 5701 -> Pangu`。
+
+- 注意：
+  - 宿主机和裸 Pangu Docker 镜像默认系统路径下都没有 `zmq.h`，完整构建必须走 Pangu 的 `THIRD_PATH` 或显式加入上述 thirdparty include/lib。
+  - 当前已经验证 `.so` 能构建，Pangu runtime 能启动，mock 闭环已跑通；尚未接入 GAASD 生成代码 diff。
+
+**newaccpro3 最新 GAASD 生成代码复核（2026-06-30）**：
+
+- 复核记录已写入：
+
+```text
+docs/GAASD_newaccpro3_代码生成问题复核_20260630.md
+```
+
+- 本次用户在 GAASD 中重新生成 `newaccpro3` 代码，输出路径为：
+
+```text
+project/newaccpro3/icvos/src/temp_codegen_output
+```
+
+- 已确认画布关键连线在 JSON 中存在：
+  - `CARLA自车速度 -> ACCDecision.egoV`
+  - `CARLA驾驶指令 -> ACCDecision.commandType`
+  - `ACCDecision.enable -> CARLAACCLongitudinalCmd.enable`
+  - `ACCDecision.timeGap/maxSpeed -> 后级时距控制和限幅链路`
+- 当前生成代码仍不能进入 oracle diff：
+  - `GlobalContext.hpp` / `MainInclude.hpp` 未生成，编译第一层即失败。
+  - 复合组件头文件声明 `run()`，cpp 实现和外层调用使用 `composite_block()`，接口不一致。
+  - 子组件输入结构体没有根据 JSON 连线赋值，例如 `compositeBlockInstance_2_in.egoV`、`commandType` 未生成。
+  - 仍存在非法变量名 `C++_None`。
+  - 仍存在未声明临时变量：`temp199951 / temp196788 / temp199342 / temp204061`。
+  - 真值表函数被调用但没有生成函数体。
+  - Pangu `module_empty::Proc()` 为空，没有接入 `FuncStep` 或 `c_process.run()`。
+  - `global_services.json/global_channels.json` 为空列表时生成器报 `'list' object has no attribute 'get'`。
+- 结论：这不是 ACC 公式问题；短期仍以手写 Pangu ACC oracle 作为闭环联调基准。GAASD 生成代码需等生成器修复后，再执行同输入序列 diff。
+
+**Pangu ACC oracle 按生成代码语义对齐（2026-06-30）**：
+
+- 根据 `newaccpro3/icvos/src/temp_codegen_output` 中已生成的 `ACCDecision` 片段，已将
+  `tools/pangu_acc_closed_loop/ACCClosedLoopModule/module_lib/AccTargetSpeed.*`
+  调整为当前画布语义，而不是按算法直觉补充额外决策格。
+- 当前对齐后的关键语义：
+  - `enable = notLowSpeed && old controlEnabled`，即输出使用当前周期读出的旧状态。
+  - `E/Q/S/C` 等命令只更新下一周期状态，因此启控和退控都有 1 个周期延迟。
+  - `controlEnabledNext = (old controlEnabled || R5 || R6) && !(cmd6 || cmd7)`，低速状态本身不清除内部在控状态。
+  - 当前简化画布未实现 R5 当前车速捕获；`maxSpeed` 只由 R1/R2 调整，启控后默认保持初始 `maxSpeed=5.0m/s`。
+  - `C/S` 退控同样下一周期生效，当前周期仍可能输出最后一次有效控制命令。
+- 已重跑 `tools/pangu_acc_closed_loop/verify_oracle_sequence.sh`，固定序列通过：
+  - `E` 当前周期 `decision=5`、`enable=0`、`targetSpeed=0`。
+  - 下一周期无指令保持时 `enable=1`、`targetSpeed=5.0000`。
+  - `T/R` 正常调整 `timeGap`。
+  - `Q` 在 `maxSpeedCap=5.0m/s` 下保持上限。
+  - 在控 `E` 将 `maxSpeed` 从 `5.0000m/s` 降到 `3.6111m/s`。
+  - `C/S` 按下一周期退控验证通过。
+  - 新增低速保护用例：`egoV < vMin` 时当前 `enable=0`，但内部 `controlEnabled` 保持；速度恢复后自动续上。
+- 已重跑 `tools/pangu_acc_closed_loop/verify_mock_command_sequence.sh`，由于 ZMQ/socket 在沙箱内受限，使用提权执行；结果通过：
+  - `E/T/R/Q/C/E/S/0` 全部到达 mock Bridge。
+  - mock 日志中能看到 `enable=1` 控制命令和 `enable=0` 退出命令。
+  - E/C/S 的一周期延迟与当前画布生成语义一致。
+- 根据生成日志进一步修正低速保持语义后，已再次重跑
+  `tools/pangu_acc_closed_loop/verify_mock_command_sequence.sh`，结果仍为 `PASS`。
+  mock 日志显示 `target` 随距离/速度连续变化，`C/S` 后稳定输出 `target=0 enable=0`。
+- 已重跑真实 Bridge/CARLA/Pangu 多指令闭环复测：
+
+```bash
+tools/pangu_acc_closed_loop/verify_real_bridge_closed_loop.sh
+```
+
+  结果通过：
+  - CARLA/Bridge/Town01 ACC 直道场景启动成功，Bridge 状态为 `running`，地图为 `Carla/Maps/Town01`。
+  - Pangu `run_all.sh app_empty` 返回 `run_all success`，`ACCModule` 和 `ZmqBridgeModule` 均被拉起。
+  - 键盘序列 `E/T/R/Q/C/E/S/0` 全部发送成功，Bridge 状态中 `driver_command_received=8`。
+  - Bridge 状态中 `control_cmd_received` 从 `234` 增长到 `254`，证明 Pangu 控制命令持续返回真实 Bridge。
+  - `ego_state/object_list` 计数持续增长到 600+，说明 CARLA -> Bridge 输入链路稳定。
+  - Pangu 日志仍有 snap loop 只读挂载 `disk_fault:loop*` 报警，该报警此前已确认不影响本次 `run_all success` 和闭环链路。
+  - 脚本结束后自动清理 CARLA/Bridge/Pangu 栈，`tools/carla_bridge/health-carla.sh` 显示 CARLA 不可达，符合清理预期。
+- 后续如果画布补回 R5 当前车速捕获、或调整真值表退出格，需要同步更新 oracle 和测试期望。
+
+- 新增参考工程位置：
+
+```text
+/home/aiden/文档/Modularization/project/accreference
+```
+
+- `gen_code.json` 显示该工程走新版 Pangu 集成路径：
+  - `is_oscilloscope=false`
+  - `is_integration=true`
+  - `pangu_code_path=/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/panguFramework/pangu_gaasd`
+- 该工程不是旧版“示波器 + FuncStep”仿真路径，也不是大规模基础模块函数图生成路径，而是新版
+  **App / Module / Channel / Task** 节点级集成路径。
+
+**accreference 画布层级结构**：
+
+- `app_empty` 空应用下挂 1 个模块：`ACCModule`。
+- `ACCModule` 内部只有 2 个通道组件：
+  - 输入通道 `acc_input`，消息类型 `pangu.modules.AccInput`。
+  - 输出通道 `acc_output`，消息类型 `pangu.modules.AccOutput`。
+- 当前画布连接只有 1 条：
+
+```text
+acc_input.frame_id -> acc_output.frame_id
+```
+
+- `task` 表中只有 1 个任务：
+  - `task_name=acc_input`
+  - `task_type=POLICY_TYPE_MSG_NEWEST`
+  - `timer_trigger_interval=20`
+  - `input_trigger=["acc_input"]`
+- 结论：官方示例主要验证“节点订阅输入消息、回调后发布输出消息”的机制；算法逻辑并没有在画布里用基础模块铺开。
+
+**accreference 生成代码与模板源码差异**：
+
+- 工程内生成源码位置：
+
+```text
+/home/aiden/文档/Modularization/project/accreference/icvos/src/modules/ACCModule_5fbcb590_2620_4070_bc51_d7f985dc3561/ACCModule
+```
+
+- 其中 `ACCModule.cpp` 当前只做 `frame_id` 透传：
+
+```cpp
+output->set_frame_id(input.frame_id());
+PUB_MSG(acc_output, output);
+```
+
+- Pangu 框架原始模板位置：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/panguFramework/pangu_gaasd/modules/ACCModule/ACCModule
+```
+
+- 原始模板中的 `ACCModule.cc` 才真正调用 `AccTargetSpeed::run()`，并输出：
+  - `target_speed_mps`
+  - `enable`
+  - `valid`
+- `AccTargetSpeed.cpp` 中的目标速度公式为：
+
+```text
+distanceSafe = max(leadDistance, 0)
+distDiff = distanceSafe - desiredDistance
+speedDiff = leadSpeed - egoSpeed
+rawTargetSpeed = leadSpeed + distanceGain * distDiff + speedGain * speedDiff
+targetSpeed = enable ? clamp(rawTargetSpeed, 0, maxSpeed) : 0
+valid = enable
+```
+
+- 默认参数：
+  - `desired_distance_m=15`
+  - `max_speed_mps=5`
+  - `distance_gain=0.35`
+  - `speed_gain=0.8`
+
+**accreference CARLA/ZMQ 桥接方式**：
+
+- Pangu 模板提供 `ZmqBridgeModule` 和 `acc_zmq_bridge`。
+- `acc_zmq_bridge` 从 CARLA Bridge 的 ZMQ PUB 端订阅：
+  - `gaasd.carla.ego_state.v1`
+  - `gaasd.carla.lead_vehicle.v1`
+- 默认输入端点：
+
+```text
+tcp://127.0.0.1:5701
+```
+
+- 默认控制输出端点：
+
+```text
+tcp://127.0.0.1:5702
+```
+
+- `ZmqBridgeModule` 将 ZMQ 数据转为内部 `acc_input` 消息，`ACCModule` 输出
+  `acc_output` 后，再由 `ZmqBridgeModule` 转回 CARLA 控制命令。
+- 这说明官方方向和我们前期设计的 Bridge 思路并不冲突，只是把 ZMQ 适配层放进 Pangu 节点模块内部，而不是由 GAASD 画布扫描组件直接承担。
+
+**accreference 编译与运行状态判断**：
+
+- 日志显示代码编译阶段通过：
+
+```text
+/home/aiden/文档/Modularization/project/accreference-代码编译成功
+compile success
+```
+
+- 同一日志后续运行阶段出现：
+
+```text
+[app_empty]--ACCModule, FAILED
+[app_empty]--ZmqBridgeModule, FAILED
+run_all failed
+```
+
+- 当前 `icvos/output/install/lib` 下未看到对应 `libACCModule.so` / `libZmqBridgeModule.so` 安装产物。
+- 因此当前结论要分开写：
+  - **代码生成和编译阶段已通过**。
+  - **运行阶段仍需要继续排查模块库安装、运行包路径或启动依赖问题**。
+
+**对 ACC/LKS 后续方案的影响**：
+
+- `accreference` 证明新版 GAASD/Pangu 的推荐集成方向是：
+
+```text
+App -> Module -> Channel Input/Output -> Task Callback -> Pangu 节点运行
+```
+
+- 对后续 ACC/LKS，建议采用两层路线：
+  1. **节点层**：按官方示例使用 `ACCModule/LKSModule + input/output channel + task callback`。
+  2. **算法层**：继续尽量用 GAASD 基础模块搭建 ACC/LKS 逻辑；如果生成器短期不稳定，可先把算法封装到模块源码中，等函数图生成稳定后再替换为画布生成逻辑。
+- 官方示例没有证明“大规模基础模块画布生成复合函数”已经稳定；它实际上绕开了这条路径，所以不能据此否定我们之前发现的复合组件、全局参数、状态变量、函数绑定等生成器问题。
+- 后续和 GAASD 团队沟通时，应把需求拆成：
+  - 节点/通道/任务机制：参考 `accreference`，这条路线已经基本明确。
+  - 函数图/基础模块生成机制：仍需要继续修复，才能承载我们完整 ACC/LKS 画布算法。
+
+**newaccpro3 新版节点级代码生成复核**：
+
+- 用户在 GAASD 页面点击“生成代码”后，当前事实源工程为：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3
+```
+
+- 代码生成入口记录在：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/log/2026-06-26.log
+```
+
+- 本次实际执行命令为：
+
+```bash
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools/new_gaasd gen_code /home/aiden/文档/Modularization/project/newaccpro3/gen_code.json
+```
+
+- `gen_code.json` 中关键配置：
+  - `project_path=/home/aiden/文档/Modularization/project/newaccpro3`
+  - `platform=x86`
+  - `pangu_code_path=/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/panguFramework/pangu_gaasd`
+  - `scan_path=/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/components/THICV`
+  - `is_oscilloscope=false`
+  - `is_integration=true`
+- 因此本次不是旧版示波器/函数级仿真生成，而是新版 **节点级/模块集成代码生成路径**。
+
+**本次生成代码位置**：
+
+- 函数级/复合组件中间产物：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_codegen_output
+```
+
+- 关键文件：
+  - `run_2f3edfa5_8227_43eb_859d_1a6db0afd957/run_2f3edfa5_8227_43eb_859d_1a6db0afd957.cpp`
+  - `run_2f3edfa5_8227_43eb_859d_1a6db0afd957.hpp`
+  - `composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988ad/composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988ad.cpp`
+  - `composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988ad.hpp`
+  - `callback_d3fdb632_0c78_41ab_a837_3bc336dba2df/c_process_c1ecaf88_00f5_488b_8f5d_9d0af56264d0.cpp`
+  - `callback_d3fdb632_0c78_41ab_a837_3bc336dba2df/callback_d3fdb632_0c78_41ab_a837_3bc336dba2df_FuncStep.cpp`
+- 节点级回调信息：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_callback_info.json
+```
+
+**本次确定的生成器问题**：
+
+- `global_services.json` 与 `global_channels.json` 当前内容均为 `[]`，但第一阶段代码生成器按对象调用
+  `.get()`，日志报：
+  `'list' object has no attribute 'get'`。这是空 service/channel 数据结构兼容问题。
+- `run_*.cpp` 仍生成非法 C++ 变量名 `C++_None`，来源是 `CARLAACCDriverCommand`
+  这类无输出/未正确绑定输出组件被生成器硬编码成 `C++_None`。
+- `run_*.cpp` 中存在未声明临时变量，例如 `temp273497`、`temp270562`、`temp272941`；
+  说明部分常量/参数/连接源没有被纳入局部变量声明或参数读取。
+- `composite_block_empty_*.hpp` 声明 `run(const Input&, Output&)`，但对应 cpp 实现为
+  `composite_block(const Input&, Output&)`，调用端也使用 `composite_block()`，复合组件接口仍存在
+  `run/composite_block` 不一致问题。
+- `composite_block_empty_*.cpp` 中 `output.timeGap = output.timeGap;`，没有把
+  `temp277178` 或 `state_.timeGap` 正确赋给输出端口，说明 output 节点的源连接解析仍有缺陷。
+- `c_process_*.cpp` 中调用：
+
+```cpp
+sub_.compositeBlockInstance.run(compositeBlockInstance_in, compositeBlockInstance_out);
+```
+
+  但 `compositeBlockInstance_in` 未声明，进程层 wrapper 生成不完整。
+- `temp_callback_info.json` 中 `function_members=[]`、`source_files=[]`、
+  `channel_to_function: {"空模块": []}`，说明节点级 callback 没有正确把 composite-block
+  绑定为周期调用函数；当前 `module_empty` 更像空节点模板，不是完整 ACC 节点。
+- 日志最后虽然显示 `result success`，但这是任务流程层面的 success，不代表生成源码可编译、可运行。
+
+**代码生成方向判断**：
+
+- GAASD 当前目标方向已经明确：函数画布作为算法逻辑，外层通过 `app/process/module`
+  形成节点级工程，再由 Pangu 框架拉起模块运行。
+- `new_gaasd` 现在分两段做事：
+  1. 先按 functions/composite-block 生成 `FuncModule` 风格 C++ 中间产物；
+  2. 再按 module/process/app 生成节点级 Pangu 工程，并通过 callback/channel/message 把函数绑定到节点。
+- 这个方向是正确的，也符合后续 CARLA/实车联调需要；问题在于第二段“模块 callback 与函数画布的绑定”
+  还没打通，第一段复合组件细节也还有若干代码生成 bug。
+
+**对 ACC/LKS 实现方法的影响**：
+
+- ACC/LKS 画布设计继续保留“基础模块 + 少量 CARLA 边界自定义组件”的路线，不建议因为当前生成器 bug
+  回退到大量手写业务代码。
+- 画布内部仍优先使用基础模块、局部参数、局部状态、真值表/比较逻辑搭建；这是 GAASD 应该支持的正式方向。
+- CARLA 输入/输出边界组件仍保持单输出、少端口、严格 FuncModule 化，避免把 ZMQ/adapter 逻辑塞进扫描组件。
+- 在 GAASD 修复前，ACC/LKS 的验收要分成两层：
+  - **画布结构验收**：检查连线、参数、状态、真值表配置是否正确。
+  - **代码生成验收**：每次新版工具更新后检查 `temp_codegen_output` 和节点级 `modules/` 是否消除上述 bug。
+- 后续判断 GAASD 是否可进入联调的最低标准：
+  1. 不再生成 `C++_None`；
+  2. 不再生成未声明临时变量；
+  3. 复合组件统一使用 `run()` 或生成完整适配调用；
+  4. output 端口能正确赋值；
+  5. `c_process` 能声明并填充 composite input；
+  6. `temp_callback_info.json` 中 `function_members/channel_to_function/source_files`
+     能体现实际 ACC/LKS 组件，而不是空数组；
+  7. 空 `global_services/global_channels` 能被正常跳过或按统一对象结构输出。
+
+**全局参数/全局状态生成位置与 Pangu 迁移策略**：
+
+- 当前 `newaccpro3` 使用的函数级 `FuncModule` 中间产物已经生成全局参数和全局状态代码，位置为：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_codegen_output/GlobalContext.hpp
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_codegen_output/GlobalContextTypes.hpp
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_codegen_output/GlobalContext/GlobalContext.cpp
+```
+
+- 当前生成出的全局参数：
+
+```cpp
+struct GlobalParams {
+  Real controlTs = 0.05;
+};
+```
+
+- 当前生成出的全局状态：
+
+```cpp
+struct FeedbackState {
+  Real lonVelFb;
+  Real latPosFb;
+};
+
+struct GlobalStates {
+  FeedbackState feedback = {.lonVelFb = 0.0, .latPosFb = 0.0};
+};
+```
+
+- 全局变量实例定义在：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/temp_codegen_output/GlobalContext/GlobalContext.cpp
+```
+
+  对应：
+
+```cpp
+namespace control::global {
+GlobalParams params {.controlTs = 0.05};
+GlobalStates states {.feedback = {.lonVelFb = 0.0, .latPosFb = 0.0}};
+}
+```
+
+- 这些代码属于清华 `FuncModule` 函数层。函数层组件通过：
+
+```cpp
+using Global = GlobalParams;
+...
+global::params
+```
+
+  把全局参数传给 `FuncModule` 基类。
+
+- 当前 Pangu 节点级生成物位置为：
+
+```text
+/home/aiden/文档/Modularization/project/newaccpro3/icvos/src/modules/module_empty_d3fdb632_0c78_41ab_a837_3bc336dba2df/module_empty
+```
+
+- Pangu 模块当前只有模块配置参数：
+
+```text
+src/module_empty.h
+src/module_empty.cpp
+proto/module_empty_config.proto
+conf/module_empty.pt
+```
+
+  其中 `module_emptyParams` 只包含 `timer_duration/work_root/desired_distance_m/max_speed_mps`
+  等模块级配置，未包含函数画布里的 `GlobalParams/GlobalStates`，也没有生成 `GlobalContext`。
+
+- 因此当前事实是：
+  - 清华函数框架已有全局参数/状态能力。
+  - Pangu 节点框架当前生成物尚未接入全局参数/状态。
+  - 后续正式联调优先走 Pangu 框架，GAASD 团队应补齐 Pangu 框架下的全局参数/状态生成与持久化能力。
+
+**临时补丁策略（等切到 Pangu 并重新生成后执行）**：
+
+- 如果短期需要在 Pangu 框架下继续测试 ACC/LKS，而 GAASD 尚未补齐全局参数/状态，可以由 Codex 手动补一层兼容代码。
+- 最小补丁原则：
+  1. 保留 `temp_codegen_output/GlobalContext*` 作为事实源，不重新设计参数结构。
+  2. 将 `GlobalContext.hpp`、`GlobalContextTypes.hpp`、`GlobalContext.cpp` 纳入 Pangu 模块构建。
+  3. 在 Pangu 模块 `CMakeLists.txt` 中加入对应源文件或复制到 `module_lib/` 后编译。
+  4. 在 `module_empty::LoadConfig()` 或 `Init()` 中把 Pangu `module_emptyParams` 映射到
+     `control::global::params`，例如 `controlTs/timer_duration`。
+  5. 对跨周期变量优先保留在函数组件 `state_` 内；只有确实需要跨模块共享时，才临时写入
+     `control::global::states`。
+  6. 不把这类补丁当正式架构，只作为 GAASD 代码生成器修复前的测试兼容层。
+- 重要限制：当前 `module_empty` 仍没有把 composite-block 真实绑定到 callback（`function_members=[]`），
+  所以现在只补 `GlobalContext` 还不能让 ACC 运行。必须先等或修到 Pangu 模块能周期调用
+  ACC/LKS 函数画布后，再补全局参数/状态才有实际测试价值。
+
+**Pangu Docker 手动启动方式（GAASD 自动运行不可用时使用）**：
+
+- 背景：新版 GAASD 正常流程应为“生成代码 → 点击运行 → 软件自动启动 Pangu/Docker 仿真场景”。
+  但当前 ACC/LKS 工程仍卡在代码生成/节点绑定问题，GAASD 自动运行链路暂不可用；因此需要先手动启动
+  Pangu Docker 场景容器，用于验证 GAASD 内置仿真场景、bridge 脚本和 CARLA 场景启动链路。
+- 已确认 `ubuntuEnv_0.0.5_v2.tar` 必须使用 `docker load -i` 正确加载，不能用错误的 import 方式。
+  正确镜像名为：
+
+```text
+docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5
+```
+
+- 已确认本机 Docker 当前未配置 NVIDIA Container Toolkit，`--gpus all` 会报：
+
+```text
+could not select device driver "" with capabilities: [[gpu]]
+```
+
+  因此当前手动启动容器时先不要带 `--gpus all`。
+- 如果已有同名残留容器，应先清理：
+
+```bash
+docker rm -f pangu_x86
+```
+
+- 当前已验证可用的手动启动命令：
+
+```bash
+docker run --restart=always -it \
+  -e DISPLAY=$DISPLAY \
+  -e TERM \
+  -e QT_X11_NO_MITSHM=1 \
+  -e XAUTHORITY=/tmp/.dockerg2b8mikt.xauth \
+  -v /tmp/.dockerg2b8mikt.xauth:/tmp/.dockerg2b8mikt.xauth \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /etc/localtime:/etc/localtime:ro \
+  --shm-size=8193m \
+  --name=pangu_x86 \
+  --privileged \
+  --net=host \
+  -v /home:/home \
+  docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5 \
+  /bin/bash
+```
+
+- 启动后应在容器内优先检查 GAASD 启动场景依赖脚本是否存在：
+
+```bash
+ls /opt/carla/carla_tools/scenario/load_scene_bridge.sh
+```
+
+- 已确认 `pangu_x86` 容器内包含 GAASD 团队集成的 ACC 场景和我们前期整理的
+  CARLA Bridge 工具链，核心目录为：
+
+```text
+/opt/carla/carla_tools/scenario
+/opt/carla/carla_tools/tools/carla_bridge
+```
+
+- GAASD 页面点击“启动场景”时，当前 ACC 场景实际执行入口为：
+
+```text
+/opt/carla/carla_tools/scenario/load_scene_bridge.sh
+```
+
+- `load_scene_bridge.sh` 的职责不是启动 CARLA 本体，而是在 CARLA 已由
+  GAASD “启动仿真器”打开后，执行以下动作：
+  1. 选择 `/opt/carla/carla_tools/scenario/bridge_config.json` 作为 Bridge 配置。
+  2. 调用 `/opt/carla/carla_tools/tools/carla_bridge/start-gaasd-carla-manual.sh`。
+  3. 使用 `--no-start-carla` 连接已有 CARLA。
+  4. 设置 ACC 直道场景：`ego_spawn_index=198`、前车距离 `25m`、前车速度 `2m/s`。
+  5. 启动 Bridge，绑定 `PUB=127.0.0.1:5701`、`CONTROL=127.0.0.1:5702`。
+  6. 设置 spectator 跟随视角：后方 `8m`、高度 `6m`、俯仰角 `-25deg`。
+- 注意：`load_scene_bridge.sh` 虽然传入了 `--lead-behavior traffic_manager`，
+  但 `start-gaasd-carla-manual.sh` 默认 `RESET_SCENE=1`，会优先调用
+  `reset-acc-straight-scene.py`；该脚本内部直接使用 `enable_constant_velocity()`
+  控制前车。因此当前 ACC 场景实际是 **lane waypoint 放置 + constant velocity 前车**，
+  不是 Traffic Manager 前车。
+
+- `bridge_config.json` 中当前 ACC 场景关键配置：
+
+```text
+CARLA host/port: 127.0.0.1:2000
+CARLA root: /opt/carla
+PythonAPI: /opt/carla/PythonAPI/carla
+map: Town01
+ego role: hero
+ego spawn index: 198
+fixed_delta_seconds: 0.05
+ZMQ PUB: tcp://127.0.0.1:5701
+ZMQ CONTROL: tcp://127.0.0.1:5702
+speed PID: Kp=1.4, Ki=0.18, Kd=0.05
+lane_keep_enabled: true
+lane_keep_override_zero_steer: true
+```
+
+- Bridge 发布的数据链路保持为：
+
+```text
+CARLA -> carla_bridge.py -> ZMQ PUB(5701)
+topics: ego_state / object_list / lead_vehicle / chassis_feedback / bridge_status
+```
+
+- GAASD/adapter 控制链路保持为：
+
+```text
+GAASD 组件输出 target_speed_mps / enable / steer_rad
+-> ZMQ CONTROL(5702)
+-> carla_bridge.py
+-> CARLA VehicleControl(throttle, brake, steer)
+```
+
+- 当前容器内 `carla_bridge.py` 已包含之前修复过的关键逻辑：
+  - `control_cmd_received` 使用真实计数器。
+  - `lead_vehicle.relative_speed_mps` 使用纵向相对速度。
+  - 控制命令支持目标速度 PID 映射油门/刹车。
+  - 当 `lane_keep_enabled=true` 且输入转角接近 0 时，Bridge 可自动用 CARLA 车道中心计算横向保持转角。
+
+- 新增场景的建议方式：
+  1. 在 `/opt/carla/carla_tools/scenario/` 下新增独立脚本，例如
+     `load_scene_lks.sh` 或 `load_scene_acc_dynamic.sh`。
+  2. 为新场景准备独立配置，例如 `bridge_config_lks.json`，避免直接覆盖 ACC 默认配置。
+  3. 新脚本继续复用 `tools/carla_bridge/start-gaasd-carla-manual.sh`，只调整参数：
+     `--ego-spawn-index`、`--lead-distance`、`--lead-speed`、`--no-lead`、
+     `--spectator-back/up/pitch`、`--config`。
+  4. 如果要让 GAASD 页面直接选择新场景，还需要在 GAASD 前端场景列表中新增对应项，
+     使其执行 `/opt/carla/carla_tools/scenario/<场景名>.sh`。
+  5. 在 GAASD 暂未开放配置前，可先复用 `load_scene_bridge.sh` 或手动在容器内执行新脚本验证。
+
+- 该方式的定位：只作为当前阶段“手动启动 Docker 仿真场景”的临时方案。等 GAASD 代码生成和运行链路稳定后，
+  仍应回到 GAASD 软件内自动生成、自动启动、自动运行的正式流程。
+
+---
+
+## 当前状态（2026-06-24 更新）
+
+**隔离版 GAASD 2.7.0.5 更新**：
+
+- 已检查 `/home/aiden/文档/temp` 中 2026-06-24 新增的三个包：
+  - `GAASD_SETUP_20260623_1.tar.gz`：完整 GAASD 前端安装包，内部包含
+    `gaasd_1_build-2.7.0.5.tar.gz`、安装脚本和图标。
+  - `gaasd_code_tools_build_2.14.0.20.tar`：新版后端代码工具包，包含
+    `gaas_codegen`、`new_gaasd`、`codescan-cpp`、`gen_code.json`、
+    `scan.json`、`public/FuncModule.hpp` 及 clang 资源目录。
+  - `codescan-cpp-release.tar.gz`：单独发布的 C++ 组件扫描器自包含包，
+    包含 `codescan-cpp` 和 `lib/clang/20` 资源目录。
+- 已将隔离版新版 GAASD 更新到
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5`，未修改系统全局 `/opt/gaasd`
+  和 `/usr/bin/gaasd`。
+- 更新方式：先将旧 `app` 和旧 `home/gaasd_server/codeTools` 移入回滚目录
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/20260624_100551`，
+  再安装新版前端和新版 codeTools。
+- `codeTools` 采用 `gaasd_code_tools_build_2.14.0.20.tar` 为主体，并用
+  `codescan-cpp-release.tar.gz` 中的 `codescan-cpp` 与 `lib/clang/20`
+  覆盖，以使用单独发布的 C++ 扫描器版本。
+- 由于 20260623 前端仍引用旧入口 `codescan`、`run_x86.sh` 和
+  `codeTools/dist/run_simulation.sh`，已从回滚备份补回以下兼容文件：
+  `.env`、`build.sh`、`codescan`、`dist/`、`exec_order.conf`、
+  `math_codegen`、`run_executables.sh`、`run_x86.sh`、`wicv_build.sh`、
+  `wicv_run.sh`。这些文件不覆盖新版 `new_gaasd`、`gaas_codegen`、
+  `codescan-cpp`。
+- 安装后校验：
+  - 新前端可执行文件：`app/gaasd` SHA-256
+    `723e82279257afe8943fb188c00e4222ed6050dd5f5adfddd572ab16206ac45c`。
+  - 新 `gaas_codegen` SHA-256
+    `bc855304e5f625919d2802931bc0cae6482d44947cf7c0edccfbcf383f978d7f`，
+    `--help` 可正常输出。
+  - 新 `new_gaasd` SHA-256
+    `8edcafd48215ca1c70521ccd5364e4dd92f1a4818e3ec9fdafa9c82e83037380`，
+    能启动并在隔离 profile 下创建 `data.db`；该工具无标准 `--help`
+    输出，传 `--help` 时记录参数错误。
+  - 当前 `codescan-cpp` SHA-256
+    `26949ab22a1ca62e6560bcd87d0d3219a3601e25d3f009b617727819166bcc31`，
+    可正常输出 usage。
+  - 旧 C 扫描器 `codescan` 已保留并可正常输出 usage。
+- 启动方式仍为：
+
+```bash
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+**待验证**：
+
+- 使用新版前端打开副本工程，验证 LKS/ACC 画布是否能正常读取。
+- 使用新版 `new_gaasd` / `codescan-cpp` 扫描团队确认的 C++ FuncModule
+  组件包，验证 C++ 组件能否正常入库。
+- 使用当前 `project/lks` 或工程副本重新生成代码，检查复合组件、
+  示波器、全局参数和数组端口相关问题是否已修复。
+
+**组件包导入（2026-06-24）**：
+
+- 已检查并导入 `/home/aiden/文档/temp` 新增的两个 THICV 组件包：
+  - `清华组件包PID_0606.tar`：包含 `PidController`、`VehicleModel`、
+    `TopCanvas` 3 个顶层组件。
+  - `清华组件包_CC_0609_2.tar`：包含 28 个定速巡航/决策状态机/SPPVT 控制相关
+    顶层组件。
+- 导入目标为隔离版 GAASD：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5`，未修改旧版全局 GAASD。
+- 由于两个组件包各自带独立 `cbdes.db`，直接顺序导入会互相覆盖顶层组件列表；
+  已新增脚本 `tools/gaasd_import_component_packages.py`，先合并当前 THICV 组件和两个
+  新包，再更新组件文件与 `.gaasd/gaasd.db`。
+- 导入前已备份当前组件目录和数据库到：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/component_import_20260624_103222`。
+- 导入后校验：
+  - `home/gaasd_server/components/THICV/cbdes.db` 顶层组件数：31。
+  - `.gaasd/gaasd.db` 中 `vendor=THICV` 的 `component` 记录：31。
+  - `.gaasd/gaasd.db` 中 `vendor=THICV` 的 `component_detail` 记录：1403。
+  - 已确认 `PidController_b42c0e67.json`、`VehicleModel_4c08435f.json`、
+    `TopCanvas_237dcf0f.json` 文件存在。
+
+**前端回退（2026-06-24）**：
+
+- 因新版前端默认图层规则导出 `cpp_rule`，导致旧 C 工程的
+  `c-process` 空进程无法进入下级 function 画布，已先将隔离版 GAASD
+  前端回退到 20260608 版本。
+- 回退范围仅限：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app`。
+- 未回退、未修改：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools`
+  及后端工具链。
+- 当前 20260623 前端备份位置：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/frontend_current_before_rollback_20260624_111029/app`。
+- 回退来源：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/20260609_143740/app`
+  （对应 `GAASD_SETUP_20260608.tar.gz`）。
+- 回退后校验：
+  - 前端资源文件已恢复为 `parseData-B2Q3KD_7.js`、
+    `index-B_I3Hw40.js` 等 20260608 版本。
+  - 后端工具仍为新版：
+    `new_gaasd` SHA-256
+    `8edcafd48215ca1c70521ccd5364e4dd92f1a4818e3ec9fdafa9c82e83037380`，
+    `gaas_codegen` SHA-256
+    `bc855304e5f625919d2802931bc0cae6482d44947cf7c0edccfbcf383f978d7f`，
+    `codescan-cpp` SHA-256
+    `26949ab22a1ca62e6560bcd87d0d3219a3601e25d3f009b617727819166bcc31`。
+
+**前端重新更新（2026-06-24）**：
+
+- 已按要求将隔离版 GAASD 前端重新恢复为 20260623 最新版本。
+- 更新范围仅限：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app`。
+- 未回退、未修改：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools`
+  及后端工具链。
+- 本次恢复来源：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/frontend_current_before_rollback_20260624_111029/app`。
+- 更新前的 20260608 前端备份位置：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/frontend_20260608_before_reupdate_20260624_142730/app`。
+- 更新后校验：
+  - 前端资源文件已恢复为 `parseData-Bv4l81Ao.js`、
+    `index-C6DC-xSh.js` 等 20260623 版本。
+  - 当前 `app` 与
+    `rollback/frontend_current_before_rollback_20260624_111029/app`
+    目录 `diff -qr` 无差异。
+  - 后端工具仍为新版：
+    `new_gaasd` SHA-256
+    `8edcafd48215ca1c70521ccd5364e4dd92f1a4818e3ec9fdafa9c82e83037380`，
+    `gaas_codegen` SHA-256
+    `bc855304e5f625919d2802931bc0cae6482d44947cf7c0edccfbcf383f978d7f`，
+    `codescan-cpp` SHA-256
+    `26949ab22a1ca62e6560bcd87d0d3219a3601e25d3f009b617727819166bcc31`。
+
+**图形化工具版本迭代会议结论（2026-06-24）**：
+
+- 已提取并核对 `docs/文字记录：图形化工具版本迭代问题协调会 2026年6月24日.docx`
+  与 `docs/智能纪要：图形化工具版本迭代问题协调会 2026年6月24日.docx`。
+- 新版 GAASD 当前主线转向“节点级”运行：应用下面是进程和模块，模块更接近
+  通信 node；节点级主要面向 CARLA、实车和量产式部署，输入输出依赖通道和
+  消息触发。
+- 旧“函数级”画布仍需保留，主要用于单函数/算法块验证，例如常量输入、变量输入
+  和示波器曲线查看。当前新版把节点级和函数级能力合并后，函数级兼容性仍不完整。
+- 节点级运行必须有消息通道触发，不能简单默认生成一个空 trigger；没有输入通道的
+  空模块更适合走函数级仿真，而不是节点级运行。
+- 示波器当前仍与函数级生成强绑定。节点级运行时，示波器暂时不能像旧版一样直接显示
+  内部曲线。短期方案是补全“仿真示波器里的函数级功能”；节点级若要看数据，可能先通过
+  log 文件或后续简化版 topic/message 示波器展示。
+- 全局参数和全局状态入口因 `c-process` 变化暂时缺失。会议倾向先把全局参数/状态配置
+  入口加到“空进程”上；但当前 ACC/LKS 单应用场景也可以先使用局部参数，效果基本等同，
+  画布读取方式对应 `read-local-param`。
+- `core-block` 是新版重要类型：能配置参数/状态，但不能进入下级画布；它类似“原件/原子组件”。
+  当前 codegen 尚未完全兼容，刘洋需优先处理，因为这会影响 ACC/LKS 组件测试。
+- 通道是节点间消息中间件。当前通道依赖预置 PB 消息和代码仓导入，导入后在图形化界面选择通道，
+  再把消息字段拖到函数级画布中使用。
+- 对 ACC/LKS 的直接影响：
+  - 最终 CARLA 联调应走“节点级 + 通道/message”路线。
+  - 当前算法画布搭建和局部验证仍优先走函数级/示波器/常量或局部参数路线。
+  - 暂不把 CARLA 演示完全依赖示波器；先保留 Bridge/CARLA 画面验证，示波器只作为函数级或
+    后续 message 观测补充。
+  - ACC/LKS 参数短期优先用局部参数，等全局参数入口和 codegen 稳定后再决定是否迁移为全局参数。
+
+**隔离版 GAASD 前端更新（2026-06-25）**：
+
+- 已检查 `/home/aiden/文档/temp/GAASD_SETUP_20260624_2.tar.gz`：
+  - 包结构与 20260623 前端包一致，包含 `gaasd_1_build-2.7.0.5.tar.gz`、
+    `install.sh`、图标和 `sshpass_1.06-1_amd64.deb`。
+  - 未包含 `gaasd_code_tools`，因此本次按“前端更新包”处理。
+- 已将隔离版 GAASD 前端更新到：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app`。
+- 未修改：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools`、
+  系统全局 `/opt/gaasd` 和 `/usr/bin/gaasd`。
+- 更新前旧前端已备份到：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/frontend_before_20260624_2_20260625_095111/app`。
+- 更新后校验：
+  - `app/gaasd` SHA-256：
+    `723e82279257afe8943fb188c00e4222ed6050dd5f5adfddd572ab16206ac45c`。
+  - 与上一前端相比，主要差异集中在：
+    `Generate.js/ts`、`ProjectComponent.js/ts`、`WsServer.js/ts`、
+    `linuxEnv.js/ts` 和 `fe/assets` 前端构建产物。
+  - 后端 codeTools 未变：
+    `new_gaasd` SHA-256
+    `8edcafd48215ca1c70521ccd5364e4dd92f1a4818e3ec9fdafa9c82e83037380`，
+    `gaas_codegen` SHA-256
+    `bc855304e5f625919d2802931bc0cae6482d44947cf7c0edccfbcf383f978d7f`，
+    `codescan-cpp` SHA-256
+    `26949ab22a1ca62e6560bcd87d0d3219a3601e25d3f009b617727819166bcc31`。
+- 启动方式仍为：
+
+```bash
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+**GAASD 内置 CARLA 仿真器启动适配（2026-06-25）**：
+
+- 新版 GAASD 仿真管理页面的 CARLA 0.9.15 启动逻辑位于：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app/resources/app/src/config/config.ts`。
+- 源码中 `simulatorStartup()` 对 0.9.15 固定执行：
+  `cd "${path}" && DISPLAY=:1 nohup ./CarlaUE4.sh -quality-level=Low ...`。
+- 本机 CARLA 只能稳定通过
+  `/home/aiden/snap/code/app/carla-package/start-carla.sh` 启动，因为该脚本修正了
+  Vulkan/`LD_LIBRARY_PATH` 冲突并默认低画质启动。
+- 已新增 GAASD 专用 CARLA 启动包装目录：
+  `/home/aiden/gaasd_carla_launcher`。
+- 该目录下的 `CarlaUE4.sh` 是 wrapper，不改原始 CARLA 包：
+
+```bash
+/home/aiden/gaasd_carla_launcher/CarlaUE4.sh
+```
+
+- wrapper 实际调用：
+
+```bash
+/home/aiden/snap/code/app/carla-package/start-carla.sh
+```
+
+- 因 GAASD 硬编码 `DISPLAY=:1`，而本机桌面实际为 `:0` 且只有
+  `/tmp/.X11-unix/X0`，已在 wrapper 中强制覆盖：
+
+```bash
+export DISPLAY=":0"
+export XAUTHORITY="/run/user/$(id -u)/gdm/Xauthority"
+```
+
+- GAASD 设置页中 CARLA 15 路径应填写绝对路径：
+
+```text
+/home/aiden/gaasd_carla_launcher
+```
+
+- 已验证：通过 GAASD 页面点击“启动仿真器”后，CARLA 窗口可正常打开。
+- 注意：这只解决“启动仿真器”。“启动场景”仍走 GAASD 当前源码中的
+  `simulationSceneBridgeStartup()`，会在运行中的 Docker 容器里查找：
+
+```text
+/opt/carla/carla_tools/scenario/load_scene_bridge.sh
+```
+
+- 当前已定位 `ubuntuEnv_0.0.5_v2.tar` 被 GAASD 保存到：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/hardwarePlatform/ubuntuEnv_0.0.5_v2.tar
+```
+
+- Docker 中存在镜像 `ubuntuenv_0.0.5_v2:env`，但该镜像当前没有
+  `Cmd/Entrypoint/Env`，也不能直接用 `bash` 或 `/bin/sh` 运行；原始 tar 内部
+  `repositories` 声明的真实标签为：
+
+```text
+docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5
+```
+
+- 后续若要测试 GAASD 团队的 bridge/场景脚本，应优先确认该 tar 是否应通过
+  `docker load -i` 正确加载出原始镜像标签，或由团队提供包含
+  `/opt/carla/carla_tools/scenario/load_scene_bridge.sh` 的容器启动方式。
+
+---
+
+## 当前状态（2026-06-17 更新）
+
+**LKS 画布搭建进度（项目 `project/lks`，离线阶段一）**：
+
+已按 `docs/GAASD_LKS_完整控制画布方案.md` 逐盒搭建并逐块核对（事实源
+`project/lks/data/cbdes.db`）：
+
+- ✅ **盒子1 LKSPreviewDistance**（复合组件）：算动态预瞄距离
+  `ld = αL·(l0+rt·egoV)`，`αL=1−isCurve·(1−rAlpha)`。2 输入（egoV/curvature）、
+  4 全局参数（lks_l0/lks_rt/lks_rAlpha/lks_curvatureThreshold）、1 输出
+  previewDistance。11 块 16 连线全部核对正确；fabs（非 abs）、常量=1、全局参数绑定均确认。
+- ✅ **盒子2 LanePolynomialEval**（复合组件）：Horner 求单点偏差
+  `e(x)=((c3·x+c2)·x+c1)·x+c0`。5 输入（c0/c1/c2/c3/x）、1 输出 e。13 连线核对正确。
+- ✅ **顶层组装完成**：A 块（6 常量 + egoV/curvature 接入）、B 块（X1_near=读全局参数
+  lks_nearPreviewDistance、X2_mid=ld÷2、x3=ld 直接用）、C 块（3 个 Eval 实例
+  Eval_P1/P2/P3 + 15 根输入连线，c0~c3 各扇出 3 路、x 分别接 X1_near/X2_mid/ld）。
+- ✅ **盒子3 LKSErrorFusion**：`weightedError=0.2·e1+0.3·e2+0.5·e3`，3 输入、3 读参数
+  (lks_w1/w2/w3)、3 乘 + 1 个多口加法、1 输出。核对正确（曾发现 w2 误绑 lks_w3，已修）。
+- ✅ **盒子4 LKSSteerControl**（阶段一核心）：`thetaRaw=lks_Kp·weightedError`、
+  `steerRad=thetaRaw·lks_steerScale`。theta0 启控捕获与横向加速度限幅(atan)留阶段二。
+- ✅ **盒子5 LKSDecision**（最简版）：`controlEnabled = NOT(brakePressed OR
+  driverSteerHigh OR NOT speedOk)`。3 输入(egoV/brakePressed/driverSteerNorm)、
+  greater-equal/fabs/3口 logic-or/logic-not、1 输出。**不设总开关、不要转向灯、不输出三态**。
+  用全局参数 lks_vMin=1.0、lks_driverSteerThreshold=0.1。
+- ✅ **门控 + 示波器**：顶层 Gate 乘法 `lksSteerRad = controlEnabled · steerRad`
+  （退出时转角清零），lksSteerRad/controlEnabled 接示波器。
+
+**阶段一离线 LKS 画布全部搭完，30 条顶层连线端到端核对正确**（事实源
+`project/lks/data/cbdes.db`，7 个复合盒子）。整链预期值：previewDistance=7.5、
+e1=e2=e3=0.8、weightedError=0.8、steerRad=0.0384、controlEnabled=1、lksSteerRad=0.0384
+（按 Kp=0.08 原始 Simulink 实测值；早先误用 0.025 算得 0.012，已更正）。
+
+**信号语义约定（决策输入）**：brakePressed/driverSteerNorm/lksSwitch 等一律按
+**电平/持续**语义——Bridge 每周期发当前值、adapter 缓存上一次值，故信号全周期有效，
+画布决策每周期组合判一次、无需边沿检测或 latch；开关类的"边沿转电平"放 Bridge 端做。
+
+**下一步**：
+- 离线跑仿真验证上述数值（注意复合组件 codegen 可能仍卡，团队在修）。
+- 阶段二：给 LKSSteerControl 加 theta0 启控捕获（局部状态 + 决策 controlEnabled 上升沿）
+  和横向加速度限幅（atan/fmin/fmax，需新增 wheelBase/frontWheelMaxRad/ayMax 等参数）。
+
+**已确认的关键事实**：
+
+- GAASD 基础算子库实测（`gaasd-2.7.0.5/app/resources/app/preload/defaultComponent`）：
+  运算/比较/逻辑类端口 `a/b→result`；一元 `logic-not/negate` 端口 `operand→result`；
+  数学函数 `fabs/sqrt/atan/fmin/fmax` 等端口 `x(,y)→return`，**`atan` 存在**（无需新增
+  AtanVal）；无 clamp 算子（用 `fmax(lo,fmin(val,hi))`）。已修进方案 §5.4。
+- 参数承载：算法整定参数用**全局参数** `lks_*`（10 个，见方案 §8.3）；c0~c3 等模拟输入
+  信号阶段一用**常量**。
+- 全局参数值不存项目库（存 GUI/生成的 GlobalContext.json），无法从文件核验，靠 GUI 确认或验算。
+
+**自定义边界组件（严格 C++ FuncModule，参照 `newaccpro2_component_sources.zip`）**：
+
+- ✅ 已写 **CARLALKSLaneModel**：`generated/gaasd_lks_lane_components_src/`，一个模块产出
+  c0/c1/c2/c3/curvature，含 adapterRc/valid 有效性保护 + Param 回退默认值（离线 valid=0
+  时输出默认值 c0=0.8，在线 adapter 注入时输出实测值，**画布连线两阶段不变、永不重连**）。
+  GCC9.4 + `-Wall -Wextra -Wpedantic -Werror` 编译通过。
+- ⛔ **暂不使用**：GAASD 的 C++ FuncModule 扫描工具尚未更新，自定义组件 scan 不进去。
+  因此 c0~c3 **当前仍用常量搭建**；待扫描工具更新后再用 CARLALKSLaneModel 替换常量
+  （它的输出直接接 3 个 Eval 和 LKSPreviewDistance，替换无需改其他连线）。
+
+**LKS 后续仍需的自定义组件（待扫描工具更新后做）**：
+
+- egoV → 复用现有 `CARLAACCEgoSpeed`（严格版已有）。
+- `CARLALKSCurrentSteer`（currentSteerNorm，阶段二 theta0 启控捕获用）—— 待写。
+- `CARLALKSControlCmd`（转角输出到 Bridge）—— 现有 `generated/gaasd_lks_components_src`
+  版本是**旧非严格写法**（run 里调 `carla_adapter_publish_control_cmd`），输出阶段需按严格标准重写。
+- 决策输入边界（lksSwitchOn/brakePressed/turnSignalOn/driverSteerNorm）—— 阶段五再写。
+
+**下一步**：
+
+- 接完 C 块 15 根连线（c0~c3 四个常量各扇出到 3 个 Eval，x 分别接 X1_near/X2_mid/ld），
+  验算 c0=0.8 时 e1=e2=e3=0.8。
+- 然后搭盒子3 LKSErrorFusion（e1/e2/e3 加权 → weightedError）。
+
+---
+
+## 当前状态（2026-06-16 更新）
+
+**GAASD 2.7.0.5 节点功能源码核查**：
+
+- 已检查隔离版新版 GAASD：
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app/resources/app` 与
+  `/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server`。
+- 前端默认组件已经包含 `app_empty`、`process_empty`、`c_process_empty`、
+  `module_empty`，数据模型层面支持“应用-进程-模块”结构。
+- `src/Action/Generate.ts` 已能按 `app/process/module/function` 等类型导出
+  `icvos/blocks/*`，并为 `module` 写入 `node_name` 扩展字段。
+- `src/webWorker/compileWorker/GaasdCompiler.ts` 已包含 Pangu 编译链路：
+  复制模块到 `pangu_gaasd/modules/`，拷贝 `configs/node_module`，
+  更新 `install/conf/node_module` 和 `app_module`，并通过 `launch.sh`/`run.sh`
+  启动应用。
+- `src/Action/WsServer.ts` 已包含本地/远程仿真场景启动、算法转发节点启动、
+  工程 `launch.sh`/`stop_all.sh` 运行接口。
+- 当前本机新版 `gaasd_server/codeTools` 目录没有 `new_gaasd`，而前端仍在
+  `linuxEnv.ts`、`PanguFramework.ts`、`ComponentEdit.ts` 中调用
+  `new_gaasd scan/submodule/submodule_gen_code`；同时当前目录也没有
+  `gaasd_server/panguFramework/pangu_gaasd`。
+- 因此当前安装状态下只能确认“节点功能的前端模型和运行入口已实现”，不能
+  确认“节点级代码生成、编译、运行完整可用”。完整可用还依赖配套
+  `new_gaasd` 与 `panguFramework/pangu_gaasd` 包导入并验证。
+- 当前 `project/newaccpro2` 生成物仍是函数模型路径：主要落在
+  `icvos/blocks/functions`、`icvos/src/functions` 和
+  `icvos/src/oscilloscopeFunctions`，不是节点级 `modules/process/app`
+  工程。因此现阶段 ACC 画布还没有接入新版节点运行链路。
 
 **newaccpro2 规范组件源码对比**：
 
 - 已对比团队提供的
   `project/accpro2/newaccpro2_component_sources.zip` 与本地
   `deliverables/newaccpro2_components_src_v2.zip`。
+- 已确认 `project/accpro2/newaccpro2_component_sources.zip` 是 GAASD 团队确认的
+  正式扫描输入，不应再修改其中 5 个 CARLA 边界组件。
+- GAASD 团队确认：`@type atomic` 的 `run()` 内部允许按具体业务自由实现。
+  该口径用于后续“adapter 相关代码是否能按组件标准改写”的讨论，不代表要
+  覆盖已经确认的 `newaccpro2_component_sources.zip`。
 - 两套代码均包含相同的六个 `FuncModule<Traits>` 组件，且
   `FuncModule.hpp` 完全一致；主要差异不在框架，而在运行时边界端口契约。
 - 团队版读取组件输入为“业务值 + `adapterRc` + `valid`”，输出仅保留业务值；
@@ -25,9 +1344,9 @@
 - 团队版压缩包的 CMake 未针对本机 GCC 9.4 添加 `-fconcepts`，直接构建
   失败；显式增加 `-fconcepts` 后六个组件可以构建。本地 v2 已在 CMake
   中处理 GCC 9 兼容并以严格警告构建通过。
-- `adapter_cpp` 不属于扫描组件，不应与六个 `FuncModule` 放在同一次扫描中。
-  但“不扫描”不代表“不需要集成”：GAASD 运行时/节点框架仍须调用 adapter，
-  将读取返回值映射到组件输入，并将控制组件输出交给 adapter 发布。
+- `adapter_cpp` 不属于 `newaccpro2_component_sources.zip` 这批正式扫描组件。
+  如果软件团队希望“adapter 这块也按 atomic 原件标准改写”，应单独设计
+  adapter/边界封装组件或运行时基础设施，不应回头修改已确认的 ACC 组件包。
 - 当前 adapter 已提供 ACC 所需的读取和发布 C ABI，核心通信逻辑无需因本次
   组件规范化重写；尚缺的是 GAASD 运行时的数据绑定层及双方最终端口契约确认。
 
@@ -71,6 +1390,12 @@
   运算模块计算三个预瞄点误差、动态预瞄距离、加权比例控制和横向加速度动态
   限幅；若固定长度数组最小验证通过，应重新评估是否改为与 Simulink 更一致的
   60 点数组方案。
+- LKS 第一阶段画布暂不搭任何限幅，不使用 `atan`，先验证
+  `previewDistance -> e1/e2/e3 -> weightedError -> steerRad` 主控制链。
+  顶层预瞄点连接已明确为：`x1=nearPreviewDistance` 常量，
+  `x2=previewDistance*0.5`，`x3=previewDistance`。
+- LKS 比例增益默认采用原 Simulink 解析值 `Kp=0.08`；此前方案文档中的
+  `0.025` 来源待复核，不作为第一阶段默认值。`Kp` 应作为可调参数保留。
 - 根据原 Simulink 数组实现，若要求严格复现原算法，边界方案应优先调整为
   Bridge 直接输出三个预瞄横向误差标量、道路曲率和有效点计数；多项式方案
   可作为近似实现，但其按纵向位置求值与原模型按欧氏距离选点并不完全等价。

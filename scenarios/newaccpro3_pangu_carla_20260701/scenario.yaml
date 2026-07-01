@@ -1,0 +1,58 @@
+name: newaccpro3_pangu_carla_20260701
+description: newaccpro3 生成代码版 ACC Pangu-CARLA 可视化闭环测试
+created_at: "2026-07-01"
+
+environment:
+  host_os: Ubuntu
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5"
+  pangu_build_root: "/tmp/newaccpro3_pangu_codegen_build"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 25
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: constant_velocity
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  main_program: tools/carla_bridge/carla_bridge.py
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+
+pangu:
+  install_dir: "/tmp/newaccpro3_pangu_codegen_build/install"
+  container_name: newaccpro3_pangu_carla
+  app_name: app_empty
+  process_name: ZmqBridgeModule
+  start_mode: direct_run_sh
+  acc_decision_vmin: 0.0
+  reason: run_all/topo 当前会报 Failed to connect to aicc_flow_topo；直接 run.sh 可拉起业务进程。
+
+driver_command:
+  startup_sequence: "boost ego speed, then send E"
+  command_type:
+    e: 1
+    c: 7
+    s: 6
+
+gaasd_signals:
+  observed:
+    - egoV
+    - leadV
+    - distance
+    - targetSpeed
+    - enable
+
+expected_result:
+  expected_behavior: CARLA 窗口显示 ego 在直道上跟随 2m/s 前车，Bridge 接收 Pangu control_cmd，ACC enable 可由 E 指令启控。

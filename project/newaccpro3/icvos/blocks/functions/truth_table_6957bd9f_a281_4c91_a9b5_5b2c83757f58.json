@@ -1,0 +1,404 @@
+{
+  "componentType": "truth-table",
+  "name": "truth_table_6957bd9f_a281_4c91_a9b5_5b2c83757f58",
+  "cppClass": "composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988ad",
+  "alias": "真值表",
+  "description": "真值表组件，用于处理复杂判断场景",
+  "author": "",
+  "version": "1.0.6",
+  "instanceId": "6957bd9f-a281-4c91-a9b5-5b2c83757f58",
+  "originId": "truth_table_init_0.0.1",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "基础模块库",
+    "数学运算",
+    "逻辑与比较运算"
+  ],
+  "parentId": "ea2170e7-297c-4433-b70a-9c66e48988ad",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {
+          "actions": [
+            {
+              "id": "action0001",
+              "description": "R1 降速",
+              "action": "y=1"
+            },
+            {
+              "id": "action0002",
+              "description": "R2 增速",
+              "action": "y=2"
+            },
+            {
+              "id": "bf39c6a1-2a61-4e08-bb20-b9cba64a70c7",
+              "description": "R3 降距",
+              "action": "y=3"
+            },
+            {
+              "id": "5af5d37f-b099-4373-843e-949de248dae3",
+              "description": "R4 增距",
+              "action": "y=4"
+            },
+            {
+              "id": "ad849562-9d16-472c-89e4-12ba94eded33",
+              "description": "R5 无继控制启控",
+              "action": "y=5"
+            },
+            {
+              "id": "4584e26e-2070-4f39-839a-a35c7446b52f",
+              "description": "R6 继承控制启控",
+              "action": "y=6"
+            },
+            {
+              "id": "7ad0f54c-83d2-4657-b2d6-0e5a4da824ac",
+              "description": "R7 扭矩仲裁",
+              "action": "y=7"
+            },
+            {
+              "id": "cae9b193-4fbb-44c9-b32e-09291ca1fab6",
+              "description": "R8 待命（默认）",
+              "action": "y=8"
+            }
+          ],
+          "conditions": [
+            {
+              "id": "condition0001",
+              "description": "",
+              "condition": "u==0&&v==1"
+            },
+            {
+              "id": "condition0002",
+              "description": "",
+              "condition": "u==0&&v==2"
+            },
+            {
+              "id": "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b",
+              "description": "",
+              "condition": "u==0&&v==3"
+            },
+            {
+              "id": "69e6728c-5c4b-4ffa-bb63-13214c866306",
+              "description": "",
+              "condition": "u==0&&v==4"
+            },
+            {
+              "id": "481234b5-9218-43d3-8e27-34c02e1eee23",
+              "description": "",
+              "condition": "u==0&&v==5"
+            },
+            {
+              "id": "2dcf45d8-b46d-45e4-bb11-5a63f541d675",
+              "description": "",
+              "condition": "u==1&&v==1"
+            },
+            {
+              "id": "0d96675f-2293-44c6-bd4f-1a3efad77ee4",
+              "description": "",
+              "condition": "u==2&&v==1"
+            },
+            {
+              "id": "7c231c6f-f004-4789-9d0c-2ac96ea0a57f",
+              "description": "",
+              "condition": "u==1&&v==2"
+            },
+            {
+              "id": "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248",
+              "description": "",
+              "condition": "u==0&&(v==6||v==7)"
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "scene0001",
+              "name": "D1",
+              "condition_matching": {
+                "condition0001": 1,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              },
+              "action_matching": "action0001"
+            },
+            {
+              "id": "scene0002",
+              "name": "D2",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 1,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              },
+              "action_matching": "action0002"
+            },
+            {
+              "id": "0f0f6117-c8c3-41ab-b6b9-e406d4a0baba",
+              "action_matching": "bf39c6a1-2a61-4e08-bb20-b9cba64a70c7",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 1,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "2c1fab0b-7ce6-468f-bf56-c5bbf7429ef6",
+              "action_matching": "5af5d37f-b099-4373-843e-949de248dae3",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 1,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "cf8d5bff-82be-4c58-b825-869521f8a0e1",
+              "action_matching": "7ad0f54c-83d2-4657-b2d6-0e5a4da824ac",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 1,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "af1f6c7c-99d6-4ba9-a512-7116a1571060",
+              "action_matching": "ad849562-9d16-472c-89e4-12ba94eded33",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 1,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "e6c2b876-d4f9-4eec-b779-dfea87506277",
+              "action_matching": "ad849562-9d16-472c-89e4-12ba94eded33",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 1,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "36a27a48-23aa-48c7-a6e7-aed9357f71d3",
+              "action_matching": "4584e26e-2070-4f39-839a-a35c7446b52f",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 1,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 0
+              }
+            },
+            {
+              "id": "1466ba17-4d9b-4afa-8f08-c6cb0ed5cbe9",
+              "action_matching": "cae9b193-4fbb-44c9-b32e-09291ca1fab6",
+              "condition_matching": {
+                "condition0001": 0,
+                "condition0002": 0,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": 0,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": 0,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": 0,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": 0,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": 0,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": 0,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": 1
+              }
+            },
+            {
+              "id": "742a7363-dafa-4cb8-a3b3-114e9e086488",
+              "action_matching": "cae9b193-4fbb-44c9-b32e-09291ca1fab6",
+              "condition_matching": {
+                "condition0001": -1,
+                "condition0002": -1,
+                "d5ee2a96-23e3-49c8-a1bc-9ad0571af08b": -1,
+                "69e6728c-5c4b-4ffa-bb63-13214c866306": -1,
+                "481234b5-9218-43d3-8e27-34c02e1eee23": -1,
+                "2dcf45d8-b46d-45e4-bb11-5a63f541d675": -1,
+                "0d96675f-2293-44c6-bd4f-1a3efad77ee4": -1,
+                "7c231c6f-f004-4789-9d0c-2ac96ea0a57f": -1,
+                "a7ca5f33-e567-4c8b-a4d7-fe8acac7a248": -1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "isShow": true,
+          "id": "89e78934-40c9-4b9a-ae34-b80959553df6",
+          "name": "u",
+          "direction": "In",
+          "description": "真值表输入端口",
+          "props": [
+            {
+              "key": "name",
+              "value": "u",
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "short",
+              "props": []
+            }
+          ]
+        },
+        {
+          "isShow": true,
+          "id": "56687d12-13cc-4b17-a055-a75b67b8a2a6",
+          "name": "v",
+          "direction": "In",
+          "description": "真值表输入端口",
+          "props": [
+            {
+              "key": "name",
+              "value": "v",
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "short",
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "isShow": true,
+          "id": "32becf85-a23a-484c-8723-160bc97db33a",
+          "name": "y",
+          "direction": "Out",
+          "description": "真值表输出端口",
+          "props": [
+            {
+              "key": "name",
+              "value": "y",
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "int",
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

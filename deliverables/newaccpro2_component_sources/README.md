@@ -7,16 +7,20 @@
   - 当前项目 JSON 中嵌入的函数体由该源码扫描生成。
 - `cpp_funcmodule_components/`
   - 按 `docs/C++代码规范.docx v1.0.33` 改写的 C++ `FuncModule` 实现。
-  - 六个组件均采用结构化 `Input/Output/Param/State/Sub`，不含指针、
-    外部函数调用、ZMQ/JSON 依赖或运行时副作用。
+  - 六个组件均采用结构化 `Input/Output/Param/State/Sub`。
+  - 按 GAASD 团队确认的 `@type atomic` 规则，CARLA 边界组件的
+    `run()` 内部允许调用 `carla_adapter_*` C ABI。
+  - ZMQ/JSON 依赖不进入组件源码，仍隔离在 adapter 动态库中。
   - 已在 GCC 9.4 C++20 下使用
     `-Wall -Wextra -Wpedantic -Werror` 编译通过。
   - `校验报告.md` 给出了规则对应关系和边界说明。
 - `adapter_cpp/`
   - `carla_adapter_*` C ABI 接口的 C++ 实现。
   - 通过 ZMQ/JSON 与 CARLA Bridge 交换状态和控制命令。
-  - 该目录属于运行时基础设施，不是 GAASD 扫描组件，不能放入组件
-    `run()` 内，否则会违反组件规范的依赖和函数体白名单。
+  - 该目录属于运行时基础设施，不是 GAASD 扫描组件。
+  - 生成工程运行时需要链接 `libcarla_gaasd_adapter.so`，否则
+    `cpp_funcmodule_components` 中的边界组件无法解析 `carla_adapter_*`
+    符号。
 
 ## 当前画布使用的自定义组件
 
@@ -36,7 +40,9 @@ GAASD 画布基础模块计算，没有使用该组件。
 `cpp_funcmodule_components`，不要把 `adapter_cpp` 放入扫描目录，也不要与
 当前 C 组件 JSON 混合作为同一次复现输入。
 
-规范版 C++ 组件不直接读写 Bridge。实际联调时，GAASD 运行时或节点框架需要：
+当前 C++ 组件采用“边界原子组件”路线：
 
-1. 将 Bridge 的 `egoV/leadV/distance/commandType/valid` 注入相应组件输入。
-2. 读取 `CARLAACCLongitudinalCmd` 的 `speed/enable/valid` 输出并发布到 Bridge。
+1. `CARLAACCEgoSpeed`、`CARLAACCLeadSpeed`、`CARLAACCLeadDistance`、
+   `CARLAACCDriverCommand` 在 `run()` 中调用 adapter 读取 Bridge 数据。
+2. `CARLAACCLongitudinalCmd` 在 `run()` 中调用 adapter 发布控制命令。
+3. `CARLAACCComputeTargetSpeed` 是纯计算组件，当前画布可继续用基础模块替代。

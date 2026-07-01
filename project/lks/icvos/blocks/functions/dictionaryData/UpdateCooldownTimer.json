@@ -1,0 +1,66 @@
+{
+  "Input": {
+    "description": "冷却计时器更新模块输入端口集合。",
+    "alias": "冷却计时器更新模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前冷却计时器值 (s)"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制周期时长 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "冷却计时器更新模块输出端口集合。",
+    "alias": "冷却计时器更新模块输出端口集合。",
+    "fields": [
+      {
+        "name": "updatedTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "更新后的冷却计时器值 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "冷却计时器更新模块参数集合。",
+    "alias": "冷却计时器更新模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "冷却计时器更新模块状态集合。",
+    "alias": "冷却计时器更新模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "冷却计时器更新模块子模块集合。",
+    "alias": "冷却计时器更新模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

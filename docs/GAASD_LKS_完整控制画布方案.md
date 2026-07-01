@@ -195,6 +195,39 @@ y(x) = c0 + c1*x + c2*x^2 + c3*x^3
 
 车道有效标志本阶段使用常量 `1`，不需要单独输入组件。
 
+## 5.4 GAASD 基础算子真实端口对照（实测自 2.7.0.5 组件库）
+
+> 来源：`gaasd-2.7.0.5/app/resources/app/preload/defaultComponent/operatorComponent`
+> 与 `initialComponent`。**本表是权威端口名，下文各连线表中与本表冲突的端口名
+> 以本表为准。**
+
+端口命名有两套约定：
+
+| 类别 | 组件（componentType） | 输入端口 | 输出端口 |
+|---|---|---|---|
+| 二元运算/比较/逻辑 | `add` `subtract` `multiply` `divide` `greater-equal` `greater-than` `less-equal` `less-than` `equal` `not-equal` `logic-and` `logic-or` | `a`, `b` | `result` |
+| 一元逻辑/取负 | `logic-not` `negate` | `operand` | `result` |
+| 数学函数（atomic-function） | `fabs` `sqrt` `atan` `sin` `cos` `exp` `log` … | `x` | `return` |
+| 双参数学函数 | `fmin` `fmax` | `x`, `y` | `return` |
+| 幂 | `pow` | `base`, `exponent` | `return` |
+| 数据来源 | `constant` `read-local-param` `read-local-state` `read-global-param` | 无 | `out` |
+| 状态记忆 | `static-variable` | `value` | `value` |
+| 写状态 | `write-local-state` | `in` | 无 |
+| 子系统端口 | `input` / `output` / `oscilloscope` | `output→in`，`oscilloscope→input_1,2…` | `input→out` |
+
+**据此修正本方案的既有错误：**
+
+1. **`atan` 存在**（`x`→`return`）。§7.6、§9.2 中“基础库无反正切、需新增 `AtanVal`”
+   作废——横向加速度限幅可直接用 `atan` 搭，无需新组件、无需等团队。
+2. **绝对值用 `fabs`（double）**，端口 `x`→`return`。`abs` 仅 int。§6.4/§7.1 中
+   `ABS_*` 的 `sourceValue`/`absoluteValue` 端口名作废，改用 `fabs` 的 `x`/`return`。
+3. **`logic-not` 端口为 `operand`**（非 `input`）。§6.4 各 `NOT_*` 改 `operand <- ...`。
+4. **比较结果为 `double`（0.0/1.0），非 `bool`**，可直接接入乘法/加法；§7.1.1 中
+   “bool→double 转换”无需。
+5. **无 clamp 算子**：限幅用 `fmax(lo, fmin(val, hi))` 组合。§7.5/§7.6 的 clamp 据此搭；
+   负下限用 `negate` 或 `multiply(-1)` 得到 `-thetaLimit`。
+6. `x2 = ld/2` 用 `divide`（`a<-ld`, `b<-2`）或 `multiply`（`b<-0.5`）。
+
 ## 6. 简化决策方案
 
 ### 6.1 决策输入
@@ -215,8 +248,15 @@ y(x) = c0 + c1*x + c2*x^2 + c3*x^3
 
 ```text
 driverSteerHigh = abs(driverSteerNorm) >= driverSteerThreshold
-activeLaneChange = turnSignalOn OR driverSteerHigh
+activeLaneChange = driverSteerHigh
 ```
+
+> 2026-06-17 简化：转向灯（turnSignalOn）暂不考虑（CARLA 不易仿真转向灯），
+> 主动换道**只按驾驶员转角**判断，故 `activeLaneChange = driverSteerHigh`。
+> 同时**不设总开关 lksSwitchOn**（LKS 常驻启用），决策也不再输出三态 systemState。
+> 最终：`controlEnabled = NOT (brakePressed OR driverSteerHigh OR NOT speedOk)`，
+> 即 `controlEnabled = speedOk AND (NOT brakePressed) AND (NOT driverSteerHigh)`。
+> 决策输入仅 3 个：egoV、brakePressed、driverSteerNorm。
 
 原文档建议：
 
@@ -324,6 +364,166 @@ alphaL = 1 - isCurve * (1 - rAlpha)
 previewDistance <- MUL_Lookahead.result
 ```
 
+### 7.1.1 `LKSPreviewDistance` 子系统详细画线步骤
+
+第一阶段先把动态预瞄距离单独做成一个子系统，命名为：
+
+```text
+LKSPreviewDistance
+```
+
+该子系统只计算预瞄距离，不接车道多项式、不接转角控制。
+
+#### 输入端口
+
+| 端口名 | 类型 | 说明 |
+|---|---|---|
+| `egoV` | `double` | 自车速度，m/s |
+| `curvature` | `double` | 道路曲率，1/m |
+| `l0` | `double` | 基础预瞄距离 |
+| `rt` | `double` | 预瞄时间系数 |
+| `rAlpha` | `double` | 弯道缩放系数 |
+| `curvatureThreshold` | `double` | 曲率阈值 |
+
+第一阶段顶层建议这样接：
+
+| 子系统输入 | 顶层来源 |
+|---|---|
+| `egoV` | 常量 `C_EgoV`，初值 `5.0` |
+| `curvature` | 常量 `C_Curvature`，初值 `0.0` |
+| `l0` | 全局参数 `lks_l0`，初值 `5.0` |
+| `rt` | 全局参数 `lks_rt`，初值 `0.5` |
+| `rAlpha` | 全局参数 `lks_rAlpha`，初值 `0.6666667` |
+| `curvatureThreshold` | 全局参数 `lks_curvatureThreshold`，初值 `0.001` |
+
+#### 输出端口
+
+| 端口名 | 类型 | 说明 | 连接来源 |
+|---|---|---|---|
+| `previewDistance` | `double` | 最终预瞄距离 | `MUL_Lookahead.result` |
+| `isCurve` | `double/bool/int` | 是否弯道 | `GE_IsCurve.result` |
+| `alphaL` | `double` | 当前预瞄缩放系数 | `SUB_Alpha.result` |
+
+如果 GAASD 的比较模块输出为 `bool` 且无法直接接入乘法模块，则需要在
+`GE_IsCurve.result` 与 `MUL_AlphaReduce.a` 之间增加 `bool -> double`
+转换模块。若画布允许直接连接，则不需要转换。
+
+#### 子系统内部模块
+
+| 实例名 | 基础模块 | 参数 |
+|---|---|---|
+| `ABS_Curvature` | 绝对值 | - |
+| `GE_IsCurve` | 大于等于 | - |
+| `C_One` | 常量 | `1.0` |
+| `SUB_AlphaDiff` | 减法 | - |
+| `MUL_AlphaReduce` | 乘法 | - |
+| `SUB_Alpha` | 减法 | - |
+| `MUL_RtV` | 乘法 | - |
+| `ADD_BaseLookahead` | 加法 | - |
+| `MUL_Lookahead` | 乘法 | - |
+
+#### 曲率判断连线
+
+| 模块 | 端口连接 |
+|---|---|
+| `ABS_Curvature` | `sourceValue <- curvature` |
+| `GE_IsCurve` | `a <- ABS_Curvature.absoluteValue` |
+| `GE_IsCurve` | `b <- curvatureThreshold` |
+
+得到：
+
+```text
+isCurve = abs(curvature) >= curvatureThreshold
+```
+
+#### 预瞄缩放系数连线
+
+| 模块 | 端口连接 |
+|---|---|
+| `SUB_AlphaDiff` | `a <- C_One.out` |
+| `SUB_AlphaDiff` | `b <- rAlpha` |
+| `MUL_AlphaReduce` | `a <- GE_IsCurve.result` |
+| `MUL_AlphaReduce` | `b <- SUB_AlphaDiff.result` |
+| `SUB_Alpha` | `a <- C_One.out` |
+| `SUB_Alpha` | `b <- MUL_AlphaReduce.result` |
+
+得到：
+
+```text
+alphaL = 1 - isCurve * (1 - rAlpha)
+```
+
+#### 基础预瞄距离连线
+
+| 模块 | 端口连接 |
+|---|---|
+| `MUL_RtV` | `a <- rt` |
+| `MUL_RtV` | `b <- egoV` |
+| `ADD_BaseLookahead` | `a <- l0` |
+| `ADD_BaseLookahead` | `b <- MUL_RtV.result` |
+
+得到：
+
+```text
+baseLookahead = l0 + rt * egoV
+```
+
+#### 最终预瞄距离连线
+
+| 模块 | 端口连接 |
+|---|---|
+| `MUL_Lookahead` | `a <- SUB_Alpha.result` |
+| `MUL_Lookahead` | `b <- ADD_BaseLookahead.result` |
+
+得到：
+
+```text
+previewDistance = alphaL * baseLookahead
+```
+
+#### 输出端口连线
+
+| 输出端口 | 接到 |
+|---|---|
+| `previewDistance` | `MUL_Lookahead.result` |
+| `isCurve` | `GE_IsCurve.result` |
+| `alphaL` | `SUB_Alpha.result` |
+
+#### 第一轮验算
+
+直道测试输入：
+
+```text
+egoV = 5.0
+curvature = 0.0
+l0 = 5.0
+rt = 0.5
+rAlpha = 0.6666667
+curvatureThreshold = 0.001
+```
+
+预期输出：
+
+```text
+isCurve = 0
+alphaL = 1.0
+previewDistance = 7.5
+```
+
+弯道测试时将 `curvature` 改成：
+
+```text
+curvature = 0.002
+```
+
+预期输出：
+
+```text
+isCurve = 1
+alphaL = 0.6666667
+previewDistance = 5.0
+```
+
 ## 7.2 三个预瞄点
 
 本方案使用：
@@ -335,6 +535,23 @@ x3 = previewDistance
 ```
 
 `x1` 用一个很小的正距离近似原文“首个 x 坐标大于 0 的点”。
+注意：`x1` 是常量输入，不从 `previewDistance` 计算；`x3` 直接接
+`previewDistance`；只有 `x2` 需要在顶层增加一个乘 `0.5` 的基础块。
+
+顶层预瞄点连线：
+
+| 实例名 | 类型 | 连线 |
+|---|---|---|
+| `C_Half` | 常量 | 值设为 `0.5` |
+| `MUL_X2Half` | 乘法 | `a <- LKSPreviewDistance.previewDistance`；`b <- C_Half.out` |
+
+三个预瞄点来源：
+
+| 预瞄点 | 来源 |
+|---|---|
+| `x1` | `nearPreviewDistance` |
+| `x2` | `MUL_X2Half.result` |
+| `x3` | `LKSPreviewDistance.previewDistance` |
 
 每个预瞄误差由车道多项式计算：
 
@@ -355,8 +572,8 @@ e3 = e(x3)
 | 实例 | 输入 x | 输出 |
 |---|---|---|
 | `Eval_P1` | `nearPreviewDistance` | `e1` |
-| `Eval_P2` | `previewDistance / 2` | `e2` |
-| `Eval_P3` | `previewDistance` | `e3` |
+| `Eval_P2` | `MUL_X2Half.result` | `e2` |
+| `Eval_P3` | `LKSPreviewDistance.previewDistance` | `e3` |
 
 `LanePolynomialEval` 内部连线：
 
@@ -439,11 +656,15 @@ prevControlEnabledNext = controlEnabled
 
 ## 7.5 位置式比例控制
 
-原文档参数：
+原 Simulink 模型中解析到的比例增益为：
 
 ```text
-Kp = 0.025 1/m
+Kp = 0.08 1/m
 ```
+
+此前方案文档曾写 `Kp = 0.025 1/m`，该数值来源仍需复核；在没有进一步
+依据前，第一轮画布搭建优先采用原 Simulink 模型中的 `0.08`。工程上应将
+`Kp` 作为可调参数 `lks_Kp`，后续根据 CARLA 闭环效果再标定。
 
 计算：
 
@@ -452,7 +673,8 @@ thetaCorrection = Kp * weightedError
 thetaRaw = theta0Next + thetaCorrection
 ```
 
-`thetaRaw` 是归一化转向指令，范围应限制在 `[-1, 1]` 内。
+`thetaRaw` 是归一化转向指令。第一阶段先不搭任何限幅，直接用于后续
+`steerRad` 换算；固定限幅和横向加速度动态限幅等控制主链确认后再增加。
 
 ## 7.6 横向加速度动态限幅
 
@@ -481,13 +703,21 @@ thetaLimit = phiLimit / frontWheelMaxRad
 thetaLimited = clamp(thetaRaw, -thetaLimit, thetaLimit)
 ```
 
-当前基础组件库未发现反正切模块。应优先由 GAASD 团队提供标准 `atan` 数学
-组件；若短期没有，可新增只封装 `std::atan` 的原子数学组件
-`AtanVal`。该组件不涉及 CARLA 或业务逻辑。
+基础组件库已提供 `atan` 算子（atomic-function，端口 `x`→`return`，
+实测自 2.7.0.5，见 §5.4）。本段直接用它实现，无需新增组件。
+另有 `atan2` 可用。`min`/`max` 用 `fmin`/`fmax`（`x`,`y`→`return`）。
 
 ## 7.7 输出到 CARLA
 
 当前 Bridge 接口接收 `steerRad`，因此需要把归一化转向换算为协议转角：
+
+第一阶段无任何限幅时：
+
+```text
+steerRad = thetaRaw * steerCommandScaleRad
+```
+
+后续增加限幅后：
 
 ```text
 steerRad = thetaLimited * steerCommandScaleRad
@@ -517,7 +747,7 @@ vehicleCommandEnable = 1
 
 | 参数 | 含义 | 数值 |
 |---|---|---:|
-| `Kp` | 多目标比例系数 | 0.025 1/m |
+| `Kp` | 多目标比例系数 | 0.08 1/m |
 | `w1` | 近预瞄点权重 | 0.2 |
 | `w2` | 中预瞄点权重 | 0.3 |
 | `w3` | 远预瞄点权重 | 0.5 |
@@ -540,6 +770,37 @@ vehicleCommandEnable = 1
 | `limitSpeedFloor` | 1.0 m/s 初值 | 防止除零 |
 | `testTargetSpeed` | CARLA 测试配置 | 不属于 LKS 算法 |
 
+### 8.3 参数承载方式（全局参数 vs 常量）
+
+**算法整定参数 → 用全局参数**（`read-global-param` 读取，集中调参）：
+
+| 名称 | 全局参数名 | 初值 |
+|---|---|---|
+| l0 | `lks_l0` | 5.0 |
+| rt | `lks_rt` | 0.5 |
+| rAlpha | `lks_rAlpha` | 0.6666667 |
+| curvatureThreshold | `lks_curvatureThreshold` | 0.001 |
+| nearPreviewDistance | `lks_nearPreviewDistance` | 0.5 |
+| w1 | `lks_w1` | 0.2 |
+| w2 | `lks_w2` | 0.3 |
+| w3 | `lks_w3` | 0.5 |
+| Kp | `lks_Kp` | 0.08 |
+| steerScale | `lks_steerScale` | 0.6 |
+
+**第一阶段模拟输入信号 → 暂用普通常量**（`constant`，后续被边界组件替换）：
+
+| 名称 | 初值 | 后续替换 |
+|---|---|---|
+| egoV | 5.0 | CARLAEgoSpeed |
+| curvature | 0.0 | CARLALKSRoadCurvature |
+| c0 | 0.8 | CARLALKSLaneC0 |
+| c1 | 0.0 | CARLALKSLaneC1 |
+| c2 | 0.0 | CARLALKSLaneC2 |
+| c3 | 0.0 | CARLALKSLaneC3 |
+
+> 此分类取代 §7.1.1 中“局部参数”的写法。各子系统内部直接用 `read-global-param`
+> 读全局参数，不必把整定参数作为输入端口层层传递。
+
 ## 9. 与现有 LKS 组件的关系
 
 ### 9.1 可以复用
@@ -557,7 +818,7 @@ vehicleCommandEnable = 1
 - `CARLALKSValid`：本阶段由常量 `1` 替代。
 - Bridge：需要增加车道多项式和道路曲率计算。
 - adapter：需要缓存并向 GAASD 提供多项式系数和曲率。
-- GAASD：需要增加 `AtanVal`，除非基础库已有可用反正切组件。
+- GAASD：基础库已含 `atan`/`atan2`/`fmin`/`fmax`，无需新增数学组件（见 §5.4）。
 
 ## 10. 推荐实施顺序
 

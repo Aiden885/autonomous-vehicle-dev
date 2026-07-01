@@ -1,0 +1,106 @@
+{
+  "Input": {
+    "description": "决策响应动作判定模块输入端口集合。",
+    "alias": "决策响应动作判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 1,
+        "dataType": "SystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前判定的系统状态 Sn"
+      },
+      {
+        "name": "lowSpeedTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "低速在控持续计时器 (s)"
+      },
+      {
+        "name": "lowSpeedTimeout",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "S6 低速在控持续时间上限 (s)"
+      },
+      {
+        "name": "driverCommand",
+        "category": 1,
+        "dataType": "DriverCommand",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前驾驶员按键或踏板指令"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "决策响应动作判定模块输出端口集合。",
+    "alias": "决策响应动作判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统决策响应动作 Rk"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "决策响应动作判定模块参数集合。",
+    "alias": "决策响应动作判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "决策响应动作判定模块状态集合。",
+    "alias": "决策响应动作判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "决策响应动作判定模块子模块集合。",
+    "alias": "决策响应动作判定模块子模块集合。",
+    "fields": [
+      {
+        "name": "evaluateIncDecision",
+        "category": 1,
+        "dataType": "EvaluateIncDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": "增速键决策表判定模块"
+      },
+      {
+        "name": "evaluateDecDecision",
+        "category": 1,
+        "dataType": "EvaluateDecDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": "降速键决策表判定模块"
+      },
+      {
+        "name": "evaluateCommandDecision",
+        "category": 1,
+        "dataType": "EvaluateCommandDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": "驾驶员指令决策选择模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

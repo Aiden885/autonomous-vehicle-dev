@@ -1,0 +1,152 @@
+{
+  "componentType": "atomic-function",
+  "name": "CARLAACCLongitudinalCmd_db36d5a1_bc2e_4658_8349_54f614063cfd",
+  "cppClass": "run_2f3edfa5_8227_43eb_859d_1a6db0afd957",
+  "alias": "CARLA纵向控制命令",
+  "description": "发布CARLA纵向速度控制命令",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "db36d5a1-bc2e-4658-8349-54f614063cfd",
+  "originId": "870ba80a-b09b-50df-8323-50a9696b2b25",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "CARLA联合仿真",
+    "ACC最小闭环"
+  ],
+  "parentId": "2f3edfa5-8227-43eb-859d-1a6db0afd957",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {}
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "void CARLAACCLongitudinalCmd(double speed, int enable)\n{\n    extern int carla_adapter_publish_longitudinal_cmd(double targetSpeed, int enable);\n    int rc = 0;\n\n    rc = carla_adapter_publish_longitudinal_cmd(speed, enable);\n    (void)rc;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "CARLAACCLongitudinalCmd_param_speed_In",
+          "name": "speed",
+          "alias": "speed",
+          "direction": "In",
+          "description": "目标速度，单位m/s",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        },
+        {
+          "id": "CARLAACCLongitudinalCmd_param_enable_In",
+          "name": "enable",
+          "alias": "enable",
+          "direction": "In",
+          "description": "控制使能，1表示使能",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "int",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 2,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "function_output_ports",
+      "value": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

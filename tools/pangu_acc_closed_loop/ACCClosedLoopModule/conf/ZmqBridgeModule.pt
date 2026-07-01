@@ -1,0 +1,35 @@
+basic {
+  path: "lib/libZmqBridgeModule.so"
+  module_type: APP
+  ioconfig {
+    publishers {
+      name: "acc_input"
+      channel: "acc_input"
+      bindcode: ON
+    }
+
+    subscribers {
+      name: "acc_output"
+      channel: "acc_output"
+      bindcode: ON
+    }
+
+    tasks {
+      task_name: "acc_output"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "acc_output"
+      }
+      input: "acc_output"
+    }
+  }
+}
+
+params {
+  timer_duration: 100.0
+  zmq_poll_timeout_ms: 0
+  zmq_control_enable: true
+}

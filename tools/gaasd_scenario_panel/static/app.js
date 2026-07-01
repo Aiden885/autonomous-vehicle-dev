@@ -67,6 +67,10 @@ function updateActionState(raw) {
   $("copyPathBtn").disabled = !hasScenario;
   $("readmeBtn").disabled   = !hasScenario;
   $("forceRestore").disabled = busy || !hasScenario;
+  $("kickstartBtn").disabled = busy || !hasScenario;
+  document.querySelectorAll("[data-command]").forEach((button) => {
+    button.disabled = busy || !hasScenario;
+  });
 
   if (!busy) {
     setButtonLoading(restoreBtn, false);
@@ -218,13 +222,17 @@ function updateHealthChip(service, online, port) {
   row.classList.toggle("offline", !online);
   const name = row.querySelector(".health-name");
   const portNode = row.querySelector(".health-port");
-  const label = service === "carla"
-    ? "CARLA Server"
-    : service === "bridge_pub"
-      ? "Bridge PUB"
-      : "Bridge CONTROL";
+  const labels = {
+    carla: "CARLA Server",
+    bridge_pub: "Bridge PUB",
+    bridge_control: "Bridge CONTROL",
+    pangu_process: "Pangu ACC",
+  };
+  const label = labels[service] || service;
   if (name) name.textContent = `${label} ${online ? "在线" : "离线"}`;
-  if (portNode) portNode.textContent = port ? `:${port}` : "";
+  if (portNode) {
+    portNode.textContent = Number.isFinite(Number(port)) ? `:${port}` : (port || "");
+  }
 }
 
 async function healthCheck(writeLog = true) {
@@ -235,9 +243,42 @@ async function healthCheck(writeLog = true) {
     updateHealthChip("carla",          data.carla,          data.ports?.carla);
     updateHealthChip("bridge_pub",     data.bridge_pub,     data.ports?.bridge_pub);
     updateHealthChip("bridge_control", data.bridge_control, data.ports?.bridge_control);
+    updateHealthChip("pangu_process",  data.pangu_process,  data.ports?.pangu_process);
     if (writeLog) await pollLogs();
   } catch (err) {
     if (writeLog) appendLocalLog(`健康检查失败: ${err.message}`);
+  }
+}
+
+async function sendDriverCommand(key) {
+  const id = state.selectedId;
+  if (!id) return;
+  appendLocalLog(`发送驾驶指令: ${key.toUpperCase()}`);
+  try {
+    await requestJson(`/api/scenarios/${id}/driver-command`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({key}),
+    });
+    await pollLogs();
+  } catch (err) {
+    appendLocalLog(`驾驶指令失败: ${err.message}`);
+  }
+}
+
+async function kickstartAcc() {
+  const id = state.selectedId;
+  if (!id) return;
+  appendLocalLog("执行辅助启控: boost + E");
+  $("kickstartBtn").disabled = true;
+  try {
+    await requestJson(`/api/scenarios/${id}/kickstart`, {method: "POST"});
+    await pollLogs();
+    await healthCheck(false);
+  } catch (err) {
+    appendLocalLog(`辅助启控失败: ${err.message}`);
+  } finally {
+    $("kickstartBtn").disabled = false;
   }
 }
 
@@ -274,6 +315,10 @@ function bindEvents() {
   $("fixGeneratedBtn").onclick = () => runAction("fix-generated");
   $("copyPathBtn").onclick = copyProjectPath;
   $("readmeBtn").onclick  = openReadme;
+  $("kickstartBtn").onclick = kickstartAcc;
+  document.querySelectorAll("[data-command]").forEach((button) => {
+    button.onclick = () => sendDriverCommand(button.dataset.command || "");
+  });
   $("clearLogBtn").onclick = () => {
     state.renderedLog = "";
     $("logBox").textContent = "显示已清空，后台日志仍保留。";

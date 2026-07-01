@@ -49,6 +49,16 @@ def find_vehicle_by_role(world: Any, role_name: str) -> Optional[Any]:
     return result
 
 
+def wait_vehicle_by_role(world: Any, role_name: str, timeout_sec: float) -> Optional[Any]:
+    deadline = time.monotonic() + max(timeout_sec, 0.1)
+    result = find_vehicle_by_role(world, role_name)
+    while result is None and time.monotonic() < deadline:
+        wait_for_world_frame(world, min(timeout_sec, 0.5))
+        time.sleep(0.1)
+        result = find_vehicle_by_role(world, role_name)
+    return result
+
+
 def destroy_vehicles_by_role(world: Any, role_name: str) -> int:
     count = 0
     for actor in world.get_actors().filter("vehicle.*"):
@@ -127,7 +137,7 @@ def main() -> int:
     if not spawn_points:
         raise SystemExit("[ResetScene] no spawn points in current map")
 
-    ego = find_vehicle_by_role(world, args.ego_role_name)
+    ego = wait_vehicle_by_role(world, args.ego_role_name, args.timeout_sec)
     if ego is None:
         raise SystemExit(f"[ResetScene] ego role_name={args.ego_role_name} not found")
 

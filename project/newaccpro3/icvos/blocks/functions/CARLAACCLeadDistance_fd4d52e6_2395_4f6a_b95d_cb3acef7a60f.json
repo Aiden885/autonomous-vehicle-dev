@@ -1,0 +1,127 @@
+{
+  "componentType": "atomic-function",
+  "name": "CARLAACCLeadDistance_fd4d52e6_2395_4f6a_b95d_cb3acef7a60f",
+  "cppClass": "run_2f3edfa5_8227_43eb_859d_1a6db0afd957",
+  "alias": "CARLA前车距离",
+  "description": "读取CARLA前车净距离",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "fd4d52e6-2395-4f6a-b95d-cb3acef7a60f",
+  "originId": "0ef5fa69-a60d-5da9-9860-887f2821d00f",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "CARLA联合仿真",
+    "ACC最小闭环"
+  ],
+  "parentId": "2f3edfa5-8227-43eb-859d-1a6db0afd957",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {}
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "double CARLAACCLeadDistance(void)\n{\n    extern int carla_adapter_read_lead_vehicle(\n        double *leadV,\n        double *distance,\n        double *relativeSpeed,\n        double *ttc,\n        int *valid);\n    double leadV = 0.0;\n    double distance = 1000000.0;\n    double relativeSpeed = 0.0;\n    double ttc = 1000000.0;\n    int valid = 0;\n    int rc = 0;\n    double result = 1000000.0;\n\n    rc = carla_adapter_read_lead_vehicle(&leadV, &distance, &relativeSpeed, &ttc, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = distance;\n    }\n\n    return result;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "CARLAACCLeadDistance_output_distance_Out",
+          "name": "distance",
+          "alias": "distance",
+          "direction": "Out",
+          "description": "自车到前车净距离，单位m",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "INNER_SHM_DDS_map_server",
+    "service_name": "map_server",
+    "channel_type": "INNER_SHM_DDS",
+    "request_type": "cbdes.localization.Odometry",
+    "response_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_tf_server",
+    "service_name": "tf_server",
+    "channel_type": "INNER_SHM_DDS",
+    "request_type": "cbdes.common.TfServerRequest",
+    "response_type": "cbdes.common.TfServerResponse",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "FeedbackState": {
+    "description": "控制图跨周期反馈状态缓存。",
+    "alias": "控制图跨周期反馈状态缓存。",
+    "fields": [
+      {
+        "name": "lonVelFb",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一周期纵向速度反馈"
+      },
+      {
+        "name": "latPosFb",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一周期横向位置反馈"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

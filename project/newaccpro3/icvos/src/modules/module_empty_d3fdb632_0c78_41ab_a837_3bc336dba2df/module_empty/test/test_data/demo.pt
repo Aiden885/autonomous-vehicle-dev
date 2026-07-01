@@ -1,0 +1,19 @@
+
+basic {
+  path: "lib/libmodule_empty.so"
+  module_type: APP
+  ioconfig {
+  }
+}
+
+params {
+  timer_duration: 100.0
+  work_root: "/share/pangu/install/planning/"
+  desired_distance_m: 15.0
+  max_speed_mps: 5.0
+  distance_gain: 0.35
+  speed_gain: 0.8
+  enable_zmq_bridge: false
+  zmq_poll_timeout_ms: 0
+  zmq_control_enable: true
+}

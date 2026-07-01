@@ -42,7 +42,7 @@ struct CARLAACCLongitudinalCmdTraits {
 };
 
 /**
- * @brief 输出供运行时边界层发布的 CARLA 纵向速度控制命令。
+ * @brief 通过 CARLA 适配器发布纵向速度控制命令。
  */
 class CARLAACCLongitudinalCmd : public FuncModule<CARLAACCLongitudinalCmdTraits> {
 public:

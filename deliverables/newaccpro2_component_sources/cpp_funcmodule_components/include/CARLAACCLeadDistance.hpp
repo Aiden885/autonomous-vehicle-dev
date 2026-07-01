@@ -11,10 +11,7 @@ struct CARLAACCLeadDistanceTraits {
   /**
    * @brief 输入端口集合。
    */
-  struct Input {
-    Real distance = 1000000.0; ///< 运行时边界层提供的前车净距离 (m)
-    int valid = 0;             ///< 前车状态有效标志，1 表示有效
-  };
+  struct Input {};
 
   /**
    * @brief 输出端口集合。
@@ -27,7 +24,9 @@ struct CARLAACCLeadDistanceTraits {
   /**
    * @brief 参数集合。
    */
-  struct Param {};
+  struct Param {
+    Real defaultDistance = 1000000.0; ///< 前车无效时使用的安全默认距离 (m)
+  };
 
   /**
    * @brief 状态集合。
@@ -41,7 +40,7 @@ struct CARLAACCLeadDistanceTraits {
 };
 
 /**
- * @brief 校验并输出运行时边界层提供的 CARLA 前车净距离。
+ * @brief 通过 CARLA 适配器读取并输出前车净距离。
  */
 class CARLAACCLeadDistance : public FuncModule<CARLAACCLeadDistanceTraits> {
 public:

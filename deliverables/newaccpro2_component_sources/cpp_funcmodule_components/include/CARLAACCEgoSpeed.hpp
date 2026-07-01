@@ -11,10 +11,7 @@ struct CARLAACCEgoSpeedTraits {
   /**
    * @brief 输入端口集合。
    */
-  struct Input {
-    Real egoV = 0.0; ///< 运行时边界层提供的自车纵向速度 (m/s)
-    int valid = 0;   ///< 自车状态有效标志，1 表示有效
-  };
+  struct Input {};
 
   /**
    * @brief 输出端口集合。
@@ -41,7 +38,7 @@ struct CARLAACCEgoSpeedTraits {
 };
 
 /**
- * @brief 校验并输出运行时边界层提供的 CARLA 自车纵向速度。
+ * @brief 通过 CARLA 适配器读取并输出自车纵向速度。
  */
 class CARLAACCEgoSpeed : public FuncModule<CARLAACCEgoSpeedTraits> {
 public:

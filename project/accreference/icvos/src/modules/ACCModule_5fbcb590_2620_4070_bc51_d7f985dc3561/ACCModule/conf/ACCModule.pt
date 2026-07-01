@@ -1,0 +1,41 @@
+
+basic {
+  path: "lib/libACCModule.so"
+  module_type: APP
+  ioconfig {
+    subscribers {
+      name: "acc_input"
+      channel: "acc_input"
+      bindcode: ON
+    }
+    tasks {
+      task_name: "acc_input"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "acc_input"
+      }
+      input: "acc_input"
+    }
+
+    publishers {
+      name: "acc_output"
+      channel: "acc_output"
+      bindcode: ON
+    }
+  }
+}
+
+params {
+  timer_duration: 100.0
+  work_root: "/share/pangu/install/planning/"
+  desired_distance_m: 15.0
+  max_speed_mps: 5.0
+  distance_gain: 0.35
+  speed_gain: 0.8
+  enable_zmq_bridge: false
+  zmq_poll_timeout_ms: 0
+  zmq_control_enable: true
+}

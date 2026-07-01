@@ -1,0 +1,37 @@
+soc {
+  process {
+    node {
+      node_name: "module_empty"
+      module_name: "module_empty"
+      path: "conf/node_module/module_empty/module_empty.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "process_empty_9ae15465_26af_44d7_9324_ad167cff489d"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "ZmqBridgeModule"
+      module_name: "ZmqBridgeModule"
+      path: "conf/node_module/module_empty/ZmqBridgeModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "ZmqBridgeModule"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  soc_name: "soc1"
+}

@@ -1,0 +1,5952 @@
+[
+  {
+    "id": "INNER_SHM_DDS_camera_front_narrow",
+    "channel_name": "camera_front_narrow",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_narrow_compressed",
+    "channel_name": "camera_front_narrow_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_wide",
+    "channel_name": "camera_front_wide",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_GnssInsMsgGcj02",
+    "channel_name": "BRT_GnssInsMsgGcj02",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_GnssInsMsgGcj02",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_wide_compressed",
+    "channel_name": "camera_front_wide_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear",
+    "channel_name": "camera_rear",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_compressed",
+    "channel_name": "camera_rear_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_left",
+    "channel_name": "camera_front_left",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_left_compressed",
+    "channel_name": "camera_front_left_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_right",
+    "channel_name": "camera_front_right",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_right_compressed",
+    "channel_name": "camera_front_right_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_left",
+    "channel_name": "camera_rear_left",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_left_compressed",
+    "channel_name": "camera_rear_left_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_right",
+    "channel_name": "camera_rear_right",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_right_compressed",
+    "channel_name": "camera_rear_right_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_bev_object",
+    "channel_name": "bev_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_bev_track",
+    "channel_name": "bev_track",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_narrow_object",
+    "channel_name": "camera_front_narrow_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_wide_object",
+    "channel_name": "camera_front_wide_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_lane",
+    "channel_name": "camera_lane",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.LaneBoundaries",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_traffic_lines",
+    "channel_name": "traffic_lines",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.TrafficLineObjects",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_current_pose",
+    "channel_name": "current_pose",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_lane_debug",
+    "channel_name": "camera_lane_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_lane3d",
+    "channel_name": "camera_lane3d",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.Lane3DBoundaries",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_fusion_object",
+    "channel_name": "fusion_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_front_narrow_object",
+    "channel_name": "processed_camera_front_narrow_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_front_wide_object",
+    "channel_name": "processed_camera_front_wide_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_front_left_object",
+    "channel_name": "processed_camera_front_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_front_right_object",
+    "channel_name": "processed_camera_front_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_rear_object",
+    "channel_name": "processed_camera_rear_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_object",
+    "channel_name": "radar_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_cluster_object",
+    "channel_name": "lidar_cluster_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_nn_object",
+    "channel_name": "lidar_nn_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_cluster_track",
+    "channel_name": "lidar_cluster_track",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_nn_track",
+    "channel_name": "lidar_nn_track",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_object",
+    "channel_name": "lidar_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_wide_debug",
+    "channel_name": "camera_front_wide_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_narrow_debug",
+    "channel_name": "camera_front_narrow_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_left_debug",
+    "channel_name": "camera_front_left_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_right_debug",
+    "channel_name": "camera_front_right_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_debug",
+    "channel_name": "camera_rear_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_left_object",
+    "channel_name": "camera_front_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_right_object",
+    "channel_name": "camera_front_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_object",
+    "channel_name": "camera_rear_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_gnss_pvt",
+    "channel_name": "gnss_pvt",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.GnssPvt",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_predict_obstacles",
+    "channel_name": "predict_obstacles",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.prediction.PredictionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_road_info",
+    "channel_name": "road_info",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": true
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_local_routing",
+    "channel_name": "local_routing",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": true
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_routing",
+    "channel_name": "global_routing",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": true
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_road_info_topo",
+    "channel_name": "road_info_topo",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapTopoInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": true
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_chassis",
+    "channel_name": "chassis",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.canbus.Chassis",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_fused_odometry",
+    "channel_name": "fused_odometry",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_hmi_info",
+    "channel_name": "hmi_info",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hmi.HMIInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_trajectory",
+    "channel_name": "global_trajectory",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.planning.PlanningTrajectory",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_local_trajectory",
+    "channel_name": "local_trajectory",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.planning.PlanningTrajectory",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_dr_odometry",
+    "channel_name": "dr_odometry",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_MRMMsg",
+    "channel_name": "BRT_MRMMsg",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_MRMMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_control_cmd",
+    "channel_name": "control_cmd",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.control.ControlCommand",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_destination",
+    "channel_name": "destination",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.Destination",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_rear_left_object",
+    "channel_name": "processed_camera_rear_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_processed_camera_rear_right_object",
+    "channel_name": "processed_camera_rear_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_left_object",
+    "channel_name": "camera_rear_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_right_object",
+    "channel_name": "camera_rear_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_left_debug",
+    "channel_name": "camera_rear_left_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_right_debug",
+    "channel_name": "camera_rear_right_debug",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_packets",
+    "channel_name": "rslidar_packets",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.LidarPacketPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_2M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points",
+    "channel_name": "rslidar_points",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_inlidar_packets",
+    "channel_name": "inlidar_packets",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.LidarPacketPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_2M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_inlidar_points",
+    "channel_name": "inlidar_points",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_daoyuan_odometry",
+    "channel_name": "daoyuan_odometry",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_daoyuan_odometry_fused",
+    "channel_name": "daoyuan_odometry_fused",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_arena_info_dynamic",
+    "channel_name": "arena_info_dynamic",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.ArenaInfoDynamic",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_replan",
+    "channel_name": "global_replan",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.GlobalPlanner",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_path",
+    "channel_name": "global_path",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_navi_path",
+    "channel_name": "global_navi_path",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapTopoInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ego_behavior",
+    "channel_name": "eps_ego_behavior",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.SemanticBehavior",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ego_vehicle",
+    "channel_name": "eps_ego_vehicle",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.Vehicle",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_planning_trajectory",
+    "channel_name": "eps_planning_trajectory",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.ExecTraj",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ego_decision_forward_trajs",
+    "channel_name": "eps_ego_decision_forward_trajs",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.ForwardTrajs",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_sur_key_vehicle",
+    "channel_name": "eps_sur_key_vehicle",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.VehicleSet",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_sur_key_local_vehicle",
+    "channel_name": "eps_sur_key_local_vehicle",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.VehicleSet",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_sur_vehicle_with_traj",
+    "channel_name": "eps_sur_vehicle_with_traj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.VehicleSet",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ssc_map",
+    "channel_name": "eps_ssc_map",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.MarkerArray",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ssc_corridor",
+    "channel_name": "eps_ssc_corridor",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.MarkerArray",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ssc_traj",
+    "channel_name": "eps_ssc_traj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.MarkerArray",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ssc_forwardTraj",
+    "channel_name": "eps_ssc_forwardTraj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.MarkerArray",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_eps_ssc_surroundVehTraj",
+    "channel_name": "eps_ssc_surroundVehTraj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.MarkerArray",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_trajectory",
+    "channel_name": "trajectory",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.planning.PlanningTrajectory",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_path_epsilon",
+    "channel_name": "global_path_epsilon",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.epsilon.LaneNet",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_global_road_info",
+    "channel_name": "global_road_info",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.hdmap.HDMapInfo",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_ground",
+    "channel_name": "lidar_ground",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_nonground",
+    "channel_name": "lidar_nonground",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_grid_hdmap_points",
+    "channel_name": "grid_hdmap_points",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_imu",
+    "channel_name": "imu",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Imu",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_control_msg",
+    "channel_name": "control_msg",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RawMessagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_front_object",
+    "channel_name": "radar_front_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RadarObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_front_left_object",
+    "channel_name": "radar_front_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RadarObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_front_right_object",
+    "channel_name": "radar_front_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RadarObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_rear_left_object",
+    "channel_name": "radar_rear_left_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RadarObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_rear_right_object",
+    "channel_name": "radar_rear_right_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.RadarObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_cipv_object",
+    "channel_name": "cipv_object",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionObstacles",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_gps_fused_data",
+    "channel_name": "gps_fused_data",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.GpsFusedData",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_daoyuan_odometry_hf",
+    "channel_name": "daoyuan_odometry_hf",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_wheel_speed_data",
+    "channel_name": "wheel_speed_data",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.WheelSpeedData",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_tflight_debug_wide",
+    "channel_name": "camera_tflight_debug_wide",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_tflight_debug_narrow",
+    "channel_name": "camera_tflight_debug_narrow",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_obj",
+    "channel_name": "park_obj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.PerceptionOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_lots",
+    "channel_name": "park_lots",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.PerceptionOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_chass",
+    "channel_name": "park_chass",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.canbus.Chassis",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_odom",
+    "channel_name": "park_odom",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.localization.Odometry",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_sys",
+    "channel_name": "park_sys",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.SystemOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_ctrl",
+    "channel_name": "park_ctrl",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.control.ControlCommand",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_apa_perception",
+    "channel_name": "apa_perception",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.PerceptionOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_system_command",
+    "channel_name": "system_command",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.SystemOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_park_system",
+    "channel_name": "park_system",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaInputMsg.SystemOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_planner_output",
+    "channel_name": "planner_output",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "ApaOutPutMsg.PlanningOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_controlpub",
+    "channel_name": "controlpub",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.control.ControlCommand",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_fusion",
+    "channel_name": "lidar_fusion",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_DynamicInfoMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_obs_info_list",
+    "channel_name": "obs_info_list",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "IBUS.ObsInfoList",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_brt_traffic_light_msg_fused",
+    "channel_name": "brt_traffic_light_msg_fused",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_TrafficLightsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_HbTrafficLightArrayMsg_Journey",
+    "channel_name": "BRT_HbTrafficLightArrayMsg_Journey",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_HbTrafficLightArrayMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_TrafficSignsMsg_Journey",
+    "channel_name": "BRT_TrafficSignsMsg_Journey",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_HbTrafficSignRoadMarkingsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_HbLanesMsg_Journey",
+    "channel_name": "BRT_HbLanesMsg_Journey",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_HbLanesMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_map_static_info",
+    "channel_name": "map_static_info",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EHR_StaticInfoMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_map_global_path",
+    "channel_name": "map_global_path",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EHR_GlobalPathMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_1M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_V2XMsg_V2X",
+    "channel_name": "BRT_V2XMsg_V2X",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_V2XMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_GnssInsMsgGcj02_Gnss",
+    "channel_name": "BRT_GnssInsMsgGcj02_Gnss",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_GnssInsMsgGcj02",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_GNSSInfoMsg_Localize",
+    "channel_name": "BRT_GNSSInfoMsg_Localize",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_GNSSInfoMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_match",
+    "channel_name": "lidar_match",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_LidarMatchMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_narrow_video_compressed",
+    "channel_name": "camera_front_narrow_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_wide_video_compressed",
+    "channel_name": "camera_front_wide_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_video_compressed",
+    "channel_name": "camera_rear_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_left_video_compressed",
+    "channel_name": "camera_front_left_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_front_right_video_compressed",
+    "channel_name": "camera_front_right_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_left_video_compressed",
+    "channel_name": "camera_rear_left_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_rear_right_video_compressed",
+    "channel_name": "camera_rear_right_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_processed",
+    "channel_name": "rslidar_points_processed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_16M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_fuse_location",
+    "channel_name": "fuse_location",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_SMFusPositionMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_detect",
+    "channel_name": "lidar_detect",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_ObjectsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_rulebase",
+    "channel_name": "lidar_rulebase",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_ObjectsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_HbObstaclesMsg_Journey",
+    "channel_name": "BRT_HbObstaclesMsg_Journey",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_HbObstaclesMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner",
+    "channel_name": "mpdm_planner",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_TrajectoryMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_local_lanes",
+    "channel_name": "mpdm_planner_local_lanes",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EgoLocalLanesMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_behavior",
+    "channel_name": "mpdm_planner_behavior",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EgoBehaviorMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_forward_trajs",
+    "channel_name": "mpdm_planner_forward_trajs",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EgoForwardTrajsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_ssc_traj",
+    "channel_name": "mpdm_planner_ssc_traj",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_SscExecTrajMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_dock_ref_lane",
+    "channel_name": "mpdm_planner_dock_ref_lane",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_DockingRefLaneMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_srround_car",
+    "channel_name": "mpdm_planner_srround_car",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_SurroundingVehiclesMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_speed_limit",
+    "channel_name": "mpdm_planner_speed_limit",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_SpeedLimitsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_sensor_joy",
+    "channel_name": "sensor_joy",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_SensorJoyMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_obj_trajs",
+    "channel_name": "mpdm_planner_obj_trajs",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_ObjectsTrajsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_vis_ego_phy_handle",
+    "channel_name": "vis_ego_phy_handle",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_VehicleMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_vis_baidu_trafficlights_handle",
+    "channel_name": "vis_baidu_trafficlights_handle",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BaiduTrafficLight",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_ctrl_signal_pub",
+    "channel_name": "ctrl_signal_pub",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_ControlSignalMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_mpdm_planner_decision_trajs",
+    "channel_name": "mpdm_planner_decision_trajs",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_EgoForwardTrajsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_radar_front",
+    "channel_name": "radar_front",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.RadarDetectMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_lidar_fusion_avp",
+    "channel_name": "lidar_fusion_avp",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.AVP_ObstacleInfoMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_front",
+    "channel_name": "camera_around_front",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_rear",
+    "channel_name": "camera_around_rear",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_left",
+    "channel_name": "camera_around_left",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_right",
+    "channel_name": "camera_around_right",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.ImagePB",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_right",
+    "channel_name": "rslidar_points_right",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_left",
+    "channel_name": "rslidar_points_left",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_front",
+    "channel_name": "rslidar_points_front",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_e1",
+    "channel_name": "rslidar_points_e1",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_8M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_yutong_hmi_cmd",
+    "channel_name": "yutong_hmi_cmd",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_HmiMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_yutong_hmi",
+    "channel_name": "yutong_hmi",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_HmiMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_parking_slots",
+    "channel_name": "parking_slots",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.ParkingSlotsMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_parking_system",
+    "channel_name": "parking_system",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.SystemOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_avp_plan_res",
+    "channel_name": "avp_plan_res",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.PlanningOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_brt_control",
+    "channel_name": "brt_control",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.VehicleCommandMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_baidu_trafficlight_msg",
+    "channel_name": "baidu_trafficlight_msg",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BaiduTrafficLight",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_VehicleReportMsg_Chassis",
+    "channel_name": "VehicleReportMsg_Chassis",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.VehicleReportMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "SOMEIP_udp_mcu_51800_baidu_trafficlight",
+    "channel_name": "udp_mcu_51800_baidu_trafficlight",
+    "channel_type": "SOMEIP",
+    "message_type": "icvos.common.RawMessage",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "vsomeip_config",
+        "value": {
+          "service_id": 1793,
+          "instance_id": 2,
+          "event_id": 32769,
+          "eventgroup_id": 1,
+          "can_channels": {
+            "can_channel_id": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SOMEIP_udp_mcu_51800_j3",
+    "channel_name": "udp_mcu_51800_j3",
+    "channel_type": "SOMEIP",
+    "message_type": "icvos.common.RawMessage",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "vsomeip_config",
+        "value": {
+          "service_id": 1793,
+          "instance_id": 2,
+          "event_id": 32769,
+          "eventgroup_id": 1,
+          "can_channels": {
+            "can_channel_id": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SOMEIP_udp_mcu_51800_chassis",
+    "channel_name": "udp_mcu_51800_chassis",
+    "channel_type": "SOMEIP",
+    "message_type": "icvos.common.RawMessage",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "vsomeip_config",
+        "value": {
+          "service_id": 1793,
+          "instance_id": 2,
+          "event_id": 32769,
+          "eventgroup_id": 1,
+          "can_channels": {
+            "can_channel_id": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SOMEIP_mcu_down_link",
+    "channel_name": "mcu_down_link",
+    "channel_type": "SOMEIP",
+    "message_type": "mcu_down_link",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "vsomeip_config",
+        "value": {
+          "service_id": 1795,
+          "instance_id": 2,
+          "event_id": 32769,
+          "eventgroup_id": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_VehicleCommandMsg_Control",
+    "channel_name": "VehicleCommandMsg_Control",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.VehicleCommandMsg",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_10K"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_RadarDetectMsg_Radar_Front",
+    "channel_name": "RadarDetectMsg_Radar_Front",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.RadarDetectMsg",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_10K"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_RadarDetectMsg_Radar_Rear",
+    "channel_name": "RadarDetectMsg_Radar_Rear",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.RadarDetectMsg",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_10K"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_rslidar_points_e1_back",
+    "channel_name": "rslidar_points_e1_back",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.PerceptionPoints",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_right_video_compressed",
+    "channel_name": "camera_around_right_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_front_video_compressed",
+    "channel_name": "camera_around_front_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_rear_video_compressed",
+    "channel_name": "camera_around_rear_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_left_compressed",
+    "channel_name": "camera_around_left_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_right_compressed",
+    "channel_name": "camera_around_right_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_rear_compressed",
+    "channel_name": "camera_around_rear_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_adsfi_points_front",
+    "channel_name": "adsfi_points_front",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_adsfi_points_left",
+    "channel_name": "adsfi_points_left",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_adsfi_points_right",
+    "channel_name": "adsfi_points_right",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_adsfi_points_e1",
+    "channel_name": "adsfi_points_e1",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_adsfi_points_processed",
+    "channel_name": "adsfi_points_processed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_16M"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_left_video_compressed",
+    "channel_name": "camera_around_left_video_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedVideoPB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_camera_around_front_compressed",
+    "channel_name": "camera_around_front_compressed",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.CompressedImagePB",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_tfl_detect",
+    "channel_name": "tfl_detect",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "algo.msg.BRT_SdTrafficLightArrayMsg",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_4M"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_v2x_vtd",
+    "channel_name": "v2x_vtd",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_V2XMsg",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_user_message_demo",
+    "channel_name": "user_message_demo",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.common.User_Message_Header",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_aicc_fault_report",
+    "channel_name": "aicc_fault_report",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "icvos.monitor.protomsg.AiccMonitorFaultReport",
+    "channel_config": {
+      "keep_latest": false,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_10K"
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_foxglove_dynamic_tf",
+    "channel_name": "foxglove_dynamic_tf",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "foxglove.FrameTransforms",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_foxglove_static_tf",
+    "channel_name": "foxglove_static_tf",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "foxglove.FrameTransforms",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 13,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_/cbdes/huace_localization_msgs",
+    "channel_name": "/cbdes/huace_localization_msgs",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "nullmax_pb.localization.localization_msgs.VehiclePose",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_BRT_GnssInsMsgGcj02_Gnss_huace",
+    "channel_name": "BRT_GnssInsMsgGcj02_Gnss_huace",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "cbdes.yutong.BRT_GnssInsMsgGcj02",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_acc_input",
+    "channel_name": "acc_input",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "pangu.modules.AccInput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "INNER_SHM_DDS_acc_output",
+    "channel_name": "acc_output",
+    "channel_type": "INNER_SHM_DDS",
+    "message_type": "pangu.modules.AccOutput",
+    "channel_config": {
+      "max_thread_num": 1,
+      "queue_buffer_size": 1,
+      "keep_latest": true,
+      "no_hybrid": false
+    },
+    "mdw_config": [
+      {
+        "key": "shm_config",
+        "value": {
+          "type": "FastDDS",
+          "block_size": "SHM_500K"
+        }
+      },
+      {
+        "key": "dds_config",
+        "value": {
+          "durability": "VOLATILE",
+          "translayer_type": "UDP",
+          "reliability": "BEST_EFFORT",
+          "throughput_controller": 0
+        }
+      }
+    ]
+  }
+]

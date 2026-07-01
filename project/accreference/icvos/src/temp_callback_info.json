@@ -1,0 +1,96 @@
+{
+  "server_callback_bodies": {
+    "5fbcb590_2620_4070_bc51_d7f985dc3561": {
+      "source_files": [],
+      "c_process": {
+        "acc_input": {
+          "logic": [],
+          "member_inits": {},
+          "channel": "acc_input",
+          "c_process": "c_process_3ebc8e22_a911_406b_a2fa_80feee30859d",
+          "topology": {
+            "callback_channel": "acc_input",
+            "function_members": [],
+            "output_channels": [
+              "acc_output"
+            ],
+            "mappings": {
+              "channel_to_function": {
+                "acc_input": []
+              },
+              "function_to_channel": {},
+              "channel_passthrough": {
+                "acc_input": [
+                  {
+                    "output_channel": "acc_output",
+                    "input_field": "frame_id",
+                    "output_field": "frame_id"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "channel_fields": {
+        "acc_input": {
+          "component_type": "channel_input",
+          "message_type": "pangu::modules::AccInput",
+          "fields": [
+            {
+              "name": "ego_speed_mps",
+              "dataType": "double",
+              "idx": 1
+            },
+            {
+              "name": "lead_speed_mps",
+              "dataType": "double",
+              "idx": 2
+            },
+            {
+              "name": "lead_distance_m",
+              "dataType": "double",
+              "idx": 3
+            },
+            {
+              "name": "enable",
+              "dataType": "bool",
+              "idx": 4
+            },
+            {
+              "name": "frame_id",
+              "dataType": "uint32",
+              "idx": 5
+            }
+          ]
+        },
+        "acc_output": {
+          "component_type": "channel_output",
+          "message_type": "pangu::modules::AccOutput",
+          "fields": [
+            {
+              "name": "frame_id",
+              "dataType": "uint32",
+              "idx": 1
+            },
+            {
+              "name": "target_speed_mps",
+              "dataType": "double",
+              "idx": 2
+            },
+            {
+              "name": "enable",
+              "dataType": "bool",
+              "idx": 3
+            },
+            {
+              "name": "valid",
+              "dataType": "bool",
+              "idx": 4
+            }
+          ]
+        }
+      }
+    }
+  }
+}

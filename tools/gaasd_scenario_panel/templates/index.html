@@ -151,6 +151,26 @@
             </div>
           </section>
 
+          <section class="driver-card">
+            <div class="driver-header">
+              <h2 class="section-title">ACC 驾驶指令</h2>
+              <span class="driver-hint">启动后使用</span>
+            </div>
+            <div class="driver-grid">
+              <button class="driver-btn driver-kick" id="kickstartBtn">
+                辅助启控
+                <span>boost + E</span>
+              </button>
+              <button class="driver-btn" data-command="e">E<span>启控/降速</span></button>
+              <button class="driver-btn" data-command="q">Q<span>加速/继承</span></button>
+              <button class="driver-btn" data-command="t">T<span>减小时距</span></button>
+              <button class="driver-btn" data-command="r">R<span>增大时距</span></button>
+              <button class="driver-btn danger" data-command="c">C<span>取消</span></button>
+              <button class="driver-btn danger" data-command="s">S<span>制动退出</span></button>
+              <button class="driver-btn" data-command="0">0<span>释放踏板</span></button>
+            </div>
+          </section>
+
           <section class="health-card">
             <h2 class="section-title">服务状态</h2>
             <div class="health-list" id="healthRow">
@@ -168,6 +188,11 @@
                 <span class="health-chip-dot"></span>
                 <span class="health-name">Bridge CONTROL</span>
                 <span class="health-port">:5702</span>
+              </div>
+              <div class="health-row" data-service="pangu_process">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Pangu ACC</span>
+                <span class="health-port">ZmqBridgeModule</span>
               </div>
             </div>
           </section>

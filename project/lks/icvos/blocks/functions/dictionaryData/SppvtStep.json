@@ -1,0 +1,234 @@
+{
+  "Input": {
+    "description": "SPPVT 单步控制模块输入端口集合。",
+    "alias": "SPPVT 单步控制模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 (m/s)"
+      },
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "驾驶员设定的最终巡航目标车速 Vt (m/s)"
+      },
+      {
+        "name": "currentAcceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆加速度 v_dot (m/s^2)"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制周期时长 (s)"
+      },
+      {
+        "name": "pauseControl",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否暂停控制"
+      },
+      {
+        "name": "isNewControlSession",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否新进入控制会话"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "SPPVT 单步控制模块输出端口集合。",
+    "alias": "SPPVT 单步控制模块输出端口集合。",
+    "fields": [
+      {
+        "name": "torqueCommand",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出控制扭矩 Ti(t) (Nm)"
+      },
+      {
+        "name": "activeVirtualTarget",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前起作用的虚拟目标车速 Vi (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "SPPVT 单步控制模块参数集合。",
+    "alias": "SPPVT 单步控制模块参数集合。",
+    "fields": [
+      {
+        "name": "kp",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 50.0,
+        "description": "比例控制系数 (Nm*s/m)"
+      },
+      {
+        "name": "rho",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "惩罚系数，用于缩放目标车速偏差"
+      },
+      {
+        "name": "delta",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.05,
+        "description": "变目标加速度阈值 (m/s^2)"
+      },
+      {
+        "name": "maxOffset",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "虚拟目标允许的最大偏置量 (m/s)"
+      },
+      {
+        "name": "cooldownTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.0,
+        "description": "变目标后的冷却锁存时长 (s)"
+      },
+      {
+        "name": "maxTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 300.0,
+        "description": "最大扭矩限幅 (Nm)"
+      },
+      {
+        "name": "minTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最小扭矩限幅 (Nm)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "SPPVT 单步控制模块状态集合。",
+    "alias": "SPPVT 单步控制模块状态集合。",
+    "fields": [
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "内部虚拟目标速度 Vi (m/s)"
+      },
+      {
+        "name": "stepIndex",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "阶式阶数 i"
+      },
+      {
+        "name": "cooldownTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "变目标冷却计时器 (s)"
+      },
+      {
+        "name": "controlActive",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "控制器激活标志"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "SPPVT 单步控制模块子模块集合。",
+    "alias": "SPPVT 单步控制模块子模块集合。",
+    "fields": [
+      {
+        "name": "determineTriggered",
+        "category": 1,
+        "dataType": "DetermineTriggered",
+        "shape": [],
+        "dataValue": {},
+        "description": "变目标触发综合判定模块"
+      },
+      {
+        "name": "determineNextCooldownTimer",
+        "category": 1,
+        "dataType": "DetermineNextCooldownTimer",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期冷却计时器判定模块"
+      },
+      {
+        "name": "determineNextVirtualTarget",
+        "category": 1,
+        "dataType": "DetermineNextVirtualTarget",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期虚拟目标车速判定模块"
+      },
+      {
+        "name": "determineNextStepIndex",
+        "category": 1,
+        "dataType": "DetermineNextStepIndex",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期 SPPVT 阶数判定模块"
+      },
+      {
+        "name": "determineTorqueCommand",
+        "category": 1,
+        "dataType": "DetermineTorqueCommand",
+        "shape": [],
+        "dataValue": {},
+        "description": "扭矩命令判定模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -38,12 +38,16 @@ Thumbs.db
 .claude/
 .codex
 =3.0
+.~*
+*.tmp.*
 
 # GAASD 运行时产物（不需要版本控制）
 project/*/log/
 project/*/data/temp.db
 project/*/icvos/src/*/build/
 project/*/icvos/src/*/log_dir/
+project/*/icvos/output/
+project/*/sed*
 
 # 扫描包二进制（体积大，通过文档说明重建）
 ACC_codescan/

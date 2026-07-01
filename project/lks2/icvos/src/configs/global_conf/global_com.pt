@@ -1,0 +1,3733 @@
+channel_config {
+  dds_config {
+    domain_id: 123
+    unicast: "127.0.0.1"
+    multicast: "239.1.3.132"
+    locator_port: 51877
+    default_send_port: 12632
+  }
+}
+sys_channels {
+  channel_name: "monitor_mcu_channel"
+  mdw_type: SOMEIP
+  channel_type: "monitor_mcu_msg"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+sys_channels {
+  channel_name: "soc_to_mcu_channel"
+  mdw_type: SOMEIP
+  channel_type: "pangu.common.xbuf"
+  vsomeip_config {
+    service_id: 1795
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+sys_channels {
+  channel_name: "mcu_to_soc_channel"
+  mdw_type: SOMEIP
+  channel_type: "pangu.common.xbuf"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+channels {
+  channel_name: "camera_front_narrow"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_front_narrow_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_wide"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "BRT_GnssInsMsgGcj02"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_GnssInsMsgGcj02"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_wide_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_rear_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_left"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_front_left_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_right"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_front_right_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_left"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_rear_left_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_right"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "camera_rear_right_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "bev_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "bev_track"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_front_narrow_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_front_wide_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_lane"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.LaneBoundaries"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "traffic_lines"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.TrafficLineObjects"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "current_pose"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_lane_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_lane3d"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.Lane3DBoundaries"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "fusion_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_front_narrow_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_front_wide_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_front_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_front_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_rear_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_cluster_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_nn_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_cluster_track"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_nn_track"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_front_wide_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_narrow_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_left_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_right_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_front_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_rear_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "gnss_pvt"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.GnssPvt"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "predict_obstacles"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.prediction.PredictionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "road_info"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapInfo"
+  no_hybrid: true
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "local_routing"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapInfo"
+  no_hybrid: true
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_routing"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapInfo"
+  no_hybrid: true
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "road_info_topo"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapTopoInfo"
+  no_hybrid: true
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "chassis"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.canbus.Chassis"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "fused_odometry"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "hmi_info"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hmi.HMIInfo"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_trajectory"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.planning.PlanningTrajectory"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "local_trajectory"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.planning.PlanningTrajectory"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "dr_odometry"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_MRMMsg"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_MRMMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "control_cmd"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.control.ControlCommand"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "destination"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.Destination"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_rear_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "processed_camera_rear_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_rear_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_rear_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_rear_left_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_right_debug"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "rslidar_packets"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.LidarPacketPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_2M
+  }
+}
+channels {
+  channel_name: "rslidar_points"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "inlidar_packets"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.LidarPacketPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_2M
+  }
+}
+channels {
+  channel_name: "inlidar_points"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "daoyuan_odometry"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "daoyuan_odometry_fused"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "arena_info_dynamic"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.ArenaInfoDynamic"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_replan"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.GlobalPlanner"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_path"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapInfo"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_navi_path"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapTopoInfo"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ego_behavior"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.SemanticBehavior"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ego_vehicle"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.Vehicle"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_planning_trajectory"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.ExecTraj"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ego_decision_forward_trajs"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.ForwardTrajs"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_sur_key_vehicle"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.VehicleSet"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_sur_key_local_vehicle"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.VehicleSet"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_sur_vehicle_with_traj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.VehicleSet"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ssc_map"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.MarkerArray"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ssc_corridor"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.MarkerArray"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ssc_traj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.MarkerArray"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ssc_forwardTraj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.MarkerArray"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "eps_ssc_surroundVehTraj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.MarkerArray"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "trajectory"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.planning.PlanningTrajectory"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_path_epsilon"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.epsilon.LaneNet"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "global_road_info"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.hdmap.HDMapInfo"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_ground"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "lidar_nonground"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "grid_hdmap_points"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "imu"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Imu"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "control_msg"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RawMessagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_front_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RadarObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_front_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RadarObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_front_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RadarObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_rear_left_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RadarObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_rear_right_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.RadarObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "cipv_object"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionObstacles"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "gps_fused_data"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.GpsFusedData"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "daoyuan_odometry_hf"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "wheel_speed_data"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.WheelSpeedData"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_tflight_debug_wide"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_tflight_debug_narrow"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "park_obj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.PerceptionOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_lots"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.PerceptionOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_chass"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.canbus.Chassis"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_odom"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.localization.Odometry"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_sys"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.SystemOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_ctrl"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.control.ControlCommand"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "apa_perception"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.PerceptionOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "system_command"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.SystemOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "park_system"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaInputMsg.SystemOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "planner_output"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "ApaOutPutMsg.PlanningOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "controlpub"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.control.ControlCommand"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_fusion"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_DynamicInfoMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "obs_info_list"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "IBUS.ObsInfoList"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "brt_traffic_light_msg_fused"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_TrafficLightsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_HbTrafficLightArrayMsg_Journey"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_HbTrafficLightArrayMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_TrafficSignsMsg_Journey"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_HbTrafficSignRoadMarkingsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_HbLanesMsg_Journey"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_HbLanesMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "map_static_info"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EHR_StaticInfoMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "map_global_path"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EHR_GlobalPathMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_1M
+  }
+}
+channels {
+  channel_name: "BRT_V2XMsg_V2X"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_V2XMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_GnssInsMsgGcj02_Gnss"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_GnssInsMsgGcj02"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_GNSSInfoMsg_Localize"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_GNSSInfoMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_match"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_LidarMatchMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_front_narrow_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_wide_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_left_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_front_right_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_left_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_rear_right_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "rslidar_points_processed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_16M
+  }
+}
+channels {
+  channel_name: "fuse_location"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_SMFusPositionMsg"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_detect"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_ObjectsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_rulebase"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_ObjectsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_HbObstaclesMsg_Journey"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_HbObstaclesMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_TrajectoryMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_local_lanes"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EgoLocalLanesMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_behavior"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EgoBehaviorMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_forward_trajs"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EgoForwardTrajsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_ssc_traj"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_SscExecTrajMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_dock_ref_lane"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_DockingRefLaneMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_srround_car"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_SurroundingVehiclesMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_speed_limit"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_SpeedLimitsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "sensor_joy"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_SensorJoyMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_obj_trajs"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_ObjectsTrajsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "vis_ego_phy_handle"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_VehicleMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "vis_baidu_trafficlights_handle"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BaiduTrafficLight"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "ctrl_signal_pub"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_ControlSignalMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "mpdm_planner_decision_trajs"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_EgoForwardTrajsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "radar_front"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.RadarDetectMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "lidar_fusion_avp"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.AVP_ObstacleInfoMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "camera_around_front"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_rear"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_left"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_right"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.ImagePB"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "rslidar_points_right"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "rslidar_points_left"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "rslidar_points_front"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "rslidar_points_e1"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_8M
+  }
+}
+channels {
+  channel_name: "yutong_hmi_cmd"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_HmiMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "yutong_hmi"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_HmiMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "parking_slots"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.ParkingSlotsMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "parking_system"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.SystemOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "avp_plan_res"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.PlanningOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "brt_control"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.VehicleCommandMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "baidu_trafficlight_msg"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BaiduTrafficLight"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "VehicleReportMsg_Chassis"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.VehicleReportMsg"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "udp_mcu_51800_baidu_trafficlight"
+  mdw_type: SOMEIP
+  channel_type: "icvos.common.RawMessage"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+    can_channels {
+      can_channel_id: 2
+    }
+  }
+}
+channels {
+  channel_name: "udp_mcu_51800_j3"
+  mdw_type: SOMEIP
+  channel_type: "icvos.common.RawMessage"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+    can_channels {
+      can_channel_id: 1
+    }
+  }
+}
+channels {
+  channel_name: "udp_mcu_51800_chassis"
+  mdw_type: SOMEIP
+  channel_type: "icvos.common.RawMessage"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+    can_channels {
+      can_channel_id: 0
+    }
+  }
+}
+channels {
+  channel_name: "mcu_down_link"
+  mdw_type: SOMEIP
+  channel_type: "mcu_down_link"
+  vsomeip_config {
+    service_id: 1795
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+channels {
+  channel_name: "VehicleCommandMsg_Control"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.VehicleCommandMsg"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_10K
+  }
+}
+channels {
+  channel_name: "RadarDetectMsg_Radar_Front"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.RadarDetectMsg"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_10K
+  }
+}
+channels {
+  channel_name: "RadarDetectMsg_Radar_Rear"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.RadarDetectMsg"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_10K
+  }
+}
+channels {
+  channel_name: "rslidar_points_e1_back"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.PerceptionPoints"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_right_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_front_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_rear_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_left_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_right_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_rear_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "adsfi_points_front"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "adsfi_points_left"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "adsfi_points_right"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "adsfi_points_e1"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "adsfi_points_processed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.msg.LidarFrame<icvos.msg.PointXYZIRT>"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_16M
+  }
+}
+channels {
+  channel_name: "camera_around_left_video_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedVideoPB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "camera_around_front_compressed"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.CompressedImagePB"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "tfl_detect"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "algo.msg.BRT_SdTrafficLightArrayMsg"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_4M
+  }
+}
+channels {
+  channel_name: "v2x_vtd"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_V2XMsg"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "user_message_demo"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.common.User_Message_Header"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "aicc_fault_report"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "icvos.monitor.protomsg.AiccMonitorFaultReport"
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_10K
+  }
+}
+channels {
+  channel_name: "foxglove_dynamic_tf"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "foxglove.FrameTransforms"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "foxglove_static_tf"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "foxglove.FrameTransforms"
+  max_thread_num: 1
+  queue_buffer_size: 13
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "/cbdes/huace_localization_msgs"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "nullmax_pb.localization.localization_msgs.VehiclePose"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "BRT_GnssInsMsgGcj02_Gnss_huace"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "cbdes.yutong.BRT_GnssInsMsgGcj02"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "acc_input"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "pangu.modules.AccInput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+channels {
+  channel_name: "acc_output"
+  mdw_type: INNER_SHM_DDS
+  channel_type: "pangu.modules.AccOutput"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+services {
+  service_name: "map_server"
+  mdw_type: INNER_SHM_DDS
+  request_type: "cbdes.localization.Odometry"
+  response_type: "cbdes.hdmap.HDMapInfo"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+services {
+  service_name: "tf_server"
+  mdw_type: INNER_SHM_DDS
+  request_type: "cbdes.common.TfServerRequest"
+  response_type: "cbdes.common.TfServerResponse"
+  max_thread_num: 1
+  queue_buffer_size: 1
+  keep_latest: true
+  dds_config {
+    durability: VOLATILE
+    translayer_type: UDP
+    reliability: BEST_EFFORT
+    throughput_controller: 0
+  }
+  shm_config {
+    type: FastDDS
+    block_size: SHM_500K
+  }
+}
+
+sys_channels {
+  mdw_type: SOMEIP
+  channel_name: "monitor_mcu_channel"
+  channel_type: "monitor_mcu_msg"
+  vsomeip_config {
+    service_id: 1793
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+sys_channels {
+  mdw_type: SOMEIP
+  channel_name: "soc_to_mcu_channel"
+  channel_type: "pangu.common.xbuf"
+  vsomeip_config {
+    service_id: 1795
+    instance_id: 2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+sys_channels {
+  mdw_type: SOMEIP
+  channel_name: "mcu_to_soc_channel"
+  channel_type: "pangu.common.xbuf"
+  vsomeip_config {
+    service_id: 1793
+    instance_id:2
+    event_id: 32769
+    eventgroup_id: 1
+  }
+}
+        

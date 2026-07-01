@@ -25,6 +25,15 @@ SCENARIOS_DIR = REPO_ROOT / "scenarios"
 DEFAULT_PORT = int(os.environ.get("GAASD_PANEL_PORT", "8765"))
 MAX_LOG_LINES = 3000
 SCENARIO_ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
+DRIVER_COMMAND_KEYS = {
+    "e": "E 启控/降速",
+    "q": "Q 加速/继承启控",
+    "t": "T 减小时距",
+    "r": "R 增大时距",
+    "c": "C 取消 ACC",
+    "s": "S 制动退出",
+    "0": "0 释放踏板",
+}
 
 app = Flask(__name__)
 
@@ -286,9 +295,13 @@ def socket_open(host: str, port: int, timeout: float = 0.35) -> bool:
 
 def health_for(data: Dict[str, Any]) -> Dict[str, Any]:
     bridge = data.get("bridge") or {}
+    pangu = data.get("pangu") or {}
     carla_host = "127.0.0.1"
     pub_port = 5701
     control_port = 5702
+    pangu_process_ok = False
+    pangu_container = str(pangu.get("container_name", "newaccpro3_pangu_carla"))
+    pangu_process = str(pangu.get("process_name", "ZmqBridgeModule"))
 
     pub = str(bridge.get("zmq_pub", ""))
     control = str(bridge.get("zmq_control", ""))
@@ -299,6 +312,25 @@ def health_for(data: Dict[str, Any]) -> Dict[str, Any]:
 
     bridge_pub_ok = socket_open(carla_host, pub_port)
     bridge_control_ok = socket_open(carla_host, control_port)
+    if pangu:
+        try:
+            check = subprocess.run(
+                [
+                    "docker",
+                    "exec",
+                    pangu_container,
+                    "bash",
+                    "-lc",
+                    f"pgrep -f 'dataflow_runner.*--process_name={pangu_process}' >/dev/null",
+                ],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=1.5,
+                check=False,
+            )
+            pangu_process_ok = check.returncode == 0
+        except Exception:
+            pangu_process_ok = False
     # Never probe CARLA's RPC port with bare TCP: CARLA 0.9.x can crash on disconnect.
     # This is a Bridge-readiness proxy; startup performs authoritative CARLA RPC checks.
     carla_ok = bridge_pub_ok and bridge_control_ok
@@ -306,12 +338,116 @@ def health_for(data: Dict[str, Any]) -> Dict[str, Any]:
         "carla": carla_ok,
         "bridge_pub": bridge_pub_ok,
         "bridge_control": bridge_control_ok,
+        "pangu_process": pangu_process_ok,
         "ports": {
             "carla": 2000,
             "bridge_pub": pub_port,
             "bridge_control": control_port,
+            "pangu_process": pangu_process,
         },
     }
+
+
+def bridge_control_endpoint(data: Dict[str, Any]) -> str:
+    bridge = data.get("bridge") or {}
+    return str(bridge.get("zmq_control", "tcp://127.0.0.1:5702"))
+
+
+def scenario_python(data: Dict[str, Any], fallback: str = "python3") -> str:
+    env = data.get("environment") or {}
+    return str(env.get("python") or os.environ.get("GAASD_PANEL_PYTHON") or fallback)
+
+
+def send_driver_command(scenario_id: str, data: Dict[str, Any], key: str) -> Tuple[bool, str]:
+    normalized = key.strip().lower()
+    if normalized not in DRIVER_COMMAND_KEYS:
+        return False, "unsupported driver command"
+
+    script = REPO_ROOT / "tools" / "pangu_acc_closed_loop" / "keyboard_command_publisher.py"
+    if not script.exists():
+        return False, f"missing command publisher: {script}"
+
+    state = get_state(scenario_id)
+    endpoint = bridge_control_endpoint(data)
+    command = [
+        "python3",
+        str(script),
+        "--endpoint",
+        endpoint,
+        "--once",
+        normalized,
+    ]
+    state.append("info", f"发送驾驶指令 {DRIVER_COMMAND_KEYS[normalized]} -> {endpoint}")
+    try:
+        result = subprocess.run(
+            command,
+            cwd=str(REPO_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            timeout=8,
+            check=False,
+        )
+    except Exception as exc:
+        state.append("error", f"驾驶指令发送失败: {exc}")
+        return False, str(exc)
+
+    if result.stdout.strip():
+        for line in result.stdout.splitlines():
+            state.append("log", line)
+    if result.returncode != 0:
+        state.append("error", f"驾驶指令发送失败，退出码 {result.returncode}")
+        return False, f"command failed with code {result.returncode}"
+    state.append("ok", f"驾驶指令已发送: {DRIVER_COMMAND_KEYS[normalized]}")
+    return True, "sent"
+
+
+def boost_ego_speed(scenario_id: str, data: Dict[str, Any]) -> Tuple[bool, str]:
+    state = get_state(scenario_id)
+    state.append("info", "执行辅助起步 boost ego speed")
+    try:
+        command = boost_ego_command(data)
+        result = subprocess.run(
+            command,
+            cwd=str(REPO_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            timeout=12,
+            check=False,
+        )
+    except Exception as exc:
+        state.append("error", f"辅助起步失败: {exc}")
+        return False, str(exc)
+
+    if result.stdout.strip():
+        for line in result.stdout.splitlines():
+            state.append("log", line)
+    if result.returncode != 0:
+        state.append("error", f"辅助起步失败，退出码 {result.returncode}")
+        return False, f"boost failed with code {result.returncode}"
+    state.append("ok", "辅助起步完成")
+    return True, "boosted"
+
+
+def boost_ego_command(data: Dict[str, Any]) -> List[str]:
+    script = REPO_ROOT / "tools" / "carla_bridge" / "boost-ego-speed.py"
+    if not script.exists():
+        raise FileNotFoundError(f"missing boost script: {script}")
+
+    env = data.get("environment") or {}
+    python_bin = scenario_python(data, "python3.8")
+    carla_root = str(env.get("carla_root", "/home/aiden/snap/code/app/carla-package"))
+    return [
+        python_bin,
+        str(script),
+        "--carla-root",
+        carla_root,
+        "--speed-mps",
+        "2.0",
+        "--duration-sec",
+        "4.0",
+    ]
 
 
 @app.route("/")
@@ -393,6 +529,55 @@ def api_fix_generated(scenario_id: str) -> Response:
 
     ok, message = run_script_job(scenario_id, "fix-generated", command)
     return jsonify({"ok": ok, "message": message, "projects": project_paths}), (202 if ok else 409)
+
+
+@app.post("/api/scenarios/<scenario_id>/driver-command")
+def api_driver_command(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    payload = request.get_json(silent=True) or {}
+    key = str(payload.get("key", ""))
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    ok, message = send_driver_command(scenario_id, data, key)
+    return jsonify({"ok": ok, "message": message}), (200 if ok else 400)
+
+
+@app.post("/api/scenarios/<scenario_id>/kickstart")
+def api_kickstart(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    state = get_state(scenario_id)
+    state.append("info", "执行辅助启控: boost ego speed + E")
+    try:
+        boost_process = subprocess.Popen(
+            boost_ego_command(data),
+            cwd=str(REPO_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        threading.Event().wait(0.5)
+        command_ok, command_message = send_driver_command(scenario_id, data, "e")
+        stdout, _ = boost_process.communicate(timeout=12)
+        if stdout.strip():
+            for line in stdout.splitlines():
+                state.append("log", line)
+        boost_ok = boost_process.returncode == 0
+        boost_message = "boosted" if boost_ok else f"boost failed with code {boost_process.returncode}"
+    except Exception as exc:
+        state.append("error", f"辅助启控失败: {exc}")
+        return jsonify({"ok": False, "message": str(exc)}), 400
+
+    ok = boost_ok and command_ok
+    message = "kickstarted" if ok else f"boost={boost_message}, command={command_message}"
+    if ok:
+        state.append("ok", "辅助启控完成")
+    else:
+        state.append("error", f"辅助启控失败: {message}")
+    return jsonify({"ok": ok, "message": message}), (200 if ok else 400)
 
 
 @app.get("/api/scenarios/<scenario_id>/logs")

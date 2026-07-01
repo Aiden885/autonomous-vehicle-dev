@@ -11,10 +11,7 @@ struct CARLAACCLeadSpeedTraits {
   /**
    * @brief 输入端口集合。
    */
-  struct Input {
-    Real leadV = 0.0; ///< 运行时边界层提供的前车纵向速度 (m/s)
-    int valid = 0;    ///< 前车状态有效标志，1 表示有效
-  };
+  struct Input {};
 
   /**
    * @brief 输出端口集合。
@@ -41,7 +38,7 @@ struct CARLAACCLeadSpeedTraits {
 };
 
 /**
- * @brief 校验并输出运行时边界层提供的 CARLA 前车纵向速度。
+ * @brief 通过 CARLA 适配器读取并输出前车纵向速度。
  */
 class CARLAACCLeadSpeed : public FuncModule<CARLAACCLeadSpeedTraits> {
 public:

@@ -1,0 +1,127 @@
+{
+  "componentType": "atomic-function",
+  "name": "CARLAACCEgoSpeed_b92c7b8e_fae3_41db_bfae_2641d24ace4d",
+  "cppClass": "run_2f3edfa5_8227_43eb_859d_1a6db0afd957",
+  "alias": "CARLA自车速度",
+  "description": "读取CARLA自车纵向速度",
+  "author": "liuruyu",
+  "version": "1.0",
+  "instanceId": "b92c7b8e-fae3-41db-bfae-2641d24ace4d",
+  "originId": "c3446568-be30-581e-b4b4-c70deebd5825",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": true,
+  "isSourceCode": "",
+  "children": [],
+  "parent": "",
+  "tags": [
+    "功能模块库",
+    "CARLA联合仿真",
+    "ACC最小闭环"
+  ],
+  "parentId": "2f3edfa5-8227-43eb-859d-1a6db0afd957",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {}
+      ]
+    },
+    {
+      "key": "other_config",
+      "value": [
+        {
+          "standard_library_function": false,
+          "function_body": "double CARLAACCEgoSpeed(void)\n{\n    extern int carla_adapter_read_ego_state(\n        double *egoV,\n        double *egoX,\n        double *egoY,\n        double *egoYawRad,\n        double *egoAcc,\n        int *valid);\n    double egoV = 0.0;\n    double egoX = 0.0;\n    double egoY = 0.0;\n    double egoYawRad = 0.0;\n    double egoAcc = 0.0;\n    int valid = 0;\n    int rc = 0;\n    double result = 0.0;\n\n    rc = carla_adapter_read_ego_state(&egoV, &egoX, &egoY, &egoYawRad, &egoAcc, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = egoV;\n    }\n\n    return result;\n}",
+          "function_link_obj": ""
+        }
+      ]
+    },
+    {
+      "key": "function_input_ports",
+      "value": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "CARLAACCEgoSpeed_output_egoV_Out",
+          "name": "egoV",
+          "alias": "egoV",
+          "direction": "Out",
+          "description": "自车纵向速度，单位m/s",
+          "props": [
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "idx",
+              "value": 1,
+              "props": []
+            },
+            {
+              "key": "isReturnFlag",
+              "value": true,
+              "props": []
+            }
+          ],
+          "isShow": true
+        }
+      ]
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [],
+  "childConnections": []
+}

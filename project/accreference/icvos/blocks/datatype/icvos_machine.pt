@@ -1,0 +1,77 @@
+local_machine_name: "soc1" 
+machine {
+  name: "soc1" 
+  type: MASTER
+  ip: "127.0.0.1"
+  dds_machine_ip: "127.0.0.1"
+  log_port: 6931
+  schedule_port: 6932
+  status_port: 6933
+  system_status_port: 6934
+  app_module_start_port: 6935
+  websocket_port: 6936
+  log_server_port: 6937
+  ssman_pub_port: 6938
+  ssman_sub_port: 6939
+  web_port: 9999
+  process_pool_size: 10
+  monitor_register_port: 7455
+  monitor_report_port: 7456
+  monitor_web_port: 7458
+  component {
+    data_security {
+      mswitch: OFF
+    }
+    log {
+      mswitch: ON
+      log_remote_switch: ON
+      log_path: "/map/logs"
+      log_file_size: 40
+    }
+    trace {
+      mswitch: ON
+      buffer_size: 1024
+      recv_server_ip: "192.168.1.2"
+      recv_server_port: 25000
+      send_peroid: 10
+    }
+    aicc_monitor_server {
+      mswitch: ON
+      log {
+        level: INFO
+        to_file: ON
+        to_console: ON
+        to_remote: OFF
+      } 
+    }
+    schedule_advanced_option {
+      enable_auto_generate_wcet_file: ON
+      task_start_timeout: 1000
+      communication_latency: 5
+    }
+    aicc_buffer {
+      message_deque_size: 10
+      data_latency_max: 200
+    }
+    dataflow_runner {
+      log {
+        level: INFO
+        to_file: OFF
+        to_console: ON
+        to_remote: OFF
+      }
+    }
+    aicc_flow_topo {
+      timeout: 3000
+      interval: 1000
+      log {
+        level: INFO
+        to_file: OFF
+        to_console: ON
+        to_remote: OFF
+      }
+    }
+  }
+}
+
+

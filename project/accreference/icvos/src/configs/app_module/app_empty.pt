@@ -1,0 +1,35 @@
+soc {
+  process {
+    node {
+      node_name: "ACCModule"
+      module_name: "ACCModule"
+      path: "conf/node_module/ACCModule/ACCModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "ACCModule"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "ZmqBridgeModule"
+      module_name: "ZmqBridgeModule"
+      path: "conf/node_module/ACCModule/ZmqBridgeModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "ZmqBridgeModule"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+    }
+  }
+  soc_name: "app_empty"
+}

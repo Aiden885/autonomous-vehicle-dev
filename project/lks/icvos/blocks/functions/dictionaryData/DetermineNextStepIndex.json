@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "下一周期 SPPVT 阶数判定模块输入端口集合。",
+    "alias": "下一周期 SPPVT 阶数判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "stepIndex",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前阶式阶数 i"
+      },
+      {
+        "name": "isNewControlSession",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否新进入控制会话"
+      },
+      {
+        "name": "isTriggered",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前周期是否触发变目标"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "下一周期 SPPVT 阶数判定模块输出端口集合。",
+    "alias": "下一周期 SPPVT 阶数判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "nextStepIndex",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "下一周期阶式阶数 i"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "下一周期 SPPVT 阶数判定模块参数集合。",
+    "alias": "下一周期 SPPVT 阶数判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "下一周期 SPPVT 阶数判定模块状态集合。",
+    "alias": "下一周期 SPPVT 阶数判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "下一周期 SPPVT 阶数判定模块子模块集合。",
+    "alias": "下一周期 SPPVT 阶数判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}
