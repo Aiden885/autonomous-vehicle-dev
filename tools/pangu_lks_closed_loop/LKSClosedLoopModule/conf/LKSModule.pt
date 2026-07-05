@@ -1,0 +1,20 @@
+basic {
+  path: "lib/libLKSModule.so"
+  module_type: APP
+  ioconfig {
+    subscribers { name: "lks_input" channel: "lks_input" bindcode: ON }
+    tasks {
+      task_name: "lks_input"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "lks_input"
+      }
+      input: "lks_input"
+    }
+    publishers { name: "lks_output" channel: "lks_output" bindcode: ON }
+  }
+}
+params { timer_duration: 100.0 }

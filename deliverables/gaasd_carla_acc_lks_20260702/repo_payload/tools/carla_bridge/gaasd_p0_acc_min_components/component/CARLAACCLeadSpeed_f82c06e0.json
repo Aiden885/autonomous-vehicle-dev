@@ -1,0 +1,74 @@
+{
+    "name": "CARLAACCLeadSpeed",
+    "componentType": "atomic-function",
+    "alias": "CARLA前车速度",
+    "description": "读取CARLA前车纵向速度",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "f82c06e0-d02d-590f-b253-8056f50d0484",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLAACCLeadSpeed_output_leadV_Out",
+                    "name": "leadV",
+                    "alias": "leadV",
+                    "direction": "Out",
+                    "description": "前车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double CARLAACCLeadSpeed(void)\n{\n    extern int carla_adapter_read_lead_vehicle(\n        double *leadV,\n        double *distance,\n        double *relativeSpeed,\n        double *ttc,\n        int *valid);\n    double leadV = 0.0;\n    double distance = 1000000.0;\n    double relativeSpeed = 0.0;\n    double ttc = 1000000.0;\n    int valid = 0;\n    int rc = 0;\n    double result = 0.0;\n\n    rc = carla_adapter_read_lead_vehicle(&leadV, &distance, &relativeSpeed, &ttc, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = leadV;\n    }\n\n    return result;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

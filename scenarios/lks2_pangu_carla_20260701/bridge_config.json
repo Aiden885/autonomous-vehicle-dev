@@ -1,0 +1,47 @@
+{
+  "carla": {
+    "host": "127.0.0.1",
+    "port": 2000,
+    "timeout_sec": 5.0,
+    "root": "/home/aiden/snap/code/app/carla-package",
+    "python_api_paths": ["/home/aiden/snap/code/app/carla-package/PythonAPI/carla"],
+    "sync_mode": true,
+    "fixed_delta_seconds": 0.05,
+    "realtime_pacing": true,
+    "map_name": "Town05",
+    "ego_role_name": "hero",
+    "auto_spawn_ego": true,
+    "ego_blueprint_filter": "vehicle.*model3*",
+    "ego_spawn_point_index": 0
+  },
+  "zmq": {
+    "publish_bind": "tcp://127.0.0.1:5701",
+    "control_bind": "tcp://127.0.0.1:5702",
+    "status_period_sec": 1.0
+  },
+  "objects": {
+    "max_objects": 16,
+    "include_vehicles": true,
+    "include_walkers": false
+  },
+  "control": {
+    "max_accel_mps2": 1.5,
+    "max_brake_mps2": 6.0,
+    "max_abs_steer_rad": 0.6,
+    "speed_kp": 0.45,
+    "speed_ki": 0.02,
+    "speed_kd": 0.08,
+    "speed_integral_limit": 2.0,
+    "speed_deadband_mps": 0.05,
+    "max_throttle": 0.35,
+    "max_brake": 0.7,
+    "timeout_sec": 1.0,
+    "timeout_brake": 1.0,
+    "prefer_speed_target": true,
+    "lane_keep_enabled": false,
+    "lane_keep_override_zero_steer": false,
+    "driver_brake_pressed": false,
+    "driver_steer_norm": 0.0,
+    "driver_state_timeout_sec": 0.75
+  }
+}

@@ -1,0 +1,147 @@
+{
+    "name": "ACCDecisionOutput",
+    "componentType": "atomic-function",
+    "alias": "ACC决策输出",
+    "description": "ACC决策查表",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "1be58fda-e0cd-53ad-b439-2fa5ef79235e",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCDecisionOutput_param_systemState_In",
+                    "name": "systemState",
+                    "alias": "systemState",
+                    "direction": "In",
+                    "description": "当前系统状态，0=S0，1=S1，2=S2，3=S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCDecisionOutput_param_commandType_In",
+                    "name": "commandType",
+                    "alias": "commandType",
+                    "direction": "In",
+                    "description": "驾驶指令，0=无，1=降速/当速启控，2=增速/继承启控，3=降距，4=增距，5=油门，6=刹车，7=取消",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCDecisionOutput_param_lastActiveDecision_In",
+                    "name": "lastActiveDecision",
+                    "alias": "lastActiveDecision",
+                    "direction": "In",
+                    "description": "上一次有效控制决策，范围1~6",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCDecisionOutput_output_decisionY_Out",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "Out",
+                    "description": "决策输出，1=R1降速，2=R2增速，3=R3降距，4=R4增距，5=R5无继控制，6=R6继承控制，7=R7扭矩仲裁，8=R8待命",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCDecisionOutput(int systemState, int commandType, int lastActiveDecision)\n{\n    int decisionY = 8;\n\n    if (systemState == 0) {\n        if (commandType == 0) {\n            if ((lastActiveDecision >= 1) && (lastActiveDecision <= 6)) {\n                decisionY = lastActiveDecision;\n            } else {\n                decisionY = 8;\n            }\n        } else if (commandType == 1) {\n            decisionY = 1;\n        } else if (commandType == 2) {\n            decisionY = 2;\n        } else if (commandType == 3) {\n            decisionY = 3;\n        } else if (commandType == 4) {\n            decisionY = 4;\n        } else if (commandType == 5) {\n            decisionY = 7;\n        } else {\n            decisionY = 8;\n        }\n    } else if (systemState == 1) {\n        if (commandType == 1) {\n            decisionY = 5;\n        } else if (commandType == 2) {\n            decisionY = 6;\n        } else {\n            decisionY = 8;\n        }\n    } else if (systemState == 2) {\n        if (commandType == 1) {\n            decisionY = 5;\n        } else {\n            decisionY = 8;\n        }\n    } else {\n        decisionY = 8;\n    }\n\n    return decisionY;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

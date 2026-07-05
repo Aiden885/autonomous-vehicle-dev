@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import json
 import re
 import socket
 import subprocess
@@ -22,6 +23,7 @@ except ImportError:  # pragma: no cover - fallback for minimal environments
 PANEL_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PANEL_DIR.parents[1]
 SCENARIOS_DIR = REPO_ROOT / "scenarios"
+PARAMETER_STATE_DIR = Path.home() / ".config" / "gaasd-scenario-panel" / "parameters"
 DEFAULT_PORT = int(os.environ.get("GAASD_PANEL_PORT", "8765"))
 MAX_LOG_LINES = 3000
 SCENARIO_ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
@@ -30,6 +32,7 @@ DRIVER_COMMAND_KEYS = {
     "q": "Q 加速/继承启控",
     "t": "T 减小时距",
     "r": "R 增大时距",
+    "w": "W 油门接管",
     "c": "C 取消 ACC",
     "s": "S 制动退出",
     "0": "0 释放踏板",
@@ -85,6 +88,87 @@ def load_yaml_file(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         data = yaml.safe_load(handle) or {}
     return data if isinstance(data, dict) else {}
+
+
+def parameter_schema(data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    raw = data.get("parameters") or []
+    return [item for item in raw if isinstance(item, dict) and item.get("key") and item.get("env")]
+
+
+def parameter_state_path(scenario_id: str) -> Path:
+    return PARAMETER_STATE_DIR / f"{scenario_id}.json"
+
+
+def parameter_defaults(data: Dict[str, Any]) -> Dict[str, Any]:
+    return {str(item["key"]): item.get("default") for item in parameter_schema(data)}
+
+
+def load_parameter_values(scenario_id: str, data: Dict[str, Any]) -> Dict[str, Any]:
+    values = parameter_defaults(data)
+    path = parameter_state_path(scenario_id)
+    if path.exists():
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(saved, dict):
+                for key in values:
+                    if key in saved:
+                        values[key] = saved[key]
+        except (OSError, ValueError):
+            pass
+    return values
+
+
+def validate_parameter_values(
+    data: Dict[str, Any], payload: Dict[str, Any]
+) -> Tuple[bool, Any]:
+    schema = parameter_schema(data)
+    if not schema:
+        return False, "scenario does not expose parameters"
+    current = parameter_defaults(data)
+    groups: Dict[str, List[float]] = {}
+    for item in schema:
+        key = str(item["key"])
+        raw = payload.get(key, current[key])
+        try:
+            value = float(raw)
+        except (TypeError, ValueError):
+            return False, f"{key} must be numeric"
+        minimum = float(item.get("min", value))
+        maximum = float(item.get("max", value))
+        if value < minimum or value > maximum:
+            return False, f"{key} must be in [{minimum}, {maximum}]"
+        if item.get("integer"):
+            if not value.is_integer():
+                return False, f"{key} must be an integer"
+            current[key] = int(value)
+        else:
+            current[key] = value
+        sum_group = str(item.get("sum_group", ""))
+        if sum_group:
+            groups.setdefault(sum_group, []).append(value)
+    for group, group_values in groups.items():
+        if abs(sum(group_values) - 1.0) > 1.0e-6:
+            return False, f"{group} must sum to 1.0"
+    return True, current
+
+
+def save_parameter_values(scenario_id: str, values: Dict[str, Any]) -> None:
+    PARAMETER_STATE_DIR.mkdir(parents=True, exist_ok=True)
+    path = parameter_state_path(scenario_id)
+    temporary = path.with_suffix(".tmp")
+    temporary.write_text(
+        json.dumps(values, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    temporary.replace(path)
+
+
+def parameter_environment(data: Dict[str, Any], values: Dict[str, Any]) -> Dict[str, str]:
+    result: Dict[str, str] = {}
+    for item in parameter_schema(data):
+        key = str(item["key"])
+        if key in values:
+            result[str(item["env"])] = str(values[key])
+    return result
 
 
 def safe_rel(path: Path) -> str:
@@ -154,6 +238,9 @@ def scenario_summary(scenario_dir: Path) -> Dict[str, Any]:
         "id": scenario_id,
         "name": display_name,
         "description": data.get("description", ""),
+        "control_profile": data.get(
+            "control_profile", "lks" if scenario_id.lower().startswith("lks") else "acc"
+        ),
         "created_at": data.get("created_at", ""),
         "directory": safe_rel(scenario_dir),
         "restore_path": absolute_restore_path(data),
@@ -176,6 +263,7 @@ def scenario_summary(scenario_dir: Path) -> Dict[str, Any]:
             "target_distance_m": expected.get("target_distance_m", ""),
             "expected_behavior": expected.get("expected_behavior", ""),
         },
+        "has_parameters": bool(parameter_schema(data)),
         "scripts": scenario_scripts(scenario_dir),
         "state": state.snapshot(),
     }
@@ -222,7 +310,12 @@ def generated_fix_project_paths(data: Dict[str, Any]) -> List[str]:
     return result
 
 
-def run_script_job(scenario_id: str, action: str, command: List[str]) -> Tuple[bool, str]:
+def run_script_job(
+    scenario_id: str,
+    action: str,
+    command: List[str],
+    env_overrides: Optional[Dict[str, str]] = None,
+) -> Tuple[bool, str]:
     state = get_state(scenario_id)
     with state.lock:
         if state.process is not None and state.process.poll() is None:
@@ -235,6 +328,8 @@ def run_script_job(scenario_id: str, action: str, command: List[str]) -> Tuple[b
         state.append("info", f"$ {' '.join(command)}")
         env = os.environ.copy()
         env["PYTHONUNBUFFERED"] = "1"
+        if env_overrides:
+            env.update(env_overrides)
         try:
             process = subprocess.Popen(
                 command,
@@ -402,6 +497,63 @@ def send_driver_command(scenario_id: str, data: Dict[str, Any], key: str) -> Tup
     return True, "sent"
 
 
+def send_lks_driver_state(
+    scenario_id: str, data: Dict[str, Any], brake_pressed: bool, driver_steer_norm: float
+) -> Tuple[bool, str]:
+    script = REPO_ROOT / "tools" / "pangu_lks_closed_loop" / "lks_driver_state_publisher.py"
+    if not script.exists():
+        return False, f"missing LKS driver-state publisher: {script}"
+    steer = max(-1.0, min(1.0, float(driver_steer_norm)))
+    endpoint = bridge_control_endpoint(data)
+    command = [
+        sys.executable,
+        str(script),
+        "--endpoint",
+        endpoint,
+        "--brake",
+        "1" if brake_pressed else "0",
+        "--steer",
+        str(steer),
+    ]
+    state = get_state(scenario_id)
+    try:
+        result = subprocess.run(
+            command,
+            cwd=str(REPO_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            timeout=5,
+            check=False,
+        )
+    except Exception as exc:
+        state.append("error", f"LKS驾驶输入发送失败: {exc}")
+        return False, str(exc)
+    if result.returncode != 0:
+        state.append("error", result.stdout.strip() or "LKS驾驶输入发送失败")
+        return False, f"command failed with code {result.returncode}"
+    return True, "sent"
+
+
+def read_scenario_result(scenario_dir: Path, data: Dict[str, Any]) -> Tuple[bool, Any]:
+    configured = str((data.get("results") or {}).get("latest_summary", ""))
+    if not configured:
+        return False, "scenario does not define results.latest_summary"
+    path = Path(configured)
+    if not path.is_absolute():
+        path = scenario_dir / path
+    resolved = path.resolve()
+    allowed_roots = (Path("/tmp").resolve(), scenario_dir.resolve())
+    if not any(resolved == root or root in resolved.parents for root in allowed_roots):
+        return False, "result path is outside allowed roots"
+    if not resolved.exists():
+        return False, f"result not ready: {resolved}"
+    try:
+        return True, json.loads(resolved.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        return False, str(exc)
+
+
 def boost_ego_speed(scenario_id: str, data: Dict[str, Any]) -> Tuple[bool, str]:
     state = get_state(scenario_id)
     state.append("info", "执行辅助起步 boost ego speed")
@@ -492,8 +644,52 @@ def api_start(scenario_id: str) -> Response:
     script = script_path(scenario_dir, "start")
     if script is None or not script.exists():
         return jsonify({"error": "start script not found"}), 404
-    ok, message = run_script_job(scenario_id, "start", ["bash", str(script)])
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    values = load_parameter_values(scenario_id, data)
+    env_overrides = parameter_environment(data, values)
+    if env_overrides:
+        get_state(scenario_id).append(
+            "info",
+            "使用场景参数: " + ", ".join(f"{key}={value}" for key, value in env_overrides.items()),
+        )
+    ok, message = run_script_job(
+        scenario_id, "start", ["bash", str(script)], env_overrides=env_overrides
+    )
     return jsonify({"ok": ok, "message": message}), (202 if ok else 409)
+
+
+@app.get("/api/scenarios/<scenario_id>/parameters")
+def api_parameters(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    schema = parameter_schema(data)
+    if not schema:
+        return jsonify({"error": "scenario does not expose parameters"}), 404
+    return jsonify({"schema": schema, "values": load_parameter_values(scenario_id, data)})
+
+
+@app.post("/api/scenarios/<scenario_id>/parameters")
+def api_save_parameters(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    payload = request.get_json(silent=True) or {}
+    if payload.get("reset"):
+        values = parameter_defaults(data)
+    else:
+        raw_values = payload.get("values")
+        if not isinstance(raw_values, dict):
+            return jsonify({"error": "values must be an object"}), 400
+        ok, result = validate_parameter_values(data, raw_values)
+        if not ok:
+            return jsonify({"error": result}), 400
+        values = result
+    save_parameter_values(scenario_id, values)
+    get_state(scenario_id).append("ok", "LKS 参数已保存，下次启动生效")
+    return jsonify({"ok": True, "values": values})
 
 
 @app.post("/api/scenarios/<scenario_id>/stop")
@@ -578,6 +774,34 @@ def api_kickstart(scenario_id: str) -> Response:
     else:
         state.append("error", f"辅助启控失败: {message}")
     return jsonify({"ok": ok, "message": message}), (200 if ok else 400)
+
+
+@app.post("/api/scenarios/<scenario_id>/lks-driver-state")
+def api_lks_driver_state(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    payload = request.get_json(silent=True) or {}
+    try:
+        brake_pressed = bool(payload.get("brake_pressed", False))
+        driver_steer_norm = float(payload.get("driver_steer_norm", 0.0))
+    except (TypeError, ValueError):
+        return jsonify({"error": "invalid LKS driver state"}), 400
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    ok, message = send_lks_driver_state(
+        scenario_id, data, brake_pressed, driver_steer_norm
+    )
+    return jsonify({"ok": ok, "message": message}), (200 if ok else 400)
+
+
+@app.get("/api/scenarios/<scenario_id>/results/latest")
+def api_latest_result(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    ok, result = read_scenario_result(scenario_dir, data)
+    return jsonify({"ok": ok, "result": result} if ok else {"error": result}), (200 if ok else 404)
 
 
 @app.get("/api/scenarios/<scenario_id>/logs")

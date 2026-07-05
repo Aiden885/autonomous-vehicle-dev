@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GAASD-CARLA Scenario Panel</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20260706-product-polish">
 </head>
 <body>
   <div class="dashboard">
@@ -151,10 +151,10 @@
             </div>
           </section>
 
-          <section class="driver-card">
+          <section class="driver-card" id="accDriverCard">
             <div class="driver-header">
               <h2 class="section-title">ACC 驾驶指令</h2>
-              <span class="driver-hint">启动后使用</span>
+              <span class="driver-hint">页面聚焦时可用键盘</span>
             </div>
             <div class="driver-grid">
               <button class="driver-btn driver-kick" id="kickstartBtn">
@@ -165,9 +165,24 @@
               <button class="driver-btn" data-command="q">Q<span>加速/继承</span></button>
               <button class="driver-btn" data-command="t">T<span>减小时距</span></button>
               <button class="driver-btn" data-command="r">R<span>增大时距</span></button>
+              <button class="driver-btn" data-command="w" data-command-mode="level">W<span>油门接管</span></button>
               <button class="driver-btn danger" data-command="c">C<span>取消</span></button>
-              <button class="driver-btn danger" data-command="s">S<span>制动退出</span></button>
+              <button class="driver-btn danger" data-command="s" data-command-mode="level">S<span>制动退出</span></button>
               <button class="driver-btn" data-command="0">0<span>释放踏板</span></button>
+            </div>
+          </section>
+
+          <section class="driver-card" id="lksDriverCard" hidden>
+            <div class="driver-header">
+              <h2 class="section-title">LKS 驾驶接管输入</h2>
+              <span class="driver-hint">页面聚焦后按住生效，松开归零</span>
+            </div>
+            <div class="driver-grid lks-driver-grid">
+              <button class="driver-btn" data-lks-steer="-0.3">A<span>向左接管</span></button>
+              <button class="driver-btn" data-lks-steer="0.3">D<span>向右接管</span></button>
+              <button class="driver-btn danger" data-lks-brake="1">B<span>制动退出 LKS</span></button>
+              <button class="driver-btn" id="lksReleaseBtn">释放<span>输入归零</span></button>
+              <button class="driver-btn driver-kick" id="lksResultBtn">测试结果<span>读取最新弯道指标</span></button>
             </div>
           </section>
 
@@ -191,17 +206,35 @@
               </div>
               <div class="health-row" data-service="pangu_process">
                 <span class="health-chip-dot"></span>
-                <span class="health-name">Pangu ACC</span>
+                <span class="health-name">Pangu 业务进程</span>
                 <span class="health-port">ZmqBridgeModule</span>
               </div>
             </div>
           </section>
         </section>
 
+        <section class="lks-parameter-card" id="lksParameterCard" hidden>
+          <div class="parameter-header">
+            <div>
+              <h2 class="section-title">LKS 运行参数</h2>
+              <p>保存后在下一次启动联调环境时生效</p>
+            </div>
+            <div class="parameter-actions">
+              <button class="util-btn" id="lksParameterResetBtn">恢复默认</button>
+              <button class="btn btn-primary parameter-save-btn" id="lksParameterSaveBtn">保存参数</button>
+            </div>
+          </div>
+          <div class="parameter-groups" id="lksParameterGroups"></div>
+          <div class="parameter-footnote">三点权重 w1 + w2 + w3 必须等于 1.0。物理车辆参数保持工程标定值，不在本页面修改。</div>
+        </section>
+
         <section class="logs-section">
           <div class="logs-header">
             <h2 class="section-title">运行日志</h2>
-            <button class="clear-btn" id="clearLogBtn">清空</button>
+            <div class="log-actions">
+              <button class="clear-btn" id="copyLogBtn">复制日志</button>
+              <button class="clear-btn" id="clearLogBtn">清空</button>
+            </div>
           </div>
 
           <div class="terminal">
@@ -223,6 +256,6 @@
     </main>
   </div>
 
-  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  <script src="{{ url_for('static', filename='app.js') }}?v=20260706-product-polish"></script>
 </body>
 </html>

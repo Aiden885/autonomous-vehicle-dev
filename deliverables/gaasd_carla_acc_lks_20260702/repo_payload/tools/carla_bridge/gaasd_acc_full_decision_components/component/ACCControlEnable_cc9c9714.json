@@ -1,0 +1,123 @@
+{
+    "name": "ACCControlEnable",
+    "componentType": "atomic-function",
+    "alias": "ACC控制使能",
+    "description": "ACC控制使能查表",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "cc9c9714-fccd-5934-a925-d590791fdea8",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCControlEnable_param_systemState_In",
+                    "name": "systemState",
+                    "alias": "systemState",
+                    "direction": "In",
+                    "description": "当前系统状态，0=S0，1=S1，2=S2，3=S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCControlEnable_param_commandType_In",
+                    "name": "commandType",
+                    "alias": "commandType",
+                    "direction": "In",
+                    "description": "驾驶指令，0=无，1=降速/当速启控，2=增速/继承启控，3=降距，4=增距，5=油门，6=刹车，7=取消",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCControlEnable_output_controlEnable_Out",
+                    "name": "controlEnable",
+                    "alias": "controlEnable",
+                    "direction": "Out",
+                    "description": "控制使能，0=不控制，1=ACC控制",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCControlEnable(int systemState, int commandType)\n{\n    int controlEnable = 0;\n\n    if (systemState == 0) {\n        if ((commandType == 6) || (commandType == 7)) {\n            controlEnable = 0;\n        } else {\n            controlEnable = 1;\n        }\n    } else if (systemState == 1) {\n        if ((commandType == 1) || (commandType == 2)) {\n            controlEnable = 1;\n        } else {\n            controlEnable = 0;\n        }\n    } else if (systemState == 2) {\n        if (commandType == 1) {\n            controlEnable = 1;\n        } else {\n            controlEnable = 0;\n        }\n    } else {\n        controlEnable = 0;\n    }\n\n    return controlEnable;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

@@ -1,0 +1,204 @@
+name: lks2_pangu_carla_20260701
+description: lks2 生成代码修复版 LKS Pangu-CARLA 单车闭环测试
+created_at: "2026-07-01"
+control_profile: lks
+
+environment:
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5"
+
+carla_scene:
+  map: Town05
+  ego_spawn_index: historical_town05_fixed_point
+  ego_location: [0.663731, -203.651886, 0.5]
+  reference_location: [0.663731, -203.651886, 0.5]
+  initial_lateral_offset_m: 0.0
+  initial_heading_error_deg: 0.0
+  lead_behavior: none
+  lead_placement: none
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  lane_keep_enabled: false
+
+pangu:
+  build_root: /home/aiden/.cache/gaasd-pangu/lks2_codegen_build
+  container_name: lks2_pangu_carla
+  processes: [LKSModule, ZmqBridgeModule]
+
+results:
+  latest_summary: /tmp/lks2-pangu-carla/results/latest_summary.json
+
+gaasd_signals:
+  observed: [egoV, c0, c1, c2, c3, curvature, steerRad, controlEnabled]
+
+expected_result:
+  duration_sec: 180
+  expected_behavior: 自车从官方Town05历史固定道路点出发，以约6.0m/s目标速度覆盖连续缓弯，LKS保持车道且无碰撞。
+
+parameters:
+  - key: target_speed_mps
+    label: 目标车速
+    group: 场景
+    env: LKS_TARGET_SPEED_MPS
+    default: 6.0
+    min: 1.0
+    max: 12.0
+    step: 0.5
+    unit: m/s
+    description: 场景纵向速度目标，不属于LKS算法输出
+  - key: initial_lateral_offset_m
+    label: 初始横向偏差
+    group: 场景
+    env: LKS_INITIAL_OFFSET_M
+    default: 0.0
+    min: -1.0
+    max: 1.0
+    step: 0.1
+    unit: m
+    description: 正值沿车辆右方向偏移，负值沿左方向偏移
+  - key: record_duration_sec
+    label: 记录时长
+    group: 场景
+    env: LKS_RECORD_DURATION_SEC
+    default: 180
+    min: 30
+    max: 600
+    step: 10
+    unit: s
+    integer: true
+    description: 自动测试记录器采样时长
+  - key: l0
+    label: 基础预瞄距离 l0
+    group: 预瞄
+    env: LKS_PARAM_L0
+    default: 5.0
+    min: 1.0
+    max: 20.0
+    step: 0.1
+    unit: m
+    description: previewDistance公式中的基础距离
+  - key: rt
+    label: 车速预瞄增益 rt
+    group: 预瞄
+    env: LKS_PARAM_RT
+    default: 0.5
+    min: 0.0
+    max: 2.0
+    step: 0.05
+    unit: s
+    description: 车速每增加1m/s带来的预瞄距离增量
+  - key: r_alpha
+    label: 弯道缩放 rAlpha
+    group: 预瞄
+    env: LKS_PARAM_R_ALPHA
+    default: 0.6666667
+    min: 0.2
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    description: 弯道预瞄距离相对直道的缩放比例
+  - key: curvature_threshold
+    label: 弯道曲率阈值
+    group: 预瞄
+    env: LKS_PARAM_CURVATURE_THRESHOLD
+    default: 0.001
+    min: 0.0001
+    max: 0.02
+    step: 0.0001
+    unit: 1/m
+    description: 曲率绝对值达到该值时采用弯道预瞄比例
+  - key: near_preview_distance
+    label: 近点距离 x1
+    group: 预瞄
+    env: LKS_PARAM_NEAR_PREVIEW_DISTANCE
+    default: 0.5
+    min: 0.1
+    max: 5.0
+    step: 0.1
+    unit: m
+    description: Eval_P1使用的固定近预瞄点
+  - key: w1
+    label: 近点权重 w1
+    group: 误差加权
+    env: LKS_PARAM_W1
+    default: 0.2
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+  - key: w2
+    label: 中点权重 w2
+    group: 误差加权
+    env: LKS_PARAM_W2
+    default: 0.3
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+  - key: w3
+    label: 远点权重 w3
+    group: 误差加权
+    env: LKS_PARAM_W3
+    default: 0.5
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+  - key: kp
+    label: 横向比例增益 Kp
+    group: 转向控制
+    env: LKS_PARAM_KP
+    default: 0.08
+    min: 0.0
+    max: 1.0
+    step: 0.01
+    unit: 1/m
+    description: 加权横向误差到归一化转向需求的比例增益
+  - key: steer_scale
+    label: 转向输出缩放
+    group: 转向控制
+    env: LKS_PARAM_STEER_SCALE
+    default: 0.6
+    min: 0.1
+    max: 1.0
+    step: 0.05
+    unit: rad
+    description: 归一化转向到输出steerRad的缩放
+  - key: ay_max
+    label: 最大横向加速度
+    group: 转向控制
+    env: LKS_PARAM_AY_MAX
+    default: 3.0
+    min: 0.5
+    max: 10.0
+    step: 0.1
+    unit: m/s²
+    description: 用于计算随车速变化的转向上限
+  - key: v_min
+    label: LKS最低启控速度
+    group: 决策
+    env: LKS_PARAM_V_MIN
+    default: 1.0
+    min: 0.0
+    max: 10.0
+    step: 0.1
+    unit: m/s
+    description: 低于该速度时controlEnabled为0
+  - key: driver_steer_threshold
+    label: 驾驶接管阈值
+    group: 决策
+    env: LKS_PARAM_DRIVER_STEER_THRESHOLD
+    default: 0.1
+    min: 0.01
+    max: 1.0
+    step: 0.01
+    unit: "1"
+    description: 驾驶员转向绝对值达到该值时LKS退出

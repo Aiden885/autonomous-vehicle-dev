@@ -59,20 +59,27 @@ bool ZmqBridgeModule::Init(const std::string& ptstr) {
   control::composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988adTraits::Param
       decision_param{};
   decision_param.vMin = ReadEnvDouble("ACC_DECISION_VMIN", 1.0);
-  decision_param.GapStep = 0.2;
-  decision_param.MinGap = 1.0;
-  decision_param.MaxGap = 5.0;
-  decision_param.SpdStep = 4.0;
-  decision_param.MinSpd = 0.0;
+  decision_param.GapStep = ReadEnvDouble("ACC_GAP_STEP", 0.2);
+  decision_param.MinGap = ReadEnvDouble("ACC_MIN_TIME_GAP", 1.0);
+  decision_param.MaxGap = ReadEnvDouble("ACC_MAX_TIME_GAP", 5.0);
+  decision_param.SpdStep = ReadEnvDouble("ACC_SPEED_STEP", 4.0);
+  decision_param.MinSpd = ReadEnvDouble("ACC_MIN_SPEED", 0.0);
   acc_decision_.setParam(decision_param);
 
   control::composite_block_empty_ea2170e7_297c_4433_b70a_9c66e48988adTraits::State
       decision_state{};
   decision_state.controlEnabled = 0;
   decision_state.hasHistory = 0;
-  decision_state.timeGap = 1.8;
-  decision_state.maxSpeed = 20.0;
+  decision_state.timeGap = ReadEnvDouble("ACC_INITIAL_TIME_GAP", 1.8);
+  decision_state.maxSpeed = ReadEnvDouble("ACC_INITIAL_MAX_SPEED", 20.0);
   acc_decision_.setState(decision_state);
+
+  control::global::params.MinDistance =
+      ReadEnvDouble("ACC_MIN_DISTANCE", control::global::params.MinDistance);
+  control::global::params.Kdist =
+      ReadEnvDouble("ACC_DISTANCE_GAIN", control::global::params.Kdist);
+  control::global::params.Kspeed =
+      ReadEnvDouble("ACC_SPEED_GAIN", control::global::params.Kspeed);
 
   zmq_bridge_ = std::make_unique<AccZmqBridge>();
   if (!zmq_bridge_->Init()) {

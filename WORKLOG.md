@@ -6,7 +6,127 @@
 
 ---
 
-## 当前状态（2026-07-01 更新）
+## 当前状态（2026-07-02 更新）
+
+**LKS 交接场景切换为官方 Town05（2026-07-05）**：
+
+- 发现原交接包默认地图 `acc_30km_new` 不是 CARLA 官方地图，开发团队环境无法保证存在。
+- 检查 `~/PycharmProjects/CarlaAcc` 全部 Git 历史后确认：历史中没有 `Town06`；切换到
+  自定义地图前的可运行官方地图为 `Town05`。提交 `5667b6d`、`dd934d8` 使用固定道路点
+  `(0.663731, -203.651886, 0.5)`。
+- CARLA 0.9.15 实测该点投影到 `road=37、lane=-2、yaw=179.758deg`，不在路口；沿当前
+  车道向前至少 600 m 无分叉并包含连续缓弯，适合作为 LKS 单车基线。
+- LKS 场景、Bridge 配置和 reset 脚本已改为官方 `Town05`；航向由 CARLA waypoint 自动
+  获取，不依赖硬编码角度。
+- Town05 实际闭环结果：最高车速 `5.1489m/s`，681 个弯道样本，最大横向偏差
+  `0.30394m`，RMS 偏差 `0.17159m`，无路口、无碰撞，`passed=true`。
+
+**newaccpro3 ACC 持久化 Pangu 构建修复（2026-07-03）**：
+
+- 调试平台启动 ACC 场景时报错：
+
+```text
+[Scenario] missing: /tmp/newaccpro3_pangu_codegen_build/install/setup.bash
+```
+
+- 根因不是 ACC 代码或 CARLA 链路损坏，而是场景长期依赖 `/tmp` 中的 Pangu 构建产物；
+  系统重启或临时目录清理后，`/tmp/newaccpro3_pangu_codegen_build` 整体消失。
+- 已新增可重复执行的持久化构建脚本：
+
+```text
+tools/pangu_acc_closed_loop/build_pangu_module.sh
+```
+
+- ACC 构建及安装目录迁移为：
+
+```text
+/home/aiden/.cache/gaasd-pangu/newaccpro3_codegen_build
+```
+
+- `scenarios/newaccpro3_pangu_carla_20260701/run.sh`、`stop.sh` 和 `scenario.yaml`
+  已统一使用持久化目录；若 `setup.bash` 或 `libZmqBridgeModule.so` 缺失，场景会先自动构建。
+- 构建脚本会从当前 `project/newaccpro3/icvos/src` 复制模块配置并编译修补后的生成代码，
+  同时补齐 `install/image/lib`、`app_empty.pt`、节点配置和有效的
+  `icvos_machine.pt`。`install/conf` 明确链接到 `install/image/conf`，避免读取项目中的空机器配置。
+- 持久化目录 mock 复测通过：`E/T/R/Q/C/E/S/0` 全部到达，启控、取消、再次启控和制动退出
+  均符合当前画布逻辑，脚本最终输出 `[mock-seq] PASS`。
+
+**lks2 驾驶接管、运行稳定性与开发团队交接（2026-07-02）**：
+
+- 电脑在 LKS Pangu 重编译期间发生重启，已将构建/安装目录从易失的 `/tmp` 迁移为：
+
+```text
+/home/aiden/.cache/gaasd-pangu/lks2_codegen_build
+```
+
+- `build_pangu_module.sh` 已限制默认并行任务为 4，并处理容器构建产物属主、运行配置目录和
+  场景 `.pt` 文件安装；重启后不需要重新构建即可启动场景。
+- 已定位 Pangu 容器运行一段时间后退出的原因：场景缺少 `--privileged`，Pangu 配置路由时
+  出现 `SIOCADDRT: Operation not permitted`。LKS 场景现使用 `--net=host --privileged`，
+  CARLA、Bridge PUB、Bridge CONTROL、Pangu 业务进程已持续稳定在线。
+- 已修复 LKS 驾驶接管输入“页面有日志但车辆无反应”的两层问题：
+  - 测试发布器改为连接后等待并重复发送，避免 ZMQ PUB/SUB slow join 丢失单次消息。
+  - Pangu 边界层在 LKS 退出时将 `driverSteerNorm` 映射为实际手动转向；制动输入会产生
+    有效底盘制动，不再只是把 LKS 转向清零。
+- LKS 调试按键最终约定：
+  - A 按住：`driverSteerNorm=-0.3`，向左接管。
+  - D 按住：`driverSteerNorm=+0.3`，向右接管。
+  - B 按住：`brakePressed=1`，制动并退出 LKS。
+  - 松键：两项归零，满足车速条件后 LKS 自动恢复；当前 LKS 不设置 E/C 总开关。
+- 已新增自动验收脚本和独立 Pygame 键盘发布器：
+
+```text
+tools/pangu_lks_closed_loop/verify_driver_takeover.py
+tools/pangu_lks_closed_loop/lks_keyboard_input.py
+```
+
+- 真实 CARLA 自动验收通过：A/D 分别得到底盘 `steer_norm=-0.30/+0.30`，B 得到
+  `brake=1.0` 并将车速降至 0，释放后输入归零且车辆重新起步。测试面板 HTTP 输入路径
+  也单独验证通过。
+- 已生成开发团队集成说明和交接包：
+
+```text
+docs/GAASD_CARLA_ACC_LKS_开发团队集成说明.md
+deliverables/gaasd_carla_acc_lks_20260702.zip
+deliverables/gaasd_carla_acc_lks_20260702.zip.sha256
+```
+
+- 交接包包含：接口变量清单、Python Bridge、ACC/LKS 驾驶输入脚本、Pangu 模块源码与
+  配置、ACC/LKS 场景脚本、修复后的 GAASD 生成代码和 LKS 接管测试证据；压缩完整性、
+  SHA256 和 LKS 离线算法测试均已通过。
+
+**调试面板物理键盘修复（2026-07-03）**：
+
+- 已确认原状态：LKS 页面注册过 A/D/B，但只在浏览器聚焦时生效，且快速松键可能因请求忙
+  丢失归零；ACC 页面只有按钮点击，没有注册物理键盘事件。
+- LKS 已改为按键集合和最新状态队列：A/D/B 支持按住、组合键、松开归零，归零请求不会再
+  被前一条请求阻塞丢弃；失焦和页面隐藏时强制释放。
+- ACC 已增加 E/Q/T/R/C 脉冲键，W/S 持续键和松键自动发送 `commandType=0`；页面新增 W
+  油门接管按钮，W/S 鼠标按住和松开与物理键盘语义一致。
+- 无界面 Chrome 实测通过：LKS A 产生 `-0.30 -> 0.00`；ACC E、S、S 松开依次产生
+  `commandType=1/6/0`。
+- 页面键盘仍受浏览器焦点限制，这是浏览器输入模型，不是消息链路问题。CARLA 窗口前台
+  测试或 Docker 集成时使用独立的 ACC/LKS Pygame 键盘发布器。
+
+**LKS 场景参数调试面板（2026-07-05）**：
+
+- 已给 `lks2_pangu_carla_20260701` 增加可编辑参数 schema，覆盖场景目标车速、初始横向偏差、
+  记录时长、预瞄距离、三点误差权重、转向增益、横向加速度限幅、最低接管车速和驾驶员接管阈值。
+- 调试面板后端新增参数读取/保存接口，启动 LKS 场景前会把保存值转换为 16 个 `LKS_*`
+  环境变量并传入 `run.sh`；`run.sh` 和 Pangu LKS 模块会读取这些值覆盖默认标定参数。
+- 参数保存接口已验证通过，当前持久化默认值包括 `LKS_TARGET_SPEED_MPS=6.0`、
+  `LKS_PARAM_KP=0.08`、`LKS_PARAM_W1/W2/W3=0.2/0.3/0.5` 等。
+- 修复测试平台页面初始化鲁棒性：固定按钮事件改为安全绑定，缺少某些按钮时不会再出现
+  `Cannot set properties of null` 导致场景列表加载中断。
+- 为 `style.css` 和 `app.js` 增加静态资源版本参数 `20260705-lks-param`，避免浏览器缓存旧前端脚本。
+- 已重启 8765 测试平台，当前宿主机进程 PID `3663120`；页面已确认包含 `lksParameterCard`，
+  `/api/scenarios/lks2_pangu_carla_20260701/parameters` 返回 16 个参数。
+- 2026-07-06 继续修复测试平台显示不全问题：取消 `body/.dashboard` 全局隐藏溢出，恢复页面纵向滚动；
+  主工作区宽度从 `1000px` 扩展到 `1280px`，宽屏下 LKS 参数区改为三列排布；参数区和日志区保留内部滚轮。
+  静态资源版本更新为 `20260706-layout-scroll`，当前 8765 面板进程 PID `3716881`。
+- 2026-07-06 进一步做产品化视觉统一：侧栏、场景卡、控制卡、健康状态、参数卡和日志终端统一为浅色桌面控制台风格；
+  主工作区扩展到 `1380px`，宽屏下控制区采用更稳定的三列布局。LKS 参数区取消内部滚轮，改为自然撑开并由页面整体滚动承载，
+  避免参数滚轮和页面滚轮误操作。静态资源版本更新为 `20260706-product-polish`，当前 8765 面板进程 PID `3777491`。
 
 **newaccpro3 Pangu-CARLA 可视化闭环场景**：
 
@@ -57,6 +177,58 @@ python3 tools/gaasd_scenario_panel/app.py
   - `辅助启控`：执行一次 `boost + E`，用于 Pangu 订阅端 ready 后手动启控。
   - `E/Q/T/R/C/S/0`：直接发送 ACC 驾驶指令到 Bridge `5702`，再由 Bridge 转发到 Pangu 输入总线。
   - 健康检查新增 `Pangu ACC`，检查 Docker 容器内 `dataflow_runner --process_name=ZmqBridgeModule` 是否存在。
+- 2026-07-01 人工测试发现原参数存在碰撞风险，已将 ACC 场景默认参数调整为安全基线：
+  - 初始时距 `3.0s`，最小时距 `1.5s`，最小静态距离 `8m`。
+  - 初始最高车速 `3.0m/s`，调速步长 `0.5m/s`。
+  - 距离增益 `0.15`，相对速度增益 `0.8`。
+  - Bridge 最大油门 `0.35`、最大制动 `0.7`、最大加速度 `1.5m/s^2`。
+  - 场景启动前默认清理旧 CARLA/Bridge/Pangu，避免旧实例占用 2000 端口。
+- 调试平台运行日志已改为内部独立滚动，底部增加留白并新增“复制日志”按钮。
+
+**lks2 Pangu-CARLA 旁路闭环（2026-07-01）**：
+
+- 已扩展 Bridge `gaasd.carla.lane_tracking.v1`，新增 `c0_m/c1/c2_per_m/c3_per_m2/curvature_per_m`，旧的横向偏差和航向误差字段保持兼容。
+- 已新增 `gaasd.carla.driver_state.v1`，并增加 `gaasd.carla.driver_state_cmd.v1` 测试输入；
+  `brakePressed/driverSteerNorm` 代表驾驶员输入，不使用车辆实际转角冒充驾驶员输入。
+- 已修复 `project/lks2/icvos/src/temp_codegen_output` 的确定性生成缺陷：
+  - 恢复 LKS 全局参数。
+  - 统一复合组件实现为 `run()`。
+  - 补数学函数声明、顶层输入输出和三个预瞄点连线。
+- 离线生成算法测试通过：`egoV=5m/s、c0=0.8m` 时输出 `preview=7.5m、weightedError=0.8m、steerRad=0.0384rad、enable=1`。
+- 新增 Pangu LKS 源码、构建脚本和场景：
+
+```text
+tools/pangu_lks_closed_loop/
+scenarios/lks2_pangu_carla_20260701/
+docs/GAASD_CARLA_LKS_Pangu旁路闭环执行方案.md
+```
+
+- LKS ZMQ 适配源码已通过 `-Wall -Wextra -Wpedantic` 单文件编译。
+- Pangu ABI 构建、动态库加载和真实 CARLA 闭环已经通过。
+- 首轮 Town01 高速长测在约 65 秒进入路口急转，70.65 秒撞护栏。数据表明三点预瞄
+  计算和控制输出符合画布公式，但该路线包含路口路径选择和接近 90 度道路转换，不属于
+  LKS 连续车道保持工况；因此没有向控制器擅自增加曲率前馈。
+- 已按原参考项目 `project/lks/lks_tcp_s17.py` 恢复正式测试条件：
+  - 地图：`acc_30km_new`（本机 CARLA 包中已安装）。
+  - 起点：参考 `case 0` 的 `(1665.092773, 6334.560059, 0.5)`。
+  - 道路朝向参考点：`(1654.013672, 6322.584473, 0.5)`。
+  - 初始横向偏置：`0 m`；目标速度：`6 m/s`。
+- 参考地图 90 秒闭环通过：
+  - 1796 个前台记录样本，自动记录器结果 1816 个样本。
+  - 最高车速 `5.1515 m/s`，结束车速 `5.03 m/s`。
+  - 有效弯道样本 `479` 个，最大曲率约 `0.001143 1/m`。
+  - 全程最大横向偏差 `0.02959 m`，RMS 偏差 `0.01295 m`。
+  - 无路口、无碰撞，测试结论 `passed=true`。
+- 已新增 LKS 自动记录器：保存 `c0~c3`、曲率、道路编号、横向偏差、实际转角和
+  CARLA 碰撞事件；最新结果位于
+  `/tmp/lks2-pangu-carla/results/latest_summary.json`。
+- 调试平台已增加 LKS 专用控制区：
+  - `A/D` 按住发送驾驶员左右转向输入（`driverSteerNorm=±0.3`）。
+  - `B` 按住发送制动退出信号。
+  - 松键、窗口失焦或点击“释放”后输入归零；Bridge 另有 `0.75s` 超时保护。
+  - “测试结果”按钮读取最新弯道指标。
+- LKS 决策离线用例已补齐并通过：正常控制 `enable=1`；驾驶员转向接管、制动和
+  `egoV < 1m/s` 三种情况均输出 `enable=0/steerRad=0`。
 
 **newaccpro3 Pangu 生成代码版 ACC mock 闭环复测**：
 
@@ -128,10 +300,16 @@ docker run --rm -v /home:/home -v /data:/data -v /tmp:/tmp --net=host --shm-size
 - [ ] 生成代码通过 diff 后，用生成代码替换当前临时修补/手写基准，再重复 mock 与真实 CARLA 60 秒测试。
 - [ ] `run_all/topo` 问题单独向 GAASD/Pangu 团队反馈；在修复前继续使用已验证的 direct `run.sh`，不让它阻塞算法闭环。
 
-### P4：ACC 基线稳定后开展 LKS 联调
+### P4：完成 lks2 Pangu-CARLA 联调
 
-- [ ] 复用当前 Pangu、Bridge、场景和调试平台框架，扩展已确认的 LKS 输入输出接口。
-- [ ] 先做单车、固定纵向速度的 LKS 横向闭环，再接完整 LKS 画布生成代码。
+- [x] 复用当前 Pangu、Bridge、场景和调试平台框架，扩展已确认的 LKS 输入输出接口。
+- [x] 修复 `lks2` 生成代码并完成离线算法基准测试。
+- [x] 执行 `tools/pangu_lks_closed_loop/build_pangu_module.sh`，完成 Pangu ABI 构建并迁移到持久化缓存。
+- [x] 从调试平台启动 `lks2_pangu_carla_20260701`，完成参考地图无初始偏置连续弯道闭环。
+- [x] 记录 `c0~c3/curvature/steerRad/controlEnabled`，验证转向符号、收敛表现和无碰撞。
+- [x] 验证 A/D 驾驶转向接管、B 制动退出以及松键自动恢复的完整物理响应。
+- [x] 整理 ACC/LKS Bridge、Pangu、场景、键盘脚本和接口说明开发团队交接包。
+- [ ] 如需扩大工况覆盖，再单独验证初始横向偏差和初始航向误差；不阻塞当前最小闭环交接。
 - [ ] 最后再考虑 ACC+LKS 组合测试，避免同时引入纵向和横向问题导致无法定位。
 
 ---

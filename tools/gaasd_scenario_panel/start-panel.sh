@@ -6,7 +6,11 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 PORT="${GAASD_PANEL_PORT:-8765}"
 HOST="127.0.0.1"
 URL="http://${HOST}:${PORT}"
-RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/gaasd-scenario-panel"
+BASE_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}"
+if [ ! -d "$BASE_RUNTIME_DIR" ] || [ ! -w "$BASE_RUNTIME_DIR" ]; then
+  BASE_RUNTIME_DIR="/tmp"
+fi
+RUNTIME_DIR="$BASE_RUNTIME_DIR/gaasd-scenario-panel"
 PID_FILE="$RUNTIME_DIR/panel.pid"
 LOG_FILE="$RUNTIME_DIR/panel.log"
 

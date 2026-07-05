@@ -1,0 +1,41 @@
+name: lks2_pangu_carla_20260701
+description: lks2 生成代码修复版 LKS Pangu-CARLA 单车闭环测试
+created_at: "2026-07-01"
+control_profile: lks
+
+environment:
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5"
+
+carla_scene:
+  map: Town05
+  ego_spawn_index: historical_town05_fixed_point
+  ego_location: [0.663731, -203.651886, 0.5]
+  reference_location: [0.663731, -203.651886, 0.5]
+  initial_lateral_offset_m: 0.0
+  initial_heading_error_deg: 0.0
+  lead_behavior: none
+  lead_placement: none
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  lane_keep_enabled: false
+
+pangu:
+  build_root: /home/aiden/.cache/gaasd-pangu/lks2_codegen_build
+  container_name: lks2_pangu_carla
+  processes: [LKSModule, ZmqBridgeModule]
+
+results:
+  latest_summary: /tmp/lks2-pangu-carla/results/latest_summary.json
+
+gaasd_signals:
+  observed: [egoV, c0, c1, c2, c3, curvature, steerRad, controlEnabled]
+
+expected_result:
+  duration_sec: 180
+  expected_behavior: 自车从官方Town05历史固定道路点出发，以约6.0m/s目标速度覆盖连续缓弯，LKS保持车道且无碰撞。

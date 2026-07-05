@@ -3,6 +3,14 @@ const state = {
   selectedId: null,
   cursor: 0,
   renderedLog: "",
+  lksDriver: {brakePressed: false, steerNorm: 0},
+  lksInputTimer: null,
+  lksRequestBusy: false,
+  lksPendingRequest: null,
+  lksPressedKeys: new Set(),
+  accLevelKey: null,
+  accCommandQueue: Promise.resolve(),
+  lksParameters: {schema: [], values: {}},
 };
 
 const LOG_POLL_MS = 1000;
@@ -10,6 +18,16 @@ const SCENARIO_REFRESH_MS = 5000;
 const HEALTH_POLL_MS = 3000;
 
 const $ = (id) => document.getElementById(id);
+
+function bindClick(id, handler) {
+  const element = $(id);
+  if (element) element.onclick = handler;
+}
+
+function setDisabled(id, disabled) {
+  const element = $(id);
+  if (element) element.disabled = disabled;
+}
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -67,8 +85,18 @@ function updateActionState(raw) {
   $("copyPathBtn").disabled = !hasScenario;
   $("readmeBtn").disabled   = !hasScenario;
   $("forceRestore").disabled = busy || !hasScenario;
-  $("kickstartBtn").disabled = busy || !hasScenario;
+  setDisabled("kickstartBtn", busy || !hasScenario);
+  setDisabled("lksReleaseBtn", busy || !hasScenario);
+  setDisabled("lksResultBtn", busy || !hasScenario);
+  setDisabled("lksParameterSaveBtn", busy || !hasScenario);
+  setDisabled("lksParameterResetBtn", busy || !hasScenario);
+  document.querySelectorAll("[data-lks-param]").forEach((input) => {
+    input.disabled = busy || !hasScenario;
+  });
   document.querySelectorAll("[data-command]").forEach((button) => {
+    button.disabled = busy || !hasScenario;
+  });
+  document.querySelectorAll("[data-lks-steer], [data-lks-brake]").forEach((button) => {
     button.disabled = busy || !hasScenario;
   });
 
@@ -93,6 +121,7 @@ function selectedScenario() {
 
 function renderScenarioList() {
   const root = $("scenarioList");
+  if (!root) return;
   root.innerHTML = "";
   if (state.scenarios.length === 0) {
     root.innerHTML = `
@@ -139,6 +168,14 @@ function renderDetails() {
   $("signalInfo").innerHTML = signals.length > 0
     ? signals.map((signal) => `<span class="signal-tag">${escapeHtml(signal)}</span>`).join("")
     : `<span class="signal-tag muted">-</span>`;
+  const profile = item.control_profile || "acc";
+  const accDriverCard = $("accDriverCard");
+  const lksDriverCard = $("lksDriverCard");
+  const lksParameterCard = $("lksParameterCard");
+  if (accDriverCard) accDriverCard.hidden = profile !== "acc";
+  if (lksDriverCard) lksDriverCard.hidden = profile !== "lks";
+  if (lksParameterCard) lksParameterCard.hidden = profile !== "lks" || !item.has_parameters;
+  if (profile !== "lks") releaseLksDriverState(false);
   setStatus(item.state?.status || "idle");
 }
 
@@ -159,8 +196,104 @@ async function selectScenario(id) {
   $("logBox").textContent = "等待操作...";
   renderScenarioList();
   renderDetails();
+  await loadLksParameters();
   await pollLogs();
   await healthCheck(false);
+}
+
+function renderLksParameters() {
+  const root = $("lksParameterGroups");
+  if (!root) return;
+  const groups = new Map();
+  for (const item of state.lksParameters.schema) {
+    const group = item.group || "参数";
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(item);
+  }
+  root.innerHTML = [...groups.entries()].map(([group, items]) => `
+    <section class="parameter-group">
+      <h3>${escapeHtml(group)}</h3>
+      <div class="parameter-grid">
+        ${items.map((item) => `
+          <label class="parameter-field" title="${escapeHtml(item.description || "")}">
+            <span class="parameter-label">${escapeHtml(item.label || item.key)}</span>
+            <span class="parameter-input-row">
+              <input type="number"
+                     data-lks-param="${escapeHtml(item.key)}"
+                     value="${escapeHtml(state.lksParameters.values[item.key] ?? item.default)}"
+                     min="${escapeHtml(item.min)}"
+                     max="${escapeHtml(item.max)}"
+                     step="${escapeHtml(item.step || "any")}">
+              <span>${escapeHtml(item.unit || "")}</span>
+            </span>
+            <small>${escapeHtml(item.description || "")}</small>
+          </label>`).join("")}
+      </div>
+    </section>`).join("");
+}
+
+async function loadLksParameters() {
+  const item = selectedScenario();
+  if (!item || item.control_profile !== "lks" || !item.has_parameters) {
+    state.lksParameters = {schema: [], values: {}};
+    return;
+  }
+  try {
+    const data = await requestJson(`/api/scenarios/${item.id}/parameters`);
+    state.lksParameters = {schema: data.schema || [], values: data.values || {}};
+    renderLksParameters();
+  } catch (err) {
+    appendLocalLog(`LKS参数加载失败: ${err.message}`);
+  }
+}
+
+function collectLksParameters() {
+  const values = {};
+  document.querySelectorAll("[data-lks-param]").forEach((input) => {
+    values[input.dataset.lksParam] = input.value;
+  });
+  return values;
+}
+
+async function saveLksParameters(writeLog = true) {
+  const item = selectedScenario();
+  if (!item || item.control_profile !== "lks" || !item.has_parameters) return true;
+  try {
+    const data = await requestJson(`/api/scenarios/${item.id}/parameters`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({values: collectLksParameters()}),
+    });
+    state.lksParameters.values = data.values || {};
+    renderLksParameters();
+    if (writeLog) appendLocalLog("LKS参数已保存，将在下次启动时生效");
+    return true;
+  } catch (err) {
+    appendLocalLog(`LKS参数保存失败: ${err.message}`);
+    return false;
+  }
+}
+
+async function resetLksParameters() {
+  const item = selectedScenario();
+  if (!item || item.control_profile !== "lks" || !item.has_parameters) return;
+  try {
+    const data = await requestJson(`/api/scenarios/${item.id}/parameters`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({reset: true}),
+    });
+    state.lksParameters.values = data.values || {};
+    renderLksParameters();
+    appendLocalLog("LKS参数已恢复默认值");
+  } catch (err) {
+    appendLocalLog(`恢复默认参数失败: ${err.message}`);
+  }
+}
+
+async function startSelectedScenario() {
+  if (!(await saveLksParameters(false))) return;
+  await runAction("start");
 }
 
 async function runAction(action, body = {}) {
@@ -226,7 +359,7 @@ function updateHealthChip(service, online, port) {
     carla: "CARLA Server",
     bridge_pub: "Bridge PUB",
     bridge_control: "Bridge CONTROL",
-    pangu_process: "Pangu ACC",
+    pangu_process: "Pangu 业务进程",
   };
   const label = labels[service] || service;
   if (name) name.textContent = `${label} ${online ? "在线" : "离线"}`;
@@ -266,6 +399,13 @@ async function sendDriverCommand(key) {
   }
 }
 
+function queueDriverCommand(key) {
+  state.accCommandQueue = state.accCommandQueue
+    .catch(() => {})
+    .then(() => sendDriverCommand(key));
+  return state.accCommandQueue;
+}
+
 async function kickstartAcc() {
   const id = state.selectedId;
   if (!id) return;
@@ -279,6 +419,126 @@ async function kickstartAcc() {
     appendLocalLog(`辅助启控失败: ${err.message}`);
   } finally {
     $("kickstartBtn").disabled = false;
+  }
+}
+
+async function sendLksDriverState(writeLog = false) {
+  const id = state.selectedId;
+  const item = selectedScenario();
+  if (!id || item?.control_profile !== "lks") return;
+  const request = {
+    brakePressed: state.lksDriver.brakePressed,
+    steerNorm: state.lksDriver.steerNorm,
+    writeLog,
+  };
+  if (state.lksRequestBusy) {
+    // Always keep the newest state. In particular, a release must not be
+    // discarded while the preceding press request is still in flight.
+    state.lksPendingRequest = request;
+    return;
+  }
+  state.lksRequestBusy = true;
+  try {
+    let current = request;
+    while (current) {
+      state.lksPendingRequest = null;
+      try {
+        await requestJson(`/api/scenarios/${id}/lks-driver-state`, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            brake_pressed: current.brakePressed,
+            driver_steer_norm: current.steerNorm,
+          }),
+        });
+        if (current.writeLog) {
+          appendLocalLog(`LKS驾驶输入: brake=${Number(current.brakePressed)}, steer=${current.steerNorm.toFixed(2)}`);
+        }
+      } catch (err) {
+        if (current.writeLog) appendLocalLog(`LKS驾驶输入失败: ${err.message}`);
+      }
+      current = state.lksPendingRequest;
+    }
+  } finally {
+    state.lksRequestBusy = false;
+  }
+}
+
+function refreshLksButtonState() {
+  document.querySelectorAll("[data-lks-steer]").forEach((button) => {
+    button.classList.toggle("active", Number(button.dataset.lksSteer) === state.lksDriver.steerNorm);
+  });
+  document.querySelectorAll("[data-lks-brake]").forEach((button) => {
+    button.classList.toggle("active", state.lksDriver.brakePressed);
+  });
+}
+
+function startLksDriverState({steerNorm = 0, brakePressed = false}) {
+  state.lksDriver.steerNorm = steerNorm;
+  state.lksDriver.brakePressed = brakePressed;
+  refreshLksButtonState();
+  sendLksDriverState(true);
+  if (state.lksInputTimer) clearInterval(state.lksInputTimer);
+  state.lksInputTimer = setInterval(() => sendLksDriverState(false), 250);
+}
+
+function releaseLksDriverState(writeLog = true) {
+  if (state.lksInputTimer) clearInterval(state.lksInputTimer);
+  state.lksInputTimer = null;
+  const changed = state.lksDriver.brakePressed || state.lksDriver.steerNorm !== 0;
+  state.lksDriver = {brakePressed: false, steerNorm: 0};
+  refreshLksButtonState();
+  if (changed || writeLog) sendLksDriverState(writeLog);
+}
+
+function syncLksKeyboardState(writeLog = true) {
+  const brakePressed = state.lksPressedKeys.has("b");
+  const leftPressed = state.lksPressedKeys.has("a");
+  const rightPressed = state.lksPressedKeys.has("d");
+  let steerNorm = 0;
+  if (leftPressed !== rightPressed) steerNorm = leftPressed ? -0.3 : 0.3;
+  if (brakePressed || steerNorm !== 0) {
+    startLksDriverState({steerNorm: brakePressed ? 0 : steerNorm, brakePressed});
+  } else {
+    releaseLksDriverState(writeLog);
+  }
+}
+
+function startAccLevelInput(key) {
+  if (state.accLevelKey === key) return;
+  if (state.accLevelKey) queueDriverCommand("0");
+  state.accLevelKey = key;
+  document.querySelector(`[data-command="${key}"]`)?.classList.add("active");
+  queueDriverCommand(key);
+}
+
+function releaseAccLevelInput() {
+  if (!state.accLevelKey) return;
+  document.querySelector(`[data-command="${state.accLevelKey}"]`)?.classList.remove("active");
+  state.accLevelKey = null;
+  queueDriverCommand("0");
+}
+
+function keyboardTargetIsEditable(event) {
+  const target = event.target;
+  if (!(target instanceof HTMLElement)) return false;
+  const tag = target.tagName.toLowerCase();
+  return tag === "input" || tag === "textarea" || target.isContentEditable;
+}
+
+async function readLksResult() {
+  const id = state.selectedId;
+  if (!id) return;
+  try {
+    const data = await requestJson(`/api/scenarios/${id}/results/latest`);
+    const result = data.result || {};
+    appendLocalLog(
+      `LKS结果: passed=${result.passed}, curve=${result.curve_covered}, ` +
+      `碰撞=${result.collision_count}, 弯道最大偏差=${result.curve_max_abs_lateral_offset_m ?? "-"}m, ` +
+      `最高车速=${Number(result.max_speed_mps || 0).toFixed(2)}m/s, 样本=${result.sample_count || 0}`
+    );
+  } catch (err) {
+    appendLocalLog(`LKS测试结果尚不可用: ${err.message}`);
   }
 }
 
@@ -302,27 +562,122 @@ async function copyProjectPath() {
   appendLocalLog(`已复制工程路径: ${item.restore_path}`);
 }
 
+async function copyLogs() {
+  const text = $("logBox").textContent || "";
+  if (!text.trim()) {
+    appendLocalLog("没有可复制的运行日志");
+    return;
+  }
+  if (navigator.clipboard) {
+    await navigator.clipboard.writeText(text);
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.cssText = "position:fixed;left:-9999px;";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+  appendLocalLog("运行日志已复制");
+}
+
 function openReadme() {
   const id = state.selectedId;
   if (id) window.open(`/api/scenarios/${id}/readme`, "_blank");
 }
 
 function bindEvents() {
-  $("restoreBtn").onclick = () => runAction("restore", {force: $("forceRestore").checked});
-  $("startBtn").onclick   = () => runAction("start");
-  $("stopBtn").onclick    = () => runAction("stop");
-  $("healthBtn").onclick  = () => healthCheck(true);
-  $("fixGeneratedBtn").onclick = () => runAction("fix-generated");
-  $("copyPathBtn").onclick = copyProjectPath;
-  $("readmeBtn").onclick  = openReadme;
-  $("kickstartBtn").onclick = kickstartAcc;
+  bindClick("restoreBtn", () => runAction("restore", {force: $("forceRestore").checked}));
+  bindClick("startBtn", startSelectedScenario);
+  bindClick("stopBtn", () => runAction("stop"));
+  bindClick("healthBtn", () => healthCheck(true));
+  bindClick("fixGeneratedBtn", () => runAction("fix-generated"));
+  bindClick("copyPathBtn", copyProjectPath);
+  bindClick("readmeBtn", openReadme);
+  bindClick("copyLogBtn", () => copyLogs().catch((err) => appendLocalLog(`复制日志失败: ${err.message}`)));
+  bindClick("kickstartBtn", kickstartAcc);
+  bindClick("lksReleaseBtn", () => releaseLksDriverState(true));
+  bindClick("lksResultBtn", readLksResult);
+  bindClick("lksParameterSaveBtn", () => saveLksParameters(true));
+  bindClick("lksParameterResetBtn", resetLksParameters);
   document.querySelectorAll("[data-command]").forEach((button) => {
-    button.onclick = () => sendDriverCommand(button.dataset.command || "");
+    const key = button.dataset.command || "";
+    const isLevel = button.dataset.commandMode === "level";
+    if (!isLevel) {
+      button.onclick = () => queueDriverCommand(key);
+      return;
+    }
+    button.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      startAccLevelInput(key);
+    });
+    button.addEventListener("pointerup", releaseAccLevelInput);
+    button.addEventListener("pointercancel", releaseAccLevelInput);
+    button.addEventListener("pointerleave", releaseAccLevelInput);
   });
-  $("clearLogBtn").onclick = () => {
+  document.querySelectorAll("[data-lks-steer]").forEach((button) => {
+    const press = (event) => {
+      event.preventDefault();
+      startLksDriverState({steerNorm: Number(button.dataset.lksSteer), brakePressed: false});
+    };
+    button.addEventListener("pointerdown", press);
+    button.addEventListener("pointerup", () => releaseLksDriverState(true));
+    button.addEventListener("pointercancel", () => releaseLksDriverState(true));
+    button.addEventListener("pointerleave", () => releaseLksDriverState(false));
+  });
+  document.querySelectorAll("[data-lks-brake]").forEach((button) => {
+    button.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      startLksDriverState({steerNorm: 0, brakePressed: true});
+    });
+    button.addEventListener("pointerup", () => releaseLksDriverState(true));
+    button.addEventListener("pointercancel", () => releaseLksDriverState(true));
+    button.addEventListener("pointerleave", () => releaseLksDriverState(false));
+  });
+  window.addEventListener("keydown", (event) => {
+    if (keyboardTargetIsEditable(event)) return;
+    const profile = selectedScenario()?.control_profile;
+    const key = event.key.toLowerCase();
+    if (profile === "lks" && ["a", "d", "b"].includes(key)) {
+      event.preventDefault();
+      if (event.repeat) return;
+      state.lksPressedKeys.add(key);
+      syncLksKeyboardState(true);
+      return;
+    }
+    if (profile === "acc" && ["e", "q", "t", "r", "c", "w", "s", "0"].includes(key)) {
+      event.preventDefault();
+      if (event.repeat) return;
+      if (["w", "s"].includes(key)) startAccLevelInput(key);
+      else if (key === "0") releaseAccLevelInput();
+      else queueDriverCommand(key);
+    }
+  });
+  window.addEventListener("keyup", (event) => {
+    const key = event.key.toLowerCase();
+    if (["a", "d", "b"].includes(key)) {
+      state.lksPressedKeys.delete(key);
+      syncLksKeyboardState(true);
+    }
+    if (["w", "s"].includes(key) && state.accLevelKey === key) releaseAccLevelInput();
+  });
+  window.addEventListener("blur", () => {
+    state.lksPressedKeys.clear();
+    releaseLksDriverState(false);
+    releaseAccLevelInput();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      state.lksPressedKeys.clear();
+      releaseLksDriverState(false);
+      releaseAccLevelInput();
+    }
+  });
+  bindClick("clearLogBtn", () => {
     state.renderedLog = "";
     $("logBox").textContent = "显示已清空，后台日志仍保留。";
-  };
+  });
 }
 
 function bindVisualEffects() {
@@ -330,7 +685,7 @@ function bindVisualEffects() {
   const spotlight = $("spotlight");
   const hero = $("heroCard");
 
-  $("restorePath").onclick = copyProjectPath;
+  bindClick("restorePath", copyProjectPath);
 
   if (reduceMotion) return;
 
@@ -356,6 +711,7 @@ async function boot() {
   bindEvents();
   bindVisualEffects();
   await loadScenarios();
+  await loadLksParameters();
   await healthCheck(false);
   setInterval(pollLogs, LOG_POLL_MS);
   setInterval(() => loadScenarios().catch(() => {}), SCENARIO_REFRESH_MS);

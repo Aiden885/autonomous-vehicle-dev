@@ -1,0 +1,74 @@
+{
+    "name": "CARLALKSLateralOffset",
+    "componentType": "atomic-function",
+    "alias": "CARLA横向偏差",
+    "description": "读取CARLA自车相对车道中心的横向偏差",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "5f854ed8-61c0-555b-bdd3-a9167ea8187b",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "LKS最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLALKSLateralOffset_output_lateralOffset_Out",
+                    "name": "lateralOffset",
+                    "alias": "lateralOffset",
+                    "direction": "Out",
+                    "description": "横向偏差，正值表示车道中心位于自车右侧，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double CARLALKSLateralOffset(void)\n{\n    extern int carla_adapter_read_lane_tracking(\n        double *lateralOffset,\n        double *headingError,\n        int *laneId,\n        int *roadId,\n        int *valid);\n    double lateralOffset = 0.0;\n    double headingError = 0.0;\n    int laneId = 0;\n    int roadId = 0;\n    int valid = 0;\n    int rc = 0;\n    double result = 0.0;\n\n    rc = carla_adapter_read_lane_tracking(&lateralOffset, &headingError, &laneId, &roadId, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = lateralOffset;\n    }\n\n    return result;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}
