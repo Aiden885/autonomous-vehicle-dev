@@ -29,6 +29,8 @@ ACC_MIN_DISTANCE="${ACC_MIN_DISTANCE:-8.0}"
 ACC_DISTANCE_GAIN="${ACC_DISTANCE_GAIN:-0.15}"
 ACC_SPEED_GAIN="${ACC_SPEED_GAIN:-0.8}"
 ACC_ZMQ_DEBUG_LOG="${ACC_ZMQ_DEBUG_LOG:-/tmp/newaccpro3_zmq_bridge_debug.log}"
+ACC_RECORD_DURATION_SEC="${ACC_RECORD_DURATION_SEC:-180}"
+ACC_RESULTS_DIR="${ACC_RESULTS_DIR:-/tmp/newaccpro3-pangu-carla/results}"
 AUTO_START_COMMAND="${AUTO_START_COMMAND:-e}"
 BOOST_SPEED_MPS="${BOOST_SPEED_MPS:-2.0}"
 BOOST_DURATION_SEC="${BOOST_DURATION_SEC:-4.0}"
@@ -36,6 +38,7 @@ PANGU_READY_TIMEOUT_SEC="${PANGU_READY_TIMEOUT_SEC:-20}"
 PANGU_COMMAND_READY_DELAY_SEC="${PANGU_COMMAND_READY_DELAY_SEC:-2.0}"
 
 mkdir -p "${PANGU_LOG_DIR}"
+mkdir -p "${ACC_RESULTS_DIR}"
 : >"${ACC_ZMQ_DEBUG_LOG}"
 
 require_file() {
@@ -90,6 +93,7 @@ wait_pangu_process_ready() {
 require_file "${REPO_ROOT}/tools/carla_bridge/start-gaasd-carla-manual.sh"
 require_file "${REPO_ROOT}/tools/carla_bridge/boost-ego-speed.py"
 require_file "${REPO_ROOT}/tools/pangu_acc_closed_loop/keyboard_command_publisher.py"
+require_file "${REPO_ROOT}/tools/pangu_acc_closed_loop/record_acc_run.py"
 command -v docker >/dev/null 2>&1 || {
   echo "[Scenario] docker is required to run Pangu ${PANGU_DOCKER_IMAGE}" >&2
   exit 1
@@ -118,12 +122,19 @@ echo "[Scenario] starting CARLA + Bridge for newaccpro3 generated-code ACC"
   --lead-distance 25 \
   --lead-speed 2 \
   --lead-placement lane_waypoint \
-  --lead-behavior constant_velocity \
+  --lead-behavior waypoint_pid \
   --follow-spectator \
   --spectator-back 8 \
   --spectator-up 6 \
   --spectator-pitch -25 \
   --no-probe
+
+echo "[Scenario] starting ACC recorder duration=${ACC_RECORD_DURATION_SEC}s result=${ACC_RESULTS_DIR}"
+python3 "${REPO_ROOT}/tools/pangu_acc_closed_loop/record_acc_run.py" \
+  --duration "${ACC_RECORD_DURATION_SEC}" \
+  --output-dir "${ACC_RESULTS_DIR}" \
+  >"${PANGU_LOG_DIR}/acc_recorder.log" 2>&1 &
+echo "$!" >"${PANGU_LOG_DIR}/acc_recorder.pid"
 
 echo "[Scenario] starting Pangu process ${PANGU_PROCESS_NAME} via run.sh direct mode"
 ensure_local_soc_name
@@ -197,5 +208,5 @@ fi
 wait "${BOOST_PID}" || true
 
 echo "[Scenario] newaccpro3 Pangu-CARLA stack ready"
-echo "[Scenario] CARLA window should show ego following the 2m/s lead vehicle."
+echo "[Scenario] CARLA window should show ego following the waypoint-PID 2m/s lead vehicle."
 echo "[Scenario] stop from UI or run: bash ${SCENARIO_DIR}/stop.sh"

@@ -1,0 +1,58 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载待归一化角度。",
+    "alias": "输入端口结构体，承载待归一化角度。",
+    "fields": [
+      {
+        "name": "angle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "待归一化角度 (rad)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载归一化角度。",
+    "alias": "输出端口结构体，承载归一化角度。",
+    "fields": [
+      {
+        "name": "result",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "归一化到 [-pi, pi] 的角度 (rad)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

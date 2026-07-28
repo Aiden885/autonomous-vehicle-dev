@@ -25,7 +25,8 @@
       "key": "base_config",
       "value": [
         {}
-      ]
+      ],
+      "props": []
     },
     {
       "key": "other_config",
@@ -35,11 +36,13 @@
           "function_body": "double CARLAACCLeadSpeed(void)\n{\n    extern int carla_adapter_read_lead_vehicle(\n        double *leadV,\n        double *distance,\n        double *relativeSpeed,\n        double *ttc,\n        int *valid);\n    double leadV = 0.0;\n    double distance = 1000000.0;\n    double relativeSpeed = 0.0;\n    double ttc = 1000000.0;\n    int valid = 0;\n    int rc = 0;\n    double result = 0.0;\n\n    rc = carla_adapter_read_lead_vehicle(&leadV, &distance, &relativeSpeed, &ttc, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = leadV;\n    }\n\n    return result;\n}",
           "function_link_obj": ""
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "function_input_ports",
-      "value": []
+      "value": [],
+      "props": []
     },
     {
       "key": "function_output_ports",
@@ -69,7 +72,8 @@
           ],
           "isShow": true
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "module_input_ports",

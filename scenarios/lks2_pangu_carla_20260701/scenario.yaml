@@ -10,10 +10,10 @@ environment:
   pangu_image: "docker.cbdes.cn:8080/cbdes/x86:pangu-2.0.5"
 
 carla_scene:
-  map: Town05
-  ego_spawn_index: historical_town05_fixed_point
-  ego_location: [0.663731, -203.651886, 0.5]
-  reference_location: [0.663731, -203.651886, 0.5]
+  map: Town04
+  ego_spawn_index: town04_road45_lane_minus3
+  ego_location: [-511.738, 242.657, 0.5]
+  reference_location: [-511.738, 242.657, 0.5]
   initial_lateral_offset_m: 0.0
   initial_heading_error_deg: 0.0
   lead_behavior: none
@@ -38,14 +38,14 @@ gaasd_signals:
 
 expected_result:
   duration_sec: 180
-  expected_behavior: 自车从官方Town05历史固定道路点出发，以约6.0m/s目标速度覆盖连续缓弯，LKS保持车道且无碰撞。
+  expected_behavior: 自车从官方Town04 road=45/lane=-3 候选点出发，以约4.0m/s目标速度覆盖连续缓弯，LKS保持车道且无碰撞。
 
 parameters:
   - key: target_speed_mps
     label: 目标车速
     group: 场景
     env: LKS_TARGET_SPEED_MPS
-    default: 6.0
+    default: 4.0
     min: 1.0
     max: 12.0
     step: 0.5
@@ -156,7 +156,7 @@ parameters:
     label: 横向比例增益 Kp
     group: 转向控制
     env: LKS_PARAM_KP
-    default: 0.08
+    default: 0.09
     min: 0.0
     max: 1.0
     step: 0.01

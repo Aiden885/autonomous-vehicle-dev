@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+message module_empty_d3fdb632_0c78_41ab_a837_3bc336dba2dfParams {
+ string work_root = 1;
+ double timer_duration = 2;
+ double desired_distance_m = 3;
+ double max_speed_mps = 4;
+ double distance_gain = 5;
+ double speed_gain = 6;
+ bool enable_zmq_bridge = 7;
+ int32 zmq_poll_timeout_ms = 8;
+ bool zmq_control_enable = 9;
+}
+
+message module_empty_d3fdb632_0c78_41ab_a837_3bc336dba2dfConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  module_empty_d3fdb632_0c78_41ab_a837_3bc336dba2dfParams params = 2;
+}
+message ZmqBridgeModuleParams {
+    double timer_duration = 1;
+    int32 zmq_poll_timeout_ms = 2;
+    bool zmq_control_enable = 3;
+}
+
+message ZmqBridgeModuleConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    ZmqBridgeModuleParams params = 2;
+}

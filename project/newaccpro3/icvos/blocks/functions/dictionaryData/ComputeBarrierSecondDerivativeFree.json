@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载相对运动和障碍物加速度。",
+    "alias": "输入端口结构体，承载相对运动和障碍物加速度。",
+    "fields": [
+      {
+        "name": "dxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向距离 (m)。"
+      },
+      {
+        "name": "dyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向距离 (m)。"
+      },
+      {
+        "name": "vRxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向速度 (m/s)。"
+      },
+      {
+        "name": "vRyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向速度 (m/s)。"
+      },
+      {
+        "name": "axObEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物在自车坐标系下的纵向加速度 (m/s^2)。"
+      },
+      {
+        "name": "ayObEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物在自车坐标系下的横向加速度 (m/s^2)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载不含控制量的二阶导自由项。",
+    "alias": "输出端口结构体，承载不含控制量的二阶导自由项。",
+    "fields": [
+      {
+        "name": "barrierDdotFree",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "Barrier 二阶导数自由项。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

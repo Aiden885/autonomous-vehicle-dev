@@ -18,6 +18,16 @@ LEAD_DISTANCE_M="${LEAD_DISTANCE_M:-25}"
 LEAD_SPEED_MPS="${LEAD_SPEED_MPS:-2}"
 LEAD_PLACEMENT="${LEAD_PLACEMENT:-ego_forward}"
 LEAD_BEHAVIOR="${LEAD_BEHAVIOR:-traffic_manager}"
+LEAD_WAYPOINT_LOOKAHEAD_M="${LEAD_WAYPOINT_LOOKAHEAD_M:-6}"
+LEAD_WAYPOINT_STEER_KP="${LEAD_WAYPOINT_STEER_KP:-1.8}"
+LEAD_WAYPOINT_STEER_KD="${LEAD_WAYPOINT_STEER_KD:-0.08}"
+LEAD_WAYPOINT_MAX_STEER="${LEAD_WAYPOINT_MAX_STEER:-0.45}"
+LEAD_WAYPOINT_SPEED_KP="${LEAD_WAYPOINT_SPEED_KP:-0.22}"
+LEAD_WAYPOINT_SPEED_KI="${LEAD_WAYPOINT_SPEED_KI:-0.03}"
+LEAD_WAYPOINT_SPEED_KD="${LEAD_WAYPOINT_SPEED_KD:-0.02}"
+LEAD_WAYPOINT_CRUISE_THROTTLE="${LEAD_WAYPOINT_CRUISE_THROTTLE:-0.12}"
+LEAD_WAYPOINT_MAX_THROTTLE="${LEAD_WAYPOINT_MAX_THROTTLE:-0.35}"
+LEAD_WAYPOINT_MAX_BRAKE="${LEAD_WAYPOINT_MAX_BRAKE:-0.45}"
 TRAFFIC_MANAGER_PORT="${TRAFFIC_MANAGER_PORT:-8000}"
 RESTART_BRIDGE="${RESTART_BRIDGE:-1}"
 FOLLOW_SPECTATOR="1"
@@ -48,7 +58,7 @@ Options:
   --lead-distance M       Lead vehicle initial distance, default 25.
   --lead-speed MPS        Lead vehicle constant speed, default 2.
   --lead-placement MODE   ego_forward or lane_waypoint, default ego_forward.
-  --lead-behavior MODE    traffic_manager or constant_velocity, default traffic_manager.
+  --lead-behavior MODE    traffic_manager, constant_velocity, or waypoint_pid, default traffic_manager.
   --tm-port PORT          CARLA Traffic Manager port, default 8000.
   --restart-bridge        Restart Bridge before each visual test, default on.
   --reuse-bridge          Reuse existing Bridge if ports are already open.
@@ -139,6 +149,26 @@ stop_stale_watch_camera() {
     done
 }
 
+stop_stale_lead_controller() {
+    local pids
+
+    stop_pid_file_if_running "lead waypoint PID" "$LEAD_CONTROLLER_PID_FILE"
+
+    pids="$(pgrep -f "lead-waypoint-pid-controller.py" || true)"
+    if [ -z "$pids" ]; then
+        return 0
+    fi
+
+    for pid in $pids; do
+        if [ "$pid" != "$$" ]; then
+            if kill "$pid" 2>/dev/null; then
+                log "stopped stale lead waypoint PID pid=${pid}"
+                sleep 0.2
+            fi
+        fi
+    done
+}
+
 stop_stale_bridge() {
     local pids
 
@@ -176,6 +206,7 @@ stop_unhealthy_local_carla() {
     log "CARLA port ${CARLA_PORT} is occupied but the Python API is unhealthy; cleaning stale local stack"
     stop_stale_spectator_follow
     stop_stale_watch_camera
+    stop_stale_lead_controller
     stop_stale_bridge
 
     CARLA_PID_FILE="$CARLA_PID_FILE" CARLA_ROOT="$CARLA_ROOT" \
@@ -203,6 +234,34 @@ stop_unhealthy_local_carla() {
         sleep 0.5
     done
     log "stale CARLA stack stopped; port ${CARLA_PORT} is free"
+}
+
+start_lead_waypoint_pid_controller() {
+    if [ "$SPAWN_LEAD" != "1" ] || [ "$LEAD_BEHAVIOR" != "waypoint_pid" ]; then
+        return 0
+    fi
+
+    stop_stale_lead_controller
+    log "starting lead waypoint PID target_speed=${LEAD_SPEED_MPS}m/s lookahead=${LEAD_WAYPOINT_LOOKAHEAD_M}m"
+    nohup setsid "$PYTHON_BIN" "${SCRIPT_DIR}/lead-waypoint-pid-controller.py" \
+        --carla-root "$CARLA_ROOT" \
+        --host "$CARLA_HOST" \
+        --port "$CARLA_PORT" \
+        --lead-role-name gaasd_lead \
+        --target-speed-mps "$LEAD_SPEED_MPS" \
+        --lookahead-m "$LEAD_WAYPOINT_LOOKAHEAD_M" \
+        --steer-kp "$LEAD_WAYPOINT_STEER_KP" \
+        --steer-kd "$LEAD_WAYPOINT_STEER_KD" \
+        --max-steer "$LEAD_WAYPOINT_MAX_STEER" \
+        --speed-kp "$LEAD_WAYPOINT_SPEED_KP" \
+        --speed-ki "$LEAD_WAYPOINT_SPEED_KI" \
+        --speed-kd "$LEAD_WAYPOINT_SPEED_KD" \
+        --cruise-throttle "$LEAD_WAYPOINT_CRUISE_THROTTLE" \
+        --max-throttle "$LEAD_WAYPOINT_MAX_THROTTLE" \
+        --max-brake "$LEAD_WAYPOINT_MAX_BRAKE" \
+        >"$LEAD_CONTROLLER_LOG_FILE" 2>&1 </dev/null &
+    printf '%s\n' "$!" >"$LEAD_CONTROLLER_PID_FILE"
+    log "lead waypoint PID started pid=$(cat "$LEAD_CONTROLLER_PID_FILE") log=${LEAD_CONTROLLER_LOG_FILE}"
 }
 
 start_spectator_follow() {
@@ -475,6 +534,8 @@ export SPECTATOR_PID_FILE="${SPECTATOR_PID_FILE:-${LOG_DIR}/spectator.pid}"
 export SPECTATOR_LOG_FILE="${SPECTATOR_LOG_FILE:-${LOG_DIR}/spectator.log}"
 export WATCH_CAMERA_PID_FILE="${WATCH_CAMERA_PID_FILE:-${LOG_DIR}/watch-camera.pid}"
 export WATCH_CAMERA_LOG_FILE="${WATCH_CAMERA_LOG_FILE:-${LOG_DIR}/watch-camera.log}"
+export LEAD_CONTROLLER_PID_FILE="${LEAD_CONTROLLER_PID_FILE:-${LOG_DIR}/lead-waypoint-pid.pid}"
+export LEAD_CONTROLLER_LOG_FILE="${LEAD_CONTROLLER_LOG_FILE:-${LOG_DIR}/lead-waypoint-pid.log}"
 
 log "logs: ${LOG_DIR}"
 
@@ -528,6 +589,10 @@ if [ "$RESET_SCENE" = "1" ]; then
         --spectator-pitch-deg "$SPECTATOR_PITCH_DEG"
 elif [ "$SPAWN_LEAD" = "1" ]; then
     log "spawning lead vehicle distance=${LEAD_DISTANCE_M}m speed=${LEAD_SPEED_MPS}m/s placement=${LEAD_PLACEMENT} behavior=${LEAD_BEHAVIOR}"
+    SPAWN_LEAD_BEHAVIOR="$LEAD_BEHAVIOR"
+    if [ "$SPAWN_LEAD_BEHAVIOR" = "waypoint_pid" ]; then
+        SPAWN_LEAD_BEHAVIOR="constant_velocity"
+    fi
     "$PYTHON_BIN" "${SCRIPT_DIR}/spawn-lead-vehicle.py" \
         --carla-root "$CARLA_ROOT" \
         --host "$CARLA_HOST" \
@@ -537,9 +602,11 @@ elif [ "$SPAWN_LEAD" = "1" ]; then
         --distance-m "$LEAD_DISTANCE_M" \
         --speed-mps "$LEAD_SPEED_MPS" \
         --placement "$LEAD_PLACEMENT" \
-        --behavior "$LEAD_BEHAVIOR" \
+        --behavior "$SPAWN_LEAD_BEHAVIOR" \
         --traffic-manager-port "$TRAFFIC_MANAGER_PORT"
 fi
+
+start_lead_waypoint_pid_controller
 
 # Pin spectator once (blocking) before starting background follow loop.
 # set-spectator-follow.py --once does not call world.tick(); it only reads

@@ -1,0 +1,138 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度 (m/s)。"
+      },
+      {
+        "name": "leadSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车速度 (m/s)。"
+      },
+      {
+        "name": "leadDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车距离 (m)。"
+      },
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距参数 (s)。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度参数 (m/s)。"
+      },
+      {
+        "name": "enable",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "ACC对外使能。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标速度 (m/s)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "minDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "最小跟车距离 (m)。"
+      },
+      {
+        "name": "distanceGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.25,
+        "description": "距离增益系数。"
+      },
+      {
+        "name": "speedGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.4,
+        "description": "速度增益系数。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "calcTargetSpeed",
+        "category": 1,
+        "dataType": "CalcAccTargetSpeed",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

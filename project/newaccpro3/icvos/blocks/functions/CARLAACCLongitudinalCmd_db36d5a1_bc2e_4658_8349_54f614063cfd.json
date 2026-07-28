@@ -25,7 +25,8 @@
       "key": "base_config",
       "value": [
         {}
-      ]
+      ],
+      "props": []
     },
     {
       "key": "other_config",
@@ -35,7 +36,8 @@
           "function_body": "void CARLAACCLongitudinalCmd(double speed, int enable)\n{\n    extern int carla_adapter_publish_longitudinal_cmd(double targetSpeed, int enable);\n    int rc = 0;\n\n    rc = carla_adapter_publish_longitudinal_cmd(speed, enable);\n    (void)rc;\n}",
           "function_link_obj": ""
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "function_input_ports",
@@ -90,11 +92,13 @@
           ],
           "isShow": true
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "function_output_ports",
-      "value": []
+      "value": [],
+      "props": []
     },
     {
       "key": "module_input_ports",

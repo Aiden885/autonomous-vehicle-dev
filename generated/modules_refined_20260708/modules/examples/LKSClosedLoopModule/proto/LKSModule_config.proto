@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+
+message LKSModuleParams {
+    double timer_duration = 1;
+}
+
+message LksInput {
+    uint32 frame_id = 1;
+    double ego_speed_mps = 2;
+    double c0 = 3;
+    double c1 = 4;
+    double c2 = 5;
+    double c3 = 6;
+    double curvature = 7;
+    bool brake_pressed = 8;
+    double driver_steer_norm = 9;
+}
+
+message LksOutput {
+    uint32 frame_id = 1;
+    double steer_rad = 2;
+    bool control_enabled = 3;
+    bool valid = 4;
+    double preview_distance_m = 5;
+    double weighted_error_m = 6;
+}
+
+message LKSModuleConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    LKSModuleParams params = 2;
+}
+
+message LksZmqBridgeModuleParams {
+    double timer_duration = 1;
+    int32 zmq_poll_timeout_ms = 2;
+    double target_speed_mps = 3;
+    double driver_steer_max_rad = 4;
+}
+
+message LksZmqBridgeModuleConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    LksZmqBridgeModuleParams params = 2;
+}

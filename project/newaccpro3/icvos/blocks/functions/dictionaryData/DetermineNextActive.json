@@ -1,0 +1,66 @@
+{
+  "Input": {
+    "description": "下一周期控制激活状态判定模块输入端口集合。",
+    "alias": "下一周期控制激活状态判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前周期决策响应动作 Rk"
+      },
+      {
+        "name": "currentActive",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前周期控制激活状态"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "下一周期控制激活状态判定模块输出端口集合。",
+    "alias": "下一周期控制激活状态判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "nextActive",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期控制环是否激活"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "下一周期控制激活状态判定模块参数集合。",
+    "alias": "下一周期控制激活状态判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "下一周期控制激活状态判定模块状态集合。",
+    "alias": "下一周期控制激活状态判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "下一周期控制激活状态判定模块子模块集合。",
+    "alias": "下一周期控制激活状态判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

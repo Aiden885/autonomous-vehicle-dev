@@ -121,7 +121,7 @@ python3.8 tools/carla_bridge/acc-runner.py --duration-sec 20 --cruise-speed-mps 
 python3.8 tools/carla_bridge/spawn-lead-vehicle.py --replace --distance-m 25 --speed-mps 2
 ```
 
-默认前车放置方式是 `--placement ego_forward --behavior traffic_manager`，用于让前车稳定出现在 ego 正前方。需要尝试 CARLA 路网 waypoint 放置时，可使用 `--placement lane_waypoint --behavior traffic_manager`。
+默认前车放置方式是 `--placement ego_forward --behavior traffic_manager`，用于让前车稳定出现在 ego 正前方。需要更可控的可复现前车时，推荐使用 `--placement lane_waypoint --behavior waypoint_pid`：前车按 CARLA waypoint 跟踪车道，并用速度 PID 保持目标速度。
 
 ## 阶段二手动联调一键启动
 
@@ -140,6 +140,7 @@ tools/carla_bridge/start-gaasd-carla-manual.sh --no-probe
 tools/carla_bridge/start-gaasd-carla-manual.sh --lead-distance 25 --lead-speed 2
 tools/carla_bridge/start-gaasd-carla-manual.sh --lead-placement lane_waypoint --lead-behavior traffic_manager
 tools/carla_bridge/start-gaasd-carla-manual.sh --lead-placement ego_forward --lead-behavior constant_velocity
+tools/carla_bridge/start-gaasd-carla-manual.sh --lead-placement lane_waypoint --lead-behavior waypoint_pid
 tools/carla_bridge/start-gaasd-carla-manual.sh --spectator-back 8 --spectator-up 6 --spectator-pitch -25
 tools/carla_bridge/start-gaasd-carla-manual.sh --watch-camera
 tools/carla_bridge/start-gaasd-carla-manual.sh --no-lead
@@ -166,7 +167,7 @@ W 当前只向 GAASD 传输驾驶员油门指令类型，尚未实现驾驶员�
 tools/carla_bridge/start-acc-dynamic-test.sh
 ```
 
-该脚本复用 `start-gaasd-carla-manual.sh`，默认使用 `config.phase2.json`，并以 `lane_waypoint + traffic_manager` 方式尝试生成低速行驶前车。若当前地图或 spawn 点下 waypoint 放置不合适，可回退为：
+该脚本复用 `start-gaasd-carla-manual.sh`，默认使用 `config.phase2.json`。正式 ACC 可视闭环建议使用 `lane_waypoint + waypoint_pid`：先在 ego 前方车道 waypoint 生成前车，再由 `lead-waypoint-pid-controller.py` 持续输出油门、刹车和转向。若当前地图或 spawn 点下 waypoint 放置不合适，可回退为：
 
 ```bash
 LEAD_PLACEMENT=ego_forward LEAD_BEHAVIOR=traffic_manager tools/carla_bridge/start-acc-dynamic-test.sh

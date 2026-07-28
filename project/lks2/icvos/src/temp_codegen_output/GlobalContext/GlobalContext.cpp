@@ -12,7 +12,7 @@ void GlobalParams::reset() noexcept {
   lks_w1 = 0.2;
   lks_w2 = 0.3;
   lks_w3 = 0.5;
-  lks_Kp = 0.08;
+  lks_Kp = 0.09;
   lks_steerScale = 0.6;
   lks_vMin = 1.0;
   lks_driverSteerThreshold = 0.1;
@@ -37,7 +37,7 @@ GlobalParams params {
   .lks_w1 = 0.2,
   .lks_w2 = 0.3,
   .lks_w3 = 0.5,
-  .lks_Kp = 0.08,
+  .lks_Kp = 0.09,
   .lks_steerScale = 0.6,
   .lks_vMin = 1.0,
   .lks_driverSteerThreshold = 0.1,

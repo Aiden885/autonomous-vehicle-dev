@@ -1,0 +1,95 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载参考路点和自车车速。",
+    "alias": "输入端口结构体，承载参考路点和自车车速。",
+    "fields": [
+      {
+        "name": "waypoints",
+        "category": 2,
+        "dataType": "Waypoint[6]",
+        "shape": [],
+        "dataValue": {},
+        "description": "参考路点"
+      },
+      {
+        "name": "numWaypoints",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 6,
+        "description": "路点数量"
+      },
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载拟合轨迹。",
+    "alias": "输出端口结构体，承载拟合轨迹。",
+    "fields": [
+      {
+        "name": "trajectory",
+        "category": 1,
+        "dataType": "FittedTrajectory",
+        "shape": [],
+        "dataValue": {
+          "poly": {
+            "c": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0
+            }
+          },
+          "xOffset": 0.0,
+          "xScale": 1.0,
+          "refSpeed": 0.0,
+          "valid": {}
+        },
+        "description": "拟合轨迹"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本组件无配置参数。",
+    "alias": "配置参数结构体，本组件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本组件无跨周期状态。",
+    "alias": "内部状态结构体，本组件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载三次多项式拟合子模块。",
+    "alias": "子模块结构体，承载三次多项式拟合子模块。",
+    "fields": [
+      {
+        "name": "fitPoly",
+        "category": 1,
+        "dataType": "FitCubicPolynomial",
+        "shape": [],
+        "dataValue": {},
+        "description": "多项式拟合子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

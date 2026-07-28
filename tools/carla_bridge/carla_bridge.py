@@ -73,6 +73,10 @@ def default_config() -> Dict[str, Any]:
             "max_objects": 64,
             "include_vehicles": True,
             "include_walkers": False,
+            "preferred_lead_use_route_distance": True,
+            "preferred_lead_route_search_m": 150.0,
+            "preferred_lead_route_step_m": 1.0,
+            "preferred_lead_route_max_lateral_m": 8.0,
         },
         "control": {
             "max_accel_mps2": 4.0,
@@ -98,6 +102,12 @@ def default_config() -> Dict[str, Any]:
             "lane_keep_heading_kp": 0.8,
             "lane_keep_integral_limit": 2.0,
             "lane_keep_max_steer": 0.25,
+            "lane_keep_waypoint_lookahead_base_m": 6.0,
+            "lane_keep_waypoint_lookahead_gain_s": 0.2,
+            "lane_keep_waypoint_lookahead_min_m": 4.0,
+            "lane_keep_waypoint_lookahead_max_m": 10.0,
+            "lane_keep_waypoint_steer_kp": 1.8,
+            "lane_keep_waypoint_steer_kd": 0.08,
             "lane_keep_current_weight": 0.7,
             "lane_keep_lookahead_weight": 0.3,
             "lane_keep_lookahead_base_m": 8.0,
@@ -169,6 +179,14 @@ def finite(value: Any, default: float = 0.0) -> float:
 
 def clamp(value: float, lower: float, upper: float) -> float:
     return max(lower, min(upper, value))
+
+
+def normalize_angle_rad(angle_rad: float) -> float:
+    while angle_rad > math.pi:
+        angle_rad = angle_rad - 2.0 * math.pi
+    while angle_rad < -math.pi:
+        angle_rad = angle_rad + 2.0 * math.pi
+    return angle_rad
 
 
 def solve_linear_system(matrix: List[List[float]], values: List[float]) -> List[float]:
@@ -676,6 +694,122 @@ class CarlaGaasdBridge:
             "ttc_sec": ttc,
         }
 
+    def actor_by_payload(self, obj: Dict[str, Any]) -> Optional[Any]:
+        actor_id = int(obj.get("object_id", 0))
+        if actor_id <= 0 or self.world is None:
+            return None
+        try:
+            return self.world.get_actor(actor_id)
+        except Exception:
+            pass
+        try:
+            for actor in self.world.get_actors().filter("vehicle.*"):
+                if int(actor.id) == actor_id:
+                    return actor
+        except Exception:
+            return None
+        return None
+
+    def route_relative_to_actor(
+        self, ego: Dict[str, Any], obj: Dict[str, Any], actor: Any
+    ) -> Optional[Dict[str, float]]:
+        if self.ego is None or self.world is None or self.carla is None:
+            return None
+
+        obj_cfg = self.cfg.get("objects", {})
+        search_m = max(finite(obj_cfg.get("preferred_lead_route_search_m", 150.0), 150.0), 1.0)
+        step_m = clamp(finite(obj_cfg.get("preferred_lead_route_step_m", 1.0), 1.0), 0.5, 5.0)
+        max_lateral = max(
+            finite(obj_cfg.get("preferred_lead_route_max_lateral_m", 8.0), 8.0), 0.5
+        )
+
+        try:
+            carla_map = self.world.get_map()
+            lane_type = self.carla.LaneType.Driving
+            ego_transform = self.ego.get_transform()
+            lead_location = actor.get_location()
+            waypoint = carla_map.get_waypoint(
+                ego_transform.location, project_to_road=True, lane_type=lane_type
+            )
+        except Exception:
+            return None
+
+        best_distance = 1.0e9
+        best_s = 0.0
+        best_lateral = 0.0
+        best_yaw_deg = finite(ego_transform.rotation.yaw)
+        current = waypoint
+        accumulated = 0.0
+        steps = int(math.ceil(search_m / step_m))
+
+        for _index in range(steps + 1):
+            loc = current.transform.location
+            dx = finite(lead_location.x) - finite(loc.x)
+            dy = finite(lead_location.y) - finite(loc.y)
+            distance = math.hypot(dx, dy)
+            if distance < best_distance:
+                yaw_deg = finite(current.transform.rotation.yaw)
+                yaw_rad = math.radians(yaw_deg)
+                right_x = -math.sin(yaw_rad)
+                right_y = math.cos(yaw_rad)
+                best_distance = distance
+                best_s = accumulated
+                best_lateral = dx * right_x + dy * right_y
+                best_yaw_deg = yaw_deg
+
+            candidates = current.next(step_m)
+            if not candidates:
+                break
+            current_yaw = finite(current.transform.rotation.yaw)
+
+            def candidate_score(candidate: Any) -> float:
+                c_loc = candidate.transform.location
+                c_dx = finite(lead_location.x) - finite(c_loc.x)
+                c_dy = finite(lead_location.y) - finite(c_loc.y)
+                c_dist = math.hypot(c_dx, c_dy)
+                yaw_delta = abs(
+                    normalize_angle_rad(
+                        math.radians(finite(candidate.transform.rotation.yaw) - current_yaw)
+                    )
+                )
+                return c_dist + 3.0 * yaw_delta
+
+            current = min(candidates, key=candidate_score)
+            accumulated += step_m
+
+        if best_distance > max_lateral:
+            return None
+
+        ego_half = finite(ego["vehicle"]["length_m"]) * 0.5
+        obj_half = finite(obj["dimension"]["length_m"]) * 0.5
+        longitudinal = max(best_s, 0.0)
+        clearance = longitudinal - ego_half - obj_half
+
+        yaw_rad = math.radians(best_yaw_deg)
+        forward_x = math.cos(yaw_rad)
+        forward_y = math.sin(yaw_rad)
+        try:
+            ego_vel = self.ego.get_velocity()
+            lead_vel = actor.get_velocity()
+            ego_longitudinal_speed = finite(ego_vel.x) * forward_x + finite(ego_vel.y) * forward_y
+            lead_longitudinal_speed = finite(lead_vel.x) * forward_x + finite(lead_vel.y) * forward_y
+            rel_speed = lead_longitudinal_speed - ego_longitudinal_speed
+        except Exception:
+            rel_speed = finite(obj["velocity"]["speed_mps"]) - finite(ego["velocity"]["speed_mps"])
+
+        ttc = 1.0e6
+        if rel_speed < -1.0e-3:
+            ttc = max(0.0, clearance) / max(-rel_speed, 1.0e-6)
+
+        return {
+            "longitudinal_distance_m": longitudinal,
+            "lateral_distance_m": best_lateral,
+            "clearance_m": clearance,
+            "relative_speed_mps": rel_speed,
+            "ttc_sec": ttc,
+            "route_lateral_error_m": best_distance,
+        }
+
     def publish_lead_vehicle(self, ego: Dict[str, Any], objects: List[Dict[str, Any]], snapshot: Any) -> None:
         lead = None
         lead_rel = None
@@ -684,21 +818,30 @@ class CarlaGaasdBridge:
         max_lateral = float(obj_cfg.get("lead_max_lateral_m", 3.5))
         preferred_role = str(obj_cfg.get("preferred_lead_role_name", ""))
         preferred_max_lateral = float(obj_cfg.get("preferred_lead_max_lateral_m", max_lateral))
+        use_route_distance = bool(obj_cfg.get("preferred_lead_use_route_distance", True))
         lead_key = None
         for obj in objects:
             rel = obj["relative_to_ego"]
+            is_preferred = bool(preferred_role) and obj.get("role_name") == preferred_role
+            route_rel = None
+            if is_preferred and use_route_distance:
+                route_rel = self.route_relative_to_actor(ego, obj, self.actor_by_payload(obj))
+            if route_rel is not None:
+                rel = route_rel
             if rel["longitudinal_distance_m"] <= 0.0:
                 continue
-            is_preferred = bool(preferred_role) and obj.get("role_name") == preferred_role
             lateral_limit = preferred_max_lateral if is_preferred else max_lateral
-            if abs(rel["lateral_distance_m"]) > lateral_limit:
+            if abs(rel["lateral_distance_m"]) > lateral_limit and route_rel is None:
                 continue
             candidate_key = (0 if is_preferred else 1, rel["longitudinal_distance_m"])
             if lead_key is None or candidate_key < lead_key:
                 lead = obj
                 lead_rel = rel
                 lead_key = candidate_key
-                lead_rule = "preferred_role_nearest_front" if is_preferred else "same_lane_nearest_front"
+                if is_preferred and route_rel is not None:
+                    lead_rule = "preferred_role_route_nearest_front"
+                else:
+                    lead_rule = "preferred_role_nearest_front" if is_preferred else "same_lane_nearest_front"
 
         if lead is None or lead_rel is None:
             payload = {
@@ -1054,6 +1197,8 @@ class CarlaGaasdBridge:
             return 0.0
         offset_error = finite(lane_tracking["lateral_offset_m"])
         lane_keep_mode = str(ctrl_cfg.get("lane_keep_mode", "legacy"))
+        if lane_keep_mode == "waypoint_pid":
+            return self.compute_waypoint_lane_keep_steer_norm()
         if lane_keep_mode == "lookahead_pid":
             lookahead_error = self.lane_lookahead_offset_error()
             current_weight = finite(ctrl_cfg.get("lane_keep_current_weight", 0.7), 0.7)
@@ -1088,6 +1233,71 @@ class CarlaGaasdBridge:
             heading_error = finite(lane_tracking["heading_error_rad"])
             steer += finite(ctrl_cfg.get("lane_keep_heading_kp", 0.8)) * heading_error
         max_steer = clamp(finite(ctrl_cfg.get("lane_keep_max_steer", 0.25)), 0.0, 1.0)
+        return clamp(steer, -max_steer, max_steer)
+
+    def select_forward_waypoint(self, candidates: List[Any], current_yaw_deg: float) -> Optional[Any]:
+        if not candidates:
+            return None
+        current_yaw_rad = math.radians(current_yaw_deg)
+        best = candidates[0]
+        best_error = float("inf")
+        for candidate in candidates:
+            candidate_yaw_rad = math.radians(finite(candidate.transform.rotation.yaw))
+            error = abs(normalize_angle_rad(candidate_yaw_rad - current_yaw_rad))
+            if error < best_error:
+                best = candidate
+                best_error = error
+        return best
+
+    def compute_waypoint_lane_keep_steer_norm(self) -> float:
+        if self.ego is None or self.world is None or self.carla is None:
+            return 0.0
+
+        ctrl_cfg = self.cfg["control"]
+        transform = self.ego.get_transform()
+        speed_mps = speed_2d(self.ego.get_velocity())
+        lookahead = (
+            finite(ctrl_cfg.get("lane_keep_waypoint_lookahead_base_m", 6.0), 6.0)
+            + finite(ctrl_cfg.get("lane_keep_waypoint_lookahead_gain_s", 0.2), 0.2) * speed_mps
+        )
+        lookahead = clamp(
+            lookahead,
+            finite(ctrl_cfg.get("lane_keep_waypoint_lookahead_min_m", 4.0), 4.0),
+            finite(ctrl_cfg.get("lane_keep_waypoint_lookahead_max_m", 10.0), 10.0),
+        )
+
+        waypoint = self.world.get_map().get_waypoint(
+            transform.location,
+            project_to_road=True,
+            lane_type=self.carla.LaneType.Driving,
+        )
+        if waypoint is None:
+            return 0.0
+
+        target = self.select_forward_waypoint(waypoint.next(lookahead), finite(transform.rotation.yaw))
+        if target is None:
+            return 0.0
+
+        target_location = target.transform.location
+        dx = finite(target_location.x) - finite(transform.location.x)
+        dy = finite(target_location.y) - finite(transform.location.y)
+        target_angle = math.atan2(dy, dx)
+        yaw_rad = math.radians(finite(transform.rotation.yaw))
+        heading_error = normalize_angle_rad(target_angle - yaw_rad)
+
+        now = time.monotonic()
+        dt = now - self.lane_keep_prev_time if self.lane_keep_prev_time > 0.0 else 0.05
+        if dt <= 1.0e-6 or dt > 1.0:
+            dt = 0.05
+        derivative = (heading_error - self.lane_keep_prev_error) / dt
+        self.lane_keep_prev_error = heading_error
+        self.lane_keep_prev_time = now
+
+        steer = (
+            finite(ctrl_cfg.get("lane_keep_waypoint_steer_kp", 1.8), 1.8) * heading_error
+            + finite(ctrl_cfg.get("lane_keep_waypoint_steer_kd", 0.08), 0.08) * derivative
+        )
+        max_steer = clamp(finite(ctrl_cfg.get("lane_keep_max_steer", 0.45), 0.45), 0.0, 1.0)
         return clamp(steer, -max_steer, max_steer)
 
     def lane_lookahead_offset_error(self) -> float:

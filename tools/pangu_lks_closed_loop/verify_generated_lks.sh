@@ -27,7 +27,7 @@ int main() {
             << " enabled=" << output.controlEnabled << std::endl;
   const bool normal_ok = std::abs(output.previewDistance - 7.5) < 1e-6 &&
                          std::abs(output.weightedError - 0.8) < 1e-6 &&
-                         std::abs(output.lksSteerRad - 0.0384) < 1e-6 &&
+                         std::abs(output.lksSteerRad - 0.0432) < 1e-6 &&
                          output.controlEnabled == 1.0;
 
   input.driverSteerNorm = 0.3;

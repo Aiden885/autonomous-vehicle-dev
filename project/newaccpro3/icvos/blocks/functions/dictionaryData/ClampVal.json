@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "数值限幅模块输入端口集合。",
+    "alias": "数值限幅模块输入端口集合。",
+    "fields": [
+      {
+        "name": "sourceValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "待限幅输入数值"
+      },
+      {
+        "name": "minValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最小允许值"
+      },
+      {
+        "name": "maxValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最大允许值"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "数值限幅模块输出端口集合。",
+    "alias": "数值限幅模块输出端口集合。",
+    "fields": [
+      {
+        "name": "limitedValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "限幅后的输出数值"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "数值限幅模块参数集合。",
+    "alias": "数值限幅模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "数值限幅模块状态集合。",
+    "alias": "数值限幅模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "数值限幅模块子模块集合。",
+    "alias": "数值限幅模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

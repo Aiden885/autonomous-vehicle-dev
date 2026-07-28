@@ -6,7 +6,655 @@
 
 ---
 
-## 当前状态（2026-07-02 更新）
+## 当前状态（2026-07-27 更新）
+
+**GAASD `20260711_2` 双版本安全更新**：
+
+- 更新包：
+
+```text
+/home/aiden/文档/temp/GAASD_SETUP_20260711_2.tar.gz
+SHA256: 0c462e79812b2c269df56dea5f864a43bebcebde9bee1b5bf7941f5af3efe0eb
+```
+
+- 已使用包内官方 `install.sh` 更新系统版前端，并用同一内层前端负载更新隔离版：
+
+```text
+系统版: /opt/gaasd
+入口:   /usr/bin/gaasd -> /opt/gaasd/gaasd
+
+隔离版: /home/aiden/gaasd_versions/gaasd-2.7.0.5/app
+入口:   /home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+- 两个安装目录与安装包前端负载逐文件比对均为零差异；`ldd` 未发现缺失动态库，
+  两处 `chrome-sandbox` 均保持 `root:root 4755`。
+- 两套后端和用户数据未互相覆盖，仍分别使用：
+
+```text
+系统版后端: /home/aiden/gaasd_server
+隔离版后端: /home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server
+隔离版配置: /home/aiden/gaasd_versions/gaasd-2.7.0.5/home/.config/GAASD
+```
+
+- 新版不再接受旧启动脚本显式传入的 `--user-data-dir` 参数。已从隔离版启动脚本删除该参数，
+  继续通过独立 `HOME` 和 `XDG_CONFIG_HOME/XDG_CACHE_HOME/XDG_DATA_HOME` 保持完整隔离。
+- 系统版和隔离版均已完成真实 GUI 冒烟测试：主进程、zygote、GPU、network、renderer 进程
+  正常保持运行，数据库和后端路由正常初始化；测试实例完成后已关闭。
+- IDE/Codex 终端可能注入 `ELECTRON_RUN_AS_NODE=1`，直接执行 Electron 二进制时会表现为立即退出。
+  隔离版启动脚本已主动 `unset ELECTRON_RUN_AS_NODE`；桌面图标启动不受该 IDE 环境变量影响。
+- 更新前回滚副本：
+
+```text
+系统版: /opt/gaasd.rollback-before-20260711-2-20260727_155903
+隔离版: /home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/gui_before_20260711_2_20260727_155903/app
+清单:   /home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/gui_before_20260711_2_20260727_155903/update_manifest.txt
+```
+
+**newaccpro3 手动画布重构与数据库修改基线**：
+
+- 已在 `project/newaccpro3` 的 `MainFlow` 下建立清晰的 `Decision / Control` 两层结构。
+  `Control` 内部当前实现的纵向控制关系为：
+
+```text
+desiredDistance = max(minDistance, egoV * timeGap)
+distanceError = distance - desiredDistance
+relativeSpeed = leadV - egoV
+rawTargetSpeed = leadV + kDist * distanceError + kSpeed * relativeSpeed
+targetSpeed = min(maxSpeed, max(0, rawTargetSpeed)) * enable
+```
+
+- 顶层原有的五个观察输出 `valid / timeGap / maxSpeed / decision / systemState`
+  按当前要求继续保留，暂未删除或改变语义。
+- 已将顶层重复的旧控制计算链清理掉，并完成 `MainFlow` 重新排布；正式算法计算集中在
+  `Control` 子系统内。
+- 已用用户从当前组件库新拖入的示波器替换旧示波器，并迁移四条观测线：
+
+```text
+Control.targetSpeed -> scope.input1
+egoV                -> scope.input2
+leadV               -> scope.input3
+distance            -> scope.input4
+```
+
+- 本次示波器问题的根因不是连线，而是组件代际不一致：旧示波器为
+  `version=1.0.6, isCustom=1`，当前新示波器为 `version=1.1.7, isCustom=0`。
+  旧实例仍能显示在画布上，但不能可靠打开新版属性配置面板；新实例可以正常配置
+  `inputNumber / simulateStep / simulateTotalTime`。
+- 修改前工程备份：
+
+```text
+/home/aiden/文档/Modularization_backups/newaccpro3_before_control_20260727_105735
+/home/aiden/文档/Modularization_backups/newaccpro3_before_mainflow_20260727_110853
+/home/aiden/文档/Modularization_backups/newaccpro3_before_scope_swap_20260727_111930
+/home/aiden/文档/Modularization_backups/newaccpro3_before_decision_refactor_20260727_1725
+```
+
+**newaccpro3 `Decision` 内部分层重构**：
+
+- 真值表默认动作已由 `R8/y=8` 改为 `R0/y=0`。`R0` 表示无新动作并保持当前状态；
+  `R8` 保留为进入待命、退出当前控制的响应。
+- 原 `Decision` 同层包含 66 个节点和 78 条连线，状态识别、决策、使能写回、时距更新和
+  限速更新混排。现按物理职责拆为四个非空子模块：
+
+```text
+StateClassifier
+ControlStateUpdate
+TimeGapUpdate
+MaxSpeedUpdate
+```
+
+- 主真值表没有额外套空壳组件，仅在 `Decision` 顶层重命名为 `DecisionTable`；无连线的
+  `真值表_1` 已删除。
+- `Decision` 的局部参数和局部状态仍由原层级的 `read-local-param / read-local-state /
+  write-local-state` 访问，值通过子模块端口传递，没有改变状态作用域和读写时序。
+- 各决策比较放入实际使用它的模块：R1/R2 属于 `MaxSpeedUpdate`，R3/R4 属于
+  `TimeGapUpdate`，R5/R6 和 Cmd6/Cmd7 属于 `ControlStateUpdate`。
+- 已新增可复现脚本 `tools/refactor_newaccpro3_decision.py`。脚本保留原基础组件 ID，迁移
+  `parentId`，并为跨层信号建立明确的输入输出端口。
+- 数据库验证结果：SQLite 完整性、连接端点、单输入唯一驱动、子系统边界、组合环和节点重叠
+  全部通过；把四个子模块边界展平后得到的 78 条逻辑连线与修改前逐条完全一致；
+  `cbdes.db` 与 `temp.db` SHA256 均为
+  `ba85577b1a446cf0e0faa3cfdbcc5806656a2400e01322a97dd6a19b991ba96a`。
+- 数据库验证不替代 GUI 和代码生成验证。下一步需重新打开 `newaccpro3`，逐级进入四个子模块，
+  点击边界端口和真值表属性，并重新生成一次代码。
+
+**同类组件兼容风险审计**：
+
+- 当前 GAASD 组件库数据库：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/.gaasd/gaasd.db
+```
+
+- 当前库中的 `input / output / read-local-param / read-local-state /
+  write-local-state / constant / oscilloscope / multiply / subtract / add /
+  fmax / fmin / truth-table` 均已有 `1.1.7, isCustom=0` 标准版本。
+- 端口数量不是判断组件新旧版本的依据。当前 `add` 的
+  `base_config.inputNumber` 是可配置属性，库模板默认值为 2，但实例可以配置为三个或更多输入；
+  当前 `RawTargetSpeed` 使用三输入 `add` 本身是合理设计。`multiply` 和示波器也具有可配置
+  输入数量，必须区分“组件版本元数据”和“实例属性配置”。
+- `Control` 子系统共 22 个实例，其中 11 个边界或父级实例已经是当前标准版本，
+  另外 11 个计算实例仍为 `1.0.6, isCustom=1`。涉及 `constant / multiply /
+  subtract / add / fmax / fmin`，存在与示波器相似的属性面板或代码生成兼容风险，
+  但当前不能据此直接判定其计算逻辑错误。
+- `Decision` 及其全部后代共 66 个实例，目前均为 `1.0.6, isCustom=1`，包含输入输出、
+  参数和状态读写、逻辑比较、数学运算及真值表。该部分必须分阶段迁移，不能整体替换。
+- 不能只把数据库里的 `version/isCustom` 改成新值来“升级”组件。新版组件的端口 UUID、
+  `extensionProps`、属性结构和动态端口生成方式可能已经变化，这样修改会产生表面版本正确、
+  实际属性面板或代码生成仍错误的伪升级。
+- 以下动态或可配置组件在修改前必须先读取当前组件库的 `base_config`、端口定义和动态端口规则；
+  可以由用户在当前 GAASD 界面中创建并配置，也可以在完全掌握当前属性结构后由数据库脚本构造，
+  但不能从不了解配置语义的旧实例盲目复制：
+
+```text
+oscilloscope
+可变输入数量的 add 等运算组件
+truth-table
+input / output
+read-local-param
+read-local-state / write-local-state
+constant
+```
+
+- `RawTargetSpeed` 应继续使用一个三输入 `add` 完成
+  `leadV + distanceFeedback + speedFeedback`。如需迁移到当前版本，应把新版 `add` 的
+  `inputNumber` 配置为 3 后再迁移连线，而不是拆成两个二输入加法组件。
+- `truth-table` 替换时必须完整保留条件、动作、场景矩阵和端口对应关系；状态组件替换时必须
+  保留 `operateKeys`、默认值、类型以及读写时序。因此二者安排在迁移后段处理。
+
+**基础组件能力与画布设计原则**：
+
+- 设计前先确认组件的可配置属性，不再只根据画布外观、默认端口数或旧工程用法推断能力。
+  当前已确认：
+
+```text
+add / multiply: inputNumber、isReal
+oscilloscope: inputNumber、simulateStep、simulateTotalTime
+constant: name、dataType、dataValue
+input / output: name、dataType、category、shape
+read/write local param/state: operateKeys
+truth-table: conditions、actions、scenarios
+```
+
+- 对同一层级的纯加法项，优先使用一个多输入 `add` 一次完成求和；只有需要中间结果被其他模块
+  复用、需要单独观测，或计算顺序具有明确物理意义时，才拆成多个加法模块。
+- 同理，可变输入运算组件应优先按公式的自然结构配置，避免为了沿用默认二输入端口而制造
+  不必要的节点和连线，降低画布可读性。
+- 每次首次使用一种基础组件前，应记录其：数学语义、可配置字段、输入输出端口生成规则、
+  数据类型限制、默认值、属性面板行为和代码生成形式。组件包更新后重新抽查这些信息。
+- 版本兼容判断应综合比较 `originId / version / isCustom / properties / extensionProps /
+  端口 UUID 与代码生成结果`，不能把输入端口数量作为单独判据。
+
+**手动画布经验沉淀与自动审计工具**：
+
+- 已将本次 `newaccpro3` 成功分层经验整理为长期知识库，明确区分稳定设计原则和随 GAASD
+  版本变化的实现细节：
+
+```text
+docs/GAASD_手动画布构建知识库与复用流程.md
+docs/templates/GAASD_画布修改任务模板.md
+```
+
+- 新增通用只读工具 `tools/gaasd_canvas_tool.py`，支持：
+
+```text
+audit       检查数据库完整性、端点、子系统边界、单输入唯一驱动、组合环、布局、动态端口、
+            参数/状态绑定、真值表和 cbdes/temp 一致性
+snapshot    在 GAASD 退出后复制可恢复的完整工程快照，并写入环境和审计清单
+catalog     从当前 gaasd.db 导出核心基础组件模板
+fingerprint 保存前端构建号、组件库哈希、组件版本和工程数据库哈希
+compare     将更新后的环境与既有指纹逐项比较
+```
+
+- 工具不会自动修改画布；具体重构仍使用针对单一工程、逐条声明迁移关系的专用脚本。这样既能
+  复用检查能力，又不会因为 GAASD 更新导致通用修改脚本误接端口。
+- 当前环境事实已经更新：系统版和隔离版前端构建号均为 `27.1.3`，当前隔离版组件库核心模板
+  已为 `1.2.0`。`newaccpro3` 成功画布仍混用 `1.0.6/1.1.7` 实例；这属于需要记录的模板漂移，
+  不能通过直接修改 `version/isCustom` 字段解决。
+- 已保存当前基线：
+
+```text
+docs/gaasd_canvas_baselines/20260728_newaccpro3_environment.json
+docs/gaasd_canvas_baselines/20260728_newaccpro3_audit.json
+docs/gaasd_canvas_baselines/20260728_core_component_catalog.md
+```
+
+- `newaccpro3` 通用审计结果为 `PASS`：131 个组件、147 条连线、0 errors、0 warnings；
+  `cbdes.db/temp.db` 哈希仍为
+  `ba85577b1a446cf0e0faa3cfdbcc5806656a2400e01322a97dd6a19b991ba96a`。
+- `lks2` 通用审计也为 `PASS`：0 errors，保留 1 条旧实例端口元数据警告，后续进行 LKS
+  重构时再结合当前组件模板处理，不在本次任务中改动。
+- 当前 GAASD 仍在运行，因此没有强制制作重构后的完整工程快照；工具已验证会拒绝运行中的快照，
+  且不会生成半成品目录。GAASD 退出后应执行：
+
+```bash
+python3 tools/gaasd_canvas_tool.py snapshot \
+  project/newaccpro3 \
+  --label decision_refactor_success
+```
+
+- 后续画布构建固定采用以下顺序：冻结公式/接口/参数/状态 -> 环境指纹 -> 完整快照 -> 当前 GUI
+  创建高风险动态组件 -> 按物理职责增量构建 -> 通用结构审计 -> GUI 属性检查 -> 生成代码/编译 ->
+  固定输入与 CARLA 闭环 -> 保存成功基线。
+
+**允许直接修改 GAASD 画布数据库的范围与方法（当前版本暂行）**：
+
+1. 修改前完全退出 GAASD，确认没有进程继续写工程数据库，并整目录备份目标工程。
+2. 以 `project/<工程>/data/cbdes.db` 为持久化画布事实源；完成修改后同步覆盖
+   `data/temp.db`。`runtimeCanvas.db` 属于运行期数据，不能在未核对用途时盲目覆盖。
+3. 仅移动、改显示名或迁移已有连线时，保留组件 `id` 和端口 UUID；连接关系只修改
+   `project_connection` 的 `source/target/parentId`。
+4. 新建或替换组件时，不能凭外观复制旧实例。应先从当前 GAASD 组件库确认组件能力和属性结构；
+   对尚未掌握动态端口规则的组件，优先让用户在画布中拖入并配置好，再由脚本处理布局和接线。
+5. 删除节点前先查询所有入边、出边和子节点；只删除确认迁移完成的目标，禁止按名称模糊删除。
+6. 每次修改后至少执行：SQLite `integrity_check`、连接端点存在性检查、同一输入端口重复连接检查、
+   子系统边界检查、组合环检查、节点重叠检查，以及 `cbdes.db/temp.db` 哈希一致性检查。
+7. 数据库检查通过只代表结构完整，不代表 GAASD 属性面板和代码生成一定可用；仍需重新打开工程，
+   逐级进入画布、点击关键组件属性，并执行一次生成代码验证。
+8. 若界面中新拖入的同类组件与旧实例在版本、`isCustom`、端口或属性结构上不同，默认以新实例为准，
+   不再从旧实例克隆新模块。
+
+> 上述组件版本、数据库事实源和可修改边界是针对当前 GAASD 2.7.0.5 环境形成的暂行规则。
+> GAASD 前端、组件包、扫描器或代码生成器更新后，应先做小样本对比，再更新本节标准，不能把本节
+> 视为永久不变的格式规范。
+
+**下一步建议顺序**：
+
+1. 先逐类核对 `Control` 内 11 个旧版计算实例的当前组件属性；迁移时保持现有公式和端口语义，
+   `RawTargetSpeed` 仍采用单个三输入 `add`，不拆分成多个加法节点。
+2. 完成 `Control` 固定输入计算复核和一次代码生成检查后，再处理 `Decision`。
+3. `Decision` 按“边界输入输出与参数状态 -> 普通逻辑/数学块 -> 真值表”的顺序逐批迁移，
+   每批都重新打开属性面板并生成代码，避免一次迁移后无法定位问题。
+
+---
+
+## 当前状态（2026-07-22 更新）
+
+**ACC/LKS 回归手动画布正向搭建和闭环测试**：
+
+- 重要汇报阶段结束后，正式构建主线调整为：ACC 和 LKS 算法内部以
+  GAASD 基础组件手动搭建的画布为主，暂不再以 C++ 源码扫描自动生成画布为正式构建入口。
+- 手动画布基线确定为：
+
+```text
+ACC: project/newaccpro3
+LKS: project/lks2
+```
+
+- 源码扫描工程 `project/demo1`、`lks_demo` 和
+  `generated/modules_refined_20260708` 仅保留为层级、公式、命名和边界端口参考，
+  不再作为手动画布内部算法的导入来源。
+- 边界接口继续复用已确认的最新契约：
+  ACC 输入 `egoV/leadV/distance/commandType`，输出 `targetSpeed/enable`；
+  LKS 输入 `egoV/c0/c1/c2/c3/curvature/brakePressed/driverSteerNorm`，
+  输出 `steerRad/controlEnabled`。
+- CARLA/Bridge 协议字段、Pangu 边界端口和手动画布内部端口统一使用上述简短名称，
+  不再设置二次别名；单位保存在接口元数据中。
+- 手动搭建不等于绕过代码生成。后续仍需验证：
+
+```text
+手动画布 -> GAASD 生成代码 -> Pangu 编译运行 -> CARLA 闭环
+```
+
+- 已新增当前状态与四周工作计划：
+
+```text
+/home/aiden/文档/Modularization/docs/GAASD_ACC_LKS_手动画布恢复与四周工作计划.md
+```
+
+- 现有手动画布的核心功能链基本具备，但层级结构不够清晰，模块、端口、参数和状态命名仍需按物理含义统一整理。
+- ACC 和 LKS 是独立工程，重构后的画布模块名不使用 `Acc/Lks` 前缀；顶层统一使用
+  `VehicleInputChannel / PerceptionInputChannel / MainFlow / Decision / Control`，内部模块按具体物理功能命名。
+- 四周计划按周组织，不列具体日期：第 1 周恢复基线并完成架构和命名设计，第 2 周重构 ACC 手动画布，
+  第 3 周重构 LKS 手动画布，第 4 周集中处理生成代码、Pangu/CARLA 联调、数据复测和工程快照。
+- 当前尚未复制或修改正式画布工程；待计划文档审核后再执行工程副本创建和画布接线。
+
+---
+
+## 当前状态（2026-07-10 更新）
+
+**lks_demo 工程打包（2026-07-10）**：
+
+- 已将当前 `lks_demo` GAASD 工程按原目录结构直接打包，未额外添加 README 或说明文件：
+
+```text
+/home/aiden/文档/Modularization/deliverables/lks_demo_20260710.zip
+```
+
+- 包内保留 `lks_demo/project.json`、`lks_demo/data/cbdes.db`、`lks_demo/data/temp.db`
+  和 `lks_demo/icvos/` 等工程结构，解压后应可作为 `lks_demo` 工程目录在其他已安装
+  GAASD 的电脑上打开。
+
+**demo1 扫描画布结构说明（2026-07-10）**：
+
+- 已解析 `project/demo1/data/cbdes.db` 中的 GAASD 画布组件树和连线结构，并结合扫描源码缓存
+  `acc_input_acc_target_speed_c395800a` 核对 ACC 示例工程的真实执行逻辑。
+- 已新增说明文档：
+
+```text
+/home/aiden/文档/Modularization/docs/demo1_扫描画布结构说明.md
+```
+
+- 文档按 `lks_demo_扫描画布结构说明.md` 的形式说明 `demo1`：
+  `ACCModule` 输入/输出通道、`AccTargetSpeed` 算法入口、`AccDecisionStage`
+  决策状态管理、`AccCruiseSettingStage` 巡航设定值管理、`AccTargetSpeedStage`
+  目标速度门控计算，以及 `DetermineAccSystemState`、`EvaluateAccDecision`、
+  `DetermineAccEnable`、`SelectAccLastDecision`、`InitializeAccMemory`、
+  `DetermineNextTimeGap`、`DetermineNextMaxSpeed`、`CalcAccTargetSpeed` 等子模块功能。
+- 已根据 `demo1` 工程真实决策结构更新 `/home/aiden/文档/acc_lks.pptx` 第 4 页：
+  将 ACC 决策页改为 `AccDecisionStage`，展示 `DetermineAccSystemState`、
+  `EvaluateAccDecision`、`DetermineAccEnable`、`SelectAccLastDecision`
+  四个内部子模块，以及 `controlEnabled/hasHistory/lastDecision` 状态写回关系。
+- 已同步重写 `acc_lks.pptx` 全部 9 页备注，使备注内容与当前页面结构、公式和验证状态一致。
+- 已重排 `/home/aiden/文档/acc_lks.pptx` 第 7 页 LKS 决策页：
+  将原简单流程图改为“输入与阈值 / 三类安全判断 / 使能逻辑 / 输出门控”四区块结构，
+  突出 `controlEnabled = speedReady && !brakePressed && !driverOverride` 的门控含义。
+- 已补充 `demo1_扫描画布结构说明.md` 中 ACC 目标速度核心计算细节：
+  解释 `safeLeadDistance`、`desiredDistance`、`distanceError`、`relativeSpeed`、
+  `rawTargetSpeed`、`targetSpeed` 的物理含义，以及为什么源码中的 `max/clamp/条件选择`
+  在 GAASD 画布中会展开成较多基础节点。
+- 已补充 `lks_demo_扫描画布结构说明.md` 中 LKS 四个核心子模块的详细讲解：
+  控制使能判断、远预瞄距离计算、三点预瞄误差加权、方向盘转角命令计算，并说明每帧重新计算的原因。
+- 已导出两个 PDF 版本，方便汇报或离线查看：
+
+```text
+/home/aiden/文档/Modularization/docs/demo1_扫描画布结构说明.pdf
+/home/aiden/文档/Modularization/docs/lks_demo_扫描画布结构说明.pdf
+```
+
+**系统旧版 GAASD 更新（2026-07-10）**：
+
+- 已使用安装包更新系统旧版 GAASD：
+
+```text
+/home/aiden/文档/temp/GAASD_SETUP_20260707_1.tar.gz
+```
+
+- 更新目标为系统全局旧版路径：
+
+```text
+/opt/gaasd
+/usr/bin/gaasd -> /opt/gaasd/gaasd
+```
+
+- 安装前曾临时备份旧 `/opt/gaasd`，用户确认旧版无需保留后已删除：
+
+```text
+/home/aiden/gaasd_versions/old_opt_gaasd_backup_20260710_101603
+```
+
+- 执行方式：先解包到 `/tmp/gaasd_setup_20260707_1_inspect` 检查 `install.sh`，确认脚本只会更新
+  `/opt/gaasd`、`/usr/bin/gaasd`、系统桌面入口和 `/home/aiden/.setup_info`；随后执行：
+
+```bash
+sudo -n bash /tmp/gaasd_setup_20260707_1_inspect/install.sh gaasd
+```
+
+- 安装后校验结果：
+  - `/usr/bin/gaasd` 已指向 `/opt/gaasd/gaasd`。
+  - `/opt/gaasd/chrome-sandbox` 权限为 `root:root` + `4755`。
+  - `ldd /opt/gaasd/gaasd` 未发现缺失动态库。
+  - `/home/aiden/.setup_info` 记录为 `GAASD2.7.0.5:/opt/gaasd`。
+  - `/opt/gaasd/gaasd` 与隔离新版 `/home/aiden/gaasd_versions/gaasd-2.7.0.5/app/gaasd`
+    SHA-256 一致：`723e82279257afe8943fb188c00e4222ed6050dd5f5adfddd572ab16206ac45c`。
+- 隔离新版目录未被安装脚本覆盖：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5
+```
+
+- 注意：该安装包内部 `/opt/gaasd/version` 文件仍显示 `27.1.3`，但安装脚本和安装记录使用
+  `2.7.0.5`；这是包内版本文件和发布版本号不一致的问题，不影响本次旧版路径更新结论。
+
+---
+
+## 当前状态（2026-07-09 更新）
+
+**ACC/LKS 汇报 PPT 更新（2026-07-09）**：
+
+- 已按 `/data/aiden/文档/模板.pptx` 的当前单页模板样式，重新整理并覆盖生成：
+
+```text
+/data/aiden/文档/acc_lks.pptx
+```
+
+- 2026-07-09 追加修改：将正文和备注中的公式从代码式表达改为更学术的数学表达：
+  ACC 使用 `d_des(t)`、`e_d(t)`、`Δv(t)`、`sat_[0,v_max](·)`、`χ_ACC(t)`；
+  LKS 使用指示函数 `I_v/I_b/I_δ`、远预瞄距离 `L(t)`、三次车道多项式误差
+  `e_i(t)`、加权误差 `e_w(t)`、横向加速度限幅 `δ_lim(t)` 和最终转角
+  `δ_LKS(t)`。
+- 2026-07-09 继续增强备注页：第 4、5、7、8、9 页备注已补充每个符号的物理含义、
+  单位、公式作用和上下游关系，便于汇报时直接解释 ACC 决策、ACC 控制、LKS 使能、
+  LKS 三点预瞄和 LKS 转向限幅。
+- 2026-07-09 完成公式符号规范化落地：正文和备注中已将 `k_d` 替换为车距误差增益
+  `k_s`，将 `v_ACC*` 替换为期望速度 `v_des`，将 `χ_ACC/χ_LKS` 替换为
+  指示函数 `I_ACC/I_LKS`，将 LKS 预瞄距离写为 `L_p`，预瞄时间系数写为
+  `T_p`，轴距写为 `l_wb`。已抽取校验确认旧符号 `k_d/v_ACC/χ_/L_wb/r_t`
+  在正文和备注中均无残留。
+- 2026-07-09 已重画 ACC 决策页层级：`AccControlStateUpdate` 明确作为父模块，
+  内部包含 `AccSystemStateClassifier`、`AccDecisionTable`、
+  `AccControlMemoryUpdate`、`AccHistoryUpdate` 四个子功能；
+  `AccTimeGapUpdate` 和 `AccMaxSpeedUpdate` 作为父模块外部的同级参数更新模块，
+  均由 `decision` 驱动。
+- 2026-07-09 进一步重排 ACC 决策页版式：左侧集中展示 `AccControlStateUpdate`
+  父模块及其四个内部子模块，右侧只保留同级的 `AccTimeGapUpdate` 和
+  `AccMaxSpeedUpdate`，删除原先拥挤的多层堆叠排布，避免父子层级和同级模块混在一起。
+- 2026-07-09 简化 ACC 控制页：保留一个展开后的目标速度公式
+  `v_cmd = sat_[0,v_max](v_l + k_s[d_l-d0-T_h v_e] + k_v[v_l-v_e])`，
+  将原“输出含义”改为“公式含义”，说明自车速度、前车速度、车距、期望距离、
+  车距误差增益、相对速度增益和限幅函数的作用。
+- PPT 内容已切换到最新扫描源码架构：
+  ACC 顶层使用 `AccMainFlow`，LKS 顶层使用 `LksMainFlow`；
+  结构按“车上输入通道 / 感知输入通道 / 决策层 / 控制层”讲解。
+- 已补充 ACC/LKS 关键公式和变量含义到每页备注中，便于汇报时直接讲解。
+- 已根据模板修正左上角页码样式：去除额外填充色，仅保留白色页码文字，压在模板原有色块上。
+- 已清理本次生成过程中产生的临时 PPT 备份文件，仅保留正式 `acc_lks.pptx` 和模板文件。
+
+**ACC.zip 扫描源码本机后端适配验证（2026-07-09）**：
+
+- 测试对象：
+
+```text
+/data/aiden/文档/temp/ACC.zip
+```
+
+- 该包为 GAASD/Pangu 扫描用 C++ ACC 模块源码，包含 `AccMainFlow`、`AccDecision`、
+  `AccSpeedControl` 及其子模块。
+- 初始测试发现源码依赖 `FuncModule(Param)` 单参数构造，但本机 GAASD 后端公共头只支持
+  默认构造、`FuncModule(param, state)` 和 `FuncModule(sub, param, state)`，导致编译/扫描报
+  `no matching conversion`。
+- 已对本机后端公共头增加兼容构造函数：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools/public/FuncModule.hpp
+```
+
+- 修改前已备份：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server/codeTools/public/FuncModule.hpp.bak_20260709_compat_param_ctor
+```
+
+- 兼容补丁只新增 `FuncModule(Param)` 构造，不改变原有构造方式。
+- 使用修复后的公共头重新验证：
+  18 个 ACC `.cpp` 源文件全部编译通过；
+  临时 `AccMainFlow` 测试驱动验证了启控、时距调节、限速调节和取消退出逻辑。
+- 使用 `codescan-cpp --mode generate` 重新扫描通过，输出：
+  `cbdes.db`、20 个组件 JSON、26 个字典 JSON。
+- 当前判断：`ACC.zip` 的算法逻辑和扫描结构可用；本机能否扫描/运行取决于后端公共
+  `FuncModule.hpp` 是否包含 `FuncModule(Param)` 兼容构造。
+
+**GAASD 20260707_1 GUI 更新（2026-07-08）**：
+
+- 已导入新的 Pangu Docker 镜像包：
+
+```bash
+gunzip -c /home/aiden/文档/temp/pangu_x86_laster_07_06.tar.gz | docker load
+```
+
+- 导入结果为：
+
+```text
+docker.cbdes.cn:8080/cbdes/x86:latest
+```
+
+- 已将 `GAASD_SETUP_20260707_1.tar.gz` 中的 GUI 程序更新到现有旁路安装目录：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/app
+```
+
+- 更新方式为只替换 GUI `app` 目录，保留现有隔离 HOME 和后端：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server
+```
+
+- 更新前 GUI 已备份到：
+
+```text
+/home/aiden/gaasd_versions/gaasd-2.7.0.5/rollback/gui_before_20260707_1_20260708_151939/app
+```
+
+- 桌面入口仍为：
+
+```text
+/home/aiden/.local/share/applications/GAASD-2.7.0.5.desktop
+```
+
+- 非侵入检查结果：
+  `ldd /home/aiden/gaasd_versions/gaasd-2.7.0.5/app/gaasd` 未发现缺失动态库；
+  新版 GAASD 内部 Pangu x86 镜像默认值已经切换为
+  `docker.cbdes.cn:8080/cbdes/x86:latest`。
+
+**周报生成流程化工具（2026-07-07）**：
+
+- 已根据 `docs/` 下历史周报格式，建立可复用的 `.docx` 周报生成流程，后续每周只需维护一份 Markdown 输入文件。
+- 新增周报生成脚本和依赖说明：
+
+```text
+tools/report_generator/generate_weekly_report.py
+tools/report_generator/README.md
+tools/report_generator/requirements.txt
+```
+
+- 新增周报输入模板和版式参考模板：
+
+```text
+docs/weekly_inputs/template.md
+docs/templates/weekly_report_template.docx
+```
+
+- 输入模板支持按“核心任务进展 / 风险与问题 / 下周工作计划 / 需要协调与帮助”填写内容；
+  生成脚本会输出与现有周报一致的标题、报告周期、三列表格和分节结构。
+- 已安装并验证依赖 `python-docx`，测试命令如下：
+
+```bash
+python3 tools/report_generator/generate_weekly_report.py \
+  docs/weekly_inputs/template.md \
+  -o /tmp/weekly_report_test.docx
+```
+
+- 验证结果：`/tmp/weekly_report_test.docx` 成功生成，抽查包含 21 个段落和 6 张表格；
+  核心进展、风险、下周计划和协调事项均能正常落入 Word 表格。
+- 后续标准用法：
+
+```bash
+cp docs/weekly_inputs/template.md docs/weekly_inputs/2026-07-week3.md
+python3 tools/report_generator/generate_weekly_report.py \
+  docs/weekly_inputs/2026-07-week3.md \
+  -o docs/赵煜坤-7月第3周项目进展周报.docx
+```
+
+**ACC 前车 waypoint PID 控制器（2026-07-07）**：
+
+- 重新评估 ACC 前车控制方式：`constant_velocity` 只施加固定世界坐标速度向量，不会主动沿道路转弯；
+  Traffic Manager 适合交通流，但官方文档说明其路径会动态生成、路口行为可能随机，目标速度也默认与限速相关，
+  不适合作为可重复 ACC 标定前车。
+- 已新增自定义前车控制器：
+
+```text
+tools/carla_bridge/lead-waypoint-pid-controller.py
+```
+
+- 控制逻辑：找到 `role_name=gaasd_lead` 的前车后，关闭 `constant_velocity` 和 autopilot；
+  每帧读取当前车道 waypoint，取前方预瞄点计算横向误差，使用横向 PID 输出 `steer`；
+  同时用速度 PID 将前车速度稳定到 `--target-speed-mps`，输出 `throttle/brake`。
+- `tools/carla_bridge/start-gaasd-carla-manual.sh` 已支持第三种前车行为：
+
+```bash
+--lead-behavior waypoint_pid
+```
+
+  启动流程为：先在 ego 前方 waypoint 生成前车，再启动后台 waypoint PID 控制进程。
+- `tools/carla_bridge/stop-gaasd-carla-manual.sh` 已增加前车 PID 控制器清理逻辑，避免残留进程影响下一次测试。
+- `scenarios/newaccpro3_pangu_carla_20260701/run.sh` 和 `scenario.yaml` 已将默认前车行为从
+  `constant_velocity` 切换为 `waypoint_pid`；该场景现在应显示 ego 跟随约 `2m/s` 的 waypoint-PID 前车。
+- 静态验证已通过：
+
+```bash
+python3 -m py_compile tools/carla_bridge/lead-waypoint-pid-controller.py
+bash -n tools/carla_bridge/start-gaasd-carla-manual.sh
+bash -n tools/carla_bridge/stop-gaasd-carla-manual.sh
+bash -n scenarios/newaccpro3_pangu_carla_20260701/run.sh
+```
+
+- 2026-07-07 对 `newaccpro3` 实测日志完成前车性能抽查：
+  `/tmp/newaccpro3-pangu-carla/carla/lead-waypoint-pid.log` 中 96 个样本速度均值
+  `2.002m/s`，速度 RMS 误差约 `0.101m/s`；过弯阶段最大转向约 `0.384`，
+  道路编号从 `road=1/41/0/11` 过渡到 `road=8`，说明前车已能沿 waypoint 通过弯道，
+  不再是直线 `constant_velocity`。
+- 发现 ego 侧仍使用 Bridge 旧的 lane keep 横向控制，过弯能力弱于前车。已在
+  `tools/carla_bridge/carla_bridge.py` 新增 `lane_keep_mode=waypoint_pid`：
+  ego 横向转向复用“前方 waypoint 预瞄角 + PID”的思路，只覆盖 `VehicleControl.steer`，
+  不改 `target_speed_mps -> throttle/brake` 的 ACC 纵向控制链路。
+- `scenarios/newaccpro3_pangu_carla_20260701/bridge_config.json` 已启用 ego 侧
+  `lane_keep_mode: waypoint_pid`，并将 `lane_keep_max_steer` 调整为 `0.45`，匹配前车
+  成功过弯时所需转向量级。
+
+**LKS CARLA 可视化稳定性和接管输入处理（2026-07-06）**：
+
+- 单独 Pygame 摄像头窗口只作为调试辅助，不作为 GAASD/Pangu 场景的核心集成链路：
+  场景后续由 Pangu Docker 承载，Pygame 若放入容器需要额外 X11、窗口焦点和依赖配置，
+  容易增加集成复杂度；更合适的定位是宿主机可选观察器，核心接口仍走
+  `gaasd.carla.*` ZMQ 消息。
+- CARLA 0.9.15 + RTX 5080 在本机多次出现可视窗口运行一段时间后 `Signal 11` 崩溃。
+  Crash 栈定位在 UE4 `VulkanRHI` / `FRHIThread`，不是 Bridge、Pangu 或 LKS 算法问题。
+- 已将 LKS 默认 CARLA 启动参数改为：
+
+```text
+-windowed -Resx=800 -Resy=600 -fps=20 -nosound -graphicsadapter=0 -norhithread
+```
+
+  其中 `-norhithread` 是关键修复项。关闭独立 RHI 线程后，Town04 LKS 可视闭环已稳定
+  运行超过 4 分钟，未复现 VulkanRHI 崩溃。
+- 原官方 `Town05 road=37 lane=-2` 场景算法数据可通过，但本机可视渲染会在约 2 分钟后
+  崩溃；不再作为默认演示路线。
+- 已通过 CARLA map API 筛选官方 `Town04` 无路口连续弯道路段，默认 LKS 场景改为中间车道
+  候选点：
+
+```text
+map: Town04
+ego/reference: (-511.738, 242.657, 0.5)
+road/lane: road=45, lane=-3
+target_speed: 4.0 m/s
+LKS Kp: 0.06
+```
+
+- `lane=-4` 旧候选点的稳定性验证结果：
+  `sample_count=2393`、`sim_duration=119.6s`、`max_abs_lateral_offset=0.219m`、
+  `rms_lateral_offset=0.158m`、`curve_sample_count=2210`、无路口、无碰撞、`passed=true`。
+- 调试平台 LKS A/D/B 接管输入不再通过每次按键启动短生命周期 Python 发布进程，已改为
+  Flask 后端常驻 ZMQ PUB socket 直接向 `gaasd.carla.driver_state_cmd.v1` 发布多帧消息。
+  这样和 Bridge `SUB bind :5702` 的真实工作方式一致，避免 PUB/SUB slow-joiner 导致按键
+  偶发不生效。
+- 2026-07-07 对最新 `Town04 road=45 lane=-3` 场景完成复测：
+  `sample_count=3590`、`sim_duration=179.45s`、`max_abs_lateral_offset=0.226m`、
+  `rms_lateral_offset=0.143m`、弯道覆盖完成、无碰撞、`passed=true`。
+- 2026-07-07 对最新 LKS A/D/B 接管链路完成复测：
+  A 得到底盘 `steer_norm=-0.30`，D 得到底盘 `steer_norm=+0.30`，B 得到 `brake=1.0`，
+  释放后输入归零，`takeover_latest.json` 判定 `passed=true`。
 
 **LKS 交接场景切换为官方 Town05（2026-07-05）**：
 

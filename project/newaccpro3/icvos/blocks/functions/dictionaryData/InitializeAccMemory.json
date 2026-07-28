@@ -1,0 +1,146 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "initialized",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前状态是否已经初始化。"
+      },
+      {
+        "name": "currentTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距状态。"
+      },
+      {
+        "name": "currentMaxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度状态。"
+      },
+      {
+        "name": "initialTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "初始时距。"
+      },
+      {
+        "name": "minTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "最小时距。"
+      },
+      {
+        "name": "maxTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "最大时距。"
+      },
+      {
+        "name": "initialMaxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "初始最大速度。"
+      },
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最低设定速度。"
+      },
+      {
+        "name": "maxSpeedCap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "最高设定速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "initializedNext",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期初始化状态。"
+      },
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "可用于本周期计算的时距。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "可用于本周期计算的最大速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

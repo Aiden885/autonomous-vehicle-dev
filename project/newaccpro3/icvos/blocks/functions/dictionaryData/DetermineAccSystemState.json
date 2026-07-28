@@ -1,0 +1,90 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度。"
+      },
+      {
+        "name": "vMin",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最低接管速度。"
+      },
+      {
+        "name": "controlEnabled",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前控制使能状态。"
+      },
+      {
+        "name": "hasHistory",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否存在历史巡航状态。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 2,
+        "description": "系统状态编号。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

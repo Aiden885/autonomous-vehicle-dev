@@ -1,0 +1,130 @@
+{
+  "Input": {
+    "description": "顶层控制图输入参考量。",
+    "alias": "顶层控制图输入参考量。",
+    "fields": [
+      {
+        "name": "lonRef",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度设定值 (m/s)"
+      },
+      {
+        "name": "latRef",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置设定值 (m)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "顶层控制图输出状态与控制量。",
+    "alias": "顶层控制图输出状态与控制量。",
+    "fields": [
+      {
+        "name": "lonPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向位置 (m)"
+      },
+      {
+        "name": "lonVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度 (m/s)"
+      },
+      {
+        "name": "latPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置 (m)"
+      },
+      {
+        "name": "latVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向速度 (m/s)"
+      },
+      {
+        "name": "lonU",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向 PID 输出"
+      },
+      {
+        "name": "latU",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向 PID 输出"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "顶层控制图局部参数。",
+    "alias": "顶层控制图局部参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "顶层控制图局部状态。",
+    "alias": "顶层控制图局部状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "顶层控制图包含的子模块实例。",
+    "alias": "顶层控制图包含的子模块实例。",
+    "fields": [
+      {
+        "name": "lonPid",
+        "category": 1,
+        "dataType": "PidController",
+        "shape": [],
+        "dataValue": {},
+        "description": "纵向 PID 控制器"
+      },
+      {
+        "name": "latPid",
+        "category": 1,
+        "dataType": "PidController",
+        "shape": [],
+        "dataValue": {},
+        "description": "横向 PID 控制器"
+      },
+      {
+        "name": "vehicle",
+        "category": 1,
+        "dataType": "VehicleModel",
+        "shape": [],
+        "dataValue": {},
+        "description": "车辆动力学模型"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

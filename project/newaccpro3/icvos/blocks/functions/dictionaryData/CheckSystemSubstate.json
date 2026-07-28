@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "系统子态编码模块输入端口集合。",
+    "alias": "系统子态编码模块输入端口集合。",
+    "fields": [
+      {
+        "name": "controlActive",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "控制环是否处于在控状态"
+      },
+      {
+        "name": "isThrottlePressed",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "油门踏板是否踩下"
+      },
+      {
+        "name": "hasHistoryTarget",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否存在历史目标车速"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "系统子态编码模块输出端口集合。",
+    "alias": "系统子态编码模块输出端口集合。",
+    "fields": [
+      {
+        "name": "systemSubstate",
+        "category": 1,
+        "dataType": "SystemSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "编码后的系统子态 Ss"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "系统子态编码模块参数集合。",
+    "alias": "系统子态编码模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "系统子态编码模块状态集合。",
+    "alias": "系统子态编码模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "系统子态编码模块子模块集合。",
+    "alias": "系统子态编码模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

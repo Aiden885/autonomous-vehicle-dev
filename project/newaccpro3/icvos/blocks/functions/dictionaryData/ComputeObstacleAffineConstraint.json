@@ -1,0 +1,170 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载单个障碍物与自车相对运动量。",
+    "alias": "输入端口结构体，承载单个障碍物与自车相对运动量。",
+    "fields": [
+      {
+        "name": "egoVelocity",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车纵向速度 (m/s)。"
+      },
+      {
+        "name": "dxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向距离 (m)。"
+      },
+      {
+        "name": "dyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向距离 (m)。"
+      },
+      {
+        "name": "vRxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向速度 (m/s)。"
+      },
+      {
+        "name": "vRyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向速度 (m/s)。"
+      },
+      {
+        "name": "axObEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物在自车坐标系下的纵向加速度 (m/s^2)。"
+      },
+      {
+        "name": "ayObEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物在自车坐标系下的横向加速度 (m/s^2)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载 QP 约束行系数。",
+    "alias": "输出端口结构体，承载 QP 约束行系数。",
+    "fields": [
+      {
+        "name": "betaA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "加速度控制量的仿射系数。"
+      },
+      {
+        "name": "betaT",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "转向控制量 tan(delta_f) 的仿射系数。"
+      },
+      {
+        "name": "bound",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "HOCBF 约束右端常数项。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载 HOCBF 增益和车辆轴距。",
+    "alias": "配置参数结构体，承载 HOCBF 增益和车辆轴距。",
+    "fields": [
+      {
+        "name": "wheelBase",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.7,
+        "description": "前后轴距 (m)。"
+      },
+      {
+        "name": "alpha1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.5,
+        "description": "一阶 HOCBF 增益。"
+      },
+      {
+        "name": "alpha2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.5,
+        "description": "二阶 HOCBF 增益。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本组件无跨周期状态。",
+    "alias": "内部状态结构体，本组件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载 Barrier 值、一阶导和二阶导自由项子模块。",
+    "alias": "子模块结构体，承载 Barrier 值、一阶导和二阶导自由项子模块。",
+    "fields": [
+      {
+        "name": "barrierB",
+        "category": 1,
+        "dataType": "ComputeBarrierSquared",
+        "shape": [],
+        "dataValue": {},
+        "description": "Barrier 值计算元件。"
+      },
+      {
+        "name": "barrierDot",
+        "category": 1,
+        "dataType": "ComputeBarrierFirstDerivative",
+        "shape": [],
+        "dataValue": {},
+        "description": "Barrier 一阶导计算元件。"
+      },
+      {
+        "name": "barrierDdotFree",
+        "category": 1,
+        "dataType": "ComputeBarrierSecondDerivativeFree",
+        "shape": [],
+        "dataValue": {},
+        "description": "Barrier 二阶导自由项元件。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载拟合采样点。",
+    "alias": "输入端口结构体，承载拟合采样点。",
+    "fields": [
+      {
+        "name": "xData",
+        "category": 2,
+        "dataType": "double[7]",
+        "shape": [],
+        "dataValue": {},
+        "description": "X 坐标数组，最多 7 个点。"
+      },
+      {
+        "name": "yData",
+        "category": 2,
+        "dataType": "double[7]",
+        "shape": [],
+        "dataValue": {},
+        "description": "Y 坐标数组，最多 7 个点。"
+      },
+      {
+        "name": "numPoints",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "数据点数量"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载拟合系数和成功标志。",
+    "alias": "输出端口结构体，承载拟合系数和成功标志。",
+    "fields": [
+      {
+        "name": "coeffs",
+        "category": 1,
+        "dataType": "PolynomialCoeffs",
+        "shape": [],
+        "dataValue": {
+          "c": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          }
+        },
+        "description": "拟合系数"
+      },
+      {
+        "name": "success",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "拟合是否成功"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载线性方程组求解子模块。",
+    "alias": "子模块结构体，承载线性方程组求解子模块。",
+    "fields": [
+      {
+        "name": "solveSystem",
+        "category": 1,
+        "dataType": "SolveLinearSystem",
+        "shape": [],
+        "dataValue": {},
+        "description": "高斯消元求解子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

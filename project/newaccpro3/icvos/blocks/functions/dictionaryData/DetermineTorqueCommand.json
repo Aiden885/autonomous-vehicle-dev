@@ -1,0 +1,122 @@
+{
+  "Input": {
+    "description": "SPPVT 扭矩命令判定模块输入端口集合。",
+    "alias": "SPPVT 扭矩命令判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 vi(t) (m/s)"
+      },
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前起作用的内部虚拟目标车速 Vi (m/s)"
+      },
+      {
+        "name": "kp",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 50.0,
+        "description": "比例控制系数 (Nm*s/m)"
+      },
+      {
+        "name": "minTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最小扭矩限幅 (Nm)"
+      },
+      {
+        "name": "maxTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 300.0,
+        "description": "最大扭矩限幅 (Nm)"
+      },
+      {
+        "name": "pauseControl",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否暂停控制"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "SPPVT 扭矩命令判定模块输出端口集合。",
+    "alias": "SPPVT 扭矩命令判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "torqueCommand",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出控制扭矩 Ti(t) (Nm)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "SPPVT 扭矩命令判定模块参数集合。",
+    "alias": "SPPVT 扭矩命令判定模块参数集合。",
+    "fields": [
+      {
+        "name": "kp",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 50.0,
+        "description": "比例控制系数 (Nm*s/m)"
+      },
+      {
+        "name": "minTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最小扭矩限幅 (Nm)"
+      },
+      {
+        "name": "maxTorque",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 300.0,
+        "description": "最大扭矩限幅 (Nm)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "SPPVT 扭矩命令判定模块状态集合。",
+    "alias": "SPPVT 扭矩命令判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "SPPVT 扭矩命令判定模块子模块集合。",
+    "alias": "SPPVT 扭矩命令判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

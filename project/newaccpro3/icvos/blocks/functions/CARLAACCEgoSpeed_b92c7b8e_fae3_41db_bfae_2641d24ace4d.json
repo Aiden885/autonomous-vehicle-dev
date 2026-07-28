@@ -25,7 +25,8 @@
       "key": "base_config",
       "value": [
         {}
-      ]
+      ],
+      "props": []
     },
     {
       "key": "other_config",
@@ -35,11 +36,13 @@
           "function_body": "double CARLAACCEgoSpeed(void)\n{\n    extern int carla_adapter_read_ego_state(\n        double *egoV,\n        double *egoX,\n        double *egoY,\n        double *egoYawRad,\n        double *egoAcc,\n        int *valid);\n    double egoV = 0.0;\n    double egoX = 0.0;\n    double egoY = 0.0;\n    double egoYawRad = 0.0;\n    double egoAcc = 0.0;\n    int valid = 0;\n    int rc = 0;\n    double result = 0.0;\n\n    rc = carla_adapter_read_ego_state(&egoV, &egoX, &egoY, &egoYawRad, &egoAcc, &valid);\n    if ((rc == 0) && (valid != 0)) {\n        result = egoV;\n    }\n\n    return result;\n}",
           "function_link_obj": ""
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "function_input_ports",
-      "value": []
+      "value": [],
+      "props": []
     },
     {
       "key": "function_output_ports",
@@ -69,7 +72,8 @@
           ],
           "isShow": true
         }
-      ]
+      ],
+      "props": []
     },
     {
       "key": "module_input_ports",

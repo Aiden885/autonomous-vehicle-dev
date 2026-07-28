@@ -1,0 +1,147 @@
+{
+    "name": "ACCTorqueArbitratedTargetSpeed",
+    "componentType": "atomic-function",
+    "alias": "ACC仲裁目标速度",
+    "description": "简化扭矩仲裁目标速度",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "01212480-6802-5308-bd57-436c821d43bf",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCTorqueArbitratedTargetSpeed_param_decisionY_In",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "In",
+                    "description": "当前决策输出，1~8",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTorqueArbitratedTargetSpeed_param_accTargetSpeed_In",
+                    "name": "accTargetSpeed",
+                    "alias": "accTargetSpeed",
+                    "direction": "In",
+                    "description": "ACC计算目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTorqueArbitratedTargetSpeed_param_driverTargetSpeed_In",
+                    "name": "driverTargetSpeed",
+                    "alias": "driverTargetSpeed",
+                    "direction": "In",
+                    "description": "驾驶员期望目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCTorqueArbitratedTargetSpeed_output_targetSpeed_Out",
+                    "name": "targetSpeed",
+                    "alias": "targetSpeed",
+                    "direction": "Out",
+                    "description": "仲裁后的目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCTorqueArbitratedTargetSpeed(int decisionY, double accTargetSpeed,\n                                      double driverTargetSpeed)\n{\n    double targetSpeed = accTargetSpeed;\n\n    if (decisionY == 7) {\n        if (driverTargetSpeed > accTargetSpeed) {\n            targetSpeed = driverTargetSpeed;\n        }\n    }\n\n    return targetSpeed;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

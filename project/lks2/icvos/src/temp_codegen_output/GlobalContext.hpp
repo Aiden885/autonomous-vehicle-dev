@@ -18,7 +18,7 @@ struct GlobalParams {
   Real lks_w1 = 0.2;
   Real lks_w2 = 0.3;
   Real lks_w3 = 0.5;
-  Real lks_Kp = 0.08;
+  Real lks_Kp = 0.09;
   Real lks_steerScale = 0.6;
   Real lks_vMin = 1.0;
   Real lks_driverSteerThreshold = 0.1;

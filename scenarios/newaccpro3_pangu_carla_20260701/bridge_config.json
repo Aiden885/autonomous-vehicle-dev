@@ -27,7 +27,11 @@
     "include_walkers": false,
     "lead_max_lateral_m": 3.5,
     "preferred_lead_role_name": "gaasd_lead",
-    "preferred_lead_max_lateral_m": 12.0
+    "preferred_lead_max_lateral_m": 12.0,
+    "preferred_lead_use_route_distance": true,
+    "preferred_lead_route_search_m": 150.0,
+    "preferred_lead_route_step_m": 1.0,
+    "preferred_lead_route_max_lateral_m": 8.0
   },
   "control": {
     "max_accel_mps2": 1.5,
@@ -44,6 +48,7 @@
     "timeout_brake": 1.0,
     "prefer_speed_target": true,
     "lane_keep_enabled": true,
+    "lane_keep_mode": "waypoint_pid",
     "lane_keep_override_zero_steer": true,
     "lane_keep_zero_steer_epsilon_rad": 0.000001,
     "lane_keep_kp": 0.12,
@@ -51,6 +56,12 @@
     "lane_keep_kd": 0.04,
     "lane_keep_heading_kp": 0.8,
     "lane_keep_integral_limit": 2.0,
-    "lane_keep_max_steer": 0.25
+    "lane_keep_max_steer": 0.45,
+    "lane_keep_waypoint_lookahead_base_m": 6.0,
+    "lane_keep_waypoint_lookahead_gain_s": 0.2,
+    "lane_keep_waypoint_lookahead_min_m": 4.0,
+    "lane_keep_waypoint_lookahead_max_m": 10.0,
+    "lane_keep_waypoint_steer_kp": 1.8,
+    "lane_keep_waypoint_steer_kd": 0.08
   }
 }

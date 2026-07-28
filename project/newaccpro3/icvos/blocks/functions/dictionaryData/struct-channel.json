@@ -32,10 +32,10 @@
                 "shape": []
             },
             {
-                "name": "enable",
+                "name": "command_type",
                 "description": "",
                 "category": 0,
-                "dataType": "bool",
+                "dataType": "int32",
                 "shape": []
             }
         ]
@@ -49,27 +49,6 @@
                 "description": "",
                 "category": 0,
                 "dataType": "uint32",
-                "shape": []
-            },
-            {
-                "name": "ego_speed_mps",
-                "description": "",
-                "category": 0,
-                "dataType": "double",
-                "shape": []
-            },
-            {
-                "name": "lead_speed_mps",
-                "description": "",
-                "category": 0,
-                "dataType": "double",
-                "shape": []
-            },
-            {
-                "name": "lead_distance_m",
-                "description": "",
-                "category": 0,
-                "dataType": "double",
                 "shape": []
             },
             {
@@ -91,6 +70,151 @@
                 "description": "",
                 "category": 0,
                 "dataType": "bool",
+                "shape": []
+            },
+            {
+                "name": "time_gap_s",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "max_speed_mps",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "decision",
+                "description": "",
+                "category": 0,
+                "dataType": "int32",
+                "shape": []
+            },
+            {
+                "name": "system_state",
+                "description": "",
+                "category": 0,
+                "dataType": "int32",
+                "shape": []
+            }
+        ]
+    },
+    "pangu.modules.LksInput": {
+        "desc": "",
+        "alias": "pangu.modules.LksInput",
+        "fields": [
+            {
+                "name": "frame_id",
+                "description": "",
+                "category": 0,
+                "dataType": "uint32",
+                "shape": []
+            },
+            {
+                "name": "ego_speed_mps",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "c0_m",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "c1",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "c2_per_m",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "c3_per_m2",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "curvature_per_m",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "brake_pressed",
+                "description": "",
+                "category": 0,
+                "dataType": "bool",
+                "shape": []
+            },
+            {
+                "name": "driver_steer_norm",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            }
+        ]
+    },
+    "pangu.modules.LksOutput": {
+        "desc": "",
+        "alias": "pangu.modules.LksOutput",
+        "fields": [
+            {
+                "name": "frame_id",
+                "description": "",
+                "category": 0,
+                "dataType": "uint32",
+                "shape": []
+            },
+            {
+                "name": "steer_rad",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "control_enabled",
+                "description": "",
+                "category": 0,
+                "dataType": "bool",
+                "shape": []
+            },
+            {
+                "name": "valid",
+                "description": "",
+                "category": 0,
+                "dataType": "bool",
+                "shape": []
+            },
+            {
+                "name": "preview_distance_m",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
+                "shape": []
+            },
+            {
+                "name": "weighted_error_m",
+                "description": "",
+                "category": 0,
+                "dataType": "double",
                 "shape": []
             }
         ]

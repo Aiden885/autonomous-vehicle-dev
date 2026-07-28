@@ -1,0 +1,147 @@
+{
+    "name": "ACCHasHistoryNext",
+    "componentType": "atomic-function",
+    "alias": "ACC历史更新",
+    "description": "更新ACC历史标志",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "8d6370e9-80c0-55da-8bf4-5960886d6cbe",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCHasHistoryNext_param_systemState_In",
+                    "name": "systemState",
+                    "alias": "systemState",
+                    "direction": "In",
+                    "description": "当前系统状态，0=S0，1=S1，2=S2，3=S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCHasHistoryNext_param_commandType_In",
+                    "name": "commandType",
+                    "alias": "commandType",
+                    "direction": "In",
+                    "description": "驾驶指令，0=无，1=降速/当速启控，2=增速/继承启控，3=降距，4=增距，5=油门，6=刹车，7=取消",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCHasHistoryNext_param_hasHistory_In",
+                    "name": "hasHistory",
+                    "alias": "hasHistory",
+                    "direction": "In",
+                    "description": "当前历史标志，0=无历史，1=有历史",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCHasHistoryNext_output_nextHasHistory_Out",
+                    "name": "nextHasHistory",
+                    "alias": "nextHasHistory",
+                    "direction": "Out",
+                    "description": "下一历史标志，0=无历史，1=有历史",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCHasHistoryNext(int systemState, int commandType, int hasHistory)\n{\n    int nextHasHistory = 0;\n\n    if (hasHistory != 0) {\n        nextHasHistory = 1;\n    } else {\n        nextHasHistory = 0;\n    }\n\n    if (systemState == 0) {\n        nextHasHistory = 1;\n    } else if ((systemState == 1) && ((commandType == 1) || (commandType == 2))) {\n        nextHasHistory = 1;\n    } else if ((systemState == 2) && (commandType == 1)) {\n        nextHasHistory = 1;\n    }\n\n    return nextHasHistory;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

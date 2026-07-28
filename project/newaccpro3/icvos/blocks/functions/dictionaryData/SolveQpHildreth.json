@@ -1,0 +1,140 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载 QP 矩阵、向量和约束行数。",
+    "alias": "输入端口结构体，承载 QP 矩阵、向量和约束行数。",
+    "fields": [
+      {
+        "name": "qDiagA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "Q 加速度通道权重。"
+      },
+      {
+        "name": "qDiagT",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "Q 转向通道权重。"
+      },
+      {
+        "name": "cVec",
+        "category": 2,
+        "dataType": "double[2]",
+        "shape": [],
+        "dataValue": {
+          "0": 0.0,
+          "1": 0.0
+        },
+        "description": "二维线性项 c。"
+      },
+      {
+        "name": "aMatRowMajor",
+        "category": 2,
+        "dataType": "double[128]",
+        "shape": [],
+        "dataValue": {
+          "0": 0.0
+        },
+        "description": "约束矩阵 A 的行优先存储。"
+      },
+      {
+        "name": "bVec",
+        "category": 2,
+        "dataType": "double[64]",
+        "shape": [],
+        "dataValue": {
+          "0": 0.0
+        },
+        "description": "约束右端向量 b。"
+      },
+      {
+        "name": "rowCount",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "实际约束行数。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载求解结果和诊断信息。",
+    "alias": "输出端口结构体，承载求解结果和诊断信息。",
+    "fields": [
+      {
+        "name": "uSolution",
+        "category": 2,
+        "dataType": "double[2]",
+        "shape": [],
+        "dataValue": {
+          "0": 0.0,
+          "1": 0.0
+        },
+        "description": "二维控制量求解结果。"
+      },
+      {
+        "name": "feasible",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "约束可行性诊断。"
+      },
+      {
+        "name": "iterUsed",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "实际迭代次数。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载迭代上限和收敛阈值。",
+    "alias": "配置参数结构体，承载迭代上限和收敛阈值。",
+    "fields": [
+      {
+        "name": "maxIter",
+        "category": 0,
+        "dataType": "unsigned int",
+        "shape": [],
+        "dataValue": 200,
+        "description": "最大迭代次数。"
+      },
+      {
+        "name": "tolerance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1e-6,
+        "description": "收敛容差。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

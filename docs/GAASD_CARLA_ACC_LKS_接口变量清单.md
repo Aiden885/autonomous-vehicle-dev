@@ -1,6 +1,10 @@
 # GAASD-CARLA ACC/LKS 接口变量清单
 
-## 2. ACC 需要的内容
+## 1. 命名约定
+
+CARLA/Bridge 协议字段、Pangu 边界组件端口和 GAASD 手动画布内部端口统一使用本清单中的名称，不设置二次别名。单位由接口元数据表达，不写入变量名。
+
+## 2. ACC 接口
 
 ### 2.1 必须保持的接口变量
 
@@ -13,7 +17,7 @@ ACC 最终联调 CARLA 须保留以下输入输出：
 | 输入  | `leadV`                 | `double` | m/s | 必须   |
 | 输入  | `distance`              | `double` | m   | 必须   |
 | 输入  | `commandType`           | `int`    | 1   | 必须   |
-| 输出  | `targetSpeed` / `speed` | `double` | m/s | 必须   |
+| 输出  | `targetSpeed`           | `double` | m/s | 必须   |
 | 输出  | `enable`                | `int`    | 1   | 必须   |
 
 
@@ -43,12 +47,9 @@ ACC 最终联调 CARLA 须保留以下输入输出：
 ```
 
 如果后续输入源无法保证单周期脉冲，而是持续输出非零值，则需要在输入侧或画布中增加边沿检测。
+## 3. LKS 接口
 
-
-
-
-
-### 4.1 CARLA -> GAASD 输入变量
+### 3.1 CARLA -> GAASD 输入变量
 
 
 | 变量                | 数据类型建议   | 单位    | 作用                       | 是否必须 |
@@ -61,7 +62,6 @@ ACC 最终联调 CARLA 须保留以下输入输出：
 | `curvature`       | `double` | 1/m   | 道路曲率，用于弯道预瞄距离修正          | 必须   |
 | `brakePressed`    | `int`    | 1     | 是否制动，用于退出 LKS            | 必须   |
 | `driverSteerNorm` | `double` | 1     | 驾驶员方向盘输入归一化值，用于判断主动转向/换道 | 必须   |
-|                   |          |       |                          |      |
 
 
 说明：
@@ -70,16 +70,14 @@ ACC 最终联调 CARLA 须保留以下输入输出：
 - 第一阶段测试可以默认 `laneValid=1`，即车道线始终有效。
 - 如果 CARLA 侧短期不提供完整车道多项式，也可以先用 mock 或固定直道多项式验证 LKS 画布计算链路。
 
-### 4.2 GAASD -> CARLA 输出变量
+### 3.2 GAASD -> CARLA 输出变量
 
 
 | 变量                         | 数据类型建议   | 单位  | 作用         | 是否必须 |
 | -------------------------- | -------- | --- | ---------- | ---- |
-| `steerRad` / `lksSteerRad` | `double` | rad | LKS 横向转角命令 | 必须   |
-| `controlEnabled`           | `int`    | 1   | LKS 横向控制使能 | 必须   |
+| `steerRad`       | `double` | rad | LKS 横向转角命令 | 必须   |
+| `controlEnabled` | `int`    | 1   | LKS 横向控制使能 | 必须   |
 
 
 LKS 本身只负责横向控制。如果做单车 LKS 仿真，为了让车辆持续运动，还需要仿真场景提供固定纵向速度或外部纵向控制命令，但这不是 LKS 算法本身的输出。
-
-
 

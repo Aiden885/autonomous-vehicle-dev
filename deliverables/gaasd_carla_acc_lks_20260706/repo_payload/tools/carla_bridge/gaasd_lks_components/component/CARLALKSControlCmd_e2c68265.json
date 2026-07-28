@@ -1,0 +1,122 @@
+{
+    "name": "CARLALKSControlCmd",
+    "componentType": "atomic-function",
+    "alias": "CARLALKS控制命令",
+    "description": "发布CARLA车道保持测试所需的横纵向联合控制命令",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "e2c68265-ef96-5c66-a918-1b72130b7add",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "LKS最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "CARLALKSControlCmd_param_targetSpeed_In",
+                    "name": "targetSpeed",
+                    "alias": "targetSpeed",
+                    "direction": "In",
+                    "description": "目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALKSControlCmd_param_steerRad_In",
+                    "name": "steerRad",
+                    "alias": "steerRad",
+                    "direction": "In",
+                    "description": "目标转向角，单位rad",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALKSControlCmd_param_enable_In",
+                    "name": "enable",
+                    "alias": "enable",
+                    "direction": "In",
+                    "description": "控制使能，1表示使能",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": []
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLALKSControlCmd(double targetSpeed, double steerRad, int enable)\n{\n    extern int carla_adapter_publish_control_cmd(\n        double targetSpeed,\n        double targetAccel,\n        double steerRad,\n        int enable);\n    int rc = 0;\n\n    rc = carla_adapter_publish_control_cmd(targetSpeed, 0.0, steerRad, enable);\n    (void)rc;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

@@ -18,7 +18,7 @@ carla_scene:
   lead_distance_m: 25
   lead_speed_mps: 2
   lead_placement: lane_waypoint
-  lead_behavior: constant_velocity
+  lead_behavior: waypoint_pid
   spectator:
     back_m: 8
     up_m: 6
@@ -58,6 +58,10 @@ gaasd_signals:
     - distance
     - targetSpeed
     - enable
+
+results:
+  latest_summary: "/tmp/newaccpro3-pangu-carla/results/latest_summary.json"
+  latest_samples: "/tmp/newaccpro3-pangu-carla/results/acc_samples_latest.jsonl"
 
 expected_result:
   expected_behavior: CARLA 窗口显示 ego 在直道上跟随 2m/s 前车，Bridge 接收 Pangu control_cmd，ACC enable 可由 E 指令启控。

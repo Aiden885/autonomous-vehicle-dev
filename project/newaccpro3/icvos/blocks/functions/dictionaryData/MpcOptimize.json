@@ -1,0 +1,154 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载预测初始状态、参考轨迹和暖启动序列。",
+    "alias": "输入端口结构体，承载预测初始状态、参考轨迹和暖启动序列。",
+    "fields": [
+      {
+        "name": "initialState",
+        "category": 1,
+        "dataType": "VehicleState",
+        "shape": [],
+        "dataValue": {
+          "x": 0.0,
+          "y": 0.0,
+          "yaw": 0.0,
+          "v": 0.0
+        },
+        "description": "初始状态"
+      },
+      {
+        "name": "trajectory",
+        "category": 1,
+        "dataType": "FittedTrajectory",
+        "shape": [],
+        "dataValue": {
+          "poly": {
+            "c": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0
+            }
+          },
+          "xOffset": 0.0,
+          "xScale": 1.0,
+          "refSpeed": 0.0,
+          "valid": {}
+        },
+        "description": "参考轨迹"
+      },
+      {
+        "name": "warmStartSequence",
+        "category": 2,
+        "dataType": "ControlInput[15]",
+        "shape": [],
+        "dataValue": {},
+        "description": "暖启动序列"
+      },
+      {
+        "name": "prevAppliedControl",
+        "category": 1,
+        "dataType": "ControlInput",
+        "shape": [],
+        "dataValue": {
+          "steeringAngle": 0.0,
+          "acceleration": 0.0
+        },
+        "description": "上一周期控制量"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载最优控制序列和最终代价。",
+    "alias": "输出端口结构体，承载最优控制序列和最终代价。",
+    "fields": [
+      {
+        "name": "optimalSequence",
+        "category": 2,
+        "dataType": "ControlInput[15]",
+        "shape": [],
+        "dataValue": {},
+        "description": "最优控制序列"
+      },
+      {
+        "name": "finalCost",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最终代价"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载 MPC 优化参数。",
+    "alias": "配置参数结构体，承载 MPC 优化参数。",
+    "fields": [
+      {
+        "name": "mpcParam",
+        "category": 1,
+        "dataType": "MpcParam",
+        "shape": [],
+        "dataValue": {
+          "predictionHorizon": 15,
+          "controlHorizon": 5,
+          "dt": 0.1,
+          "wheelbase": 2.85,
+          "maxSteeringAngle": 0.5236,
+          "maxAcceleration": 3.0,
+          "minAcceleration": -5.0,
+          "maxSteeringRate": 0.1,
+          "wLateral": 100.0,
+          "wHeading": 50.0,
+          "wVelocity": 5.0,
+          "wSteering": 1.0,
+          "wAccel": 0.5,
+          "wSteeringRate": 10.0,
+          "wAccelRate": 5.0,
+          "maxOptIterations": 80,
+          "learningRate": 0.1,
+          "finiteDiffEps": 1e-4
+        },
+        "description": "MPC参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本组件无跨周期状态。",
+    "alias": "内部状态结构体，本组件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载代价函数计算和限幅子模块。",
+    "alias": "子模块结构体，承载代价函数计算和限幅子模块。",
+    "fields": [
+      {
+        "name": "computeCost",
+        "category": 1,
+        "dataType": "MpcComputeCost",
+        "shape": [],
+        "dataValue": {},
+        "description": "代价函数计算"
+      },
+      {
+        "name": "clampVal",
+        "category": 1,
+        "dataType": "ClampValue",
+        "shape": [],
+        "dataValue": {},
+        "description": "数值限幅"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

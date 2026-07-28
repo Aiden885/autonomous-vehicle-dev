@@ -1,0 +1,25 @@
+basic {
+  path: "lib/libLksZmqBridgeModule.so"
+  module_type: APP
+  ioconfig {
+    publishers { name: "lks_input" channel: "lks_input" bindcode: ON }
+    subscribers { name: "lks_output" channel: "lks_output" bindcode: ON }
+    tasks {
+      task_name: "lks_output"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "lks_output"
+      }
+      input: "lks_output"
+    }
+  }
+}
+params {
+  timer_duration: 50.0
+  zmq_poll_timeout_ms: 0
+  target_speed_mps: 3.0
+  driver_steer_max_rad: 0.6
+}

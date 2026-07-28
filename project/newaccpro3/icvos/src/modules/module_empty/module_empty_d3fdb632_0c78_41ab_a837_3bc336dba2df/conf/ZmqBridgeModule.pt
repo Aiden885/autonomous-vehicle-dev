@@ -1,0 +1,12 @@
+basic {
+  path: "lib/libZmqBridgeModule.so"
+  module_type: APP
+  ioconfig {
+  }
+}
+
+params {
+  timer_duration: 100.0
+  zmq_poll_timeout_ms: 0
+  zmq_control_enable: true
+}

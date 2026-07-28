@@ -1,0 +1,138 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载当前车辆状态和控制量。",
+    "alias": "输入端口结构体，承载当前车辆状态和控制量。",
+    "fields": [
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向位置 (m)"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置 (m)"
+      },
+      {
+        "name": "yaw",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "航向角 (rad)"
+      },
+      {
+        "name": "v",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度 (m/s)"
+      },
+      {
+        "name": "steeringAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前轮转向角 (rad)"
+      },
+      {
+        "name": "acceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向加速度 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载下一时刻车辆状态。",
+    "alias": "输出端口结构体，承载下一时刻车辆状态。",
+    "fields": [
+      {
+        "name": "xNext",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一时刻纵向位置 (m)"
+      },
+      {
+        "name": "yNext",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一时刻横向位置 (m)"
+      },
+      {
+        "name": "yawNext",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一时刻航向角 (rad)"
+      },
+      {
+        "name": "vNext",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一时刻纵向速度 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载车辆模型离散步长和轴距。",
+    "alias": "配置参数结构体，承载车辆模型离散步长和轴距。",
+    "fields": [
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.1,
+        "description": "时间步长 (s)"
+      },
+      {
+        "name": "wheelbase",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.85,
+        "description": "前后轴距 (m)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

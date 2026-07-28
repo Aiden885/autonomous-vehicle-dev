@@ -1,0 +1,186 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前决策编号。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距参数 (s)。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度参数 (m/s)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "initialTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "初始时距 (s)。"
+      },
+      {
+        "name": "initialMaxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "初始最大速度 (m/s)。"
+      },
+      {
+        "name": "timeGapStep",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.2,
+        "description": "时距调节步长 (s)。"
+      },
+      {
+        "name": "minTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "最小时距 (s)。"
+      },
+      {
+        "name": "maxTimeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "最大时距 (s)。"
+      },
+      {
+        "name": "speedStep",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.3889,
+        "description": "速度调节步长 (m/s)，约等于5 km/h。"
+      },
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最低设定速度 (m/s)。"
+      },
+      {
+        "name": "maxSpeedCap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "最高设定速度 (m/s)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "initialized",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "状态是否已经初始化。"
+      },
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距状态 (s)。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前设定最大速度状态 (m/s)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "initializeMemory",
+        "category": 1,
+        "dataType": "InitializeAccMemory",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "determineNextTimeGap",
+        "category": 1,
+        "dataType": "DetermineNextTimeGap",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "determineNextMaxSpeed",
+        "category": 1,
+        "dataType": "DetermineNextMaxSpeed",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

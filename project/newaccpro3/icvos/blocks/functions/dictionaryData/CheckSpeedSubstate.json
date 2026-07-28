@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "车速子态判定模块输入端口集合。",
+    "alias": "车速子态判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 (m/s)"
+      },
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 8.0,
+        "description": "最低适控车速 (m/s)"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 33.0,
+        "description": "最高适控车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "车速子态判定模块输出端口集合。",
+    "alias": "车速子态判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "speedSubstate",
+        "category": 1,
+        "dataType": "SpeedSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前车速子态 Sv"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "车速子态判定模块参数集合。",
+    "alias": "车速子态判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "车速子态判定模块状态集合。",
+    "alias": "车速子态判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "车速子态判定模块子模块集合。",
+    "alias": "车速子态判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

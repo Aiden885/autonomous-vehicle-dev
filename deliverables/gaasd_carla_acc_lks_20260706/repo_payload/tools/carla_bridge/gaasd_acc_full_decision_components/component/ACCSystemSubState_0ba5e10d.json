@@ -1,0 +1,123 @@
+{
+    "name": "ACCSystemSubState",
+    "componentType": "atomic-function",
+    "alias": "ACC系统子态",
+    "description": "根据控制使能和历史标志计算ACC系统子态",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "0ba5e10d-20b3-59dc-9c0c-6660a9567caf",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCSystemSubState_param_controlEnabled_In",
+                    "name": "controlEnabled",
+                    "alias": "controlEnabled",
+                    "direction": "In",
+                    "description": "控制使能，0=待命，1=在控",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCSystemSubState_param_hasHistory_In",
+                    "name": "hasHistory",
+                    "alias": "hasHistory",
+                    "direction": "In",
+                    "description": "是否存在历史控制目标，0=无史，1=有史",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCSystemSubState_output_systemSubState_Out",
+                    "name": "systemSubState",
+                    "alias": "systemSubState",
+                    "direction": "Out",
+                    "description": "系统子态，0=无史待命Ss0，1=有史待命Ss1，2=无史在控Ss2，3=有史在控Ss3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCSystemSubState(int controlEnabled, int hasHistory)\n{\n    int systemSubState = 0;\n\n    if (controlEnabled != 0) {\n        if (hasHistory != 0) {\n            systemSubState = 3;\n        } else {\n            systemSubState = 2;\n        }\n    } else {\n        if (hasHistory != 0) {\n            systemSubState = 1;\n        } else {\n            systemSubState = 0;\n        }\n    }\n\n    return systemSubState;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

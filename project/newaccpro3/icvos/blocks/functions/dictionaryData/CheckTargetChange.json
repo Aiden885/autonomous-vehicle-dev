@@ -1,0 +1,82 @@
+{
+  "Input": {
+    "description": "变目标时刻判定模块输入端口集合。",
+    "alias": "变目标时刻判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentAcceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆加速度 v_dot (m/s^2)"
+      },
+      {
+        "name": "cooldownTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "变目标冷却剩余时间 (s)"
+      },
+      {
+        "name": "delta",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.05,
+        "description": "变目标加速度阈值 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "变目标时刻判定模块输出端口集合。",
+    "alias": "变目标时刻判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "isTargetChangeInstant",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否满足变目标时刻条件"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "变目标时刻判定模块参数集合。",
+    "alias": "变目标时刻判定模块参数集合。",
+    "fields": [
+      {
+        "name": "delta",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.05,
+        "description": "变目标加速度阈值 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "变目标时刻判定模块状态集合。",
+    "alias": "变目标时刻判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "变目标时刻判定模块子模块集合。",
+    "alias": "变目标时刻判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

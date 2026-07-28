@@ -1,0 +1,234 @@
+{
+  "Input": {
+    "description": "定速巡航决策状态机模块输入端口集合。",
+    "alias": "定速巡航决策状态机模块输入端口集合。",
+    "fields": [
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 (m/s)"
+      },
+      {
+        "name": "isThrottlePressed",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "油门踏板是否踩下"
+      },
+      {
+        "name": "hasHistoryTarget",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否存在历史目标车速"
+      },
+      {
+        "name": "controlActive",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前控制环是否激活"
+      },
+      {
+        "name": "driverCommand",
+        "category": 1,
+        "dataType": "DriverCommand",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前驾驶员按键或踏板指令"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "决策周期时长 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "定速巡航决策状态机模块输出端口集合。",
+    "alias": "定速巡航决策状态机模块输出端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统决策响应动作 Rk"
+      },
+      {
+        "name": "nextState",
+        "category": 1,
+        "dataType": "SystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统流转后的新状态 Sn"
+      },
+      {
+        "name": "updatedTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "更新后的目标设定车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "定速巡航决策状态机模块参数集合。",
+    "alias": "定速巡航决策状态机模块参数集合。",
+    "fields": [
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 8.0,
+        "description": "最低适控车速 (m/s)"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 33.0,
+        "description": "最高适控车速 (m/s)"
+      },
+      {
+        "name": "lowSpeedTimeout",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "S6 低速在控持续时间上限 (s)"
+      },
+      {
+        "name": "deltaSpeedStep",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "增减速单次修改步长 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "定速巡航决策状态机模块状态集合。",
+    "alias": "定速巡航决策状态机模块状态集合。",
+    "fields": [
+      {
+        "name": "currentState",
+        "category": 1,
+        "dataType": "SystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前系统运行状态 Sn"
+      },
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前目标设定车速 (m/s)"
+      },
+      {
+        "name": "lastTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一次有效历史目标车速 (m/s)"
+      },
+      {
+        "name": "lowSpeedTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "低速在控状态持续计时器 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "定速巡航决策状态机模块子模块集合。",
+    "alias": "定速巡航决策状态机模块子模块集合。",
+    "fields": [
+      {
+        "name": "checkSpeedSubstate",
+        "category": 1,
+        "dataType": "CheckSpeedSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "车速子态判定模块"
+      },
+      {
+        "name": "checkSystemSubstate",
+        "category": 1,
+        "dataType": "CheckSystemSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统子态编码模块"
+      },
+      {
+        "name": "determineState",
+        "category": 1,
+        "dataType": "DetermineState",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统状态判定模块"
+      },
+      {
+        "name": "evaluateDecision",
+        "category": 1,
+        "dataType": "EvaluateDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": "决策响应动作判定模块"
+      },
+      {
+        "name": "determineNextTarget",
+        "category": 1,
+        "dataType": "DetermineNextTarget",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期目标车速判定模块"
+      },
+      {
+        "name": "determineNextActive",
+        "category": 1,
+        "dataType": "DetermineNextActive",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期控制激活状态判定模块"
+      },
+      {
+        "name": "determineNextLastTarget",
+        "category": 1,
+        "dataType": "DetermineNextLastTarget",
+        "shape": [],
+        "dataValue": {},
+        "description": "下一周期历史目标车速判定模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

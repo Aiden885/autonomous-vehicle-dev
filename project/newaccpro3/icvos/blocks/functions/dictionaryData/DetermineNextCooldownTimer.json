@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "下一周期冷却计时器判定模块输入端口集合。",
+    "alias": "下一周期冷却计时器判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "cooldownTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前冷却计时器值 (s)"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制周期时长 (s)"
+      },
+      {
+        "name": "cooldownTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.0,
+        "description": "变目标后的冷却锁存时长 (s)"
+      },
+      {
+        "name": "isNewControlSession",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否新进入控制会话"
+      },
+      {
+        "name": "isTriggered",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前周期是否触发变目标"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "下一周期冷却计时器判定模块输出端口集合。",
+    "alias": "下一周期冷却计时器判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "nextCooldownTimer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一周期冷却计时器值 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "下一周期冷却计时器判定模块参数集合。",
+    "alias": "下一周期冷却计时器判定模块参数集合。",
+    "fields": [
+      {
+        "name": "cooldownTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.0,
+        "description": "变目标后的冷却锁存时长 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "下一周期冷却计时器判定模块状态集合。",
+    "alias": "下一周期冷却计时器判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "下一周期冷却计时器判定模块子模块集合。",
+    "alias": "下一周期冷却计时器判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

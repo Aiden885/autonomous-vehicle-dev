@@ -10,6 +10,16 @@ PANGU_THIRD_SETUP="${PANGU_THIRD_SETUP:-${PANGU_BUILD_ROOT}/dependencies/thirdpa
 PANGU_APP_NAME="${PANGU_APP_NAME:-app_empty}"
 PANGU_CONTAINER_NAME="${PANGU_CONTAINER_NAME:-newaccpro3_pangu_carla}"
 export GAASD_CARLA_LOG_DIR="${GAASD_CARLA_LOG_DIR:-/tmp/newaccpro3-pangu-carla/carla}"
+PANGU_LOG_DIR="${PANGU_LOG_DIR:-/tmp/newaccpro3-pangu-carla/pangu}"
+
+if [[ -f "${PANGU_LOG_DIR}/acc_recorder.pid" ]]; then
+  recorder_pid="$(cat "${PANGU_LOG_DIR}/acc_recorder.pid" 2>/dev/null || true)"
+  if [[ -n "${recorder_pid}" ]]; then
+    echo "[Scenario] stopping ACC recorder pid=${recorder_pid}"
+    kill "${recorder_pid}" >/dev/null 2>&1 || true
+  fi
+  rm -f "${PANGU_LOG_DIR}/acc_recorder.pid"
+fi
 
 echo "[Scenario] stopping Pangu container ${PANGU_CONTAINER_NAME}"
 if command -v docker >/dev/null 2>&1; then

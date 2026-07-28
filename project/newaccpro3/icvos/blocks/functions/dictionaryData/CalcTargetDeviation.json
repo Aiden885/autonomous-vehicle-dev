@@ -1,0 +1,66 @@
+{
+  "Input": {
+    "description": "最终目标车速偏差计算模块输入端口集合。",
+    "alias": "最终目标车速偏差计算模块输入端口集合。",
+    "fields": [
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "驾驶员设定的最终巡航目标车速 Vt (m/s)"
+      },
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前变目标时刻车辆实际速度 vi(ti) (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "最终目标车速偏差计算模块输出端口集合。",
+    "alias": "最终目标车速偏差计算模块输出端口集合。",
+    "fields": [
+      {
+        "name": "targetDeviation",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前级与最终目标车速偏差 Delta Vti (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "最终目标车速偏差计算模块参数集合。",
+    "alias": "最终目标车速偏差计算模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "最终目标车速偏差计算模块状态集合。",
+    "alias": "最终目标车速偏差计算模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "最终目标车速偏差计算模块子模块集合。",
+    "alias": "最终目标车速偏差计算模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

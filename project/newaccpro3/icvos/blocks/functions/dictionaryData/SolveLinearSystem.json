@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载行主序矩阵、右端向量和求解维度。",
+    "alias": "输入端口结构体，承载行主序矩阵、右端向量和求解维度。",
+    "fields": [
+      {
+        "name": "matrix",
+        "category": 2,
+        "dataType": "double[64]",
+        "shape": [],
+        "dataValue": {},
+        "description": "行主序矩阵 A, 最大 8x8。"
+      },
+      {
+        "name": "rhs",
+        "category": 2,
+        "dataType": "double[8]",
+        "shape": [],
+        "dataValue": {},
+        "description": "右端向量 b。"
+      },
+      {
+        "name": "n",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "方程组维数。"
+      },
+      {
+        "name": "maxDim",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 8,
+        "description": "矩阵行步长。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载消元后矩阵、解向量和求解状态。",
+    "alias": "输出端口结构体，承载消元后矩阵、解向量和求解状态。",
+    "fields": [
+      {
+        "name": "matrix",
+        "category": 2,
+        "dataType": "double[64]",
+        "shape": [],
+        "dataValue": {},
+        "description": "消元后的矩阵。"
+      },
+      {
+        "name": "solution",
+        "category": 2,
+        "dataType": "double[8]",
+        "shape": [],
+        "dataValue": {},
+        "description": "求解完成后的解向量。"
+      },
+      {
+        "name": "success",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "求解是否成功。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

@@ -12,7 +12,7 @@ CONFIG_PATH="${CONFIG_PATH:-${PROJECT_ROOT}/tools/carla_bridge/config.phase2.jso
 LEAD_DISTANCE_M="${LEAD_DISTANCE_M:-${LEAD_DISTANCE:-25}}"
 LEAD_SPEED_MPS="${LEAD_SPEED_MPS:-${LEAD_SPEED:-3}}"
 LEAD_PLACEMENT="${LEAD_PLACEMENT:-lane_waypoint}"
-LEAD_BEHAVIOR="${LEAD_BEHAVIOR:-traffic_manager}"
+LEAD_BEHAVIOR="${LEAD_BEHAVIOR:-waypoint_pid}"
 
 echo "[GAASD-CARLA] ACC dynamic-lead launcher"
 echo "[GAASD-CARLA] config=${CONFIG_PATH}"

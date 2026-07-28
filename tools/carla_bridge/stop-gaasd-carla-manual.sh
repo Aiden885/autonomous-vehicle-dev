@@ -123,8 +123,12 @@ BRIDGE_PID_FILE="${BRIDGE_PID_FILE:-${LOG_DIR}/bridge.pid}"
 CARLA_PID_FILE="${CARLA_PID_FILE:-${LOG_DIR}/carla.pid}"
 SPECTATOR_PID_FILE="${SPECTATOR_PID_FILE:-${LOG_DIR}/spectator.pid}"
 WATCH_CAMERA_PID_FILE="${WATCH_CAMERA_PID_FILE:-${LOG_DIR}/watch-camera.pid}"
+LEAD_CONTROLLER_PID_FILE="${LEAD_CONTROLLER_PID_FILE:-${LOG_DIR}/lead-waypoint-pid.pid}"
 
 log "stopping manual stack, log dir: ${LOG_DIR}"
+
+stop_pid_file "Lead waypoint PID" "$LEAD_CONTROLLER_PID_FILE"
+stop_by_pattern "Lead waypoint PID fallback" "tools/carla_bridge/lead-waypoint-pid-controller.py"
 
 stop_pid_file "Camera window" "$WATCH_CAMERA_PID_FILE"
 stop_by_pattern "Camera window fallback" "tools/carla_bridge/watch-carla.py"

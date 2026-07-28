@@ -1,0 +1,98 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "currentMaxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度。"
+      },
+      {
+        "name": "decision",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 8,
+        "description": "当前决策编号。"
+      },
+      {
+        "name": "speedStep",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.3889,
+        "description": "速度调节步长。"
+      },
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最低速度。"
+      },
+      {
+        "name": "maxSpeedCap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "最高速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "下一周期最大速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "EgoSnapshot": {
+    "description": "自车周期性输入快照结构体。",
+    "alias": "自车周期性输入快照结构体。",
+    "fields": [
+      {
+        "name": "xg",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车全局纵向位置 (m)。"
+      },
+      {
+        "name": "yg",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车全局横向位置 (m)。"
+      },
+      {
+        "name": "velocity",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车纵向速度 (m/s)。"
+      },
+      {
+        "name": "phi",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车航向角 (rad)。"
+      },
+      {
+        "name": "aOriginal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上游规划给出的原始加速度指令 (m/s^2)。"
+      },
+      {
+        "name": "deltaFOriginal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上游规划给出的原始前轮转角指令 (rad)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "ObstacleSnapshot": {
+    "description": "障碍物相对自车的周期性输入快照结构体。",
+    "alias": "障碍物相对自车的周期性输入快照结构体。",
+    "fields": [
+      {
+        "name": "dxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向距离 (m)。"
+      },
+      {
+        "name": "dyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向距离 (m)。"
+      },
+      {
+        "name": "vRxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的纵向速度 (m/s)。"
+      },
+      {
+        "name": "vRyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物相对自车的横向速度 (m/s)。"
+      },
+      {
+        "name": "axGlobal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物全局纵向加速度 (m/s^2)。"
+      },
+      {
+        "name": "ayGlobal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "障碍物全局横向加速度 (m/s^2)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

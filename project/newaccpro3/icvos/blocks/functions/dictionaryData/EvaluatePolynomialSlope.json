@@ -1,0 +1,73 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载多项式系数和自变量。",
+    "alias": "输入端口结构体，承载多项式系数和自变量。",
+    "fields": [
+      {
+        "name": "coeffs",
+        "category": 1,
+        "dataType": "PolynomialCoeffs",
+        "shape": [],
+        "dataValue": {
+          "c": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          }
+        },
+        "description": "三次多项式系数。"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多项式自变量。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载斜率求值结果。",
+    "alias": "输出端口结构体，承载斜率求值结果。",
+    "fields": [
+      {
+        "name": "result",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多项式一阶导数值。"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

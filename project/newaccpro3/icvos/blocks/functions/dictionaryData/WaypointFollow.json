@@ -1,0 +1,176 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载自车速度、当前方向盘角和参考路点。",
+    "alias": "输入端口结构体，承载自车速度、当前方向盘角和参考路点。",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车车速 (m/s)"
+      },
+      {
+        "name": "currentSteeringWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前方向盘转角 (rad)"
+      },
+      {
+        "name": "waypoints",
+        "category": 2,
+        "dataType": "Waypoint[6]",
+        "shape": [],
+        "dataValue": {},
+        "description": "参考路点"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载目标方向盘角、前轮角和加速度。",
+    "alias": "输出端口结构体，承载目标方向盘角、前轮角和加速度。",
+    "fields": [
+      {
+        "name": "steeringWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标方向盘转角 (rad)"
+      },
+      {
+        "name": "frontWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标前轮转角 (rad)"
+      },
+      {
+        "name": "acceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标加速度 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载 MPC 参数和方向盘传动比。",
+    "alias": "配置参数结构体，承载 MPC 参数和方向盘传动比。",
+    "fields": [
+      {
+        "name": "mpcParam",
+        "category": 1,
+        "dataType": "MpcParam",
+        "shape": [],
+        "dataValue": {
+          "predictionHorizon": 15,
+          "controlHorizon": 5,
+          "dt": 0.1,
+          "wheelbase": 2.85,
+          "maxSteeringAngle": 0.5236,
+          "maxAcceleration": 3.0,
+          "minAcceleration": -5.0,
+          "maxSteeringRate": 0.1,
+          "wLateral": 100.0,
+          "wHeading": 50.0,
+          "wVelocity": 5.0,
+          "wSteering": 1.0,
+          "wAccel": 0.5,
+          "wSteeringRate": 10.0,
+          "wAccelRate": 5.0,
+          "maxOptIterations": 80,
+          "learningRate": 0.1,
+          "finiteDiffEps": 1e-4
+        },
+        "description": "MPC参数"
+      },
+      {
+        "name": "steeringRatio",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 15.0,
+        "description": "方向盘传动比"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，承载暖启动控制序列和上一周期控制量。",
+    "alias": "内部状态结构体，承载暖启动控制序列和上一周期控制量。",
+    "fields": [
+      {
+        "name": "prevControlSequence",
+        "category": 2,
+        "dataType": "ControlInput[15]",
+        "shape": [],
+        "dataValue": {},
+        "description": "暖启动"
+      },
+      {
+        "name": "lastAppliedControl",
+        "category": 1,
+        "dataType": "ControlInput",
+        "shape": [],
+        "dataValue": {
+          "steeringAngle": 0.0,
+          "acceleration": 0.0
+        },
+        "description": "上一周期控制量"
+      },
+      {
+        "name": "initialized",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否已初始化"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载轨迹拟合、MPC 优化和限幅子模块。",
+    "alias": "子模块结构体，承载轨迹拟合、MPC 优化和限幅子模块。",
+    "fields": [
+      {
+        "name": "fitTrajectory",
+        "category": 1,
+        "dataType": "FitWaypointTrajectory",
+        "shape": [],
+        "dataValue": {},
+        "description": "轨迹拟合子模块"
+      },
+      {
+        "name": "mpcOptimize",
+        "category": 1,
+        "dataType": "MpcOptimize",
+        "shape": [],
+        "dataValue": {},
+        "description": "MPC优化子模块"
+      },
+      {
+        "name": "clampVal",
+        "category": 1,
+        "dataType": "ClampValue",
+        "shape": [],
+        "dataValue": {},
+        "description": "限幅子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

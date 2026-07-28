@@ -1,0 +1,130 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "c0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式常数项 (m)。"
+      },
+      {
+        "name": "c1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式一次项。"
+      },
+      {
+        "name": "c2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式二次项 (1/m)。"
+      },
+      {
+        "name": "c3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式三次项 (1/m^2)。"
+      },
+      {
+        "name": "previewDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "远预瞄距离 (m)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "weightedError",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "近/中/远预瞄加权横向误差 (m)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "nearPreviewDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "近预瞄距离 (m)。"
+      },
+      {
+        "name": "w1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.2,
+        "description": "近预瞄误差权重。"
+      },
+      {
+        "name": "w2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.3,
+        "description": "中预瞄误差权重。"
+      },
+      {
+        "name": "w3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "远预瞄误差权重。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

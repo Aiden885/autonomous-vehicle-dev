@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "虚拟目标车速上限保护模块输入端口集合。",
+    "alias": "虚拟目标车速上限保护模块输入端口集合。",
+    "fields": [
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "未限幅的内部虚拟目标车速 (m/s)"
+      },
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "驾驶员设定的最终巡航目标车速 Vt (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "虚拟目标车速上限保护模块输出端口集合。",
+    "alias": "虚拟目标车速上限保护模块输出端口集合。",
+    "fields": [
+      {
+        "name": "limitedVirtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上限保护后的虚拟目标车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "虚拟目标车速上限保护模块参数集合。",
+    "alias": "虚拟目标车速上限保护模块参数集合。",
+    "fields": [
+      {
+        "name": "maxOffset",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "虚拟目标允许的最大偏置量 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "虚拟目标车速上限保护模块状态集合。",
+    "alias": "虚拟目标车速上限保护模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "虚拟目标车速上限保护模块子模块集合。",
+    "alias": "虚拟目标车速上限保护模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载全局向量和航向角。",
+    "alias": "输入端口结构体，承载全局向量和航向角。",
+    "fields": [
+      {
+        "name": "vxGlobal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "全局横向分量"
+      },
+      {
+        "name": "vyGlobal",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "全局纵向分量"
+      },
+      {
+        "name": "yaw",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车朝向角 (rad)"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载自车坐标系向量。",
+    "alias": "输出端口结构体，承载自车坐标系向量。",
+    "fields": [
+      {
+        "name": "vxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "ego 系下纵向分量"
+      },
+      {
+        "name": "vyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "ego 系下横向分量"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，本元件无配置参数。",
+    "alias": "配置参数结构体，本元件无配置参数。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

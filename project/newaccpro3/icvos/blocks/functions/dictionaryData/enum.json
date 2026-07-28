@@ -1,0 +1,301 @@
+{
+  "DecisionResult": {
+    "description": "系统决策响应动作枚举。",
+    "alias": "系统决策响应动作枚举。",
+    "fields": [
+      {
+        "name": "none",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 0,
+        "shape": [],
+        "description": "无动作"
+      },
+      {
+        "name": "r1",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 1,
+        "shape": [],
+        "description": "目标增量响应 R1"
+      },
+      {
+        "name": "r2",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 2,
+        "shape": [],
+        "description": "目标减量响应 R2"
+      },
+      {
+        "name": "r3",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 3,
+        "shape": [],
+        "description": "保持控制响应 R3"
+      },
+      {
+        "name": "r4",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 4,
+        "shape": [],
+        "description": "继承控制响应 R4"
+      },
+      {
+        "name": "r5",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 5,
+        "shape": [],
+        "description": "无继控制响应 R5"
+      },
+      {
+        "name": "r6",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 6,
+        "shape": [],
+        "description": "系统待命响应 R6"
+      },
+      {
+        "name": "r7",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 7,
+        "shape": [],
+        "description": "报错待命响应 R7"
+      },
+      {
+        "name": "r8",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 8,
+        "shape": [],
+        "description": "系统退出响应 R8"
+      }
+    ],
+    "source": "code"
+  },
+  "DriverCommand": {
+    "description": "驾驶员按键或踏板指令枚举。",
+    "alias": "驾驶员按键或踏板指令枚举。",
+    "fields": [
+      {
+        "name": "none",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 0,
+        "shape": [],
+        "description": "无驾驶员指令"
+      },
+      {
+        "name": "inc",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 1,
+        "shape": [],
+        "description": "增速键指令 I0"
+      },
+      {
+        "name": "dec",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 2,
+        "shape": [],
+        "description": "降速键指令 I1"
+      },
+      {
+        "name": "cancel",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 3,
+        "shape": [],
+        "description": "取消键指令 I2"
+      },
+      {
+        "name": "brake",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 4,
+        "shape": [],
+        "description": "刹车踏板指令 I3"
+      },
+      {
+        "name": "exit",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 5,
+        "shape": [],
+        "description": "退出键指令 I4"
+      }
+    ],
+    "source": "code"
+  },
+  "SpeedSubstate": {
+    "description": "当前车速相对适控区间的子态。",
+    "alias": "当前车速相对适控区间的子态。",
+    "fields": [
+      {
+        "name": "suitable",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 0,
+        "shape": [],
+        "description": "适速子态 Sv0"
+      },
+      {
+        "name": "low",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 1,
+        "shape": [],
+        "description": "低速子态 Sv1"
+      },
+      {
+        "name": "high",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 2,
+        "shape": [],
+        "description": "高速子态 Sv2"
+      }
+    ],
+    "source": "code"
+  },
+  "SystemState": {
+    "description": "定速巡航系统状态机状态。",
+    "alias": "定速巡航系统状态机状态。",
+    "fields": [
+      {
+        "name": "s0",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 0,
+        "shape": [],
+        "description": "适速在控状态 S0"
+      },
+      {
+        "name": "s1",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 1,
+        "shape": [],
+        "description": "高速在控状态 S1"
+      },
+      {
+        "name": "s2",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 2,
+        "shape": [],
+        "description": "适速无油有史待命状态 S2"
+      },
+      {
+        "name": "s3",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 3,
+        "shape": [],
+        "description": "适速无油无史待命状态 S3"
+      },
+      {
+        "name": "s4",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 4,
+        "shape": [],
+        "description": "有油待命状态 S4"
+      },
+      {
+        "name": "s5",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 5,
+        "shape": [],
+        "description": "非适速待命状态 S5"
+      },
+      {
+        "name": "s6",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 6,
+        "shape": [],
+        "description": "低速在控状态 S6"
+      }
+    ],
+    "source": "code"
+  },
+  "SystemSubstate": {
+    "description": "控制、油门和历史目标组合得到的系统子态。",
+    "alias": "控制、油门和历史目标组合得到的系统子态。",
+    "fields": [
+      {
+        "name": "s0",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 0,
+        "shape": [],
+        "description": "待命且无油无史子态 Ss0"
+      },
+      {
+        "name": "s1",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 1,
+        "shape": [],
+        "description": "待命且无油有史子态 Ss1"
+      },
+      {
+        "name": "s2",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 2,
+        "shape": [],
+        "description": "待命且有油无史子态 Ss2"
+      },
+      {
+        "name": "s3",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 3,
+        "shape": [],
+        "description": "待命且有油有史子态 Ss3"
+      },
+      {
+        "name": "s4",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 4,
+        "shape": [],
+        "description": "在控且无油无史子态 Ss4"
+      },
+      {
+        "name": "s5",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 5,
+        "shape": [],
+        "description": "在控且无油有史子态 Ss5"
+      },
+      {
+        "name": "s6",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 6,
+        "shape": [],
+        "description": "在控且有油无史子态 Ss6"
+      },
+      {
+        "name": "s7",
+        "category": 0,
+        "dataType": "int",
+        "dataValue": 7,
+        "shape": [],
+        "description": "在控且有油有史子态 Ss7"
+      }
+    ],
+    "source": "code"
+  }
+}

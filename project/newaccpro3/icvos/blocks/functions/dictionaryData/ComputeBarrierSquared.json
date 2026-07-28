@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载相对位置。",
+    "alias": "输入端口结构体，承载相对位置。",
+    "fields": [
+      {
+        "name": "dxEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "ego 系纵向相对位置"
+      },
+      {
+        "name": "dyEgo",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "ego 系横向相对位置"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载 Barrier 值。",
+    "alias": "输出端口结构体，承载 Barrier 值。",
+    "fields": [
+      {
+        "name": "barrier",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "Barrier 值 B"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载安全半径。",
+    "alias": "配置参数结构体，承载安全半径。",
+    "fields": [
+      {
+        "name": "safetyRadius",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 4.0,
+        "description": "安全圆半径 r_safe"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本元件无跨周期状态。",
+    "alias": "内部状态结构体，本元件无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，本元件无下游子模块。",
+    "alias": "子模块结构体，本元件无下游子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

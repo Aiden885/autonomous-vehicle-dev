@@ -1,0 +1,460 @@
+{
+  "ControlInput": {
+    "description": "车辆控制输入量",
+    "alias": "车辆控制输入量",
+    "fields": [
+      {
+        "name": "steeringAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前轮转向角 (rad), 左转为正"
+      },
+      {
+        "name": "acceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向加速度 (m/s^2), 加速为正"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "FittedTrajectory": {
+    "description": "拟合后的参考轨迹（含归一化信息）",
+    "alias": "拟合后的参考轨迹（含归一化信息）",
+    "fields": [
+      {
+        "name": "poly",
+        "category": 1,
+        "dataType": "PolynomialCoeffs",
+        "shape": [],
+        "dataValue": {
+          "c": {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          }
+        },
+        "description": "归一化坐标系下的多项式系数"
+      },
+      {
+        "name": "xOffset",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "X坐标归一化偏移量 (m)"
+      },
+      {
+        "name": "xScale",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "X坐标归一化缩放因子 (m)"
+      },
+      {
+        "name": "refSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "路点推算的参考车速 (m/s)"
+      },
+      {
+        "name": "valid",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "轨迹拟合是否有效"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "MpcParam": {
+    "description": "MPC控制参数集",
+    "alias": "MPC控制参数集",
+    "fields": [
+      {
+        "name": "predictionHorizon",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 15,
+        "description": "预测步数"
+      },
+      {
+        "name": "controlHorizon",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 5,
+        "description": "控制步数"
+      },
+      {
+        "name": "dt",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.1,
+        "description": "预测时间步长 (s)"
+      },
+      {
+        "name": "wheelbase",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.85,
+        "description": "前后轴距 (m)"
+      },
+      {
+        "name": "maxSteeringAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5236,
+        "description": "前轮最大转向角 (rad), 约30度"
+      },
+      {
+        "name": "maxAcceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "最大纵向加速度 (m/s^2)"
+      },
+      {
+        "name": "minAcceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": -5.0,
+        "description": "最大纵向减速度 (m/s^2)"
+      },
+      {
+        "name": "maxSteeringRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.1,
+        "description": "每步最大转向角变化量 (rad/step)"
+      },
+      {
+        "name": "wLateral",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 100.0,
+        "description": "横向偏差代价权重"
+      },
+      {
+        "name": "wHeading",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 50.0,
+        "description": "航向偏差代价权重"
+      },
+      {
+        "name": "wVelocity",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "速度偏差代价权重"
+      },
+      {
+        "name": "wSteering",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "转向角控制量代价权重"
+      },
+      {
+        "name": "wAccel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "加速度控制量代价权重"
+      },
+      {
+        "name": "wSteeringRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 10.0,
+        "description": "转向角变化率代价权重"
+      },
+      {
+        "name": "wAccelRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "加速度变化率代价权重"
+      },
+      {
+        "name": "maxOptIterations",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 80,
+        "description": "梯度下降最大迭代次数"
+      },
+      {
+        "name": "learningRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.1,
+        "description": "梯度下降初始学习率 (配合梯度范数裁剪使用)"
+      },
+      {
+        "name": "finiteDiffEps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1e-4,
+        "description": "数值梯度中心差分步长"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "PolynomialCoeffs": {
+    "description": "三次多项式系数: y = c[0] + c[1]*x + c[2]*x^2 + c[3]*x^3",
+    "alias": "三次多项式系数: y = c[0] + c[1]*x + c[2]*x^2 + c[3]*x^3",
+    "fields": [
+      {
+        "name": "c",
+        "category": 2,
+        "dataType": "double[4]",
+        "shape": [],
+        "dataValue": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0
+        },
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "VehicleState": {
+    "description": "车辆运动状态",
+    "alias": "车辆运动状态",
+    "fields": [
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向位置 (m)"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置 (m)"
+      },
+      {
+        "name": "yaw",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "航向角 (rad), 逆时针为正"
+      },
+      {
+        "name": "v",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "Waypoint": {
+    "description": "二维路点坐标",
+    "alias": "二维路点坐标",
+    "fields": [
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向坐标 (m), 自车坐标系前方为正"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向坐标 (m), 自车坐标系左方为正"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "WaypointFollowInput": {
+    "description": "路点跟踪控制器输入结构体",
+    "alias": "路点跟踪控制器输入结构体",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车车速 (m/s)"
+      },
+      {
+        "name": "currentSteeringWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前方向盘转角 (rad)"
+      },
+      {
+        "name": "waypoints",
+        "category": 2,
+        "dataType": "Waypoint[6]",
+        "shape": [],
+        "dataValue": {},
+        "description": "6个参考路点"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "WaypointFollowOutput": {
+    "description": "路点跟踪控制器输出结构体",
+    "alias": "路点跟踪控制器输出结构体",
+    "fields": [
+      {
+        "name": "steeringWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标方向盘转角 (rad)"
+      },
+      {
+        "name": "frontWheelAngle",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标前轮转角 (rad)，方向盘转角 / 传动比"
+      },
+      {
+        "name": "acceleration",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标纵向加速度 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "WaypointFollowParam": {
+    "description": "路点跟踪控制器参数结构体",
+    "alias": "路点跟踪控制器参数结构体",
+    "fields": [
+      {
+        "name": "mpcParam",
+        "category": 1,
+        "dataType": "MpcParam",
+        "shape": [],
+        "dataValue": {
+          "predictionHorizon": 15,
+          "controlHorizon": 5,
+          "dt": 0.1,
+          "wheelbase": 2.85,
+          "maxSteeringAngle": 0.5236,
+          "maxAcceleration": 3.0,
+          "minAcceleration": -5.0,
+          "maxSteeringRate": 0.1,
+          "wLateral": 100.0,
+          "wHeading": 50.0,
+          "wVelocity": 5.0,
+          "wSteering": 1.0,
+          "wAccel": 0.5,
+          "wSteeringRate": 10.0,
+          "wAccelRate": 5.0,
+          "maxOptIterations": 80,
+          "learningRate": 0.1,
+          "finiteDiffEps": 1e-4
+        },
+        "description": "MPC控制参数集"
+      },
+      {
+        "name": "steeringRatio",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 15.0,
+        "description": "方向盘到前轮转角传动比 (无量纲)"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  },
+  "WaypointFollowState": {
+    "description": "路点跟踪控制器状态结构体（跨周期持久化）",
+    "alias": "路点跟踪控制器状态结构体（跨周期持久化）",
+    "fields": [
+      {
+        "name": "prevControlSequence",
+        "category": 2,
+        "dataType": "ControlInput[15]",
+        "shape": [],
+        "dataValue": {},
+        "description": "上一周期MPC控制序列 (暖启动用)"
+      },
+      {
+        "name": "lastAppliedControl",
+        "category": 1,
+        "dataType": "ControlInput",
+        "shape": [],
+        "dataValue": {
+          "steeringAngle": 0.0,
+          "acceleration": 0.0
+        },
+        "description": "上一周期实际施加的控制量"
+      },
+      {
+        "name": "initialized",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "暖启动状态是否已初始化"
+      }
+    ],
+    "source": "code",
+    "namespace": "waypoint_follow_mbd"
+  }
+}

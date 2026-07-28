@@ -1,0 +1,123 @@
+{
+    "name": "ACCLastDecisionNext",
+    "componentType": "atomic-function",
+    "alias": "ACC历史决策",
+    "description": "更新ACC上一次有效决策",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "92f2bf10-9abc-5b7d-acba-a83994654ff9",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCLastDecisionNext_param_decisionY_In",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "In",
+                    "description": "当前决策输出，范围1~8",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCLastDecisionNext_param_lastActiveDecision_In",
+                    "name": "lastActiveDecision",
+                    "alias": "lastActiveDecision",
+                    "direction": "In",
+                    "description": "当前上一次有效决策，范围1~6",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCLastDecisionNext_output_nextLastActiveDecision_Out",
+                    "name": "nextLastActiveDecision",
+                    "alias": "nextLastActiveDecision",
+                    "direction": "Out",
+                    "description": "下一上一次有效决策，范围1~6",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCLastDecisionNext(int decisionY, int lastActiveDecision)\n{\n    int nextLastActiveDecision = 5;\n\n    if ((lastActiveDecision >= 1) && (lastActiveDecision <= 6)) {\n        nextLastActiveDecision = lastActiveDecision;\n    }\n\n    if ((decisionY >= 1) && (decisionY <= 6)) {\n        nextLastActiveDecision = decisionY;\n    }\n\n    return nextLastActiveDecision;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

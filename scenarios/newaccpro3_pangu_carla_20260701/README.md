@@ -48,7 +48,8 @@ http://127.0.0.1:8765/
 4. 点击 `启动联调环境`。该按钮会同时启动：
    - CARLA 窗口。
    - Python Bridge。
-   - ACC 直道跟车场景。
+   - ACC 跟车场景。
+   - 前车 waypoint PID 控制器：按 CARLA waypoint 跟踪车道，并用速度 PID 保持约 `2m/s`。
    - Pangu Docker 容器。
    - `ZmqBridgeModule` 业务进程。
 
@@ -63,7 +64,8 @@ http://127.0.0.1:8765/
    - 发送 `E` 驾驶指令，让 ACC 进入启控状态。
 
 7. 观察 CARLA 窗口：
-   - ego 应在直道上跟随 2m/s 前车。
+   - ego 应跟随约 `2m/s` 的前车。
+   - 前车由 waypoint PID 控制，不再使用 `constant_velocity` 直线速度向量。
    - 点击 `T/R` 可观察时距调整效果。
    - 点击 `C` 或 `S` 可观察 ACC 退出。
 

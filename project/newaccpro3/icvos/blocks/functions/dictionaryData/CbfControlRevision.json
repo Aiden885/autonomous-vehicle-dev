@@ -1,0 +1,241 @@
+{
+  "Input": {
+    "description": "输入端口结构体，承载自车与障碍物快照。",
+    "alias": "输入端口结构体，承载自车与障碍物快照。",
+    "fields": [
+      {
+        "name": "egoState",
+        "category": 1,
+        "dataType": "EgoSnapshot",
+        "shape": [],
+        "dataValue": {
+          "xg": 0.0,
+          "yg": 0.0,
+          "velocity": 0.0,
+          "phi": 0.0,
+          "aOriginal": 0.0,
+          "deltaFOriginal": 0.0
+        },
+        "description": "自车周期性输入快照。"
+      },
+      {
+        "name": "obstacles",
+        "category": 2,
+        "dataType": "ObstacleSnapshot[32]",
+        "shape": [],
+        "dataValue": {},
+        "description": "障碍物输入快照数组。"
+      },
+      {
+        "name": "obstacleNum",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "有效障碍物数量。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Output": {
+    "description": "输出端口结构体，承载修正后的安全控制和诊断量。",
+    "alias": "输出端口结构体，承载修正后的安全控制和诊断量。",
+    "fields": [
+      {
+        "name": "aSafe",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "修正后的安全加速度 (m/s^2)。"
+      },
+      {
+        "name": "deltaFSafe",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "修正后的安全前轮转角 (rad)。"
+      },
+      {
+        "name": "feasible",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "QP 可行性诊断。"
+      },
+      {
+        "name": "activeNum",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "参与约束装配的障碍物数量。"
+      },
+      {
+        "name": "iterUsed",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "QP 求解实际迭代次数。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Param": {
+    "description": "配置参数结构体，承载 CBF、车辆、限幅和 QP 求解参数。",
+    "alias": "配置参数结构体，承载 CBF、车辆、限幅和 QP 求解参数。",
+    "fields": [
+      {
+        "name": "safetyRadius",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "CBF 安全半径 (m)。"
+      },
+      {
+        "name": "alpha1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.2,
+        "description": "一阶 HOCBF 增益。"
+      },
+      {
+        "name": "alpha2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.2,
+        "description": "二阶 HOCBF 增益。"
+      },
+      {
+        "name": "wheelBase",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 2.7,
+        "description": "前后轴距 (m)。"
+      },
+      {
+        "name": "aMin",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": -7.0,
+        "description": "加速度下限 (m/s^2)。"
+      },
+      {
+        "name": "aMax",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 7.0,
+        "description": "加速度上限 (m/s^2)。"
+      },
+      {
+        "name": "deltaFMin",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": -0.5,
+        "description": "前轮转角下限 (rad)。"
+      },
+      {
+        "name": "deltaFMax",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "前轮转角上限 (rad)。"
+      },
+      {
+        "name": "qDiagAccel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "QP 加速度通道权重。"
+      },
+      {
+        "name": "qDiagSteer",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "QP 转向通道权重。"
+      },
+      {
+        "name": "qpMaxIter",
+        "category": 0,
+        "dataType": "unsigned int",
+        "shape": [],
+        "dataValue": 200,
+        "description": "QP 最大迭代次数。"
+      },
+      {
+        "name": "qpTolerance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1e-6,
+        "description": "QP 收敛容差。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "State": {
+    "description": "内部状态结构体，本顶层模块无跨周期状态。",
+    "alias": "内部状态结构体，本顶层模块无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  },
+  "Sub": {
+    "description": "子模块结构体，承载坐标旋转、约束生成、QP 求解和限幅子模块。",
+    "alias": "子模块结构体，承载坐标旋转、约束生成、QP 求解和限幅子模块。",
+    "fields": [
+      {
+        "name": "rotator",
+        "category": 1,
+        "dataType": "RotateVectorByMinusYaw",
+        "shape": [],
+        "dataValue": {},
+        "description": "障碍物加速度坐标旋转元件。"
+      },
+      {
+        "name": "constraintGen",
+        "category": 1,
+        "dataType": "ComputeObstacleAffineConstraint",
+        "shape": [],
+        "dataValue": {},
+        "description": "单障碍物 HOCBF 约束生成组件。"
+      },
+      {
+        "name": "qpSolver",
+        "category": 1,
+        "dataType": "SolveQpHildreth",
+        "shape": [],
+        "dataValue": {},
+        "description": "二维 QP 求解元件。"
+      },
+      {
+        "name": "clamper",
+        "category": 1,
+        "dataType": "ClampControlInput",
+        "shape": [],
+        "dataValue": {},
+        "description": "控制输入限幅元件。"
+      }
+    ],
+    "source": "code",
+    "namespace": "cbf_arbitration_mbd"
+  }
+}

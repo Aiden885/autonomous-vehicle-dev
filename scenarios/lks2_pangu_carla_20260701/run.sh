@@ -5,8 +5,14 @@ SCENARIO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCENARIO_DIR}/../.." && pwd)"
 export CARLA_ROOT="${CARLA_ROOT:-/home/aiden/snap/code/app/carla-package}"
 export PYTHON_BIN="${PYTHON_BIN:-python3.8}"
-export CONFIG_PATH="${SCENARIO_DIR}/bridge_config.json"
+BASE_CONFIG_PATH="${SCENARIO_DIR}/bridge_config.json"
+export CONFIG_PATH="${GAASD_CARLA_LOG_DIR:-/tmp/lks2-pangu-carla/carla}/bridge_config.runtime.json"
 export GAASD_CARLA_LOG_DIR="${GAASD_CARLA_LOG_DIR:-/tmp/lks2-pangu-carla/carla}"
+export CARLA_FORCE_NVIDIA_VULKAN="${CARLA_FORCE_NVIDIA_VULKAN:-1}"
+export CARLA_EXTRA_ARGS="${CARLA_EXTRA_ARGS:--windowed -Resx=800 -Resy=600 -fps=20 -nosound -graphicsadapter=0 -norhithread}"
+CARLA_RESET_RENDER_SETTINGS="${CARLA_RESET_RENDER_SETTINGS:-1}"
+LKS_FOLLOW_SPECTATOR="${LKS_FOLLOW_SPECTATOR:-1}"
+LKS_WATCH_CAMERA="${LKS_WATCH_CAMERA:-0}"
 
 PANGU_BUILD_ROOT="${PANGU_BUILD_ROOT:-${HOME}/.cache/gaasd-pangu/lks2_codegen_build}"
 PANGU_INSTALL_DIR="${PANGU_INSTALL_DIR:-${PANGU_BUILD_ROOT}/install}"
@@ -15,9 +21,16 @@ PANGU_CONTAINER_NAME="${PANGU_CONTAINER_NAME:-lks2_pangu_carla}"
 PANGU_LOG_DIR="${PANGU_LOG_DIR:-/tmp/lks2-pangu-carla/pangu}"
 LKS_INITIAL_OFFSET_M="${LKS_INITIAL_OFFSET_M:-0.0}"
 LKS_INITIAL_HEADING_ERROR_DEG="${LKS_INITIAL_HEADING_ERROR_DEG:-0.0}"
-LKS_TARGET_SPEED_MPS="${LKS_TARGET_SPEED_MPS:-6.0}"
-LKS_BOOST_SPEED_MPS="${LKS_BOOST_SPEED_MPS:-2.0}"
-LKS_USE_BOOST="${LKS_USE_BOOST:-0}"
+LKS_MAP_NAME="${LKS_MAP_NAME:-Town04}"
+LKS_REFERENCE_X="${LKS_REFERENCE_X:--511.738}"
+LKS_REFERENCE_Y="${LKS_REFERENCE_Y:-242.657}"
+LKS_REFERENCE_Z="${LKS_REFERENCE_Z:-0.5}"
+LKS_EGO_X="${LKS_EGO_X:-${LKS_REFERENCE_X}}"
+LKS_EGO_Y="${LKS_EGO_Y:-${LKS_REFERENCE_Y}}"
+LKS_EGO_Z="${LKS_EGO_Z:-${LKS_REFERENCE_Z}}"
+LKS_TARGET_SPEED_MPS="${LKS_TARGET_SPEED_MPS:-4.0}"
+LKS_BOOST_SPEED_MPS="${LKS_BOOST_SPEED_MPS:-1.5}"
+LKS_USE_BOOST="${LKS_USE_BOOST:-1}"
 LKS_RECORD_DURATION_SEC="${LKS_RECORD_DURATION_SEC:-180}"
 LKS_PARAM_L0="${LKS_PARAM_L0:-5.0}"
 LKS_PARAM_RT="${LKS_PARAM_RT:-0.5}"
@@ -27,7 +40,7 @@ LKS_PARAM_NEAR_PREVIEW_DISTANCE="${LKS_PARAM_NEAR_PREVIEW_DISTANCE:-0.5}"
 LKS_PARAM_W1="${LKS_PARAM_W1:-0.2}"
 LKS_PARAM_W2="${LKS_PARAM_W2:-0.3}"
 LKS_PARAM_W3="${LKS_PARAM_W3:-0.5}"
-LKS_PARAM_KP="${LKS_PARAM_KP:-0.08}"
+LKS_PARAM_KP="${LKS_PARAM_KP:-0.09}"
 LKS_PARAM_STEER_SCALE="${LKS_PARAM_STEER_SCALE:-0.6}"
 LKS_PARAM_AY_MAX="${LKS_PARAM_AY_MAX:-3.0}"
 LKS_PARAM_V_MIN="${LKS_PARAM_V_MIN:-1.0}"
@@ -37,8 +50,30 @@ LKS_RECORDER_PID_FILE="${PANGU_LOG_DIR}/recorder.pid"
 LKS_RECORDER_LOG_FILE="${PANGU_LOG_DIR}/recorder.log"
 
 mkdir -p "${PANGU_LOG_DIR}"
+mkdir -p "${GAASD_CARLA_LOG_DIR}"
+BASE_CONFIG_PATH="${BASE_CONFIG_PATH}" CONFIG_PATH="${CONFIG_PATH}" LKS_MAP_NAME="${LKS_MAP_NAME}" \
+  "${PYTHON_BIN}" - <<'PY'
+import json
+import os
+from pathlib import Path
+
+base_path = Path(os.environ["BASE_CONFIG_PATH"])
+config_path = Path(os.environ["CONFIG_PATH"])
+data = json.loads(base_path.read_text(encoding="utf-8"))
+data.setdefault("carla", {})["map_name"] = os.environ["LKS_MAP_NAME"]
+config_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+PY
 if [[ "${CLEAN_START:-1}" == "1" ]]; then
   bash "${SCENARIO_DIR}/stop.sh" >/dev/null 2>&1 || true
+fi
+if [[ "${CARLA_RESET_RENDER_SETTINGS}" == "1" ]]; then
+  CARLA_USER_SETTINGS="${HOME}/.config/Epic/CarlaUE4/Saved/Config/LinuxNoEditor/GameUserSettings.ini"
+  if [[ -f "${CARLA_USER_SETTINGS}" ]]; then
+    mkdir -p "${GAASD_CARLA_LOG_DIR}"
+    cp "${CARLA_USER_SETTINGS}" "${GAASD_CARLA_LOG_DIR}/GameUserSettings.ini.bak.$(date +%Y%m%d_%H%M%S)" || true
+    rm -f "${CARLA_USER_SETTINGS}"
+    echo "[LKS scenario] reset CARLA GameUserSettings.ini; backup saved under ${GAASD_CARLA_LOG_DIR}"
+  fi
 fi
 if [[ ! -f "${PANGU_INSTALL_DIR}/lib/libLKSModule.so" ]]; then
   echo "[LKS scenario] Pangu module missing; building it first"
@@ -47,18 +82,35 @@ if [[ ! -f "${PANGU_INSTALL_DIR}/lib/libLKSModule.so" ]]; then
 fi
 
 echo "[LKS scenario] starting CARLA and Bridge"
-bash "${REPO_ROOT}/tools/carla_bridge/start-gaasd-carla-manual.sh" \
-  --config "${CONFIG_PATH}" \
-  --ego-spawn-index 0 \
-  --no-lead \
-  --follow-spectator \
-  --spectator-back 8 \
-  --spectator-up 6 \
-  --spectator-pitch -25 \
+echo "[LKS scenario] CARLA_EXTRA_ARGS=${CARLA_EXTRA_ARGS}"
+echo "[LKS scenario] CARLA_FORCE_NVIDIA_VULKAN=${CARLA_FORCE_NVIDIA_VULKAN} VK_ICD_FILENAMES=${VK_ICD_FILENAMES:-auto}"
+CARLA_START_ARGS=(
+  --config "${CONFIG_PATH}"
+  --ego-spawn-index 0
+  --no-lead
+  --spectator-back 8
+  --spectator-up 6
+  --spectator-pitch -25
   --no-probe
+)
+if [[ "${LKS_FOLLOW_SPECTATOR}" == "1" ]]; then
+  CARLA_START_ARGS+=(--follow-spectator)
+else
+  CARLA_START_ARGS+=(--no-follow-spectator)
+fi
+if [[ "${LKS_WATCH_CAMERA}" == "1" ]]; then
+  CARLA_START_ARGS+=(--watch-camera)
+fi
+bash "${REPO_ROOT}/tools/carla_bridge/start-gaasd-carla-manual.sh" "${CARLA_START_ARGS[@]}"
 
 "${PYTHON_BIN}" "${REPO_ROOT}/tools/carla_bridge/reset-lks-reference-scene.py" \
   --carla-root "${CARLA_ROOT}" \
+  --expected-map "${LKS_MAP_NAME}" \
+  --reference-x "${LKS_REFERENCE_X}" \
+  --reference-y "${LKS_REFERENCE_Y}" \
+  --ego-x "${LKS_EGO_X}" \
+  --ego-y "${LKS_EGO_Y}" \
+  --ego-z "${LKS_EGO_Z}" \
   --lateral-offset-m "${LKS_INITIAL_OFFSET_M}"
 
 mkdir -p "${LKS_RESULT_DIR}"

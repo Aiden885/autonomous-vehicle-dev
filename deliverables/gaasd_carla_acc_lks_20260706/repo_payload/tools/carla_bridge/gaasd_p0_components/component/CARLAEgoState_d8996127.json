@@ -1,0 +1,194 @@
+{
+    "name": "CARLAEgoState",
+    "componentType": "atomic-function",
+    "alias": "CARLA自车状态",
+    "description": "读取CARLA自车状态",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "d8996127-68a6-5f22-b9a6-e326bcfbbb36",
+    "isCustom": false,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "仿真输入"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLAEgoState_param_egoV_Out",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "Out",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAEgoState_param_egoX_Out",
+                    "name": "egoX",
+                    "alias": "egoX",
+                    "direction": "Out",
+                    "description": "自车位置X，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAEgoState_param_egoY_Out",
+                    "name": "egoY",
+                    "alias": "egoY",
+                    "direction": "Out",
+                    "description": "自车位置Y，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAEgoState_param_egoYawRad_Out",
+                    "name": "egoYawRad",
+                    "alias": "egoYawRad",
+                    "direction": "Out",
+                    "description": "自车航向角，单位rad",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAEgoState_param_egoAcc_Out",
+                    "name": "egoAcc",
+                    "alias": "egoAcc",
+                    "direction": "Out",
+                    "description": "自车纵向加速度，单位m/s^2",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLAEgoState_param_valid_Out",
+                    "name": "valid",
+                    "alias": "valid",
+                    "direction": "Out",
+                    "description": "数据有效标志，1表示有效",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 6,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLAEgoState(\n    double *egoV,\n    double *egoX,\n    double *egoY,\n    double *egoYawRad,\n    double *egoAcc,\n    int *valid)\n{\n    extern int carla_adapter_read_ego_state(\n        double *egoV,\n        double *egoX,\n        double *egoY,\n        double *egoYawRad,\n        double *egoAcc,\n        int *valid);\n    int rc = 0;\n\n    rc = carla_adapter_read_ego_state(egoV, egoX, egoY, egoYawRad, egoAcc, valid);\n    if (rc != 0) {\n        if (egoV != 0) {\n            *egoV = 0.0;\n        }\n        if (egoX != 0) {\n            *egoX = 0.0;\n        }\n        if (egoY != 0) {\n            *egoY = 0.0;\n        }\n        if (egoYawRad != 0) {\n            *egoYawRad = 0.0;\n        }\n        if (egoAcc != 0) {\n            *egoAcc = 0.0;\n        }\n        if (valid != 0) {\n            *valid = 0;\n        }\n    }\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

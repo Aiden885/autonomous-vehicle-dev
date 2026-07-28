@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GAASD-CARLA Scenario Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20260706-product-polish">
+</head>
+<body>
+  <div class="dashboard">
+    <div class="particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="app-name">GAASD-CARLA</span>
+          <span class="app-label">Local Simulator</span>
+        </div>
+      </div>
+
+      <div class="section-label">场景列表</div>
+      <div id="scenarioList" class="scenario-list"></div>
+
+      <div class="sidebar-footer">
+        <div class="version-info">
+          <span>Scenario Panel</span>
+          <span class="dot">·</span>
+          <span>CARLA 0.9.15</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-inner">
+        <section class="hero-card" id="heroCard">
+          <div class="hero-top">
+            <div class="scene-info">
+              <h1 class="scene-title" id="scenarioName">正在加载场景</h1>
+              <p class="scene-desc" id="scenarioDescription">读取 scenarios 目录中的可复现快照。</p>
+            </div>
+            <div class="status-pill status-idle" id="statusPill">
+              <span class="status-dot"></span>
+              <span id="statusText">Idle</span>
+            </div>
+          </div>
+
+          <div class="config-strip">
+            <div class="config-tag path-tag">
+              <span class="tag-label">路径</span>
+              <code class="tag-value" id="restorePath" title="点击复制工程路径">-</code>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">CARLA</span>
+              <span class="tag-value" id="carlaInfo">-</span>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">地图</span>
+              <span class="tag-value" id="mapInfo">-</span>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">前车</span>
+              <span class="tag-value" id="leadInfo">-</span>
+            </div>
+          </div>
+
+          <div class="signal-strip">
+            <span class="signal-label">观测信号</span>
+            <span class="signal-tags" id="signalInfo">-</span>
+          </div>
+        </section>
+
+        <section class="action-row">
+          <section class="launch-card">
+            <div class="launch-header">
+              <h2 class="section-title">启动控制</h2>
+              <label class="force-row">
+                <input type="checkbox" id="forceRestore">
+                <span>覆盖恢复目录</span>
+              </label>
+            </div>
+
+            <div class="launch-controls">
+              <button class="btn btn-secondary" id="restoreBtn">
+                <span class="btn-spinner"></span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                恢复工程
+              </button>
+
+              <button class="btn btn-primary" id="startBtn">
+                <span class="btn-shimmer"></span>
+                <span class="btn-spinner"></span>
+                <svg class="btn-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                启动联调环境
+              </button>
+
+              <button class="btn btn-danger" id="stopBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="6" width="12" height="12" rx="1"/>
+                </svg>
+                停止
+              </button>
+            </div>
+
+            <div class="utility-bar">
+              <button class="util-btn" id="healthBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                健康检查
+              </button>
+              <button class="util-btn" id="fixGeneratedBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4"/>
+                  <path d="M15 5l4 4"/>
+                </svg>
+                修复生成代码
+              </button>
+              <button class="util-btn" id="copyPathBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                复制路径
+              </button>
+              <button class="util-btn" id="readmeBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 16v-4"/>
+                  <path d="M12 8h.01"/>
+                </svg>
+                说明
+              </button>
+            </div>
+          </section>
+
+          <section class="driver-card" id="accDriverCard">
+            <div class="driver-header">
+              <h2 class="section-title">ACC 驾驶指令</h2>
+              <span class="driver-hint">页面聚焦时可用键盘</span>
+            </div>
+            <div class="driver-grid">
+              <button class="driver-btn driver-kick" id="kickstartBtn">
+                辅助启控
+                <span>boost + E</span>
+              </button>
+              <button class="driver-btn" data-command="e">E<span>启控/降速</span></button>
+              <button class="driver-btn" data-command="q">Q<span>加速/继承</span></button>
+              <button class="driver-btn" data-command="t">T<span>减小时距</span></button>
+              <button class="driver-btn" data-command="r">R<span>增大时距</span></button>
+              <button class="driver-btn" data-command="w" data-command-mode="level">W<span>油门接管</span></button>
+              <button class="driver-btn danger" data-command="c">C<span>取消</span></button>
+              <button class="driver-btn danger" data-command="s" data-command-mode="level">S<span>制动退出</span></button>
+              <button class="driver-btn" data-command="0">0<span>释放踏板</span></button>
+            </div>
+          </section>
+
+          <section class="driver-card" id="lksDriverCard" hidden>
+            <div class="driver-header">
+              <h2 class="section-title">LKS 驾驶接管输入</h2>
+              <span class="driver-hint">页面聚焦后按住生效，松开归零</span>
+            </div>
+            <div class="driver-grid lks-driver-grid">
+              <button class="driver-btn" data-lks-steer="-0.3">A<span>向左接管</span></button>
+              <button class="driver-btn" data-lks-steer="0.3">D<span>向右接管</span></button>
+              <button class="driver-btn danger" data-lks-brake="1">B<span>制动退出 LKS</span></button>
+              <button class="driver-btn" id="lksReleaseBtn">释放<span>输入归零</span></button>
+              <button class="driver-btn driver-kick" id="lksResultBtn">测试结果<span>读取最新弯道指标</span></button>
+            </div>
+          </section>
+
+          <section class="health-card">
+            <h2 class="section-title">服务状态</h2>
+            <div class="health-list" id="healthRow">
+              <div class="health-row" data-service="carla">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">CARLA Server</span>
+                <span class="health-port">:2000</span>
+              </div>
+              <div class="health-row" data-service="bridge_pub">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Bridge PUB</span>
+                <span class="health-port">:5701</span>
+              </div>
+              <div class="health-row" data-service="bridge_control">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Bridge CONTROL</span>
+                <span class="health-port">:5702</span>
+              </div>
+              <div class="health-row" data-service="pangu_process">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Pangu 业务进程</span>
+                <span class="health-port">ZmqBridgeModule</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="lks-parameter-card" id="lksParameterCard" hidden>
+          <div class="parameter-header">
+            <div>
+              <h2 class="section-title">LKS 运行参数</h2>
+              <p>保存后在下一次启动联调环境时生效</p>
+            </div>
+            <div class="parameter-actions">
+              <button class="util-btn" id="lksParameterResetBtn">恢复默认</button>
+              <button class="btn btn-primary parameter-save-btn" id="lksParameterSaveBtn">保存参数</button>
+            </div>
+          </div>
+          <div class="parameter-groups" id="lksParameterGroups"></div>
+          <div class="parameter-footnote">三点权重 w1 + w2 + w3 必须等于 1.0。物理车辆参数保持工程标定值，不在本页面修改。</div>
+        </section>
+
+        <section class="logs-section">
+          <div class="logs-header">
+            <h2 class="section-title">运行日志</h2>
+            <div class="log-actions">
+              <button class="clear-btn" id="copyLogBtn">复制日志</button>
+              <button class="clear-btn" id="clearLogBtn">清空</button>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <span class="terminal-title">gaasd-carla - local shell</span>
+            </div>
+            <div class="terminal-body">
+              <div class="scanlines"></div>
+              <pre id="logBox" class="log-box">等待操作...</pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}?v=20260706-product-polish"></script>
+</body>
+</html>
