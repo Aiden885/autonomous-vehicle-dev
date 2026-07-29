@@ -6,7 +6,83 @@
 
 ---
 
-## 当前状态（2026-07-27 更新）
+## 当前状态（2026-07-29 更新）
+
+**lks2 手动画布层级重构**：
+
+- 已在不修改算法公式、参数值、正式通道和示波器配置的前提下，将 `project/lks2`
+  从扁平算法布局重构为具有明确物理职责的 `MainFlow / Decision / Control` 层级：
+
+```text
+MainFlow
+├── Decision
+│   ├── SpeedEnableCheck
+│   ├── DriverOverrideCheck
+│   └── ControlEnableDecision
+└── Control
+    ├── PreviewDistance
+    ├── LaneErrorEvaluation
+    │   ├── NearPreviewError
+    │   ├── MiddlePreviewError
+    │   └── FarPreviewError
+    ├── ErrorWeightedSum
+    └── SteerCommand
+        ├── RawSteerCalculation
+        ├── LateralAccelLimit
+        └── SteerEnableGate
+```
+
+- 原有三类退出条件保持不变：制动、低于最低工作速度、驾驶员主动转向；最终关系仍为
+  `controlEnabled = NOT(brakePressed OR speedUnavailable OR driverOverride)`。
+- 原有预瞄距离、三次多项式三点评估、误差加权、横向加速度转角限幅和使能门控公式均保持不变。
+- `lksSteerRad` 最终使能乘法已归入 `SteerEnableGate`，不再悬挂在 `MainFlow` 顶层；
+  `Control` 顶层只显示四个主要物理模块。
+- 主流程 8 个输入、5 个输出的 UUID 未改变，模块层 `lks_input / lks_output` 通道连接、
+  `frame_id` 透传以及示波器 `2` 输入、`0.2 s` 步长、`10 s` 时长均保持原配置。
+- 重构脚本在修改前后递归展平全部复合模块，计算连接指纹保持 `102 -> 102`；最终审计结果为
+  `170` 个组件、`182` 条连线、`0` 错误、`0` 警告，`cbdes.db` 与 `temp.db` SHA256 一致。
+- 重构设计：`docs/lks2_手动画布层级重构设计.md`。
+- 可重复脚本：`tools/refactor_lks2_hierarchy.py`。
+- 修改前完整快照和数据库备份：
+
+```text
+/data/aiden/文档/Modularization_backups/lks2_before_lks_hierarchy_20260729_20260729_173504
+project/lks2/data/cbdes.db.before_lks_hierarchy_20260729
+```
+
+- 数据库级检查已经完成；重新打开 GAASD 后仍需逐级查看 `Decision / Control` 及其子模块，
+  确认画布渲染和属性面板，再进行一次保存重开与代码生成检查。
+
+**lks2 正式通道接入和示波器升级**：
+
+- 已在 `project/lks2` 模块层加入后端代码扫描生成的正式 LKS 通道组件：
+
+```text
+lks_input  -> pangu.modules.LksInput
+lks_output -> pangu.modules.LksOutput
+```
+
+- 原顶层测试常量已替换为 8 个主流程输入边界：
+  `egoV / c0 / c1 / c2 / c3 / curvature / brakePressed / driverSteerNorm`。
+- 已增加 5 个主流程输出边界并接入输出通道：
+  `steerRad / controlEnabled / valid / previewDistance / weightedError`；
+  `frame_id` 在模块层由输入通道直接透传至输出通道。
+- `valid` 当前固定为 `true`，对应第一阶段“车道线数据默认有效”的测试约定；它不代替
+  `controlEnabled`。
+- 旧版 `1.0.8, isCustom=1` 示波器已用当前组件库的官方
+  `1.2.0, isCustom=0` 模板原位替换，继续观察 `steerRad` 和 `controlEnabled`，
+  配置保持为 `2` 个输入、`0.2 s` 仿真步长、`10 s` 仿真时长。
+- 同时修复两条历史连线使用旧输出端口 UUID 的问题；修改后审计结果为
+  `127` 个组件、`147` 条连线、`0` 错误、`0` 警告，且 `cbdes.db` 与 `temp.db` 完全一致。
+- 专用迁移脚本：`tools/refactor_lks2_io.py`。
+- 修改前完整快照：
+
+```text
+backups/gaasd_canvas/lks2_before_lks_channels_scope_20260729_20260729_172009
+```
+
+- 数据库级验证已经通过；仍需在 GAASD GUI 中确认通道显示、示波器属性面板、保存重开和
+  后续代码生成行为。
 
 **GAASD `20260711_2` 双版本安全更新**：
 

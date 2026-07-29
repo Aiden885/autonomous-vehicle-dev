@@ -23,6 +23,7 @@ tools/gaasd_canvas_tool.py
 
 ```text
 tools/refactor_newaccpro3_decision.py
+tools/refactor_lks2_hierarchy.py
 ```
 
 通用工具负责审计、快照和版本对比，不负责自动修改画布。具体改图继续使用经过逐条审查的专用脚本，避免“万能脚本”误改工程。
@@ -116,6 +117,53 @@ docs/gaasd_canvas_baselines/
 ```
 
 其中环境指纹用于判断 GAASD 和组件库是否变化，审计结果用于判断画布结构是否变化，组件目录用于核对当前基础组件模板。
+
+### 2.5 LKS 手动画布分层基线
+
+当前 LKS 手动画布基线：
+
+```text
+project/lks2
+```
+
+核心层级：
+
+```text
+MainFlow
+├── Decision
+│   ├── SpeedEnableCheck
+│   ├── DriverOverrideCheck
+│   └── ControlEnableDecision
+└── Control
+    ├── PreviewDistance
+    ├── LaneErrorEvaluation
+    │   ├── NearPreviewError
+    │   ├── MiddlePreviewError
+    │   └── FarPreviewError
+    ├── ErrorWeightedSum
+    └── SteerCommand
+        ├── RawSteerCalculation
+        ├── LateralAccelLimit
+        └── SteerEnableGate
+```
+
+这一层级采用“决策负责是否允许控制，控制负责如何生成转角”的边界。三点车道误差计算统一放在
+`LaneErrorEvaluation` 中，横向加速度限幅和最终使能门控统一放在 `SteerCommand` 中，顶层不再
+散落中间运算组件。
+
+重构时使用递归展平连接指纹作为算法等价性约束。新建复合模块和边界端口允许改变层级连接数量，
+但穿透全部复合边界后，原始基础计算组件之间的有效连接必须逐条一致。本次 `lks2` 的展平连接
+数量在修改前后均为 `102`。
+
+当前 LKS 主流程正式接口继续保持：
+
+```text
+输入: egoV, c0, c1, c2, c3, curvature, brakePressed, driverSteerNorm
+输出: steerRad, controlEnabled, valid, previewDistance, weightedError
+```
+
+详细设计见 `docs/lks2_手动画布层级重构设计.md`，可重复执行脚本为
+`tools/refactor_lks2_hierarchy.py`。
 
 ## 3. 哪些经验是稳定的
 
@@ -481,3 +529,53 @@ oscilloscope
 4. 重新生成代码并检查生成结果。
 5. 编译并执行固定输入和 CARLA 闭环复测。
 
+## 13. 通道组件和示波器迁移规则
+
+### 13.1 通道组件不能使用空白模板代替
+
+组件库中的通用 `channel_input / channel_output 1.2.0` 只是空白通道模板，默认不包含
+真实消息类型、字段和任务绑定。正式工程必须使用后端源码扫描形成的具体通道组件，例如：
+
+```text
+channel_input_lks_input_0.0.1_a6ef1d12
+channel_output_lks_output_0.0.1_e8a12f40
+```
+
+这两个组件分别绑定：
+
+```text
+pangu.modules.LksInput
+pangu.modules.LksOutput
+```
+
+复制或重建通道时，必须整体保留 `channelConfig / operateKeys / message_type / task_id`
+以及扫描生成的端口定义。不能只根据画布外观手工创建同名端口。
+
+通道应放在模块层，与算法主流程平级：
+
+```text
+输入通道 -> MainFlow -> 输出通道
+```
+
+输入消息的 `frame_id` 不参与算法计算时，可以在模块层直接透传到输出通道；其余信号通过
+`MainFlow` 边界输入输出进入手动画布。诊断输出可以接入真实中间量，但不得用无语义常量
+强行填满端口。
+
+### 13.2 示波器必须来自当前组件库模板
+
+示波器具有动态端口和属性面板配置。直接手工拼接数据库字段可能让组件显示正常，但无法打开
+`inputNumber / simulateStep / simulateTotalTime` 属性。正确方式是：
+
+1. 从当前活动 `gaasd.db` 的 `component_detail` 读取官方示波器模板。
+2. 保留模板的 `originId`、版本、`isCustom` 和完整 `extensionProps`。
+3. 只修改实例 ID、父级、位置以及经过确认的输入数量和仿真参数。
+4. 用模板实际存在的端口 ID 重新连接信号。
+
+`lks2` 本次采用官方 `oscilloscope 1.2.0`，专用脚本为：
+
+```text
+tools/refactor_lks2_io.py
+```
+
+脚本执行前必须保证 GAASD 已退出、`cbdes.db` 与 `temp.db` 一致，并先保存完整工程快照；
+执行后必须运行结构审计、SQLite 完整性检查和 GUI 属性面板检查。
