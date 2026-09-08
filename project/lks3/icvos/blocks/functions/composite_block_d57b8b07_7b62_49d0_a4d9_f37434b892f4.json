@@ -1,0 +1,1516 @@
+{
+  "componentType": "composite-block",
+  "name": "composite_block_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+  "cppClass": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+  "alias": "generateSteerCommand",
+  "description": "计算受横向加速度约束并经过使能门控的方向盘转角命令。",
+  "author": "THICV",
+  "version": "1.0.8",
+  "instanceId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+  "originId": "initial-composite-block",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 1,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "基础模块库",
+    "语句函数",
+    "基础组件"
+  ],
+  "parentId": "6b682752-6234-4817-a302-c9e173c6790e",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {
+          "param": [],
+          "state": [],
+          "instanceName": "generateSteerCommand"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "ca950c17-09a6-4950-8623-e4908bdcf171",
+          "name": "weightedLateralErrorM",
+          "alias": "weightedLateralErrorM",
+          "direction": "In",
+          "description": "输入参数",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "weightedLateralErrorM",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ]
+        },
+        {
+          "id": "debee4dc-8871-4f21-a0c1-94183a65cec5",
+          "name": "egoSpeedMps",
+          "alias": "egoSpeedMps",
+          "direction": "In",
+          "description": "输入参数",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "egoSpeedMps",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ]
+        },
+        {
+          "id": "787b7a8f-7398-4314-9a89-227ff36a0b96",
+          "name": "isControlEnabled",
+          "alias": "isControlEnabled",
+          "direction": "In",
+          "description": "输入参数",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "isControlEnabled",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "bool",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "a12f445f-39ec-4463-9dc3-aeab4a0baacf",
+          "name": "steerRad",
+          "alias": "steerRad",
+          "direction": "Out",
+          "description": "输出参数",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "steerRad",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "input",
+      "name": "input_ca950c17_09a6_4950_8623_e4908bdcf171",
+      "cppClass": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.0.8",
+      "instanceId": "ca950c17-09a6-4950-8623-e4908bdcf171",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,系统与工具,输入输出与仿真",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "weightedLateralErrorM",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "datatype",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "output",
+      "name": "output_a12f445f_39ec_4463_9dc3_aeab4a0baacf",
+      "cppClass": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+      "alias": "输出",
+      "description": "输出参数",
+      "author": "",
+      "version": "1.0.8",
+      "instanceId": "a12f445f-39ec-4463-9dc3-aeab4a0baacf",
+      "originId": "output_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,系统与工具,输入输出与仿真",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "steerRad",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "name": "in",
+              "dataType": "",
+              "description": "参数输入",
+              "alias": "in",
+              "direction": "In",
+              "id": "in",
+              "props": [
+                {
+                  "key": "datatype",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_debee4dc_8871_4f21_a0c1_94183a65cec5",
+      "cppClass": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.0.8",
+      "instanceId": "debee4dc-8871-4f21-a0c1-94183a65cec5",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,系统与工具,输入输出与仿真",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "egoSpeedMps",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "datatype",
+                  "value": "",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": "",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_787b7a8f_7398_4314_9a89_227ff36a0b96",
+      "cppClass": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.2.0",
+      "instanceId": "787b7a8f-7398-4314-9a89-227ff36a0b96",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "isControlEnabled",
+              "category": 0,
+              "dataType": "bool",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "bool",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "isControlEnabled",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "composite-block",
+      "name": "composite_block_5c77e1f3_497c_42c2_92d4_32dce5cd71b9",
+      "cppClass": "composite_block_empty_5c77e1f3_497c_42c2_92d4_32dce5cd71b9",
+      "alias": "计算原始转向指令",
+      "description": "根据加权横向误差和比例增益计算未限幅归一化转向指令。",
+      "author": "THICV",
+      "version": "1.0.8",
+      "instanceId": "5c77e1f3-497c-42c2-92d4-32dce5cd71b9",
+      "originId": "initial-composite-block",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,语句函数,基础组件",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isCallback": false,
+              "param": [],
+              "state": [],
+              "instanceName": "calculateRawSteer"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "f0a42fbe-2ca3-406d-b858-e295025efa99",
+              "name": "weightedLateralErrorM",
+              "alias": "weightedLateralErrorM",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "weightedLateralErrorM",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "056b640d-4781-4b7c-9b3e-3dad1cd9a68a",
+              "name": "rawSteerNorm",
+              "alias": "rawSteerNorm",
+              "direction": "Out",
+              "description": "输出参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "rawSteerNorm",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "composite-block",
+      "name": "composite_block_6974723c_cd33_4337_b0ed_1edecaacd560",
+      "cppClass": "composite_block_empty_6974723c_cd33_4337_b0ed_1edecaacd560",
+      "alias": "横向加速度约束转向限幅",
+      "description": "根据车速、轴距和横向加速度上限限制归一化转向指令。",
+      "author": "THICV",
+      "version": "1.0.8",
+      "instanceId": "6974723c-cd33-4337-b0ed-1edecaacd560",
+      "originId": "initial-composite-block",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,语句函数,基础组件",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isCallback": false,
+              "param": [],
+              "state": [],
+              "instanceName": "limitSteerByLateralAcceleration"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "736ca6ee-ca31-4916-8394-d78f0bd7d078",
+              "name": "rawSteerNorm",
+              "alias": "rawSteerNorm",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "rawSteerNorm",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "7c301d1f-ff78-4ff4-a023-453dcefcbdcb",
+              "name": "egoSpeedMps",
+              "alias": "egoSpeedMps",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "egoSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "48bbe56f-4303-4da9-968d-0002d49caf6e",
+              "name": "limitedSteerNorm",
+              "alias": "limitedSteerNorm",
+              "direction": "Out",
+              "description": "输出参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "limitedSteerNorm",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "composite-block",
+      "name": "composite_block_64c982f5_0edb_4c03_b06c_9a22f84347c5",
+      "cppClass": "composite_block_empty_64c982f5_0edb_4c03_b06c_9a22f84347c5",
+      "alias": "转向角换算与使能控制",
+      "description": "将限幅后的归一化转向量换算为弧度，并按LKS使能门控输出。",
+      "author": "THICV",
+      "version": "1.0.8",
+      "instanceId": "64c982f5-0edb-4c03-b06c-9a22f84347c5",
+      "originId": "initial-composite-block",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "基础模块库,语句函数,基础组件",
+      "parentId": "d57b8b07-7b62-49d0-a4d9-f37434b892f4",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isCallback": false,
+              "param": [],
+              "state": [],
+              "instanceName": "applySteerEnable"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "f926307e-6c74-471e-b7da-f8a1ec8bbf0f",
+              "name": "limitedSteerNorm",
+              "alias": "limitedSteerNorm",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "limitedSteerNorm",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "ea487da3-2034-44b0-90f0-99c59c96d72a",
+              "name": "isControlEnabled",
+              "alias": "isControlEnabled",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "isControlEnabled",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "01d46c5c-6913-41e3-af24-ff297c5b7933",
+              "name": "steerRad",
+              "alias": "steerRad",
+              "direction": "Out",
+              "description": "输出参数",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "steerRad",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "ca950c17-09a6-4950-8623-e4908bdcf171",
+      "fromInstancePortId": "out",
+      "toInstanceId": "5c77e1f3-497c-42c2-92d4-32dce5cd71b9",
+      "toInstancePortId": "f0a42fbe-2ca3-406d-b858-e295025efa99",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "5c77e1f3-497c-42c2-92d4-32dce5cd71b9",
+      "fromInstancePortId": "056b640d-4781-4b7c-9b3e-3dad1cd9a68a",
+      "toInstanceId": "6974723c-cd33-4337-b0ed-1edecaacd560",
+      "toInstancePortId": "736ca6ee-ca31-4916-8394-d78f0bd7d078",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "debee4dc-8871-4f21-a0c1-94183a65cec5",
+      "fromInstancePortId": "out",
+      "toInstanceId": "6974723c-cd33-4337-b0ed-1edecaacd560",
+      "toInstancePortId": "7c301d1f-ff78-4ff4-a023-453dcefcbdcb",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "6974723c-cd33-4337-b0ed-1edecaacd560",
+      "fromInstancePortId": "48bbe56f-4303-4da9-968d-0002d49caf6e",
+      "toInstanceId": "64c982f5-0edb-4c03-b06c-9a22f84347c5",
+      "toInstancePortId": "f926307e-6c74-471e-b7da-f8a1ec8bbf0f",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "787b7a8f-7398-4314-9a89-227ff36a0b96",
+      "fromInstancePortId": "out",
+      "toInstanceId": "64c982f5-0edb-4c03-b06c-9a22f84347c5",
+      "toInstancePortId": "ea487da3-2034-44b0-90f0-99c59c96d72a",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "64c982f5-0edb-4c03-b06c-9a22f84347c5",
+      "fromInstancePortId": "01d46c5c-6913-41e3-af24-ff297c5b7933",
+      "toInstanceId": "a12f445f-39ec-4463-9dc3-aeab4a0baacf",
+      "toInstancePortId": "in",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

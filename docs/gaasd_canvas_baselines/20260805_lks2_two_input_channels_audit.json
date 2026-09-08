@@ -1,0 +1,195 @@
+{
+  "project": "/data/aiden/文档/Modularization/project/lks2",
+  "database": "/data/aiden/文档/Modularization/project/lks2/data/cbdes.db",
+  "generated_at": "2026-08-05T15:29:00+08:00",
+  "project_info": {
+    "id": "6b1e1f77-6168-4fd6-b3c2-52ffd74ce323",
+    "projectId": "e87b82f0-9d31-4256-a8a7-178f01aa30f2",
+    "name": "lks2",
+    "properties": {
+      "frame": "THICV",
+      "projectAlias": "lks2",
+      "appVersion": "2.7.0.5",
+      "channelVersion": "default",
+      "domainId": "",
+      "isExistRuntimeCanvasWindow": false,
+      "global_com_version": "版本1",
+      "tf_version": "版本1"
+    }
+  },
+  "statistics": {
+    "components": 171,
+    "connections": 182,
+    "componentTypes": {
+      "app": 1,
+      "module": 1,
+      "process": 1,
+      "composite-block": 16,
+      "read-global-param": 15,
+      "constant": 4,
+      "divide": 3,
+      "multiply": 20,
+      "oscilloscope": 1,
+      "input": 56,
+      "output": 24,
+      "add": 11,
+      "atomic-function": 6,
+      "greater-equal": 3,
+      "subtract": 2,
+      "negate": 1,
+      "logic-not": 2,
+      "logic-or": 1,
+      "channel_input": 2,
+      "channel_output": 1
+    },
+    "componentVersions": {
+      "1.1.3": 3,
+      "1.1.4": 1,
+      "1.0.8": 114,
+      "1.2.0": 50,
+      "0.0.1": 3
+    },
+    "customComponents": 115,
+    "databaseHashes": {
+      "cbdes.db": "4d4f67c6bb37becb1ccc691650c9a659e0456a52e48e4e30bc1fe7c6bc57e492",
+      "temp.db": "4d4f67c6bb37becb1ccc691650c9a659e0456a52e48e4e30bc1fe7c6bc57e492"
+    },
+    "templateDrift": 102,
+    "dynamicTemplateDrift": 67
+  },
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    {
+      "code": "component_template_drift",
+      "message": "Project instances differ from the current component library; this is not automatically an error",
+      "context": {
+        "count": 102,
+        "dynamicCount": 67,
+        "examples": [
+          {
+            "alias": "previewDistanceDivisor",
+            "name": "constant",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "applyControlEnable",
+            "name": "multiply",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "egoV",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "curvature",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "previewDistance",
+            "name": "output",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "speedPreviewDistance",
+            "name": "multiply",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "nominalPreviewDistance",
+            "name": "add",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "one",
+            "name": "constant",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "appliedCurveReduction",
+            "name": "multiply",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "adjustedPreviewDistance",
+            "name": "multiply",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "c0",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "c1",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "c2",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "c3",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "x",
+            "name": "input",
+            "projectVersion": "1.0.8",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          }
+        ]
+      }
+    }
+  ],
+  "ok": true
+}

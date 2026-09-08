@@ -1,0 +1,218 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "enable",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "primaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "secondaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "measurementX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "measurementY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "currentState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "eventId",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "nextState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "threshold",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "gain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "defaultState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "callCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "lastState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "lastValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  }
+}

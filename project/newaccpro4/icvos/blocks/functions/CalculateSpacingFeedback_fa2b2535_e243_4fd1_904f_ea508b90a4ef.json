@@ -1,0 +1,2077 @@
+{
+  "componentType": "composite-block",
+  "name": "CalculateSpacingFeedback_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+  "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+  "alias": "计算车距反馈",
+  "description": "根据目标时距计算期望跟车距离，并形成距离误差反馈修正量。",
+  "author": "THICV",
+  "version": "1.1.7",
+  "instanceId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+  "originId": "initial-composite-block",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 1,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "基础模块库",
+    "语句函数",
+    "基础组件"
+  ],
+  "parentId": "96195785-aad3-4e07-96eb-347ef47d3318",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": [
+        {
+          "isCallback": false,
+          "param": [],
+          "state": [],
+          "instanceName": "calculateSpacingFeedback_2"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": [
+        {
+          "id": "3175e4e9-bade-5e26-87c6-b79982444214",
+          "name": "egoSpeedMps",
+          "direction": "In",
+          "description": "函数输入端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "egoSpeedMps",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "egoSpeedMps"
+        },
+        {
+          "id": "796a3e50-f49a-50ea-ac4d-299f6301182e",
+          "name": "timeGapS",
+          "direction": "In",
+          "description": "函数输入端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "timeGapS",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "timeGapS"
+        },
+        {
+          "id": "0da182e6-f349-502b-95a9-7a8da91c1626",
+          "name": "minDistanceM",
+          "direction": "In",
+          "description": "函数输入端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "minDistanceM",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "minDistanceM"
+        },
+        {
+          "id": "2bda01bb-96c2-533a-ac37-385348a748b2",
+          "name": "leadDistanceM",
+          "direction": "In",
+          "description": "函数输入端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "leadDistanceM",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "leadDistanceM"
+        },
+        {
+          "id": "a0c65f9a-dd45-5a2c-b954-888df28b2d81",
+          "name": "distanceErrorGainPerS",
+          "direction": "In",
+          "description": "函数输入端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "distanceErrorGainPerS",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "distanceErrorGainPerS"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": [
+        {
+          "id": "98ba457e-b4db-5a1e-aa82-343627f90633",
+          "name": "distanceFeedbackMps",
+          "direction": "Out",
+          "description": "函数输出端口",
+          "props": [
+            {
+              "key": "isReturnFlag",
+              "value": false,
+              "props": []
+            },
+            {
+              "key": "name",
+              "value": "distanceFeedbackMps",
+              "props": []
+            },
+            {
+              "key": "category",
+              "value": 0,
+              "props": []
+            },
+            {
+              "key": "dataType",
+              "value": "double",
+              "props": []
+            },
+            {
+              "key": "shape",
+              "value": [
+                1
+              ],
+              "props": []
+            }
+          ],
+          "alias": "distanceFeedbackMps"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "multiply",
+      "name": "multiply_244af93b_a2ce_4ba5_bc74_bbb60333c2e0",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "乘法运算",
+      "description": "二元操作符: *",
+      "author": "",
+      "version": "1.0.6",
+      "instanceId": "244af93b-a2ce-4ba5-bc74-bbb60333c2e0",
+      "originId": "6553dcc3-daeb-5325-9a37-1a1b9f293090",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "数学运算",
+        "算术运算"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "inputNumber": 2,
+              "isReal": true
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "multiply_input_a_In",
+              "name": "a",
+              "alias": "a",
+              "direction": "In",
+              "description": "左操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "isShow": true,
+              "id": "multiply_input_b_In",
+              "name": "b",
+              "alias": "b",
+              "direction": "In",
+              "description": "右操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "multiply_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "运算结果",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "atomic-function",
+      "name": "fmax_6d61a1db_7611_4577_8314_2746b6339f3b",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "浮点最大值",
+      "description": "数学函数: fmax",
+      "author": "",
+      "version": "1.0.6",
+      "instanceId": "6d61a1db-7611-4577-8314-2746b6339f3b",
+      "originId": "cc3347b5-9767-5ffc-b249-5efaf99633ff",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "数学运算",
+        "极值运算"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": [
+            {
+              "standard_library_function": true,
+              "function_body": "",
+              "function_link_obj": ""
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "fmax_input_x_In",
+              "name": "x",
+              "alias": "x",
+              "direction": "In",
+              "description": "输入参数 x",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "isShow": true,
+              "id": "fmax_input_y_In",
+              "name": "y",
+              "alias": "y",
+              "direction": "In",
+              "description": "输入参数 y",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "fmax_output_return_Out",
+              "name": "return",
+              "alias": "返回值",
+              "direction": "Out",
+              "description": "函数返回值",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": true,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "subtract",
+      "name": "subtract_481a35e7_5850_45fe_abca_d80d6e72f046",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "减法运算",
+      "description": "二元操作符: -",
+      "author": "",
+      "version": "1.0.6",
+      "instanceId": "481a35e7-5850-45fe-abca-d80d6e72f046",
+      "originId": "1dc8c9e5-dfd3-5ddb-8d9d-4df76e3f99c3",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "数学运算",
+        "算术运算"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "inputNumber": 2,
+              "isReal": true
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "subtract_input_a_In",
+              "name": "a",
+              "alias": "a",
+              "direction": "In",
+              "description": "左操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "isShow": true,
+              "id": "subtract_input_b_In",
+              "name": "b",
+              "alias": "b",
+              "direction": "In",
+              "description": "右操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "subtract_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "运算结果",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "multiply",
+      "name": "multiply_7f397a79_fc7f_4f09_ae2a_cc6838d079e5",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "乘法运算",
+      "description": "二元操作符: *",
+      "author": "",
+      "version": "1.0.6",
+      "instanceId": "7f397a79-fc7f-4f09-ae2a-cc6838d079e5",
+      "originId": "6553dcc3-daeb-5325-9a37-1a1b9f293090",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "数学运算",
+        "算术运算"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "inputNumber": 2,
+              "isReal": true
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "multiply_input_a_In",
+              "name": "a",
+              "alias": "a",
+              "direction": "In",
+              "description": "左操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 1,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "isShow": true,
+              "id": "multiply_input_b_In",
+              "name": "b",
+              "alias": "b",
+              "direction": "In",
+              "description": "右操作数",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "idx",
+                  "value": 2,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "isShow": true,
+              "id": "multiply_output_result_Out",
+              "name": "result",
+              "alias": "result",
+              "direction": "Out",
+              "description": "运算结果",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_da48f6a8_fedf_418f_8b8e_c36063ec0811",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "da48f6a8-fedf-418f-8b8e-c36063ec0811",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "egoSpeedMps",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "double",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "egoSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_51b2ceb5_c514_43fd_9abe_62a1ee592f88",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "51b2ceb5-c514-43fd-9abe-62a1ee592f88",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "timeGapS",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "double",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "timeGapS",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_df1065c1_8ed4_4659_8570_a0f6ff84e61e",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "df1065c1-8ed4-4659-8570-a0f6ff84e61e",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "minDistanceM",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "double",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "minDistanceM",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_6e21ccc4_1ee3_4693_b410_0dff43c7ada0",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "6e21ccc4-1ee3-4693-b410-0dff43c7ada0",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "leadDistanceM",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "double",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "leadDistanceM",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "input",
+      "name": "input_dc9bd6ee_32fd_4379_a8e6_b2a207b28d37",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输入",
+      "description": "输入参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "dc9bd6ee-32fd-4379-a8e6-b2a207b28d37",
+      "originId": "input_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "distanceErrorGainPerS",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "name": "out",
+              "dataType": "double",
+              "description": "参数输出",
+              "alias": "out",
+              "direction": "Out",
+              "id": "out",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "distanceErrorGainPerS",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "output",
+      "name": "output_cc2b64f2_51d5_4b91_a141_0682a3a6a7bf",
+      "cppClass": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+      "alias": "输出",
+      "description": "输出参数",
+      "author": "",
+      "version": "1.1.7",
+      "instanceId": "cc2b64f2-51d5-4b91-a141-0682a3a6a7bf",
+      "originId": "output_init_0.0.1",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "系统与工具",
+        "输入输出与仿真"
+      ],
+      "parentId": "fa2b2535-e243-4fd1-904f-ea508b90a4ef",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isReturnFlag": false,
+              "name": "distanceFeedbackMps",
+              "category": 0,
+              "dataType": "double",
+              "shape": [
+                1
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "name": "in",
+              "dataType": "double",
+              "description": "参数输入",
+              "alias": "in",
+              "direction": "In",
+              "id": "in",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "distanceFeedbackMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "244af93b-a2ce-4ba5-bc74-bbb60333c2e0",
+      "fromInstancePortId": "multiply_output_result_Out",
+      "toInstanceId": "6d61a1db-7611-4577-8314-2746b6339f3b",
+      "toInstancePortId": "fmax_input_x_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "6d61a1db-7611-4577-8314-2746b6339f3b",
+      "fromInstancePortId": "fmax_output_return_Out",
+      "toInstanceId": "481a35e7-5850-45fe-abca-d80d6e72f046",
+      "toInstancePortId": "subtract_input_b_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "481a35e7-5850-45fe-abca-d80d6e72f046",
+      "fromInstancePortId": "subtract_output_result_Out",
+      "toInstanceId": "7f397a79-fc7f-4f09-ae2a-cc6838d079e5",
+      "toInstancePortId": "multiply_input_a_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "da48f6a8-fedf-418f-8b8e-c36063ec0811",
+      "fromInstancePortId": "out",
+      "toInstanceId": "244af93b-a2ce-4ba5-bc74-bbb60333c2e0",
+      "toInstancePortId": "multiply_input_a_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "51b2ceb5-c514-43fd-9abe-62a1ee592f88",
+      "fromInstancePortId": "out",
+      "toInstanceId": "244af93b-a2ce-4ba5-bc74-bbb60333c2e0",
+      "toInstancePortId": "multiply_input_b_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "df1065c1-8ed4-4659-8570-a0f6ff84e61e",
+      "fromInstancePortId": "out",
+      "toInstanceId": "6d61a1db-7611-4577-8314-2746b6339f3b",
+      "toInstancePortId": "fmax_input_y_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "6e21ccc4-1ee3-4693-b410-0dff43c7ada0",
+      "fromInstancePortId": "out",
+      "toInstanceId": "481a35e7-5850-45fe-abca-d80d6e72f046",
+      "toInstancePortId": "subtract_input_a_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "dc9bd6ee-32fd-4379-a8e6-b2a207b28d37",
+      "fromInstancePortId": "out",
+      "toInstanceId": "7f397a79-fc7f-4f09-ae2a-cc6838d079e5",
+      "toInstancePortId": "multiply_input_b_In",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "7f397a79-fc7f-4f09-ae2a-cc6838d079e5",
+      "fromInstancePortId": "multiply_output_result_Out",
+      "toInstanceId": "cc2b64f2-51d5-4b91-a141-0682a3a6a7bf",
+      "toInstancePortId": "in",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

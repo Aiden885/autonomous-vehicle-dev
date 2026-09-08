@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "虚拟目标车速更新模块输入端口集合。",
+    "alias": "虚拟目标车速更新模块输入端口集合。",
+    "fields": [
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前级内部虚拟目标车速 Vi (m/s)"
+      },
+      {
+        "name": "targetDeviation",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前级与最终目标车速偏差 Delta Vti (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "虚拟目标车速更新模块输出端口集合。",
+    "alias": "虚拟目标车速更新模块输出端口集合。",
+    "fields": [
+      {
+        "name": "updatedVirtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "更新后的内部虚拟目标车速 Vi+1 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "虚拟目标车速更新模块参数集合。",
+    "alias": "虚拟目标车速更新模块参数集合。",
+    "fields": [
+      {
+        "name": "rho",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "惩罚系数，用于缩放目标车速偏差"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "虚拟目标车速更新模块状态集合。",
+    "alias": "虚拟目标车速更新模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "虚拟目标车速更新模块子模块集合。",
+    "alias": "虚拟目标车速更新模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

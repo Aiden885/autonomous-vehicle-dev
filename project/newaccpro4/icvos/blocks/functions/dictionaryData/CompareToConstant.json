@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "待比较输入值"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": true,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "compareResult",
+        "category": 0,
+        "dataType": "Integer",
+        "shape": [],
+        "dataValue": 0,
+        "description": "-1 小于，0 近似相等，1 大于"
+      },
+      {
+        "name": "equal",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否近似相等"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "constant",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "比较常数"
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "近似相等容差"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  }
+}

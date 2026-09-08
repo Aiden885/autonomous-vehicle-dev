@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import ipaddress
 import os
 import json
 import re
+import signal
 import socket
 import subprocess
 import sys
@@ -34,16 +36,58 @@ DEFAULT_PORT = int(os.environ.get("GAASD_PANEL_PORT", "8765"))
 MAX_LOG_LINES = 3000
 SCENARIO_ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
 DRIVER_COMMAND_KEYS = {
-    "e": "E 启控/降速",
-    "q": "Q 加速/继承启控",
+    "e": "E 待命启控/在控降速",
+    "q": "Q 待命恢复/在控增速",
     "t": "T 减小时距",
     "r": "R 增大时距",
-    "w": "W 油门接管",
+    "w": "W 驾驶员油门",
     "c": "C 取消 ACC",
     "s": "S 制动退出",
     "0": "0 释放踏板",
 }
+DRIVER_COMMAND_TOPIC = "gaasd.carla.driver_command.v1"
+DRIVER_COMMAND_TYPES = {
+    "0": 0,
+    "e": 1,
+    "q": 2,
+    "t": 3,
+    "r": 4,
+    "w": 5,
+    "s": 6,
+    "c": 7,
+}
+DRIVER_COMMAND_DESCRIPTIONS = {
+    "0": "驾驶员踏板释放",
+    "e": "待命时按当前车速启控；在控时降低设定速度",
+    "q": "待命有历史时恢复控制；在控时提高设定速度",
+    "t": "减小目标时距",
+    "r": "增大目标时距",
+    "w": "驾驶员持续踩下油门",
+    "s": "驾驶员持续制动并退出 ACC",
+    "c": "取消 ACC 控制",
+}
 LKS_DRIVER_STATE_TOPIC = "gaasd.carla.driver_state_cmd.v1"
+EGO_STATE_TOPIC = "gaasd.carla.ego_state.v1"
+LEAD_VEHICLE_TOPIC = "gaasd.carla.lead_vehicle.v1"
+CHASSIS_FEEDBACK_TOPIC = "gaasd.carla.chassis_feedback.v1"
+TELEMETRY_TOPIC_PREFIX = "gaasd.carla."
+TELEMETRY_STALE_SEC = 1.5
+CARLA_FRAME_PROFILES = {
+    "stable": {
+        "label": "稳定 20 FPS",
+        "extra_args": "-windowed -Resx=800 -Resy=600 -fps=20 -nosound -graphicsadapter=0 -norhithread",
+        "fixed_delta_seconds": "0.05",
+    },
+    "normal": {
+        "label": "正常 30 FPS",
+        "extra_args": "-windowed -Resx=800 -Resy=600 -fps=30 -nosound -graphicsadapter=0 -norhithread",
+        "fixed_delta_seconds": "0.03333333333333333",
+    },
+}
+CARLA_QUALITY_PROFILES = {
+    "low": "省资源画质 (Low)",
+    "normal": "普通画质 (Epic)",
+}
 
 app = Flask(__name__)
 
@@ -80,9 +124,141 @@ class ScenarioState:
             }
 
 
+class BridgeTelemetryMonitor:
+    def __init__(self, endpoint: str) -> None:
+        self.endpoint = endpoint
+        self.lock = threading.Lock()
+        self.messages: Dict[str, Dict[str, Any]] = {}
+        self.thread = threading.Thread(
+            target=self._run,
+            name=f"bridge-telemetry-{endpoint.rsplit(':', 1)[-1]}",
+            daemon=True,
+        )
+        self.thread.start()
+
+    def _run(self) -> None:
+        if zmq is None:
+            return
+        context = zmq.Context.instance()
+        subscriber = context.socket(zmq.SUB)
+        subscriber.setsockopt(zmq.LINGER, 0)
+        subscriber.setsockopt_string(zmq.SUBSCRIBE, TELEMETRY_TOPIC_PREFIX)
+        subscriber.connect(self.endpoint)
+        try:
+            while True:
+                if subscriber.poll(250, zmq.POLLIN) == 0:
+                    continue
+                parts = subscriber.recv_multipart()
+                if len(parts) < 2:
+                    continue
+                topic = parts[0].decode("utf-8", errors="replace")
+                try:
+                    message = json.loads(parts[-1].decode("utf-8"))
+                except (UnicodeDecodeError, ValueError):
+                    continue
+                payload = message.get("payload") if isinstance(message, dict) else None
+                if not isinstance(payload, dict):
+                    continue
+                with self.lock:
+                    self.messages[topic] = {
+                        "received_at": time.time(),
+                        "payload": payload,
+                    }
+        finally:
+            subscriber.close(0)
+
+    def snapshot(self) -> Dict[str, Dict[str, Any]]:
+        with self.lock:
+            return {
+                topic: {
+                    "received_at": entry["received_at"],
+                    "payload": dict(entry["payload"]),
+                }
+                for topic, entry in self.messages.items()
+            }
+
+
+class AccDiagnosticState:
+    def __init__(
+        self,
+        initial_time_gap_s: float = 1.8,
+        time_gap_step_s: float = 0.2,
+        min_time_gap_s: float = 1.0,
+        max_time_gap_s: float = 5.0,
+        min_distance_m: float = 5.0,
+    ) -> None:
+        self.lock = threading.Lock()
+        self.initial_time_gap_s = float(initial_time_gap_s)
+        self.time_gap_step_s = float(time_gap_step_s)
+        self.min_time_gap_s = float(min_time_gap_s)
+        self.max_time_gap_s = float(max_time_gap_s)
+        self.min_distance_m = float(min_distance_m)
+        self.desired_time_gap_s = self.initial_time_gap_s
+        self.last_command: Optional[Dict[str, Any]] = None
+
+    def reset(self) -> None:
+        with self.lock:
+            self.desired_time_gap_s = self.initial_time_gap_s
+            self.last_command = None
+
+    def record_command(self, key: str, control_active: Optional[bool]) -> None:
+        normalized = key.strip().lower()
+        estimated_applied = True
+        with self.lock:
+            if normalized in {"t", "r"}:
+                estimated_applied = control_active is True
+                if estimated_applied:
+                    direction = -1.0 if normalized == "t" else 1.0
+                    candidate = self.desired_time_gap_s + direction * self.time_gap_step_s
+                    self.desired_time_gap_s = max(
+                        self.min_time_gap_s,
+                        min(self.max_time_gap_s, candidate),
+                    )
+            self.last_command = {
+                "key": normalized,
+                "label": DRIVER_COMMAND_KEYS.get(normalized, normalized.upper()),
+                "timestamp": time.time(),
+                "estimated_applied": estimated_applied,
+                "control_active": control_active,
+            }
+
+    def snapshot(self) -> Dict[str, Any]:
+        with self.lock:
+            return {
+                "desired_time_gap_s": self.desired_time_gap_s,
+                "time_gap_step_s": self.time_gap_step_s,
+                "min_time_gap_s": self.min_time_gap_s,
+                "max_time_gap_s": self.max_time_gap_s,
+                "min_distance_m": self.min_distance_m,
+                "last_command": dict(self.last_command) if self.last_command else None,
+            }
+
+
 STATES: Dict[str, ScenarioState] = {}
 CONTROL_PUBLISHERS: Dict[str, Any] = {}
 CONTROL_PUBLISHERS_LOCK = threading.Lock()
+TELEMETRY_MONITORS: Dict[str, BridgeTelemetryMonitor] = {}
+TELEMETRY_MONITORS_LOCK = threading.Lock()
+ACC_DIAGNOSTIC_STATES: Dict[str, AccDiagnosticState] = {}
+ACC_DIAGNOSTIC_STATES_LOCK = threading.Lock()
+PANEL_SHUTDOWN_LOCK = threading.Lock()
+PANEL_SHUTDOWN_STARTED = False
+
+
+def carla_frame_environment(mode: str) -> Dict[str, str]:
+    profile = CARLA_FRAME_PROFILES.get(mode)
+    if profile is None:
+        raise ValueError(f"unsupported CARLA frame mode: {mode}")
+    return {
+        "CARLA_EXTRA_ARGS": profile["extra_args"],
+        "CARLA_FIXED_DELTA_SECONDS": profile["fixed_delta_seconds"],
+    }
+
+
+def carla_quality_environment(mode: str) -> Dict[str, str]:
+    if mode not in CARLA_QUALITY_PROFILES:
+        raise ValueError(f"unsupported CARLA quality mode: {mode}")
+    return {"CARLA_QUALITY_MODE": mode}
 
 
 def get_state(scenario_id: str) -> ScenarioState:
@@ -278,6 +454,34 @@ def scenario_summary(scenario_dir: Path) -> Dict[str, Any]:
     }
 
 
+def scenario_created_at_sort_key(item: Dict[str, Any]) -> Tuple[Any, ...]:
+    raw_value = str(item.get("created_at") or "").strip()
+    if not raw_value:
+        return (0, 0, 0, 0, 0, 0, 0, str(item.get("id", "")))
+
+    normalized = re.sub(
+        r"\s*([+-]\d{2})(\d{2})$",
+        r"\1:\2",
+        raw_value,
+    )
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        created_at = datetime.fromisoformat(normalized)
+    except ValueError:
+        return (0, 0, 0, 0, 0, 0, 0, str(item.get("id", "")))
+    return (
+        1,
+        created_at.year,
+        created_at.month,
+        created_at.day,
+        created_at.hour,
+        created_at.minute,
+        created_at.second,
+        str(item.get("id", "")),
+    )
+
+
 def list_scenarios() -> List[Dict[str, Any]]:
     if not SCENARIOS_DIR.exists():
         return []
@@ -285,6 +489,7 @@ def list_scenarios() -> List[Dict[str, Any]]:
     for path in sorted(SCENARIOS_DIR.iterdir()):
         if path.is_dir() and (path / "scenario.yaml").exists():
             items.append(scenario_summary(path))
+    items.sort(key=scenario_created_at_sort_key)
     return items
 
 
@@ -389,6 +594,94 @@ def run_script_job(
     return True, "started"
 
 
+def terminate_running_panel_jobs() -> None:
+    for state in STATES.values():
+        with state.lock:
+            process = state.process
+        if process is None or process.poll() is not None:
+            continue
+        try:
+            process.terminate()
+            process.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait(timeout=2)
+        except OSError:
+            pass
+
+
+def stop_all_scenario_processes() -> List[str]:
+    failures: List[str] = []
+    if not SCENARIOS_DIR.exists():
+        return failures
+
+    for scenario_dir in sorted(SCENARIOS_DIR.iterdir()):
+        if not scenario_dir.is_dir() or not (scenario_dir / "scenario.yaml").exists():
+            continue
+        stop_script = scenario_stop_script(scenario_dir)
+        if not stop_script.exists():
+            continue
+        print(f"[Panel] stopping scenario resources: {scenario_dir.name}", flush=True)
+        try:
+            result = subprocess.run(
+                ["bash", str(stop_script)],
+                cwd=str(REPO_ROOT),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=30,
+                check=False,
+            )
+        except Exception as exc:
+            failures.append(f"{scenario_dir.name}: {exc}")
+            continue
+        if result.stdout.strip():
+            print(result.stdout.rstrip(), flush=True)
+        if result.returncode != 0:
+            failures.append(
+                f"{scenario_dir.name}: stop exited with code {result.returncode}"
+            )
+    return failures
+
+
+def panel_pid_file() -> Path:
+    runtime_root = Path(os.environ.get("XDG_RUNTIME_DIR") or "/tmp")
+    return runtime_root / "gaasd-scenario-panel" / "panel.pid"
+
+
+def remove_panel_pid_file() -> None:
+    path = panel_pid_file()
+    try:
+        if path.exists() and path.read_text(encoding="utf-8").strip() == str(os.getpid()):
+            path.unlink()
+    except OSError:
+        pass
+
+
+def panel_shutdown_worker() -> None:
+    terminate_running_panel_jobs()
+    failures = stop_all_scenario_processes()
+    for failure in failures:
+        print(f"[Panel] shutdown warning: {failure}", flush=True)
+    remove_panel_pid_file()
+    print("[Panel] scenario resources stopped; shutting down panel", flush=True)
+    os.kill(os.getpid(), signal.SIGTERM)
+
+
+def start_panel_shutdown() -> bool:
+    global PANEL_SHUTDOWN_STARTED
+    with PANEL_SHUTDOWN_LOCK:
+        if PANEL_SHUTDOWN_STARTED:
+            return False
+        PANEL_SHUTDOWN_STARTED = True
+    threading.Thread(
+        target=panel_shutdown_worker,
+        name="panel-shutdown",
+        daemon=False,
+    ).start()
+    return True
+
+
 def socket_open(host: str, port: int, timeout: float = 0.35) -> bool:
     try:
         with socket.create_connection((host, port), timeout=timeout):
@@ -457,6 +750,205 @@ def bridge_control_endpoint(data: Dict[str, Any]) -> str:
     return str(bridge.get("zmq_control", "tcp://127.0.0.1:5702"))
 
 
+def bridge_publish_endpoint(data: Dict[str, Any]) -> str:
+    bridge = data.get("bridge") or {}
+    return str(bridge.get("zmq_pub", "tcp://127.0.0.1:5701"))
+
+
+def get_telemetry_monitor(endpoint: str) -> BridgeTelemetryMonitor:
+    with TELEMETRY_MONITORS_LOCK:
+        monitor = TELEMETRY_MONITORS.get(endpoint)
+        if monitor is None:
+            monitor = BridgeTelemetryMonitor(endpoint)
+            TELEMETRY_MONITORS[endpoint] = monitor
+        return monitor
+
+
+def acc_diagnostic_config(data: Dict[str, Any]) -> Dict[str, float]:
+    diagnostics = data.get("diagnostics") or {}
+    raw = diagnostics.get("acc") or {}
+    return {
+        "initial_time_gap_s": float(raw.get("initial_time_gap_s", 1.8)),
+        "time_gap_step_s": float(raw.get("time_gap_step_s", 0.2)),
+        "min_time_gap_s": float(raw.get("min_time_gap_s", 1.0)),
+        "max_time_gap_s": float(raw.get("max_time_gap_s", 5.0)),
+        "min_distance_m": float(raw.get("min_distance_m", 5.0)),
+    }
+
+
+def get_acc_diagnostic_state(
+    scenario_id: str, data: Dict[str, Any]
+) -> AccDiagnosticState:
+    with ACC_DIAGNOSTIC_STATES_LOCK:
+        diagnostic = ACC_DIAGNOSTIC_STATES.get(scenario_id)
+        if diagnostic is None:
+            diagnostic = AccDiagnosticState(**acc_diagnostic_config(data))
+            ACC_DIAGNOSTIC_STATES[scenario_id] = diagnostic
+        return diagnostic
+
+
+def reset_acc_diagnostic_state(scenario_id: str, data: Dict[str, Any]) -> None:
+    get_acc_diagnostic_state(scenario_id, data).reset()
+
+
+def finite_number(value: Any) -> Optional[float]:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    if number != number or number in {float("inf"), float("-inf")}:
+        return None
+    return number
+
+
+def nested_number(payload: Dict[str, Any], *path: str) -> Optional[float]:
+    value: Any = payload
+    for key in path:
+        if not isinstance(value, dict) or key not in value:
+            return None
+        value = value[key]
+    return finite_number(value)
+
+
+def telemetry_entry(
+    messages: Dict[str, Dict[str, Any]], topic: str
+) -> Tuple[Dict[str, Any], float]:
+    entry = messages.get(topic) or {}
+    payload = entry.get("payload") or {}
+    received_at = finite_number(entry.get("received_at")) or 0.0
+    return (payload if isinstance(payload, dict) else {}), received_at
+
+
+def bounded_measurement(value: Optional[float], maximum: float = 9999.0) -> Optional[float]:
+    if value is None or abs(value) > maximum:
+        return None
+    return value
+
+
+def build_acc_telemetry_snapshot(
+    messages: Dict[str, Dict[str, Any]],
+    diagnostic: Dict[str, Any],
+    now: Optional[float] = None,
+) -> Dict[str, Any]:
+    current_time = time.time() if now is None else float(now)
+    ego, ego_received = telemetry_entry(messages, EGO_STATE_TOPIC)
+    lead, lead_received = telemetry_entry(messages, LEAD_VEHICLE_TOPIC)
+    chassis, chassis_received = telemetry_entry(messages, CHASSIS_FEEDBACK_TOPIC)
+    latest_received = max(ego_received, lead_received, chassis_received)
+    age_sec = current_time - latest_received if latest_received else None
+    online = age_sec is not None and 0.0 <= age_sec <= TELEMETRY_STALE_SEC
+    ego_fresh = 0.0 <= current_time - ego_received <= TELEMETRY_STALE_SEC
+    lead_fresh = 0.0 <= current_time - lead_received <= TELEMETRY_STALE_SEC
+    chassis_fresh = 0.0 <= current_time - chassis_received <= TELEMETRY_STALE_SEC
+
+    chassis_speed = finite_number(chassis.get("speed_mps")) if chassis_fresh else None
+    ego_speed = chassis_speed
+    if ego_speed is None and ego_fresh:
+        ego_speed = nested_number(ego, "velocity", "speed_mps")
+
+    lead_valid = bool(lead.get("valid", False)) and lead_fresh
+    lead_speed = finite_number(lead.get("lead_speed_mps")) if lead_valid else None
+    clearance = bounded_measurement(
+        finite_number(lead.get("clearance_m")) if lead_valid else None
+    )
+    actual_time_gap = bounded_measurement(
+        finite_number(lead.get("time_gap_sec")) if lead_valid else None,
+        maximum=999.0,
+    )
+    ttc = bounded_measurement(
+        finite_number(lead.get("ttc_sec")) if lead_valid else None,
+        maximum=999.0,
+    )
+    control_enabled = bool(chassis.get("control_enable", False)) and chassis_fresh
+    if not online:
+        control_state = "offline"
+    elif not chassis_fresh:
+        control_state = "unknown"
+    else:
+        control_state = "active" if control_enabled else "standby"
+    desired_time_gap = finite_number(diagnostic.get("desired_time_gap_s"))
+    min_distance = finite_number(diagnostic.get("min_distance_m", 5.0))
+    desired_distance = None
+    distance_error = None
+    if ego_speed is not None and desired_time_gap is not None and min_distance is not None:
+        desired_distance = max(ego_speed * desired_time_gap, min_distance)
+        if clearance is not None:
+            distance_error = clearance - desired_distance
+
+    last_command = diagnostic.get("last_command")
+    if isinstance(last_command, dict):
+        last_command = dict(last_command)
+        timestamp = finite_number(last_command.get("timestamp"))
+        last_command["age_sec"] = (
+            max(0.0, current_time - timestamp) if timestamp is not None else None
+        )
+    else:
+        last_command = None
+
+    return {
+        "online": online,
+        "age_sec": max(0.0, age_sec) if age_sec is not None else None,
+        "control_state": control_state,
+        "control_enabled": control_enabled,
+        "lead_valid": lead_valid,
+        "ego_speed_mps": ego_speed if online else None,
+        "lead_speed_mps": lead_speed if online else None,
+        "relative_speed_mps": (
+            finite_number(lead.get("relative_speed_mps")) if lead_valid and online else None
+        ),
+        "clearance_m": clearance if online else None,
+        "actual_time_gap_s": actual_time_gap if online else None,
+        "ttc_s": ttc if online else None,
+        "desired_time_gap_s": desired_time_gap,
+        "desired_time_gap_source": "panel_command_estimate",
+        "desired_distance_m": desired_distance if online else None,
+        "distance_error_m": distance_error if online else None,
+        "target_accel_mps2": (
+            finite_number(chassis.get("target_accel_mps2")) if chassis_fresh else None
+        ),
+        "actual_accel_mps2": (
+            finite_number(chassis.get("actual_accel_mps2")) if chassis_fresh else None
+        ),
+        "filtered_accel_mps2": (
+            finite_number(chassis.get("filtered_accel_mps2")) if chassis_fresh else None
+        ),
+        "accel_feedforward_mps2": (
+            finite_number(chassis.get("accel_feedforward_mps2"))
+            if chassis_fresh
+            else None
+        ),
+        "accel_feedback_mps2": (
+            finite_number(chassis.get("accel_feedback_mps2"))
+            if chassis_fresh
+            else None
+        ),
+        "accel_integral_error_mps": (
+            finite_number(chassis.get("accel_integral_error_mps"))
+            if chassis_fresh
+            else None
+        ),
+        "accel_controller_saturated": (
+            bool(chassis.get("accel_controller_saturated", False))
+            if chassis_fresh
+            else None
+        ),
+        "throttle": finite_number(chassis.get("throttle")) if chassis_fresh else None,
+        "brake": finite_number(chassis.get("brake")) if chassis_fresh else None,
+        "last_command": last_command,
+    }
+
+
+def current_acc_control_active(endpoint: str) -> Optional[bool]:
+    with TELEMETRY_MONITORS_LOCK:
+        monitor = TELEMETRY_MONITORS.get(endpoint)
+    if monitor is None:
+        return None
+    chassis, received_at = telemetry_entry(monitor.snapshot(), CHASSIS_FEEDBACK_TOPIC)
+    if time.time() - received_at > TELEMETRY_STALE_SEC:
+        return None
+    return bool(chassis.get("control_enable", False))
+
+
 def publish_control_message(
     endpoint: str,
     topic: str,
@@ -504,48 +996,48 @@ def scenario_python(data: Dict[str, Any], fallback: str = "python3") -> str:
     return str(env.get("python") or os.environ.get("GAASD_PANEL_PYTHON") or fallback)
 
 
-def send_driver_command(scenario_id: str, data: Dict[str, Any], key: str) -> Tuple[bool, str]:
+def send_driver_command(
+    scenario_id: str,
+    data: Dict[str, Any],
+    key: str,
+    write_log: bool = True,
+) -> Tuple[bool, str]:
     normalized = key.strip().lower()
     if normalized not in DRIVER_COMMAND_KEYS:
         return False, "unsupported driver command"
 
-    script = REPO_ROOT / "tools" / "pangu_acc_closed_loop" / "keyboard_command_publisher.py"
-    if not script.exists():
-        return False, f"missing command publisher: {script}"
-
     state = get_state(scenario_id)
     endpoint = bridge_control_endpoint(data)
-    command = [
-        "python3",
-        str(script),
-        "--endpoint",
-        endpoint,
-        "--once",
-        normalized,
-    ]
-    state.append("info", f"发送驾驶指令 {DRIVER_COMMAND_KEYS[normalized]} -> {endpoint}")
-    try:
-        result = subprocess.run(
-            command,
-            cwd=str(REPO_ROOT),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            timeout=8,
-            check=False,
+    command_type = DRIVER_COMMAND_TYPES[normalized]
+    mode = "level" if normalized in {"w", "s", "0"} else "pulse"
+    active = command_type != 0
+    if write_log:
+        state.append(
+            "info", f"发送驾驶指令 {DRIVER_COMMAND_KEYS[normalized]} -> {endpoint}"
         )
-    except Exception as exc:
-        state.append("error", f"驾驶指令发送失败: {exc}")
-        return False, str(exc)
-
-    if result.stdout.strip():
-        for line in result.stdout.splitlines():
-            state.append("log", line)
-    if result.returncode != 0:
-        state.append("error", f"驾驶指令发送失败，退出码 {result.returncode}")
-        return False, f"command failed with code {result.returncode}"
-    state.append("ok", f"驾驶指令已发送: {DRIVER_COMMAND_KEYS[normalized]}")
-    return True, "sent"
+    ok, message = publish_control_message(
+        endpoint=endpoint,
+        topic=DRIVER_COMMAND_TOPIC,
+        payload={
+            "command_type": command_type,
+            "mode": mode,
+            "active": active,
+            "event_id": time.time_ns(),
+            "description": DRIVER_COMMAND_DESCRIPTIONS[normalized],
+        },
+        source="gaasd_scenario_panel",
+        repeat_count=1,
+    )
+    if not ok:
+        if write_log:
+            state.append("error", f"驾驶指令发送失败: {message}")
+        return False, message
+    get_acc_diagnostic_state(scenario_id, data).record_command(
+        normalized, current_acc_control_active(bridge_publish_endpoint(data))
+    )
+    if write_log:
+        state.append("ok", f"驾驶指令已发送: {DRIVER_COMMAND_KEYS[normalized]}")
+    return True, message
 
 
 def send_lks_driver_state(
@@ -625,7 +1117,10 @@ def boost_ego_command(data: Dict[str, Any]) -> List[str]:
 
     env = data.get("environment") or {}
     python_bin = scenario_python(data, "python3.8")
-    carla_root = str(env.get("carla_root", "/home/aiden/snap/code/app/carla-package"))
+    configured_root = str(
+        env.get("carla_root", Path.home() / "snap/code/app/carla-package")
+    )
+    carla_root = str(Path(configured_root).expanduser())
     return [
         python_bin,
         str(script),
@@ -646,6 +1141,27 @@ def index() -> str:
 @app.get("/api/scenarios")
 def api_scenarios() -> Response:
     return jsonify({"repo_root": str(REPO_ROOT), "scenarios": list_scenarios()})
+
+
+@app.post("/api/panel/shutdown")
+def api_panel_shutdown() -> Response:
+    try:
+        is_loopback = ipaddress.ip_address(request.remote_addr or "").is_loopback
+    except ValueError:
+        is_loopback = False
+    if not is_loopback:
+        return jsonify({"error": "panel shutdown is only available locally"}), 403
+    started = start_panel_shutdown()
+    return (
+        jsonify(
+            {
+                "ok": True,
+                "already_stopping": not started,
+                "message": "正在停止 CARLA、Bridge、Pangu 和测试平台后端",
+            }
+        ),
+        202,
+    )
 
 
 @app.get("/api/scenarios/<scenario_id>")
@@ -681,8 +1197,27 @@ def api_start(scenario_id: str) -> Response:
     if script is None or not script.exists():
         return jsonify({"error": "start script not found"}), 404
     data = load_yaml_file(scenario_dir / "scenario.yaml")
+    if str(data.get("control_profile", "acc")) == "acc":
+        reset_acc_diagnostic_state(scenario_id, data)
     values = load_parameter_values(scenario_id, data)
     env_overrides = parameter_environment(data, values)
+    payload = request.get_json(silent=True) or {}
+    frame_mode = str(payload.get("carla_frame_mode", "stable"))
+    quality_mode = str(payload.get("carla_quality_mode", "low"))
+    try:
+        env_overrides.update(carla_frame_environment(frame_mode))
+    except ValueError:
+        return jsonify({"error": "CARLA 帧率模式只支持 stable 或 normal"}), 400
+    try:
+        env_overrides.update(carla_quality_environment(quality_mode))
+    except ValueError:
+        return jsonify({"error": "CARLA 画质模式只支持 low 或 normal"}), 400
+    get_state(scenario_id).append(
+        "info", f"CARLA 帧率模式: {CARLA_FRAME_PROFILES[frame_mode]['label']}"
+    )
+    get_state(scenario_id).append(
+        "info", f"CARLA 画质模式: {CARLA_QUALITY_PROFILES[quality_mode]}"
+    )
     if env_overrides:
         get_state(scenario_id).append(
             "info",
@@ -724,7 +1259,7 @@ def api_save_parameters(scenario_id: str) -> Response:
             return jsonify({"error": result}), 400
         values = result
     save_parameter_values(scenario_id, values)
-    get_state(scenario_id).append("ok", "LKS 参数已保存，下次启动生效")
+    get_state(scenario_id).append("ok", "场景参数已保存，下次启动生效")
     return jsonify({"ok": True, "values": values})
 
 
@@ -770,8 +1305,11 @@ def api_driver_command(scenario_id: str) -> Response:
         return jsonify({"error": "scenario not found"}), 404
     payload = request.get_json(silent=True) or {}
     key = str(payload.get("key", ""))
+    write_log = bool(payload.get("write_log", True))
     data = load_yaml_file(scenario_dir / "scenario.yaml")
-    ok, message = send_driver_command(scenario_id, data, key)
+    ok, message = send_driver_command(
+        scenario_id, data, key, write_log=write_log
+    )
     return jsonify({"ok": ok, "message": message}), (200 if ok else 400)
 
 
@@ -862,6 +1400,19 @@ def api_health(scenario_id: str) -> Response:
             "健康检查: CARLA={carla}, PUB={bridge_pub}, CONTROL={bridge_control}".format(**health),
         )
     return jsonify(health)
+
+
+@app.get("/api/scenarios/<scenario_id>/telemetry")
+def api_telemetry(scenario_id: str) -> Response:
+    scenario_dir = scenario_dir_for(scenario_id)
+    if scenario_dir is None:
+        return jsonify({"error": "scenario not found"}), 404
+    data = load_yaml_file(scenario_dir / "scenario.yaml")
+    if str(data.get("control_profile", "acc")) != "acc":
+        return jsonify({"error": "telemetry dashboard currently supports ACC scenarios"}), 400
+    monitor = get_telemetry_monitor(bridge_publish_endpoint(data))
+    diagnostic = get_acc_diagnostic_state(scenario_id, data).snapshot()
+    return jsonify(build_acc_telemetry_snapshot(monitor.snapshot(), diagnostic))
 
 
 @app.get("/api/scenarios/<scenario_id>/readme")

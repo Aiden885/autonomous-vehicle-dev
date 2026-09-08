@@ -1,0 +1,17 @@
+
+basic {
+  path: "lib/libLksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d.so"
+  module_type: APP
+  ioconfig {
+    publishers {
+      name: "lks_input"
+      channel: "lks_input"
+      bindcode: ON
+    }
+  }
+}
+
+params {
+  timer_duration: 50.0
+  zmq_poll_timeout_ms: 0
+}

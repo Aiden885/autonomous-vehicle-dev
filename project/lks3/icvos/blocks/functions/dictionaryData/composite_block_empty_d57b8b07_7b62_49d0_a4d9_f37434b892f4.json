@@ -1,0 +1,111 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "weightedLateralErrorM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "steerRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "calculateRawSteer",
+        "category": 1,
+        "dataType": "composite_block_empty_5c77e1f3_497c_42c2_92d4_32dce5cd71b9",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据加权横向误差和比例增益计算未限幅归一化转向指令。"
+      },
+      {
+        "name": "limitSteerByLateralAcceleration",
+        "category": 1,
+        "dataType": "composite_block_empty_6974723c_cd33_4337_b0ed_1edecaacd560",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据车速、轴距和横向加速度上限限制归一化转向指令。"
+      },
+      {
+        "name": "applySteerEnable",
+        "category": 1,
+        "dataType": "composite_block_empty_64c982f5_0edb_4c03_b06c_9a22f84347c5",
+        "shape": [],
+        "dataValue": {},
+        "description": "将限幅后的归一化转向量换算为弧度，并按LKS使能门控输出。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

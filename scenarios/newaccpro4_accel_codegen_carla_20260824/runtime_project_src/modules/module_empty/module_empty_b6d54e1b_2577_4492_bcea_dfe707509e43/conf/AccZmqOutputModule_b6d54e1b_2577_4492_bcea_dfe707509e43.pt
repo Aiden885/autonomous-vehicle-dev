@@ -1,0 +1,27 @@
+
+basic {
+  path: "lib/libAccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43.so"
+  module_type: APP
+  ioconfig {
+    subscribers {
+      name: "acc_output"
+      channel: "acc_output"
+      bindcode: ON
+    }
+    tasks {
+      task_name: "acc_output"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "acc_output"
+      }
+      input: "acc_output"
+    }
+  }
+}
+
+params {
+  zmq_control_enable: true
+}

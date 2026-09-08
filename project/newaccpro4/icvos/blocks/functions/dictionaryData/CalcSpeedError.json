@@ -1,0 +1,66 @@
+{
+  "Input": {
+    "description": "车速控制偏差计算模块输入端口集合。",
+    "alias": "车速控制偏差计算模块输入端口集合。",
+    "fields": [
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第 i 级内部虚拟目标车速 Vi (m/s)"
+      },
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 vi(t) (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "车速控制偏差计算模块输出端口集合。",
+    "alias": "车速控制偏差计算模块输出端口集合。",
+    "fields": [
+      {
+        "name": "speedError",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车速控制偏差 Delta vi(t) (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "车速控制偏差计算模块参数集合。",
+    "alias": "车速控制偏差计算模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "车速控制偏差计算模块状态集合。",
+    "alias": "车速控制偏差计算模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "车速控制偏差计算模块子模块集合。",
+    "alias": "车速控制偏差计算模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

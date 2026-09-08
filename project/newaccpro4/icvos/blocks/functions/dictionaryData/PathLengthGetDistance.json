@@ -1,0 +1,138 @@
+{
+  "Input": {
+    "description": "两点距离计算 Input 结构体",
+    "alias": "两点距离计算 Input 结构体",
+    "fields": [
+      {
+        "name": "x1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第一输入 X 坐标 (m)"
+      },
+      {
+        "name": "y1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第一输入 Y 坐标 (m)"
+      },
+      {
+        "name": "x2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第二输入 X 坐标 (m)"
+      },
+      {
+        "name": "y2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第二输入 Y 坐标 (m)"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Output": {
+    "description": "两点距离计算 Output 结构体",
+    "alias": "两点距离计算 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "组件判定结果"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 X 坐标 (m)"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 Y 坐标 (m)"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Param": {
+    "description": "两点距离计算 Param 结构体",
+    "alias": "两点距离计算 Param 结构体",
+    "fields": [
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "浮点或几何退化判断容差"
+      },
+      {
+        "name": "clampRatio",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否限制插值比例到 [0, 1]"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "State": {
+    "description": "两点距离计算 State 结构体",
+    "alias": "两点距离计算 State 结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "unsigned char",
+        "shape": [],
+        "dataValue": 0,
+        "description": "保留占位字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Sub": {
+    "description": "两点距离计算 的子模块实体集合",
+    "alias": "两点距离计算 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "planning"
+  }
+}

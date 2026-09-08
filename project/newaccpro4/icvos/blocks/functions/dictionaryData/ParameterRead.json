@@ -1,0 +1,114 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "queryKey",
+        "category": 0,
+        "dataType": "char",
+        "shape": [32],
+        "dataValue": {},
+        "description": "查询参数名"
+      },
+      {
+        "name": "keys",
+        "category": 0,
+        "dataType": "char",
+        "shape": [16, 32],
+        "dataValue": {},
+        "description": "参数名表"
+      },
+      {
+        "name": "values",
+        "category": 0,
+        "dataType": "double",
+        "shape": [16],
+        "dataValue": {},
+        "description": "参数值表"
+      },
+      {
+        "name": "count",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "参数表有效数量"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": true,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "found",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否找到目标参数"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "读取到的参数值或默认值"
+      },
+      {
+        "name": "index",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "命中参数索引"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "defaultValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "未找到参数时输出的默认值"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  }
+}

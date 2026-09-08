@@ -1,0 +1,106 @@
+{
+  "PidAntiWindup": {
+    "description": "PID输出限幅与抗积分饱和参数。",
+    "alias": "PID输出限幅与抗积分饱和参数。",
+    "fields": [
+      {
+        "name": "uMin",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": -100.0,
+        "description": "控制输出下限"
+      },
+      {
+        "name": "uMax",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 100.0,
+        "description": "控制输出上限"
+      },
+      {
+        "name": "kaw",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "抗积分饱和回算增益"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "PidGains": {
+    "description": "PID比例、积分、微分增益参数。",
+    "alias": "PID比例、积分、微分增益参数。",
+    "fields": [
+      {
+        "name": "kp",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "比例增益"
+      },
+      {
+        "name": "ki",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.1,
+        "description": "积分增益"
+      },
+      {
+        "name": "kd",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.01,
+        "description": "微分增益"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "PidParam": {
+    "description": "PID控制器完整参数集合。",
+    "alias": "PID控制器完整参数集合。",
+    "fields": [
+      {
+        "name": "gains",
+        "category": 1,
+        "dataType": "PidGains",
+        "shape": [],
+        "dataValue": {
+          "kp": 1.0,
+          "ki": 0.1,
+          "kd": 0.01
+        },
+        "description": "PID增益参数"
+      },
+      {
+        "name": "antiWindup",
+        "category": 1,
+        "dataType": "PidAntiWindup",
+        "shape": [],
+        "dataValue": {
+          "uMin": -100.0,
+          "uMax": 100.0,
+          "kaw": 0.5
+        },
+        "description": "输出限幅与抗积分饱和参数"
+      },
+      {
+        "name": "ts",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.01,
+        "description": "采样周期 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

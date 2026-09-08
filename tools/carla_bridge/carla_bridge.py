@@ -18,6 +18,12 @@ import time
 from dataclasses import dataclass
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+
+from waypoint_route import select_straight_waypoint
+
 try:
     import zmq
 except ImportError as exc:  # pragma: no cover - environment guard
@@ -30,6 +36,8 @@ TOPIC_PREFIX = "gaasd.carla"
 CONTROL_TOPIC = f"{TOPIC_PREFIX}.control_cmd.v1"
 DRIVER_COMMAND_TOPIC = f"{TOPIC_PREFIX}.driver_command.v1"
 DRIVER_STATE_COMMAND_TOPIC = f"{TOPIC_PREFIX}.driver_state_cmd.v1"
+ACC_DRIVER_THROTTLE_COMMAND = 5
+ACC_DRIVER_BRAKE_COMMAND = 6
 
 
 def load_json(path: str) -> Dict[str, Any]:
@@ -81,12 +89,25 @@ def default_config() -> Dict[str, Any]:
         "control": {
             "max_accel_mps2": 4.0,
             "max_brake_mps2": 8.0,
+            "override_command_accel_limits": False,
             "max_abs_steer_rad": 0.6,
             "speed_kp": 0.6,
             "speed_ki": 0.0,
             "speed_kd": 0.05,
             "speed_integral_limit": 2.0,
             "speed_deadband_mps": 0.03,
+            "accel_tracking_enabled": True,
+            "accel_kp": 0.2,
+            "accel_ki": 0.25,
+            "accel_integral_limit": 6.0,
+            "accel_filter_tau_sec": 0.15,
+            "rolling_resistance_coefficient": 0.01,
+            "drag_reference_area_m2": 2.37,
+            "air_density_kgpm3": 1.184,
+            "gravity_mps2": 9.81,
+            "accel_feedforward_limit_mps2": 2.0,
+            "vehicle_mass_default_kg": 1500.0,
+            "vehicle_drag_coefficient_default": 0.3,
             "max_throttle": 1.0,
             "max_brake": 1.0,
             "timeout_sec": 0.2,
@@ -120,6 +141,19 @@ def default_config() -> Dict[str, Any]:
             "driver_steer_norm": 0.0,
         },
     }
+
+
+def apply_runtime_environment(cfg: Dict[str, Any]) -> None:
+    raw_fixed_delta = os.environ.get("CARLA_FIXED_DELTA_SECONDS")
+    if raw_fixed_delta is None:
+        return
+    try:
+        fixed_delta = float(raw_fixed_delta)
+    except ValueError as exc:
+        raise SystemExit("CARLA_FIXED_DELTA_SECONDS must be a number") from exc
+    if not math.isfinite(fixed_delta) or fixed_delta <= 0.0 or fixed_delta > 0.1:
+        raise SystemExit("CARLA_FIXED_DELTA_SECONDS must be within (0, 0.1]")
+    cfg["carla"]["fixed_delta_seconds"] = fixed_delta
 
 
 def add_carla_python_paths(cfg: Dict[str, Any]) -> None:
@@ -179,6 +213,19 @@ def finite(value: Any, default: float = 0.0) -> float:
 
 def clamp(value: float, lower: float, upper: float) -> float:
     return max(lower, min(upper, value))
+
+
+def resolve_acceleration_limits(
+    control_config: Dict[str, Any], safety: Dict[str, Any]
+) -> Tuple[float, float]:
+    """Resolve positive acceleration/deceleration limits for longitudinal control."""
+    configured_accel = finite(control_config.get("max_accel_mps2"), 4.0)
+    configured_brake = finite(control_config.get("max_brake_mps2"), 8.0)
+    if bool(control_config.get("override_command_accel_limits", False)):
+        return max(configured_accel, 0.0), max(configured_brake, 0.0)
+    message_accel = finite(safety.get("max_accel_mps2"), configured_accel)
+    message_brake = finite(safety.get("max_decel_mps2"), configured_brake)
+    return max(message_accel, 0.0), max(message_brake, 0.0)
 
 
 def normalize_angle_rad(angle_rad: float) -> float:
@@ -263,6 +310,162 @@ class LastCommand:
     throttle: float = 0.0
     brake: float = 0.0
     steer_norm: float = 0.0
+    target_speed_mps: float = 0.0
+    target_accel_mps2: float = 0.0
+    enable: bool = False
+
+
+@dataclass
+class AccelerationPedalOutput:
+    throttle: float = 0.0
+    brake: float = 0.0
+    measured_accel_mps2: float = 0.0
+    filtered_accel_mps2: float = 0.0
+    feedforward_accel_mps2: float = 0.0
+    feedback_accel_mps2: float = 0.0
+    requested_accel_mps2: float = 0.0
+    integral_error_mps: float = 0.0
+    saturated: bool = False
+
+
+class AccelerationPedalController:
+    """Track physical acceleration while compensating vehicle resistance."""
+
+    def __init__(self, config: Dict[str, Any]) -> None:
+        self.config = config
+        self.integral_error_mps = 0.0
+        self.filtered_accel_mps2 = 0.0
+        self.filter_initialized = False
+        self.last_output = AccelerationPedalOutput()
+
+    def reset(self) -> None:
+        self.integral_error_mps = 0.0
+        self.filtered_accel_mps2 = 0.0
+        self.filter_initialized = False
+        self.last_output = AccelerationPedalOutput()
+
+    def filter_acceleration(self, measured_accel_mps2: float, dt_sec: float) -> float:
+        measured = finite(measured_accel_mps2, 0.0)
+        tau = max(finite(self.config.get("accel_filter_tau_sec", 0.15), 0.15), 0.0)
+        if not self.filter_initialized or tau <= 0.0:
+            self.filtered_accel_mps2 = measured
+            self.filter_initialized = True
+            return self.filtered_accel_mps2
+        alpha = clamp(dt_sec / (tau + dt_sec), 0.0, 1.0)
+        self.filtered_accel_mps2 = (
+            self.filtered_accel_mps2
+            + alpha * (measured - self.filtered_accel_mps2)
+        )
+        return self.filtered_accel_mps2
+
+    def resistance_feedforward(
+        self,
+        speed_mps: float,
+        forward_z: float,
+        mass_kg: float,
+        drag_coefficient: float,
+    ) -> float:
+        speed = max(finite(speed_mps, 0.0), 0.0)
+        mass = max(finite(mass_kg, 1500.0), 1.0)
+        drag = max(finite(drag_coefficient, 0.3), 0.0)
+        gravity = max(finite(self.config.get("gravity_mps2", 9.81), 9.81), 0.0)
+        rolling_coefficient = max(
+            finite(self.config.get("rolling_resistance_coefficient", 0.01), 0.01),
+            0.0,
+        )
+        area = max(
+            finite(self.config.get("drag_reference_area_m2", 2.37), 2.37), 0.0
+        )
+        air_density = max(
+            finite(self.config.get("air_density_kgpm3", 1.184), 1.184), 0.0
+        )
+        grade_sine = clamp(finite(forward_z, 0.0), -1.0, 1.0)
+        road_cosine = math.sqrt(max(0.0, 1.0 - grade_sine * grade_sine))
+        rolling_accel = 0.0
+        if speed > 0.1:
+            rolling_accel = rolling_coefficient * gravity * road_cosine
+        drag_accel = 0.5 * air_density * drag * area * speed * speed / mass
+        grade_accel = gravity * grade_sine
+        limit = max(
+            finite(self.config.get("accel_feedforward_limit_mps2", 2.0), 2.0),
+            0.0,
+        )
+        return clamp(rolling_accel + drag_accel + grade_accel, -limit, limit)
+
+    def update(
+        self,
+        *,
+        target_accel_mps2: float,
+        measured_accel_mps2: float,
+        speed_mps: float,
+        forward_z: float,
+        mass_kg: float,
+        drag_coefficient: float,
+        dt_sec: float,
+        max_accel_mps2: float,
+        max_brake_mps2: float,
+        max_throttle: float,
+        max_brake: float,
+    ) -> AccelerationPedalOutput:
+        dt = clamp(finite(dt_sec, 0.05), 1.0e-3, 0.2)
+        target = finite(target_accel_mps2, 0.0)
+        measured = finite(measured_accel_mps2, 0.0)
+        filtered = self.filter_acceleration(measured, dt)
+        error = target - filtered
+        kp = max(finite(self.config.get("accel_kp", 0.2), 0.2), 0.0)
+        ki = max(finite(self.config.get("accel_ki", 0.25), 0.25), 0.0)
+        integral_limit = max(
+            finite(self.config.get("accel_integral_limit", 6.0), 6.0), 0.0
+        )
+        candidate_integral = clamp(
+            self.integral_error_mps + error * dt,
+            -integral_limit,
+            integral_limit,
+        )
+        feedforward = self.resistance_feedforward(
+            speed_mps, forward_z, mass_kg, drag_coefficient
+        )
+        feedback = kp * error + ki * candidate_integral
+        requested = target + feedforward + feedback
+
+        accel_limit = max(finite(max_accel_mps2, 1.0), 1.0e-6)
+        brake_limit = max(finite(max_brake_mps2, 1.0), 1.0e-6)
+        throttle_limit = clamp(finite(max_throttle, 1.0), 0.0, 1.0)
+        brake_pedal_limit = clamp(finite(max_brake, 1.0), 0.0, 1.0)
+        upper_request = accel_limit * throttle_limit
+        lower_request = -brake_limit * brake_pedal_limit
+        saturated_high = requested > upper_request
+        saturated_low = requested < lower_request
+
+        if (saturated_high and error > 0.0) or (saturated_low and error < 0.0):
+            candidate_integral = self.integral_error_mps
+            feedback = kp * error + ki * candidate_integral
+            requested = target + feedforward + feedback
+
+        self.integral_error_mps = candidate_integral
+        limited_request = clamp(requested, lower_request, upper_request)
+        saturated = not math.isclose(
+            limited_request, requested, rel_tol=1.0e-9, abs_tol=1.0e-9
+        )
+        throttle = 0.0
+        brake = 0.0
+        if limited_request >= 0.0:
+            throttle = clamp(limited_request / accel_limit, 0.0, throttle_limit)
+        else:
+            brake = clamp(-limited_request / brake_limit, 0.0, brake_pedal_limit)
+
+        self.last_output = AccelerationPedalOutput(
+            throttle=throttle,
+            brake=brake,
+            measured_accel_mps2=measured,
+            filtered_accel_mps2=filtered,
+            feedforward_accel_mps2=feedforward,
+            feedback_accel_mps2=feedback,
+            requested_accel_mps2=limited_request,
+            integral_error_mps=self.integral_error_mps,
+            saturated=saturated,
+        )
+        return self.last_output
 
 
 class CarlaGaasdBridge:
@@ -296,6 +499,17 @@ class CarlaGaasdBridge:
         self.speed_pid_prev_error = 0.0
         self.speed_pid_integral_error = 0.0
         self.speed_pid_prev_time = 0.0
+        self.acceleration_pedal_controller = AccelerationPedalController(
+            self.cfg["control"]
+        )
+        self.acceleration_control_prev_time = 0.0
+        self.ego_physics_actor_id: Optional[int] = None
+        self.ego_mass_kg = finite(
+            self.cfg["control"].get("vehicle_mass_default_kg", 1500.0), 1500.0
+        )
+        self.ego_drag_coefficient = finite(
+            self.cfg["control"].get("vehicle_drag_coefficient_default", 0.3), 0.3
+        )
         self.lane_keep_prev_error = 0.0
         self.lane_keep_integral_error = 0.0
         self.lane_keep_prev_time = 0.0
@@ -509,6 +723,8 @@ class CarlaGaasdBridge:
         if self.ego is not None and self.ego.is_alive:
             return
         self.ego = self.find_or_spawn_ego()
+        self.reset_acceleration_controller()
+        self.ego_physics_actor_id = None
 
     def publish_sim_clock(self, snapshot: Any) -> None:
         settings = self.world.get_settings()
@@ -760,21 +976,11 @@ class CarlaGaasdBridge:
             candidates = current.next(step_m)
             if not candidates:
                 break
-            current_yaw = finite(current.transform.rotation.yaw)
-
-            def candidate_score(candidate: Any) -> float:
-                c_loc = candidate.transform.location
-                c_dx = finite(lead_location.x) - finite(c_loc.x)
-                c_dy = finite(lead_location.y) - finite(c_loc.y)
-                c_dist = math.hypot(c_dx, c_dy)
-                yaw_delta = abs(
-                    normalize_angle_rad(
-                        math.radians(finite(candidate.transform.rotation.yaw) - current_yaw)
-                    )
-                )
-                return c_dist + 3.0 * yaw_delta
-
-            current = min(candidates, key=candidate_score)
+            current = self.select_forward_waypoint(
+                candidates, finite(current.transform.rotation.yaw)
+            )
+            if current is None:
+                break
             accumulated += step_m
 
         if best_distance > max_lateral:
@@ -891,6 +1097,29 @@ class CarlaGaasdBridge:
             "gear": int(getattr(control, "gear", 0)),
             "last_command_id": self.last_command.command_id,
             "last_command_age_sec": age,
+            "target_speed_mps": self.last_command.target_speed_mps,
+            "target_accel_mps2": self.last_command.target_accel_mps2,
+            "commanded_throttle": self.last_command.throttle,
+            "commanded_brake": self.last_command.brake,
+            "control_enable": self.last_command.enable,
+            "actual_accel_mps2": (
+                self.acceleration_pedal_controller.last_output.measured_accel_mps2
+            ),
+            "filtered_accel_mps2": (
+                self.acceleration_pedal_controller.last_output.filtered_accel_mps2
+            ),
+            "accel_feedforward_mps2": (
+                self.acceleration_pedal_controller.last_output.feedforward_accel_mps2
+            ),
+            "accel_feedback_mps2": (
+                self.acceleration_pedal_controller.last_output.feedback_accel_mps2
+            ),
+            "accel_integral_error_mps": (
+                self.acceleration_pedal_controller.last_output.integral_error_mps
+            ),
+            "accel_controller_saturated": (
+                self.acceleration_pedal_controller.last_output.saturated
+            ),
         }
         self.publish("chassis_feedback", payload, snapshot)
 
@@ -1162,6 +1391,12 @@ class CarlaGaasdBridge:
         enable = bool(payload.get("enable", True))
         command_id = int(payload.get("command_id", self.last_command.command_id + 1))
         ctrl_cfg = self.cfg["control"]
+        target_speed_mps = finite(
+            target.get("target_speed_mps", target.get("speed", 0.0))
+        )
+        target_accel_mps2 = finite(
+            target.get("target_accel_mps2", target.get("acceleration", 0.0))
+        )
 
         max_steer = finite(safety.get("max_abs_steer_rad"), float(ctrl_cfg["max_abs_steer_rad"]))
         has_explicit_steer = "steer_rad" in target or "steer" in target
@@ -1177,16 +1412,47 @@ class CarlaGaasdBridge:
         else:
             steer_norm = clamp(steer_rad / max(max_steer, 1.0e-6), -1.0, 1.0)
 
-        if not enable:
-            throttle, brake, steer_norm = 0.0, 1.0, 0.0
+        driver_pedals = self.acc_driver_pedal_override()
+        if driver_pedals is not None:
+            throttle, brake = driver_pedals
             self.reset_speed_pid()
+            self.reset_acceleration_controller()
+        elif not enable:
+            # ACC disabled means longitudinal authority returns to the driver;
+            # it is not an emergency-brake request. Lateral route following is
+            # independent in the local ACC test scene and remains active.
+            throttle, brake = 0.0, 0.0
+            self.reset_speed_pid()
+            self.reset_acceleration_controller()
         else:
             throttle, brake = self.longitudinal_to_throttle_brake(target, safety)
 
         control = self.carla.VehicleControl(throttle=throttle, brake=brake, steer=steer_norm)
         self.ego.apply_control(control)
-        self.last_command = LastCommand(time.time(), command_id, throttle, brake, steer_norm)
+        self.last_command = LastCommand(
+            timestamp=time.time(),
+            command_id=command_id,
+            throttle=throttle,
+            brake=brake,
+            steer_norm=steer_norm,
+            target_speed_mps=target_speed_mps,
+            target_accel_mps2=target_accel_mps2,
+            enable=enable,
+        )
         self.control_timeout_applied = False
+
+    def acc_driver_pedal_override(self) -> Optional[Tuple[float, float]]:
+        if not self.driver_command_level_active:
+            return None
+
+        ctrl_cfg = self.cfg["control"]
+        if self.driver_command_level == ACC_DRIVER_BRAKE_COMMAND:
+            brake = clamp(finite(ctrl_cfg.get("max_brake", 1.0)), 0.0, 1.0)
+            return 0.0, brake
+        if self.driver_command_level == ACC_DRIVER_THROTTLE_COMMAND:
+            throttle = clamp(finite(ctrl_cfg.get("max_throttle", 1.0)), 0.0, 1.0)
+            return throttle, 0.0
+        return None
 
     def compute_lane_keep_steer_norm(self) -> float:
         ctrl_cfg = self.cfg["control"]
@@ -1236,18 +1502,7 @@ class CarlaGaasdBridge:
         return clamp(steer, -max_steer, max_steer)
 
     def select_forward_waypoint(self, candidates: List[Any], current_yaw_deg: float) -> Optional[Any]:
-        if not candidates:
-            return None
-        current_yaw_rad = math.radians(current_yaw_deg)
-        best = candidates[0]
-        best_error = float("inf")
-        for candidate in candidates:
-            candidate_yaw_rad = math.radians(finite(candidate.transform.rotation.yaw))
-            error = abs(normalize_angle_rad(candidate_yaw_rad - current_yaw_rad))
-            if error < best_error:
-                best = candidate
-                best_error = error
-        return best
+        return select_straight_waypoint(candidates, current_yaw_deg)
 
     def compute_waypoint_lane_keep_steer_norm(self) -> float:
         if self.ego is None or self.world is None or self.carla is None:
@@ -1274,7 +1529,9 @@ class CarlaGaasdBridge:
         if waypoint is None:
             return 0.0
 
-        target = self.select_forward_waypoint(waypoint.next(lookahead), finite(transform.rotation.yaw))
+        target = self.select_forward_waypoint(
+            waypoint.next(lookahead), finite(waypoint.transform.rotation.yaw)
+        )
         if target is None:
             return 0.0
 
@@ -1356,12 +1613,105 @@ class CarlaGaasdBridge:
         control = self.carla.VehicleControl(throttle=0.0, brake=timeout_brake, steer=0.0)
         self.ego.apply_control(control)
         self.reset_speed_pid()
+        self.reset_acceleration_controller()
         self.control_timeout_applied = True
 
     def reset_speed_pid(self) -> None:
         self.speed_pid_prev_error = 0.0
         self.speed_pid_integral_error = 0.0
         self.speed_pid_prev_time = 0.0
+
+    def reset_acceleration_controller(self) -> None:
+        controller = getattr(self, "acceleration_pedal_controller", None)
+        if controller is not None:
+            controller.reset()
+        self.acceleration_control_prev_time = 0.0
+
+    def ego_physics_parameters(self) -> Tuple[float, float]:
+        ctrl_cfg = self.cfg["control"]
+        actor_id = int(getattr(self.ego, "id", 0)) if self.ego is not None else 0
+        if actor_id == self.ego_physics_actor_id:
+            return self.ego_mass_kg, self.ego_drag_coefficient
+
+        mass_kg = max(
+            finite(ctrl_cfg.get("vehicle_mass_default_kg", 1500.0), 1500.0), 1.0
+        )
+        drag_coefficient = max(
+            finite(ctrl_cfg.get("vehicle_drag_coefficient_default", 0.3), 0.3),
+            0.0,
+        )
+        if self.ego is not None:
+            try:
+                physics = self.ego.get_physics_control()
+                mass_kg = max(finite(getattr(physics, "mass", mass_kg), mass_kg), 1.0)
+                drag_coefficient = max(
+                    finite(
+                        getattr(physics, "drag_coefficient", drag_coefficient),
+                        drag_coefficient,
+                    ),
+                    0.0,
+                )
+            except Exception as exc:
+                print(
+                    f"[Bridge] vehicle physics unavailable, using defaults: {exc}",
+                    file=sys.stderr,
+                )
+
+        self.ego_physics_actor_id = actor_id
+        self.ego_mass_kg = mass_kg
+        self.ego_drag_coefficient = drag_coefficient
+        return mass_kg, drag_coefficient
+
+    def acceleration_target_to_throttle_brake(
+        self,
+        target_accel_mps2: float,
+        max_accel_mps2: float,
+        max_brake_mps2: float,
+    ) -> Tuple[float, float]:
+        if self.ego is None:
+            self.reset_acceleration_controller()
+            return 0.0, 0.0
+
+        transform = self.ego.get_transform()
+        forward = transform.get_forward_vector()
+        acceleration = self.ego.get_acceleration()
+        measured_accel = (
+            finite(acceleration.x) * finite(forward.x)
+            + finite(acceleration.y) * finite(forward.y)
+            + finite(acceleration.z) * finite(forward.z)
+        )
+        speed_mps = speed_2d(self.ego.get_velocity())
+        mass_kg, drag_coefficient = self.ego_physics_parameters()
+        ctrl_cfg = self.cfg["control"]
+        configured_dt = clamp(
+            finite(self.cfg["carla"].get("fixed_delta_seconds", 0.05), 0.05),
+            1.0e-3,
+            0.2,
+        )
+        now = time.monotonic()
+        previous_time = getattr(self, "acceleration_control_prev_time", 0.0)
+        dt_sec = (
+            now - previous_time
+            if previous_time > 0.0
+            else configured_dt
+        )
+        if dt_sec > 0.2:
+            dt_sec = configured_dt
+        self.acceleration_control_prev_time = now
+        output = self.acceleration_pedal_controller.update(
+            target_accel_mps2=target_accel_mps2,
+            measured_accel_mps2=measured_accel,
+            speed_mps=speed_mps,
+            forward_z=finite(forward.z),
+            mass_kg=mass_kg,
+            drag_coefficient=drag_coefficient,
+            dt_sec=dt_sec,
+            max_accel_mps2=max_accel_mps2,
+            max_brake_mps2=max_brake_mps2,
+            max_throttle=finite(ctrl_cfg.get("max_throttle", 1.0), 1.0),
+            max_brake=finite(ctrl_cfg.get("max_brake", 1.0), 1.0),
+        )
+        return output.throttle, output.brake
 
     def speed_pid_accel(self, target_speed: float, current_speed: float) -> float:
         ctrl_cfg = self.cfg["control"]
@@ -1399,6 +1749,7 @@ class CarlaGaasdBridge:
         has_accel = "target_accel_mps2" in target or "acceleration" in target
 
         if prefer_speed and has_speed:
+            self.reset_acceleration_controller()
             target_speed = finite(target.get("target_speed_mps", target.get("speed", 0.0)))
             max_speed = finite(safety.get("max_speed_mps"), target_speed)
             target_speed = clamp(target_speed, 0.0, max(max_speed, 0.0))
@@ -1409,11 +1760,17 @@ class CarlaGaasdBridge:
             accel = finite(target.get("target_accel_mps2", target.get("acceleration", 0.0)))
         else:
             self.reset_speed_pid()
+            self.reset_acceleration_controller()
             accel = 0.0
 
-        max_accel = finite(safety.get("max_accel_mps2"), float(ctrl_cfg["max_accel_mps2"]))
-        max_brake = finite(safety.get("max_decel_mps2"), float(ctrl_cfg["max_brake_mps2"]))
+        max_accel, max_brake = resolve_acceleration_limits(ctrl_cfg, safety)
         accel = clamp(accel, -max_brake, max_accel)
+        if has_accel and not (prefer_speed and has_speed) and bool(
+            ctrl_cfg.get("accel_tracking_enabled", True)
+        ):
+            return self.acceleration_target_to_throttle_brake(
+                accel, max_accel, max_brake
+            )
         max_throttle_norm = clamp(finite(ctrl_cfg.get("max_throttle", 1.0)), 0.0, 1.0)
         max_brake_norm = clamp(finite(ctrl_cfg.get("max_brake", 1.0)), 0.0, 1.0)
 
@@ -1432,6 +1789,7 @@ def parse_args(argv: Optional[Iterable[str]] = None) -> argparse.Namespace:
 def main(argv: Optional[Iterable[str]] = None) -> int:
     args = parse_args(argv)
     cfg = deep_merge(default_config(), load_json(args.config))
+    apply_runtime_environment(cfg)
     bridge = CarlaGaasdBridge(cfg, dry_run=args.dry_run)
     bridge.run()
     return 0

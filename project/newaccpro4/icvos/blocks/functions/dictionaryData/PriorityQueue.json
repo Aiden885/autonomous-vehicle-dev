@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "values",
+        "category": 0,
+        "dataType": "double",
+        "shape": [16],
+        "dataValue": {},
+        "description": "队列值数组"
+      },
+      {
+        "name": "priorities",
+        "category": 0,
+        "dataType": "double",
+        "shape": [16],
+        "dataValue": {},
+        "description": "优先级数组"
+      },
+      {
+        "name": "count",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "队列有效数量"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": true,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "selectedIndex",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "选中元素索引"
+      },
+      {
+        "name": "selectedValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "选中元素值"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "higherPriorityIsLarger",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": true,
+        "description": "true 表示数值越大优先级越高"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  }
+}

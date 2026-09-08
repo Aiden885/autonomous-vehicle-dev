@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valueA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 A"
+      },
+      {
+        "name": "valueB",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 B"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "子模块调度是否全部有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组合执行结果标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "openDriveParser",
+        "category": 1,
+        "dataType": "OpenDriveParser",
+        "shape": [],
+        "dataValue": {},
+        "description": "OpenDrive 解析子模块"
+      },
+      {
+        "name": "osmParser",
+        "category": 1,
+        "dataType": "OsmParser",
+        "shape": [],
+        "dataValue": {},
+        "description": "OSM 解析子模块"
+      },
+      {
+        "name": "parameterWrite",
+        "category": 1,
+        "dataType": "ParameterWrite",
+        "shape": [],
+        "dataValue": {},
+        "description": "参数写出子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  }
+}

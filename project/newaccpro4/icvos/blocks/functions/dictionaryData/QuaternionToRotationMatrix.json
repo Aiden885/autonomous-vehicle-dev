@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "w",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "四元数 w 分量"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "四元数 x 分量"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "四元数 y 分量"
+      },
+      {
+        "name": "z",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "四元数 z 分量"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": true,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "matrix",
+        "category": 0,
+        "dataType": "double",
+        "shape": [3, 3],
+        "dataValue": {},
+        "description": "三阶旋转矩阵"
+      }
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "algmodule"
+  }
+}

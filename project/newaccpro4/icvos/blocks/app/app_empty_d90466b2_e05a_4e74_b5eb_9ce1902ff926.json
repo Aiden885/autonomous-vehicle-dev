@@ -1,0 +1,739 @@
+{
+  "componentType": "app",
+  "name": "app_empty",
+  "cppClass": "",
+  "alias": "accApplication",
+  "description": "空应用",
+  "author": "",
+  "version": "1.1.3",
+  "instanceId": "d90466b2-e05a-4e74-b5eb-9ce1902ff926",
+  "originId": "9b0465f7-ab67-4aee-93c5-abcbd13a6e87",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "common"
+  ],
+  "parentId": "790600cb-d6cb-47b3-9a79-5be5dc4ee0fe",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "process",
+      "name": "AccProcess",
+      "cppClass": "",
+      "alias": "ACC进程",
+      "description": "空进程",
+      "author": "",
+      "version": "1.2.0",
+      "instanceId": "3e7e3350-4677-4b26-9aa0-599a3aa971e5",
+      "originId": "process_empty",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "process",
+      "parentId": "d90466b2-e05a-4e74-b5eb-9ce1902ff926",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {
+            "log": {
+              "level": "INFO",
+              "to_file": "OFF",
+              "to_remote": "OFF",
+              "to_console": "OFF",
+              "sys_log": "OFF"
+            }
+          },
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "module",
+      "name": "AccZmqInputModule",
+      "cppClass": "",
+      "alias": "CARLA输入模块(ACC)",
+      "description": "CARLA ZMQ input bridge module",
+      "author": "",
+      "version": "1.0.0",
+      "instanceId": "4f150689-d2f6-4702-ad5a-fdab8dd975df",
+      "originId": "module_AccZmqInputModule_1.0.0",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "demo",
+      "parentId": "d90466b2-e05a-4e74-b5eb-9ce1902ff926",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {
+            "node_name": "AccZmqInputModule",
+            "bind_cpu": "-1",
+            "node_priority": 0,
+            "depend_nodes": []
+          },
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": [
+            {
+              "name": "acc_input",
+              "alias": "acc_input",
+              "datatype": "INNER_SHM_DDS",
+              "description": "acc_input",
+              "direction": "Out",
+              "id": "dcabfff2-cb5c-43bf-9436-d99394cf19af",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "acc_input",
+                  "props": []
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "acc_input",
+                  "props": []
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON",
+                  "props": []
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS",
+                  "props": []
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_acc_input",
+                  "props": []
+                }
+              ],
+              "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {
+            "basic": {
+              "module_type": "APP",
+              "ioconfig": {
+                "subscribers": [],
+                "publishers": [
+                  {
+                    "channel": "acc_input",
+                    "name": "acc_input",
+                    "bindcode": "ON"
+                  }
+                ]
+              }
+            },
+            "params": {}
+          },
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": "AccZmqInputModule.pt",
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": "pangu::modules",
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "node_name",
+          "value": "AccZmqInputModule",
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "module",
+      "name": "AccZmqOutputModule",
+      "cppClass": "",
+      "alias": "CARLA车辆模型(ACC)",
+      "description": "CARLA ZMQ output bridge module",
+      "author": "",
+      "version": "1.0.0",
+      "instanceId": "a08b2f94-176b-407f-911a-8552f94cd7d0",
+      "originId": "module_AccZmqOutputModule_1.0.0",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "demo",
+      "parentId": "d90466b2-e05a-4e74-b5eb-9ce1902ff926",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {
+            "node_name": "AccZmqOutputModule",
+            "bind_cpu": "-1",
+            "node_priority": 0,
+            "depend_nodes": []
+          },
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": [
+            {
+              "name": "acc_output",
+              "alias": "acc_output",
+              "datatype": "INNER_SHM_DDS",
+              "description": "acc_output",
+              "direction": "In",
+              "id": "39500d3a-7275-4453-a66e-cb2aa64bff85",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "acc_output",
+                  "props": []
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "acc_output",
+                  "props": []
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON",
+                  "props": []
+                },
+                {
+                  "key": "task_bind",
+                  "value": "acc_output",
+                  "props": []
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS",
+                  "props": []
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_acc_output",
+                  "props": []
+                }
+              ],
+              "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {
+            "basic": {
+              "module_type": "APP",
+              "ioconfig": {
+                "subscribers": [
+                  {
+                    "channel": "acc_output",
+                    "name": "acc_output",
+                    "bindcode": "ON"
+                  }
+                ],
+                "publishers": [],
+                "tasks": [
+                  {
+                    "task_name": "acc_output",
+                    "input": [
+                      "acc_output"
+                    ]
+                  }
+                ]
+              }
+            },
+            "params": {}
+          },
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": "AccZmqOutputModule.pt",
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": "pangu::modules",
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "node_name",
+          "value": "AccZmqOutputModule",
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "module",
+      "name": "accModule",
+      "cppClass": "",
+      "alias": "Acc模块",
+      "description": "空模块",
+      "author": "",
+      "version": "1.2.2",
+      "instanceId": "29c47927-719d-4e92-ae28-7f537c70bd4e",
+      "originId": "module_empty",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "common",
+      "parentId": "3e7e3350-4677-4b26-9aa0-599a3aa971e5",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": [
+            {
+              "alias": "acc_input",
+              "description": "",
+              "direction": "In",
+              "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4",
+              "id": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+              "name": "acc_input",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "acc_input"
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON"
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "acc_input"
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS"
+                },
+                {
+                  "key": "message_type",
+                  "value": "pangu.modules.AccInput"
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_acc_input"
+                },
+                {
+                  "key": "task_id",
+                  "value": null
+                },
+                {
+                  "key": "operateKeys",
+                  "value": [
+                    ".ego_speed_mps",
+                    ".lead_speed_mps",
+                    ".command_type",
+                    ".frame_id",
+                    ".lead_distance_m"
+                  ]
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": [
+            {
+              "alias": "acc_output",
+              "description": "",
+              "direction": "Out",
+              "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4",
+              "id": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+              "name": "acc_output",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "acc_output"
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON"
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "acc_output"
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS"
+                },
+                {
+                  "key": "message_type",
+                  "value": "pangu.modules.AccOutput"
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_acc_output"
+                },
+                {
+                  "key": "task_id",
+                  "value": null
+                },
+                {
+                  "key": "operateKeys",
+                  "value": [
+                    ".frame_id",
+                    ".target_speed_mps",
+                    ".enable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "node_name",
+          "value": "module_empty_1",
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": []
+}

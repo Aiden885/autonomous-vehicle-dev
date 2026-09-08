@@ -4,7 +4,19 @@ set -euo pipefail
 CARLA_ROOT="${CARLA_ROOT:-/home/aiden/snap/code/app/carla-package}"
 PID_FILE="${CARLA_PID_FILE:-/tmp/gaasd-carla.pid}"
 LOG_FILE="${CARLA_LOG_FILE:-/tmp/gaasd-carla.log}"
-QUALITY_ARG="-quality-level=Low"
+CARLA_QUALITY_MODE="${CARLA_QUALITY_MODE:-low}"
+case "$CARLA_QUALITY_MODE" in
+    low)
+        QUALITY_ARG="-quality-level=Low"
+        ;;
+    normal)
+        QUALITY_ARG=""
+        ;;
+    *)
+        echo "[CARLA] unsupported CARLA_QUALITY_MODE: $CARLA_QUALITY_MODE (expected low or normal)" >&2
+        exit 2
+        ;;
+esac
 BACKGROUND="0"
 
 usage() {
@@ -15,6 +27,9 @@ Defaults:
   --root       /home/aiden/snap/code/app/carla-package
   quality      Low
   foreground   yes
+
+Environment:
+  CARLA_QUALITY_MODE  low (default) or normal (CARLA Epic quality)
 EOF
 }
 

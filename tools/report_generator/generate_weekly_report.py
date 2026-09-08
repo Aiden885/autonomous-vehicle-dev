@@ -112,7 +112,7 @@ def parse_report(path: Path) -> ReportData:
             if mode == "progress" and report.progress:
                 group = report.progress[-1]
                 if len(cols) >= 3:
-                    group.rows.append((cols[0], cols[1], " | ".join(cols[2:])))
+                    group.rows.append((cols[0], owner, " | ".join(cols[2:])))
                 elif len(cols) == 2:
                     group.rows.append((cols[0], owner, cols[1]))
                 elif len(cols) == 1:
@@ -126,14 +126,14 @@ def parse_report(path: Path) -> ReportData:
                     report.risks.append((cols[0], "", "持续跟进"))
             elif mode == "next":
                 if len(cols) >= 3:
-                    report.next_plans.append((cols[0], cols[1], " | ".join(cols[2:])))
+                    report.next_plans.append((cols[0], owner, " | ".join(cols[2:])))
                 elif len(cols) == 2:
                     report.next_plans.append((cols[0], owner, cols[1]))
                 elif len(cols) == 1:
                     report.next_plans.append((cols[0], owner, cols[0]))
             elif mode == "coordination":
                 if len(cols) >= 3:
-                    report.coordination.append((cols[0], cols[1], " | ".join(cols[2:])))
+                    report.coordination.append((cols[0], owner, " | ".join(cols[2:])))
                 elif len(cols) == 2:
                     report.coordination.append((cols[0], owner, cols[1]))
                 elif len(cols) == 1:
@@ -163,28 +163,44 @@ def add_paragraph(doc, text: str, size: float = 11, bold: bool = False, center: 
 def add_table(doc, headers: list[str], rows: list[tuple[str, ...]]) -> None:
     table = doc.add_table(rows=1, cols=len(headers))
     table.style = "Table Grid"
-    header_cells = table.rows[0].cells
+    table.autofit = False
+    if len(headers) == 3:
+        column_widths = (Cm(3.45), Cm(1.85), Cm(10.60))
+        for index, width in enumerate(column_widths):
+            table.columns[index].width = width
+    header_row = table.rows[0]
+    header_properties = header_row._tr.get_or_add_trPr()
+    header_marker = OxmlElement("w:tblHeader")
+    header_marker.set(qn("w:val"), "true")
+    header_properties.append(header_marker)
+    header_cells = header_row.cells
     for index, header in enumerate(headers):
+        if len(headers) == 3:
+            header_cells[index].width = column_widths[index]
         paragraph = header_cells[index].paragraphs[0]
         run = paragraph.add_run(header)
-        set_run_font(run, size_pt=10.5, bold=True)
+        set_run_font(run, size_pt=10, bold=True)
 
     for row in rows:
         cells = table.add_row().cells
         for index, value in enumerate(row):
+            if len(headers) == 3:
+                cells[index].width = column_widths[index]
             paragraph = cells[index].paragraphs[0]
             run = paragraph.add_run(str(value))
-            set_run_font(run, size_pt=10.5, bold=False)
+            set_run_font(run, size_pt=10, bold=False)
 
     doc.add_paragraph()
 
 
 def configure_doc(doc) -> None:
     section = doc.sections[0]
-    section.top_margin = Cm(2.0)
-    section.bottom_margin = Cm(2.0)
-    section.left_margin = Cm(2.2)
-    section.right_margin = Cm(2.2)
+    section.page_width = Cm(21.0)
+    section.page_height = Cm(29.7)
+    section.top_margin = Cm(2.54)
+    section.bottom_margin = Cm(2.54)
+    section.left_margin = Cm(2.54)
+    section.right_margin = Cm(2.54)
 
     normal = doc.styles["Normal"]
     normal.font.name = DEFAULT_FONT
@@ -208,36 +224,41 @@ def generate_docx(report: ReportData, output: Path) -> None:
     report_period = report.meta.get("report_period", "")
     next_period = report.meta.get("next_period", "")
 
-    add_paragraph(doc, title, size=18, bold=True, center=True)
-    add_paragraph(doc, "项目进展周报", size=14, bold=True, center=True)
+    add_paragraph(doc, title, size=26, bold=True)
+    add_paragraph(doc, "项目进展周报", size=18, bold=True)
     if report_period:
-        add_paragraph(doc, f"报告周期：{report_period}", size=11, center=True)
-    add_paragraph(doc, SEPARATOR, size=10.5)
+        add_paragraph(doc, f"报告周期：{report_period}", size=11, bold=True)
+    add_paragraph(doc, SEPARATOR, size=9)
 
-    add_paragraph(doc, "一、核心任务进展", size=13, bold=True)
+    progress_title = report.meta.get("progress_title", "一、核心任务进展")
+    add_paragraph(doc, progress_title, size=16, bold=True)
     if not report.progress:
         add_table(doc, ["任务项", "负责人", "完成情况"], [("本周工作整理", DEFAULT_OWNER, "待补充")])
     else:
         for index, group in enumerate(report.progress, start=1):
-            add_paragraph(doc, f"{index}. {group.title}", size=11.5, bold=True)
+            add_paragraph(doc, f"{index}. {group.title}", size=15, bold=True)
             rows = group.rows or [("本项工作", report.meta.get("owner", DEFAULT_OWNER), "待补充")]
             add_table(doc, ["任务项", "负责人", "完成情况"], rows)
 
-    add_paragraph(doc, SEPARATOR, size=10.5)
-    add_paragraph(doc, "二、风险与问题", size=13, bold=True)
-    risks = report.risks or [("暂无阻塞性问题", "当前无新增阻塞", "持续跟踪 GAASD 版本和联调结果")]
-    add_table(doc, ["问题/风险", "影响", "应对措施"], risks)
+    add_paragraph(doc, SEPARATOR, size=9)
+    add_paragraph(doc, "二、风险与问题", size=16, bold=True)
+    risk_header_only = report.meta.get("risk_header_only", "").lower() in {"1", "true", "yes"}
+    risks = [] if risk_header_only else (
+        report.risks or [("暂无阻塞性问题", "当前无新增阻塞", "持续跟踪 GAASD 版本和联调结果")]
+    )
+    add_table(doc, ["风险项", "影响范围", "应对措施"], risks)
 
-    add_paragraph(doc, SEPARATOR, size=10.5)
-    add_paragraph(doc, "三、下周工作计划", size=13, bold=True)
+    add_paragraph(doc, SEPARATOR, size=9)
+    plan_title = report.meta.get("plan_title", "三、下周工作计划")
+    add_paragraph(doc, plan_title, size=16, bold=True)
     if next_period:
-        add_paragraph(doc, f"计划周期：{next_period}", size=10.5)
+        add_paragraph(doc, f"计划周期：{next_period}", size=11, bold=True)
     next_plans = report.next_plans or [("下周工作", report.meta.get("owner", DEFAULT_OWNER), "待补充")]
-    add_table(doc, ["计划项", "负责人", "计划内容"], next_plans)
+    add_table(doc, ["任务项", "负责人", "本周目标"], next_plans)
 
     if report.coordination:
-        add_paragraph(doc, SEPARATOR, size=10.5)
-        add_paragraph(doc, "四、需要协调与帮助", size=13, bold=True)
+        add_paragraph(doc, SEPARATOR, size=9)
+        add_paragraph(doc, "四、需要协调与帮助", size=16, bold=True)
         add_table(doc, ["事项", "负责人", "说明"], report.coordination)
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -260,6 +281,7 @@ def main() -> int:
 try:
     from docx import Document
     from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.oxml import OxmlElement
     from docx.oxml.ns import qn
     from docx.shared import Cm, Pt
 except ModuleNotFoundError as exc:

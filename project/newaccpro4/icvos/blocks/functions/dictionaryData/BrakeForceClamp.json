@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "限幅计算 Input 结构体",
+    "alias": "限幅计算 Input 结构体",
+    "fields": [
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "dynamics"
+  },
+  "Output": {
+    "description": "限幅计算 Output 结构体",
+    "alias": "限幅计算 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "dynamics"
+  },
+  "Param": {
+    "description": "限幅计算 Param 结构体",
+    "alias": "限幅计算 Param 结构体",
+    "fields": [
+      {
+        "name": "lowerLimit",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "固定输出下限"
+      },
+      {
+        "name": "upperLimit",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "固定输出上限"
+      }
+    ],
+    "source": "code",
+    "namespace": "dynamics"
+  },
+  "State": {
+    "description": "限幅计算 State 结构体",
+    "alias": "限幅计算 State 结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "unsigned char",
+        "shape": [],
+        "dataValue": 0,
+        "description": "C11 合法占位字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "dynamics"
+  },
+  "Sub": {
+    "description": "限幅计算 的子模块实体集合",
+    "alias": "限幅计算 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "dynamics"
+  }
+}

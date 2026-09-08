@@ -1,0 +1,58 @@
+{
+  "Input": {
+    "description": "降速键决策表判定模块输入端口集合。",
+    "alias": "降速键决策表判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 1,
+        "dataType": "SystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前判定的系统状态 Sn"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "降速键决策表判定模块输出端口集合。",
+    "alias": "降速键决策表判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "降速键对应的决策响应动作"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "降速键决策表判定模块参数集合。",
+    "alias": "降速键决策表判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "降速键决策表判定模块状态集合。",
+    "alias": "降速键决策表判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "降速键决策表判定模块子模块集合。",
+    "alias": "降速键决策表判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

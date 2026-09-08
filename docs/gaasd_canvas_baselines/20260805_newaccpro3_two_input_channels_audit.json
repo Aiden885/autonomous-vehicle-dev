@@ -1,0 +1,201 @@
+{
+  "project": "/data/aiden/文档/Modularization/project/newaccpro3",
+  "database": "/data/aiden/文档/Modularization/project/newaccpro3/data/cbdes.db",
+  "generated_at": "2026-08-05T15:29:00+08:00",
+  "project_info": {
+    "id": "dc975f61-dfd8-4033-9e03-d6b7a5360705",
+    "projectId": "394c4891-7761-421d-acd9-40d6fd56b11a",
+    "name": "newaccpro3",
+    "properties": {
+      "frame": "THICV",
+      "projectAlias": "acc3",
+      "appVersion": "2.7.0.5",
+      "channelVersion": "default",
+      "domainId": "",
+      "isExistRuntimeCanvasWindow": false,
+      "global_com_version": "版本1",
+      "tf_version": "版本1",
+      "projectState": "generated",
+      "lastDeployTarget": {},
+      "lastPlatform": "x86"
+    }
+  },
+  "statistics": {
+    "components": 151,
+    "connections": 163,
+    "componentTypes": {
+      "app": 1,
+      "module": 1,
+      "composite-block": 10,
+      "input": 45,
+      "output": 15,
+      "read-local-param": 9,
+      "read-local-state": 4,
+      "constant": 11,
+      "less-than": 1,
+      "logic-not": 4,
+      "logic-and": 4,
+      "multiply": 10,
+      "add": 4,
+      "truth-table": 1,
+      "equal": 8,
+      "write-local-state": 4,
+      "logic-or": 4,
+      "subtract": 4,
+      "atomic-function": 6,
+      "process": 1,
+      "channel_input": 2,
+      "channel_output": 1,
+      "oscilloscope": 1
+    },
+    "componentVersions": {
+      "1.1.3": 3,
+      "1.1.4": 1,
+      "1.0.6": 77,
+      "0.0.1": 3,
+      "1.1.7": 67
+    },
+    "customComponents": 78,
+    "databaseHashes": {
+      "cbdes.db": "e2bbbe10a8a6bcdb246dea88866bcf9af21670194e747f8a371d8dfd30da743c",
+      "temp.db": "e2bbbe10a8a6bcdb246dea88866bcf9af21670194e747f8a371d8dfd30da743c"
+    },
+    "templateDrift": 146,
+    "dynamicTemplateDrift": 112
+  },
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    {
+      "code": "component_template_drift",
+      "message": "Project instances differ from the current component library; this is not automatically an error",
+      "context": {
+        "count": 146,
+        "dynamicCount": 112,
+        "examples": [
+          {
+            "alias": "egoV",
+            "name": "input",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "commandType",
+            "name": "input",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "enable",
+            "name": "output",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "readVMin",
+            "name": "read-local-param",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "readControlEnabled",
+            "name": "read-local-state",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "readHasHistory",
+            "name": "read-local-state",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "stateCodeNoHistory",
+            "name": "constant",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "stateCodeLowSpeed",
+            "name": "constant",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "isStandbyWithHistory",
+            "name": "logic-and",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "isStandbyWithoutHistory",
+            "name": "logic-and",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "isActive",
+            "name": "logic-and",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "encodeNoHistory",
+            "name": "multiply",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "encodeLowSpeed",
+            "name": "multiply",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "encodeSystemState",
+            "name": "add",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          },
+          {
+            "alias": "decisionTable",
+            "name": "truth-table",
+            "projectVersion": "1.0.6",
+            "libraryVersion": "1.2.0",
+            "projectCustom": 1,
+            "libraryCustom": 0
+          }
+        ]
+      }
+    }
+  ],
+  "ok": true
+}

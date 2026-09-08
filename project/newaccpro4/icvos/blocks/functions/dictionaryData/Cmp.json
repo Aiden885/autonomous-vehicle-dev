@@ -1,0 +1,386 @@
+{
+  "Input": {
+    "description": "聚类按大小排序输入结构体",
+    "alias": "聚类按大小排序输入结构体",
+    "fields": [
+      {
+        "name": "enable",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否使能组件执行"
+      },
+      {
+        "name": "primaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "主输入标量"
+      },
+      {
+        "name": "secondaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "辅助输入标量"
+      },
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 x，单位 m"
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 y，单位 m"
+      },
+      {
+        "name": "velocityX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "速度 x，单位 m/s"
+      },
+      {
+        "name": "velocityY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "速度 y，单位 m/s"
+      },
+      {
+        "name": "measurementX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 x，单位 m"
+      },
+      {
+        "name": "measurementY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 y，单位 m"
+      },
+      {
+        "name": "deltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "周期时间，单位 s"
+      },
+      {
+        "name": "currentState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前状态编号"
+      },
+      {
+        "name": "eventId",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "事件编号"
+      },
+      {
+        "name": "weight0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 0 项"
+      },
+      {
+        "name": "weight1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 1 项"
+      },
+      {
+        "name": "weight2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 2 项"
+      },
+      {
+        "name": "weight3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 3 项"
+      },
+      {
+        "name": "weight4",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 4 项"
+      },
+      {
+        "name": "weight5",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 5 项"
+      },
+      {
+        "name": "weight6",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 6 项"
+      },
+      {
+        "name": "weight7",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 7 项"
+      },
+      {
+        "name": "weight8",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 8 项"
+      },
+      {
+        "name": "weight9",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 9 项"
+      },
+      {
+        "name": "weight10",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 10 项"
+      },
+      {
+        "name": "weight11",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 11 项"
+      },
+      {
+        "name": "weight12",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 12 项"
+      },
+      {
+        "name": "weight13",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 13 项"
+      },
+      {
+        "name": "weight14",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 14 项"
+      },
+      {
+        "name": "weight15",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "权重或代价数组第 15 项"
+      },
+      {
+        "name": "weightsCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "权重有效数量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Output": {
+    "description": "聚类按大小排序输出结构体",
+    "alias": "聚类按大小排序输出结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "组件判定结果"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出位置 x，单位 m"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出位置 y，单位 m"
+      },
+      {
+        "name": "status",
+        "category": 0,
+        "dataType": "Integer",
+        "shape": [],
+        "dataValue": 0,
+        "description": "离散状态或比较结果"
+      },
+      {
+        "name": "index",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "输出索引"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Param": {
+    "description": "聚类按大小排序参数结构体",
+    "alias": "聚类按大小排序参数结构体",
+    "fields": [
+      {
+        "name": "threshold",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件判定阈值"
+      },
+      {
+        "name": "minValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出下限"
+      },
+      {
+        "name": "maxValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出上限"
+      },
+      {
+        "name": "gain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件增益"
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "浮点比较容差"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "State": {
+    "description": "聚类按大小排序状态结构体",
+    "alias": "聚类按大小排序状态结构体",
+    "fields": [
+      {
+        "name": "callCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "组件累计调用次数"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Sub": {
+    "description": "聚类按大小排序 的子模块实体集合",
+    "alias": "聚类按大小排序 的子模块实体集合",
+    "fields": [
+      {
+        "name": "compareToConstant",
+        "category": 1,
+        "dataType": "CmpCompareToConstant",
+        "shape": [],
+        "dataValue": {},
+        "description": "常量比较子模块实例"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  }
+}

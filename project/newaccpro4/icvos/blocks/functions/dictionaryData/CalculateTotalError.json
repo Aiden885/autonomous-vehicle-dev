@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "聚类总误差输入结构体",
+    "alias": "聚类总误差输入结构体",
+    "fields": [
+      {
+        "name": "valueA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "CalculateTotalError 子模块计算的第一输入标量"
+      },
+      {
+        "name": "valueB",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "CalculateTotalError 子模块计算的第二输入标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Output": {
+    "description": "聚类总误差输出结构体",
+    "alias": "聚类总误差输出结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组合执行结果标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Param": {
+    "description": "聚类总误差参数结构体",
+    "alias": "聚类总误差参数结构体",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "State": {
+    "description": "聚类总误差状态结构体",
+    "alias": "聚类总误差状态结构体",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Sub": {
+    "description": "聚类总误差 的子模块实体集合",
+    "alias": "聚类总误差 的子模块实体集合",
+    "fields": [
+      {
+        "name": "getDistance",
+        "category": 1,
+        "dataType": "CalculateTotalErrorGetDistance",
+        "shape": [],
+        "dataValue": {},
+        "description": "两点距离计算子模块实例"
+      },
+      {
+        "name": "add",
+        "category": 1,
+        "dataType": "CalculateTotalErrorAdd",
+        "shape": [],
+        "dataValue": {},
+        "description": "加法运算子模块实例"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  }
+}

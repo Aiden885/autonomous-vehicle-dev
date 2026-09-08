@@ -1,0 +1,74 @@
+{
+  "Input": {
+    "description": "驾驶员指令决策选择模块输入端口集合。",
+    "alias": "驾驶员指令决策选择模块输入端口集合。",
+    "fields": [
+      {
+        "name": "driverCommand",
+        "category": 1,
+        "dataType": "DriverCommand",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前驾驶员按键或踏板指令"
+      },
+      {
+        "name": "incDecision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "增速键对应的决策响应动作"
+      },
+      {
+        "name": "decDecision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "降速键对应的决策响应动作"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "驾驶员指令决策选择模块输出端口集合。",
+    "alias": "驾驶员指令决策选择模块输出端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "驾驶员指令对应的基础决策响应动作"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "驾驶员指令决策选择模块参数集合。",
+    "alias": "驾驶员指令决策选择模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "驾驶员指令决策选择模块状态集合。",
+    "alias": "驾驶员指令决策选择模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "驾驶员指令决策选择模块子模块集合。",
+    "alias": "驾驶员指令决策选择模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

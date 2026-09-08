@@ -1,0 +1,37 @@
+{
+  "GlobalParams": {
+    "description": "工程级全局参数集合。",
+    "alias": "工程级全局参数集合。",
+    "fields": [
+      {
+        "name": "controlTs",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.05,
+        "description": "全局控制周期 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "GlobalStates": {
+    "description": "工程级全局运行状态集合。",
+    "alias": "工程级全局运行状态集合。",
+    "fields": [
+      {
+        "name": "feedback",
+        "category": 1,
+        "dataType": "FeedbackState",
+        "shape": [],
+        "dataValue": {
+          "lonVelFb": 0.0,
+          "latPosFb": 0.0
+        },
+        "description": "顶层控制图共享反馈缓存"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

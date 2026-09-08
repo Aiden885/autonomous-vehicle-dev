@@ -1,0 +1,1202 @@
+{
+  "componentType": "module",
+  "name": "accModule",
+  "cppClass": "",
+  "alias": "Acc模块",
+  "description": "空模块",
+  "author": "",
+  "version": "1.2.2",
+  "instanceId": "29c47927-719d-4e92-ae28-7f537c70bd4e",
+  "originId": "module_empty",
+  "isCustom": false,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "common"
+  ],
+  "parentId": "3e7e3350-4677-4b26-9aa0-599a3aa971e5",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": [
+        {
+          "alias": "acc_input",
+          "description": "",
+          "direction": "In",
+          "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4",
+          "id": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+          "name": "acc_input",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "acc_input"
+            },
+            {
+              "key": "bind_code",
+              "value": "ON"
+            },
+            {
+              "key": "channel_var_name",
+              "value": "acc_input"
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS"
+            },
+            {
+              "key": "message_type",
+              "value": "pangu.modules.AccInput"
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_acc_input"
+            },
+            {
+              "key": "task_id",
+              "value": null
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".ego_speed_mps",
+                ".lead_speed_mps",
+                ".command_type",
+                ".frame_id",
+                ".lead_distance_m"
+              ]
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": [
+        {
+          "alias": "acc_output",
+          "description": "",
+          "direction": "Out",
+          "channelVersion": "7f9d37ea-d818-4b98-bb37-4693da344ac4",
+          "id": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+          "name": "acc_output",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "acc_output"
+            },
+            {
+              "key": "bind_code",
+              "value": "ON"
+            },
+            {
+              "key": "channel_var_name",
+              "value": "acc_output"
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS"
+            },
+            {
+              "key": "message_type",
+              "value": "pangu.modules.AccOutput"
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_acc_output"
+            },
+            {
+              "key": "task_id",
+              "value": null
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".frame_id",
+                ".target_speed_mps",
+                ".enable"
+              ]
+            }
+          ]
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": [],
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": [],
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "node_name",
+      "value": "module_empty_1",
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "channel_output",
+      "name": "acc_output_f2ad6e42_9917_4375_9b9e_c5bcacbc7d3a",
+      "cppClass": "",
+      "alias": "通道输出",
+      "description": "acc_output 输出通道",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "originId": "channel_output",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "29c47927-719d-4e92-ae28-7f537c70bd4e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "acc_output",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.AccOutput",
+                "channel_id": "INNER_SHM_DDS_acc_output",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true
+                },
+                "channel_type_config": [
+                  {
+                    "key": "dds_config",
+                    "durability": "VOLATILE",
+                    "translayer_type": "UDP",
+                    "reliability": "BEST_EFFORT",
+                    "throughput_controller": 0
+                  },
+                  {
+                    "key": "shm_config",
+                    "type": "FastDDS",
+                    "block_size": "SHM_500K"
+                  }
+                ],
+                "channel_var_name": "acc_output",
+                "bind_code": "ON",
+                "task_id": null
+              },
+              "operateKeys": [
+                ".frame_id",
+                ".target_speed_mps",
+                ".enable"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "alias": "frame_id",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".frame_id",
+              "name": "frame_id",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "target_speed_mps",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".target_speed_mps",
+              "name": "target_speed_mps",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "enable",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".enable",
+              "name": "enable",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "channel_input",
+      "name": "acc_input_22090a91_1216_4a5f_9c77_3ceb4d8abb78",
+      "cppClass": "",
+      "alias": "通道输入",
+      "description": "ACC输入：自车速度、前车速度、前车距离、驾驶指令和帧标识。",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "originId": "channel_input",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "29c47927-719d-4e92-ae28-7f537c70bd4e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "acc_input",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.AccInput",
+                "channel_id": "INNER_SHM_DDS_acc_input",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true
+                },
+                "channel_type_config": [
+                  {
+                    "key": "dds_config",
+                    "durability": "VOLATILE",
+                    "translayer_type": "UDP",
+                    "reliability": "BEST_EFFORT",
+                    "throughput_controller": 0
+                  },
+                  {
+                    "key": "shm_config",
+                    "type": "FastDDS",
+                    "block_size": "SHM_500K"
+                  }
+                ],
+                "channel_var_name": "acc_input",
+                "bind_code": "ON",
+                "task_id": null
+              },
+              "operateKeys": [
+                ".ego_speed_mps",
+                ".lead_speed_mps",
+                ".command_type",
+                ".frame_id",
+                ".lead_distance_m"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "alias": "ego_speed_mps",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".ego_speed_mps",
+              "name": "ego_speed_mps",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "lead_speed_mps",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".lead_speed_mps",
+              "name": "lead_speed_mps",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "command_type",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".command_type",
+              "name": "command_type",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "int32",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "frame_id",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".frame_id",
+              "name": "frame_id",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "lead_distance_m",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".lead_distance_m",
+              "name": "lead_distance_m",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "composite-block",
+      "name": "ExecuteAcc_23d2a150_83e4_470e_a9b7_189357a9dfd1",
+      "cppClass": "run_23d2a150_83e4_470e_a9b7_189357a9dfd1",
+      "alias": "执行ACC",
+      "description": "空组件,用于自定义构造",
+      "author": "THICV",
+      "version": "1.2.1",
+      "instanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "originId": "initial-composite-block",
+      "isCustom": false,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "语句函数",
+        "基础组件"
+      ],
+      "parentId": "29c47927-719d-4e92-ae28-7f537c70bd4e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isCallback": true,
+              "param": [
+                {
+                  "id": "minDistanceM",
+                  "name": "minDistanceM",
+                  "category": 0,
+                  "dataType": "double",
+                  "description": "",
+                  "dataValue": 5,
+                  "dataTypeScope": "local"
+                },
+                {
+                  "id": "distanceErrorGainPerS",
+                  "name": "distanceErrorGainPerS",
+                  "category": 0,
+                  "dataType": "double",
+                  "description": "",
+                  "dataValue": 0.25,
+                  "dataTypeScope": "local"
+                },
+                {
+                  "id": "relativeSpeedGain",
+                  "name": "relativeSpeedGain",
+                  "category": 0,
+                  "dataType": "double",
+                  "description": "",
+                  "dataValue": 0.4,
+                  "dataTypeScope": "local"
+                }
+              ],
+              "state": [],
+              "instanceName": "compositeBlockInstance_1"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "69bac4f5-c754-4551-9ab0-4cc093319b6d",
+              "name": "egoSpeedMps",
+              "direction": "In",
+              "description": "函数输入端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "egoSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "ed66651e-1134-4a72-b38b-e0fee2167498",
+              "name": "leadSpeedMps",
+              "direction": "In",
+              "description": "函数输入端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "leadSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "9e8f4c59-89b1-43f0-a456-dd1671ad6f2f",
+              "name": "commandType",
+              "direction": "In",
+              "description": "函数输入端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "commandType",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "int",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "6331abe5-0428-40cd-b3be-6214daa0a50e",
+              "name": "leadDistanceM",
+              "direction": "In",
+              "description": "函数输入端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "leadDistanceM",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "001b01ce-d849-42b2-bc7a-034fb1229c4f",
+              "name": "isControlEnabled",
+              "direction": "Out",
+              "description": "函数输出端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "isControlEnabled",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "38acc843-8fd7-48bb-958c-42cc95c50a31",
+              "name": "targetSpeedMps",
+              "direction": "Out",
+              "description": "函数输出端口",
+              "props": [
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                },
+                {
+                  "key": "name",
+                  "value": "targetSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".frame_id",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".frame_id",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".ego_speed_mps",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "69bac4f5-c754-4551-9ab0-4cc093319b6d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".lead_speed_mps",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "ed66651e-1134-4a72-b38b-e0fee2167498",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".lead_distance_m",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "6331abe5-0428-40cd-b3be-6214daa0a50e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".command_type",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "9e8f4c59-89b1-43f0-a456-dd1671ad6f2f",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "fromInstancePortId": "001b01ce-d849-42b2-bc7a-034fb1229c4f",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".enable",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "fromInstancePortId": "38acc843-8fd7-48bb-958c-42cc95c50a31",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".target_speed_mps",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".frame_id",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".frame_id",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".ego_speed_mps",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "69bac4f5-c754-4551-9ab0-4cc093319b6d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".lead_speed_mps",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "6331abe5-0428-40cd-b3be-6214daa0a50e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".command_type",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "9e8f4c59-89b1-43f0-a456-dd1671ad6f2f",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "22090a91-1216-4a5f-9c77-3ceb4d8abb78",
+      "fromInstancePortId": ".lead_distance_m",
+      "toInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "toInstancePortId": "ed66651e-1134-4a72-b38b-e0fee2167498",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "fromInstancePortId": "001b01ce-d849-42b2-bc7a-034fb1229c4f",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".enable",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "23d2a150-83e4-470e-a9b7-189357a9dfd1",
+      "fromInstancePortId": "38acc843-8fd7-48bb-958c-42cc95c50a31",
+      "toInstanceId": "f2ad6e42-9917-4375-9b9e-c5bcacbc7d3a",
+      "toInstancePortId": ".target_speed_mps",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

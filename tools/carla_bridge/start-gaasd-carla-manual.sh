@@ -28,6 +28,8 @@ LEAD_WAYPOINT_SPEED_KD="${LEAD_WAYPOINT_SPEED_KD:-0.02}"
 LEAD_WAYPOINT_CRUISE_THROTTLE="${LEAD_WAYPOINT_CRUISE_THROTTLE:-0.12}"
 LEAD_WAYPOINT_MAX_THROTTLE="${LEAD_WAYPOINT_MAX_THROTTLE:-0.35}"
 LEAD_WAYPOINT_MAX_BRAKE="${LEAD_WAYPOINT_MAX_BRAKE:-0.45}"
+LEAD_WAYPOINT_STEP_SPEED_MPS="${LEAD_WAYPOINT_STEP_SPEED_MPS:-$LEAD_SPEED_MPS}"
+LEAD_WAYPOINT_STEP_AT_SEC="${LEAD_WAYPOINT_STEP_AT_SEC:-0}"
 TRAFFIC_MANAGER_PORT="${TRAFFIC_MANAGER_PORT:-8000}"
 RESTART_BRIDGE="${RESTART_BRIDGE:-1}"
 FOLLOW_SPECTATOR="1"
@@ -242,13 +244,15 @@ start_lead_waypoint_pid_controller() {
     fi
 
     stop_stale_lead_controller
-    log "starting lead waypoint PID target_speed=${LEAD_SPEED_MPS}m/s lookahead=${LEAD_WAYPOINT_LOOKAHEAD_M}m"
+    log "starting lead waypoint PID target_speed=${LEAD_SPEED_MPS}m/s step_speed=${LEAD_WAYPOINT_STEP_SPEED_MPS}m/s step_at=${LEAD_WAYPOINT_STEP_AT_SEC}s lookahead=${LEAD_WAYPOINT_LOOKAHEAD_M}m"
     nohup setsid "$PYTHON_BIN" "${SCRIPT_DIR}/lead-waypoint-pid-controller.py" \
         --carla-root "$CARLA_ROOT" \
         --host "$CARLA_HOST" \
         --port "$CARLA_PORT" \
         --lead-role-name gaasd_lead \
         --target-speed-mps "$LEAD_SPEED_MPS" \
+        --step-speed-mps "$LEAD_WAYPOINT_STEP_SPEED_MPS" \
+        --step-at-sec "$LEAD_WAYPOINT_STEP_AT_SEC" \
         --lookahead-m "$LEAD_WAYPOINT_LOOKAHEAD_M" \
         --steer-kp "$LEAD_WAYPOINT_STEER_KP" \
         --steer-kd "$LEAD_WAYPOINT_STEER_KD" \

@@ -7,27 +7,27 @@
 顶层目标结构：
 
 ```text
-MainFlow
-├── Decision
-│   ├── SpeedEnableCheck
-│   ├── DriverOverrideCheck
-│   └── ControlEnableDecision
-└── Control
-    ├── PreviewDistance
-    ├── LaneErrorEvaluation
-    │   ├── NearPreviewError
-    │   ├── MiddlePreviewError
-    │   └── FarPreviewError
-    ├── ErrorWeightedSum
-    └── SteerCommand
-        ├── RawSteerCalculation
-        ├── LateralAccelLimit
-        └── SteerEnableGate
+main
+├── decision
+│   ├── speedEnableCheck
+│   ├── driverOverrideCheck
+│   └── controlEnableDecision
+└── control
+    ├── previewDistanceCalculation
+    ├── laneErrorEvaluation
+    │   ├── nearPreviewError
+    │   ├── middlePreviewError
+    │   └── farPreviewError
+    ├── errorWeightedSum
+    └── steerCommand
+        ├── rawSteerCalculation
+        ├── lateralAccelLimit
+        └── steerEnableGate
 ```
 
-## 2. Decision 分层
+## 2. decision 分层
 
-### SpeedEnableCheck
+### speedEnableCheck
 
 根据自车速度和最低工作速度判断当前是否低于 LKS 工作速度范围：
 
@@ -36,7 +36,7 @@ speedAvailable   = egoV >= lks_vMin
 speedUnavailable = NOT(speedAvailable)
 ```
 
-### DriverOverrideCheck
+### driverOverrideCheck
 
 根据驾驶员归一化方向盘输入判断是否发生主动转向接管：
 
@@ -44,7 +44,7 @@ speedUnavailable = NOT(speedAvailable)
 driverOverride = abs(driverSteerNorm) >= lks_driverSteerThreshold
 ```
 
-### ControlEnableDecision
+### controlEnableDecision
 
 汇总制动、低速和主动转向三个退出条件：
 
@@ -54,13 +54,13 @@ controlEnabled = NOT(brakePressed OR speedUnavailable OR driverOverride)
 
 这与重构前的逻辑完全一致，只把原来混排在同一层的基础组件放入三个具有明确物理含义的子模块。
 
-## 3. Control 分层
+## 3. control 分层
 
-### PreviewDistance
+### previewDistanceCalculation
 
 保留原 `LKSPreviewDistance` 公式，根据车速和道路曲率计算远预瞄距离。
 
-### LaneErrorEvaluation
+### laneErrorEvaluation
 
 统一管理三次车道多项式的三个预瞄点评估：
 
@@ -71,9 +71,9 @@ x3 = previewDistance
 e(x) = ((c3 * x + c2) * x + c1) * x + c0
 ```
 
-三个实例分别重命名为 `NearPreviewError`、`MiddlePreviewError` 和 `FarPreviewError`。
+三个实例分别命名为 `nearPreviewError`、`middlePreviewError` 和 `farPreviewError`。
 
-### ErrorWeightedSum
+### errorWeightedSum
 
 保留原 `LKSErrorFusion` 公式并改为物理含义明确的端口名：
 
@@ -81,14 +81,14 @@ e(x) = ((c3 * x + c2) * x + c1) * x + c0
 weightedError = w1 * nearError + w2 * middleError + w3 * farError
 ```
 
-### SteerCommand
+### steerCommand
 
 转角命令进一步拆为三层：
 
 ```text
-RawSteerCalculation: rawSteerNorm = Kp * weightedError
+rawSteerCalculation: rawSteerNorm = Kp * weightedError
 
-LateralAccelLimit:
+lateralAccelLimit:
 speedSquareSafe = max(egoV * egoV, 0.25)
 normalizedSteerLimit = atan(ayMax * wheelBase / speedSquareSafe)
                        / frontWheelMaxRad
@@ -96,7 +96,7 @@ limitedSteerNorm = clamp(rawSteerNorm,
                          -normalizedSteerLimit,
                          +normalizedSteerLimit)
 
-SteerEnableGate:
+steerEnableGate:
 steerRad = limitedSteerNorm * steerScale * controlEnabled
 ```
 

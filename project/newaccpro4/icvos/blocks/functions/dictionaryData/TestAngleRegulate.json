@@ -1,0 +1,82 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "passed",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "全部可表达源测试是否通过"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "unitNormal",
+        "category": 1,
+        "dataType": "AngleRegulate",
+        "shape": [],
+        "dataValue": {},
+        "description": "单元测试正常路径实例"
+      },
+      {
+        "name": "integrationNormal",
+        "category": 1,
+        "dataType": "AngleRegulate",
+        "shape": [],
+        "dataValue": {},
+        "description": "集成测试正常路径实例"
+      },
+      {
+        "name": "systemContinuous",
+        "category": 1,
+        "dataType": "AngleRegulate",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统测试连续调用实例"
+      },
+      {
+        "name": "systemReset",
+        "category": 1,
+        "dataType": "AngleRegulate",
+        "shape": [],
+        "dataValue": {},
+        "description": "系统测试重置状态实例"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  }
+}

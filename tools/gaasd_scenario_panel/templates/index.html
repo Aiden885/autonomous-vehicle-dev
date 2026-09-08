@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GAASD-CARLA Scenario Panel</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20260706-product-polish">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20260902-acc-control">
 </head>
 <body>
   <div class="dashboard">
@@ -35,6 +35,13 @@
       <div id="scenarioList" class="scenario-list"></div>
 
       <div class="sidebar-footer">
+        <button class="panel-shutdown-btn" id="shutdownPanelBtn" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18.4 6.6a9 9 0 1 1-12.8 0"/>
+            <path d="M12 2v10"/>
+          </svg>
+          <span>关闭平台</span>
+        </button>
         <div class="version-info">
           <span>Scenario Panel</span>
           <span class="dot">·</span>
@@ -90,6 +97,40 @@
                 <input type="checkbox" id="forceRestore">
                 <span>覆盖恢复目录</span>
               </label>
+            </div>
+
+            <div class="frame-mode-row">
+              <div class="frame-mode-copy">
+                <span>CARLA 帧率</span>
+                <small>同步调整仿真步长</small>
+              </div>
+              <div class="frame-mode-switch" role="radiogroup" aria-label="CARLA 帧率模式">
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaFrameMode" value="stable" checked>
+                  <span><strong>稳定</strong><small>20 FPS</small></span>
+                </label>
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaFrameMode" value="normal">
+                  <span><strong>正常</strong><small>30 FPS</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="frame-mode-row">
+              <div class="frame-mode-copy">
+                <span>CARLA 画质</span>
+                <small>与仿真帧率独立设置</small>
+              </div>
+              <div class="frame-mode-switch" role="radiogroup" aria-label="CARLA 画质模式">
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaQualityMode" value="low" checked>
+                  <span><strong>省资源</strong><small>Low</small></span>
+                </label>
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaQualityMode" value="normal">
+                  <span><strong>普通</strong><small>Epic</small></span>
+                </label>
+              </div>
             </div>
 
             <div class="launch-controls">
@@ -154,21 +195,22 @@
           <section class="driver-card" id="accDriverCard">
             <div class="driver-header">
               <h2 class="section-title">ACC 驾驶指令</h2>
-              <span class="driver-hint">页面聚焦时可用键盘</span>
+              <span class="driver-hint">启动后先按住 W 起步，再按 E；在控时 E 表示降速</span>
             </div>
             <div class="driver-grid">
               <button class="driver-btn driver-kick" id="kickstartBtn">
                 辅助启控
                 <span>boost + E</span>
               </button>
-              <button class="driver-btn" data-command="e">E<span>启控/降速</span></button>
-              <button class="driver-btn" data-command="q">Q<span>加速/继承</span></button>
+              <button class="driver-btn" data-command="e">E<span>待命启控 / 在控降速</span></button>
+              <button class="driver-btn" data-command="q">Q<span>待命恢复 / 在控增速</span></button>
               <button class="driver-btn" data-command="t">T<span>减小时距</span></button>
               <button class="driver-btn" data-command="r">R<span>增大时距</span></button>
-              <button class="driver-btn" data-command="w" data-command-mode="level">W<span>油门接管</span></button>
+              <button class="driver-btn" data-command="w" data-command-mode="level">W<span>驾驶员油门</span></button>
               <button class="driver-btn danger" data-command="c">C<span>取消</span></button>
               <button class="driver-btn danger" data-command="s" data-command-mode="level">S<span>制动退出</span></button>
               <button class="driver-btn" data-command="0">0<span>释放踏板</span></button>
+              <button class="driver-btn driver-kick" id="accResultBtn">测试结果<span>读取最新跟车指标</span></button>
             </div>
           </section>
 
@@ -213,19 +255,124 @@
           </section>
         </section>
 
-        <section class="lks-parameter-card" id="lksParameterCard" hidden>
+        <section class="acc-telemetry-card" id="accTelemetryCard" hidden>
+          <div class="telemetry-header">
+            <div class="telemetry-heading">
+              <span class="telemetry-kicker">实时反馈</span>
+              <h2>ACC 车辆状态</h2>
+              <p>来自 CARLA Bridge 的实时真值与控制执行反馈</p>
+            </div>
+            <div class="telemetry-live-pill is-waiting" id="accTelemetryStatus">
+              <span class="telemetry-live-dot"></span>
+              <span id="accTelemetryStatusText">等待 Bridge 数据</span>
+            </div>
+          </div>
+
+          <div class="telemetry-primary-grid">
+            <article class="telemetry-metric telemetry-speed">
+              <span class="telemetry-label">自车速度</span>
+              <div class="telemetry-value-row">
+                <strong id="accEgoSpeed">--</strong>
+                <span>km/h</span>
+              </div>
+              <small id="accEgoSpeedMps">-- m/s</small>
+            </article>
+            <article class="telemetry-metric telemetry-speed">
+              <span class="telemetry-label">前车速度</span>
+              <div class="telemetry-value-row">
+                <strong id="accLeadSpeed">--</strong>
+                <span>km/h</span>
+              </div>
+              <small id="accLeadSpeedMps">-- m/s</small>
+            </article>
+            <article class="telemetry-metric telemetry-distance">
+              <span class="telemetry-label">实际净距</span>
+              <div class="telemetry-value-row">
+                <strong id="accLeadDistance">--</strong>
+                <span>m</span>
+              </div>
+              <small>自车与前车包络间距</small>
+            </article>
+            <article class="telemetry-metric telemetry-gap">
+              <span class="telemetry-label">设定时距 <em>指令估算</em></span>
+              <div class="telemetry-value-row">
+                <strong id="accDesiredTimeGap">1.8</strong>
+                <span>s</span>
+              </div>
+              <small>T 减小 · R 增大</small>
+            </article>
+          </div>
+
+          <div class="telemetry-detail-grid">
+            <div class="telemetry-detail">
+              <span>实际时距</span>
+              <strong id="accActualTimeGap">-- s</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>期望距离</span>
+              <strong id="accDesiredDistance">-- m</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>距离误差</span>
+              <strong id="accDistanceError">-- m</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>相对速度</span>
+              <strong id="accRelativeSpeed">-- m/s</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>加速度命令</span>
+              <strong id="accTargetAccel">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>实际加速度（滤波）</span>
+              <strong id="accActualAccel">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>阻力前馈</span>
+              <strong id="accAccelFeedforward">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>PI 反馈修正</span>
+              <strong id="accAccelFeedback">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>执行器限幅</span>
+              <strong id="accAccelSaturation">--</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>执行器输出</span>
+              <strong id="accActuator">油门 -- · 制动 --</strong>
+            </div>
+            <div class="telemetry-detail telemetry-control-state">
+              <span>ACC 状态</span>
+              <strong id="accControlState">等待数据</strong>
+            </div>
+            <div class="telemetry-detail telemetry-command-feedback" aria-live="polite">
+              <span>最近指令</span>
+              <strong id="accCommandFeedback">尚未发送</strong>
+              <small id="accCommandFeedbackHint">按键闪蓝表示指令已发布</small>
+            </div>
+          </div>
+
+          <p class="telemetry-note">
+            设定时距按当前生成代码的 1.8 s 初值、0.2 s 步长和 1.0–5.0 s 限制推算；期望距离按 max(自车速度 × 设定时距, 5 m) 计算，实际时距及车辆量直接来自 Bridge。
+          </p>
+        </section>
+
+        <section class="lks-parameter-card" id="scenarioParameterCard" hidden>
           <div class="parameter-header">
             <div>
-              <h2 class="section-title">LKS 运行参数</h2>
+              <h2 class="section-title" id="scenarioParameterTitle">场景运行参数</h2>
               <p>保存后在下一次启动联调环境时生效</p>
             </div>
             <div class="parameter-actions">
-              <button class="util-btn" id="lksParameterResetBtn">恢复默认</button>
-              <button class="btn btn-primary parameter-save-btn" id="lksParameterSaveBtn">保存参数</button>
+              <button class="util-btn" id="scenarioParameterResetBtn">恢复默认</button>
+              <button class="btn btn-primary parameter-save-btn" id="scenarioParameterSaveBtn">保存参数</button>
             </div>
           </div>
-          <div class="parameter-groups" id="lksParameterGroups"></div>
-          <div class="parameter-footnote">三点权重 w1 + w2 + w3 必须等于 1.0。物理车辆参数保持工程标定值，不在本页面修改。</div>
+          <div class="parameter-groups" id="scenarioParameterGroups"></div>
+          <div class="parameter-footnote" id="scenarioParameterFootnote">参数保存后在下次启动联调环境时生效。</div>
         </section>
 
         <section class="logs-section">
@@ -256,6 +403,6 @@
     </main>
   </div>
 
-  <script src="{{ url_for('static', filename='app.js') }}?v=20260706-product-polish"></script>
+  <script src="{{ url_for('static', filename='app.js') }}?v=20260902-acc-control"></script>
 </body>
 </html>

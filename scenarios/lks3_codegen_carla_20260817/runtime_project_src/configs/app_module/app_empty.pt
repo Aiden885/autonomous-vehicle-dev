@@ -1,0 +1,54 @@
+soc {
+  process {
+    node {
+      node_name: "module_empty_a807407f_21e6_442d_a6e4_13a788ec666d"
+      module_name: "module_empty_a807407f_21e6_442d_a6e4_13a788ec666d"
+      path: "conf/node_module/module_empty_a807407f_21e6_442d_a6e4_13a788ec666d/module_empty_a807407f_21e6_442d_a6e4_13a788ec666d.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "process_empty_6f47e11e"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+      module_name: "LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+      path: "conf/node_module/module_empty_a807407f_21e6_442d_a6e4_13a788ec666d/LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+      module_name: "LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+      path: "conf/node_module/module_empty_a807407f_21e6_442d_a6e4_13a788ec666d/LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666d.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666d"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  soc_name: "soc1"
+}

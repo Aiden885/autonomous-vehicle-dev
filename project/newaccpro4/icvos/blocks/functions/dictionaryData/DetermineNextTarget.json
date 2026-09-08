@@ -1,0 +1,106 @@
+{
+  "Input": {
+    "description": "下一周期目标车速判定模块输入端口集合。",
+    "alias": "下一周期目标车速判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "DecisionResult",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前周期决策响应动作 Rk"
+      },
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 (m/s)"
+      },
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前目标设定车速 (m/s)"
+      },
+      {
+        "name": "lastTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一次有效历史目标车速 (m/s)"
+      },
+      {
+        "name": "minSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 8.0,
+        "description": "最低适控车速 (m/s)"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 33.0,
+        "description": "最高适控车速 (m/s)"
+      },
+      {
+        "name": "deltaSpeedStep",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.0,
+        "description": "增减速单次修改步长 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "下一周期目标车速判定模块输出端口集合。",
+    "alias": "下一周期目标车速判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "nextTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下一周期目标设定车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "下一周期目标车速判定模块参数集合。",
+    "alias": "下一周期目标车速判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "下一周期目标车速判定模块状态集合。",
+    "alias": "下一周期目标车速判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "下一周期目标车速判定模块子模块集合。",
+    "alias": "下一周期目标车速判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

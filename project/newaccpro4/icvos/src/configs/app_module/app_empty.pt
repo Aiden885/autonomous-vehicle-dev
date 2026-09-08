@@ -1,0 +1,54 @@
+soc {
+  process {
+    node {
+      node_name: "accModule"
+      module_name: "accModule"
+      path: "conf/node_module/accModule/accModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccProcess"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "AccZmqInputModule"
+      module_name: "AccZmqInputModule"
+      path: "conf/node_module/accModule/AccZmqInputModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccZmqInputModule"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "AccZmqOutputModule"
+      module_name: "AccZmqOutputModule"
+      path: "conf/node_module/accModule/AccZmqOutputModule.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccZmqOutputModule"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  soc_name: "soc1"
+}

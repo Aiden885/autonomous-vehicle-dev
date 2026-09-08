@@ -1,0 +1,1297 @@
+{
+  "componentType": "module",
+  "name": "module_empty",
+  "cppClass": "",
+  "alias": "lksModule",
+  "description": "空模块",
+  "author": "",
+  "version": "1.1.3",
+  "instanceId": "a807407f-21e6-442d-a6e4-13a788ec666d",
+  "originId": "module_empty",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "common"
+  ],
+  "parentId": "93585c9b-5d69-423f-8619-ce362505880e",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": [
+        {
+          "alias": "lks_input",
+          "description": "",
+          "direction": "In",
+          "id": "da32d42e-0cf7-4ba2-a643-3fc942dc49d4",
+          "name": "lks_input",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "lks_input"
+            },
+            {
+              "key": "bind_code",
+              "value": "ON"
+            },
+            {
+              "key": "channel_var_name",
+              "value": "lks_input"
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS"
+            },
+            {
+              "key": "message_type",
+              "value": "pangu.modules.LksInput"
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_lks_input"
+            },
+            {
+              "key": "task_id",
+              "value": "lks_input"
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".ego_speed_mps",
+                ".brake_pressed",
+                ".driver_steer_norm",
+                ".frame_id",
+                ".c0_m",
+                ".c1",
+                ".c2_per_m",
+                ".c3_per_m2",
+                ".curvature_per_m"
+              ]
+            }
+          ],
+          "datatype": "INNER_SHM_DDS",
+          "channelVersion": "2c6a659a-f6e4-4e6f-8144-89c2e3315d9d"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": [
+        {
+          "alias": "lks_output",
+          "description": "",
+          "direction": "Out",
+          "id": "c8a8cb33-151d-4857-a80b-27c4f57715f1",
+          "name": "lks_output",
+          "props": [
+            {
+              "key": "channel_name",
+              "value": "lks_output"
+            },
+            {
+              "key": "bind_code",
+              "value": "ON"
+            },
+            {
+              "key": "channel_var_name",
+              "value": "lks_output"
+            },
+            {
+              "key": "channel_type",
+              "value": "INNER_SHM_DDS"
+            },
+            {
+              "key": "message_type",
+              "value": "pangu.modules.LksOutput"
+            },
+            {
+              "key": "channel_id",
+              "value": "INNER_SHM_DDS_lks_output"
+            },
+            {
+              "key": "task_id",
+              "value": "lks_input"
+            },
+            {
+              "key": "operateKeys",
+              "value": [
+                ".frame_id",
+                ".steer_rad",
+                ".control_enabled"
+              ]
+            }
+          ],
+          "datatype": "INNER_SHM_DDS",
+          "channelVersion": "2c6a659a-f6e4-4e6f-8144-89c2e3315d9d"
+        }
+      ],
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": [],
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": [],
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {
+        "timer_duration": 500
+      },
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "node_name",
+      "value": "module_empty",
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "composite-block",
+      "name": "run_9554bb10_0872_4665_b691_ff372271aaf9",
+      "cppClass": "run_9554bb10_0872_4665_b691_ff372271aaf9",
+      "alias": "executeLks",
+      "description": "LKS决策与横向控制主流程。",
+      "author": "THICV",
+      "version": "1.1.4",
+      "instanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "originId": "4969bd60-f33d-4fdd-b524-149ee875f14c",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": [
+        "基础模块库",
+        "语句函数",
+        "基础组件"
+      ],
+      "parentId": "a807407f-21e6-442d-a6e4-13a788ec666d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "isCallback": true,
+              "param": [],
+              "state": [],
+              "instanceName": "executeLks"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "id": "26571e45-29af-465e-b57e-c34cff2db00d",
+              "name": "egoSpeedMps",
+              "alias": "egoSpeedMps",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "egoSpeedMps",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "b6adb8a0-07e0-4c60-99d4-3abdc46d8ef2",
+              "name": "c0",
+              "alias": "c0",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "c0",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "04b40b8e-91b9-48c1-9115-7e452384a161",
+              "name": "c1",
+              "alias": "c1",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "c1",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "501ee845-6352-4f68-a066-5ea889788671",
+              "name": "c2",
+              "alias": "c2",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "c2",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "6277d1c2-9404-4c1a-a94d-d2192a8a7654",
+              "name": "c3",
+              "alias": "c3",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "c3",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "b7bb81ae-f007-4b7a-b5d9-f8467b83d628",
+              "name": "roadCurvaturePerM",
+              "alias": "roadCurvaturePerM",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "roadCurvaturePerM",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "afd0ee27-5f34-42a8-ae44-1f867516603e",
+              "name": "isBrakePressed",
+              "alias": "isBrakePressed",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "isBrakePressed",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "0e472280-e88b-44e6-a49f-66a1eb0a4700",
+              "name": "driverSteerNorm",
+              "alias": "driverSteerNorm",
+              "direction": "In",
+              "description": "输入参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "driverSteerNorm",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "id": "d5e57208-4759-45d8-b15f-b80216140373",
+              "name": "steerRad",
+              "alias": "steerRad",
+              "direction": "Out",
+              "description": "输出参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "steerRad",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            },
+            {
+              "id": "4f114bcb-45db-4465-beb3-17199ea385ef",
+              "name": "isControlEnabled",
+              "alias": "isControlEnabled",
+              "direction": "Out",
+              "description": "输出参数",
+              "props": [
+                {
+                  "key": "name",
+                  "value": "isControlEnabled",
+                  "props": []
+                },
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                },
+                {
+                  "key": "category",
+                  "value": 0,
+                  "props": []
+                },
+                {
+                  "key": "shape",
+                  "value": [
+                    1
+                  ],
+                  "props": []
+                },
+                {
+                  "key": "isReturnFlag",
+                  "value": false,
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "channel_input",
+      "name": "lks_input_a90454d9_d315_4fe0_bc01_af6ddf2c16a7",
+      "cppClass": "",
+      "alias": "通道输入",
+      "description": "车内信息输入：自车速度、制动状态、驾驶员转向和帧标识。",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "originId": "channel_input",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "a807407f-21e6-442d-a6e4-13a788ec666d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "lks_input",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.LksInput",
+                "channel_id": "INNER_SHM_DDS_lks_input",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true,
+                  "no_hybrid": false
+                },
+                "channel_type_config": [
+                  {
+                    "key": "shm_config",
+                    "type": 0,
+                    "block_size": 0
+                  },
+                  {
+                    "key": "dds_config",
+                    "durability": 0,
+                    "translayer_type": 0,
+                    "reliability": 0,
+                    "throughput_controller": 0
+                  }
+                ],
+                "channel_var_name": "lks_input",
+                "bind_code": "ON",
+                "task_id": "lks_input"
+              },
+              "operateKeys": [
+                ".ego_speed_mps",
+                ".brake_pressed",
+                ".driver_steer_norm",
+                ".frame_id",
+                ".c0_m",
+                ".c1",
+                ".c2_per_m",
+                ".c3_per_m2",
+                ".curvature_per_m"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [
+            {
+              "alias": "ego_speed_mps",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".ego_speed_mps",
+              "name": "ego_speed_mps",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "brake_pressed",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".brake_pressed",
+              "name": "brake_pressed",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "driver_steer_norm",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".driver_steer_norm",
+              "name": "driver_steer_norm",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "frame_id",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".frame_id",
+              "name": "frame_id",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "c0_m",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".c0_m",
+              "name": "c0_m",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "c1",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".c1",
+              "name": "c1",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "c2_per_m",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".c2_per_m",
+              "name": "c2_per_m",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "c3_per_m2",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".c3_per_m2",
+              "name": "c3_per_m2",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "curvature_per_m",
+              "description": "通道输入属性输出端口",
+              "direction": "Out",
+              "id": ".curvature_per_m",
+              "name": "curvature_per_m",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "channel_output",
+      "name": "lks_output_0bbd9a69_9151_4d99_a05d_c6879909eca0",
+      "cppClass": "",
+      "alias": "通道输出",
+      "description": "lks_output 输出通道",
+      "author": "",
+      "version": "0.0.1",
+      "instanceId": "0bbd9a69-9151-4d99-a05d-c6879909eca0",
+      "originId": "channel_output",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": true,
+      "isSourceCode": 1,
+      "children": [],
+      "parent": "",
+      "tags": "channel",
+      "parentId": "a807407f-21e6-442d-a6e4-13a788ec666d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [
+            {
+              "channelConfig": {
+                "channel_name": "lks_output",
+                "channel_type": "INNER_SHM_DDS",
+                "message_type": "pangu.modules.LksOutput",
+                "channel_id": "INNER_SHM_DDS_lks_output",
+                "channel_config": {
+                  "max_thread_num": 1,
+                  "queue_buffer_size": 1,
+                  "keep_latest": true,
+                  "no_hybrid": false
+                },
+                "channel_type_config": [
+                  {
+                    "key": "shm_config",
+                    "type": 0,
+                    "block_size": 0
+                  },
+                  {
+                    "key": "dds_config",
+                    "durability": 0,
+                    "translayer_type": 0,
+                    "reliability": 0,
+                    "throughput_controller": 0
+                  }
+                ],
+                "channel_var_name": "lks_output",
+                "bind_code": "ON",
+                "task_id": "lks_input"
+              },
+              "operateKeys": [
+                ".frame_id",
+                ".steer_rad",
+                ".control_enabled"
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": [
+            {
+              "alias": "frame_id",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".frame_id",
+              "name": "frame_id",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "uint32",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "steer_rad",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".steer_rad",
+              "name": "steer_rad",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "double",
+                  "props": []
+                }
+              ]
+            },
+            {
+              "alias": "control_enabled",
+              "description": "通道输出属性输入端口",
+              "direction": "In",
+              "id": ".control_enabled",
+              "name": "control_enabled",
+              "props": [
+                {
+                  "key": "dataType",
+                  "value": "bool",
+                  "props": []
+                }
+              ]
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": [
+    {
+      "fromInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "fromInstancePortId": "d5e57208-4759-45d8-b15f-b80216140373",
+      "toInstanceId": "0bbd9a69-9151-4d99-a05d-c6879909eca0",
+      "toInstancePortId": ".steer_rad",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "fromInstancePortId": "4f114bcb-45db-4465-beb3-17199ea385ef",
+      "toInstanceId": "0bbd9a69-9151-4d99-a05d-c6879909eca0",
+      "toInstancePortId": ".control_enabled",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".ego_speed_mps",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "26571e45-29af-465e-b57e-c34cff2db00d",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".brake_pressed",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "afd0ee27-5f34-42a8-ae44-1f867516603e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".driver_steer_norm",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "0e472280-e88b-44e6-a49f-66a1eb0a4700",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".frame_id",
+      "toInstanceId": "0bbd9a69-9151-4d99-a05d-c6879909eca0",
+      "toInstancePortId": ".frame_id",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".curvature_per_m",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "b7bb81ae-f007-4b7a-b5d9-f8467b83d628",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".c3_per_m2",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "6277d1c2-9404-4c1a-a94d-d2192a8a7654",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".c2_per_m",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "501ee845-6352-4f68-a066-5ea889788671",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".c1",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "04b40b8e-91b9-48c1-9115-7e452384a161",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fromInstanceId": "a90454d9-d315-4fe0-bc01-af6ddf2c16a7",
+      "fromInstancePortId": ".c0_m",
+      "toInstanceId": "9554bb10-0872-4665-b691-ff372271aaf9",
+      "toInstancePortId": "b6adb8a0-07e0-4c60-99d4-3abdc46d8ef2",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": [],
+          "props": [
+            {
+              "key": "connectionType",
+              "value": 0,
+              "props": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

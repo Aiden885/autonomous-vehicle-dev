@@ -1,0 +1,111 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isBrakePressed",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输入参数"
+      },
+      {
+        "name": "driverSteerNorm",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "checkOperatingSpeed",
+        "category": 1,
+        "dataType": "composite_block_empty_179b05d8_8bbd_4e95_b179_c4e4788576c4",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据自车速度和最低工作速度判断LKS速度条件是否满足。"
+      },
+      {
+        "name": "detectDriverOverride",
+        "category": 1,
+        "dataType": "composite_block_empty_956b46dc_378d_4d7c_97d0_40f77d3b637d",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据驾驶员方向盘输入判断是否发生主动转向接管。"
+      },
+      {
+        "name": "determineControlEnable",
+        "category": 1,
+        "dataType": "composite_block_empty_fde75d0d_6428_4789_a7ea_30b7a3291b00",
+        "shape": [],
+        "dataValue": {},
+        "description": "汇总制动、低速和驾驶员主动转向条件，输出LKS控制使能。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

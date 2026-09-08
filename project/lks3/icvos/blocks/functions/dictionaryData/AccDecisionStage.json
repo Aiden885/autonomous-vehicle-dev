@@ -1,0 +1,162 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度 (m/s)。"
+      },
+      {
+        "name": "commandType",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "驾驶指令类型，0表示无指令。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "enable",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "ACC对外使能。"
+      },
+      {
+        "name": "valid",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "计算结果有效标志。"
+      },
+      {
+        "name": "decision",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前决策编号。"
+      },
+      {
+        "name": "systemState",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 2,
+        "description": "当前系统状态编号。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "vMin",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "最低接管速度 (m/s)，mock阶段允许静止起步。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "controlEnabled",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "ACC内部控制使能状态。"
+      },
+      {
+        "name": "hasHistory",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "是否存在历史巡航参数。"
+      },
+      {
+        "name": "lastDecision",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "上一次非零决策编号。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "determineSystemState",
+        "category": 1,
+        "dataType": "DetermineAccSystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "evaluateDecision",
+        "category": 1,
+        "dataType": "EvaluateAccDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "determineEnable",
+        "category": 1,
+        "dataType": "DetermineAccEnable",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "selectLastDecision",
+        "category": 1,
+        "dataType": "SelectAccLastDecision",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "value0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入标量 0"
+      },
+      {
+        "name": "value1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入标量 1"
+      },
+      {
+        "name": "value2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入标量 2"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "写入结果是否有效"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "allowAppend",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否允许追加写入"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "预留状态字段（当前未使用）"
+      }
+    ],
+    "source": "code",
+    "namespace": "map"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "map"
+  }
+}

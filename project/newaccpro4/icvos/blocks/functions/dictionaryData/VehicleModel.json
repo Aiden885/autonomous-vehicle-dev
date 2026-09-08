@@ -1,0 +1,130 @@
+{
+  "Input": {
+    "description": "车辆模型输入加速度指令。",
+    "alias": "车辆模型输入加速度指令。",
+    "fields": [
+      {
+        "name": "lonAccel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向加速度指令 (m/s^2)"
+      },
+      {
+        "name": "latAccel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向加速度指令 (m/s^2)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "车辆模型输出运动状态。",
+    "alias": "车辆模型输出运动状态。",
+    "fields": [
+      {
+        "name": "lonPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向位置 (m)"
+      },
+      {
+        "name": "lonVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度 (m/s)"
+      },
+      {
+        "name": "latPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置 (m)"
+      },
+      {
+        "name": "latVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向速度 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "车辆模型离散仿真参数。",
+    "alias": "车辆模型离散仿真参数。",
+    "fields": [
+      {
+        "name": "ts",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.05,
+        "description": "仿真步长 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "车辆模型积分得到的内部运动状态。",
+    "alias": "车辆模型积分得到的内部运动状态。",
+    "fields": [
+      {
+        "name": "lonPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向位置 (m)"
+      },
+      {
+        "name": "lonVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "纵向速度 (m/s)"
+      },
+      {
+        "name": "latPos",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向位置 (m)"
+      },
+      {
+        "name": "latVel",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "横向速度 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "车辆模型子模块集合。",
+    "alias": "车辆模型子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

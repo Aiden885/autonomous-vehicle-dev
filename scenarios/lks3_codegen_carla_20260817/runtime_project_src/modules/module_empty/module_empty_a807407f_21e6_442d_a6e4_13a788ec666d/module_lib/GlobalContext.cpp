@@ -1,0 +1,32 @@
+#include "GlobalContext.hpp"
+
+namespace control {
+
+void GlobalStates::reset() noexcept {
+  (void)0;
+}
+
+namespace global {
+
+GlobalParams params {
+  .lks_l0 = 5,
+  .lks_rt = 0.5,
+  .lks_rAlpha = 0.666667,
+  .lks_curvatureThreshold = 0.0001,
+  .lks_nearPreviewDistance = 0.5,
+  .lks_w1 = 0.2,
+  .lks_w2 = 0.3,
+  .lks_w3 = 0.5,
+  .lks_Kp = 0.09,
+  .lks_steerScale = 0.6,
+  .lks_vMin = 1,
+  .lks_driverSteerThreshold = 0.1,
+  .lks_ayMax = 3,
+  .lks_wheelBase = 2.9,
+  .lks_frontWheelMaxRad = 0.5236,
+};
+GlobalStates states{};
+
+} // namespace global
+
+} // namespace control

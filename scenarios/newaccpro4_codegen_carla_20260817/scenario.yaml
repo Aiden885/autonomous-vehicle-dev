@@ -1,0 +1,61 @@
+name: newaccpro4_codegen_carla_20260817
+description: newaccpro4 最新生成代码 ACC Pangu-CARLA 本地闭环测试
+created_at: "2026-08-17"
+control_profile: acc
+
+environment:
+  carla_version: "0.9.15"
+  carla_root: "/home/aiden/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:latest"
+  pangu_build_root: "/home/aiden/.cache/gaasd-pangu/newaccpro4_codegen_build"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 25
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: waypoint_pid
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+
+pangu:
+  install_dir: "/home/aiden/.cache/gaasd-pangu/newaccpro4_codegen_build/install"
+  container_name: newaccpro4_codegen_carla
+  app_name: app_empty
+  process_name: process_empty_99756268
+  processes:
+    - process_empty_99756268
+    - AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43
+    - AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43
+
+driver_command:
+  startup_sequence: "先将自车提升至最低启控速度，再发送 E"
+  command_type:
+    e: 1
+    q: 2
+    t: 3
+    r: 4
+    w: 5
+    s: 6
+    c: 7
+
+results:
+  latest_summary: "/tmp/newaccpro4-codegen-carla/results/latest_summary.json"
+  latest_samples: "/tmp/newaccpro4-codegen-carla/results/acc_samples_latest.jsonl"
+
+gaasd_signals:
+  observed: [egoV, leadV, distance, commandType, targetSpeed, enable]
+
+expected_result:
+  expected_behavior: 三个 Pangu 进程持续运行，生成算法接收 ACC 输入并经输出边界向 CARLA 发送目标速度。

@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "除法计算 Input 结构体",
+    "alias": "除法计算 Input 结构体",
+    "fields": [
+      {
+        "name": "dividend",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "被除数"
+      },
+      {
+        "name": "divisor",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "除数"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Output": {
+    "description": "除法计算 Output 结构体",
+    "alias": "除法计算 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Param": {
+    "description": "除法计算 Param 结构体",
+    "alias": "除法计算 Param 结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "unsigned char",
+        "shape": [],
+        "dataValue": 0,
+        "description": "C11 合法占位字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "State": {
+    "description": "除法计算 State 结构体",
+    "alias": "除法计算 State 结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "unsigned char",
+        "shape": [],
+        "dataValue": 0,
+        "description": "C11 合法占位字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Sub": {
+    "description": "除法计算 的子模块实体集合",
+    "alias": "除法计算 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  }
+}

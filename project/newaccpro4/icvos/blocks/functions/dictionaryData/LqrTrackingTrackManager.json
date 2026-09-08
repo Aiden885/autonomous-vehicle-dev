@@ -1,0 +1,234 @@
+{
+  "Input": {
+    "description": "轨迹管理 Input 结构体",
+    "alias": "轨迹管理 Input 结构体",
+    "fields": [
+      {
+        "name": "measurementValid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "当前周期量测是否有效"
+      },
+      {
+        "name": "measurementX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 X 坐标 (m)"
+      },
+      {
+        "name": "measurementY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 Y 坐标 (m)"
+      },
+      {
+        "name": "deltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "周期时间 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Output": {
+    "description": "轨迹管理 Output 结构体",
+    "alias": "轨迹管理 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "trackX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "trackX 的 X 坐标 (m)"
+      },
+      {
+        "name": "trackY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "trackY 的 Y 坐标 (m)"
+      },
+      {
+        "name": "trackVelocityX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出航迹 X 向速度 (m/s)"
+      },
+      {
+        "name": "trackVelocityY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出航迹 Y 向速度 (m/s)"
+      },
+      {
+        "name": "hitCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "输出连续命中次数"
+      },
+      {
+        "name": "missCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "输出连续丢失次数"
+      },
+      {
+        "name": "status",
+        "category": 0,
+        "dataType": "Integer",
+        "shape": [],
+        "dataValue": 0,
+        "description": "离散状态或比较结果"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Param": {
+    "description": "轨迹管理 Param 结构体",
+    "alias": "轨迹管理 Param 结构体",
+    "fields": [
+      {
+        "name": "defaultDeltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入时间无效时采用的默认周期 (s)"
+      },
+      {
+        "name": "maxDeltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "允许参与预测的最大周期 (s)"
+      },
+      {
+        "name": "confirmHitThreshold",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "轨迹确认命中次数阈值"
+      },
+      {
+        "name": "deleteMissThreshold",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "轨迹删除漏检次数阈值"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "State": {
+    "description": "轨迹管理 State 结构体",
+    "alias": "轨迹管理 State 结构体",
+    "fields": [
+      {
+        "name": "initialized",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "历史状态是否已初始化"
+      },
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 X 坐标 (m)"
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 Y 坐标 (m)"
+      },
+      {
+        "name": "velocityX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前速度 X 分量 (m/s)"
+      },
+      {
+        "name": "velocityY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前速度 Y 分量 (m/s)"
+      },
+      {
+        "name": "consecutiveHits",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "连续命中次数"
+      },
+      {
+        "name": "consecutiveMisses",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "连续漏检次数"
+      },
+      {
+        "name": "status",
+        "category": 0,
+        "dataType": "Integer",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前航迹状态"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Sub": {
+    "description": "轨迹管理 的子模块实体集合",
+    "alias": "轨迹管理 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "ml"
+  }
+}

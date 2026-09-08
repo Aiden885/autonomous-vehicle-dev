@@ -1,0 +1,122 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度。"
+      },
+      {
+        "name": "leadSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车速度。"
+      },
+      {
+        "name": "leadDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车距离。"
+      },
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度。"
+      },
+      {
+        "name": "minDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "最小跟车距离。"
+      },
+      {
+        "name": "distanceGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.25,
+        "description": "距离增益。"
+      },
+      {
+        "name": "speedGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.4,
+        "description": "速度增益。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "限幅后的目标速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

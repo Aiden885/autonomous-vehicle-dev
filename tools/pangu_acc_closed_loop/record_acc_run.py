@@ -37,13 +37,24 @@ def write_json(path: Path, data: Dict[str, Any]) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def summarize(samples: List[Dict[str, Any]], started_at: float, ended_at: float) -> Dict[str, Any]:
+def summarize(
+    samples: List[Dict[str, Any]],
+    started_at: float,
+    ended_at: float,
+    *,
+    analysis_start_sec: float = 0.0,
+    max_accel_mps2: float = 1.5,
+    max_brake_mps2: float = 6.0,
+    speed_tolerance_mps: float = 0.25,
+) -> Dict[str, Any]:
     def values(name: str) -> List[float]:
         return [finite(sample.get(name), 0.0) for sample in samples if sample.get(name) is not None]
 
     clearance = values("clearance_m")
     ego_speed = values("ego_speed_mps")
     lead_speed = values("lead_speed_mps")
+    target_speed = values("target_speed_mps")
+    target_accel = values("target_accel_mps2")
     throttle = values("throttle")
     brake = values("brake")
     steer = values("steer_norm")
@@ -52,12 +63,68 @@ def summarize(samples: List[Dict[str, Any]], started_at: float, ended_at: float)
         1 for sample in samples
         if str(sample.get("selection_rule", "")).startswith("preferred_role_route")
     )
+    analysis_samples = [
+        sample
+        for sample in samples
+        if finite(sample.get("wall_time_sec"), 0.0) >= max(analysis_start_sec, 0.0)
+    ]
+    speed_errors = [
+        finite(sample.get("ego_speed_mps"), 0.0)
+        - finite(sample.get("lead_speed_mps"), 0.0)
+        for sample in analysis_samples
+    ]
+    speed_error_rms = None
+    speed_error_max_abs = None
+    if speed_errors:
+        speed_error_rms = math.sqrt(
+            sum(error * error for error in speed_errors) / len(speed_errors)
+        )
+        speed_error_max_abs = max(abs(error) for error in speed_errors)
+
+    settling_time = None
+    tolerance = max(speed_tolerance_mps, 0.0)
+    for index, sample in enumerate(analysis_samples):
+        remaining_errors = speed_errors[index:]
+        if remaining_errors and all(abs(error) <= tolerance for error in remaining_errors):
+            settling_time = max(
+                finite(sample.get("wall_time_sec"), analysis_start_sec)
+                - max(analysis_start_sec, 0.0),
+                0.0,
+            )
+            break
+
+    saturation_count = 0
+    for sample in analysis_samples:
+        acceleration = finite(sample.get("target_accel_mps2"), 0.0)
+        if (
+            acceleration >= max(max_accel_mps2, 0.0) - 1.0e-6
+            or acceleration <= -max(max_brake_mps2, 0.0) + 1.0e-6
+        ):
+            saturation_count += 1
+
+    pedal_switch_count = 0
+    previous_active_pedal: Optional[str] = None
+    for sample in analysis_samples:
+        throttle_value = finite(sample.get("throttle"), 0.0)
+        brake_value = finite(sample.get("brake"), 0.0)
+        active_pedal: Optional[str] = None
+        if throttle_value > 1.0e-3 and throttle_value >= brake_value:
+            active_pedal = "throttle"
+        elif brake_value > 1.0e-3:
+            active_pedal = "brake"
+        if active_pedal is None:
+            continue
+        if previous_active_pedal is not None and active_pedal != previous_active_pedal:
+            pedal_switch_count += 1
+        previous_active_pedal = active_pedal
 
     return {
         "started_at_unix": started_at,
         "ended_at_unix": ended_at,
         "duration_sec": ended_at - started_at,
         "sample_count": len(samples),
+        "analysis_sample_count": len(analysis_samples),
+        "analysis_start_sec": max(analysis_start_sec, 0.0),
         "lead_valid_ratio": valid_count / max(len(samples), 1),
         "route_distance_ratio": route_count / max(len(samples), 1),
         "clearance_min_m": min(clearance) if clearance else None,
@@ -66,9 +133,21 @@ def summarize(samples: List[Dict[str, Any]], started_at: float, ended_at: float)
         "ego_speed_max_mps": max(ego_speed) if ego_speed else None,
         "ego_speed_last_mps": ego_speed[-1] if ego_speed else None,
         "lead_speed_mean_mps": sum(lead_speed) / len(lead_speed) if lead_speed else None,
+        "target_speed_min_mps": min(target_speed) if target_speed else None,
+        "target_speed_max_mps": max(target_speed) if target_speed else None,
+        "target_speed_last_mps": target_speed[-1] if target_speed else None,
+        "target_accel_min_mps2": min(target_accel) if target_accel else None,
+        "target_accel_max_mps2": max(target_accel) if target_accel else None,
+        "target_accel_last_mps2": target_accel[-1] if target_accel else None,
         "throttle_max": max(throttle) if throttle else None,
         "brake_max": max(brake) if brake else None,
         "steer_max_abs": max(abs(value) for value in steer) if steer else None,
+        "speed_error_rms_mps": speed_error_rms,
+        "speed_error_max_abs_mps": speed_error_max_abs,
+        "speed_settling_time_sec": settling_time,
+        "speed_tolerance_mps": tolerance,
+        "accel_saturation_ratio": saturation_count / max(len(analysis_samples), 1),
+        "throttle_brake_switch_count": pedal_switch_count,
         "last_sample": samples[-1] if samples else None,
     }
 
@@ -123,8 +202,21 @@ def run(args: argparse.Namespace) -> int:
                 "relative_speed_mps": finite(latest_lead.get("relative_speed_mps"), 0.0),
                 "lead_speed_mps": finite(latest_lead.get("lead_speed_mps"), 0.0),
                 "ego_speed_mps": finite(latest_chassis.get("speed_mps"), 0.0),
+                "target_speed_mps": finite(
+                    latest_chassis.get("target_speed_mps"), 0.0
+                ),
+                "target_accel_mps2": finite(
+                    latest_chassis.get("target_accel_mps2"), 0.0
+                ),
                 "throttle": finite(latest_chassis.get("throttle"), 0.0),
                 "brake": finite(latest_chassis.get("brake"), 0.0),
+                "commanded_throttle": finite(
+                    latest_chassis.get("commanded_throttle"), 0.0
+                ),
+                "commanded_brake": finite(
+                    latest_chassis.get("commanded_brake"), 0.0
+                ),
+                "control_enable": bool(latest_chassis.get("control_enable", False)),
                 "steer_norm": finite(latest_chassis.get("steer_norm"), 0.0),
                 "last_command_age_sec": finite(
                     latest_chassis.get("last_command_age_sec"), 1000000.0
@@ -135,7 +227,15 @@ def run(args: argparse.Namespace) -> int:
             sample_file.write(json.dumps(sample, ensure_ascii=False, separators=(",", ":")) + "\n")
 
     ended_at = time.time()
-    summary = summarize(samples, started_at, ended_at)
+    summary = summarize(
+        samples,
+        started_at,
+        ended_at,
+        analysis_start_sec=args.analysis_start_sec,
+        max_accel_mps2=args.max_accel_mps2,
+        max_brake_mps2=args.max_brake_mps2,
+        speed_tolerance_mps=args.speed_tolerance_mps,
+    )
     stamp = time.strftime("%Y%m%d_%H%M%S", time.localtime(ended_at))
     write_json(output_dir / f"acc_run_{stamp}.json", summary)
     write_json(output_dir / "latest_summary.json", summary)
@@ -150,6 +250,10 @@ def main() -> int:
     parser.add_argument("--duration", type=float, default=180.0)
     parser.add_argument("--output-dir", default="/tmp/newaccpro3-pangu-carla/results")
     parser.add_argument("--min-samples", type=int, default=20)
+    parser.add_argument("--analysis-start-sec", type=float, default=0.0)
+    parser.add_argument("--max-accel-mps2", type=float, default=1.5)
+    parser.add_argument("--max-brake-mps2", type=float, default=6.0)
+    parser.add_argument("--speed-tolerance-mps", type=float, default=0.25)
     return run(parser.parse_args())
 
 

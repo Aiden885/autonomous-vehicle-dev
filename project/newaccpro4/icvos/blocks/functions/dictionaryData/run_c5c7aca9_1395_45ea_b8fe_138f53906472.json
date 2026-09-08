@@ -1,0 +1,123 @@
+{
+  "Param": {
+    "description": "run参数结构体",
+    "alias": "run参数结构体",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "decisionCode",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "timeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "timeGapStepS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "minTimeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "maxTimeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "nextTimeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "fmax_53b6b99d_12ba_46d2_963e_aef352bf5420",
+        "category": 1,
+        "dataType": "run_c5c7aca9_1395_45ea_b8fe_138f53906472",
+        "shape": [],
+        "dataValue": {},
+        "description": "数学函数: fmax"
+      },
+      {
+        "name": "fmin_642b7cce_ede9_47cc_99c3_adec8c991915",
+        "category": 1,
+        "dataType": "run_c5c7aca9_1395_45ea_b8fe_138f53906472",
+        "shape": [],
+        "dataValue": {},
+        "description": "数学函数: fmin"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

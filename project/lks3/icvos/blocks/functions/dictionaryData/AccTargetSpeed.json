@@ -1,0 +1,162 @@
+{
+  "Global": {
+    "description": "全局上下文集合。",
+    "alias": "全局上下文集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "输入端口集合，承载本周期输入信号。",
+    "alias": "输入端口集合，承载本周期输入信号。",
+    "fields": [
+      {
+        "name": "egoSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度 (m/s)。"
+      },
+      {
+        "name": "leadSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车速度 (m/s)。"
+      },
+      {
+        "name": "leadDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "前车距离 (m)。"
+      },
+      {
+        "name": "commandType",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "驾驶指令类型，0表示无指令。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "输出端口集合，承载本周期计算结果。",
+    "alias": "输出端口集合，承载本周期计算结果。",
+    "fields": [
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标速度 (m/s)。"
+      },
+      {
+        "name": "enable",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "ACC使能标志。"
+      },
+      {
+        "name": "valid",
+        "category": 1,
+        "dataType": "_Bool",
+        "shape": [],
+        "dataValue": {},
+        "description": "计算结果有效标志。"
+      },
+      {
+        "name": "timeGap",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8,
+        "description": "当前时距参数 (s)。"
+      },
+      {
+        "name": "maxSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5.0,
+        "description": "当前最大速度参数 (m/s)。"
+      },
+      {
+        "name": "decision",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前决策编号。"
+      },
+      {
+        "name": "systemState",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 2,
+        "description": "当前系统状态编号。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "顶层参数集合，参数下沉到各阶段子模块。",
+    "alias": "顶层参数集合，参数下沉到各阶段子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "顶层状态集合，状态下沉到各阶段子模块。",
+    "alias": "顶层状态集合，状态下沉到各阶段子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "子模块集合，顶层直接编排ACC决策、巡航设定和目标速度阶段。",
+    "alias": "子模块集合，顶层直接编排ACC决策、巡航设定和目标速度阶段。",
+    "fields": [
+      {
+        "name": "decisionStage",
+        "category": 1,
+        "dataType": "AccDecisionStage",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "cruiseSettingStage",
+        "category": 1,
+        "dataType": "AccCruiseSettingStage",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "targetSpeedStage",
+        "category": 1,
+        "dataType": "AccTargetSpeedStage",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

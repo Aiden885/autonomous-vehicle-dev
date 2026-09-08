@@ -1,0 +1,163 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "roadCurvaturePerM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isBrakePressed",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输入参数"
+      },
+      {
+        "name": "driverSteerNorm",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "steerRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      },
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "decision",
+        "category": 1,
+        "dataType": "composite_block_empty_8a3df3a4_11ef_4cf0_9f3a_b380382dd3a9",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据车速、制动和驾驶员转向输入判断LKS是否允许控制。"
+      },
+      {
+        "name": "control",
+        "category": 1,
+        "dataType": "composite_block_empty_6b682752_6234_4817_a302_c9e173c6790e",
+        "shape": [],
+        "dataValue": {},
+        "description": "完成预瞄距离、三点车道误差、误差加权和方向盘转角命令计算。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

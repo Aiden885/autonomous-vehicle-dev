@@ -1,0 +1,145 @@
+{
+  "Param": {
+    "description": "run参数结构体",
+    "alias": "run参数结构体",
+    "fields": [
+      {
+        "name": "minDistanceM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5
+      },
+      {
+        "name": "distanceErrorGainPerS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.25
+      },
+      {
+        "name": "relativeSpeedGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.4
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "函数输入端口"
+      },
+      {
+        "name": "leadSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "函数输入端口"
+      },
+      {
+        "name": "commandType",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "函数输入端口"
+      },
+      {
+        "name": "leadDistanceM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "函数输入端口"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "函数输出端口"
+      },
+      {
+        "name": "targetSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "函数输出端口"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "decision_2",
+        "category": 1,
+        "dataType": "composite_block_empty_0583d8c2_dfeb_41ff_8153_3eb79777b834",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据车辆状态和驾驶指令更新ACC状态、目标时距与速度上限。"
+      },
+      {
+        "name": "control_2",
+        "category": 1,
+        "dataType": "run_96195785_aad3_4e07_96eb_347ef47d3318",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据前车状态、跟车误差和决策参数计算ACC目标速度。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

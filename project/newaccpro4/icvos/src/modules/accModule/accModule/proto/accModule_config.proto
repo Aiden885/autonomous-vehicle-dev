@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+message accModuleParams {
+ string work_root = 1;
+ double timer_duration = 2;
+ double desired_distance_m = 3;
+ double max_speed_mps = 4;
+ double distance_gain = 5;
+ double speed_gain = 6;
+ bool enable_zmq_bridge = 7;
+ int32 zmq_poll_timeout_ms = 8;
+ bool zmq_control_enable = 9;
+}
+message AccOutput {
+    uint32 frame_id = 1;
+    double target_speed_mps = 2;
+    bool enable = 3;
+}
+message AccInput {
+    double ego_speed_mps = 1;
+    double lead_speed_mps = 2;
+    int32 command_type = 3;
+    uint32 frame_id = 4;
+    double lead_distance_m = 5;
+}
+
+message accModuleConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  accModuleParams params = 2;
+}
+message AccZmqInputModuleParams {
+    double timer_duration = 1;
+    int32 zmq_poll_timeout_ms = 2;
+}
+
+message AccZmqInputModuleConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    AccZmqInputModuleParams params = 2;
+}
+message AccZmqOutputModuleParams {
+    bool zmq_control_enable = 1;
+}
+
+message AccZmqOutputModuleConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    AccZmqOutputModuleParams params = 2;
+}

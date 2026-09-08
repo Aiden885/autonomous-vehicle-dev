@@ -13,6 +13,13 @@ import time
 from typing import Any, List, Optional
 
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+
+from waypoint_route import select_straight_waypoint
+
+
 _SHOULD_STOP = False
 
 
@@ -63,6 +70,18 @@ def clamp(value: float, lower: float, upper: float) -> float:
     return max(lower, min(upper, value))
 
 
+def target_speed_at_elapsed(
+    elapsed_sec: float,
+    initial_speed_mps: float,
+    step_speed_mps: float,
+    step_at_sec: float,
+) -> float:
+    """Return the active lead speed; a non-positive step time disables the step."""
+    if step_at_sec > 0.0 and elapsed_sec >= step_at_sec:
+        return step_speed_mps
+    return initial_speed_mps
+
+
 def normalize_angle_rad(angle_rad: float) -> float:
     while angle_rad > math.pi:
         angle_rad = angle_rad - 2.0 * math.pi
@@ -77,18 +96,7 @@ def speed_mps(actor: Any) -> float:
 
 
 def choose_forward_waypoint(candidates: List[Any], current_yaw_deg: float) -> Optional[Any]:
-    if not candidates:
-        return None
-    current_yaw_rad = math.radians(current_yaw_deg)
-    best = candidates[0]
-    best_error = float("inf")
-    for candidate in candidates:
-        candidate_yaw_rad = math.radians(candidate.transform.rotation.yaw)
-        error = abs(normalize_angle_rad(candidate_yaw_rad - current_yaw_rad))
-        if error < best_error:
-            best = candidate
-            best_error = error
-    return best
+    return select_straight_waypoint(candidates, current_yaw_deg)
 
 
 def compute_steer(carla: Any, actor: Any, world_map: Any, lookahead_m: float, steer_kp: float, steer_kd: float,
@@ -103,7 +111,9 @@ def compute_steer(carla: Any, actor: Any, world_map: Any, lookahead_m: float, st
         return 0.0, previous_error, None
 
     candidates = waypoint.next(max(lookahead_m, 0.5))
-    target_waypoint = choose_forward_waypoint(candidates, transform.rotation.yaw)
+    target_waypoint = choose_forward_waypoint(
+        candidates, waypoint.transform.rotation.yaw
+    )
     if target_waypoint is None:
         return 0.0, previous_error, waypoint
 
@@ -164,6 +174,18 @@ def main() -> int:
     parser.add_argument("--timeout-sec", type=float, default=10.0)
     parser.add_argument("--lead-role-name", default="gaasd_lead")
     parser.add_argument("--target-speed-mps", type=float, default=2.0)
+    parser.add_argument(
+        "--step-speed-mps",
+        type=float,
+        default=2.0,
+        help="Target speed after --step-at-sec; ignored when step time is non-positive.",
+    )
+    parser.add_argument(
+        "--step-at-sec",
+        type=float,
+        default=0.0,
+        help="Elapsed seconds at which the target speed changes; 0 disables the step.",
+    )
     parser.add_argument("--lookahead-m", type=float, default=6.0)
     parser.add_argument("--steer-kp", type=float, default=1.8)
     parser.add_argument("--steer-kd", type=float, default=0.08)
@@ -183,6 +205,10 @@ def main() -> int:
 
     if args.target_speed_mps < 0.0:
         raise SystemExit("[LeadWaypointPID] target speed must be non-negative")
+    if args.step_speed_mps < 0.0:
+        raise SystemExit("[LeadWaypointPID] step speed must be non-negative")
+    if args.step_at_sec < 0.0:
+        raise SystemExit("[LeadWaypointPID] step time must be non-negative")
 
     signal.signal(signal.SIGINT, handle_signal)
     signal.signal(signal.SIGTERM, handle_signal)
@@ -203,7 +229,8 @@ def main() -> int:
     print(
         "[LeadWaypointPID] started "
         f"lead_id={lead.id} target_speed={args.target_speed_mps:.2f}m/s "
-        f"lookahead={args.lookahead_m:.2f}m"
+        f"step_speed={args.step_speed_mps:.2f}m/s step_at={args.step_at_sec:.1f}s "
+        f"lookahead={args.lookahead_m:.2f}m max_throttle={args.max_throttle:.2f}"
     )
     sys.stdout.flush()
 
@@ -231,6 +258,12 @@ def main() -> int:
             disable_external_control(carla, lead)
 
         current_speed = speed_mps(lead)
+        target_speed = target_speed_at_elapsed(
+            now - start_time,
+            args.target_speed_mps,
+            args.step_speed_mps,
+            args.step_at_sec,
+        )
         steer, previous_steer_error, target_waypoint = compute_steer(
             carla,
             lead,
@@ -244,7 +277,7 @@ def main() -> int:
         )
         throttle, brake, speed_integral, previous_speed_error = compute_longitudinal_control(
             current_speed,
-            args.target_speed_mps,
+            target_speed,
             dt,
             speed_integral,
             previous_speed_error,
@@ -260,7 +293,7 @@ def main() -> int:
                 waypoint_info = f"road={target_waypoint.road_id} lane={target_waypoint.lane_id}"
             print(
                 "[LeadWaypointPID] "
-                f"speed={current_speed:.2f}/{args.target_speed_mps:.2f}m/s "
+                f"speed={current_speed:.2f}/{target_speed:.2f}m/s "
                 f"throttle={throttle:.3f} brake={brake:.3f} steer={steer:.3f} "
                 f"{waypoint_info}"
             )

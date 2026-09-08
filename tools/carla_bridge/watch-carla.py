@@ -22,8 +22,8 @@ except ImportError as exc:
 
 DRIVER_COMMAND_TOPIC = "gaasd.carla.driver_command.v1"
 PULSE_KEY_COMMANDS = {
-    "e": (1, "降低设定速度/当前速度启控"),
-    "q": (2, "提高设定速度/继承参数启控"),
+    "e": (1, "待命时按当前速度启控；在控时降低设定速度"),
+    "q": (2, "待命有历史时恢复控制；在控时提高设定速度"),
     "t": (3, "减小时距"),
     "r": (4, "增大时距"),
     "c": (7, "取消 ACC"),
@@ -139,7 +139,7 @@ def main() -> int:
     pygame.init()
     pygame.font.init()
     screen = pygame.display.set_mode((args.width, args.height), pygame.HWSURFACE | pygame.DOUBLEBUF)
-    pygame.display.set_caption("CARLA ACC 联调 — E/Q调速 R/T调距 W油门 S制动退出 C取消")
+    pygame.display.set_caption("CARLA ACC 联调 — W起步 E启控/降速 Q恢复/增速 R/T调距")
     clock = pygame.time.Clock()
 
     try:
@@ -251,7 +251,7 @@ def main() -> int:
         view_names = ["第三人称", "驾驶员", "高空俯视"]
         hint = font_small.render(
             f"视角: {view_names[cam_index[0]]}  "
-            "[E/Q调速 R/T调距 W油门 S制动退出 C取消 V切换]",
+            "[W起步 E启控/降速 Q恢复/增速 R/T调距 S制动 C取消 V切换]",
             True,
             (160, 160, 160),
         )
@@ -259,7 +259,7 @@ def main() -> int:
 
     # ---------- 主循环 ----------
     print("[Watch] 窗口已启动")
-    print("[Watch] E/Q 调速或启控，R/T 调整时距，W 油门，S 制动并退出 ACC，C 取消")
+    print("[Watch] 启动后按 W 起步；E 待命启控/在控降速；Q 恢复/增速；R/T 调整时距")
     running = True
     while running and not stop_requested[0]:
         for event in pygame.event.get():

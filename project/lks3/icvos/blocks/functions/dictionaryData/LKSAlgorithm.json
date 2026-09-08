@@ -1,0 +1,186 @@
+{
+  "Global": {
+    "description": "全局上下文集合。",
+    "alias": "全局上下文集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "输入端口集合，承载本周期车道线和驾驶员接管信号。",
+    "alias": "输入端口集合，承载本周期车道线和驾驶员接管信号。",
+    "fields": [
+      {
+        "name": "egoV",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "自车速度 (m/s)。"
+      },
+      {
+        "name": "curvature",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "道路曲率 (1/m)。"
+      },
+      {
+        "name": "c0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式常数项 (m)。"
+      },
+      {
+        "name": "c1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式一次项。"
+      },
+      {
+        "name": "c2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式二次项 (1/m)。"
+      },
+      {
+        "name": "c3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "车道线三次多项式三次项 (1/m^2)。"
+      },
+      {
+        "name": "brakePressed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "制动踏板信号，非零表示已踩下。"
+      },
+      {
+        "name": "driverSteerNorm",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "驾驶员方向盘输入归一化值。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "输出端口集合，承载本周期 LKS 控制结果。",
+    "alias": "输出端口集合，承载本周期 LKS 控制结果。",
+    "fields": [
+      {
+        "name": "lksSteerRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "LKS 输出方向盘转角命令 (rad)。"
+      },
+      {
+        "name": "controlEnabled",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "控制使能标志，1 表示使能。"
+      },
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出有效标志，1 表示有效。"
+      },
+      {
+        "name": "previewDistance",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "远预瞄距离 (m)。"
+      },
+      {
+        "name": "weightedError",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "近/中/远预瞄加权横向误差 (m)。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "顶层参数集合，参数下沉到各 LKS 子模块。",
+    "alias": "顶层参数集合，参数下沉到各 LKS 子模块。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "状态集合，当前算法无跨周期状态。",
+    "alias": "状态集合，当前算法无跨周期状态。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "子模块集合，拆分 LKS 预瞄、误差、使能和转角计算。",
+    "alias": "子模块集合，拆分 LKS 预瞄、误差、使能和转角计算。",
+    "fields": [
+      {
+        "name": "controlEnabled",
+        "category": 1,
+        "dataType": "DetermineLksControlEnabled",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "previewDistance",
+        "category": 1,
+        "dataType": "ComputeLksPreviewDistance",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "weightedError",
+        "category": 1,
+        "dataType": "ComputeLksWeightedError",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      },
+      {
+        "name": "steerCommand",
+        "category": 1,
+        "dataType": "ComputeLksSteerCommand",
+        "shape": [],
+        "dataValue": {},
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

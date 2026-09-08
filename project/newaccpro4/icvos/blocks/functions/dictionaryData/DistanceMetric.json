@@ -1,0 +1,218 @@
+{
+  "Input": {
+    "description": "距离度量输入结构体",
+    "alias": "距离度量输入结构体",
+    "fields": [
+      {
+        "name": "enable",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "primaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "secondaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "measurementX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "measurementY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "currentState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "eventId",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "nextState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Param": {
+    "description": "距离度量参数结构体",
+    "alias": "距离度量参数结构体",
+    "fields": [
+      {
+        "name": "threshold",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "gain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      },
+      {
+        "name": "defaultState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "State": {
+    "description": "距离度量状态结构体",
+    "alias": "距离度量状态结构体",
+    "fields": [
+      {
+        "name": "callCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "lastState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": ""
+      },
+      {
+        "name": "lastValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": ""
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "ml"
+  }
+}

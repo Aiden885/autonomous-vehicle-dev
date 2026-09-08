@@ -43,6 +43,8 @@ tools/gaasd_scenario_panel/install-desktop-launcher.sh
 ## 功能
 
 - 自动扫描 `scenarios/*/scenario.yaml`
+- 场景按创建时间从旧到新排列，最新场景显示在列表底部
+- 根据场景定义编辑地图工况和 ACC/LKS 运行参数
 - 恢复 GAASD 工程快照
 - 启动 CARLA + Bridge + 当前工况
 - 停止联调环境

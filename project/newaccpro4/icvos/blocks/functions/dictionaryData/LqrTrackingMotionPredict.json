@@ -1,0 +1,162 @@
+{
+  "Input": {
+    "description": "运动预测 Input 结构体",
+    "alias": "运动预测 Input 结构体",
+    "fields": [
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 X 坐标 (m)"
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前位置 Y 坐标 (m)"
+      },
+      {
+        "name": "yawRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前目标航向角 (rad)"
+      },
+      {
+        "name": "velocityX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "速度 X 分量 (m/s)"
+      },
+      {
+        "name": "velocityY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "速度 Y 分量 (m/s)"
+      },
+      {
+        "name": "yawRateRadps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "航向角速度 (rad/s)"
+      },
+      {
+        "name": "deltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "周期时间 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Output": {
+    "description": "运动预测 Output 结构体",
+    "alias": "运动预测 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "predictedX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "predictedX 的 X 坐标 (m)"
+      },
+      {
+        "name": "predictedY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "predictedY 的 Y 坐标 (m)"
+      },
+      {
+        "name": "predictedYawRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "预测后的航向角 (rad)"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Param": {
+    "description": "运动预测 Param 结构体",
+    "alias": "运动预测 Param 结构体",
+    "fields": [
+      {
+        "name": "maxDeltaTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "允许的最大时间增量 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "State": {
+    "description": "运动预测 State 结构体",
+    "alias": "运动预测 State 结构体",
+    "fields": [
+      {
+        "name": "callCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "组件累计调用次数"
+      },
+      {
+        "name": "lastPredictedX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "lastPredictedX 的 X 坐标 (m)"
+      },
+      {
+        "name": "lastPredictedY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "lastPredictedY 的 Y 坐标 (m)"
+      }
+    ],
+    "source": "code",
+    "namespace": "ml"
+  },
+  "Sub": {
+    "description": "运动预测 的子模块实体集合",
+    "alias": "运动预测 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "ml"
+  }
+}

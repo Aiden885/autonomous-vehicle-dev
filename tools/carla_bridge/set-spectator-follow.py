@@ -9,7 +9,7 @@ import math
 import os
 import sys
 import time
-from typing import Any, List, Optional
+from typing import Any, Callable, List, Optional
 
 
 def add_carla_python_paths(root: str) -> None:
@@ -89,6 +89,20 @@ def apply_follow_or_fallback(
     return True
 
 
+def follow_world_ticks(
+    world: Any,
+    update_camera: Callable[[], None],
+    timeout_sec: float,
+    max_updates: Optional[int] = None,
+) -> None:
+    """Update the spectator after each tick without advancing the world clock."""
+    update_count = 0
+    while max_updates is None or update_count < max_updates:
+        world.wait_for_tick(timeout_sec)
+        update_camera()
+        update_count += 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Follow ego with CARLA spectator camera.")
     parser.add_argument("--carla-root", default="/home/aiden/snap/code/app/carla-package")
@@ -136,7 +150,7 @@ def main() -> int:
             time.sleep(period_sec)
         return 0
 
-    while True:
+    def update_camera() -> None:
         apply_follow_or_fallback(
             carla,
             world,
@@ -149,7 +163,7 @@ def main() -> int:
             args.fallback_z_offset_m,
         )
 
-        time.sleep(period_sec)
+    follow_world_ticks(world, update_camera, max(args.timeout_sec, 0.1))
 
     return 0
 

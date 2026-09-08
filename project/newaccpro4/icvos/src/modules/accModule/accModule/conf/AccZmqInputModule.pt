@@ -1,0 +1,17 @@
+
+basic {
+  path: "lib/libAccZmqInputModule.so"
+  module_type: APP
+  ioconfig {
+    publishers {
+      name: "acc_input"
+      channel: "acc_input"
+      bindcode: ON
+    }
+  }
+}
+
+params {
+  timer_duration: 100.0
+  zmq_poll_timeout_ms: 0
+}

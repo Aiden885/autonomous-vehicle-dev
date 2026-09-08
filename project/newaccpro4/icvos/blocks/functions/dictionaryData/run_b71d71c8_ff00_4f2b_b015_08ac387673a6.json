@@ -1,0 +1,106 @@
+{
+  "Param": {
+    "description": "run参数结构体",
+    "alias": "run参数结构体",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "minimumOperatingSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isControlActive",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "hasControlHistory",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      },
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  }
+}

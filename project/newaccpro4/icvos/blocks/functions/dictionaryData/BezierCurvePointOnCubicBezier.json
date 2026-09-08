@@ -1,0 +1,218 @@
+{
+  "Input": {
+    "description": "三次贝塞尔曲线点计算 Input 结构体",
+    "alias": "三次贝塞尔曲线点计算 Input 结构体",
+    "fields": [
+      {
+        "name": "enable",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否使能本次元件计算"
+      },
+      {
+        "name": "primaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "主输入标量"
+      },
+      {
+        "name": "secondaryValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "辅助输入标量"
+      },
+      {
+        "name": "positionX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入位置 X 坐标 (m)"
+      },
+      {
+        "name": "positionY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输入位置 Y 坐标 (m)"
+      },
+      {
+        "name": "measurementX",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 X 坐标 (m)"
+      },
+      {
+        "name": "measurementY",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "量测位置 Y 坐标 (m)"
+      },
+      {
+        "name": "currentState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "当前离散状态编号"
+      },
+      {
+        "name": "eventId",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "事件或动作编号"
+      }
+    ],
+    "source": "code",
+    "namespace": "curve"
+  },
+  "Output": {
+    "description": "三次贝塞尔曲线点计算 Output 结构体",
+    "alias": "三次贝塞尔曲线点计算 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "组件判定结果"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 X 坐标 (m)"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 Y 坐标 (m)"
+      },
+      {
+        "name": "nextState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "下一状态编号"
+      }
+    ],
+    "source": "code",
+    "namespace": "curve"
+  },
+  "Param": {
+    "description": "三次贝塞尔曲线点计算 Param 结构体",
+    "alias": "三次贝塞尔曲线点计算 Param 结构体",
+    "fields": [
+      {
+        "name": "threshold",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "判定阈值"
+      },
+      {
+        "name": "gain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "计算增益"
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "浮点比较容差"
+      },
+      {
+        "name": "defaultState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "默认状态编号"
+      }
+    ],
+    "source": "code",
+    "namespace": "curve"
+  },
+  "State": {
+    "description": "三次贝塞尔曲线点计算 State 结构体",
+    "alias": "三次贝塞尔曲线点计算 State 结构体",
+    "fields": [
+      {
+        "name": "callCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "组件累计调用次数"
+      },
+      {
+        "name": "lastState",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "上一次输出状态编号"
+      },
+      {
+        "name": "lastValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一次输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "curve"
+  },
+  "Sub": {
+    "description": "三次贝塞尔曲线点计算 的子模块实体集合",
+    "alias": "三次贝塞尔曲线点计算 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "curve"
+  }
+}

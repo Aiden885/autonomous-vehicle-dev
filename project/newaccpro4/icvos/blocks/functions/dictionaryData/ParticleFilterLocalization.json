@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valueA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 A"
+      },
+      {
+        "name": "valueB",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 B"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "子模块调度是否全部有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组合执行结果标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "statePropagation",
+        "category": 1,
+        "dataType": "StatePropagation",
+        "shape": [],
+        "dataValue": {},
+        "description": "状态传播子模块"
+      },
+      {
+        "name": "weightUpdate",
+        "category": 1,
+        "dataType": "WeightUpdate",
+        "shape": [],
+        "dataValue": {},
+        "description": "权重更新子模块"
+      },
+      {
+        "name": "resampling",
+        "category": 1,
+        "dataType": "Resampling",
+        "shape": [],
+        "dataValue": {},
+        "description": "重采样子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  }
+}

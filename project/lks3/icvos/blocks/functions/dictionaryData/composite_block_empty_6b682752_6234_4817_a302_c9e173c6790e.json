@@ -1,0 +1,159 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "c3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "roadCurvaturePerM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [
+          1
+        ],
+        "dataValue": {},
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "steerRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "calculatePreviewDistance",
+        "category": 1,
+        "dataType": "composite_block_empty_6d40da43_e6f3_4d3e_90e4_71a40e919c50",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据车速和道路曲率计算LKS远预瞄距离。"
+      },
+      {
+        "name": "calculateWeightedError",
+        "category": 1,
+        "dataType": "composite_block_empty_1cba52b8_fa4f_4464_b4f1_c861c9d884b1",
+        "shape": [],
+        "dataValue": {},
+        "description": "按三组权重合成近、中、远预瞄点横向误差。"
+      },
+      {
+        "name": "generateSteerCommand",
+        "category": 1,
+        "dataType": "composite_block_empty_d57b8b07_7b62_49d0_a4d9_f37434b892f4",
+        "shape": [],
+        "dataValue": {},
+        "description": "计算受横向加速度约束并经过使能门控的方向盘转角命令。"
+      },
+      {
+        "name": "calculatePreviewErrors",
+        "category": 1,
+        "dataType": "composite_block_empty_155716e6_f219_4239_bb0c_e7c06396c0ae",
+        "shape": [],
+        "dataValue": {},
+        "description": "计算近、中、远三个预瞄点处的三次车道多项式横向误差。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

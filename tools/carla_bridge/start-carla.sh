@@ -4,7 +4,19 @@ set -euo pipefail
 CARLA_ROOT="${CARLA_ROOT:-/home/aiden/snap/code/app/carla-package}"
 PID_FILE="${CARLA_PID_FILE:-/tmp/gaasd-carla.pid}"
 LOG_FILE="${CARLA_LOG_FILE:-/tmp/gaasd-carla.log}"
-QUALITY_ARG="-quality-level=Low"
+CARLA_QUALITY_MODE="${CARLA_QUALITY_MODE:-low}"
+case "$CARLA_QUALITY_MODE" in
+    low)
+        QUALITY_ARG="-quality-level=Low"
+        ;;
+    normal)
+        QUALITY_ARG=""
+        ;;
+    *)
+        echo "[CARLA] unsupported CARLA_QUALITY_MODE: $CARLA_QUALITY_MODE (expected low or normal)" >&2
+        exit 2
+        ;;
+esac
 BACKGROUND="0"
 CARLA_EXTRA_ARGS="${CARLA_EXTRA_ARGS:-}"
 CARLA_FORCE_NVIDIA_VULKAN="${CARLA_FORCE_NVIDIA_VULKAN:-0}"
@@ -20,6 +32,7 @@ Defaults:
   foreground   yes
 
 Environment:
+  CARLA_QUALITY_MODE          low (default) or normal (CARLA Epic quality)
   CARLA_EXTRA_ARGS           Extra CARLA command line args, e.g. "-windowed -Resx=800 -Resy=600 -fps=20 -nosound -graphicsadapter=0"
   CARLA_FORCE_NVIDIA_VULKAN  If 1, prefer NVIDIA Vulkan ICD when VK_ICD_FILENAMES is not set
   CARLA_VULKAN_ICD           Explicit Vulkan ICD json path

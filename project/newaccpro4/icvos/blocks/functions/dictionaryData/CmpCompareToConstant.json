@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "常量比较 Input 结构体",
+    "alias": "常量比较 Input 结构体",
+    "fields": [
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Output": {
+    "description": "常量比较 Output 结构体",
+    "alias": "常量比较 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "compareResult",
+        "category": 0,
+        "dataType": "Integer",
+        "shape": [],
+        "dataValue": 0,
+        "description": "比较结果，-1 表示小于、0 表示相等、1 表示大于"
+      },
+      {
+        "name": "equal",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "常量比较是否相等"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Param": {
+    "description": "常量比较 Param 结构体",
+    "alias": "常量比较 Param 结构体",
+    "fields": [
+      {
+        "name": "constant",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "待比较常量"
+      },
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "浮点比较容差"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "State": {
+    "description": "常量比较 State 结构体",
+    "alias": "常量比较 State 结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "unsigned char",
+        "shape": [],
+        "dataValue": 0,
+        "description": "C11 合法占位字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Sub": {
+    "description": "常量比较 的子模块实体集合",
+    "alias": "常量比较 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  }
+}

@@ -36,7 +36,7 @@ PY
 
 start_server() {
   cd "$REPO_ROOT"
-  setsid python3 tools/gaasd_scenario_panel/app.py >"$LOG_FILE" 2>&1 < /dev/null &
+  nohup setsid python3 tools/gaasd_scenario_panel/app.py >"$LOG_FILE" 2>&1 < /dev/null &
   echo "$!" > "$PID_FILE"
 }
 
@@ -54,6 +54,44 @@ wait_server() {
   return 1
 }
 
+panel_sources_newer_than_process() {
+  [[ -f "$PID_FILE" ]] || return 1
+  find "$SCRIPT_DIR" -maxdepth 2 -type f \
+    \( -name '*.py' -o -name '*.js' -o -name '*.css' -o -name '*.html' \) \
+    -newer "$PID_FILE" -print -quit | grep -q .
+}
+
+restart_stale_server() {
+  local pid
+  local listener_pid
+  pid="$(cat "$PID_FILE" 2>/dev/null || true)"
+  if [[ -n "$pid" ]]; then
+    kill -TERM "$pid" >/dev/null 2>&1 || true
+  fi
+
+  # The PID file can outlive the Flask process after an abnormal restart.
+  # Stop the actual listener so a desktop launch never keeps serving stale code.
+  if is_port_ready; then
+    while IFS= read -r listener_pid; do
+      [[ -n "$listener_pid" ]] || continue
+      kill -TERM "$listener_pid" >/dev/null 2>&1 || true
+    done < <(lsof -t -nP -iTCP:"$PORT" -sTCP:LISTEN 2>/dev/null | sort -u)
+  fi
+  for _ in $(seq 1 40); do
+    is_port_ready || break
+    sleep 0.1
+  done
+  rm -f "$PID_FILE"
+
+  ! is_port_ready
+}
+
+if is_port_ready && panel_sources_newer_than_process; then
+  if ! restart_stale_server; then
+    echo "Cannot stop stale GAASD-CARLA panel listener on ${HOST}:${PORT}." >&2
+    exit 1
+  fi
+fi
 if ! is_port_ready; then
   start_server
   wait_server

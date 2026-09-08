@@ -19,8 +19,8 @@ import zmq
 
 DRIVER_TOPIC = "gaasd.carla.driver_command.v1"
 PULSE_KEYS = {
-    "e": (1, "降低设定速度/当前速度启控"),
-    "q": (2, "提高设定速度/继承参数启控"),
+    "e": (1, "待命时按当前速度启控；在控时降低设定速度"),
+    "q": (2, "待命有历史时恢复控制；在控时提高设定速度"),
     "t": (3, "减小时距"),
     "r": (4, "增大时距"),
     "c": (7, "取消ACC"),
@@ -120,7 +120,7 @@ def pygame_loop(pub: Publisher) -> None:
 
         screen.fill((245, 247, 250))
         lines = [
-            "E/Q: speed -/+    T/R: gap -/+    C: cancel",
+            "E: standby engage / active speed-    Q: resume / speed+",
             "Hold W: driver throttle    Hold S: driver brake",
             "Close this window to exit.",
         ]

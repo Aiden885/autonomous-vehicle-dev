@@ -1,0 +1,106 @@
+{
+  "Input": {
+    "description": "速率限制 Input 结构体",
+    "alias": "速率限制 Input 结构体",
+    "fields": [
+      {
+        "name": "targetValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标输出值"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Output": {
+    "description": "速率限制 Output 结构体",
+    "alias": "速率限制 Output 结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组件输出标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Param": {
+    "description": "速率限制 Param 结构体",
+    "alias": "速率限制 Param 结构体",
+    "fields": [
+      {
+        "name": "risingRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上升速率上限"
+      },
+      {
+        "name": "fallingRate",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "下降速率上限"
+      },
+      {
+        "name": "sampleTime",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "离散采样时间 (s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "State": {
+    "description": "速率限制 State 结构体",
+    "alias": "速率限制 State 结构体",
+    "fields": [
+      {
+        "name": "previousValue",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "上一周期输出值"
+      },
+      {
+        "name": "initialized",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "历史状态是否已初始化"
+      }
+    ],
+    "source": "code",
+    "namespace": "planning"
+  },
+  "Sub": {
+    "description": "速率限制 的子模块实体集合",
+    "alias": "速率限制 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "planning"
+  }
+}

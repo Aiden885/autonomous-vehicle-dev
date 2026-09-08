@@ -1,0 +1,414 @@
+{
+  "componentType": "app",
+  "name": "app_empty",
+  "cppClass": "",
+  "alias": "lksApplication",
+  "description": "空应用",
+  "author": "",
+  "version": "1.1.3",
+  "instanceId": "8f5d689c-3cf0-4afb-8cd9-18e78cdbbea8",
+  "originId": "e5d5ace0-159b-41f8-8cb8-1cc967320f9a",
+  "isCustom": true,
+  "customType": 0,
+  "isAtomic": false,
+  "isSourceCode": 0,
+  "children": [],
+  "parent": "",
+  "tags": [
+    "common"
+  ],
+  "parentId": "74340a30-8ea2-4ab0-9e9a-6390ddaec70e",
+  "extensionProps": [
+    {
+      "key": "base_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "other_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_input_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_output_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_client_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_service_ports",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "module_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "conf_filename",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "function_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "calibrate",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "process_log_config",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "namespace",
+      "value": {},
+      "props": []
+    },
+    {
+      "key": "task_config",
+      "value": {},
+      "props": []
+    }
+  ],
+  "childComponents": [
+    {
+      "componentType": "process",
+      "name": "process_empty",
+      "cppClass": "",
+      "alias": "lksProcess",
+      "description": "空进程",
+      "author": "",
+      "version": "1.1.3",
+      "instanceId": "93585c9b-5d69-423f-8619-ce362505880e",
+      "originId": "55f3ff86-ed45-4b46-ad8f-93a85cbe13c2",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "process",
+      "parentId": "8f5d689c-3cf0-4afb-8cd9-18e78cdbbea8",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {
+            "log": {
+              "level": "INFO",
+              "to_file": "OFF",
+              "to_remote": "OFF",
+              "to_console": "OFF",
+              "sys_log": "OFF"
+            }
+          },
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    },
+    {
+      "componentType": "module",
+      "name": "module_empty",
+      "cppClass": "",
+      "alias": "LKS算法模块",
+      "description": "空模块",
+      "author": "",
+      "version": "1.1.3",
+      "instanceId": "a807407f-21e6-442d-a6e4-13a788ec666d",
+      "originId": "module_empty",
+      "isCustom": true,
+      "customType": 0,
+      "isAtomic": false,
+      "isSourceCode": 0,
+      "children": [],
+      "parent": "",
+      "tags": "common",
+      "parentId": "93585c9b-5d69-423f-8619-ce362505880e",
+      "extensionProps": [
+        {
+          "key": "base_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "other_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_input_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_output_ports",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "module_input_ports",
+          "value": [
+            {
+              "alias": "lks_input",
+              "description": "",
+              "direction": "In",
+              "id": "da32d42e-0cf7-4ba2-a643-3fc942dc49d4",
+              "name": "lks_input",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "lks_input"
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON"
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "lks_input"
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS"
+                },
+                {
+                  "key": "message_type",
+                  "value": "pangu.modules.LksInput"
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_lks_input"
+                },
+                {
+                  "key": "task_id",
+                  "value": "lks_input"
+                },
+                {
+                  "key": "operateKeys",
+                  "value": [
+                    ".ego_speed_mps",
+                    ".brake_pressed",
+                    ".driver_steer_norm",
+                    ".frame_id",
+                    ".c0_m",
+                    ".c1",
+                    ".c2_per_m",
+                    ".c3_per_m2",
+                    ".curvature_per_m"
+                  ]
+                }
+              ],
+              "datatype": "INNER_SHM_DDS",
+              "channelVersion": "2c6a659a-f6e4-4e6f-8144-89c2e3315d9d"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_output_ports",
+          "value": [
+            {
+              "alias": "lks_output",
+              "description": "",
+              "direction": "Out",
+              "id": "c8a8cb33-151d-4857-a80b-27c4f57715f1",
+              "name": "lks_output",
+              "props": [
+                {
+                  "key": "channel_name",
+                  "value": "lks_output"
+                },
+                {
+                  "key": "bind_code",
+                  "value": "ON"
+                },
+                {
+                  "key": "channel_var_name",
+                  "value": "lks_output"
+                },
+                {
+                  "key": "channel_type",
+                  "value": "INNER_SHM_DDS"
+                },
+                {
+                  "key": "message_type",
+                  "value": "pangu.modules.LksOutput"
+                },
+                {
+                  "key": "channel_id",
+                  "value": "INNER_SHM_DDS_lks_output"
+                },
+                {
+                  "key": "task_id",
+                  "value": "lks_input"
+                },
+                {
+                  "key": "operateKeys",
+                  "value": [
+                    ".frame_id",
+                    ".steer_rad",
+                    ".control_enabled"
+                  ]
+                }
+              ],
+              "datatype": "INNER_SHM_DDS",
+              "channelVersion": "2c6a659a-f6e4-4e6f-8144-89c2e3315d9d"
+            }
+          ],
+          "props": []
+        },
+        {
+          "key": "module_client_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_service_ports",
+          "value": [],
+          "props": []
+        },
+        {
+          "key": "module_config",
+          "value": {
+            "timer_duration": 500
+          },
+          "props": []
+        },
+        {
+          "key": "conf_filename",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "function_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "calibrate",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "process_log_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "namespace",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "task_config",
+          "value": {},
+          "props": []
+        },
+        {
+          "key": "node_name",
+          "value": "module_empty",
+          "props": []
+        }
+      ],
+      "childComponents": [],
+      "childConnections": []
+    }
+  ],
+  "childConnections": []
+}

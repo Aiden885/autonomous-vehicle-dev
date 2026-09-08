@@ -23,6 +23,7 @@ tools/gaasd_canvas_tool.py
 
 ```text
 tools/refactor_newaccpro3_decision.py
+tools/refactor_newaccpro3_control.py
 tools/refactor_lks2_hierarchy.py
 ```
 
@@ -41,26 +42,33 @@ project/newaccpro3
 核心层级：
 
 ```text
-MainFlow
-├── Decision
-│   ├── StateClassifier
-│   ├── DecisionTable
-│   ├── ControlStateUpdate
-│   ├── TimeGapUpdate
-│   └── MaxSpeedUpdate
-└── Control
-    ├── DesiredDistance
-    ├── DistanceError
-    ├── RelativeSpeed
-    ├── DistanceFeedback
-    ├── SpeedFeedback
-    ├── RawTargetSpeed
-    ├── NonNegativeTargetSpeed
-    ├── TargetSpeedLimiter
-    └── EnableGate
+main
+├── decision
+│   ├── stateClassifier
+│   ├── decisionTable
+│   ├── controlStateUpdate
+│   ├── timeGapUpdate
+│   └── maxSpeedUpdate
+└── control
+    ├── spacingFeedback
+    │   ├── timeGapDistance
+    │   ├── desiredDistance
+    │   ├── distanceError
+    │   └── distanceFeedback
+    ├── relativeSpeedFeedback
+    │   ├── relativeSpeed
+    │   └── speedFeedback
+    └── targetSpeedOutput
+        ├── rawTargetSpeed
+        ├── zeroSpeed
+        ├── nonNegativeTargetSpeed
+        ├── targetSpeedLimiter
+        └── enableGate
 ```
 
-`DecisionTable` 直接保留在 `Decision` 层。它本身已经是一项完整、单一的物理职责，外面不再增加只包含一个真值表的空壳子模块。
+`decisionTable` 直接保留在 `decision` 层。它本身已经是一项完整、单一的物理职责，
+外面不再增加只包含一个真值表的空壳子模块。`control` 继续保留稳定的输入输出契约，
+内部按车距反馈、相对速度反馈和目标速度输出三项物理职责拆分，避免使用一个总封装隐藏全部计算。
 
 ### 2.2 当前控制关系
 
@@ -72,7 +80,7 @@ rawTargetSpeed = leadV + kDist * distanceError + kSpeed * relativeSpeed
 targetSpeed = min(maxSpeed, max(0, rawTargetSpeed)) * enable
 ```
 
-这条公式链决定了 `Control` 内部基础模块的物理命名和连线方向。后续调整布局或替换组件版本时，不得改变减法操作数顺序和三输入求和关系。
+这条公式链决定了 `control` 内部基础模块的物理命名和连线方向。后续调整布局或替换组件版本时，不得改变减法操作数顺序和三输入求和关系。
 
 ### 2.3 当前决策和状态关系
 
@@ -102,12 +110,17 @@ hasHistoryNext = hasHistory OR controlEnabledNext
 
 ```text
 /home/aiden/文档/Modularization_backups/newaccpro3_before_decision_refactor_20260727_1725
+/data/aiden/文档/Modularization_backups/newaccpro3_before_control_wrap_lower_camel_20260731_111541
+project/newaccpro3/data/cbdes.db.before_control_wrap_lower_camel_20260731
+/data/aiden/文档/Modularization_backups/newaccpro3_before_control_function_split_20260731_113554
+project/newaccpro3/data/cbdes.db.before_control_function_split_20260731
 ```
 
 本次分层重构脚本：
 
 ```text
 tools/refactor_newaccpro3_decision.py
+tools/refactor_newaccpro3_control.py
 ```
 
 当前版本快照保存在：
@@ -129,26 +142,26 @@ project/lks2
 核心层级：
 
 ```text
-MainFlow
-├── Decision
-│   ├── SpeedEnableCheck
-│   ├── DriverOverrideCheck
-│   └── ControlEnableDecision
-└── Control
-    ├── PreviewDistance
-    ├── LaneErrorEvaluation
-    │   ├── NearPreviewError
-    │   ├── MiddlePreviewError
-    │   └── FarPreviewError
-    ├── ErrorWeightedSum
-    └── SteerCommand
-        ├── RawSteerCalculation
-        ├── LateralAccelLimit
-        └── SteerEnableGate
+main
+├── decision
+│   ├── speedEnableCheck
+│   ├── driverOverrideCheck
+│   └── controlEnableDecision
+└── control
+    ├── previewDistanceCalculation
+    ├── laneErrorEvaluation
+    │   ├── nearPreviewError
+    │   ├── middlePreviewError
+    │   └── farPreviewError
+    ├── errorWeightedSum
+    └── steerCommand
+        ├── rawSteerCalculation
+        ├── lateralAccelLimit
+        └── steerEnableGate
 ```
 
 这一层级采用“决策负责是否允许控制，控制负责如何生成转角”的边界。三点车道误差计算统一放在
-`LaneErrorEvaluation` 中，横向加速度限幅和最终使能门控统一放在 `SteerCommand` 中，顶层不再
+`laneErrorEvaluation` 中，横向加速度限幅和最终使能门控统一放在 `steerCommand` 中，顶层不再
 散落中间运算组件。
 
 重构时使用递归展平连接指纹作为算法等价性约束。新建复合模块和边界端口允许改变层级连接数量，
@@ -163,7 +176,8 @@ MainFlow
 ```
 
 详细设计见 `docs/lks2_手动画布层级重构设计.md`，可重复执行脚本为
-`tools/refactor_lks2_hierarchy.py`。
+`tools/refactor_lks2_hierarchy.py`；当前层级的小驼峰命名迁移脚本为
+`tools/normalize_lks2_lower_camel.py`。
 
 ## 3. 哪些经验是稳定的
 
@@ -176,7 +190,7 @@ MainFlow
 5. 跨周期记忆使用局部状态，通过 `read-local-state` 读取当前值、`write-local-state` 写入下一周期值。
 6. 局部参数和局部状态由定义它们的复合模块持有。需要传入下级子模块时通过端口传递，不在下级重复定义同名参数或状态。
 7. 同层多个纯加法项优先使用一个可配置多输入 `add`，除非中间结果需要复用、观测或具有独立物理意义。
-8. 模块实例名表达物理功能或输出物理量，不使用 `add_1`、`multiply_2`、`Module01` 等编号式名称。
+8. 模块实例名表达物理功能或输出物理量，不使用 `add_1`、`multiply_2`、`Module01` 等编号式名称；代码生成使用的 `instanceName` 统一为小驼峰。
 9. 边界协议字段、复合模块端口和内部主信号尽量使用同一个简短名称，单位写在元数据中。
 10. 数据库结构检查、GUI 属性检查、代码生成检查和闭环行为检查是四种不同层面的验证，不能互相替代。
 
@@ -224,18 +238,18 @@ MainFlow
 
 | 不推荐 | 推荐 |
 | --- | --- |
-| `multiply_1` | `TimeGapDistance` |
-| `subtract_2` | `DistanceError` |
-| `multiply_3` | `DistanceFeedback` |
-| `add_1` | `RawTargetSpeed` |
-| `fmax_1` | `NonNegativeTargetSpeed` |
+| `multiply_1` | `timeGapDistance` |
+| `subtract_2` | `distanceError` |
+| `multiply_3` | `distanceFeedback` |
+| `add_1` | `rawTargetSpeed` |
+| `fmax_1` | `nonNegativeTargetSpeed` |
 
 ### 5.3 比较和逻辑
 
 | 组件 | 作用 | 使用规则 |
 | --- | --- | --- |
-| `less-than/greater-than/equal` | 生成条件结果 | 名称应表达条件，例如 `IsLowSpeed`、`IsEngageDecision`。 |
-| `logic-not` | 条件取反 | 名称表达取反后的物理含义，例如 `IsSpeedValid`。 |
+| `less-than/greater-than/equal` | 生成条件结果 | 名称应表达条件，例如 `isLowSpeed`、`isEngageDecision`。 |
+| `logic-not` | 条件取反 | 名称表达取反后的物理含义，例如 `isSpeedValid`。 |
 | `logic-and/logic-or` | 组合条件 | 可配置输入数量；同一物理条件组优先一次合并。 |
 
 比较和逻辑输出在当前设计中作为 0/1 使用。与 `double` 物理量相乘进行门控前，仍需检查生成代码中的类型转换是否正确。
@@ -308,11 +322,28 @@ simulateTotalTime
 
 ### 7.2 命名
 
-1. 复合模块使用职责名：`StateClassifier`、`TimeGapUpdate`。
-2. 计算块使用输出物理量或动作名：`DistanceError`、`ApplyMaxGap`。
-3. 条件块以 `Is/Has/Can/No/Next` 表意：`IsLowSpeed`、`HasCancelRequest`。
-4. 边界端口使用简短小驼峰：`egoV`、`targetSpeed`、`commandType`。
-5. 单位保存在接口说明中，不在名称中附加 `_mps`、`_rad`，除非外部正式协议已经如此规定。
+1. 所有画布标识符统一使用小驼峰：首字母小写，后续单词首字母大写，不使用下划线。
+2. 算法复合模块、子模块和函数使用动词或动宾短语，直接表达执行动作，例如
+   `evaluateDecision`、`updateControlState`、`calculatePreviewDistance` 和
+   `generateTargetSpeed`。例外是主流程下的顶层职责容器：ACC 和 LKS 均直接使用
+   `decision` 与 `control`，容器内部子模块再使用动词短语。
+3. 变量、参数和输入输出使用名词或形容词。物理量使用“名词 + 单位后缀”，例如
+   `egoSpeedMps`、`timeGapS`、`minDistanceM`、`roadCurvaturePerM` 和 `steerRad`。
+4. 无量纲归一化量使用 `Norm` 后缀，例如 `driverSteerNorm` 和 `rawSteerNorm`；
+   多项式系数按实际量纲使用 `Coeff`、`CoeffPerM` 或 `CoeffPerM2`。
+5. 布尔量必须以 `is` 或 `has` 开头，例如 `isControlEnabled`、`isBrakePressed` 和
+   `hasControlHistory`。
+6. 常量和枚举值使用大写下划线，例如 `COMMAND_BRAKE`、`DECISION_ENGAGE` 和
+   `MINIMUM_SPEED_SQUARED_M2PS2`。
+7. 组件实例名、`properties.alias`、复合模块 `instanceName`、复合边界端口、局部参数和
+   状态读写键必须同步修改，不能只改画布显示文字。
+8. 外部 Pangu/Protobuf 通道组件的 `name`、`id`、`alias`、`operateKeys`、
+   数据类型和字段选择都是接口契约，不随画布命名规则改变。例如
+   ACC 通道的 `leadV/distance/enable`和 LKS 通道的 `egoV/c0/c1/c2/c3`、
+   `steer_rad/control_enabled` 必须保持后端组件提供时的原名。小驼峰和
+   单位后缀规则只用于算法内部信号及复合模块边界。
+9. 真值表的输入输出名称、条件表达式和动作表达式必须同步迁移；修改后保持场景匹配表和
+   动作数值不变。
 
 ## 8. 数据库事实源和安全修改边界
 
@@ -435,6 +466,24 @@ cbdes.db / temp.db 一致性
 
 组件模板差异是版本提示，不自动判定为结构错误。
 
+#### 复合组件边界命名审计
+
+一个复合组件的同一接口在数据库中存在两层表示：父组件的函数端口，以及子画布中的
+`input/output` 边界块。重命名时必须同步修改两层，否则父层显示新名、进入子系统后仍显示旧名。
+
+1. 以父组件函数端口为规范名称，按“物理语义 + 数据类型”查找对应的子边界块。
+2. 不按端口列表顺序匹配；上下层的显示顺序可能不同。
+3. 同步修改子边界块的 `alias`、`properties.alias`、`base_config.name` 和边界端口语义名。
+4. 保持组件 UUID、端口 ID、连接表、布局及数据类型不变。
+5. `channel_input/channel_output` 属于外部协议边界，不纳入内部命名迁移。
+6. 修改后运行：
+
+```bash
+python3 tools/sync_composite_boundary_names.py project/newaccpro4 project/lks2
+```
+
+默认模式只审计；确有待同步项且 GAASD 已完全退出时，才对目标工程使用 `--apply`。
+
 ### 阶段 G：GUI 验证
 
 数据库审计通过后，仍需在 GAASD 中逐项检查：
@@ -521,9 +570,11 @@ oscilloscope
 
 ## 12. 当前仍需完成的验证
 
-本次 `newaccpro3 Decision` 分层已经通过数据库结构审计和展平连线等价检查，但以下步骤仍需在 GAASD 中完成后，才能称为完整可运行基线：
+本次 `newaccpro3 Decision / Control` 分层已经通过数据库结构审计和展平连线等价检查，
+但以下步骤仍需在 GAASD 中完成后，才能称为完整可运行基线：
 
-1. 逐级打开 `StateClassifier / ControlStateUpdate / TimeGapUpdate / MaxSpeedUpdate`。
+1. 逐级打开 `main / decision / control / spacingFeedback /
+   relativeSpeedFeedback / targetSpeedOutput` 及其内部模块。
 2. 检查边界端口、真值表、参数和状态属性面板。
 3. 保存并重新打开工程。
 4. 重新生成代码并检查生成结果。
@@ -554,14 +605,52 @@ pangu.modules.LksOutput
 通道应放在模块层，与算法主流程平级：
 
 ```text
-输入通道 -> MainFlow -> 输出通道
+输入通道 -> Main -> 输出通道
 ```
 
 输入消息的 `frame_id` 不参与算法计算时，可以在模块层直接透传到输出通道；其余信号通过
-`MainFlow` 边界输入输出进入手动画布。诊断输出可以接入真实中间量，但不得用无语义常量
+`Main` 边界输入输出进入手动画布。诊断输出可以接入真实中间量，但不得用无语义常量
 强行填满端口。
 
-### 13.2 示波器必须来自当前组件库模板
+### 13.2 同一输入通道可以用多个画布实例分类展示
+
+当一条正式消息同时包含车内信息和车外感知信息时，可以在画布中放置两个同源的真实输入通道组件：
+
+```text
+vehicleInputChannel     只选择车内信息字段
+perceptionInputChannel  只选择车外感知字段
+```
+
+这种方式只拆分“读取属性”和画布端口，不拆分中间件协议。两个实例必须保持完全相同的：
+
+```text
+channel_name
+message_type
+channel_id
+channel_var_name
+task_id
+```
+
+只允许 `operateKeys` 和由其生成的 `function_output_ports` 不同。两组字段应互不重叠，
+`frame_id` 只由其中一个实例透传。当前 `new_gaasd` 实测会将这两个实例合并为同一个底层回调，
+不会产生重复订阅。每次 GAASD 或代码生成器升级后，都要重复检查“回调数量为 1、字段映射完整”。
+
+画布显示名与协议字段名必须分开管理。协议字段的 `name`、端口 `id` 和 `operateKeys` 不得修改；
+如果原始字段包含 `_mps / _m / _per_m` 等单位后缀，只修改端口 `alias` 作为简洁显示名。例如：
+
+```text
+ego_speed_mps    -> egoV
+lead_speed_mps   -> leadV
+lead_distance_m  -> distance
+c0_m             -> c0
+c2_per_m         -> c2
+c3_per_m2        -> c3
+curvature_per_m  -> curvature
+```
+
+这样代码生成器仍然按左侧原始字段读取消息，画布则显示右侧的算法语义名称。
+
+### 13.3 示波器必须来自当前组件库模板
 
 示波器具有动态端口和属性面板配置。直接手工拼接数据库字段可能让组件显示正常，但无法打开
 `inputNumber / simulateStep / simulateTotalTime` 属性。正确方式是：

@@ -1,0 +1,179 @@
+{
+  "Param": {
+    "description": "run参数结构体",
+    "alias": "run参数结构体",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "egoSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "leadSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "leadDistanceM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "timeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "maxSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "isControlEnabled",
+        "category": 0,
+        "dataType": "int",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "minDistanceM",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "distanceErrorGainPerS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      },
+      {
+        "name": "relativeSpeedGain",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输入参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "targetSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "输出参数"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "calculateSpacingFeedback_2",
+        "category": 1,
+        "dataType": "run_fa2b2535_e243_4fd1_904f_ea508b90a4ef",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据目标时距计算期望跟车距离，并形成距离误差反馈修正量。"
+      },
+      {
+        "name": "calculateRelativeSpeedFeedback_2",
+        "category": 1,
+        "dataType": "run_8f7b5338_baaf_44cb_ab98_c448a82d8b2b",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据前车与自车的相对速度形成速度反馈修正量。"
+      },
+      {
+        "name": "generateTargetSpeed_2",
+        "category": 1,
+        "dataType": "run_53728aa4_1a0c_4dbf_b2ed_63c9c2a4016a",
+        "shape": [],
+        "dataValue": {},
+        "description": "合成前车速度和两项反馈修正量，执行速度限幅与控制使能门控。"
+      },
+      {
+        "name": "calculateAccelerationCommand_2",
+        "category": 1,
+        "dataType": "run_db765728_3454_4e75_86e9_1f8380521b21",
+        "shape": [],
+        "dataValue": {},
+        "description": "根据目标速度与自车速度误差计算纵向加速度命令，执行加减速度限幅和控制使能门控。"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

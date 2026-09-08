@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "高斯权重计算输入结构体",
+    "alias": "高斯权重计算输入结构体",
+    "fields": [
+      {
+        "name": "valueA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "Gaussian 子模块计算的第一输入标量"
+      },
+      {
+        "name": "valueB",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "Gaussian 子模块计算的第二输入标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Output": {
+    "description": "高斯权重计算输出结构体",
+    "alias": "高斯权重计算输出结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组合执行结果标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Param": {
+    "description": "高斯权重计算参数结构体",
+    "alias": "高斯权重计算参数结构体",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "State": {
+    "description": "高斯权重计算状态结构体",
+    "alias": "高斯权重计算状态结构体",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "perception"
+  },
+  "Sub": {
+    "description": "高斯权重计算 的子模块实体集合",
+    "alias": "高斯权重计算 的子模块实体集合",
+    "fields": [
+      {
+        "name": "expElement",
+        "category": 1,
+        "dataType": "GaussianExpElement",
+        "shape": [],
+        "dataValue": {},
+        "description": "指数计算子模块实例"
+      },
+      {
+        "name": "mul",
+        "category": 1,
+        "dataType": "GaussianMul",
+        "shape": [],
+        "dataValue": {},
+        "description": "乘法计算子模块实例"
+      },
+      {
+        "name": "divElement",
+        "category": 1,
+        "dataType": "GaussianDivElement",
+        "shape": [],
+        "dataValue": {},
+        "description": "除法计算子模块实例"
+      }
+    ],
+    "source": "code",
+    "namespace": "perception"
+  }
+}

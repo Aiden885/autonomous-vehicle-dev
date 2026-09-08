@@ -6,51 +6,1097 @@
 
 ---
 
-## 当前状态（2026-07-29 更新）
+## 当前状态（2026-09-08 磁盘空间整理）
+
+- 4 TB 硬盘中的 Linux 分区 `/dev/nvme0n1p3` 实际为 `1992 GB`（约 `1.8 TiB`），
+  当前使用约 `308 GB`，ext4 默认保留约 `93 GB`，因此普通用户可用空间显示约
+  `1.4 TiB`，不存在分区容量丢失。
+- 清理约 `20.2 GB` 的 pip 下载缓存，以及两份共约 `4.9 GB`、已确认无进程占用的
+  `/tmp/autonomous-vehicle-dev-upload-*` 临时工程副本。
+- systemd journal 由约 `4.0 GB` 压缩至 `1.0 GB`。
+- `/home` 是独立 ext4 数据分区，已将保留块比例由 `5%` 调整为 `1%`，增加约 `30 GB`
+  普通用户可用空间；未调整根分区的保护性预留比例。
+- 整理后根分区由 `85%` 降至 `81%`（可用约 `35 GB`），`/home` 由 `90%` 降至
+  `83%`（可用约 `127 GB`），`/data` 仍有约 `1.4 TB` 可用。
+- 未删除 CARLA/Unreal、Conda 环境、GAASD 目录及联调构建缓存，也未清理 Docker/Pangu
+  镜像。若后续需要继续释放空间，优先将 CARLA 源码构建目录或其他大型研究数据迁移到
+  `/data`，并保留原路径软链接，不直接删除。
+- `/data` 中较大的独立数据为 `Pro` 约 `110 GB`、`code` 约 `79 GB`、`文档/temp`
+  约 `50 GB` 和 `下载` 约 `41 GB`；其中 `文档/temp` 主要是 Pangu 镜像及历史交付包，
+  本次未在没有版本保留清单的情况下删除。
+
+---
+
+## 当前状态（2026-09-08 ACC/LKS GitHub 工程快照）
+
+- 快照范围包含最新 `project/newaccpro4`、`project/lks3` 画布数据库、`icvos/blocks`、
+  生成源码和工程配置，以及对应的 ACC/LKS CARLA 场景。
+- 同步当前 `carla_bridge`、场景测试平台、ACC/LKS Pangu 联调工具、自动化测试与相关项目文档。
+- 在两个工程下分别保存 `gaasd_dictionaryData/`，内容从各自工程内部全局字典复制并逐文件
+  比对一致，避免跨电脑恢复时依赖本机当前后端字典状态。
+- 排除 `icvos/output/`、运行日志、画布数据库历史备份、旧交付包副本以及无关研究目录；
+  候选提交中不存在超过 `50 MB` 的新文件。
+- Bridge、测试平台、Pangu 和画布维护工具共 `65` 项自动化测试通过。
+
+---
+
+## 当前状态（2026-09-08 GAASD `20260831` 双版本更新）
+
+已使用以下安装包同步更新本机两套 GAASD 前端：
+
+```text
+/home/aiden/Downloads/GAASD_SETUP_20260831.tar.gz
+SHA256: 1df3dbc63488b89a6660bc8106881e8a7e3ff03285b6035be293bcf9b821ff7a
+```
+
+更新目标和入口保持不变：
+
+```text
+系统版前端: /opt/gaasd
+系统版入口: /usr/bin/gaasd -> /opt/gaasd/gaasd
+
+隔离版前端: /home/aiden/gaasd_versions/gaasd-2.7.0.5/app
+隔离版入口: /home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+本次仍只替换两套前端负载，系统版和隔离版的 `gaasd_server`、用户配置、工程数据库
+及隔离版启动脚本均保留。新包新增或更新了 AI Assist、工具链、数据库结构迁移等前端模块，
+软件版本仍为 `2.7.0.5`。
+
+验证结果：
+
+- 安装包、新系统版和新隔离版均包含 12,769 个文件；两套安装目录与包内前端负载
+  逐文件比对差异数均为 `0`。
+- 两套 `gaasd` 均无缺失动态库，两处 `chrome-sandbox` 均为 `root:root 4755`。
+- 系统入口软链接正确；两套后端的 `new_gaasd`、`codescan-cpp` 与更新前哈希一致。
+- 系统版和隔离版均完成 8 秒 GUI 冒烟测试，各自稳定保持 7 个 Electron 进程；系统版
+  使用 `/home/aiden/.config/GAASD`，隔离版使用自身 `home/.config/GAASD`。
+- 冒烟测试完成后已主动关闭两套进程，无本次测试产生的活动 GAASD 进程残留；系统中
+  仍有一个 8 月 28 日遗留的 `<defunct>` 僵尸条目，不具备执行能力且不占用服务端口。
+
+本次最初的工具会话将 `/` 和 `/home` 以只读方式挂载，因此由用户在普通终端执行已校验的
+一键更新脚本；后续 GAASD 更新在工具环境具备系统写权限时，按上述双版本安全流程直接完成，
+不再让用户手动执行。
+
+---
+
+## 当前状态（2026-09-08 测试平台与场景更新包）
+
+已在 `gaasd_scenario_panel_update_20260828.zip` 的交付结构基础上，使用当前本地
+版本重新生成测试平台与场景更新包：
+
+```text
+deliverables/gaasd_scenario_panel_update_20260908.zip
+```
+
+- 同步 ACC 场景 `newaccpro4_accel_codegen_carla_20260824` 和 LKS 场景
+  `lks3_codegen_carla_20260817`，保留各自 Pangu 运行时源码快照。
+- 同步当前 `gaasd_scenario_panel`、`carla_bridge`、`pangu_acc_closed_loop`、
+  `pangu_generated_closed_loop` 和 `pangu_lks_closed_loop` 工具。
+- ACC 场景包含加速度闭环参数、时距诊断配置及测试平台实时遥测功能；LKS
+  场景与当前本地版本一致。
+- 排除 `__pycache__`、`.pyc`、`.pytest_cache` 和运行日志等机器临时文件。
+- 63 项自动化测试全部通过；Shell、JavaScript、JSON/YAML 语法、源文件与交付
+  快照一致性及 ZIP 完整性检查均通过。
+
+本次只完成静态与自动化回归，未重新启动 CARLA/Pangu 做动态场景长跑。
+
+---
+
+## 当前状态（2026-09-02 ACC 加速度命令 Bridge 闭环执行）
+
+已将 ACC 的 `target_accel_mps2` 从“按最大加速度直接换算油门/制动”的开环映射，
+改为 Bridge 内部的物理加速度闭环：
+
+- 使用 CARLA 自车纵向实际加速度作为反馈，加入低通滤波、PI 修正和积分抗饱和。
+- 根据车辆质量、阻力系数、车速和道路坡度计算滚阻、风阻及坡度前馈；车辆物理参数不可读时使用配置默认值。
+- 油门和制动保持互斥，并继续受场景最大加速度、最大减速度及踏板开度约束。
+- ACC 待命、驾驶员踏板接管、控制超时、目标速度模式和自车重生时清空闭环状态。
+- `newaccpro4_accel_codegen_carla_20260824/bridge_config.json` 已显式固化首版参数。
+- 测试平台新增实际加速度、阻力前馈、PI 反馈和执行器限幅实时显示。
+
+验证结果：Bridge 13 项测试、测试平台 47 项测试、Python/JavaScript/JSON 语法及
+`git diff --check` 均通过。静态工况冒烟计算中，`15 m/s` 匀速、零目标加速度时
+前馈补偿约为 `0.161 m/s²`，对应初始油门约 `10.8%`。当前尚未进行本轮 CARLA
+动态闭环标定，下一步需从测试平台复测实际时距、加速度跟踪、踏板切换及饱和状态。
+
+---
+
+## 当前状态（2026-08-31 周报编写流程固化）
+
+已将每周一周报的固定规则纳入现有周报生成工具：
+
+- 文档标题保持“规控小组”，文件名按“规控小组-X月第X周项目进展周报”命名。
+- 所有表格的负责人统一填写“赵煜坤”。
+- 固定使用“上周核心工作、风险与问题、本周工作安排”三部分；无风险内容时仅保留风险表头。
+- 用户提供上周原始工作记录和本周安排后，结合最近三份周报、工作日志及当前项目状态进行归类、去重和措辞细化，再生成 DOCX。
+- 可复用输入模板为 `docs/weekly_inputs/template.md`，流程说明为 `tools/report_generator/README.md`。
+
+本周生成文件为 `docs/规控小组-9月第1周项目进展周报.docx`。
+
+---
+
+## 当前状态（2026-08-26 ACC 跟车性能参数化调试）
+
+已为测试平台中的 `newaccpro4_accel_codegen_carla_20260824` 场景增加 ACC 跟车性能调试能力：
+
+- 页面可设置前车初始速度、初始车间距、速度阶跃值与阶跃时刻，用于构造定速、加速和减速前车工况。
+- 页面可设置数据记录时长、辅助起步速度与时长，以及最大加/减速度、最大油门和最大制动开度。
+- 前车 waypoint PID 控制器支持定时速度阶跃；阶跃时刻为 `0` 时保持原有固定速度行为。
+- 启动脚本根据页面参数生成临时 Bridge 配置，不修改基准 `bridge_config.json`；仅本场景显式覆盖算法消息中的加速度执行限值。
+- ACC 记录器新增速度误差 RMS、最大速度误差、稳定时间、加速度饱和占比和油门/制动切换次数等指标。
+- 测试平台参数卡已从 LKS 专用实现改为场景通用实现，LKS 原有参数编辑能力保持不变；ACC 页面新增“测试结果”按钮。
+
+测试平台服务已重启并继续监听 `http://127.0.0.1:8765/`。本次新增的 9 项专项测试、Python 语法、Shell 语法和 JavaScript 语法检查均通过。全量面板测试中另有 1 项既有 LKS3 测试仍引用已不存在的旧运行时源码路径，与本次 ACC 修改无关。
+
+---
+
+## 当前状态（2026-08-26 ACC/LKS 当前工程快照打包）
+
+已将当前 `newaccpro4` 和 `lks3` 画布工程打包为：
+
+```text
+deliverables/newaccpro4_lks3_20260826.zip
+```
+
+压缩包内并列保留两个工程的画布数据库、`icvos/blocks`、生成源码和工程配置，
+并在每个工程下分别附带与其匹配的 `gaasd_dictionaryData/` 全局参数字典。
+为避免重复携带约 2.8 GB 的编译依赖，已排除 `icvos/output/`、历史数据库备份和
+代码生成日志目录；未额外添加交付说明文档。压缩包完整性检查通过。
+
+---
+
+## 当前状态（2026-08-26 ACC 最终输出链加速度语义统一）
+
+已修正 `newaccpro4` 中加速度命令向上封装后仍显示为目标速度的问题：
+
+- `ACC控制` 和 `执行Acc` 的最终输出端口统一为
+  `accelerationCommandMps2`，内部输出块显示为“加速度命令”。
+- `GenerateTargetSpeed` 输出及加速度换算模块输入继续使用
+  `targetSpeedMps`，保持中间目标速度的真实物理语义。
+- 现有 Pangu 通道字段 `acc_output.target_speed_mps` 暂时保持不变，当前仅作为
+  加速度命令的兼容承载字段。
+- 三个画布数据库同步更新；所有 UUID、连线、数据类型和通道定义保持不变。
+
+修改前备份位于
+`backups/newaccpro4_before_acceleration_output_rename_20260826_100348/`。
+数据库字段差异审计确认仅 4 个预期组件发生变化，连接表变化数为 `0`；
+回归测试见 `tools/tests/test_rename_acceleration_output_chain.py`。
+
+---
+
+## 当前状态（2026-08-26 ACC/LKS 内部输入输出模块别名中文化）
+
+在前一轮内部计算节点中文化基础上，继续修改复合子系统内部输入/输出边界块的显示别名：
+
+- ACC：64 个内部 `input/output` 块改为中文模块别名。
+- LKS：75 个内部 `input/output` 块改为中文模块别名。
+- 实际接口名、父组件端口、数据类型、官方组件中文名称、通信字段和连线均保持不变。
+
+修改前数据库备份位于 `backups/acc_lks_before_io_alias_chinese_20260826_094954/`。
+备份前后字段级对比和三个画布数据库完整性检查均已通过。
+
+---
+
+## 当前状态（2026-08-25 ACC/LKS 内部模块别名中文化）
+
+已按审核后的对照表完成 `newaccpro4` 和 `lks3` 内部计算节点模块别名中文化：
+
+- ACC：81 个内部节点由英文/小驼峰别名改为中文功能名称。
+- LKS：67 个内部节点由英文/小驼峰别名改为中文功能名称，其中近、中、远三点误差计算复用了相同命名规则。
+- 两者均未修改组件英文名称、输入输出端口、通信字段、参数/状态绑定、常量符号和连线。
+
+修改前工程备份位于：
+
+```text
+backups/acc_lks_before_chinese_alias_20260825_182612/
+```
+
+对照表为 `docs/ACC_LKS_模块别名中文对照表_20260825.md`，迁移工具为
+`tools/apply_acc_lks_chinese_module_aliases.py`。三个画布数据库完整性、备份前后字段差异、
+连接表及 `cbdes.db/temp.db` 一致性检查均已通过。
+
+---
+
+## 当前状态（2026-08-24 GAASD `20260821` 双版本安全更新）
+
+已使用以下安装包同步更新本机两套 GAASD 前端：
+
+```text
+/home/aiden/Downloads/GAASD_SETUP_20260821.tar.gz
+SHA256: d8d0f68e22ef3e6acf10a79b7ed45b3a1d8258b748844560875e78056e68c49b
+```
+
+更新目标和启动入口保持不变：
+
+```text
+系统版前端: /opt/gaasd
+系统版入口: /usr/bin/gaasd -> /opt/gaasd/gaasd
+
+隔离版前端: /home/aiden/gaasd_versions/gaasd-2.7.0.5/app
+隔离版入口: /home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+本次没有直接运行会清空 `/opt/gaasd` 并重写系统入口的统一安装流程，而是先构建并校验
+两套新前端目录，再进行原子替换。系统版后端 `/home/aiden/gaasd_server`、隔离版后端
+`/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server`、两套配置和工程数据均未替换；
+两套后端的 `new_gaasd`、`codescan-cpp` 及隔离版启动脚本更新前后 SHA256 一致。
+
+与上一版 `20260813` 相比，新前端共有 55 项内容变化：新增 17 个文件、修改 22 个文件、
+删除 16 个旧文件，主要涉及代码生成、工程/组件管理、系统环境、SSH 可达性和前端哈希资源。
+软件版本仍为 `2.7.0.5`，Electron 版本仍为 `27.1.3`。
+
+验证结果：
+
+- 两套安装目录与安装包前端负载分别执行内容校验，差异数均为 `0`。
+- 两套 `gaasd` 执行文件均无缺失动态库；两处 `chrome-sandbox` 均为 `root:root 4755`。
+- 系统版和隔离版均完成真实 GUI 冒烟测试，并分别稳定保持 7 个 Electron 进程。
+- 系统版继续使用 `/home/aiden/.config/GAASD`；隔离版继续使用自身
+  `home/.config/GAASD`，profile 隔离有效。
+- 正常结束测试前未出现 fatal、崩溃或缺库错误；仅有既有的非阻断 `libva` 警告。
+
+按既有约定，验证完成后已删除两套临时回滚目录和 `/tmp` 解压暂存，释放约 `3.1 GB`；
+原始安装包仍保留在 `Downloads` 目录。
+
+---
+
+## 当前状态（2026-08-24 ACC 加速度输出生成代码闭环验证）
+
+已完成 `project/newaccpro4` 最新生成代码的编译修复、Pangu 边界接入和
+CARLA 加速度命令闭环冒烟测试。用户新增的三个局部参数已经正确进入生成代码：
+
+```text
+minDistanceM = 5.0
+distanceErrorGainPerS = 0.25
+relativeSpeedGain = 0.4
+```
+
+本轮编译错误并非上述参数缺失。根因是
+`project/newaccpro4/icvos/blocks/functions/dictionaryData/run.json` 被数组型加速度组件的
+UUID 专用字典内容污染，导致所有普通 `run` 组件的标量端口被错误生成成 `double[1]`，最终出现
+`const double` 赋值给 `double[1]` 的类型错误。现已把通用 `run.json` 恢复为空参数结构，
+UUID 专用加速度字典保持不变；重新生成后不再出现数组字段泄漏，完整 Pangu 工程编译成功。
+
+生成器还会覆盖 ZMQ 边界节点的手工实现，并生成空的节点 `ioconfig`。本轮已恢复：
+
+- 输入边界：CARLA ZMQ 数据发布到 Pangu `acc_input` 通道。
+- 输出边界：订阅 Pangu `acc_output`，将原 `targetSpeedMps` 临时字段解释为
+  `target_accel_mps2` 并发送给 Bridge。
+- 节点配置：补齐输入 publisher 和输出 subscriber/task 的 `acc_input`、`acc_output` 通道定义。
+- 运行配置：适配新版实际主进程名 `AccProcess`，并使用精确进程匹配，避免 `pgrep -f` 假阳性。
+
+新增专用调试场景：
+
+```text
+scenarios/newaccpro4_accel_codegen_carla_20260824
+```
+
+运行环境位于：
+
+```text
+/home/aiden/.cache/gaasd-pangu/newaccpro4_accel_codegen_build/install
+```
+
+35 秒真实闭环结果：共采集 4924 个样本，控制命令已持续生效；启控后命令最大时延约
+`0.061 s`，自车最高速度约 `5.05 m/s`，末速度约 `2.12 m/s`，前车末速度约
+`1.99 m/s`，最小及末帧净间距约 `7.21 m`，无碰撞和通信错误。油门、制动随加速度命令
+正常变化，证明链路
+`CARLA -> ZMQ -> Pangu 生成算法 -> acc_output -> Bridge 加速度控制 -> CARLA` 已跑通。
+
+为避免旧采集字段造成误判，Bridge 的 `chassis_feedback` 和 ACC 结果采集器已增加
+`target_accel_mps2`，汇总文件同步提供目标加速度的最小值、最大值和末值。聚焦单元测试
+2 项通过；随后完成 18 秒真实复测，采集 2527 个样本，目标加速度范围为
+`0~1.5 m/s^2`、末值约 `0.31 m/s^2`，末帧控制保持启用，最小净间距约 `15.21 m`，
+CARLA 与 Bridge 日志无错误。
+
+当前仍属于临时兼容验证：外层旧端口名 `targetSpeedMps` 实际承载加速度，单位为 `m/s^2`。
+正式集成时应由 GAASD/中间件增加明确的加速度输出字段，避免速度和加速度语义混用。
+
+---
+
+## 当前状态（2026-08-21 ACC 加速度命令子模块画布接入）
+
+已在 `project/newaccpro4` 的 `Control` 内新增 `CalculateAccelerationCommand`
+（中文名称“计算加速度命令”），位置位于 `GenerateTargetSpeed` 之后，保持原有
+“车距/相对速度反馈 -> 目标速度 -> 加速度命令”的纵向控制层级。
+
+子模块按基础组件实现以下计算：
+
+```text
+speedErrorMps = targetSpeedMps - egoSpeedMps
+rawAccelerationMps2 = 0.6 * speedErrorMps
+limitedAccelerationMps2 = clamp(rawAccelerationMps2, -6.0, 1.5)
+accelerationCommandMps2 = limitedAccelerationMps2 * isControlEnabled
+```
+
+当前最外层 ACC 输出协议尚无加速度字段，因此暂时将
+`accelerationCommandMps2` 接到原 `targetSpeedMps` 输出边界，端口名保持不变。
+这只是为画布结构和后续代码生成准备的临时兼容方式：该端口当前承载值的实际单位已是
+`m/s^2`，不能直接接入仍按 `m/s` 解释 `targetSpeedMps` 的现有 Bridge 做真实闭环。
+
+修改前已备份 `cbdes.db` 和 `temp.db`；修改后两份数据库 SHA256 一致。画布审计结果：
+`163` 个组件、`177` 条连线、`0` 个错误、`0` 个警告。可重复执行和检查工具为
+`tools/add_newaccpro4_acceleration_command.py`。
+
+---
+
+## 当前状态（2026-08-20 ACC/LKS 组件中英文名称规范化）
+
+已按新版 GAASD 的“中文名称 / 英文名称 / 模块别名”字段语义，统一修改
+`project/newaccpro4` 和 `project/lks3` 中当前前端允许编辑名称的“组件”：
+
+- 英文名称改为原英文模块别名对应的大驼峰形式，例如
+  `calculatePreviewDistance -> CalculatePreviewDistance`。
+- 模块别名改为与中文名称一致，例如 `计算预瞄距离`。
+- 中文名称保持原有已审核内容。
+- 输入输出端口及其他官方只读基础模块保持原名和小驼峰端口名，不参与迁移。
+- `cppClass`、组件 ID、父子关系、连接、端口 UUID、参数和状态绑定均未修改。
+
+本轮共处理 ACC 10 个组件、LKS 16 个组件，并同步更新 `cbdes.db`、`temp.db`、
+`runtimeCanvas.db`。验证结果：两项目 SQLite 完整性均为 `ok`，连接差异为 `0`，
+输入输出端口差异为 `0`，各项目的 `cbdes.db` 与 `temp.db` SHA256 一致。
+
+可重复迁移工具：`tools/rename_acc_lks_component_display_names.py`。原中文名称维护工具
+`tools/set_acc_lks_chinese_names.py` 已兼容新的中文模块别名约定。修改前数据库备份后缀为：
+
+```text
+.before_component_name_pascal_chinese_20260820_143417
+```
+
+---
+
+## 当前状态（2026-08-19 LKS3 调试平台完整参数接入）
+
+已将 `lks3_codegen_carla_20260817` 的调参面板由少量场景参数扩展为完整的
+LKS 场景与算法参数面板，共 20 项，按场景、辅助起步、预瞄模型、三点权重、
+转向控制、决策门控和车辆标定 7 组展示。页面不使用参数区内部滚动条，统一通过
+页面滚动浏览；轴距和前轮最大转角等车辆标定项使用警示样式，避免误改。
+
+参数生效链路已经贯通：
+
+```text
+调试平台保存参数
+  -> 场景启动环境变量
+  -> Docker --env-file
+  -> LKS Pangu 主模块 Init()
+  -> control::global::params
+  -> 最新 lks3 生成算法
+```
+
+本轮新增的算法调参项覆盖预瞄基础距离、车速预瞄系数、曲率缩放参数、曲率阈值、
+近端预瞄距离、三点权重、转向比例增益、转向缩放、横向加速度上限、最低工作车速、
+驾驶员转向阈值、轴距和前轮最大转角。场景侧同时保留目标车速、初始横向偏移、
+采集时长、辅助起步速度和辅助起步时长。三点权重在后端和运行时均校验总和为 1。
+参数保存后从下一次“启动联调环境”开始生效，Pangu 日志会打印最终采用的完整参数。
+
+验证结果：
+
+- 调试平台参数接口返回全部 20 项配置，原有用户保存值保持不变。
+- 参数面板自动化测试共 15 项全部通过，包括范围、权重和环境变量映射检查。
+- lks3 Pangu 生成工程重新编译成功；构建脚本已补充缓存目录所有权修复，避免 Docker
+  产物导致后续普通用户无法增量构建。
+- 使用实际编译生成的 LKS 核心库注入一组非默认参数，运行日志与读取结果均与输入一致，
+  已确认参数不是只保存在前端，而是确实进入算法全局参数。
+
+**下一步**：在调试平台刷新页面，选择最新 lks3 场景，保存一组整定参数后重启联调环境，
+再通过车辆轨迹和结果采集对高速弯道表现进行人工复核。
+
+---
+
+## 当前状态（2026-08-17 最新 ACC/LKS 生成代码接入本地调试平台）
+
+已将当前 `project/newaccpro4` 与 `project/lks3` 的 GAASD 生成代码接入现有
+GAASD-CARLA 调试平台。本轮目标是先跑通最新生成代码的本地链路，允许对生成工程的
+ZMQ 边界做最小修补，不作为完整算法验收。
+
+完成内容：
+
+- 新增统一构建工具 `tools/pangu_generated_closed_loop/build_generated_project.sh`，分别在
+  `~/.cache/gaasd-pangu/newaccpro4_codegen_build` 和
+  `~/.cache/gaasd-pangu/lks3_codegen_build` 生成隔离运行环境，使用
+  `docker.cbdes.cn:8080/cbdes/x86:latest` 编译成功。
+- 补齐两个生成工程的输入/输出边界节点：输入节点从 Bridge 订阅 ZMQ 数据并发布 Pangu
+  内部消息，输出节点订阅生成算法输出并向 Bridge 发布 CARLA 控制命令。生成的算法计算
+  文件未改动。
+- 新增调试平台场景：
+  - `scenarios/newaccpro4_codegen_carla_20260817`
+  - `scenarios/lks3_codegen_carla_20260817`
+- 每个场景均同时启动输入边界、生成算法、输出边界三个 Pangu 进程；调试平台已能自动
+  发现场景，并沿用既有 ACC 驾驶指令、LKS 驾驶接管和结果读取功能。
+
+聚焦测试结果：
+
+- ACC：最初发生追尾并非控制公式或距离口径错误。旧启动顺序在自车仍为 `0 m/s` 时发送
+  一次性 `E` 启控脉冲，低于生成代码的 `minimumOperatingSpeedMps=1`，决策处于低速态并
+  忽略该脉冲，导致 `control_enable=0`、目标速度为 `0`，起步辅助脚本最后的油门命令持续生效，
+  ACC 从未接管。现已改为先完成起步并释放油门，再发送 `E`。修正后完成 50 秒闭环复测，
+  ACC 在约第 8 秒启控，最小前车净距约 `6.21 m`，自车最大速度约 `4.46 m/s`，无碰撞；
+  目标速度随净距缩小从约 `7.84 m/s` 收敛到 `2.3~2.5 m/s`。由此确认
+  `CARLA -> ZMQ 输入边界 -> newaccpro4 生成算法 -> 输出边界 -> CARLA` 链路可运行。
+- LKS：Town04 短时闭环采集 399 个样本，车道数据有效率 100%，最大绝对横向偏差约
+  `0.098 m`，最大绝对转向角约 `0.00787 rad`，20 秒内无碰撞。结果文件位于
+  `/tmp/lks3-codegen-carla/probe/latest_summary.json`，可确认最新 lks3 生成代码链路可运行。
+
+注意事项：新版 Pangu `latest` 镜像的 `run.sh` 会配置路由，运行容器必须使用
+`--privileged`，否则会因 `SIOCADDRT: Operation not permitted` 在启动后立即退出。
+ACC 场景发送一次性启控指令前必须确认自车速度已经高于生成参数
+`minimumOperatingSpeedMps`；起步辅助脚本结束时必须释放油门控制。
+
+Bridge 的 `chassis_feedback` 已增加目标速度、控制使能、算法指令油门和制动诊断字段，
+ACC 采集脚本同步记录这些字段，可直接区分“算法输出异常”和“CARLA 控制被其他客户端覆盖”。
+
+**下一步**：用调试平台人工复核两个新场景；ACC 可延长运行时间观察弯道跟车，LKS 再延长
+运行时间覆盖更多弯道。后续 GAASD 重新生成代码后，重新执行统一构建脚本即可刷新缓存。
+
+---
+
+## 当前状态（2026-08-14 GAASD `20260813` 双版本安全更新）
+
+已使用以下安装包同步更新本机两套 GAASD 前端：
+
+```text
+/home/aiden/文档/temp/GAASD_SETUP_20260813.tar.gz
+SHA256: de5f39b6ecf196106ac6dabcfb141487ed7ced1ad71b199708791b7b68e2023a
+```
+
+更新目标和启动入口保持不变：
+
+```text
+系统版前端: /opt/gaasd
+系统版入口: /usr/bin/gaasd -> /opt/gaasd/gaasd
+
+隔离版前端: /home/aiden/gaasd_versions/gaasd-2.7.0.5/app
+隔离版入口: /home/aiden/gaasd_versions/gaasd-2.7.0.5/run-gaasd-2.7.0.5.sh
+```
+
+本次继续只替换前端负载，没有运行会覆盖两套用户数据的统一安装流程。系统版后端
+`/home/aiden/gaasd_server`、隔离版后端
+`/home/aiden/gaasd_versions/gaasd-2.7.0.5/home/gaasd_server`、隔离版配置和工程数据库均保留。
+两套后端的 `new_gaasd`、`codescan-cpp` 更新前后 SHA256 完全一致，隔离版启动脚本哈希也未变化。
+
+与上一版 `20260812` 相比，新包包含 5 个实质修改文件、14 个新前端哈希资源，并删除
+14 个旧哈希资源。后端入口变化集中在 `Generate` 和 `ProjectComponent` 及其 TypeScript 源码，
+同时更新了前端入口 `fe/index.html`。Electron 主二进制哈希未变化，版本仍为 `2.7.0.5`，
+本次属于同版本日期构建更新。
+
+验证结果：
+
+- 两套安装目录与安装包负载分别执行内容校验，差异数均为 `0`。
+- 两套 `gaasd` 执行文件执行 `ldd` 均无缺失动态库。
+- 两套 `chrome-sandbox` 均为 `root:root 4755`。
+- 系统版和隔离版分别完成真实 GUI 冒烟测试，8 秒检查点均保持 7 个 Electron 进程；主动关停前
+  fatal/崩溃/动态库错误计数均为 `0`，测试进程随后已全部关闭。
+- 为满足系统版前端缓存路径，已确认并创建 `/home/aiden/cacheFile`；隔离版仍使用自身 profile 中的缓存目录。
+
+沿用不长期保留前端回滚副本的约定：完成校验后删除系统版、隔离版的本次临时回退目录及
+解压暂存，只保留原始安装包 `/home/aiden/文档/temp/GAASD_SETUP_20260813.tar.gz`。
+
+## 当前状态（2026-08-24 ARC-AGI-3 E0003 实验）
+
+`research/arc_agi_3/` 已完成用户批准的 `E0003_component_frontier`。
+实验先以原随机策略运行 `E0002b_random_telemetry_replay` 补齐探索遥测，
+再只将 ACTION6 坐标生成替换为“背景众数之外的单色 4-连通域代表点”。
+模型、GPU、dead-signature、HUD mask 和计划队列均保持关闭。
+
+两组实验都在 `ls20-9607627b`、`vc33-5430563c` × 3 seeds × 50 actions
+上 6/6 完成、0 failures。E0003 已确认用 150 次组件前沿点击替代了
+150 次随机点击，但 score、levels、ACTION6 rendered-frame no-op rate、
+frame-change rate 和 unique-state 的候选减父实验差都是 0。按预先冻结的
+通过门，`D-013` 决定 E0003 不晋升。
+
+本轮最重要的发现不是“连通域无效”，而是 `vc33` 的动画使原始帧每步都变，
+导致 frame-change 与 raw-frame unique-state 同时饱和，也让 state-scoped 前沿记忆
+不断重置。下一个优先方向是小规模 `E0004` 评测基座：扩展官方
+Public Demo 点击环境，分离 animation/HUD 与 actionable state，再评估
+dead-signature 或跨帧对象记忆；未下载模型或大数据，未使用 Kaggle/GPU。
+
+当前全量 97 项单元测试通过；证据见
+`research/arc_agi_3/experiments/runs/E0003_component_frontier/`、
+`research/arc_agi_3/DECISIONS.md` 的 `D-013` 与自动生成的 `PROJECT_STATUS.md`。
+
+## 当前状态（2026-08-13 ARC-AGI-3 Milestone #2 路线）
+
+用户已将 ARC-AGI-3 路线从“截止前全程保密”调整为参加 2026 年 9 月 30 日
+Milestone #2。当前官方操作口径为：在 `2026-09-30 23:59 UTC`（北京时间
+2026-10-01 07:59）前，将与有效 Public Leaderboard 提交对应的 Kaggle Notebook
+以开源许可证公开。项目内部候选冻结点为 9 月 27 日 12:00 UTC，目标在
+9 月 29 日 12:00 UTC 前完成公开与验收，不把官方最后几分钟当正常窗口。
+
+保密边界没有全面放宽：现有 private Phase A Kernel 和
+`Aiden885/arc-agi-3-private` 备份永久保持 private；Milestone 使用一个全新的 public
+Kaggle Notebook 和无私有历史的白名单发布快照。当前只批准目标和准备，
+没有授权立即公开任何对象；实际发布仍须绑定精确 commit、Notebook SHA、
+Kernel ID、leaderboard submission 和 visibility 通过人工双门。详细见
+`research/arc_agi_3/docs/MILESTONE2_RELEASE_PLAN.md`。
+
+已新增版本化 milestone 配置、Cursor 持久规则、仪表板倒计时/发布门状态和 preflight
+保密硬门。安全复核发现的三个问题已修复：私有 Kernel/仓库的大小写、版本后缀和
+`.git/.GIT` 别名均会归一化阻断；13 个门必须与同一候选的实际 manifest/证据文件
+SHA-256 绑定，Gate 2 不允许不适用；配置缺失/损坏时显式 `BLOCKED` 并返回非零。
+当前 90 项测试、双次离线回放、Notebook 构建和 preflight 通过。当前明确硬阻断是
+Starter 固定提交 `eeb1535…` 未见根 LICENSE；在取得
+官方书面澄清或完成隔离/clean-room 重写前不公开派生文件。SBOM/NOTICE/
+provenance、人可读 Notebook、可复现公开快照和竞争候选仍待完成。官方页面的
+Milestone #2 奖金分配存在文案冲突：Kaggle 当前为 `$25k/$7.5k/$5k`，ARC Prize
+赛道页为 `$25k/$10k/$2.5k`，发布前应向主办方留痕确认。
+
+用户明确反馈发布门禁已消耗过多 Codex 额度。按 `D-011`，现有门禁保留但
+立即冻结；真实候选、官方规则变更或 9 月 27 日内部冻结窗口之前，不再
+扩展门禁功能、不再做无限攻击审计；非阻断问题只记 backlog。
+
+算法研究主线已恢复。首轮公开路线/代码/模型/数据盘点见
+`research/arc_agi_3/docs/PUBLIC_METHODS_MODELS_DATA_INVENTORY.md`：已用 Kaggle CLI
+只读拉取并静态检查 Duck、Reki、Forge 三个 Milestone #1 公开 Notebook，未执行
+第三方代码、未下载权重。Qwen3.6-27B-FP8 的 Duck Kaggle 快照约 35.9 GB，Gemma 4
+31B 官方权重约 62.6 GB，当前均暂缓。官方 25 个 Public Demo 环境源码约 3.78 MiB，
+`arc-interactive` 的 200+ MIT 社区环境可作为后续机制族留出，但不能冒充隐藏榜代理。
+
+**下一步**：等待用户确认 `D-012`。推荐以 `E0002` 为父实验实施 `E0003`：只将
+ACTION6 随机坐标替换为连通域未探索前沿，保持 CPU、无模型、固定环境/seed/预算；
+dead-signature、短计划队列、reflection 和模型各自留作后续单变量。
+
+## 当前状态（2026-08-13 ARC-AGI-3 Workflow v1、E0002 与私有备份）
+
+独立嵌套仓库 `research/arc_agi_3/` 的 Phase 0 本地链路、部署基线和私有备份已打通：
+
+- `0964db2` / tag `phase0-workflow-v1`：可复现实验、决策仪表板、Notebook 产物门和
+  Kaggle CLI 安全层；
+- `fa87bd3` / tag `e0001-random-baseline`：首个登记的确定性随机工程基线；
+- `1b98dd0` / tag `e0002-runtime-098-baseline`：对齐 Kaggle 离线 runtime 的可部署基线；
+- 当前主线 checkpoint `5d81ca7`（tag `milestone2-policy-v1`）已同步至 GitHub 私有仓库
+  `Aiden885/arc-agi-3-private`。
+
+版本锁定为 Starter `eeb1535`、ARC-AGI-3-Agents `4743e7d`、Python 3.12、
+`arc-agi==0.9.8`、`arcengine==0.9.3`和 Kaggle CLI `2.2.4`。`ls20-9607627b`、
+`vc33-5430563c` 按精确版本与环境源码指纹离线运行。当前 90 项测试、双次确定性回放、
+CPU Notebook 构建和 preflight 全部通过。每个 seed×game 由独立子进程运行，动作、时间、
+重置、无变化和异常都有显式停止/失败记录。
+
+`E0002_runtime_098_baseline` 使用 2 个环境×3 seeds、50 动作/游戏：6/6 运行完成、
+300 个环境动作、0 个 pipeline failure；得分和完成关卡均为 0。该结果只是工程测量下限，
+不作为算法成绩。详细状态见 `research/arc_agi_3/PROJECT_STATUS.md`，实验报告见
+`research/arc_agi_3/experiments/runs/E0002_runtime_098_baseline/report.md`。
+
+Kaggle CLI OAuth 已可用，MCP 不再是阻塞项。CPU Phase A Version 1 曾被授权运行，
+但因 Notebook 锁定 `arc-agi==0.9.9`、而 Kaggle 离线 source 只提供 0.9.8，在安装阶段
+结束为 `ERROR`；Agent/隐藏环境未运行。尚未执行正式 competition submit，修复后的
+Phase A Version 2 必须展示新 commit/Notebook SHA 并重新确认。
+
+GitHub 备份已硬验 `private=true`、Pages/Actions 关闭、无非 owner 协作者；分支
+`competition/workflow-v1` 与 4 个 annotated tags 已通过写后 refs 核验。自有作品使用
+`MIT-0 OR CC-BY-4.0`，但 Starter 上游许可澄清、完整 SBOM 与“竞赛截止/私榜发放”
+时序仍是公开/获奖前的硬阻断项。
+
+**下一步**：先做公开方案/代码/模型/数据的可执行盘点，再以 E0002 为父实验
+选择一个 Kaggle 单卡可运行的最小基线；Phase A Version 2 只作为候选部署验证，
+不再抢占当前研究优先级。
+
+## 当前状态（2026-08-12 ARC-AGI-3 全貌研究与低算力参赛路线）
+
+已完成 ARC-AGI-3 官方赛制、评分、Kaggle 算力、三类排行榜、公开主流方案、最新论文与
+科技公司模型路线的交叉核验，研究底稿见
+`docs/ARC_AGI_3_全貌研究与低算力参赛路线_20260812.md`。
+
+当前确定的主线是“对象—事件因果信念规划器”：本地 VLM/LLM 仅在新环境、反例、目标不明
+等关键节点提出候选，CPU 负责不可变证据日志、多假设可执行世界模型、全历史 replay、
+信息增益探测、A*/BFS 和带预测检查点的动作执行。该路线针对公开方案缺少显式 version
+space、隐藏集泛化弱和逐步调用 27B 成本高的问题，并与现有规划/状态机经验相匹配。
+
+**下一步**：建立独立 ARC-AGI-3 研究目录，锁定官方 starter/toolkit，先完成 random agent
+端到端有效提交、transition logger 和资源/超时 watchdog，再复现最小 Reki/The Duck 基线；
+通过基础链路验收后才加入对象事件层、partial world model、verifier 和多假设主动规划。
+
+## 当前状态（2026-08-11 lks2 更新代码生成工具后的差异复核）
+
+详细遗留问题清单：`docs/lks2_生成代码遗留问题_20260811.md`。
+
+跨电脑复现包：`deliverables/lks2_globalparams_bug_repro_20260812.zip`。包内包含当前
+`project/lks2`（排除 `icvos/output/`）、三份后端全局字典 `GlobalVariable.json`、
+`GlobalContext.json`、`GlobalContextTypes.json` 以及遗留问题文档；压缩包 SHA256 为
+`c7222597f4323e35a7a9a394143fd197cca5340234280e56d2e0fde0080cf5d6`。
+
+以 17:04 打包的 `deliverables/lks2_no_build_20260811.zip` 为更新前基线，对 17:31 使用新版
+代码生成工具重新生成、编译的 `project/lks2` 进行了逐文件比较。结论是：**LKS 算法函数
+生成质量已有明显改善，但 `GlobalParams` 重复定义仍阻断编译，Pangu 正式输入输出链路仍未
+生成完整，因此暂时不能进入 CARLA 闭环。**
+
+**本次已经改善的内容**：
+
+- 15 个 LKS 全局参数读取均已直接生成为 `global::params.lks_*`，旧版遗留的未声明
+  `tempXXXX` 参数占位变量已消失。
+- 三预瞄点分发中的非法标识符 `C++_None` 已替换为合法临时变量；近点使用
+  `lks_nearPreviewDistance`、中点使用 `previewDistanceM / 2`、远点使用
+  `previewDistanceM`，三路距离赋值已经完整。
+- 预瞄距离、三点误差加权、比例转向、横向加速度限幅和转角缩放均已直接读取正确的
+  全局参数；横向加速度限幅分子正确生成为 `lks_wheelBase * lks_ayMax`。
+- `lks_curvatureThreshold` 已从上一轮临时值 `0.01` 恢复为设计基线 `0.001 1/m`。
+- 生成工程新增了拆分的 `AccZmqInputModule` 与 `AccZmqOutputModule` 骨架，说明新版工具开始
+  生成独立输入、输出节点，但当前仍是 ACC 专用实现，尚不能作为 LKS 通信链路使用。
+
+**当前仍存在的问题**：
+
+1. `GlobalParams` 仍同时由 `GlobalContextTypes.json` 和全局参数配置生成，在
+   `GlobalContextTypes.hpp`、`GlobalContext.hpp` 中重复定义。17:31 最新编译仍报
+   `redefinition of struct control::GlobalParams` 和连带的 `GlobalParams::reset()` 声明不匹配。
+   这也证明仅删除一次生成头文件无效，下次生成仍会复现；必须清理画布/字典源配置中的
+   重复类型后再生成。GAASD 界面使用的主数据在独立 profile 的
+   `gaasd_server/components/THICV/dictionaryData/`，工程内同名 JSON 只是生成快照；跨电脑
+   复现时除工程包外还必须迁移 `GlobalVariable.json`、`GlobalContext.json` 和
+   `GlobalContextTypes.json` 三份后端字典文件。
+2. `temp_callback_info.json` 已正确识别 `lks_input -> executeLks -> lks_output` 的字段映射，
+   但最终 `c_process` 仍创建空的 `executeLks_in` 后直接调用，FuncStep 没有注入输入或取出输出。
+3. Pangu 主业务节点的 `InitIO()`、`Proc()` 仍为空；新增的 ZMQ 输入节点轮询后丢弃状态，
+   输出节点 `Proc()` 为空，未形成算法调用和消息发布。
+4. 新增 ZMQ 节点及其底层实现仍使用 `AccZmq*`，只处理自车速度、前车速度、前车距离和
+   ACC 驾驶指令，输出仍固定 `steer_rad=0`；LKS 所需车道多项式、曲率、制动、驾驶员转向和
+   `steer_rad` 发布尚未接入。
+
+**下一步**：先从源配置删除重复 `GlobalParams` 类型后重新生成并编译，确认算法库可以完整
+通过；随后单独处理 `c_process`/Pangu 回调和 LKS ZMQ 输入输出，避免把算法生成问题与通信
+集成问题混在一起定位。
+
+## 当前状态（2026-08-11 newaccpro4 生成代码、编译与功能复核）
+
+`newaccpro4` 在清理被旧字段污染的通用 `run.json` 后重新生成代码并完成编译，当前结论为：
+**ACC 核心算法和 Pangu 实际消息回调可进入 CARLA 联调，GAASD 示波器/FuncStep 路径仍不可用。**
+
+- 生成代码已不再出现旧字段 `Kdist`、`MinDistance`、`Kspeed`；Pangu 安装目录已生成
+  ACC 核心库、业务节点库、ZMQ Bridge 节点库、配置和启动脚本。
+- 外部接口映射正确：`AccInput` 的 `ego_speed_mps / lead_speed_mps /
+  lead_distance_m / command_type / frame_id` 能进入 `executeAcc`，输出
+  `target_speed_mps / enable / frame_id` 能发布为 `AccOutput`；冻结的外部协议字段未改变。
+- 生成的决策逻辑与当前画布一致：默认决策为 `0`；在控状态下支持降速、增速、
+  减小时距、增大时距、油门仲裁标志及制动/取消待命；无历史启控、有历史恢复和
+  `isControlActive / hasControlHistory / timeGapS / maxSpeedMps` 跨周期状态均已生成。
+- 生成的控制公式与当前设计一致：
+  `desiredDistance=max(minDistance,egoSpeed*timeGap)`，距离误差和相对速度分别乘增益后，
+  与前车速度合成目标速度，再执行非负限幅、`maxSpeed` 限幅和 `enable` 门控。
+- 已直接调用本次编译得到的核心 `.so` 完成周期测试：
+  - 待命输出 `enable=0,targetSpeed=0`；启控后下一周期进入控制。
+  - `ego=5m/s,lead=5m/s,distance=20m` 时输出 `targetSpeed=7.75m/s`，与公式一致。
+  - 减小时距后输出变为 `8.00m/s`，增大时距后恢复为 `7.75m/s`。
+  - 连续输入降速指令时速度上限按 `20 -> 16 -> 12m/s` 更新，证明驾驶指令必须保持
+    单周期脉冲，下一周期回到 `0`。
+  - 制动/取消按当前设计延迟一个周期退控；低于 `1m/s` 时暂停控制，速度恢复后自动续控。
+- 当前实际编译参数为：`minimumOperatingSpeedMps=1`、`timeGapS=1.8`、
+  `maxSpeedMps=20`、`speedStepMps=4`、`minDistanceM=5`、
+  `distanceErrorGainPerS=0.25`、`relativeSpeedGain=0.4`。
+
+**遗留问题与边界**：
+
+1. 主节点 `.pt` 仍显示旧示例参数（包括 `max_speed_mps=5`），但节点 `LoadConfig()`
+   没有解析这些参数；当前真正生效的是生成源码中固化的 `maxSpeedMps=20` 等画布值。
+   因此目前只能通过修改画布后重新生成、编译来调参，不能依赖 `.pt` 运行时调参。
+2. `c_process`/FuncStep 路径创建 `executeAcc` 输入后未赋值便调用算法，示波器仿真输出
+   不可信；Pangu 的 `acc_input` 实际消息回调已完整赋值，不受该问题影响。
+3. 制动/取消存在一个周期延迟，当前作为已知小问题保留。
+4. 当前阶段继续采用“前车始终有效、R7 扭矩仲裁暂不执行实际扭矩控制”的范围约束；
+   这两项不阻塞本轮时距跟车闭环测试。
+
+**下一步**：先复核同批次重新生成的 `lks2` 代码与编译结果，再分别进行 Pangu 节点运行和
+CARLA 闭环复测；ACC 联调前须确认测试场景实际限速采用 `20m/s` 还是更低的安全值。
+
+## 当前状态（2026-08-11 lks2 恢复全局参数后的生成代码复核）
+
+`lks2` 已恢复 15 项 LKS 全局参数，并于 2026-08-11 16:14 重新生成代码。参数名称、数值、
+初始化对象和 `reset()` 均已写入 `GlobalContext.hpp/.cpp`；本次将
+`lks_curvatureThreshold` 从设计基线 `0.001` 调整为 `0.01`，其余 LKS 参数保持原值。
+独立 CMake 编译仍失败，因此当前生成源码尚不可用于 Pangu/CARLA 闭环。
+
+**已确认改善**：
+
+- 顶层 `executeLks` 的输入输出、`decision -> control` 调用以及决策逻辑仍与画布一致。
+- 远预瞄距离、车道多项式 Horner 求值、三点加权、转向比例控制、横向加速度限幅和使能
+  门控的计算拓扑均被保留。
+- 横向加速度限幅中的分子已恢复为两个不同参数的乘积 `wheelBase * ayMax`，不再出现上一轮
+  的同一占位变量自乘；说明该语义错误确实是缺少参数后的次生现象。
+
+**仍存在的阻断问题**：
+
+1. `GlobalParams` 同时存在于 `GlobalContextTypes.json` 和 `GlobalContext.json`，生成后分别在
+   `GlobalContextTypes.hpp` 与 `GlobalContext.hpp` 定义，导致结构体重定义并阻断编译。
+   正常结构应与 `newaccpro4` 一致：自定义类型文件只保存 `FeedbackState`，`GlobalParams`
+   只由 `GlobalContext.json` 管理。该项首先按全局参数配置重复处理，不直接归为算法代码问题。
+2. 15 个 `read-global-param` 组件仍是旧的不完整元数据：`base_config` 只有 `operateKeys`，
+   缺少 `name/dataType/dataValue/scope`，输出端口也只有无类型的 `out`。生成源码虽然创建了
+   `global::params`，但各计算模块仍引用未声明、未赋值的 `temp*`，无法读取任何全局参数。
+   应在参数创建完成后，用当前版本组件重新选择绑定或替换这 15 个读取块，再重新生成。
+3. 三预瞄点分发在完整参数配置下仍生成非法标识符 `C++_None`；近点和中点子模块的
+   `previewPointDistanceM` 没有赋值，只有远点收到 `previewDistanceM`。这一项已不再能由
+   “全局参数未定义”解释，属于画布边界/代码生成路径需要继续定位的问题。
+4. 生成中间元数据已经正确识别 `lks_input -> executeLks -> lks_output` 的全部字段映射，
+   但最终 `c_process` 的 `Input/Output` 仍为空，只创建空的 `executeLks_in` 后直接调用；同批次
+   Pangu 模块的 `InitIO()` 和 `Proc()` 也是空实现。因此示波器路径和正式消息回调均未生成。
+5. 随 LKS 工程生成的 `ZmqBridgeModule` 仍沿用 ACC Bridge，只订阅 ACC 输入并固定
+   `steer_rad=0`，不能承担当前 LKS 接口通信。
+
+**参数提示**：历史 LKS 场景实测最大曲率约 `0.001143 1/m`。若阈值设为 `0.01 1/m`，已知
+场景基本不会进入弯道预瞄缩放分支；该值不是代码生成错误，但闭环测试前应确认这是有意调整。
+
+**下一步**：先消除重复的 `GlobalParams` 类型，并在 GAASD 中重建或重新绑定当前版本的
+15 个 `read-global-param` 块；再次生成后检查源码是否直接读取 `global::params.lks_*`。
+若 `C++_None`、三点距离漏接和顶层通道映射丢失仍复现，再将这些作为代码生成缺陷提交
+GAASD 团队。当前不应直接手改生成源码掩盖问题。
+
+## 当前状态（2026-08-11 复合组件上下层端口命名同步）
+
+对 `newaccpro4` 与 `lks2` 的全部复合组件执行了“父组件函数端口 ↔ 子画布
+`input/output` 边界块”审计。审计必须按物理语义和数据类型匹配，不能按界面显示顺序匹配，
+因为父级与子级端口排列顺序不保证一致。
+
+- `newaccpro4` 的真实不一致集中在控制层三个底层子系统，共 16 个边界块：
+  `calculateSpacingFeedback`、`calculateRelativeSpeedFeedback`、`generateTargetSpeed`。
+- 已将子画布旧名同步为父端口规范名，例如
+  `egoV -> egoSpeedMps`、`distance -> leadDistanceM`、
+  `kDist -> distanceErrorGainPerS`、`distanceFeedbackOut -> distanceFeedbackMps`。
+- `lks2` 全量审计未发现同类语义不一致；端口列表顺序不同不属于命名错误，因此未修改 LKS。
+- 本次只修改边界组件的显示别名、`base_config.name` 和边界端口语义名；组件 UUID、端口 ID、
+  连接表、数据类型、布局、外部通道协议均保持不变。`runtimeCanvas.db` 仍按运行期缓存处理，
+  未盲目覆盖。
+- 验证结果：`newaccpro4` 为 150 个组件、163 条连线、0 错误、0 警告；SQLite 完整性为
+  `ok`，孤立连线和重复输入均为 0，修改前后连接表及通道组件行完全一致，
+  `cbdes.db` 与 `temp.db` SHA256 均为
+  `b6898e4bd4b635fd7d01323a5292b6564dc9d39bc58006ddbe74943b1952e2a6`。
+- 可重复审计/同步工具：`tools/sync_composite_boundary_names.py`。默认只检查，确认 GAASD
+  已退出后使用 `--apply` 执行同步。
+- 修改前完整快照：
+  `/data/aiden/文档/Modularization_backups/newaccpro4_before_boundary_name_sync_20260811_104249`。
+
+**后续人工检查**：重新打开工程，进入上述三个子系统，确认上下层端口显示一致；随后重新生成
+代码，使 `icvos/blocks` 和生成源码反映最新画布命名。
+
+## 当前状态（2026-08-10 单输入通道交付版更新）
+
+**`newaccpro4` 与 `lks2` 已整理为单输入通道工程，可用于本轮打包交付**：
+
+- ACC 原画布删除两个分类输入块后，残留的 `acc_input` 模块端口和
+  `acc_input_perception` 通道登记导致 GUI 报“`acc_input` 被占用”。现已清理残留登记，
+  恢复一个 `acc_input` 输入组件并接回原有 5 条连线：
+
+```text
+ego_speed_mps, lead_speed_mps, lead_distance_m, command_type, frame_id
+```
+
+- LKS 保留用户在 GAASD 中完成的单输入组件，统一选择以下 9 个正式协议字段：
+
+```text
+ego_speed_mps, brake_pressed, driver_steer_norm, frame_id,
+c0_m, c1, c2_per_m, c3_per_m2, curvature_per_m
+```
+
+- LKS 算法内部的车道多项式输入已由较长名称简化为 `c0/c1/c2/c3`；外部
+  Pangu/Protobuf 字段 `.c0_m/.c1/.c2_per_m/.c3_per_m2`、端口 ID、数据类型和
+  `operateKeys` 均未修改。
+- 已同步 LKS 的模块和回调 block 图文件，两个文件均只保留一个 `lks_input` 子组件和
+  9 条输入连线，不再携带旧的双输入组件快照。
+- 画布审计结果：
+
+```text
+newaccpro4: 122 个组件 / 139 条连线 / 0 错误 / 0 警告
+lks2:       164 个组件 / 174 条连线 / 0 错误 / 0 警告
+```
+
+- 两个工程的 `cbdes.db` 与 `temp.db` 分别保持 SHA256 一致；LKS 修改前后
+  `project_connection` 和外部通道定义哈希一致。
+- 可重复修复工具：`tools/prepare_acc_lks_single_input.py`。命名迁移工具也已调整为
+  完全跳过通道组件，后续重复执行不会覆盖外部接口别名或把 `c0/c1/c2/c3` 改回长名称。
+- 单一交付压缩包：
+
+```text
+deliverables/acc_lks_single_input_20260810.zip
+SHA256: 66d5b4cffadf535aeca6575c39b4e7c38ef7caae2a1340155e5a755d6af86786
+```
+
+  压缩包只含 `newaccpro4/` 与 `lks2/` 两个工程，不含数据库历史备份、运行日志和
+  `runtimeCanvas.db` 临时缓存；解压后重新执行画布审计均为 PASS。
+- 修改前完整快照：
+
+```text
+/data/aiden/文档/Modularization_backups/newaccpro4_before_single_input_20260810_180157
+/data/aiden/文档/Modularization_backups/lks2_before_single_input_20260810_180157
+```
+
+**后续人工检查**：重新打开 GAASD 后确认 ACC/LKS 顶层均只显示一个输入通道，并逐层
+查看 LKS 的 `c0/c1/c2/c3` 端口显示；确认后再执行生成代码和编译测试。
+
+## 当前状态（2026-08-10 命名迁移记录）
+
+**`newaccpro4` 与 `lks2` 已按统一标识符规范完成命名迁移**：
+
+- 已按三周工作计划整理并生成 `docs/规控小组-8月第2周项目进展周报.docx`：
+  进展部分总结第二周 LKS 手动画布重构、接口与命名复核，本周计划对应
+  第三周的生成编译、mock 周期检查及 Pangu/CARLA 闭环复测。
+
+- 所有画布标识符统一使用小驼峰；算法复合模块使用动词或动宾短语，物理量使用
+  “名词 + 单位后缀”，布尔量使用 `is/has` 前缀，常量使用大写下划线。
+- ACC 当前主层级：
+
+```text
+executeAcc
+├── decision
+│   ├── classifySystemState
+│   ├── evaluateDecisionTable
+│   ├── updateControlState
+│   ├── updateTimeGap
+│   └── updateMaxSpeed
+└── control
+    ├── calculateSpacingFeedback
+    ├── calculateRelativeSpeedFeedback
+    └── generateTargetSpeed
+```
+
+- LKS 当前主层级：
+
+```text
+executeLks
+├── decision
+│   ├── checkOperatingSpeed
+│   ├── detectDriverOverride
+│   └── determineControlEnable
+└── control
+    ├── calculatePreviewDistance
+    ├── calculatePreviewErrors
+    ├── calculateWeightedError
+    └── generateSteerCommand
+```
+
+- 关键物理量示例：
+
+```text
+ACC: egoSpeedMps, leadSpeedMps, leadDistanceM, timeGapS,
+     minDistanceM, maxSpeedMps, targetSpeedMps, isControlEnabled
+LKS: egoSpeedMps, laneOffsetM, laneHeadingCoeff,
+     laneCurvatureCoeffPerM, laneCurvatureRateCoeffPerM2,
+     roadCurvaturePerM, previewDistanceM, steerRad, isControlEnabled
+```
+
+- Pangu/Protobuf 通道组件属于外部冻结接口：协议字段 `name`、端口
+  `id`、画布端口 `alias`、`operateKeys`、数据类型和字段选择都不修改。
+  2026-08-10 已从命名迁移前备份逐项恢复 ACC/LKS 通道端口别名并完成精确
+  比对；例如 ACC 的 `ego_speed_mps/leadV/distance/enable`、LKS 的
+  `egoV/c0/c1/c2/c3/steer_rad/control_enabled` 均与原始接口一致。
+- 小驼峰和单位后缀命名规则仅用于算法内部组件、复合边界和局部参数/状态，
+  不覆盖通道组件已有端口名。
+- ACC/LKS 主流程下的两个顶层职责容器统一直接命名为 `decision` 和
+  `control`；容器内部的可执行子模块继续使用动词或动宾短语。
+- ACC 局部参数和状态声明、读写绑定已同步迁移，例如
+  `gapStep -> timeGapStepS`、`controlEnabled -> isControlActive`；真值表变量由
+  `u/v/y` 更新为 `systemState/commandType/decisionCode`，场景匹配关系不变。
+- 验证结果：
+
+```text
+newaccpro4: 123 个组件 / 139 条连线 / 0 错误 / 0 警告
+lks2:       165 个组件 / 174 条连线 / 0 错误 / 0 警告
+```
+
+- 修改前后 `project_connection`、`childComponents/childConnections` 哈希一致，
+  `cbdes.db` 与 `temp.db` SHA256 一致。
+- 可重复迁移脚本：`tools/normalize_acc_lks_naming_standard.py`。
+- 修改前完整快照：
+
+```text
+/data/aiden/文档/Modularization_backups/newaccpro4_before_naming_standard_20260810_20260810_143021
+/data/aiden/文档/Modularization_backups/lks2_before_naming_standard_20260810_20260810_143021
+```
+
+- 数据库就地备份：
+
+```text
+project/newaccpro4/data/cbdes.db.before_naming_standard_20260810
+project/lks2/data/cbdes.db.before_naming_standard_20260810
+```
+
+- 恢复外部接口别名前的当前数据库备份：
+
+```text
+project/newaccpro4/data/cbdes.db.before_interface_alias_restore_20260810_151543
+project/lks2/data/cbdes.db.before_interface_alias_restore_20260810_151543
+```
+
+- `decision/control` 简化前备份：
+
+```text
+project/newaccpro4/data/cbdes.db.before_decision_control_alias_20260810_153356
+project/lks2/data/cbdes.db.before_decision_control_alias_20260810_153356
+```
+
+**后续人工检查**：关闭并重新打开 GAASD 后，逐层打开上述复合模块，检查长名称的
+显示宽度和属性面板；保存重开后再生成代码，重点检查新局部参数名和真值表变量名是否被
+生成器完整保留。
+
+## 当前状态（2026-08-05 更新）
+
+**ACC/LKS 画布输入已按车内信息和车外感知分类**：
+
+- `newaccpro3` 和 `lks2` 均使用两个画布通道实例：
+
+```text
+vehicleInputChannel     车内信息 / 车辆总线侧
+perceptionInputChannel  车外信息 / 环境感知侧
+```
+
+- 这是“两个画布实例、一条底层通道”，不是新增两条中间件协议。ACC 两个实例仍共用
+  `acc_input / pangu.modules.AccInput / task_id=acc_input`；LKS 两个实例仍共用
+  `lks_input / pangu.modules.LksInput / task_id=lks_input`。
+- ACC 字段分组：
+
+```text
+vehicleInputChannel:    ego_speed_mps, command_type, frame_id
+perceptionInputChannel: lead_speed_mps, lead_distance_m
+```
+
+- LKS 字段分组：
+
+```text
+vehicleInputChannel:    ego_speed_mps, brake_pressed, driver_steer_norm, frame_id
+perceptionInputChannel: c0_m, c1, c2_per_m, c3_per_m2, curvature_per_m
+```
+
+- 上述名称是不可改动的协议字段名。画布端口通过 `alias` 去掉单位后缀，对外显示为：
+
+```text
+ACC: egoV, commandType, frameId, leadV, distance
+LKS: egoV, brakePressed, driverSteerNorm, frameId, c0, c1, c2, c3, curvature
+```
+
+  端口 `name`、`id`、`operateKeys` 和通道 `channelConfig` 仍保留原始字段，因此显示名简化不会改变
+  Protobuf/Pangu 映射。已用当前代码生成器复测通过。
+
+- `frame_id` 只在 `vehicleInputChannel` 中选择，并保持到输出通道的原有透传连线。两个实例的
+  `operateKeys` 不重叠，算法公式、`main / decision / control` 层级和输出通道未改变。
+- 已在独立工程副本中使用当前 `new_gaasd` 生成器实测：ACC 最终只生成 `1` 个
+  `acc_input` 回调，LKS 最终只生成 `1` 个 `lks_input` 回调；两个画布实例的字段映射
+  被正确合并，没有重复订阅、映射覆盖或字段丢失。
+- 画布审计均为 `PASS`：
+
+```text
+newaccpro3: 151 个组件 / 163 条连线 / 0 错误 / 0 警告
+lks2:       171 个组件 / 182 条连线 / 0 错误 / 0 警告
+```
+
+- `cbdes.db` 与 `temp.db` 在两个项目内均保持 SHA256 一致。可重复迁移工具：
+  `tools/split_acc_lks_input_channels.py`。
+- 修改前完整快照和数据库备份：
+
+```text
+/data/aiden/文档/Modularization_backups/newaccpro3_before_two_input_channels_20260805_20260805_152426
+/data/aiden/文档/Modularization_backups/lks2_before_two_input_channels_20260805_20260805_152426
+project/newaccpro3/data/cbdes.db.before_two_input_channels_20260805
+project/lks2/data/cbdes.db.before_two_input_channels_20260805
+```
+
+- 后续 GAASD 升级或重拖通道时，不得修改两个实例的 `channel_name / message_type /
+  channel_id / channel_var_name / task_id`；只能通过“读取属性”调整各自的字段子集。
+
+---
+
+## 当前状态（2026-07-31 更新）
+
+**newaccpro3 控制分层与小驼峰命名统一**：
+
+- ACC 主流程已由残留的 `MainFlow / Main` 统一为 `main`，数据库 `alias`、
+  `properties.alias` 和代码生成使用的 `instanceName` 保持一致。
+- `control` 没有把全部计算封装成一个总模块，而是按物理职责拆成三个并列子系统：
+
+```text
+main
+├── decision
+│   ├── stateClassifier
+│   ├── decisionTable
+│   ├── controlStateUpdate
+│   ├── timeGapUpdate
+│   └── maxSpeedUpdate
+└── control
+    ├── spacingFeedback
+    │   ├── timeGapDistance
+    │   ├── desiredDistance
+    │   ├── distanceError
+    │   └── distanceFeedback
+    ├── relativeSpeedFeedback
+    │   ├── relativeSpeed
+    │   └── speedFeedback
+    └── targetSpeedOutput
+        ├── rawTargetSpeed
+        ├── zeroSpeed
+        ├── nonNegativeTargetSpeed
+        ├── targetSpeedLimiter
+        └── enableGate
+```
+
+- `spacingFeedback` 负责期望车距、车距误差和车距反馈；`relativeSpeedFeedback`
+  负责相对速度反馈；`targetSpeedOutput` 负责合成、非负限幅、最高速度限幅和使能门控。
+- `control` 原有 9 个输入和 `targetSpeed` 输出保持不变，原控制公式、参数值、端口 UUID 和
+  外部连接均未改变；新增层只调整既有计算链的可视层级。
+- 结构模块、原子计算块、参数和状态读写实例、复合模块 `instanceName` 全部统一为小驼峰。
+- 局部参数键已同步为 `kDist / minDistance / kSpeed / gapStep / minGap / maxGap /
+  speedStep / minSpeed / vMin`，对应 `read-local-param.operateKeys` 已一并更新。
+- 修改前后递归展平连接指纹保持 `103 -> 103`；最终审计为 `150` 个组件、`163` 条连线、
+  `0` 错误、`0` 警告，`cbdes.db` 与 `temp.db` SHA256 完全一致。
+- 可重复迁移脚本：`tools/refactor_newaccpro3_control.py`。
+- 修改前完整快照和数据库备份：
+
+```text
+/data/aiden/文档/Modularization_backups/newaccpro3_before_control_wrap_lower_camel_20260731_111541
+project/newaccpro3/data/cbdes.db.before_control_wrap_lower_camel_20260731
+/data/aiden/文档/Modularization_backups/newaccpro3_before_control_function_split_20260731_113554
+project/newaccpro3/data/cbdes.db.before_control_function_split_20260731
+```
+
+- 数据库级验证已完成；仍需在 GAASD 中逐级打开 `main / control /
+  spacingFeedback / relativeSpeedFeedback / targetSpeedOutput`，检查布局和参数属性，
+  保存重开后再执行代码生成检查。
 
 **lks2 手动画布层级重构**：
 
 - 已在不修改算法公式、参数值、正式通道和示波器配置的前提下，将 `project/lks2`
-  从扁平算法布局重构为具有明确物理职责的 `MainFlow / Decision / Control` 层级：
+  从扁平算法布局重构为具有明确物理职责的 `main / decision / control` 层级：
 
 ```text
-MainFlow
-├── Decision
-│   ├── SpeedEnableCheck
-│   ├── DriverOverrideCheck
-│   └── ControlEnableDecision
-└── Control
-    ├── PreviewDistance
-    ├── LaneErrorEvaluation
-    │   ├── NearPreviewError
-    │   ├── MiddlePreviewError
-    │   └── FarPreviewError
-    ├── ErrorWeightedSum
-    └── SteerCommand
-        ├── RawSteerCalculation
-        ├── LateralAccelLimit
-        └── SteerEnableGate
+main
+├── decision
+│   ├── speedEnableCheck
+│   ├── driverOverrideCheck
+│   └── controlEnableDecision
+└── control
+    ├── previewDistanceCalculation
+    ├── laneErrorEvaluation
+    │   ├── nearPreviewError
+    │   ├── middlePreviewError
+    │   └── farPreviewError
+    ├── errorWeightedSum
+    └── steerCommand
+        ├── rawSteerCalculation
+        ├── lateralAccelLimit
+        └── steerEnableGate
 ```
 
+- 所有英文结构模块、基础计算块和参数读取实例的画布别名均统一为小驼峰，
+  复合模块 `instanceName` 与画布别名同步；正式输入输出字段和全局参数绑定路径保持不变。
+- 为避免同层别名冲突，预瞄距离结构使用 `previewDistanceCalculation`，其输出仍为
+  `previewDistance`；原始转向乘法块使用 `applySteerErrorGain`，其输出仍为
+  `rawSteerNorm`。
 - 原有三类退出条件保持不变：制动、低于最低工作速度、驾驶员主动转向；最终关系仍为
   `controlEnabled = NOT(brakePressed OR speedUnavailable OR driverOverride)`。
 - 原有预瞄距离、三次多项式三点评估、误差加权、横向加速度转角限幅和使能门控公式均保持不变。
-- `lksSteerRad` 最终使能乘法已归入 `SteerEnableGate`，不再悬挂在 `MainFlow` 顶层；
-  `Control` 顶层只显示四个主要物理模块。
+- `lksSteerRad` 最终使能乘法已归入 `steerEnableGate`，不再悬挂在 `main` 顶层；
+  `control` 顶层只显示四个主要物理模块。
 - 主流程 8 个输入、5 个输出的 UUID 未改变，模块层 `lks_input / lks_output` 通道连接、
   `frame_id` 透传以及示波器 `2` 输入、`0.2 s` 步长、`10 s` 时长均保持原配置。
 - 重构脚本在修改前后递归展平全部复合模块，计算连接指纹保持 `102 -> 102`；最终审计结果为
   `170` 个组件、`182` 条连线、`0` 错误、`0` 警告，`cbdes.db` 与 `temp.db` SHA256 一致。
 - 重构设计：`docs/lks2_手动画布层级重构设计.md`。
 - 可重复脚本：`tools/refactor_lks2_hierarchy.py`。
+- 小驼峰命名迁移脚本：`tools/normalize_lks2_lower_camel.py`。
 - 修改前完整快照和数据库备份：
 
 ```text
 /data/aiden/文档/Modularization_backups/lks2_before_lks_hierarchy_20260729_20260729_173504
 project/lks2/data/cbdes.db.before_lks_hierarchy_20260729
+/data/aiden/文档/Modularization_backups/lks2_before_lower_camel_20260731_20260731_124206
+project/lks2/data/cbdes.db.before_lower_camel_20260731
 ```
 
-- 数据库级检查已经完成；重新打开 GAASD 后仍需逐级查看 `Decision / Control` 及其子模块，
+- 数据库级检查已经完成；重新打开 GAASD 后仍需逐级查看 `decision / control` 及其子模块，
   确认画布渲染和属性面板，再进行一次保存重开与代码生成检查。
 
 **lks2 正式通道接入和示波器升级**：
@@ -642,6 +1688,18 @@ python3 tools/report_generator/generate_weekly_report.py \
   docs/weekly_inputs/2026-07-week3.md \
   -o docs/赵煜坤-7月第3周项目进展周报.docx
 ```
+
+- 2026-07-28 已按历史周报模板生成：
+
+```text
+docs/weekly_inputs/2026-07-week4.md
+docs/赵煜坤-7月第4周项目进展周报.docx
+```
+
+- 本次将生成器版式校准为历史周报使用的 A4 页面、页边距、标题字号和三列表格比例；新增可选
+  `plan_title` 元数据，支持周中报告使用“本周后续工作安排”，未配置时仍保持“下周工作计划”。
+- 7 月第 4 周周报按截至周二的实际进展编写，完成项主要记录项目现状分析、三周计划制定和
+  ACC 手动画布第一阶段结构整理；后续任务仍列入本周安排，没有提前写成已完成。
 
 **ACC 前车 waypoint PID 控制器（2026-07-07）**：
 

@@ -1,0 +1,98 @@
+{
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valueA",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 A"
+      },
+      {
+        "name": "valueB",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "通用输入值 B"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "子模块调度是否全部有效"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "组合执行结果标量"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "localization"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "predictStep",
+        "category": 1,
+        "dataType": "PredictStep",
+        "shape": [],
+        "dataValue": {},
+        "description": "固定预测步骤子模块"
+      },
+      {
+        "name": "updateStep",
+        "category": 1,
+        "dataType": "UpdateStep",
+        "shape": [],
+        "dataValue": {},
+        "description": "固定更新步骤子模块"
+      },
+      {
+        "name": "stateCovariance",
+        "category": 1,
+        "dataType": "StateCovariance",
+        "shape": [],
+        "dataValue": {},
+        "description": "固定协方差步骤子模块"
+      }
+    ],
+    "source": "code",
+    "namespace": "localization"
+  }
+}

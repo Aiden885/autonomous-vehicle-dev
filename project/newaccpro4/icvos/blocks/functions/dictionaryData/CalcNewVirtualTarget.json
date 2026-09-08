@@ -1,0 +1,90 @@
+{
+  "Input": {
+    "description": "新虚拟目标计算模块输入端口集合。",
+    "alias": "新虚拟目标计算模块输入端口集合。",
+    "fields": [
+      {
+        "name": "targetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "驾驶员设定的最终巡航目标车速 Vt (m/s)"
+      },
+      {
+        "name": "currentSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前车辆实际速度 vi(ti) (m/s)"
+      },
+      {
+        "name": "virtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "当前级内部虚拟目标车速 Vi (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "新虚拟目标计算模块输出端口集合。",
+    "alias": "新虚拟目标计算模块输出端口集合。",
+    "fields": [
+      {
+        "name": "newVirtualTargetSpeed",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "限幅后的新虚拟目标车速 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "新虚拟目标计算模块参数集合。",
+    "alias": "新虚拟目标计算模块参数集合。",
+    "fields": [
+      {
+        "name": "rho",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.5,
+        "description": "惩罚系数，用于缩放目标车速偏差"
+      },
+      {
+        "name": "maxOffset",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 3.0,
+        "description": "虚拟目标允许的最大偏置量 (m/s)"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "新虚拟目标计算模块状态集合。",
+    "alias": "新虚拟目标计算模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "新虚拟目标计算模块子模块集合。",
+    "alias": "新虚拟目标计算模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

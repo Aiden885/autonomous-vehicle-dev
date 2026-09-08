@@ -79,6 +79,9 @@ def main() -> int:
         count += 1
         time.sleep(max(args.period_sec, 0.01))
 
+    # Hand control back without braking so the algorithm can engage at speed.
+    ego.apply_control(carla.VehicleControl(throttle=0.0, steer=0.0, brake=0.0))
+
     print(
         f"[BoostEgo] applied speed={args.speed_mps:.2f}m/s "
         f"duration={args.duration_sec:.2f}s updates={count}"

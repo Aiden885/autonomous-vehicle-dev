@@ -1,0 +1,66 @@
+{
+  "Input": {
+    "description": "系统状态判定模块输入端口集合。",
+    "alias": "系统状态判定模块输入端口集合。",
+    "fields": [
+      {
+        "name": "speedSubstate",
+        "category": 1,
+        "dataType": "SpeedSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前车速子态 Sv"
+      },
+      {
+        "name": "systemSubstate",
+        "category": 1,
+        "dataType": "SystemSubstate",
+        "shape": [],
+        "dataValue": {},
+        "description": "当前系统子态 Ss"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "系统状态判定模块输出端口集合。",
+    "alias": "系统状态判定模块输出端口集合。",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 1,
+        "dataType": "SystemState",
+        "shape": [],
+        "dataValue": {},
+        "description": "判定得到的系统状态 Sn"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "系统状态判定模块参数集合。",
+    "alias": "系统状态判定模块参数集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "系统状态判定模块状态集合。",
+    "alias": "系统状态判定模块状态集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "系统状态判定模块子模块集合。",
+    "alias": "系统状态判定模块子模块集合。",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "control"
+  }
+}

@@ -866,6 +866,34 @@ body {
   border-top: 1px solid rgba(226, 232, 240, 0.84);
 }
 
+.dashboard .panel-shutdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(214, 61, 79, 0.24);
+  border-radius: 12px;
+  color: var(--red);
+  background: var(--red-soft);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.dashboard .panel-shutdown-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(214, 61, 79, 0.42);
+  background: #ffe9ec;
+}
+
+.dashboard .panel-shutdown-btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .dashboard .version-info {
   display: flex;
   align-items: center;
@@ -1109,6 +1137,94 @@ body {
   accent-color: var(--v0-blue);
 }
 
+.dashboard .frame-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: -2px 0 16px;
+  padding: 8px 8px 8px 12px;
+  background: rgba(241, 245, 249, 0.72);
+  border: 1px solid rgba(203, 213, 225, 0.72);
+  border-radius: 13px;
+}
+
+.dashboard .frame-mode-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 112px;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashboard .frame-mode-copy small {
+  color: #8a97a8;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.dashboard .frame-mode-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(92px, 1fr));
+  gap: 4px;
+  padding: 3px;
+  background: rgba(226, 232, 240, 0.72);
+  border-radius: 10px;
+}
+
+.dashboard .frame-mode-option {
+  cursor: pointer;
+  user-select: none;
+}
+
+.dashboard .frame-mode-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dashboard .frame-mode-option span {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 11px;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.dashboard .frame-mode-option strong {
+  font-size: 12px;
+}
+
+.dashboard .frame-mode-option small {
+  color: inherit;
+  font-size: 10px;
+}
+
+.dashboard .frame-mode-option input:checked + span {
+  color: #1559c1;
+  background: #ffffff;
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.12);
+}
+
+.dashboard .frame-mode-option input:focus-visible + span {
+  outline: 2px solid rgba(59, 130, 246, 0.45);
+  outline-offset: 1px;
+}
+
+.dashboard .frame-mode-option input:disabled + span {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .dashboard .launch-controls {
   display: flex;
   gap: 10px;
@@ -1342,6 +1458,308 @@ body {
 .dashboard .driver-btn.danger:hover:not(:disabled) {
   border-color: rgba(248, 113, 113, 0.44);
   box-shadow: 0 12px 28px rgba(248, 113, 113, 0.13);
+}
+
+.dashboard .driver-btn.command-pending {
+  border-color: rgba(59, 130, 246, 0.48);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+.dashboard .driver-btn.command-ack {
+  animation: command-ack-pulse 0.48s ease-out;
+}
+
+.dashboard .driver-btn.command-error {
+  animation: command-error-pulse 0.52s ease-out;
+}
+
+@keyframes command-ack-pulse {
+  0% {
+    color: #ffffff;
+    background: #2563eb;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.42);
+    transform: translateY(-1px) scale(1);
+  }
+  55% {
+    color: #ffffff;
+    background: #1d4ed8;
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    transform: translateY(-1px) scale(1.025);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes command-error-pulse {
+  0%, 55% {
+    color: #ffffff;
+    background: #dc2626;
+    border-color: #f87171;
+    box-shadow: 0 0 0 7px rgba(220, 38, 38, 0.08);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+.dashboard .acc-telemetry-card {
+  position: relative;
+  padding: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 94% -15%, rgba(14, 165, 233, 0.14), transparent 34%),
+    radial-gradient(circle at 2% 100%, rgba(37, 99, 235, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 250, 255, 0.92));
+  border: 1px solid var(--product-border);
+  border-radius: var(--product-radius-lg);
+  box-shadow: var(--product-shadow-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dashboard .acc-telemetry-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #38bdf8, #2563eb 58%, #1d4ed8);
+}
+
+.dashboard .acc-telemetry-card[hidden] {
+  display: none;
+}
+
+.dashboard .telemetry-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard .telemetry-heading h2 {
+  margin: 3px 0 4px;
+  color: #172033;
+  font-size: 19px;
+  font-weight: 770;
+  letter-spacing: -0.025em;
+}
+
+.dashboard .telemetry-heading p {
+  margin: 0;
+  color: #7b8798;
+  font-size: 12px;
+}
+
+.dashboard .telemetry-kicker {
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 780;
+  letter-spacing: 0.12em;
+}
+
+.dashboard .telemetry-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 8px 13px;
+  color: #64748b;
+  background: rgba(248, 250, 252, 0.88);
+  border: 1px solid rgba(203, 213, 225, 0.76);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dashboard .telemetry-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #94a3b8;
+  border-radius: 999px;
+}
+
+.dashboard .telemetry-live-pill.is-live {
+  color: #047857;
+  background: rgba(236, 253, 245, 0.90);
+  border-color: rgba(16, 185, 129, 0.24);
+}
+
+.dashboard .telemetry-live-pill.is-live .telemetry-live-dot {
+  background: #10b981;
+  box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.10);
+  animation: telemetry-breathe 1.8s ease-in-out infinite;
+}
+
+.dashboard .telemetry-live-pill.is-offline {
+  color: #b45309;
+  background: rgba(255, 251, 235, 0.90);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.dashboard .telemetry-live-pill.is-offline .telemetry-live-dot {
+  background: #f59e0b;
+}
+
+@keyframes telemetry-breathe {
+  0%, 100% { opacity: 0.72; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+.dashboard .telemetry-primary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dashboard .telemetry-metric {
+  position: relative;
+  min-height: 132px;
+  padding: 17px 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(203, 213, 225, 0.64);
+  border-radius: 17px;
+  box-shadow: 0 12px 30px rgba(30, 41, 59, 0.055);
+}
+
+.dashboard .telemetry-metric::after {
+  content: "";
+  position: absolute;
+  right: -22px;
+  bottom: -30px;
+  width: 92px;
+  height: 92px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.11), transparent 68%);
+  border-radius: 999px;
+}
+
+.dashboard .telemetry-gap {
+  background:
+    linear-gradient(145deg, rgba(239, 246, 255, 0.96), rgba(255, 255, 255, 0.80));
+  border-color: rgba(96, 165, 250, 0.36);
+}
+
+.dashboard .telemetry-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #667085;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashboard .telemetry-label em {
+  padding: 2px 6px;
+  color: #2563eb;
+  background: rgba(219, 234, 254, 0.72);
+  border-radius: 999px;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.dashboard .telemetry-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.dashboard .telemetry-value-row strong {
+  color: #111827;
+  font-size: clamp(29px, 2.7vw, 38px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 790;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.dashboard .telemetry-value-row span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.dashboard .telemetry-metric small {
+  display: block;
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dashboard .telemetry-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.dashboard .telemetry-detail {
+  min-height: 66px;
+  padding: 11px 13px;
+  background: rgba(248, 250, 252, 0.76);
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  border-radius: 13px;
+}
+
+.dashboard .telemetry-detail span,
+.dashboard .telemetry-detail small {
+  display: block;
+  color: #94a3b8;
+  font-size: 9.5px;
+  font-weight: 650;
+}
+
+.dashboard .telemetry-detail strong {
+  display: block;
+  margin-top: 5px;
+  overflow: hidden;
+  color: #334155;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 730;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard .telemetry-control-state.is-active {
+  background: rgba(236, 253, 245, 0.82);
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+.dashboard .telemetry-control-state.is-active strong {
+  color: #047857;
+}
+
+.dashboard .telemetry-command-feedback {
+  background: rgba(239, 246, 255, 0.75);
+  border-color: rgba(147, 197, 253, 0.34);
+}
+
+.dashboard .telemetry-command-feedback small {
+  margin-top: 3px;
+}
+
+.dashboard .telemetry-command-feedback.is-error {
+  background: rgba(254, 242, 242, 0.84);
+  border-color: rgba(248, 113, 113, 0.30);
+}
+
+.dashboard .telemetry-command-feedback.is-error strong {
+  color: #b91c1c;
+}
+
+.dashboard .telemetry-note {
+  margin: 13px 2px 0;
+  color: #8a96a8;
+  font-size: 10.5px;
+  line-height: 1.55;
 }
 
 .dashboard .lks-parameter-card {
@@ -1696,6 +2114,8 @@ body {
   .dashboard .hero-top,
   .dashboard .launch-header,
   .dashboard .parameter-header { flex-direction: column; }
+  .dashboard .frame-mode-row { align-items: stretch; flex-direction: column; }
+  .dashboard .frame-mode-copy { flex-direction: row; justify-content: space-between; }
   .dashboard .launch-controls { flex-direction: column; }
   .dashboard .parameter-grid { grid-template-columns: 1fr; }
 }
@@ -2064,6 +2484,24 @@ body {
   font-size: 12.5px;
 }
 
+.dashboard .parameter-group.is-caution {
+  border-color: rgba(217, 119, 6, 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 251, 235, 0.94), rgba(255, 255, 255, 0.82));
+}
+
+.dashboard .parameter-group.is-caution h3::after {
+  content: "谨慎修改";
+  display: inline-flex;
+  margin-left: 8px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: #9a5b06;
+  background: rgba(245, 158, 11, 0.13);
+  font-size: 10px;
+  font-weight: 700;
+}
+
 .dashboard .parameter-grid {
   grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
 }
@@ -2134,6 +2572,29 @@ body {
   }
 
   .dashboard .parameter-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard .telemetry-primary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .dashboard .acc-telemetry-card {
+    padding: 20px;
+  }
+
+  .dashboard .telemetry-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dashboard .telemetry-live-pill {
+    align-self: flex-start;
+  }
+
+  .dashboard .telemetry-primary-grid {
     grid-template-columns: 1fr;
   }
 }

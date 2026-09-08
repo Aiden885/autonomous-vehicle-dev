@@ -1,0 +1,474 @@
+{
+  "Input": {
+    "description": "角度正则化输入结构体",
+    "alias": "角度正则化输入结构体",
+    "fields": [
+      {
+        "name": "x1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第一输入 x 坐标或向量 x 分量"
+      },
+      {
+        "name": "y1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第一输入 y 坐标或向量 y 分量"
+      },
+      {
+        "name": "x2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第二输入 x 坐标或向量 x 分量"
+      },
+      {
+        "name": "y2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第二输入 y 坐标或向量 y 分量"
+      },
+      {
+        "name": "x3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第三输入 x 坐标"
+      },
+      {
+        "name": "y3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第三输入 y 坐标"
+      },
+      {
+        "name": "x4",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第四输入 x 坐标"
+      },
+      {
+        "name": "y4",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "第四输入 y 坐标"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "标量计算结果"
+      },
+      {
+        "name": "angleRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "角度输入，单位 rad"
+      },
+      {
+        "name": "targetAngleRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "目标角度，单位 rad"
+      },
+      {
+        "name": "sourceAngleRad",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "源角度，单位 rad"
+      },
+      {
+        "name": "ratio",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "插值比例"
+      },
+      {
+        "name": "vertexX0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 0 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 1 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 2 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 3 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX4",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 4 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX5",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 5 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX6",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 6 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX7",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 7 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX8",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 8 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX9",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 9 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX10",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 10 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX11",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 11 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX12",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 12 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX13",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 13 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX14",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 14 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexX15",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 15 的 X 坐标 (m)"
+      },
+      {
+        "name": "vertexY0",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 0 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY1",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 1 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY2",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 2 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY3",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 3 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY4",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 4 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY5",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 5 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY6",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 6 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY7",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 7 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY8",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 8 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY9",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 9 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY10",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 10 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY11",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 11 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY12",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 12 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY13",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 13 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY14",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 14 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexY15",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "多边形顶点 15 的 Y 坐标 (m)"
+      },
+      {
+        "name": "vertexCount",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "多边形有效顶点数量"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Output": {
+    "description": "角度正则化输出结构体",
+    "alias": "角度正则化输出结构体",
+    "fields": [
+      {
+        "name": "valid",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "输出是否有效"
+      },
+      {
+        "name": "flag",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "布尔业务结果"
+      },
+      {
+        "name": "value",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "标量计算结果"
+      },
+      {
+        "name": "x",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 x 坐标或向量 x 分量"
+      },
+      {
+        "name": "y",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "输出 y 坐标或向量 y 分量"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Param": {
+    "description": "角度正则化参数结构体",
+    "alias": "角度正则化参数结构体",
+    "fields": [
+      {
+        "name": "epsilon",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.0,
+        "description": "浮点或几何退化判断容差"
+      },
+      {
+        "name": "clampRatio",
+        "category": 0,
+        "dataType": "bool",
+        "shape": [],
+        "dataValue": false,
+        "description": "是否限制插值比例到 [0, 1]"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "State": {
+    "description": "角度正则化状态结构体",
+    "alias": "角度正则化状态结构体",
+    "fields": [
+      {
+        "name": "reserved",
+        "category": 0,
+        "dataType": "UInteger",
+        "shape": [],
+        "dataValue": 0,
+        "description": "源端保留状态字段"
+      }
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  },
+  "Sub": {
+    "description": "将角度正则化到 [-pi, pi] 的子模块实体集合",
+    "alias": "将角度正则化到 [-pi, pi] 的子模块实体集合",
+    "fields": [
+    ],
+    "source": "code",
+    "namespace": "geometry"
+  }
+}

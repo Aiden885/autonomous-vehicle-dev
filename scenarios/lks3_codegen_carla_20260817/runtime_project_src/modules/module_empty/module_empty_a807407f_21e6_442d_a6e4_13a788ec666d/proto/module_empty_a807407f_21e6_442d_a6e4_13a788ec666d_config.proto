@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+message module_empty_a807407f_21e6_442d_a6e4_13a788ec666dParams {
+    double timer_duration = 1;
+}
+message LksInput {
+    double ego_speed_mps = 1;
+    bool brake_pressed = 2;
+    double driver_steer_norm = 3;
+    uint32 frame_id = 4;
+    double c0_m = 5;
+    double c1 = 6;
+    double c2_per_m = 7;
+    double c3_per_m2 = 8;
+    double curvature_per_m = 9;
+}
+message LksOutput {
+    uint32 frame_id = 1;
+    double steer_rad = 2;
+    bool control_enabled = 3;
+}
+
+message module_empty_a807407f_21e6_442d_a6e4_13a788ec666dConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  module_empty_a807407f_21e6_442d_a6e4_13a788ec666dParams params = 2;
+}
+message LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666dParams {
+    double timer_duration = 1;
+    int32 zmq_poll_timeout_ms = 2;
+}
+
+message LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666dConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666dParams params = 2;
+}
+message LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666dParams {
+    double target_speed_mps = 1;
+    double driver_steer_max_rad = 2;
+}
+
+message LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666dConfig {
+    icvos.common.NodeModuleConfig basic = 1;
+    LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666dParams params = 2;
+}

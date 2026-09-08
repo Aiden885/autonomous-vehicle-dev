@@ -1,0 +1,144 @@
+{
+  "Global": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Input": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "systemState",
+        "category": 0,
+        "dataType": "short",
+        "shape": [],
+        "dataValue": {},
+        "description": "真值表输入端口"
+      },
+      {
+        "name": "commandType",
+        "category": 0,
+        "dataType": "short",
+        "shape": [
+          1
+        ],
+        "dataValue": 0,
+        "description": "真值表输入端口"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Output": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "decisionCode",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0,
+        "description": "真值表输出端口"
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Param": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "minimumOperatingSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1
+      },
+      {
+        "name": "timeGapStepS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0.2
+      },
+      {
+        "name": "minTimeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1
+      },
+      {
+        "name": "maxTimeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 5
+      },
+      {
+        "name": "speedStepMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 4
+      },
+      {
+        "name": "minSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 0
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "State": {
+    "description": "",
+    "alias": "",
+    "fields": [
+      {
+        "name": "isControlActive",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0
+      },
+      {
+        "name": "hasControlHistory",
+        "category": 0,
+        "dataType": "int",
+        "shape": [],
+        "dataValue": 0
+      },
+      {
+        "name": "timeGapS",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 1.8
+      },
+      {
+        "name": "maxSpeedMps",
+        "category": 0,
+        "dataType": "double",
+        "shape": [],
+        "dataValue": 20
+      }
+    ],
+    "source": "code",
+    "namespace": "control"
+  },
+  "Sub": {
+    "description": "",
+    "alias": "",
+    "fields": [],
+    "source": "code",
+    "namespace": "control"
+  }
+}
