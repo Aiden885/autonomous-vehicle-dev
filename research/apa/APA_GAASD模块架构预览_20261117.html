@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>APA 的 GAASD 层级架构</title>
+<style>
+:root{--bg:#f5f7fa;--paper:#fff;--ink:#172a3d;--muted:#55677a;--faint:#758498;--line:#dce3ec;--accent:#175a9b;--selected:#e8f0f9;--hover:#f0f4f9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.75}
+main{max-width:1440px;margin:auto;padding:38px 32px 28px}.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted)}h1{font-size:30px;line-height:1.35;font-weight:650;margin:10px 0 14px}h2{font-size:19px;font-weight:650;margin:0 0 10px}p{margin:8px 0}.intro{max-width:1000px;color:var(--muted)}.status{display:inline-block;margin:12px 0 0;padding:2px 10px;border:1px solid var(--line);border-radius:4px;font-size:12px;color:var(--accent)}
+button{font:inherit;cursor:pointer}button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.tabs{display:flex;gap:24px;flex-wrap:wrap;margin:28px 0 26px;border-bottom:1px solid var(--line)}.tab{padding:11px 0;background:none;color:var(--muted);border:0;border-bottom:3px solid transparent;font-weight:600}.tab[aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent)}[hidden]{display:none!important}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.tools{display:flex;gap:8px;flex-wrap:wrap}.tool{background:var(--paper);border:1px solid var(--line);color:var(--ink);border-radius:5px;padding:5px 12px;font-size:13px}.tool:hover{background:var(--hover)}.flow{color:var(--muted);margin-bottom:20px}.flow strong{color:var(--ink)}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}.column{min-width:0;border-top:2px solid var(--accent);padding:14px 18px 18px;background:var(--paper)}.column-number{color:var(--faint);font:13px ui-monospace,monospace;margin-bottom:10px}
+.tree{list-style:none;margin:0;padding:0}.tree .tree{margin-left:7px;border-left:1px solid var(--line);padding-left:14px}.root-tree>.branch>details>summary{font-size:17px}.branch{min-width:0;margin:6px 0}.leaf{border-bottom:1px solid var(--line);padding:10px 0}.node-name{display:block;overflow-wrap:anywhere;line-height:1.5;font-size:13px;font-weight:650}.node-purpose{display:block;font-size:13px;color:var(--muted);font-weight:400;line-height:1.7;margin-top:3px;overflow-wrap:anywhere}summary{cursor:pointer;position:relative;padding:8px 8px 8px 20px;border-radius:3px;list-style:none}summary::-webkit-details-marker{display:none}summary::before{content:'›';position:absolute;left:2px;top:6px;font-size:19px;transform:rotate(0deg);color:var(--accent)}details[open]>summary::before{transform:rotate(90deg)}summary:hover{background:var(--hover)}.count{display:inline-block;font-size:11px;color:var(--faint);margin-top:4px}.source{font:11px/1.7 ui-monospace,monospace;overflow-wrap:anywhere;color:var(--faint);padding-left:20px;margin:4px 0 12px}
+.notes{margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}.notes p{max-width:1120px;color:var(--muted)}.steps{counter-reset:steps;list-style:none;margin:18px 0 30px;padding:0}.steps li{position:relative;counter-increment:steps;padding:16px 16px 16px 56px;border-bottom:1px solid var(--line);background:var(--paper)}.steps li::before{content:counter(steps,decimal-leading-zero);position:absolute;left:16px;color:var(--accent);font:16px ui-monospace,monospace;top:21px}.contracts{max-width:1100px}.contracts p{padding:8px 0}footer{margin-top:32px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--faint);overflow-wrap:anywhere}a{color:var(--accent)}
+@media(max-width:1050px){main{padding:28px 22px}.columns{grid-template-columns:1fr}.column{padding:14px 18px}.root-tree>.branch>details>.tree{display:block}h1{font-size:26px}}
+@media(max-width:480px){main{padding:22px 14px}h1{font-size:24px}.column{padding:12px}.tabs{gap:18px}.node-name{font-size:12px}.tree .tree{padding-left:10px;margin-left:3px}}
+@media(prefers-color-scheme:dark){:root{--bg:#111923;--paper:#18232f;--ink:#e5edf7;--muted:#b1bfce;--faint:#8d9db0;--line:#344455;--accent:#9bc8ff;--selected:#23384f;--hover:#233346}}
+@media print{body{background:white;color:black}main{max-width:none;padding:0}.tabs,.tools{display:none}.columns{display:block}.column{break-inside:avoid;background:none;margin-bottom:20px}summary::before{display:none}footer{font-size:10px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="eyebrow">APA / GAASD · 2026-11-17</div><h1>APA 的 GAASD 层级架构</h1>
+<p class="intro">基于 apa_1112.zip 与 carla_bridge_1112.zip。算法全部在 GAASD 内执行，默认具备异步能力；Bridge 的职责与协议保持不变。</p>
+<span class="status">供审核的设计预览 · 不是已创建的 GAASD 画布</span></header>
+<nav class="tabs" role="tablist" aria-label="架构预览内容">
+<button type="button" class="tab" role="tab" id="tab-structure" aria-controls="panel-structure" aria-selected="true" tabindex="0">模块层级</button>
+<button type="button" class="tab" role="tab" id="tab-semantics" aria-controls="panel-semantics" aria-selected="false" tabindex="-1">时序与边界</button>
+</nav>
+<section id="panel-structure" role="tabpanel" aria-labelledby="tab-structure">
+<div class="section-head"><h2>Main 顶层</h2><div class="tools"><button type="button" class="tool" id="expand-all">全部展开</button><button type="button" class="tool" id="collapse-all">全部折叠</button></div></div>
+<p class="flow"><strong>ValidateInput</strong> → 任务决策与异步结果处理 → 已接纳路径的周期控制 → <strong>PublishOutput</strong><br>箭头表示信息衔接，不表示同步等待规划求解。点击模块标题可展开或折叠。</p>
+<div class="columns"><section class="column" aria-label="任务与恢复决策"><div class="column-number">01</div><ul class="tree root-tree"><li class="branch" data-module="Decision"><details open>
+    <summary><span class="node-name">Decision</span><span class="node-purpose">任务与恢复决策</span><span class="count">6 项</span></summary>
+    <p class="source">源码依据：ApaModule.cc / apa_recovery_context.* / ApaRecoveryDecision</p>
+    <ul class="tree"><li class="leaf" data-module="ManageTaskLifecycle"><span class="node-name">ManageTaskLifecycle</span><span class="node-purpose">识别新任务、初始化、故障锁存</span></li>
+<li class="leaf" data-module="CheckPlanningReadiness"><span class="node-name">CheckPlanningReadiness</span><span class="node-purpose">匹配停稳编号、持续时间与起点安全</span></li>
+<li class="leaf" data-module="AssessRecoveryContext"><span class="node-name">AssessRecoveryContext</span><span class="node-purpose">风险分类、场景变化、跨次恢复进展</span></li>
+<li class="leaf" data-module="SelectRecoveryAction"><span class="node-name">SelectRecoveryAction</span><span class="node-purpose">保持、观察、等待、规划、查询或终止</span></li>
+<li class="leaf" data-module="ManagePlanningJob"><span class="node-name">ManagePlanningJob</span><span class="node-purpose">GAASD 内异步提交、完成和取消；不是外部 worker</span></li>
+<li class="leaf" data-module="AdmitPlanningResult"><span class="node-name">AdmitPlanningResult</span><span class="node-purpose">核对身份与实际起点，当前场景复核后更新路径版本</span></li></ul>
+  </details></li></ul></section>
+<section class="column" aria-label="异步路径规划"><div class="column-number">02</div><ul class="tree root-tree"><li class="branch" data-module="Planning"><details open>
+    <summary><span class="node-name">Planning</span><span class="node-purpose">异步路径规划</span><span class="count">6 项</span></summary>
+    <p class="source">源码依据：apa_planning_job.cpp / apaParkingPathPlanning.c / apa_parking_search.cpp</p>
+    <ul class="tree"><li class="leaf" data-module="PreparePlanningScene"><span class="node-name">PreparePlanningScene</span><span class="node-purpose">一次求解使用独立、不可变的场景快照</span></li>
+<li class="leaf" data-module="ResolvePlanningRequest"><span class="node-name">ResolvePlanningRequest</span><span class="node-purpose">车位几何、入口、坐标约定与目标约束</span></li>
+<li class="branch" data-module="GenerateParkingCandidates"><details>
+    <summary><span class="node-name">GenerateParkingCandidates</span><span class="node-purpose">生成并在求解中检查候选</span><span class="count">3 项</span></summary>
+    
+    <ul class="tree"><li class="leaf" data-module="GenerateGeometricCandidates"><span class="node-name">GenerateGeometricCandidates</span><span class="node-purpose">垂直尾入、平行、斜列、垂直头入</span></li>
+<li class="leaf" data-module="SearchParkingRoute"><span class="node-name">SearchParkingRoute</span><span class="node-purpose">搜索根、车辆运动扩展、RS 连接、路径恢复</span></li>
+<li class="leaf" data-module="PlanParkingExit"><span class="node-name">PlanParkingExit</span><span class="node-purpose">从实际库内位姿向库外目标求解</span></li></ul>
+  </details></li>
+<li class="branch" data-module="EvaluateParkingCandidates"><details>
+    <summary><span class="node-name">EvaluateParkingCandidates</span><span class="node-purpose">不是全部候选生成后才开始的单向流水线</span><span class="count">6 项</span></summary>
+    
+    <ul class="tree"><li class="leaf" data-module="DiscretizeParkingPath"><span class="node-name">DiscretizeParkingPath</span><span class="node-purpose">位置、航向、有符号区间里程与有效点数</span></li>
+<li class="leaf" data-module="CheckPathStructure"><span class="node-name">CheckPathStructure</span><span class="node-purpose">容量、方向及坐标与里程一致性</span></li>
+<li class="leaf" data-module="CheckCandidateSweep"><span class="node-name">CheckCandidateSweep</span><span class="node-purpose">完整车身运动扫掠与目标约束</span></li>
+<li class="leaf" data-module="CompareCandidateQuality"><span class="node-name">CompareCandidateQuality</span><span class="node-purpose">换向、短段、几何和近障等代价</span></li>
+<li class="leaf" data-module="PreviewCandidateExecution"><span class="node-name">PreviewCandidateExecution</span><span class="node-purpose">独立实例中的控制、执行器和名义车辆预演</span></li>
+<li class="leaf" data-module="ImproveAcceptedCandidate"><span class="node-name">ImproveAcceptedCandidate</span><span class="node-purpose">改善后重新检查，不直接删除短段</span></li></ul>
+  </details></li>
+<li class="leaf" data-module="PlanClearanceRecovery"><span class="node-name">PlanClearanceRecovery</span><span class="node-purpose">许可、有界前缀、连接及完整路线复核</span></li>
+<li class="leaf" data-module="BuildPlanningResult"><span class="node-name">BuildPlanningResult</span><span class="node-purpose">候选、请求身份和准确的失败原因</span></li></ul>
+  </details></li></ul></section>
+<section class="column" aria-label="安全运动执行"><div class="column-number">03</div><ul class="tree root-tree"><li class="branch" data-module="Control"><details open>
+    <summary><span class="node-name">Control</span><span class="node-purpose">安全运动执行</span><span class="count">5 项</span></summary>
+    <p class="source">源码依据：apa_tracking_execution.cpp / apaMoco*V2.c / apaMocoActuator.c</p>
+    <ul class="tree"><li class="branch" data-module="ExecuteSafeTrackingStep"><details>
+    <summary><span class="node-name">ExecuteSafeTrackingStep</span><span class="node-purpose">先试算约束，再正式提交一次控制状态</span><span class="count">7 项</span></summary>
+    
+    <ul class="tree"><li class="leaf" data-module="ManageManeuverExecution"><span class="node-name">ManageManeuverExecution</span><span class="node-purpose">方向段、挡位、转向准备、停车及结束</span></li>
+<li class="leaf" data-module="ProjectPathProgress"><span class="node-name">ProjectPathProgress</span><span class="node-purpose">当前方向段与历史窗口内的连续投影</span></li>
+<li class="leaf" data-module="PrepareTrackingReference"><span class="node-name">PrepareTrackingReference</span><span class="node-purpose">参考位置、航向、曲率和响应预看</span></li>
+<li class="leaf" data-module="BuildSpeedEnvelope"><span class="node-name">BuildSpeedEnvelope</span><span class="node-purpose">曲率、短段、近障和段末限制</span></li>
+<li class="leaf" data-module="ComputeLongitudinalRequest"><span class="node-name">ComputeLongitudinalRequest</span><span class="node-purpose">速度 PI、加速度与 jerk 约束</span></li>
+<li class="leaf" data-module="ComputeLateralRequest"><span class="node-name">ComputeLateralRequest</span><span class="node-purpose">曲率前馈、横偏/航向反馈及受限积分</span></li>
+<li class="leaf" data-module="ConstrainAvailableMotion"><span class="node-name">ConstrainAvailableMotion</span><span class="node-purpose">候选控制预测下的可行运动距离</span></li></ul>
+  </details></li>
+<li class="leaf" data-module="CheckOnlineMotionSafety"><span class="node-name">CheckOnlineMotionSafety</span><span class="node-purpose">当帧实际运动、响应制动预测和扫掠</span></li>
+<li class="leaf" data-module="ArbitrateMotionCommand"><span class="node-name">ArbitrateMotionCommand</span><span class="node-purpose">本帧安全、故障、恢复和仅规划覆盖</span></li>
+<li class="leaf" data-module="ActuateVehicle"><span class="node-name">ActuateVehicle</span><span class="node-purpose">最终油门、制动、手刹和挡位；Bridge 不叠加 PID</span></li>
+<li class="leaf" data-module="BuildControlDiagnostic"><span class="node-name">BuildControlDiagnostic</span><span class="node-purpose">跟踪进度、误差、状态及输出诊断</span></li></ul>
+  </details></li></ul></section></div>
+<section class="notes"><h2>安全按检查位置分布，底层算法共用</h2><p>任务准入、搜索扩展、候选检查、接收复核、在线控制各自调用相应安全能力。共用坐标、包络、碰撞、扫掠和制动预测定义；不同任务和预演不共享可写状态。</p></section>
+<section class="notes"><h2>当前预置库不能只按名称复用</h2><p>两份本机库均有 483 条组件记录，含 144 条 Test 项，自动泊车分类为 13 条。已发现 AStar、CollisionCheck 等同名条目使用标量演示模板；APA 包装虽有真实 C 调用，也仍需核对版本、场景上下文和状态行为。基础运算优先复用，复杂算法按实际实现分类评估。</p></section>
+</section>
+<section id="panel-semantics" role="tabpanel" aria-labelledby="tab-semantics" hidden>
+<h2>单帧处理与异步边界</h2><ol class="steps">
+<li>接收输入，核对身份、时序和新任务，优先处理保护反馈与输入故障。</li>
+<li>更新任务与恢复决策；异步规划完成后，核对起点并用当前场景复核。</li>
+<li>到达新控制步时：状态副本试算 → 可用距离检查 → 正式控制状态更新一次。</li>
+<li>按本帧预测检查在线安全；必要时当帧停车、恢复或故障，不统一延后到下一帧。</li>
+<li>完成指令覆盖 → C 执行器生成踏板 → 发布匹配帧输出；同帧重发复用缓存。</li>
+</ol>
+<div class="contracts"><h2>三项不能省略的实现契约</h2>
+<p><strong>异步任务：</strong>请求身份、快照、取消、完成及过期结果拒收必须明确；没有假定某个官方任务组件已经存在。</p>
+<p><strong>状态隔离：</strong>在线控制、候选预演和搜索任务拥有各自状态；不得通过父子端口注入内部 State。控制与踏板执行器都只能按同一时间步推进一次；同帧新增安全事件可立即覆盖停车，但不能再推进滤波、偏置和积分。</p>
+<p><strong>场景与容量：</strong>100 点路径、64 条边界与 4096 个凸片不是同一数据层；不截断环境来迁就接口，不把请求级资源 ID 当作跨线程有效的地址。</p>
+<section class="notes"><h2>Bridge 保持不动</h2><p>地图与车位、占用判断、目标构造、CARLA 数据读取、命令与身份核验、转向适配和独立保护仍由当前 Bridge 承担。GAASD 保留原对外协议和 C 踏板所有权。</p></section></div>
+</section>
+<noscript><p>当前浏览器禁用了 JavaScript，模块仍可展开；时序说明请参阅同目录的设计文档。</p></noscript>
+<footer>详细设计：<a href="APA_GAASD模块架构设计_20261117.md">APA_GAASD模块架构设计_20261117.md</a>。当前未生成组件、改动画布或验证 CARLA 物理闭环。<br>此 HTML 可离线打开，无外部脚本、字体或网络依赖。模块树由原 TSX 数据生成，共 36 个节点。</footer>
+</main>
+<script>
+'use strict';
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+function activateTab(tab) {
+  tabs.forEach(item => {
+    const active = item === tab;
+    item.setAttribute('aria-selected', String(active));
+    item.tabIndex = active ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
+  });
+}
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTab(tab));
+  tab.addEventListener('keydown', event => {
+    const indexes = {ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1};
+    if (!(event.key in indexes)) return;
+    event.preventDefault();
+    const next = tabs[indexes[event.key]];
+    activateTab(next);
+    next.focus();
+  });
+});
+document.getElementById('expand-all').addEventListener('click', () => document.querySelectorAll('details').forEach(item => item.open = true));
+document.getElementById('collapse-all').addEventListener('click', () => document.querySelectorAll('details').forEach(item => item.open = false));
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+name: lks3_codegen_carla_20260817
+description: lks3 最新生成代码 LKS Pangu-CARLA 本地闭环测试
+created_at: "2026-08-17"
+control_profile: lks
+
+environment:
+  carla_version: "0.9.15"
+  carla_root: "~/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:latest"
+  pangu_build_root: "~/.cache/gaasd-pangu/lks3_codegen_build"
+  runtime_project_source: "runtime_project_src"
+
+carla_scene:
+  map: Town04
+  ego_spawn_index: town04_road45_lane_minus3
+  ego_location: [-511.738, 242.657, 0.5]
+  reference_location: [-511.738, 242.657, 0.5]
+  initial_lateral_offset_m: 0.0
+  initial_heading_error_deg: 0.0
+  lead_behavior: none
+  lead_placement: none
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  lane_keep_enabled: false
+
+pangu:
+  install_dir: "~/.cache/gaasd-pangu/lks3_codegen_build/install"
+  container_name: lks3_codegen_carla
+  app_name: app_empty
+  process_name: process_empty_6f47e11e
+  processes:
+    - process_empty_6f47e11e
+    - LksZmqInputModule_a807407f_21e6_442d_a6e4_13a788ec666d
+    - LksZmqOutputModule_a807407f_21e6_442d_a6e4_13a788ec666d
+
+results:
+  latest_summary: "/tmp/lks3-codegen-carla/results/latest_summary.json"
+
+gaasd_signals:
+  observed: [egoV, c0, c1, c2, c3, curvature, brakePressed, driverSteerNorm, steerRad, controlEnabled]
+
+parameters:
+  - key: target_speed_mps
+    label: 目标车速
+    group: 场景
+    env: LKS_TARGET_SPEED_MPS
+    default: 4.0
+    min: 1.0
+    max: 38.9
+    step: 0.1
+    unit: m/s
+    description: 输出边界向CARLA发送的纵向目标速度
+  - key: initial_lateral_offset_m
+    label: 初始横向偏差
+    group: 场景
+    env: LKS_INITIAL_OFFSET_M
+    default: 0.0
+    min: -1.0
+    max: 1.0
+    step: 0.1
+    unit: m
+    description: 正值沿车辆右方向偏移，负值沿左方向偏移
+  - key: record_duration_sec
+    label: 记录时长
+    group: 场景
+    env: LKS_RECORD_DURATION_SEC
+    default: 180
+    min: 30
+    max: 600
+    step: 10
+    unit: s
+    integer: true
+    description: 本地结果记录器的持续时间
+  - key: boost_speed_mps
+    label: 辅助起步速度
+    group: 辅助起步
+    env: LKS_BOOST_SPEED_MPS
+    default: 1.5
+    min: 0.5
+    max: 15.0
+    step: 0.1
+    unit: m/s
+    description: 启动后短时推动自车越过最低工作车速，通常应高于最低工作车速
+  - key: boost_duration_sec
+    label: 辅助起步时长
+    group: 辅助起步
+    env: LKS_BOOST_DURATION_SEC
+    default: 3.0
+    min: 0.5
+    max: 10.0
+    step: 0.5
+    unit: s
+    description: 辅助起步速度的保持时间
+  - key: l0
+    label: 基础预瞄距离
+    group: 预瞄模型
+    env: LKS_PARAM_L0
+    default: 5.0
+    min: 1.0
+    max: 20.0
+    step: 0.1
+    unit: m
+    description: 车速为零时的基础远端预瞄距离
+  - key: rt
+    label: 速度预瞄时间
+    group: 预瞄模型
+    env: LKS_PARAM_RT
+    default: 0.5
+    min: 0.0
+    max: 2.0
+    step: 0.05
+    unit: s
+    description: 车速对远端预瞄距离的增益
+  - key: r_alpha
+    label: 弯道预瞄缩放
+    group: 预瞄模型
+    env: LKS_PARAM_R_ALPHA
+    default: 0.666667
+    min: 0.2
+    max: 1.0
+    step: 0.01
+    unit: "1"
+    description: 曲率超过阈值时缩短预瞄距离的比例
+  - key: curvature_threshold
+    label: 曲率判定阈值
+    group: 预瞄模型
+    env: LKS_PARAM_CURVATURE_THRESHOLD
+    default: 0.0001
+    min: 0.0001
+    max: 0.02
+    step: 0.0001
+    unit: 1/m
+    description: 超过该曲率后启用弯道预瞄缩放
+  - key: near_preview_distance
+    label: 近端预瞄距离
+    group: 预瞄模型
+    env: LKS_PARAM_NEAR_PREVIEW_DISTANCE
+    default: 0.5
+    min: 0.1
+    max: 5.0
+    step: 0.1
+    unit: m
+    description: 第一个预瞄点相对自车的纵向距离
+  - key: w1
+    label: 近端误差权重
+    group: 三点权重
+    env: LKS_PARAM_W1
+    default: 0.2
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+    description: 近端预瞄点横向误差的权重
+  - key: w2
+    label: 中端误差权重
+    group: 三点权重
+    env: LKS_PARAM_W2
+    default: 0.3
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+    description: 中端预瞄点横向误差的权重
+  - key: w3
+    label: 远端误差权重
+    group: 三点权重
+    env: LKS_PARAM_W3
+    default: 0.5
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    unit: "1"
+    sum_group: preview_weights
+    description: 远端预瞄点横向误差的权重
+  - key: kp
+    label: 横向误差增益
+    group: 转向控制
+    env: LKS_PARAM_KP
+    default: 0.09
+    min: 0.0
+    max: 1.0
+    step: 0.005
+    unit: 1/m
+    description: 加权横向误差转换为归一化转向命令的比例增益
+  - key: steer_scale
+    label: 转角缩放
+    group: 转向控制
+    env: LKS_PARAM_STEER_SCALE
+    default: 0.6
+    min: 0.1
+    max: 1.0
+    step: 0.01
+    unit: rad
+    description: 归一化转向命令转换为前轮转角的比例
+  - key: ay_max
+    label: 横向加速度上限
+    group: 转向控制
+    env: LKS_PARAM_AY_MAX
+    default: 3.0
+    min: 0.5
+    max: 10.0
+    step: 0.1
+    unit: m/s²
+    description: 根据车速计算动态转角上限，增大后允许高速时使用更大转角
+  - key: v_min
+    label: 最低工作车速
+    group: 决策门控
+    env: LKS_PARAM_V_MIN
+    default: 1.0
+    min: 0.0
+    max: 10.0
+    step: 0.1
+    unit: m/s
+    description: 自车速度低于该值时不启用 LKS 控制
+  - key: driver_steer_threshold
+    label: 驾驶员转向阈值
+    group: 决策门控
+    env: LKS_PARAM_DRIVER_STEER_THRESHOLD
+    default: 0.1
+    min: 0.01
+    max: 1.0
+    step: 0.01
+    unit: "1"
+    description: 驾驶员归一化转向输入超过该值时退出 LKS
+  - key: wheel_base
+    label: 车辆轴距
+    group: 车辆标定
+    env: LKS_PARAM_WHEEL_BASE
+    default: 2.9
+    min: 1.0
+    max: 6.0
+    step: 0.01
+    unit: m
+    caution: true
+    description: 用于横向加速度约束换算的车辆轴距，通常保持车型标定值
+  - key: front_wheel_max_rad
+    label: 前轮最大转角
+    group: 车辆标定
+    env: LKS_PARAM_FRONT_WHEEL_MAX_RAD
+    default: 0.5236
+    min: 0.1
+    max: 1.0
+    step: 0.001
+    unit: rad
+    caution: true
+    description: 归一化转向量对应的最大前轮转角，通常保持车型标定值
+
+expected_result:
+  expected_behavior: 三个 Pangu 进程持续运行，生成 LKS 算法输出转角并驱动 Town04 单车沿车道行驶。

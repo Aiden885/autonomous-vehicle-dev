@@ -1,0 +1,123 @@
+{
+    "name": "ACCSystemState",
+    "componentType": "atomic-function",
+    "alias": "ACC系统状态",
+    "description": "根据车速子态和系统子态判定ACC系统状态",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "bb356e1f-c9c7-5706-a309-8de973dc5602",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCSystemState_param_speedSubState_In",
+                    "name": "speedSubState",
+                    "alias": "speedSubState",
+                    "direction": "In",
+                    "description": "车速子态，0=适速Sv0，1=低速Sv1",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCSystemState_param_systemSubState_In",
+                    "name": "systemSubState",
+                    "alias": "systemSubState",
+                    "direction": "In",
+                    "description": "系统子态，0=Ss0，1=Ss1，2=Ss2，3=Ss3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCSystemState_output_systemState_Out",
+                    "name": "systemState",
+                    "alias": "systemState",
+                    "direction": "Out",
+                    "description": "系统状态，0=在控S0，1=适速有史待命S1，2=适速无史待命S2，3=低速S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCSystemState(int speedSubState, int systemSubState)\n{\n    int systemState = 2;\n\n    if (speedSubState != 0) {\n        systemState = 3;\n    } else {\n        if (systemSubState == 0) {\n            systemState = 2;\n        } else if (systemSubState == 1) {\n            systemState = 1;\n        } else {\n            systemState = 0;\n        }\n    }\n\n    return systemState;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

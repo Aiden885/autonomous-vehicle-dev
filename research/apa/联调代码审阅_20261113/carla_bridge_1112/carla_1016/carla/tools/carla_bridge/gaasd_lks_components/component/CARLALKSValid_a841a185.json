@@ -1,0 +1,74 @@
+{
+    "name": "CARLALKSValid",
+    "componentType": "atomic-function",
+    "alias": "CARLA车道数据有效",
+    "description": "读取CARLA车道跟踪输入数据是否有效",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "a841a185-4890-5a83-bb74-9839838f2251",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "LKS最小闭环"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": []
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLALKSValid_output_valid_Out",
+                    "name": "valid",
+                    "alias": "valid",
+                    "direction": "Out",
+                    "description": "数据有效标志，1表示有效",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int CARLALKSValid(void)\n{\n    extern int carla_adapter_read_lane_tracking(\n        double *lateralOffset,\n        double *headingError,\n        int *laneId,\n        int *roadId,\n        int *valid);\n    double lateralOffset = 0.0;\n    double headingError = 0.0;\n    int laneId = 0;\n    int roadId = 0;\n    int valid = 0;\n    int rc = 0;\n    int result = 0;\n\n    rc = carla_adapter_read_lane_tracking(&lateralOffset, &headingError, &laneId, &roadId, &valid);\n    if (rc == 0) {\n        result = valid;\n    }\n\n    return result;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

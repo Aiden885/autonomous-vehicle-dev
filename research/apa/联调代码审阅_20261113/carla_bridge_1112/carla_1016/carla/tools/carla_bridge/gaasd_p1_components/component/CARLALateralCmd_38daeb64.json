@@ -1,0 +1,123 @@
+{
+    "name": "CARLALateralCmd",
+    "componentType": "atomic-function",
+    "alias": "CARLA横向控制命令",
+    "description": "发布CARLA横向转向控制命令",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "38daeb64-4c4a-5318-b564-7ed303f17802",
+    "isCustom": false,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "仿真输出"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "CARLALateralCmd_param_steerRad_In",
+                    "name": "steerRad",
+                    "alias": "steerRad",
+                    "direction": "In",
+                    "description": "目标转向角，单位rad",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "CARLALateralCmd_param_enable_In",
+                    "name": "enable",
+                    "alias": "enable",
+                    "direction": "In",
+                    "description": "控制使能，1表示使能",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "CARLALateralCmd_param_status_Out",
+                    "name": "status",
+                    "alias": "status",
+                    "direction": "Out",
+                    "description": "发布状态，0表示成功",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int *",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "void CARLALateralCmd(\n    double steerRad,\n    int enable,\n    int *status)\n{\n    extern int carla_adapter_publish_lateral_cmd(double steerRad, int enable);\n    int rc = 0;\n\n    rc = carla_adapter_publish_lateral_cmd(steerRad, enable);\n    if (status != 0) {\n        *status = rc;\n    }\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

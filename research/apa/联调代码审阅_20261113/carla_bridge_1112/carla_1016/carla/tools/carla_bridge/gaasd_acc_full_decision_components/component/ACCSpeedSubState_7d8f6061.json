@@ -1,0 +1,123 @@
+{
+    "name": "ACCSpeedSubState",
+    "componentType": "atomic-function",
+    "alias": "ACC车速子态",
+    "description": "判断ACC车速子态",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "7d8f6061-2fa1-5a6d-9a74-d3890d74a633",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCSpeedSubState_param_egoV_In",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "In",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCSpeedSubState_param_vMinKmh_In",
+                    "name": "vMinKmh",
+                    "alias": "vMinKmh",
+                    "direction": "In",
+                    "description": "最低适控车速，单位km/h",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCSpeedSubState_output_speedSubState_Out",
+                    "name": "speedSubState",
+                    "alias": "speedSubState",
+                    "direction": "Out",
+                    "description": "车速子态，0=适速Sv0，1=低速Sv1",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCSpeedSubState(double egoV, double vMinKmh)\n{\n    double vMin = 0.0;\n    int speedSubState = 0;\n\n    vMin = vMinKmh / 3.6;\n    if (egoV < vMin) {\n        speedSubState = 1;\n    } else {\n        speedSubState = 0;\n    }\n\n    return speedSubState;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

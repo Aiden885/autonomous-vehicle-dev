@@ -1,0 +1,11 @@
+#ifndef APA_VT_PARKING_REVERSE_FALLBACK_TYPES_H
+#define APA_VT_PARKING_REVERSE_FALLBACK_TYPES_H
+
+#include "apaVtParkingPathPlanningTypes.h"
+
+typedef ApaParkingPathPlanningInput_t ApaVtParkingReverseFallbackInput_t;
+typedef ApaParkingPathPlanningParam_t ApaVtParkingReverseFallbackParam_t;
+
+typedef ApaParkingPathPlanningOutput_t ApaVtParkingReverseFallbackOutput_t;
+
+#endif

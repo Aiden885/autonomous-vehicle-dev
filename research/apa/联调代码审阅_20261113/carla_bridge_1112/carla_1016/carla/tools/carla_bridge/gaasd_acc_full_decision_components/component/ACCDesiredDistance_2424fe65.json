@@ -1,0 +1,147 @@
+{
+    "name": "ACCDesiredDistance",
+    "componentType": "atomic-function",
+    "alias": "ACC期望距离",
+    "description": "按时距计算期望跟车距离",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "2424fe65-eeb0-5afb-824a-e22969b59393",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCDesiredDistance_param_egoV_In",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "In",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCDesiredDistance_param_timeGap_In",
+                    "name": "timeGap",
+                    "alias": "timeGap",
+                    "direction": "In",
+                    "description": "目标时距，单位s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCDesiredDistance_param_minDistance_In",
+                    "name": "minDistance",
+                    "alias": "minDistance",
+                    "direction": "In",
+                    "description": "最小期望距离，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCDesiredDistance_output_desiredDistance_Out",
+                    "name": "desiredDistance",
+                    "alias": "desiredDistance",
+                    "direction": "Out",
+                    "description": "期望跟车距离，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCDesiredDistance(double egoV, double timeGap, double minDistance)\n{\n    double desiredDistance = 0.0;\n\n    desiredDistance = egoV * timeGap;\n    if (desiredDistance < minDistance) {\n        desiredDistance = minDistance;\n    }\n\n    return desiredDistance;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

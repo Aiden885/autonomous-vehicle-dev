@@ -1,0 +1,198 @@
+name: newaccpro4_accel_codegen_carla_20260824
+description: newaccpro4 加速度输出 ACC Pangu-CARLA 本地闭环测试
+created_at: "2026-08-24"
+control_profile: acc
+
+diagnostics:
+  acc:
+    initial_time_gap_s: 1.8
+    time_gap_step_s: 0.2
+    min_time_gap_s: 1.0
+    max_time_gap_s: 5.0
+    min_distance_m: 5.0
+
+parameters:
+  - key: lead_speed_mps
+    env: ACC_LEAD_SPEED_MPS
+    label: 前车初始速度
+    default: 2.0
+    min: 0.0
+    max: 20.0
+    step: 0.5
+    unit: m/s
+    group: 前车工况
+    description: 前车启动后的目标速度。
+  - key: lead_distance_m
+    env: ACC_LEAD_DISTANCE_M
+    label: 初始车间距
+    default: 30.0
+    min: 8.0
+    max: 100.0
+    step: 1.0
+    unit: m
+    group: 前车工况
+    description: 场景重置时自车与前车的初始距离。
+  - key: lead_step_speed_mps
+    env: ACC_LEAD_STEP_SPEED_MPS
+    label: 阶跃后前车速度
+    default: 2.0
+    min: 0.0
+    max: 20.0
+    step: 0.5
+    unit: m/s
+    group: 前车工况
+    description: 到达阶跃时刻后前车切换到的目标速度。
+  - key: lead_step_time_sec
+    env: ACC_LEAD_STEP_TIME_SEC
+    label: 速度阶跃时刻
+    default: 0.0
+    min: 0.0
+    max: 300.0
+    step: 1.0
+    unit: s
+    group: 前车工况
+    description: 设置为 0 时禁用速度阶跃，前车全程保持初始速度。
+  - key: lead_max_throttle
+    env: ACC_LEAD_MAX_THROTTLE
+    label: 前车最大油门开度
+    default: 0.8
+    min: 0.05
+    max: 1.0
+    step: 0.05
+    unit: 1
+    group: 前车工况
+    caution: true
+    description: 前车 waypoint PID 的 CARLA 归一化油门上限，独立于自车油门上限。
+  - key: record_duration_sec
+    env: ACC_RECORD_DURATION_SEC
+    label: 数据记录时长
+    default: 180.0
+    min: 30.0
+    max: 600.0
+    step: 10.0
+    unit: s
+    group: 测试流程
+    description: ACC 指标记录器持续采集数据的时间。
+  - key: boost_speed_mps
+    env: BOOST_SPEED_MPS
+    label: 辅助起步速度
+    default: 2.0
+    min: 1.0
+    max: 10.0
+    step: 0.5
+    unit: m/s
+    group: 测试流程
+    description: 启控前将自车提升到该速度，以越过最低工作车速。
+  - key: boost_duration_sec
+    env: BOOST_DURATION_SEC
+    label: 辅助起步时长
+    default: 4.0
+    min: 0.5
+    max: 15.0
+    step: 0.5
+    unit: s
+    group: 测试流程
+    description: 启控前辅助起步过程的持续时间。
+  - key: max_accel_mps2
+    env: ACC_MAX_ACCEL_MPS2
+    label: 最大加速度
+    default: 1.5
+    min: 0.1
+    max: 5.0
+    step: 0.1
+    unit: m/s²
+    group: 执行器约束
+    caution: true
+    description: Bridge 对 ACC 加速度命令施加的正向限值。
+  - key: max_brake_mps2
+    env: ACC_MAX_BRAKE_MPS2
+    label: 最大减速度
+    default: 6.0
+    min: 0.5
+    max: 10.0
+    step: 0.5
+    unit: m/s²
+    group: 执行器约束
+    caution: true
+    description: Bridge 对 ACC 加速度命令施加的制动限值，填写正数。
+  - key: max_throttle
+    env: ACC_MAX_THROTTLE
+    label: 自车最大油门开度
+    default: 0.35
+    min: 0.05
+    max: 1.0
+    step: 0.05
+    unit: 1
+    group: 执行器约束
+    caution: true
+    description: Bridge 对自车施加的 CARLA 归一化油门输出上限。
+  - key: max_brake
+    env: ACC_MAX_BRAKE
+    label: 最大制动开度
+    default: 0.7
+    min: 0.05
+    max: 1.0
+    step: 0.05
+    unit: 1
+    group: 执行器约束
+    caution: true
+    description: CARLA 归一化制动输出上限。
+
+environment:
+  carla_version: "0.9.15"
+  carla_root: "~/snap/code/app/carla-package"
+  python: "python3.8"
+  pangu_image: "docker.cbdes.cn:8080/cbdes/x86:latest"
+  pangu_build_root: "~/.cache/gaasd-pangu/newaccpro4_accel_codegen_build"
+  runtime_project_source: "runtime_project_src"
+
+carla_scene:
+  map: Town01
+  ego_role_name: hero
+  ego_spawn_index: 198
+  lead_role_name: gaasd_lead
+  lead_distance_m: 30
+  lead_speed_mps: 2
+  lead_placement: lane_waypoint
+  lead_behavior: waypoint_pid
+  spectator:
+    back_m: 8
+    up_m: 6
+    pitch_deg: -25
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  longitudinal_semantics: target_accel_mps2
+
+pangu:
+  install_dir: "~/.cache/gaasd-pangu/newaccpro4_accel_codegen_build/install"
+  container_name: newaccpro4_accel_codegen_carla
+  app_name: app_empty
+  process_name: AccProcess
+  processes:
+    - AccProcess
+    - AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43
+    - AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43
+
+driver_command:
+  startup_sequence: "先将自车提升至最低启控速度，再发送 E"
+  command_type:
+    e: 1
+    q: 2
+    t: 3
+    r: 4
+    w: 5
+    s: 6
+    c: 7
+
+results:
+  latest_summary: "/tmp/newaccpro4-accel-codegen-carla/results/latest_summary.json"
+  latest_samples: "/tmp/newaccpro4-accel-codegen-carla/results/acc_samples_latest.jsonl"
+
+gaasd_signals:
+  observed: [egoV, leadV, distance, commandType, accelerationCommand, throttle, brake, enable]
+
+expected_result:
+  expected_behavior: 三个 Pangu 进程持续运行，生成算法的临时 targetSpeedMps 端口承载加速度命令，并由输出边界转换为 target_accel_mps2 控制 CARLA。

@@ -1,0 +1,39 @@
+name: APA 泊车
+description: 支持 Town04、Town15 地图选择的 APA 泊入泊出闭环测试，默认 Town04 29号车位
+created_at: "2026-10-12"
+control_profile: apa
+
+environment:
+  carla_version: "0.9.16"
+  carla_root: "/opt/carla"
+  python: "python3.8"
+
+carla_scene:
+  map: Town04
+  ego_spawn_index: apa_slot_29
+  lead_behavior: none
+  lead_placement: none
+
+bridge:
+  config: bridge_config.json
+  zmq_pub: tcp://127.0.0.1:5701
+  zmq_control: tcp://127.0.0.1:5702
+  zmq_apa_command: tcp://127.0.0.1:5703
+  camera_http: http://127.0.0.1:5704
+
+pangu:
+  runtime: auto
+  install_dir: /home/nl/test/pangu_gaasd_base/install
+  container_name: pangu_x86
+  app_name: apa
+  process_name: apa
+  processes:
+    - ApaZmqInputModule
+    - apa
+    - ApaZmqOutputModule
+
+gaasd_signals:
+  observed: [parking_action, vehicle_x, vehicle_y, vehicle_yaw, target_x, target_y, ctrl_phase]
+
+expected_result:
+  expected_behavior: 泊入完成且车辆静止后，可通过泊出按钮切换动作并重新规划泊出路径。

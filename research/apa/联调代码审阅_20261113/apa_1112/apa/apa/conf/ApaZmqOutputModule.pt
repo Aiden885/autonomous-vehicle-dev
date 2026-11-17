@@ -1,0 +1,26 @@
+basic {
+  path: "lib/libApaZmqOutputModule.so"
+  module_type: APP
+  ioconfig {
+    subscribers {
+      name: "apa_output"
+      channel: "apa_output"
+      bindcode: ON
+    }
+    tasks {
+      task_name: "apa_output"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "apa_output"
+      }
+      input: "apa_output"
+    }
+  }
+}
+
+params {
+  zmq_control_enable: true
+}

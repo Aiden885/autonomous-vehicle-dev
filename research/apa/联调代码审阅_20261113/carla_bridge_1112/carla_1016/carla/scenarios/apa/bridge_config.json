@@ -1,0 +1,72 @@
+{
+  "carla": {
+    "host": "127.0.0.1",
+    "port": 2000,
+    "timeout_sec": 30.0,
+    "runtime_rpc_timeout_sec": 2.0,
+    "root": "/opt/carla",
+    "python_api_paths": [
+      "/opt/carla/PythonAPI/carla"
+    ],
+    "sync_mode": true,
+    "fixed_delta_seconds": 0.02,
+    "realtime_pacing": true,
+    "map_name": "Town04",
+    "ego_role_name": "hero",
+    "auto_spawn_ego": true
+  },
+  "timing": {
+    "control_period_sec": 0.02,
+    "control_wait_timeout_sec": 1.0,
+    "feedback_retry_sec": 0.1
+  },
+  "safety": {
+    "standstill_speed_mps": 0.02,
+    "standstill_dwell_sec": 0.2,
+    "brake_timeout_sec": 3.0,
+    "rpc_timeout_sec": 0.5
+  },
+  "zmq": {
+    "publish_bind": "tcp://127.0.0.1:5701",
+    "control_connect": "tcp://127.0.0.1:5702",
+    "command_bind": "tcp://127.0.0.1:5703"
+  },
+  "apa": {
+    "slot_file": "parking_slots.json",
+    "slot_id": 29,
+    "plan_request_period_sec": 0.2,
+    "vehicle_profile_path": "../../../../pangu_gaasd_base/modules/apa/apa/conf/apa_vehicle_profile.json",
+    "parking_query_radius_m": 24.0,
+    "draw_debug": false,
+    "spawn_occupied_vehicles": false,
+    "max_parked_vehicles": 12,
+    "approach_distance_m": 4.5,
+    "follow_spectator": true,
+    "spectator_back_m": 8.0,
+    "spectator_up_m": 6.0,
+    "spectator_pitch_deg": -28.0,
+    "parking_action": 1,
+    "action_switch_max_speed_mps": 0.03,
+    "camera_enabled": true,
+    "camera_http_host": "127.0.0.1",
+    "camera_http_port": 5704,
+    "camera_width": 480,
+    "camera_height": 270,
+    "camera_fps": 8.0,
+    "overhead_camera_enabled": true,
+    "overhead_camera_fov": 90.0,
+    "overhead_camera_z": 18.0,
+    "draw_trajectories": true,
+    "trajectory_draw_hz": 5.0,
+    "spectator_hz": 8.0,
+    "drivetrain_clutch_strength": 10.0
+  },
+  "control": {
+    "actuation": "c_pedals_v1",
+    "max_accel_mps2": 1.5,
+    "max_abs_target_speed_mps": 1.1,
+    "max_abs_steer_rad": 0.6598714414429312,
+    "manual_pedal_slew_per_sec": 1.6,
+    "calibration_record_dir": ""
+  }
+}

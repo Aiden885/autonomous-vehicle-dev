@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+message module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43Params {
+ string work_root = 1;
+ double timer_duration = 2;
+ double desired_distance_m = 3;
+ double max_speed_mps = 4;
+ double distance_gain = 5;
+ double speed_gain = 6;
+ bool enable_zmq_bridge = 7;
+ int32 zmq_poll_timeout_ms = 8;
+ bool zmq_control_enable = 9;
+}
+message AccOutput {
+    bool enable = 1;
+    uint32 frame_id = 2;
+    double target_speed_mps = 3;
+}
+message AccInput {
+    double ego_speed_mps = 1;
+    double lead_speed_mps = 2;
+    double lead_distance_m = 3;
+    int32 command_type = 4;
+    uint32 frame_id = 5;
+}
+
+message module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43Config {
+  icvos.common.NodeModuleConfig basic = 1;
+  module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43Params params = 2;
+}
+message AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Params {
+    double timer_duration = 1;
+    int32 zmq_poll_timeout_ms = 2;
+}
+
+message AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Config {
+    icvos.common.NodeModuleConfig basic = 1;
+    AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Params params = 2;
+}
+message AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Params {
+    bool zmq_control_enable = 1;
+}
+
+message AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Config {
+    icvos.common.NodeModuleConfig basic = 1;
+    AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43Params params = 2;
+}

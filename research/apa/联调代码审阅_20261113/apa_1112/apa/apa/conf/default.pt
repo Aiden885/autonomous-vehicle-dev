@@ -1,0 +1,67 @@
+basic {
+  path: "lib/libapa.so"
+  module_type: APP
+  ioconfig {
+    subscribers {
+      name: "apa_input"
+      channel: "apa_input"
+      bindcode: ON
+    }
+    tasks {
+      task_name: "apa_input"
+      bindcode: ON
+      task_option {
+        task_type: POLICY_TYPE_MSG_NEWEST
+        message_num: 1
+        timer_trigger_interval: 20
+        input_trigger: "apa_input"
+      }
+      input: "apa_input"
+    }
+    publishers {
+      name: "apa_output"
+      channel: "apa_output"
+      bindcode: ON
+    }
+  }
+}
+
+params {
+  timer_duration: 5.0
+  control_period_sec: 0.02
+  work_root: "/share/pangu/install/apa/"
+  # Absolute speed, acceleration and steering caps.
+  target_speed_mps: 1.1
+  max_accel_mps2: 1.5
+  max_steer_rad: 0.6598714414429312
+  enable_control: true
+  forward_ref_speed_mps: 1.1
+  reverse_ref_speed_mps: -0.6
+  terminal_keep_speed_mps: 0.10
+  cusp_approach_speed_mps: 0.15
+  short_segment_length_m: 1.0
+  short_segment_speed_mps: 0.30
+  minimum_tracking_speed_mps: 0.12
+  slowdown_distance_m: 1.2
+  execution_limits {
+    cusp_position_m: 0.20
+    cusp_yaw_rad: 0.10471975511965978
+    goal_position_m: 0.10
+    goal_yaw_rad: 0.03490658503988659
+    standstill_speed_mps: 0.02
+    cusp_dwell_sec: 0.20
+    goal_dwell_sec: 0.50
+    gear_dwell_sec: 0.20
+    reference_distance_m: 0.50
+    reference_yaw_rad: 0.60
+  }
+  planning_limits {
+    # Zero disables the worker wall-clock watchdog.
+    attempt_timeout_sec: 0.0
+    # Standstill/scene waiting only; excludes solving and candidate admission.
+    recovery_timeout_sec: 15.0
+    # Attempts per recovery; repeated recoveries require pose progress.
+    max_attempts: 4
+    retry_delay_sec: 0.5
+  }
+}

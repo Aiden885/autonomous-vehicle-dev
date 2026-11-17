@@ -1,0 +1,244 @@
+{
+  "model_sha256": "2d6788b3ee229ce24e337728dfbe7a971baa580b9f4cfcd20eb845e777ffbede",
+  "chart_id": 17000,
+  "runtime_states": {
+    "Off": {
+      "ssid": "2496",
+      "parent": null
+    },
+    "KeepIPM": {
+      "ssid": "13177",
+      "parent": null
+    },
+    "FailOff": {
+      "ssid": "2413",
+      "parent": null
+    },
+    "Act": {
+      "ssid": "2412",
+      "parent": null
+    },
+    "Standby_Inner": {
+      "ssid": "2502",
+      "parent": "Act"
+    },
+    "APA_Ctrl": {
+      "ssid": "2375",
+      "parent": "Act"
+    },
+    "StpTAct": {
+      "ssid": "2390",
+      "parent": "APA_Ctrl"
+    },
+    "Pause": {
+      "ssid": "3103",
+      "parent": "APA_Ctrl"
+    },
+    "ChassisWait": {
+      "ssid": "3041",
+      "parent": "APA_Ctrl"
+    },
+    "Finish": {
+      "ssid": "2382",
+      "parent": "APA_Ctrl"
+    },
+    "WaitOnPath": {
+      "ssid": "3046",
+      "parent": "APA_Ctrl"
+    },
+    "Processing": {
+      "ssid": "2381",
+      "parent": "APA_Ctrl"
+    },
+    "GrdLckWait": {
+      "ssid": "2945",
+      "parent": "APA_Ctrl"
+    },
+    "WaitGear": {
+      "ssid": "2488",
+      "parent": "APA_Ctrl"
+    },
+    "RePlan": {
+      "ssid": "2418",
+      "parent": "APA_Ctrl"
+    },
+    "HangOn": {
+      "ssid": "2383",
+      "parent": "APA_Ctrl"
+    },
+    "EmergencyBrk": {
+      "ssid": "2397",
+      "parent": "APA_Ctrl"
+    },
+    "RTA": {
+      "ssid": "2361",
+      "parent": "Act"
+    },
+    "FAIL": {
+      "ssid": "2371",
+      "parent": "Act"
+    },
+    "KeepIVI": {
+      "ssid": "3076",
+      "parent": "Act"
+    },
+    "OverRide": {
+      "ssid": "2405",
+      "parent": "Act"
+    },
+    "Driver_Search": {
+      "ssid": "2362",
+      "parent": "Act"
+    },
+    "Wait2PrkOut": {
+      "ssid": "2871",
+      "parent": "Act"
+    }
+  },
+  "cited_transitions": {
+    "2499": {
+      "source": "2496",
+      "target": "2412",
+      "guard": "[Func_SW == uint8(1)...\n && index>uint16(5)]",
+      "execution_order": "2"
+    },
+    "46": {
+      "source": "",
+      "target": "2502",
+      "guard": "",
+      "execution_order": "1"
+    },
+    "2503": {
+      "source": "2502",
+      "target": "2361",
+      "guard": "[APA_SW==uint8(1)]",
+      "execution_order": "1"
+    },
+    "2363": {
+      "source": "2361",
+      "target": "2362",
+      "guard": "[APA_SW == uint8(1) &&...\n(HZP_State == uint8(7))&&...\nIPM_Idx > uint32(0) &&...\n IPM_Idx~=IPM_IdxLst ...\n&&(VisDirtyActSW==uint8(0) ||...\n(VisDirtyCheck > uint8(1)&&(VisDirtyCheck==uint8(2)...\n||(VisDirtyCheck~=uint8(3)&&index>uint16(500)))))]",
+      "execution_order": "2"
+    },
+    "2386": {
+      "source": "2362",
+      "target": "2375",
+      "guard": "[APA_SW == uint8(1) && AVM_tmp == uint8(2) &&  Tgt_Slot_ID>uint8(0) && VehSpd<single(0.2) && BrkPdl > single(5.0) && LRAS_Sts < uint8(3) && index > uint16(5) ...\n&&(HandleSlt_Tmp==uint8(0)||((PPFinishFLg == uint8(2) ||PPFinishFLg == uint8(4)) &&PathValid == uint8(1) && PathValidLst== uint8(1) &&TgtSlot_PlnSts==uint8(2)))]",
+      "execution_order": "1"
+    },
+    "2376": {
+      "source": "",
+      "target": "2390",
+      "guard": "",
+      "execution_order": "1"
+    },
+    "2392": {
+      "source": "2390",
+      "target": "3041",
+      "guard": "[((ActSW == uint8(1) &&...\nVehSpd<single(0.1) &&...\nDriverDrErr == uint8(0) && uint8(sum(PsgDoorErr)) == uint8(0) &&...\nTrailGateErr== uint8(0) && SeatBeltSt_Dr == uint8(1)&&...\nChargeCap == uint8(0)&&HoodSts == uint8(0)&&FuelTap == uint8(0))...\n ||Chassis_CtrlSts == uint8(6))...\n&& (index>=uint16(40)||(APA_Dir_tmp ==uint8(3)&&index>=uint16(2)))...\n&& LRAS_Sts < uint8(3)...\n&& MirrorFld == uint8(1)...\n&& BrkPdl > single(5.0) ...\n&&((PathValid == uint8(1)&& PathValidLst== uint8(1) ...\n&&(TgtSlot_PlnSts==uint8(2)||APA_Dir_tmp ==uint8(3)))...\n||HandleSlt_Tmp==uint8(1))]",
+      "execution_order": "1"
+    },
+    "3042": {
+      "source": "3041",
+      "target": "2381",
+      "guard": "[Chassis_CtrlSts > uint8(3) &&...\nChassis_CtrlSts ~= uint8(5) &&...\nAPA_Ctrl_Status > uint8(1) &&...\n BrkPdl < single(5.0)]",
+      "execution_order": "3"
+    },
+    "2377": {
+      "source": "2381",
+      "target": "2488",
+      "guard": "[APA_Ctrl_Status==uint8(7) ...\n&& VehSpd<single(0.5)]",
+      "execution_order": "1"
+    },
+    "2489": {
+      "source": "2488",
+      "target": "2382",
+      "guard": "[GearPos == uint8(3) ...\n&& ESC_APACtrlSts == uint8(1)]",
+      "execution_order": "1"
+    },
+    "3104": {
+      "source": "2381",
+      "target": "3103",
+      "guard": "[Chassis_CtrlSts >= uint8(4) ...\n&&(sum(PsgDoorErr) > uint8(0)||...\nTrailGateErr== uint8(1)||...\n SeatBeltSt_Dr== uint8(0)||...\nMirrorFld == uint8(0)||...\nFuelTap == uint8(1)||...\nChargeCap == uint8(1)||...\nAPA_Pause == uint8(1)) ]",
+      "execution_order": "6"
+    },
+    "3105": {
+      "source": "3103",
+      "target": "2381",
+      "guard": "[APA_ResmLst == uint8(0) &&...\n APA_Resm == uint8(1)&&...\nAPA_Pause == uint8(0)&&...\nabs(DrStrTrq)<single(3.0) && BrkPdl < single(5.0) &&...\nsum(PsgDoorErr) == uint8(0) &&...\nTrailGateErr== uint8(0) &&...\nSeatBeltSt_Dr== uint8(1) && MirrorFld == uint8(1)&&...\nFuelTap == uint8(0)&&ChargeCap == uint8(0)&&...\nAPA_Pause == uint8(0)]",
+      "execution_order": "1"
+    },
+    "3047": {
+      "source": "2381",
+      "target": "3046",
+      "guard": "[NeedBrakeFlg >= uint8(1) &&  index > uint16(1) ...\n&& APA_Ctrl_Status ~= uint8(2)...\n&& APA_Ctrl_Status ~= uint8(9)...\n&& PauseAct == uint8(0)]",
+      "execution_order": "3"
+    },
+    "3048": {
+      "source": "3046",
+      "target": "2381",
+      "guard": "[NeedBrakeFlg == uint8(0)]",
+      "execution_order": "3"
+    },
+    "2876": {
+      "source": "2381",
+      "target": "2418",
+      "guard": "[PPFinishFLg==uint8(3) ...\n&& index>=uint8(4)]",
+      "execution_order": "4"
+    },
+    "2419": {
+      "source": "2418",
+      "target": "2381",
+      "guard": "[ColliFlg ==uint8(0) &&...\nNeedBrakeFlg == uint8(0) &&...\n(ReplanSuccess==uint8(1)||...\nAPA_Ctrl_Status==uint8(3))...\n&& LAEB_Req==uint8(0)]",
+      "execution_order": "2"
+    },
+    "2398": {
+      "source": "2381",
+      "target": "2397",
+      "guard": "[(ColliFlg >=uint8(1) &&  index > uint16(1))...\n|| LAEB_Req == uint8(1)]",
+      "execution_order": "2"
+    },
+    "2404": {
+      "source": "2397",
+      "target": "2381",
+      "guard": "[NeedBrakeFlg == uint8(0) ...\n&&ColliFlg ==uint8(0) ...\n&& LAEB_Req==uint8(0)...\n&&(CtrlSubState == uint8(1)||...\nCtrlSubState == uint8(5)||...\nCtrlSubState == uint8(0))&&...\n (index <uint16(500)...\n||ReplanActSW==uint8(0))]",
+      "execution_order": "3"
+    },
+    "2406": {
+      "source": "2375",
+      "target": "2405",
+      "guard": "[ ((AccPedal > single(3.0)||APA_FailFlg == uint8(3))...\n&&(Chassis_CtrlSts == uint8(6)||Chassis_CtrlSts == uint8(7)||Chassis_CtrlSts == uint8(5)))...\n|| (APA_State ~= uint8(7) && (single(abs(DrStrTrq))>single(20.0)))|| APA_Cncl == uint8(1) ]",
+      "execution_order": "6"
+    },
+    "2399": {
+      "source": "2397",
+      "target": "2418",
+      "guard": "[VehSpd<single(0.1) &&...\n ReplanActSW==uint8(1)&&...\nBD_Recnstrct == uint8(1)&&...\n index > uint16(10)]",
+      "execution_order": "2"
+    }
+  },
+  "figures": [
+    {
+      "name": "06-01-state-hierarchy",
+      "text_items": 48,
+      "text_bounds_checked": true
+    },
+    {
+      "name": "06-02-normal-parkin",
+      "text_items": 37,
+      "text_bounds_checked": true
+    },
+    {
+      "name": "06-03-wait-and-exit",
+      "text_items": 32,
+      "text_bounds_checked": true
+    },
+    {
+      "name": "06-04-task-and-maneuver",
+      "text_items": 25,
+      "text_bounds_checked": true
+    }
+  ],
+  "guard_policy": "Labels summarize guards, not sufficient conditions; original guards and priority retained here.",
+  "coordination_policy": "Conceptual example only; no measured times or universal sequencing claimed."
+}

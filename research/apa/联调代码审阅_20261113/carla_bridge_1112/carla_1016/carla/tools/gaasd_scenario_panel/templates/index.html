@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GAASD-CARLA Scenario Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261112-apa-entry-direction">
+</head>
+<body>
+  <div class="dashboard">
+    <div class="particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="app-name">GAASD-CARLA</span>
+          <span class="app-label">Local Simulator</span>
+        </div>
+      </div>
+
+      <div class="section-label">场景列表</div>
+      <div id="scenarioList" class="scenario-list"></div>
+
+      <div class="sidebar-footer">
+        <button class="panel-shutdown-btn" id="shutdownPanelBtn" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18.4 6.6a9 9 0 1 1-12.8 0"/>
+            <path d="M12 2v10"/>
+          </svg>
+          <span>关闭平台</span>
+        </button>
+        <div class="version-info">
+          <span>Scenario Panel</span>
+          <span class="dot">·</span>
+          <span>CARLA 0.9.15</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-inner">
+        <section class="hero-card" id="heroCard">
+          <div class="hero-top">
+            <div class="scene-info">
+              <h1 class="scene-title" id="scenarioName">正在加载场景</h1>
+              <p class="scene-desc" id="scenarioDescription">读取 scenarios 目录中的可复现快照。</p>
+            </div>
+            <span class="kb-link offline apa-header-link" id="apaLinkBadge">算法未连接</span>
+            <div class="status-pill status-idle" id="statusPill">
+              <span class="status-dot"></span>
+              <span id="statusText">Idle</span>
+            </div>
+          </div>
+
+          <div class="config-strip">
+            <div class="config-tag path-tag">
+              <span class="tag-label">路径</span>
+              <code class="tag-value" id="restorePath" title="点击复制工程路径">-</code>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">CARLA</span>
+              <span class="tag-value" id="carlaInfo">-</span>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">地图</span>
+              <span class="tag-value" id="mapInfo">-</span>
+            </div>
+            <div class="config-tag">
+              <span class="tag-label">前车</span>
+              <span class="tag-value" id="leadInfo">-</span>
+            </div>
+          </div>
+
+          <div class="signal-strip">
+            <span class="signal-label">观测信号</span>
+            <span class="signal-tags" id="signalInfo">-</span>
+          </div>
+        </section>
+
+        <section class="action-row">
+          <section class="launch-card">
+            <div class="launch-header">
+              <h2 class="section-title">启动控制</h2>
+              <label class="force-row">
+                <input type="checkbox" id="forceRestore">
+                <span>覆盖恢复目录</span>
+              </label>
+            </div>
+
+            <div class="frame-mode-row">
+              <div class="frame-mode-copy">
+                <span>CARLA 帧率</span>
+                <small>同步调整仿真步长</small>
+              </div>
+              <div class="frame-mode-switch" role="radiogroup" aria-label="CARLA 帧率模式">
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaFrameMode" value="stable">
+                  <span><strong>稳定</strong><small>20 FPS</small></span>
+                </label>
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaFrameMode" value="normal" checked>
+                  <span><strong>正常</strong><small>30 FPS</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="frame-mode-row">
+              <div class="frame-mode-copy">
+                <span>CARLA 画质</span>
+                <small>与仿真帧率独立设置</small>
+              </div>
+              <div class="frame-mode-switch" role="radiogroup" aria-label="CARLA 画质模式">
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaQualityMode" value="low" checked>
+                  <span><strong>省资源</strong><small>Low</small></span>
+                </label>
+                <label class="frame-mode-option">
+                  <input type="radio" name="carlaQualityMode" value="normal">
+                  <span><strong>普通</strong><small>Epic</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="launch-controls">
+              <button class="btn btn-secondary" id="restoreBtn">
+                <span class="btn-spinner"></span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                恢复工程
+              </button>
+
+              <button class="btn btn-primary" id="startBtn">
+                <span class="btn-shimmer"></span>
+                <span class="btn-spinner"></span>
+                <svg class="btn-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                启动联调环境
+              </button>
+
+              <button class="btn btn-danger" id="stopBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="6" width="12" height="12" rx="1"/>
+                </svg>
+                停止
+              </button>
+            </div>
+
+            <div class="utility-bar">
+              <button class="util-btn" id="healthBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                健康检查
+              </button>
+              <button class="util-btn" id="fixGeneratedBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4"/>
+                  <path d="M15 5l4 4"/>
+                </svg>
+                修复生成代码
+              </button>
+              <button class="util-btn" id="copyPathBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                复制路径
+              </button>
+              <button class="util-btn" id="readmeBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 16v-4"/>
+                  <path d="M12 8h.01"/>
+                </svg>
+                说明
+              </button>
+            </div>
+          </section>
+
+          <section class="driver-card kb-console" id="accDriverCard">
+            <div class="driver-header">
+              <h2 class="section-title">ACC 键盘驾驶台</h2>
+            </div>
+            <div class="kb-body">
+              <div class="kb-col">
+                <div class="kb-section">
+                  <h3>点火开关</h3>
+                  <div class="kb-row">
+                    <button class="driver-btn" data-ignition="OFF">F1<span>OFF</span></button>
+                    <button class="driver-btn" data-ignition="ACC">F2<span>ACC</span></button>
+                    <button class="driver-btn" data-ignition="ON">F3<span>ON</span></button>
+                    <button class="driver-btn" data-hold="f4">F4<span>START</span></button>
+                  </div>
+                </div>
+                <div class="kb-section">
+                  <h3>挡位</h3>
+                  <div class="kb-row">
+                    <button class="driver-btn" data-gear="P">1<span>P</span></button>
+                    <button class="driver-btn" data-gear="R">2<span>R</span></button>
+                    <button class="driver-btn" data-gear="N">3<span>N</span></button>
+                    <button class="driver-btn" data-gear="D">4<span>D</span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="kb-col">
+                <div class="kb-section">
+                  <h3>驾驶操作</h3>
+                  <div class="kb-row">
+                    <button class="driver-btn" data-command="w" data-command-mode="level" data-hold="w">W<span>油门</span></button>
+                    <button class="driver-btn danger" data-command="s" data-command-mode="level" data-hold="s">S<span>制动退出</span></button>
+                    <button class="driver-btn" data-hold="space">空格<span>手刹</span></button>
+                    <button class="driver-btn" data-hold="a">A<span>左转</span></button>
+                    <button class="driver-btn" data-hold="d">D<span>右转</span></button>
+                    <button class="driver-btn danger" data-command="0" data-restart="1">0<span>退控重开</span></button>
+                  </div>
+                </div>
+                <div class="kb-section">
+                  <h3>ACC 控制</h3>
+                  <div class="kb-row">
+                    <button class="driver-btn" data-command="e">E<span>启控/降速</span></button>
+                    <button class="driver-btn" data-command="q">Q<span>恢复/增速</span></button>
+                    <button class="driver-btn danger" data-command="c">C<span>取消ACC</span></button>
+                    <button class="driver-btn" data-command="t">T<span>减小时距</span></button>
+                    <button class="driver-btn" data-command="r">R<span>增大时距</span></button>
+                    <button class="driver-btn driver-kick" id="kickstartBtn">辅助启控<span>boost + E</span></button>
+                    <button class="driver-btn driver-kick" id="accResultBtn">测试结果<span>跟车指标</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="kb-section">
+              <h3>辅助功能</h3>
+              <div class="kb-row">
+                <button class="driver-btn" data-latch="apa">P<span>APA泊车</span></button>
+                <button class="driver-btn" data-latch="lka">L<span>LKA车道保持</span></button>
+                <button class="driver-btn" data-latch="aeb">B<span>AEB紧急制动</span></button>
+                <button class="driver-btn" data-lane="left">Z<span>向左换道</span></button>
+                <button class="driver-btn" data-lane="right">X<span>向右换道</span></button>
+              </div>
+            </div>
+            <div class="kb-status" id="accStatusBox">
+              油门 0.00　制动 0.00　转向 +0.00　挡位 D　手刹 0　点火 ON
+            </div>
+          </section>
+
+          <section class="driver-card" id="lksDriverCard" hidden>
+            <div class="driver-header">
+              <h2 class="section-title">LKS 驾驶接管输入</h2>
+              <span class="driver-hint">页面聚焦后按住生效，松开归零</span>
+            </div>
+            <div class="driver-grid lks-driver-grid">
+              <button class="driver-btn" data-lks-pedal="throttle">W<span>油门</span></button>
+              <button class="driver-btn danger" data-lks-pedal="brake">S<span>刹车</span></button>
+              <button class="driver-btn" data-lks-steer="-0.3">A<span>向左接管</span></button>
+              <button class="driver-btn" data-lks-steer="0.3">D<span>向右接管</span></button>
+              <button class="driver-btn danger" data-lks-brake="1">B<span>制动退出 LKS</span></button>
+              <button class="driver-btn" id="lksReleaseBtn">释放<span>输入归零</span></button>
+              <button class="driver-btn driver-kick" id="lksResultBtn">测试结果<span>读取最新弯道指标</span></button>
+            </div>
+          </section>
+
+          <section class="driver-card apa-console" id="apaDriverCard" aria-labelledby="scenarioName" hidden>
+            <div class="apa-task-bar">
+              <div class="apa-task-state">
+                <span class="apa-state-dot" aria-hidden="true"></span>
+                <div class="apa-task-copy">
+                  <strong id="apaTaskState" role="status" aria-live="polite" aria-atomic="true">车辆未连接</strong>
+                  <small id="apaTaskContext">--</small>
+                </div>
+              </div>
+              <div class="apa-reset-action">
+                <button class="btn apa-reset-btn" id="apaResetBtn" type="button" title="回到初始位置，清空本轮轨迹与采样数据" aria-label="重置任务：回到起点，清空本轮数据" disabled>↺ 重置任务</button>
+              </div>
+            </div>
+            <div class="apa-cockpit">
+              <div class="apa-cockpit-controls">
+                <section class="apa-setup-panel" aria-labelledby="apaSetupTitle">
+                  <div class="apa-section-head"><h3 id="apaSetupTitle">场景设置</h3></div>
+                  <form id="apaSetupForm" novalidate>
+                    <label class="apa-field" for="apaMap">
+                      <span>仿真地图</span>
+                      <select id="apaMap" aria-describedby="apaMapHint" disabled><option value="">等待加载</option></select>
+                    </label>
+                    <p class="apa-help" id="apaMapHint" hidden></p>
+                    <label class="apa-field" for="apaTargetSlot">
+                      <span class="apa-field-head">
+                        <span>目标车位</span>
+                        <small class="apa-field-meta" id="apaOccupancySummary" hidden></small>
+                      </span>
+                      <select id="apaTargetSlot" aria-describedby="apaOccupancySummary" disabled><option value="">等待加载</option></select>
+                    </label>
+                    <fieldset class="apa-entry-direction" aria-describedby="apaEntryDirectionHint">
+                      <legend>泊入方式</legend>
+                      <div class="apa-direction-options">
+                        <label for="apaReverseIn"><input id="apaReverseIn" type="radio" name="apaEntryDirection" value="reverse_in" disabled><span>尾入</span></label>
+                        <label for="apaHeadIn"><input id="apaHeadIn" type="radio" name="apaEntryDirection" value="head_in" disabled><span>头入</span></label>
+                      </div>
+                      <p class="apa-help" id="apaEntryDirectionHint">选择车位后可设置泊入方式</p>
+                    </fieldset>
+                    <div class="apa-geometry" aria-labelledby="apaGeometryLabel" hidden>
+                      <span id="apaGeometryLabel"></span>
+                      <p class="apa-help" id="apaGeometryDetail"></p>
+                      <button class="clear-btn" id="apaPrepareMapBtn" type="button" aria-describedby="apaGeometryDetail" disabled>重新加载底图</button>
+                    </div>
+                    <label class="apa-field" for="apaStartMode">
+                      <span>初始位姿</span>
+                      <select id="apaStartMode" disabled><option value="slot">车位默认起点</option><option value="custom">自定义位姿</option></select>
+                    </label>
+                    <div class="apa-pose-grid" title="CARLA 世界坐标系 · 车辆后轴中心">
+                      <label class="apa-field" for="apaStartX"><span>X (m)</span><input id="apaStartX" type="number" step="any" required readonly></label>
+                      <label class="apa-field" for="apaStartY"><span>Y (m)</span><input id="apaStartY" type="number" step="any" required readonly></label>
+                      <label class="apa-field" for="apaStartYaw"><span>航向 (°)</span><input id="apaStartYaw" type="number" step="any" required readonly></label>
+                    </div>
+                    <div class="apa-pose-tools">
+                      <span>后轴世界坐标</span>
+                      <button class="clear-btn" id="apaUseCurrentBtn" type="button" title="读取车辆当前后轴世界坐标与航向" disabled>取当前位姿</button>
+                    </div>
+                    <p class="apa-help apa-saved-pose" id="apaSavedPose" hidden>生效起点：--</p>
+                    <button class="btn btn-secondary apa-apply-btn" id="apaApplyBtn" type="submit" disabled>应用设置并重置</button>
+                    <p class="apa-form-status" id="apaSetupFeedback" role="status" aria-live="polite"></p>
+                    <button class="clear-btn" id="apaRetryCommandBtn" type="button" aria-describedby="apaSetupFeedback" title="沿用上次设置重新发送，已执行的操作不会重复执行" hidden disabled>重新确认上次操作</button>
+                  </form>
+                </section>
+                <section class="apa-run-panel" aria-labelledby="apaRunTitle">
+                  <div class="apa-section-head">
+                    <h3 id="apaRunTitle">泊车控制</h3>
+                    <small class="apa-slot-status" id="apaSlotHint" role="status" hidden></small>
+                  </div>
+                  <div class="apa-run-buttons">
+                    <button class="btn btn-primary" id="apaParkInBtn" type="button" disabled>规划并泊入</button>
+                    <button class="btn btn-secondary" id="apaParkOutBtn" type="button" aria-describedby="apaSlotHint" disabled>开始泊出</button>
+                    <button class="btn btn-secondary apa-plan-only-btn" id="apaPlanOnlyBtn" type="button" aria-describedby="apaSlotHint" disabled>仅规划路径</button>
+                    <button class="btn apa-cancel-btn" id="apaCancelBtn" type="button" disabled>退出并停车</button>
+                  </div>
+                </section>
+                <details class="apa-manual-panel">
+                  <summary><span>手动接管</span><small class="apa-manual-hint">退出停稳后按键控制</small></summary>
+                  <div class="kb-section"><h3>点火</h3><div class="kb-row">
+                    <button class="driver-btn" data-apa-ignition="OFF" type="button" disabled>F1<span>OFF</span></button>
+                    <button class="driver-btn" data-apa-ignition="ACC" type="button" disabled>F2<span>ACC</span></button>
+                    <button class="driver-btn" data-apa-ignition="ON" type="button" disabled>F3<span>ON</span></button>
+                    <button class="driver-btn" data-apa-hold="f4" type="button" disabled>F4<span>START</span></button>
+                  </div></div>
+                  <div class="kb-section"><h3>挡位</h3><div class="kb-row">
+                    <button class="driver-btn" data-apa-gear="P" type="button" disabled>1<span>P</span></button>
+                    <button class="driver-btn" data-apa-gear="R" type="button" disabled>2<span>R</span></button>
+                    <button class="driver-btn" data-apa-gear="N" type="button" disabled>3<span>N</span></button>
+                    <button class="driver-btn" data-apa-gear="D" type="button" disabled>4<span>D</span></button>
+                  </div></div>
+                  <div class="kb-section"><h3>方向与踏板</h3><div class="kb-row apa-manual-keys">
+                    <button class="driver-btn" data-apa-hold="w" type="button" disabled>W<span>油门</span></button>
+                    <button class="driver-btn danger" data-apa-hold="s" type="button" disabled>S<span>制动</span></button>
+                    <button class="driver-btn" data-apa-hold="a" type="button" disabled>A<span>左转</span></button>
+                    <button class="driver-btn" data-apa-hold="d" type="button" disabled>D<span>右转</span></button>
+                    <button class="driver-btn" data-apa-handbrake="1" type="button" disabled>空格<span>驻车制动</span></button>
+                  </div></div>
+                  <div class="kb-status" id="apaStatusBox">等待车辆状态</div>
+                </details>
+              </div>
+              <div class="apa-cockpit-data" id="apaTelemetryCard">
+                <div class="apa-observation-head">
+                  <h3>实时观测</h3>
+                  <div class="telemetry-live-pill is-waiting" id="apaTelemetryStatus" role="status">
+                    <span class="telemetry-live-dot" aria-hidden="true"></span>
+                    <span id="apaTelemetryStatusText">等待数据</span>
+                  </div>
+                </div>
+                <div class="telemetry-primary-grid apa-metric-grid">
+                  <article class="telemetry-metric telemetry-speed">
+                    <span class="telemetry-label">当前车速</span>
+                    <div class="telemetry-value-row"><strong id="apaEgoSpeed">--</strong><span>km/h</span></div>
+                  </article>
+                  <article class="telemetry-metric">
+                    <span class="telemetry-label">当前挡位</span>
+                    <div class="telemetry-value-row"><strong id="apaGear">--</strong></div>
+                  </article>
+                  <article class="telemetry-metric">
+                    <span class="telemetry-label">生效车位</span>
+                    <div class="telemetry-value-row"><strong id="apaSlotId">--</strong><span class="apa-slot-kind-tag" id="apaSlotKind">--</span></div>
+                  </article>
+                  <article class="telemetry-metric">
+                    <span class="telemetry-label">控制模式</span>
+                    <div class="telemetry-value-row apa-control-value"><strong id="apaControlState">--</strong></div>
+                  </article>
+                </div>
+                <div class="apa-visual-grid">
+                  <section class="apa-traj-card">
+                    <div class="apa-traj-head">
+                      <div class="apa-traj-title-group">
+                        <h3>路径规划与跟踪</h3>
+                        <small id="apaTrajMeta">等待规划</small>
+                      </div>
+                      <div class="apa-map-toolbar" role="group" aria-label="视图范围">
+                        <button type="button" data-apa-map-view="nearby" aria-pressed="true" title="聚焦自车与目标车位周边局部区域" disabled>局部视图</button>
+                        <button type="button" data-apa-map-view="full" aria-pressed="false" title="显示当前规划请求完整感知输入范围" disabled>规划范围</button>
+                        <button type="button" data-apa-map-view="slots" aria-pressed="false" title="显示当前地图全部车位分布" disabled>全场车位</button>
+                      </div>
+                    </div>
+                    <svg id="apaTrajectorySvg" class="apa-trajectory-svg" viewBox="0 0 360 240" role="img" aria-label="泊车环境与后轴轨迹视图（起点航向朝上）"></svg>
+                    <div class="apa-canvas-footer">
+                      <div class="apa-traj-legend" aria-label="轨迹图例" title="箭头指示车头方向，D/R 为前进/倒车，圆环为换向点">
+                        <span class="algo">规划</span>
+                        <span class="actual">实际</span>
+                        <span class="previous-plan" id="apaPrevPlanLegend" hidden>历史规划</span>
+                        <span class="slot">目标车位</span>
+                        <span class="ego" title="按当前车型尺寸和倒角绘制，无附加余量">自车包络</span>
+                        <span class="start">起点</span>
+                      </div>
+                      <div class="apa-map-layers" role="group" aria-label="环境图层开关">
+                        <button type="button" class="static" data-apa-map-layer="static" aria-pressed="true" title="静态实体障碍物" disabled>实体</button>
+                        <button type="button" class="live" data-apa-map-layer="live" aria-pressed="true" title="车辆与动态物体包络" disabled>动态包络</button>
+                        <button type="button" class="boundary" data-apa-map-layer="boundary" aria-pressed="true" title="物理边界线与轮挡" disabled>边界线</button>
+                        <button type="button" class="virtual" data-apa-map-layer="virtual" aria-pressed="true" title="虚拟车位边界约束" disabled>车位约束</button>
+                        <button type="button" class="forbidden" data-apa-map-layer="forbidden" aria-pressed="true" title="禁行区域" disabled>禁行区</button>
+                        <button type="button" class="unknown" data-apa-map-layer="unknown" aria-pressed="true" title="高度或覆盖未确认区域" disabled>未知区</button>
+                        <button type="button" class="slots" data-apa-map-layer="slots" aria-pressed="true" title="地图车位标线框（悬停查看车位号与来源）" disabled>车位标线</button>
+                      </div>
+                    </div>
+                    <p id="apaInputMapHint" class="apa-input-map-readout" role="status" hidden></p>
+                    <div class="apa-diag-strip" aria-label="跟踪与几何诊断">
+                      <div class="apa-diag-item">
+                        <span class="apa-diag-label">执行进度</span>
+                        <p id="apaControlReadout" class="apa-control-readout">等待控制参考</p>
+                      </div>
+                      <div class="apa-diag-item">
+                        <span class="apa-diag-label">跟踪误差</span>
+                        <p id="apaTrackingReadout" class="apa-control-readout">等待跟踪反馈</p>
+                      </div>
+                      <div class="apa-diag-item">
+                        <span class="apa-diag-label">车身与净距</span>
+                        <p id="apaBodyReadout" class="apa-control-readout">等待位姿反馈</p>
+                      </div>
+                    </div>
+                    <details class="apa-trajectory-details">
+                      <summary>场景输入统计</summary>
+                      <p id="apaInputMapReadout" class="apa-control-readout">等待地图</p>
+                    </details>
+                  </section>
+                  <div class="apa-camera-grid">
+                    <section class="apa-camera-card" aria-labelledby="apaOverheadCameraTitle">
+                      <div class="apa-section-head">
+                        <h3 id="apaOverheadCameraTitle" title="固定以重置起点朝向向上，与左侧轨迹视图方向一致">俯视全景</h3>
+                        <span id="apaOverheadCameraStatus" role="status">等待影像</span>
+                      </div>
+                      <div class="apa-camera-stage"><img id="apaOverheadCamera" alt="车辆及周边车位的实时俯视影像，以起点航向朝上固定视角" draggable="false"></div>
+                    </section>
+                    <section class="apa-camera-card">
+                      <div class="apa-section-head"><h3>倒车影像</h3><span id="apaCameraStatus" role="status">等待影像</span></div>
+                      <div class="apa-camera-stage"><img id="apaRearCamera" alt="车辆后方实时影像" draggable="false"></div>
+                    </section>
+                  </div>
+                </div>
+                <div class="apa-compare-head">
+                  <h3>控制指令与反馈</h3>
+                  <div class="apa-vehicle-state">
+                    <span>驻车制动 <strong id="apaHandBrake">--</strong></span>
+                    <span>点火 <strong id="apaIgnition">--</strong></span>
+                  </div>
+                  <button type="button" class="clear-btn" id="apaReportBtn" disabled>轨迹与控制报告 ↗</button>
+                </div>
+                <div class="apa-table-scroll"><table class="apa-compare-table" aria-label="控制指令与反馈对比">
+                  <thead><tr><th>参数</th><th>规划期望</th><th>车辆反馈</th><th>偏差</th></tr></thead>
+                  <tbody>
+                    <tr><td>挡位</td><td id="apaExpectedGear">--</td><td id="apaActualGear">--</td><td id="apaDiffGear">--</td></tr>
+                    <tr><td>车速 (m/s)</td><td id="apaExpectedSpeed">--</td><td id="apaActualSpeed">--</td><td id="apaDiffSpeed">--</td></tr>
+                    <tr><td>纵向加速度 (m/s²)</td><td id="apaExpectedAccel">--</td><td id="apaActualAccel">--</td><td id="apaDiffAccel">--</td></tr>
+                    <tr><td>制动踏板</td><td id="apaExpectedBrake">--</td><td id="apaActualBrake">--</td><td id="apaDiffBrake">--</td></tr>
+                    <tr><td>油门踏板</td><td id="apaExpectedThrottle">--</td><td id="apaActualThrottle">--</td><td id="apaDiffThrottle">--</td></tr>
+                    <tr><td title="CARLA 反馈为已施加等效前轮转角命令（Ackermann 逆映射），非独立物理轮角传感器测量值">等效前轮转角 (°)</td><td id="apaExpectedWheel">--</td><td id="apaActualWheel">--</td><td id="apaDiffWheel">--</td></tr>
+                    <tr><td title="CARLA 世界坐标系 · 后轴中心">后轴坐标 (m)</td><td id="apaExpectedPose">--</td><td id="apaActualPose">--</td><td id="apaDiffPose">--</td></tr>
+                  </tbody>
+                </table></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="health-card">
+            <h2 class="section-title">服务状态</h2>
+            <div class="health-list" id="healthRow">
+              <div class="health-row" data-service="carla">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">CARLA Server</span>
+                <span class="health-port">:2000</span>
+              </div>
+              <div class="health-row" data-service="bridge_pub">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Bridge PUB</span>
+                <span class="health-port">:5701</span>
+              </div>
+              <div class="health-row" data-service="bridge_control">
+                <span class="health-chip-dot"></span>
+                <span class="health-name">Bridge CONTROL</span>
+                <span class="health-port">:5702</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="acc-telemetry-card" id="accTelemetryCard" hidden>
+          <div class="telemetry-header">
+            <div class="telemetry-heading">
+              <span class="telemetry-kicker">实时反馈</span>
+              <h2>ACC 车辆状态</h2>
+              <p>来自 CARLA Bridge 的实时真值与控制执行反馈</p>
+            </div>
+            <div class="telemetry-live-pill is-waiting" id="accTelemetryStatus">
+              <span class="telemetry-live-dot"></span>
+              <span id="accTelemetryStatusText">等待 Bridge 数据</span>
+            </div>
+          </div>
+
+          <div class="telemetry-primary-grid">
+            <article class="telemetry-metric telemetry-speed">
+              <span class="telemetry-label">自车速度</span>
+              <div class="telemetry-value-row">
+                <strong id="accEgoSpeed">--</strong>
+                <span>km/h</span>
+              </div>
+              <small id="accEgoSpeedMps">-- m/s</small>
+            </article>
+            <article class="telemetry-metric telemetry-speed">
+              <span class="telemetry-label">前车速度</span>
+              <div class="telemetry-value-row">
+                <strong id="accLeadSpeed">--</strong>
+                <span>km/h</span>
+              </div>
+              <small id="accLeadSpeedMps">-- m/s</small>
+            </article>
+            <article class="telemetry-metric telemetry-distance">
+              <span class="telemetry-label">实际净距</span>
+              <div class="telemetry-value-row">
+                <strong id="accLeadDistance">--</strong>
+                <span>m</span>
+              </div>
+              <small>自车与前车包络间距</small>
+            </article>
+            <article class="telemetry-metric telemetry-gap">
+              <span class="telemetry-label">设定时距 <em>指令估算</em></span>
+              <div class="telemetry-value-row">
+                <strong id="accDesiredTimeGap">1.8</strong>
+                <span>s</span>
+              </div>
+              <small>T 减小 · R 增大</small>
+            </article>
+          </div>
+
+          <div class="telemetry-detail-grid">
+            <div class="telemetry-detail">
+              <span>实际时距</span>
+              <strong id="accActualTimeGap">-- s</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>期望距离</span>
+              <strong id="accDesiredDistance">-- m</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>距离误差</span>
+              <strong id="accDistanceError">-- m</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>相对速度</span>
+              <strong id="accRelativeSpeed">-- m/s</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>加速度命令</span>
+              <strong id="accTargetAccel">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>实际加速度（滤波）</span>
+              <strong id="accActualAccel">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>阻力前馈</span>
+              <strong id="accAccelFeedforward">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>PI 反馈修正</span>
+              <strong id="accAccelFeedback">-- m/s²</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>执行器限幅</span>
+              <strong id="accAccelSaturation">--</strong>
+            </div>
+            <div class="telemetry-detail">
+              <span>执行器输出</span>
+              <strong id="accActuator">油门 -- · 制动 --</strong>
+            </div>
+            <div class="telemetry-detail telemetry-control-state">
+              <span>ACC 状态</span>
+              <strong id="accControlState">等待数据</strong>
+            </div>
+            <div class="telemetry-detail telemetry-command-feedback" aria-live="polite">
+              <span>最近指令</span>
+              <strong id="accCommandFeedback">尚未发送</strong>
+              <small id="accCommandFeedbackHint">按键闪蓝表示指令已发布</small>
+            </div>
+          </div>
+
+          <p class="telemetry-note">
+            设定时距按当前生成代码的 1.8 s 初值、0.2 s 步长和 1.0–5.0 s 限制推算；期望距离按 max(自车速度 × 设定时距, 5 m) 计算，实际时距及车辆量直接来自 Bridge。
+          </p>
+        </section>
+
+        <section class="lks-parameter-card" id="scenarioParameterCard" hidden>
+          <div class="parameter-header">
+            <div>
+              <h2 class="section-title" id="scenarioParameterTitle">场景运行参数</h2>
+              <p>保存后在下一次启动联调环境时生效</p>
+            </div>
+            <div class="parameter-actions">
+              <button class="util-btn" id="scenarioParameterResetBtn">恢复默认</button>
+              <button class="btn btn-primary parameter-save-btn" id="scenarioParameterSaveBtn">保存参数</button>
+            </div>
+          </div>
+          <div class="parameter-groups" id="scenarioParameterGroups"></div>
+          <div class="parameter-footnote" id="scenarioParameterFootnote">参数保存后在下次启动联调环境时生效。</div>
+        </section>
+
+        <section class="logs-section">
+          <div class="logs-header">
+            <h2 class="section-title">运行日志</h2>
+            <div class="log-actions">
+              <button class="clear-btn" id="copyLogBtn">复制日志</button>
+              <button class="clear-btn" id="clearLogBtn">清空</button>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <span class="terminal-title">gaasd-carla - local shell</span>
+            </div>
+            <div class="terminal-body">
+              <div class="scanlines"></div>
+              <pre id="logBox" class="log-box">等待操作...</pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="apa-report" id="apaReport" hidden>
+    <div class="apa-report-card" role="dialog" aria-modal="true" aria-labelledby="apaReportTitle">
+      <div class="apa-report-head">
+        <div>
+          <h2 id="apaReportTitle">泊车报告</h2>
+          <p id="apaReportReadout">悬停查看坐标，点击固定；白点为各曲线首点。</p>
+        </div>
+        <div class="apa-report-actions">
+          <button type="button" class="clear-btn" id="apaReportDownload">下载 CSV</button>
+          <button type="button" class="clear-btn" id="apaReportPdf">下载 PDF</button>
+          <button type="button" class="clear-btn" id="apaReportClose">关闭</button>
+        </div>
+      </div>
+      <div class="apa-report-charts">
+        <section>
+          <h3>转向命令</h3>
+          <svg id="apaReportWheel" class="apa-report-svg" viewBox="0 0 640 220"></svg>
+        </section>
+        <section>
+          <h3>加速度（实际曲线经 0.2 s 平滑，表格为原始反馈）</h3>
+          <svg id="apaReportAccel" class="apa-report-svg" viewBox="0 0 640 220"></svg>
+        </section>
+        <section>
+          <h3>速度</h3>
+          <svg id="apaReportSpeed" class="apa-report-svg" viewBox="0 0 640 220"></svg>
+        </section>
+        <section class="apa-report-path">
+          <h3>轨迹</h3>
+          <svg id="apaReportPath" class="apa-report-svg" viewBox="0 0 640 320"></svg>
+          <div class="apa-report-legend"><span class="algo">算法轨迹</span><span class="actual">实际轨迹</span><span class="zero">各曲线首点</span></div>
+        </section>
+      </div>
+      <div class="apa-report-table-wrap">
+        <table class="apa-report-table" id="apaReportTable" aria-label="仿真采样表"></table>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}?v=20261112-apa-entry-direction"></script>
+</body>
+</html>

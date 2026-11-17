@@ -1,0 +1,16 @@
+basic {
+  path: "lib/libApaZmqInputModule.so"
+  module_type: APP
+  ioconfig {
+    publishers {
+      name: "apa_input"
+      channel: "apa_input"
+      bindcode: ON
+    }
+  }
+}
+
+params {
+  timer_duration: 1.0
+  zmq_poll_timeout_ms: 0
+}

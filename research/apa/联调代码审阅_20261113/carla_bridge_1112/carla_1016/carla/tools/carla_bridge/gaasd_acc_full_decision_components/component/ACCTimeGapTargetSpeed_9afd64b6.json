@@ -1,0 +1,243 @@
+{
+    "name": "ACCTimeGapTargetSpeed",
+    "componentType": "atomic-function",
+    "alias": "ACC时距目标速度",
+    "description": "计算简化时距控制目标速度",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "9afd64b6-e7d2-513d-b633-041e3054295e",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_egoV_In",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "In",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_leadV_In",
+                    "name": "leadV",
+                    "alias": "leadV",
+                    "direction": "In",
+                    "description": "前车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_distance_In",
+                    "name": "distance",
+                    "alias": "distance",
+                    "direction": "In",
+                    "description": "当前车间距，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_desiredDistance_In",
+                    "name": "desiredDistance",
+                    "alias": "desiredDistance",
+                    "direction": "In",
+                    "description": "期望跟车距离，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_kDist_In",
+                    "name": "kDist",
+                    "alias": "kDist",
+                    "direction": "In",
+                    "description": "距离误差增益",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_kSpeed_In",
+                    "name": "kSpeed",
+                    "alias": "kSpeed",
+                    "direction": "In",
+                    "description": "相对速度误差增益",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 6,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCTimeGapTargetSpeed_param_maxSpeed_In",
+                    "name": "maxSpeed",
+                    "alias": "maxSpeed",
+                    "direction": "In",
+                    "description": "最高目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 7,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCTimeGapTargetSpeed_output_targetSpeed_Out",
+                    "name": "targetSpeed",
+                    "alias": "targetSpeed",
+                    "direction": "Out",
+                    "description": "目标速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 8,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCTimeGapTargetSpeed(double egoV, double leadV, double distance,\n                             double desiredDistance, double kDist,\n                             double kSpeed, double maxSpeed)\n{\n    double distanceSafe = distance;\n    double distanceError = 0.0;\n    double relativeSpeed = 0.0;\n    double targetSpeed = 0.0;\n\n    if (distanceSafe < 0.0) {\n        distanceSafe = 0.0;\n    }\n\n    distanceError = distanceSafe - desiredDistance;\n    relativeSpeed = leadV - egoV;\n    targetSpeed = leadV + (kDist * distanceError) + (kSpeed * relativeSpeed);\n\n    if (targetSpeed < 0.0) {\n        targetSpeed = 0.0;\n    }\n    if (targetSpeed > maxSpeed) {\n        targetSpeed = maxSpeed;\n    }\n\n    return targetSpeed;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

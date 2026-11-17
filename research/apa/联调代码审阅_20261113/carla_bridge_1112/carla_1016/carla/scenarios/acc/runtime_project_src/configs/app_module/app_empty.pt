@@ -1,0 +1,54 @@
+soc {
+  process {
+    node {
+      node_name: "module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      module_name: "module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      path: "conf/node_module/module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43/module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccProcess"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      module_name: "AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      path: "conf/node_module/module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43/AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccZmqInputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  process {
+    node {
+      node_name: "AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      module_name: "AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+      path: "conf/node_module/module_empty_b6d54e1b_2577_4492_bcea_dfe707509e43/AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43.pt"
+      bind_cpu: "-1"
+      node_priority: 0
+    }
+    process_name: "AccZmqOutputModule_b6d54e1b_2577_4492_bcea_dfe707509e43"
+    log {
+      level: INFO
+      to_file: OFF
+      to_remote: OFF
+      to_console: OFF
+      sys_log: OFF
+    }
+  }
+  soc_name: "soc1"
+}

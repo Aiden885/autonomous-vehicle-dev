@@ -1,0 +1,219 @@
+{
+    "name": "ACCMaxSpeedNext",
+    "componentType": "atomic-function",
+    "alias": "ACC目标速度上限",
+    "description": "根据决策更新最高期望速度",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "eca7f2b4-b287-55ae-b905-e104d4eb174f",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCMaxSpeedNext_param_decisionY_In",
+                    "name": "decisionY",
+                    "alias": "decisionY",
+                    "direction": "In",
+                    "description": "当前决策输出，1~8",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCMaxSpeedNext_param_currentMaxSpeed_In",
+                    "name": "currentMaxSpeed",
+                    "alias": "currentMaxSpeed",
+                    "direction": "In",
+                    "description": "当前最高期望速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCMaxSpeedNext_param_egoV_In",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "In",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCMaxSpeedNext_param_speedStep_In",
+                    "name": "speedStep",
+                    "alias": "speedStep",
+                    "direction": "In",
+                    "description": "速度调整步长，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 4,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCMaxSpeedNext_param_minSpeed_In",
+                    "name": "minSpeed",
+                    "alias": "minSpeed",
+                    "direction": "In",
+                    "description": "最小速度上限，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 5,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCMaxSpeedNext_param_maxSpeedCap_In",
+                    "name": "maxSpeedCap",
+                    "alias": "maxSpeedCap",
+                    "direction": "In",
+                    "description": "最大速度上限，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 6,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCMaxSpeedNext_output_nextMaxSpeed_Out",
+                    "name": "nextMaxSpeed",
+                    "alias": "nextMaxSpeed",
+                    "direction": "Out",
+                    "description": "下一最高期望速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 7,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCMaxSpeedNext(int decisionY, double currentMaxSpeed, double egoV,\n                       double speedStep, double minSpeed, double maxSpeedCap)\n{\n    double nextMaxSpeed = currentMaxSpeed;\n\n    if (decisionY == 1) {\n        nextMaxSpeed = currentMaxSpeed - speedStep;\n    } else if (decisionY == 2) {\n        nextMaxSpeed = currentMaxSpeed + speedStep;\n    } else if (decisionY == 5) {\n        nextMaxSpeed = egoV;\n    }\n\n    if (nextMaxSpeed < minSpeed) {\n        nextMaxSpeed = minSpeed;\n    }\n    if (nextMaxSpeed > maxSpeedCap) {\n        nextMaxSpeed = maxSpeedCap;\n    }\n\n    return nextMaxSpeed;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

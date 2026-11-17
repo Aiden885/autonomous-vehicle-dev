@@ -1,0 +1,123 @@
+{
+    "name": "ACCActualTimeGap",
+    "componentType": "atomic-function",
+    "alias": "ACC实际时距",
+    "description": "计算当前实际时距",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "1f33fb7f-09a4-50df-ae47-3d6c7a282f82",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCActualTimeGap_param_egoV_In",
+                    "name": "egoV",
+                    "alias": "egoV",
+                    "direction": "In",
+                    "description": "自车纵向速度，单位m/s",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCActualTimeGap_param_distance_In",
+                    "name": "distance",
+                    "alias": "distance",
+                    "direction": "In",
+                    "description": "当前车间距，单位m",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCActualTimeGap_output_actualTimeGap_Out",
+                    "name": "actualTimeGap",
+                    "alias": "actualTimeGap",
+                    "direction": "Out",
+                    "description": "实际时距，单位s；低速时返回9999",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "double",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "double ACCActualTimeGap(double egoV, double distance)\n{\n    double actualTimeGap = 9999.0;\n    double distanceSafe = distance;\n\n    if (distanceSafe < 0.0) {\n        distanceSafe = 0.0;\n    }\n\n    if (egoV > 0.1) {\n        actualTimeGap = distanceSafe / egoV;\n    }\n\n    return actualTimeGap;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

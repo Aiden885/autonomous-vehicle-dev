@@ -1,0 +1,10 @@
+#ifndef APA_HT_PARKING_PATH_PLANNING_TYPES_H
+#define APA_HT_PARKING_PATH_PLANNING_TYPES_H
+
+#include "apaParkingPathPlanningTypes.h"
+
+typedef ApaParkingPathPlanningInput_t ApaHtParkingPathPlanningInput_t;
+typedef ApaParkingPathPlanningParam_t ApaHtParkingPathPlanningParam_t;
+typedef ApaParkingPathPlanningOutput_t ApaHtParkingPathPlanningOutput_t;
+
+#endif

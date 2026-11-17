@@ -1,0 +1,239 @@
+{
+  "model_sha256": "2d6788b3ee229ce24e337728dfbe7a971baa580b9f4cfcd20eb845e777ffbede",
+  "figures": [
+    {
+      "name": "02-01-system-coordination",
+      "text_items": 28,
+      "text_bounds_checked": true,
+      "kind": "responsibility",
+      "sources": [
+        "model:root"
+      ]
+    },
+    {
+      "name": "03-01-coordinate-transform",
+      "text_items": 16,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "GeoPlanningSubFcn/geo_axis_trans.m"
+      ]
+    },
+    {
+      "name": "03-02-time-alignment",
+      "text_items": 12,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:30112",
+        "chart:30337"
+      ]
+    },
+    {
+      "name": "04-01-points-to-boundary",
+      "text_items": 10,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "USSubFcn/processFSPoints.m",
+        "USSubFcn/ultrasonicCorrection.m"
+      ]
+    },
+    {
+      "name": "05-01-slot-memory",
+      "text_items": 19,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:37199"
+      ]
+    },
+    {
+      "name": "07-01-tangent-arc",
+      "text_items": 14,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "GeoPlanningSubFcn/geo_circle_1pt1line.m"
+      ]
+    },
+    {
+      "name": "07-02-body-sweep",
+      "text_items": 9,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "GeoPlanningSubFcn/geo_circle_1pt1line.m",
+        "PlanningSubFcn/collision_Check_SAT.m"
+      ]
+    },
+    {
+      "name": "08-01-search-expansion",
+      "text_items": 15,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "PlanningSubFcn/VehicleDynamic.m",
+        "PlanningSubFcn/getTotalCost.m"
+      ]
+    },
+    {
+      "name": "08-02-separating-axis",
+      "text_items": 12,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "PlanningSubFcn/collision_Check_SAT.m",
+        "PlanningSubFcn/collision_Check_SAT_Octagon.m"
+      ]
+    },
+    {
+      "name": "09-01-candidate-and-memory",
+      "text_items": 17,
+      "text_bounds_checked": true,
+      "kind": "responsibility",
+      "sources": [
+        "chart:52669",
+        "PlanningSubFcn/ClassPath.m"
+      ]
+    },
+    {
+      "name": "10-01-preview-and-heading",
+      "text_items": 18,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:42652"
+      ]
+    },
+    {
+      "name": "10-02-tracking-loop",
+      "text_items": 21,
+      "text_bounds_checked": true,
+      "kind": "responsibility",
+      "sources": [
+        "model:root",
+        "chart:42652"
+      ]
+    },
+    {
+      "name": "11-01-stopping-distance",
+      "text_items": 15,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:15046"
+      ]
+    },
+    {
+      "name": "12-01-multirate-memory",
+      "text_items": 16,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:14937",
+        "model:config"
+      ]
+    },
+    {
+      "name": "13-01-delay-and-edge",
+      "text_items": 19,
+      "text_bounds_checked": true,
+      "kind": "teaching",
+      "sources": [
+        "chart:17000"
+      ]
+    }
+  ],
+  "sources": {
+    "GeoPlanningSubFcn/geo_axis_trans.m": {
+      "sha256": "53864ea727bc718080d94e1bb7ad23201bc380215d79bd80f1ef273a8fb9f9b6"
+    },
+    "GeoPlanningSubFcn/geo_circle_1pt1line.m": {
+      "sha256": "7351fb4d450c9c59487d11473b80a466d75d8e5fc16928a4cf74b600e9f98aa5"
+    },
+    "PlanningSubFcn/ClassPath.m": {
+      "sha256": "c58aa6870b4972631e9cc2d0d97e9b68510996a21504ef113ccfc251ddb5fe2f"
+    },
+    "PlanningSubFcn/VehicleDynamic.m": {
+      "sha256": "35ebf9f79f365cb5ff963ce29f41a75a6757e780c82217659346b35c32ad4491"
+    },
+    "PlanningSubFcn/collision_Check_SAT.m": {
+      "sha256": "6c9797a8fa8b6fbc2db9da8c2ca0737c02dc085f2563e97cf8452e1c06100697"
+    },
+    "PlanningSubFcn/collision_Check_SAT_Octagon.m": {
+      "sha256": "e6c9247583e1ad1a1834120a4e7e0ad8797efbb1a6045a34a944bb98e7e03d5f"
+    },
+    "PlanningSubFcn/getTotalCost.m": {
+      "sha256": "16c77b74bccd3ad41d5c982defd04b607f2c050409180d92f01da8385b17d8c5"
+    },
+    "USSubFcn/processFSPoints.m": {
+      "sha256": "421edf1620ac8242e44576cbed844e36259082e30ebb0f63aa75d23eb395c132"
+    },
+    "USSubFcn/ultrasonicCorrection.m": {
+      "sha256": "d35e7693afc06f4309a0c71d32de7c48fb9f3c58effef4bcc4e2862dd4f8adbb"
+    },
+    "chart:14937": {
+      "chart_name": "dSpace_Comms_OS",
+      "sha256": "f0f8c1b6dbfc48f155abdb1c9074c8b250f0c9f0ab4fa88b6ac6f26c9443fa70"
+    },
+    "chart:15046": {
+      "chart_name": "MEB/Collision_Detection/Emerg_Collision_Detect",
+      "sha256": "b389a8332e6ce1abf0445a20926a63af0dbd5693b255c73ec88b88b7bf3fd10e"
+    },
+    "chart:17000": {
+      "chart_name": "APA_StateMgmet1/APA_Main_STATE/APA_Main_STATE",
+      "sha256": "204d01ba40e7d6cf407cb31de5f9fa4cbf7ac3e95798d101ac640bba43a20058"
+    },
+    "chart:30112": {
+      "chart_name": "SnsrTimeSynch/MATLAB Function3",
+      "sha256": "f8e0211c6a647f617433b348671ca7293c701db9e4ed595fd3d3ff909fb0562d"
+    },
+    "chart:30337": {
+      "chart_name": "SnsrTimeSynch/FSTimeSynch",
+      "sha256": "90da977e9e09860d3aadee4aa216f473450eeaadbc8a22940d66e4474415a77d"
+    },
+    "chart:37199": {
+      "chart_name": "Slot_Process_1000_1204/Slot_4Points_Tracking1",
+      "sha256": "f10ef115730637ae2875ee03ece2af0ad26fb69dc4c4daaf419bb00e5ca38e26"
+    },
+    "chart:42652": {
+      "chart_name": "Moco3/APA_Ctrl_Module/LatCtrl_F1/StrAng_Ctrl",
+      "sha256": "16bd6426ad74a1743c01cb0bd32f6dbd161874bcd3d8b9b7efcf4c884498e271"
+    },
+    "chart:52669": {
+      "chart_name": "Planner_Core/Planner_Post_Process",
+      "sha256": "514784be49ec4d293dfa0fa169d08b42796d70149469f8bd817d05061101ffb2"
+    },
+    "model:config": {
+      "model_sha256": "2d6788b3ee229ce24e337728dfbe7a971baa580b9f4cfcd20eb845e777ffbede",
+      "meaning": "responsibilities or conditional schedule; not literal wiring",
+      "configuration": "Configuration1",
+      "fixed_step_sec": 0.005,
+      "source": "simulink/configSet1.xml"
+    },
+    "model:root": {
+      "model_sha256": "2d6788b3ee229ce24e337728dfbe7a971baa580b9f4cfcd20eb845e777ffbede",
+      "meaning": "responsibilities or conditional schedule; not literal wiring"
+    }
+  },
+  "checks": [
+    "coordinate roundtrip",
+    "arc radius and endpoints",
+    "point inside example vehicle but outside rear-axle route",
+    "illustrative motion propagation",
+    "SAT counterexample",
+    "pure-pursuit circle",
+    "braking arithmetic",
+    "nominal period arithmetic",
+    "delay and edge sequence",
+    "text bounds and overlaps"
+  ],
+  "not_claimed": [
+    "actual input data",
+    "original planner replay",
+    "full collision proof",
+    "simulation or physical performance",
+    "complete sufficient guard conditions"
+  ]
+}

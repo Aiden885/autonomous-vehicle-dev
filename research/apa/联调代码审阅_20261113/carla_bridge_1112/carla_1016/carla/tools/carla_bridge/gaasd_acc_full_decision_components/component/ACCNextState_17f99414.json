@@ -1,0 +1,123 @@
+{
+    "name": "ACCNextState",
+    "componentType": "atomic-function",
+    "alias": "ACC下一状态",
+    "description": "ACC状态机下一状态查表",
+    "author": "liuruyu",
+    "version": "1.0",
+    "instanceId": "",
+    "originId": "17f99414-380f-5951-af6b-08460cd408df",
+    "isCustom": true,
+    "customType": 0,
+    "isAtomic": true,
+    "children": [],
+    "parent": "",
+    "tags": [
+        "功能模块库",
+        "CARLA联合仿真",
+        "ACC决策控制"
+    ],
+    "vendor": "THICV",
+    "extensionProps": [
+        {
+            "key": "function_input_ports",
+            "value": [
+                {
+                    "id": "ACCNextState_param_systemState_In",
+                    "name": "systemState",
+                    "alias": "systemState",
+                    "direction": "In",
+                    "description": "当前系统状态，0=S0，1=S1，2=S2，3=S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 1,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                },
+                {
+                    "id": "ACCNextState_param_commandType_In",
+                    "name": "commandType",
+                    "alias": "commandType",
+                    "direction": "In",
+                    "description": "驾驶指令，0=无，1=降速/当速启控，2=增速/继承启控，3=降距，4=增距，5=油门，6=刹车，7=取消",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 2,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": false,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "function_output_ports",
+            "value": [
+                {
+                    "id": "ACCNextState_output_nextState_Out",
+                    "name": "nextState",
+                    "alias": "nextState",
+                    "direction": "Out",
+                    "description": "下一系统状态，0=S0，1=S1，2=S2，3=S3",
+                    "props": [
+                        {
+                            "key": "dataType",
+                            "value": "int",
+                            "props": []
+                        },
+                        {
+                            "key": "idx",
+                            "value": 3,
+                            "props": []
+                        },
+                        {
+                            "key": "isReturnFlag",
+                            "value": true,
+                            "props": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "base_config",
+            "value": [
+                {}
+            ]
+        },
+        {
+            "key": "other_config",
+            "value": [
+                {
+                    "standard_library_function": false,
+                    "function_body": "int ACCNextState(int systemState, int commandType)\n{\n    int nextState = 3;\n\n    if (systemState == 0) {\n        if ((commandType == 6) || (commandType == 7)) {\n            nextState = 1;\n        } else {\n            nextState = 0;\n        }\n    } else if (systemState == 1) {\n        if ((commandType == 1) || (commandType == 2)) {\n            nextState = 0;\n        } else {\n            nextState = 1;\n        }\n    } else if (systemState == 2) {\n        if (commandType == 1) {\n            nextState = 0;\n        } else {\n            nextState = 2;\n        }\n    } else {\n        nextState = 3;\n    }\n\n    return nextState;\n}",
+                    "function_link_obj": ""
+                }
+            ]
+        }
+    ],
+    "childConnections": [],
+    "childComponents": []
+}

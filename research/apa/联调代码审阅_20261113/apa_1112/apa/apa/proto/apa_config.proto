@@ -1,0 +1,287 @@
+syntax = "proto3";
+
+package pangu.modules;
+
+import "node_module_config.proto";
+
+message ApaParams {
+  string work_root = 1;
+  double timer_duration = 2;
+  double target_speed_mps = 3;  // Absolute target-speed cap, both directions.
+  double max_accel_mps2 = 4;    // Absolute normal acceleration-command cap, including braking.
+  double max_steer_rad = 5;     // Absolute front-wheel angle cap.
+  bool enable_control = 6;
+  double forward_ref_speed_mps = 7;
+  double reverse_ref_speed_mps = 8;
+  double terminal_keep_speed_mps = 9;
+  double minimum_tracking_speed_mps = 10;
+  double slowdown_distance_m = 11;
+  double control_period_sec = 12;
+  ApaExecutionLimits execution_limits = 13;
+  ApaPlanningLimits planning_limits = 14;
+  double cusp_approach_speed_mps = 15;
+  double short_segment_length_m = 16;
+  double short_segment_speed_mps = 17;
+}
+
+message ApaPlanningLimits {
+  // Optional worker watchdog: 0 disables it; positive values are seconds.
+  double attempt_timeout_sec = 1;
+  // Recovery waiting budget (standstill/scene/retry), excluding planning and
+  // candidate admission. Algorithm computation is bounded independently.
+  double recovery_timeout_sec = 2;
+  uint32 max_attempts = 3;
+  double retry_delay_sec = 4;
+}
+
+message ApaExecutionLimits {
+  double cusp_position_m = 1;
+  double cusp_yaw_rad = 2;
+  double goal_position_m = 3;
+  double goal_yaw_rad = 4;
+  double standstill_speed_mps = 5;
+  double cusp_dwell_sec = 6;
+  double goal_dwell_sec = 7;
+  double gear_dwell_sec = 8;
+  double reference_distance_m = 9;
+  double reference_yaw_rad = 10;
+}
+message ApaGoalTolerance {
+  double position_m = 1;
+  double yaw_rad = 2;
+}
+
+// Measured/owned by Bridge. A latched reason is never cleared within a task.
+// state: none, braking, stopped, unconfirmed. Duration uses simulation time.
+message ApaSafetyState {
+  uint64 event_id = 1;
+  string reason = 2;
+  string state = 3;
+  double standstill_sec = 4;
+}
+
+message ApaInputValidation {
+  bool feedback_valid = 1;
+  bool request_valid = 2;
+  string error = 3;
+}
+
+message ApaPoint2D {
+  double x = 1;
+  double y = 2;
+}
+
+// Convex world XY footprints. Velocity is world m/s; ego is excluded.
+message ApaObstacle {
+  string id = 1;
+  repeated ApaPoint2D footprint = 2;
+  double velocity_x = 3;
+  double velocity_y = 4;
+}
+
+// Sampled with ego_state. Version is the enclosing CARLA frame ID.
+message ApaScene {
+  uint64 version = 1;
+  repeated ApaObstacle obstacles = 2;
+}
+
+message ApaOnlineSafety {
+  bool blocked = 1;
+  uint64 scene_version = 2;
+  uint64 plan_scene_version = 3;
+  string reason = 4;
+  string obstacle_id = 5;
+  double checked_distance_m = 6;
+}
+
+message ApaRecoveryFeedback {
+  uint64 recovery_id = 1;
+  ApaSafetyState stop = 2;
+}
+
+// Effective controller caps, also checked against Bridge actuator limits.
+message ApaActuationLimits {
+  double max_abs_target_speed_mps = 1;
+  double max_abs_accel_mps2 = 2;
+  double max_abs_steer_rad = 3;
+}
+
+message ApaReplanDiagnostic {
+  uint64 recovery_id = 1;
+  uint64 path_version = 2;
+  string state = 3;
+  uint32 attempt = 4;
+  string reason = 5;
+  double elapsed_sec = 6;
+  int32 planner_error_type = 7;
+}
+
+message ApaInput {
+  uint32 frame_id = 1;
+  double vehicle_x = 2;
+  double vehicle_y = 3;
+  double vehicle_yaw = 4;
+  double vehicle_speed = 5;
+  double vehicle_acceleration = 6;
+  int32 gear_pos = 7;
+  double cycle_time = 8;
+  int32 parking_action = 9;
+  int32 target_slot_kind = 10;
+  double target_x = 11;
+  double target_y = 12;
+  double target_theta = 13;
+  double r_min = 14;
+  double entry_point_x = 15;
+  double entry_point_y = 16;
+  double slot_point1_x = 17;
+  double slot_point1_y = 18;
+  double slot_point2_x = 19;
+  double slot_point2_y = 20;
+  double slot_point3_x = 21;
+  double slot_point3_y = 22;
+  double slot_point4_x = 23;
+  double slot_point4_y = 24;
+  int32 slot_entry = 25;
+  int32 parking_type = 26;
+  int32 surrounding_type = 27;
+  double angle_offset = 28;
+  int32 boundary_line_num = 29;
+  repeated double boundary_line_x1 = 30;
+  repeated double boundary_line_y1 = 31;
+  repeated double boundary_line_x2 = 32;
+  repeated double boundary_line_y2 = 33;
+  int32 virtual_boundary_line_num = 34;
+  repeated double virtual_boundary_p1_x = 35;
+  repeated double virtual_boundary_p1_y = 36;
+  repeated double virtual_boundary_p2_x = 37;
+  repeated double virtual_boundary_p2_y = 38;
+  int32 slot_track_stopper_num = 39;
+  repeated double slot_track_stopper_x1 = 40;
+  repeated double slot_track_stopper_y1 = 41;
+  repeated double slot_track_stopper_x2 = 42;
+  repeated double slot_track_stopper_y2 = 43;
+  int32 boundary_sep_point_num = 44;
+  repeated double boundary_sep_point_x = 45;
+  repeated double boundary_sep_point_y = 46;
+  int32 stopper_point_num = 47;
+  repeated double stopper_point_x = 48;
+  repeated double stopper_point_y = 49;
+  bool shortcut_switch = 50;
+  double shortcut_threshold = 51;
+  bool need_hybrid_algorithm_fusion = 52;
+  // Simulation clock and identity are supplied by ego_state, never a plan request.
+  double sim_time_sec = 53;
+  uint64 carla_frame_id = 54;
+  string session_id = 55;
+  uint64 task_id = 56;
+  bool parking_enabled = 57;
+  ApaGoalTolerance goal_tolerance = 58;
+  ApaSafetyState safety_state = 59;
+  ApaInputValidation input_validation = 60;
+  ApaScene scene = 61;
+  ApaRecoveryFeedback recovery = 62;
+  // SHA-256 of the single vehicle profile used by Bridge and the compiled C defaults.
+  string vehicle_profile_id = 63;
+  // Norm of the same-frame CARLA 3D velocity, including sideways sliding.
+  double vehicle_motion_speed = 64;
+  bool planning_only = 65;
+  // Horizontal gravity on the local plane estimated from vehicle attitude, world axes, m/s2.
+  double road_gravity_x = 66;
+  double road_gravity_y = 67;
+  // Last applied equivalent bicycle steering command, rad; not a wheel measurement.
+  double vehicle_steering_command_rad = 68;
+}
+
+message ApaOutput {
+  uint32 frame_id = 1;
+  bool enable = 2;
+  bool stop_req = 3;
+  double target_speed_mps = 4;
+  double target_accel_mps2 = 5;
+  double steer_rad = 6;
+  int32 target_gear_req = 7;
+  int32 direction_sign = 8;
+  repeated double path_point_x = 9;
+  repeated double path_point_y = 10;
+  repeated double path_point_yaw = 11;
+  bool gear_change_allowed = 12;
+  int32 ctrl_phase = 13;
+  uint64 carla_frame_id = 14;
+  double sim_time_sec = 15;
+  string session_id = 16;
+  uint64 task_id = 17;
+  double control_dt_sec = 18;
+  string control_status = 19;
+  uint64 control_step_count = 20;
+  ApaControlDiagnostic control_diagnostic = 21;
+  repeated double path_point_odo = 22;
+  ApaSafetyState safety_state = 23;
+  ApaInputValidation input_validation = 24;
+  ApaOnlineSafety online_safety = 25;
+  ApaReplanDiagnostic replan = 26;
+  ApaActuationLimits actuation_limits = 27;
+  string vehicle_profile_id = 28;
+  ApaPedalCommand actuator = 29;
+  bool planning_only = 30;
+}
+
+// Final C-owned commands; Bridge executes without a speed/acceleration loop.
+message ApaPedalCommand {
+  double throttle = 1;
+  double brake = 2;
+  bool hand_brake = 3;
+  int32 gear_pos = 4;
+  string owner = 5;
+  bool launch_hold = 6;
+}
+
+// All poses refer to the rear axle. Angles are radians; time is simulation time.
+message ApaControlDiagnostic {
+  int32 segment = 1;
+  int32 segment_count = 2;
+  int32 reference_index = 3;
+  double remaining_distance_m = 4;
+  double stop_distance_m = 5;
+  double cross_track_error_m = 6;
+  double heading_error_rad = 7;
+  double endpoint_distance_m = 8;
+  double endpoint_yaw_error_rad = 9;
+  double vehicle_speed_mps = 10;
+  double vehicle_acceleration_mps2 = 11;
+  int32 feedback_gear = 12;
+  int32 stop_reason = 13;
+  bool reference_valid = 14;
+  double steer_pursuit_rad = 15;
+  double steer_heading_rad = 16;
+  bool steer_saturated = 17;
+  double progress_m = 18;
+  double reference_x = 19;
+  double reference_y = 20;
+  double goal_x = 21;
+  double goal_y = 22;
+  double goal_yaw_rad = 23;
+}
+
+message ApaConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  ApaParams params = 2;
+}
+
+message ApaZmqInputModuleParams {
+  double timer_duration = 1;
+  int32 zmq_poll_timeout_ms = 2;
+}
+
+message ApaZmqInputModuleConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  ApaZmqInputModuleParams params = 2;
+}
+
+message ApaZmqOutputModuleParams {
+  bool zmq_control_enable = 1;
+}
+
+message ApaZmqOutputModuleConfig {
+  icvos.common.NodeModuleConfig basic = 1;
+  ApaZmqOutputModuleParams params = 2;
+}
